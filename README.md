@@ -1,14 +1,14 @@
 # CoCreateGame｜批量游戏研发项目
 
-CoCreateGame 是批量筛选、研究、设计、审核并逐款研发游戏的总项目。每款游戏使用 `games/G01/` 至 `games/G10/` 中独立的文件夹，保存自己的设计档案、关卡数据、工具和验证记录；跨游戏的平台研究、共享机制提案和总体验收集中放在公共目录。
+CoCreateGame 是批量筛选、研究、设计、审核并逐款研发游戏的总项目。G01—G10 各有独立的游戏文件夹；另行获准的游戏也使用自己的具名目录，保存源码、关卡、美术、测试和渠道材料。跨游戏的平台研究、共享机制提案和总体验收集中放在公共目录。
 
-本轮完成的是研发准备，不是可运行游戏。当前三款优先项目仍为 REVISE，尚未批准进入游戏开发。最新进度见 [STATUS.md](STATUS.md)，交付结论见 [DELIVERY_REPORT.md](DELIVERY_REPORT.md)，离线总览见 [index.html](index.html)。
+AI Game Foundry 的 G01—G10 仍按各自的研究与审核状态推进。本仓库另含一款用户明确要求施工的独立游戏 Vector Shift，完整工程位于 [`games/VectorShift/`](games/VectorShift/README.md)；这项授权不改变 G01—G10 的审计结论。状态见 [STATUS.md](STATUS.md)，准备交付总览见 [DELIVERY_REPORT.md](DELIVERY_REPORT.md)，离线总览见 [index.html](index.html)。
 
 ## 仓库结构
 
 | 路径 | 内容 |
 | --- | --- |
-| [`games/`](games/README.md) | G01—G10，每款游戏一个独立目录及项目状态索引 |
+| [`games/`](games/README.md) | G01—G10 准备档案，以及独立完整游戏 `VectorShift/` |
 | `research/` | 六家渠道资料、候选研究、对标证据和跨游戏分析 |
 | `reviews/` | 独立审核、复核决定和审计索引 |
 | `shared-mechanics/` | 可复用机制提案；须经过审核后才能成为共享规范 |
@@ -19,17 +19,18 @@ CoCreateGame 是批量筛选、研究、设计、审核并逐款研发游戏的�
 
 每个游戏目录以自己的 `README.md` 为入口。完整项目背景和范围规则见 [MASTER_HANDOFF.md](MASTER_HANDOFF.md) 与 [AGENTS.md](AGENTS.md)。
 
-## 当前阶段
+## 项目轨道
 
 - G01「信号港」、G02「签章收纳台」、G04「折光机关」各有完整施工档案和20关离线验解记录，但独立裁决均为 REVISE：每款仍有一项对标体验证据待补。
 - G03、G05—G10 是候选研究，不是已完成的游戏规格。
-- 开始某款游戏的实际开发前，先补齐对应审计要求并取得明确的项目批准；总项目状态见 [STATUS.md](STATUS.md)。
+- G01—G10 的开发边界继续按各自审批与审计要求执行。
+- Vector Shift 是另行明确授权的实际游戏工程，不纳入 G01—G10 编号，不改变它们的研究状态；代码、渠道构建、试玩包及验证记录均保存在自己的文件夹。
 
 ## 检查与交付
 
 从仓库根目录运行 `python tools/validate_preparation.py` 可检查准备资料。各优先项目的专属复验命令见其目录 README。运行 `python tools/build_delivery.py` 可重新生成离线总览和完整 ZIP。
 
-完整 ZIP 约 94 MiB，因其与仓库源文件重复且接近 GitHub 的单文件限制，生成包保留在本机 `deliverables/`，不写入 Git 历史；构成 ZIP 的项目文件和重建脚本均在仓库中。
+完整 ZIP 约 109 MiB，因其与仓库源文件重复且接近 GitHub 的单文件限制，生成包保留在本机 `deliverables/`，不写入 Git 历史；构成 ZIP 的项目文件和重建脚本均在仓库中。
 
 研究资料、独立审查、数据登记和验证日志按上表的公共目录集中维护，避免在十款游戏之间复制同一份平台证据。详细要求映射见 [REQUIREMENTS_CHECKLIST.md](REQUIREMENTS_CHECKLIST.md)，历史交接摘要见 `docs/`；原始演示保留为 [original-brief.html](original-brief.html)。
 
@@ -83,4 +84,4 @@ CoCreateGame 是批量筛选、研究、设计、审核并逐款研发游戏的�
 
 本包是对既有会话的**纠偏后的方案总结**，不是对所有历史研究事实的重新独立取证。重点官方准入页面已在 2026-10-21 核对；动态热榜仅为当日快照，没证据的收入、通过率、合同条款不作确定断言。
 
-本包不包含旧版 Vector Shift 的完整源码。它仍是历史技术原型而非确定上市项目，如需复用，应另行导入并做独立审查。
+原始准备输入不包含 Vector Shift 的完整源码；随后按用户直接要求导入并独立完成的版本位于 `games/VectorShift/`。它尚未商业发布，也未获平台批准，当前证据和待办见该目录。

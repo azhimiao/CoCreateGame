@@ -1,0 +1,55 @@
+{
+  "product": "Vector Shift / 相位箭头",
+  "version": "1.0.0-phase-shift",
+  "created_on": "2026-10-21",
+  "project_status": "technical implementation complete; ready for human review; not commercially released; not platform-approved",
+  "originality": "original authored source and generated puzzles; mechanics benchmarked from public game descriptions, no third-party code or art assets included",
+  "entry_html": "index.html",
+  "level_count": 52,
+  "tested": {
+    "exact_solver_verified_levels": 52,
+    "phase_required_levels": 50,
+    "two_toggle_shortest_solution_levels": 14,
+    "bfs_solution_actions_replayed": 360,
+    "fuzz_trials": 100,
+    "browser": "Playwright smoke passed on Chromium at four emulated viewport sizes; not a substitute for physical devices or human tests",
+    "touch_target_mobile_390px": "44px+ controls; individual arrows are path-hit-tested to reduce overlap",
+    "english_ui_coolmath": true,
+    "english_ui_crazygames_basic": true,
+    "crazygames_gameplay_start_wired": true,
+    "coolmath_telemetry_disabled": true,
+    "daily_challenge": "local date-seeded, run-resumable, and records completion, streak, time, misses, hints; not live ops",
+    "run_resume": "campaign and daily runs persist separately on-device",
+    "board_view": "button zoom, drag pan, touch pinch, and all-exits guide",
+    "live_player_testing": false,
+    "platform_approval": false
+  },
+  "builds": [
+    {
+      "name": "demo",
+      "path": "dist/demo/index.html",
+      "status": "playable single-file demo; zh-primary"
+    },
+    {
+      "name": "coolmath",
+      "path": "dist/coolmath/index.html",
+      "status": "52-level technical candidate; no platform approval"
+    },
+    {
+      "name": "crazygames-basic",
+      "path": "dist/crazygames-basic/index.html",
+      "status": "52-level technical candidate; official SDK init and GameplayStart only; no platform approval"
+    }
+  ],
+  "delivery_zip": "delivery/Vector_Shift_playtest.zip",
+  "submission_kit": "submission/",
+  "next_required": [
+    "10-person blind player testing",
+    "30-60s gameplay capture",
+    "actual device testing",
+    "IP / trademark name clearance",
+    "platform official QA",
+    "licensing / ROI validation"
+  ],
+  "notes_visual": "Responsive play shell; path-specific SVG interaction; connected winding arrows; zoom, all-exits preview, slide-out motion; phase USP retained"
+}

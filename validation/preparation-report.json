@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-10-21T20:12:55+08:00",
+  "checked_at": "2026-10-21T23:04:35+08:00",
   "result": "PASS",
   "checks": [
     "Frozen six channels and ten project IDs",
     "30 claims resolve to 24 official sources with locators",
     "Ten-family adaptation matrix covers all six channels",
-    "355 JSON documents parse as UTF-8",
+    "357 JSON documents parse as UTF-8",
     "G01/game-spec: schema PASS",
     "G01/tasks: schema PASS",
     "G01/tasks: DAG 16 tasks PASS",

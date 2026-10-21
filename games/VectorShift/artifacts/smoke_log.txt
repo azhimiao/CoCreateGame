@@ -1,0 +1,4 @@
+SHAPE SHOTS — heart 11 dense 29 square_long 52 voids 14
+DESKTOP PASS — levels 1 and 52, hint, undo, phase toggle, modal
+MOBILE PASS — touch and board in viewport, touch target 165.2
+COOLMATH PRE-BUILD PASS — QA hooks hidden, layout ok

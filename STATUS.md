@@ -2,6 +2,8 @@
 
 日期：2026-10-21（Asia/Shanghai）。当前阶段：PREPARATION_DELIVERED。
 
+本状态文件顶部的阶段和下方 G01—G10 裁决专指 AI Game Foundry 的“研发准备”轨道。Vector Shift 是独立命名的游戏项目，按用户单独授权在 `games/VectorShift/` 完成；不将其合并进 G01 或更改下列裁决。
+
 ## 已完成
 
 - 原包范围保持：P01—P06、G01—G10；输入/原演示保留，当前产物单列。
@@ -21,10 +23,16 @@
 
 本轮没有无条件 READY_FOR_BUILD 项目。三套档案已交付并经审查；未关闭的证据问题见逐项审计，不能用数据校验替代。
 
+## 独立游戏项目
+
+| 项目 | 当前状态 | 完成内容 | 尚待验证 |
+|---|---|---|---|
+| Vector Shift / 相位箭头 | 技术实现完成，可供人工试玩 | 52关离线 HTML5 游戏、桌面/移动响应式界面、触控缩放、续玩、每日结算、Coolmath 与 CrazyGames Basic 候选构建；核心和 Playwright 浏览器测试通过。详见 [项目入口](games/VectorShift/README.md) 与 [实施记录](games/VectorShift/docs/07_2026-10-21_implementation-update.md)。 | 真人盲测、实体手机/平板、名称商标核查、平台审核、渠道采纳和收入均未完成。技术测试不代表已超过竞品的人类体验结果。 |
+
 ## 未完成的后续阶段
 
 真实玩家体验、引擎/真机、SDK集成、市场指标、外部合作/合同/报价与回款均未验证。对标未取得的流程节点和完整时间窗继续标缺；不填成已实玩。未执行PROMPT_04。
 
 ## 下一动作
 
-按独立审计的未关闭证据节点补证；之后选择游戏ID、档案版本和实验预算，才进入实际开发。具体文件与边界见 [交付报告](DELIVERY_REPORT.md) 和 [要求对照](REQUIREMENTS_CHECKLIST.md)。
+G01—G10 准备轨道按独立审计的未关闭证据节点补证；Vector Shift 则进入真人试玩、实体设备检查和商标/渠道核验。两个轨道分别维护，不互相替代。具体资料见 [交付报告](DELIVERY_REPORT.md)、[要求对照](REQUIREMENTS_CHECKLIST.md) 与 [Vector Shift 项目入口](games/VectorShift/README.md)。

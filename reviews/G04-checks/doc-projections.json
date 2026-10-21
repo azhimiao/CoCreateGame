@@ -1,0 +1,93 @@
+{
+  "projection_note": "Names and design intents appear in adjacent headings/table; compare all fields present in each JSON projection.",
+  "checks": [
+    {
+      "id": "G04-L01",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L02",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L03",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L04",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L05",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L06",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L07",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L08",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L09",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L10",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L11",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L12",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L13",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L14",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L15",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L16",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L17",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L18",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L19",
+      "fields_match": true
+    },
+    {
+      "id": "G04-L20",
+      "fields_match": true
+    },
+    {
+      "id": "G04-X1-A",
+      "fields_match": true
+    },
+    {
+      "id": "G04-X2-A",
+      "fields_match": true
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "accessed_at": "2026-10-21",
+  "root": "F:\\CoCreateGame\\reviews\\shared-recheck-03\\research\\benchmarks",
+  "packaging_rule": "Include ONLY files below plus delivery_manifest.json itself; never recursively pack the whole directory.",
+  "excluded_paths": [
+    "evidence/runtime/",
+    "evidence/runtime/**"
+  ],
+  "associated_read_only": [
+    {
+      "path": "observation-summary.md",
+      "relative_to": "research/",
+      "bytes": 2886,
+      "sha256": "37ed7331363227b4bfcd390460d5450b98ea970d46cc73925b7043c9b312022e",
+      "included_in_this_subpackage": false
+    }
+  ],
+  "manifest_self_hash": "OMITTED_TO_AVOID_RECURSIVE_HASH",
+  "files": [
+    {
+      "path": "benchmarks.json",
+      "bytes": 193543,
+      "sha256": "cfb4e1a53c79aca7999799aec7827c9b8423e8993a4f07464677438c590ec7bb"
+    },
+    {
+      "path": "methodology.md",
+      "bytes": 8417,
+      "sha256": "f0fa0f62e8546eead497e0ae76c7662147602639ed15aa882ea3c9bffa5a316c"
+    },
+    {
+      "path": "build_benchmarks.py",
+      "bytes": 68861,
+      "sha256": "59274e2b9d8d2d8c15358d839fb8d98e60d5696c057346cb51d92e56a919a020"
+    },
+    {
+      "path": "validate_delivery.py",
+      "bytes": 8341,
+      "sha256": "1f31c1e0e10b254aeb5612d6c5ae01ab280d913163313e27ad462c740abebbe4"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 1013,
+      "sha256": "efcb92be69760365c1e69c97210a6e62fb5da9584635eaf010cbc3d9e11afcb5"
+    },
+    {
+      "path": "P01.md",
+      "bytes": 16594,
+      "sha256": "fe0aceed0fb65dbef5d5449cd8cb7175906f553955e8834c35f5f45adb68293a"
+    },
+    {
+      "path": "P02.md",
+      "bytes": 15833,
+      "sha256": "980f855738a6af2a8090c743aba8b27c10554a4df783667ee771a02195f5b1da"
+    },
+    {
+      "path": "P03.md",
+      "bytes": 16455,
+      "sha256": "8437ad165915781bc5e63b91235a6d5eb32d3ac4a2b6561bd274581efd823a64"
+    },
+    {
+      "path": "P04.md",
+      "bytes": 14732,
+      "sha256": "beea36cd02d12d5710e19e50cf0ceef2708dcccb150172ccfa2110b765366d75"
+    },
+    {
+      "path": "P05.md",
+      "bytes": 18217,
+      "sha256": "aff8c2ff51eabeb37d41bfd16d7deed56ddb58ad6652e2645390b03d50a3e75d"
+    },
+    {
+      "path": "P06.md",
+      "bytes": 19056,
+      "sha256": "2d40677ad898dad7ed11a1eef178f0d0541b7b7240fa28625e9e847e0ff4ccd6"
+    },
+    {
+      "path": "evidence/browser-probe.cjs",
+      "bytes": 3485,
+      "sha256": "bef4d1e129851e1af925152a4ba22bc1a12bfe08097ee0c0c99d10479da24913"
+    },
+    {
+      "path": "evidence/session.json",
+      "bytes": 148159,
+      "sha256": "50684ec6303dc43962300bae19efff5e842e00c1ef8cd8367003bcc4676f7975"
+    },
+    {
+      "path": "evidence/cleanup.json",
+      "bytes": 959,
+      "sha256": "a86213cebf41c3b84e291deb7b9f4dea3e90c8462b73e2a98e81ea5c675121a1"
+    },
+    {
+      "path": "evidence/screenshots/p01-paint-master-loaded.png",
+      "bytes": 63339,
+      "sha256": "a03e3907d33e60246bf125b6525fcfae9933ac4196759c9fe33de297dccd7bb1"
+    },
+    {
+      "path": "evidence/screenshots/p03-drive-mad-forward-2s.png",
+      "bytes": 784063,
+      "sha256": "275cd5ecf804dba0975ee35cab0fc562fd7d467f0c8deab5b46275a45de9ae0a"
+    },
+    {
+      "path": "evidence/screenshots/p03-drive-mad-loaded.png",
+      "bytes": 934776,
+      "sha256": "7c559a48081b7f8874bd9dd7b9598d02340aba1fd08c7bfc676fe91591c315e7"
+    },
+    {
+      "path": "evidence/screenshots/p03-drive-mad-ready.png",
+      "bytes": 800284,
+      "sha256": "4d157bacddd641e91b82efc2bdbaab789c82f55a28b463aa1a7edf82db2c5a31"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-after-move.png",
+      "bytes": 733360,
+      "sha256": "cce491e1e38476e02fea331cdda6c7624c66b65267f450279324d6f93eb0c046"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-after-wait.png",
+      "bytes": 729264,
+      "sha256": "644ee70ebba3ea11c5c00f5f7e04c4cb40b74d6e761de54e356e70d5a142b1ab"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-character-moved.png",
+      "bytes": 717067,
+      "sha256": "f95d5a3167b8ff3b025a188f1c02178bc807aa1bf6083c428be39ea8de6a8380"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-dismiss-held.png",
+      "bytes": 729388,
+      "sha256": "94c98f662de8efc946c76d4b06c46e9a3f5745900da5f73b8dd21dcf7e206e2e"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-dismiss-news.png",
+      "bytes": 733474,
+      "sha256": "b92a25c87ee8fdbf6c3ca27026a73011a800f1d588788134b25bd5e6f1a387b0"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-enter-pits.png",
+      "bytes": 729481,
+      "sha256": "738fc022e1e11f518610de912560c2e29ddbe84e852129d66cd2db2ab545502b"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-front-right.png",
+      "bytes": 733468,
+      "sha256": "7b65d9ac36590b366a6ede4f0ca27654f2a17b6e584d1c5f6cb1bbe38fee1a6d"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-front-space.png",
+      "bytes": 733479,
+      "sha256": "0bc5c452952fff4aae406f7e4ca1078a1be9853766a08fe6ae574c44ed7fec06"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-loaded.png",
+      "bytes": 716651,
+      "sha256": "c0ec007f70b037ff8ad9c3d089fb5be846fb2fe730ac097681306659e727072a"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-pits-entered.png",
+      "bytes": 717431,
+      "sha256": "cadca5f8089aae6c05b6d0a3d6afd894d90a9b0dbd6c0f461a81777d3dd9ebe6"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-pits-right.png",
+      "bytes": 733511,
+      "sha256": "076197fdd4f552fa15ef36104d670b837327b33374b634632a9e97d448c5337e"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-pits-start.png",
+      "bytes": 733008,
+      "sha256": "cd6eb810cce921e5909f7751703d16f934520a4b4c289b6e58cfd069f4298b76"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-reopen.png",
+      "bytes": 729266,
+      "sha256": "40e8f299f3decdf4343032e3e682572b3cb6178811c0a2db9ed7083cbddc81ec"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-right-2s.png",
+      "bytes": 729340,
+      "sha256": "6bae4617585eb877b4f7c0eca2f86dc242e82aede91519e9cc7b72316863f2a5"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-second-space.png",
+      "bytes": 733467,
+      "sha256": "2ef833da6ef9a35632c2ce2f784f3e79781009dbd3252693f14c439f05fecd81"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-stage-entry.png",
+      "bytes": 728957,
+      "sha256": "a8545f48a6afd6d147621868457f6c1e58fd22cfb2f68bc6ba412852ee8f8fad"
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-stage-start.png",
+      "bytes": 729467,
+      "sha256": "6cd8ca8ab57ca2c128c0124c5445d1bea0e959e5ad6a97ba7be46ae7435e2043"
+    }
+  ]
+}

@@ -1,0 +1,536 @@
+{
+  "checked_at_utc": "2026-10-21T11:00:17.906719+00:00",
+  "scope": "Evidence integrity only; valid screenshot hashes do not establish core input or continuous gameplay. No new browser activity.",
+  "result": "PASS",
+  "total_screenshots": 98,
+  "games": [
+    {
+      "game_id": "G01",
+      "screenshots": 21,
+      "all_hashes_match": true,
+      "source_file_hashes": {
+        "observation.md": "5e1d2894834839241b36fa194e7d6303cfa3af3d4174494bc40ec508867dc87f",
+        "operations.jsonl": "4fc80fcfc018b331c2d9d801055b3213b2294cd05d330ee9ef9b597a85101575",
+        "screenshot_hashes.json": "6d15c4e6b3a95c7c23ea97af8cf5dcc79bf2aaae333dad61822b48ed2c44b4d7"
+      },
+      "files": [
+        {
+          "path": "research/playthroughs/G01/screenshots/01-playgama-loaded.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/02-playgama-play-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/03-playgama-current.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/04-tutorial-arrow-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/05-continue-without-login.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/06-tutorial-release-retry.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/07-tutorial-left-arrow.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/08-tutorial-short-pointer-drag.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/09-tutorial-tip-drag.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/10-tutorial-up-tip-drag.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/11-resumed-page.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/12-resumed-after-play.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/13-resumed-tutorial.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/14-held-tutorial-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/15-close-ad-button.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/16-resume-without-login.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/17-held-game-arrow.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/18-tap-instruction-strip.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/19-fullscreen-ui.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/20-inline-arrow-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G01/screenshots/21-crazygames-url-result.png",
+          "bytes_match": true,
+          "sha256_match": true
+        }
+      ]
+    },
+    {
+      "game_id": "G02",
+      "screenshots": 13,
+      "all_hashes_match": true,
+      "source_file_hashes": {
+        "observation.md": "db9e9867e537f9e79e3b48ceee8de82ce83799f98432c0242201a9a1eac1fe01",
+        "operations.jsonl": "cc5b13d74375ecbe7bd42e1a0b3fb1c3d945841d076169964179732f80c80a63",
+        "manifest.json": "dab6cef1f5b7307095608160db5e2665dfa258464d8c3ffb98e840976c43b7e7"
+      },
+      "files": [
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-39-50-665Z-goodsort-001-official-page.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-39-50-665Z-goodsort-002-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-39-50-665Z-goodsort-003-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-39-50-665Z-goodsort-004-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-39-50-665Z-goodsort-005-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-44-40-833Z-screwout-001-official-page.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-44-40-833Z-screwout-002-screw-ui-check.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-44-40-833Z-screwout-003-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-44-40-833Z-screwout-004-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-44-40-833Z-screwout-005-screw-after-essential-load.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-44-40-833Z-screwout-006-screw-final-loading-check.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-44-40-833Z-screwout-007-screw-ready-or-blocked.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G02/screenshots/2026-10-21T10-44-40-833Z-screwout-008-last-budget-check.png",
+          "bytes_match": true,
+          "sha256_match": true
+        }
+      ]
+    },
+    {
+      "game_id": "G04",
+      "screenshots": 64,
+      "all_hashes_match": true,
+      "source_file_hashes": {
+        "observation.md": "01df171e92b865bbc707d266165302abc61f3138bb3446a08d335670dd8be588",
+        "operations.jsonl": "c8a2a14757fdbb4217d734963916a7c05eb155f9d383404c7b65b7fee97408eb",
+        "manifest.json": "b8a1276598aa25fed18151067520ea0da404c4eaa5115951c18d3bb60abbfa70"
+      },
+      "files": [
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-bloxorz-001-official-page.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-bloxorz-002-after-countdown.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-bloxorz-003-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-bloxorz-004-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-bloxorz-005-before-key.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-bloxorz-006-after-key.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-bloxorz-007-before-key.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-bloxorz-008-after-key.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-liquid2-009-official-page.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-liquid2-010-liquid-initial-load.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-liquid2-011-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-liquid2-012-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-liquid2-013-before-key.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-liquid2-014-after-key.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-browser-015-liquid-final-confirmation.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-016-official-page.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-017-paint-load-check.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-018-before-click-text.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-019-after-click-text.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-020-paint-after-launch.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-021-paint-loading-recheck.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-022-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-023-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-024-paint-title-controls.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-025-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-026-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-027-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-028-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-029-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-030-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-031-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-032-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-033-paint-level-progression.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-034-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-035-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-036-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-037-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-038-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-039-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-040-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-041-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-042-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-043-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-044-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-045-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-046-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-047-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-048-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-049-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-050-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-051-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-052-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-053-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-054-paint-game-over-controls.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-055-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-056-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-057-paint-results-controls.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-058-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-059-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-060-paint-return-after-results.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-061-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-062-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-063-before-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        },
+        {
+          "path": "research/playthroughs/G04/screenshots/2026-10-21T10-08-52-583Z-paintmaster-064-after-click.png",
+          "bytes_match": true,
+          "sha256_match": true
+        }
+      ]
+    }
+  ],
+  "complete_continuous_30_seconds": 0,
+  "complete_continuous_5_minutes": 0
+}

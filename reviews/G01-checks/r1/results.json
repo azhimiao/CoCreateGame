@@ -1,0 +1,1437 @@
+{
+  "checked_at_utc": "2026-10-21T11:18:44.533476+00:00",
+  "result": "PASS",
+  "scope": "Independent audit-r1 specification/contract recheck; no product code, engine, browser storage or SDK execution",
+  "game_spec_sha256": "f7ae41c19422324a29c99bf5fd7bbd4d53a364d44aed9f85152701d35f89832f",
+  "frozen_source_files_unchanged": true,
+  "check_count": 291,
+  "checks": [
+    {
+      "check": "current exact campaign IDs/order",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L01",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L02",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L03",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L04",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L05",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L06",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L07",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L08",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L09",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L10",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L11",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L12",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L13",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L14",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L15",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L16",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L17",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L18",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L19",
+      "passed": true
+    },
+    {
+      "check": "unchanged geometry/rules/solution L20",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 00_Project_Charter.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 01_Market_Evidence.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 02_Benchmark_Playthrough.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 03_Full_GDD.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 04_Systems_and_Data.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 05_Levels_Economy.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 06_UI_Art_Audio.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 07_Tech_Architecture.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 08_OpenSource_Licenses.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 09_Implementation_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 10_QA_Test_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 11_Distribution_Business.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash 12_Falsifiability.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash README.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash STATUS.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash REVISIONS.md",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash game-spec.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tasks.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash game-spec.schema.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tasks.schema.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash save-envelope.schema.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash contracts/save-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash contracts/session-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash research/observation-coverage.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash validation/audit-mutants.json",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tools/contracts.py",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tools/check_contracts.py",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tools/check_audit_mutants.py",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tools/link_observation.py",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tools/prepare_data.py",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tools/prepare_evidence.py",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tools/validate.py",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash tools/write_level_catalog.py",
+      "passed": true
+    },
+    {
+      "check": "authored report input hash validation/revision-baseline.json",
+      "passed": true
+    },
+    {
+      "check": "schema/current game-spec",
+      "passed": true
+    },
+    {
+      "check": "schema/current tasks",
+      "passed": true
+    },
+    {
+      "check": "independent witness L01/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L01/b",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L01",
+      "passed": true
+    },
+    {
+      "check": "independent witness L02/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L02/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L02/c",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L02",
+      "passed": true
+    },
+    {
+      "check": "independent witness L03/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L03/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L03/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L03/d",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L03",
+      "passed": true
+    },
+    {
+      "check": "independent witness L04/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L04/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L04/d",
+      "passed": true
+    },
+    {
+      "check": "independent witness L04/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L04/e",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L04",
+      "passed": true
+    },
+    {
+      "check": "independent witness L05/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L05/a",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L05",
+      "passed": true
+    },
+    {
+      "check": "independent witness L06/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L06/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L06/a",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L06",
+      "passed": true
+    },
+    {
+      "check": "independent witness L07/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L07/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L07/a",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L07",
+      "passed": true
+    },
+    {
+      "check": "independent witness L08/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L08/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L08/c",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L08",
+      "passed": true
+    },
+    {
+      "check": "independent witness L09/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L09/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L09/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L09/d",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L09",
+      "passed": true
+    },
+    {
+      "check": "independent witness L10/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L10/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L10/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L10/d",
+      "passed": true
+    },
+    {
+      "check": "independent witness L10/e",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L10",
+      "passed": true
+    },
+    {
+      "check": "independent witness L11/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L11/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L11/c",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L11",
+      "passed": true
+    },
+    {
+      "check": "independent witness L12/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L12/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L12/c",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L12",
+      "passed": true
+    },
+    {
+      "check": "independent witness L13/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L13/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L13/a",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L13",
+      "passed": true
+    },
+    {
+      "check": "independent witness L14/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L14/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L14/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L14/d",
+      "passed": true
+    },
+    {
+      "check": "independent witness L14/e",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L14",
+      "passed": true
+    },
+    {
+      "check": "independent witness L15/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L15/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L15/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L15/d",
+      "passed": true
+    },
+    {
+      "check": "independent witness L15/e",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L15",
+      "passed": true
+    },
+    {
+      "check": "independent witness L16/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L16/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L16/c",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L16",
+      "passed": true
+    },
+    {
+      "check": "independent witness L17/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L17/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L17/a",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L17",
+      "passed": true
+    },
+    {
+      "check": "independent witness L18/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L18/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L18/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L18/d",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L18",
+      "passed": true
+    },
+    {
+      "check": "independent witness L19/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L19/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L19/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L19/d",
+      "passed": true
+    },
+    {
+      "check": "independent witness L19/e",
+      "passed": true
+    },
+    {
+      "check": "independent witness L19/f",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L19",
+      "passed": true
+    },
+    {
+      "check": "independent witness L20/b",
+      "passed": true
+    },
+    {
+      "check": "independent witness L20/c",
+      "passed": true
+    },
+    {
+      "check": "independent witness L20/a",
+      "passed": true
+    },
+    {
+      "check": "independent witness L20/d",
+      "passed": true
+    },
+    {
+      "check": "independent witness L20/e",
+      "passed": true
+    },
+    {
+      "check": "independent witness L20/f",
+      "passed": true
+    },
+    {
+      "check": "independent witness L20/z",
+      "passed": true
+    },
+    {
+      "check": "independent full clear L20",
+      "passed": true
+    },
+    {
+      "check": "independent save classification new_campaign",
+      "passed": true
+    },
+    {
+      "check": "independent save classification valid_partial",
+      "passed": true
+    },
+    {
+      "check": "independent save classification replay_completed_level",
+      "passed": true
+    },
+    {
+      "check": "independent save classification highest_unlocked_active",
+      "passed": true
+    },
+    {
+      "check": "independent save classification won_not_recorded",
+      "passed": true
+    },
+    {
+      "check": "independent save normalization won_not_recorded",
+      "passed": true
+    },
+    {
+      "check": "completion repair idempotent",
+      "passed": true
+    },
+    {
+      "check": "independent save classification newer_version_read_only",
+      "passed": true
+    },
+    {
+      "check": "independent save classification different_content_recovery",
+      "passed": true
+    },
+    {
+      "check": "independent save classification revision_negative",
+      "passed": true
+    },
+    {
+      "check": "independent save classification revision_over_safe_integer",
+      "passed": true
+    },
+    {
+      "check": "independent save classification revision_fraction",
+      "passed": true
+    },
+    {
+      "check": "independent save classification revision_boolean",
+      "passed": true
+    },
+    {
+      "check": "independent save classification max_safe_revision_unchanged",
+      "passed": true
+    },
+    {
+      "check": "independent save classification revision_exhausted_completion_repair",
+      "passed": true
+    },
+    {
+      "check": "independent save classification extra_root_field",
+      "passed": true
+    },
+    {
+      "check": "independent save classification extra_settings_field",
+      "passed": true
+    },
+    {
+      "check": "independent save classification duplicate_tutorial",
+      "passed": true
+    },
+    {
+      "check": "independent save classification unknown_tutorial",
+      "passed": true
+    },
+    {
+      "check": "independent save classification duplicate_log",
+      "passed": true
+    },
+    {
+      "check": "independent save classification blocked_log",
+      "passed": true
+    },
+    {
+      "check": "independent save classification unknown_arrow_log",
+      "passed": true
+    },
+    {
+      "check": "independent save classification locked_active",
+      "passed": true
+    },
+    {
+      "check": "independent save classification missing_completed_prefix",
+      "passed": true
+    },
+    {
+      "check": "independent save classification unordered_completed_prefix",
+      "passed": true
+    },
+    {
+      "check": "independent save classification duplicate_completed",
+      "passed": true
+    },
+    {
+      "check": "independent save classification duplicate_json_revision_key",
+      "passed": true
+    },
+    {
+      "check": "independent save classification duplicate_nested_setting_key",
+      "passed": true
+    },
+    {
+      "check": "independent save classification oversize_input",
+      "passed": true
+    },
+    {
+      "check": "session attempt agrees first_clear_undo_recomplete",
+      "passed": true
+    },
+    {
+      "check": "session fact legal first_clear_undo_recomplete",
+      "passed": true
+    },
+    {
+      "check": "independent session-free RuleFact first_clear_undo_recomplete",
+      "passed": true
+    },
+    {
+      "check": "one save per newly accepted revision",
+      "passed": true
+    },
+    {
+      "check": "session snapshot consistent with save protocol",
+      "passed": true
+    },
+    {
+      "check": "unique event A:41",
+      "passed": true
+    },
+    {
+      "check": "unique event A:42",
+      "passed": true
+    },
+    {
+      "check": "unique event A:43",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "ack has request",
+      "passed": true
+    },
+    {
+      "check": "unique event A:44",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "interruption no recommit",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/ANIMATION_INTERRUPTED",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/ANIMATION_INTERRUPTED",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/ANIMATION_INTERRUPTED",
+      "passed": true
+    },
+    {
+      "check": "session attempt agrees first_clear_undo_recomplete",
+      "passed": true
+    },
+    {
+      "check": "independent UndoFact first_clear_undo_recomplete",
+      "passed": true
+    },
+    {
+      "check": "one save per newly accepted revision",
+      "passed": true
+    },
+    {
+      "check": "session snapshot consistent with save protocol",
+      "passed": true
+    },
+    {
+      "check": "unique event A:45",
+      "passed": true
+    },
+    {
+      "check": "unique event A:46",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/UNDO_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/UNDO_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/UNDO_FACT",
+      "passed": true
+    },
+    {
+      "check": "ack has request",
+      "passed": true
+    },
+    {
+      "check": "unique event A:47",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "session attempt agrees first_clear_undo_recomplete",
+      "passed": true
+    },
+    {
+      "check": "session fact legal first_clear_undo_recomplete",
+      "passed": true
+    },
+    {
+      "check": "independent session-free RuleFact first_clear_undo_recomplete",
+      "passed": true
+    },
+    {
+      "check": "one save per newly accepted revision",
+      "passed": true
+    },
+    {
+      "check": "session snapshot consistent with save protocol",
+      "passed": true
+    },
+    {
+      "check": "unique event A:48",
+      "passed": true
+    },
+    {
+      "check": "unique event A:49",
+      "passed": true
+    },
+    {
+      "check": "unique event A:50",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "ack has request",
+      "passed": true
+    },
+    {
+      "check": "unique event A:51",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "ack has request",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/SAVE_ACK",
+      "passed": true
+    },
+    {
+      "check": "stale command actually stale",
+      "passed": true
+    },
+    {
+      "check": "unique event A:52",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events first_clear_undo_recomplete/STALE_COMMAND",
+      "passed": true
+    },
+    {
+      "check": "independent save requests first_clear_undo_recomplete/STALE_COMMAND",
+      "passed": true
+    },
+    {
+      "check": "independent context first_clear_undo_recomplete/STALE_COMMAND",
+      "passed": true
+    },
+    {
+      "check": "session attempt agrees replay_one_stamp",
+      "passed": true
+    },
+    {
+      "check": "session fact legal replay_one_stamp",
+      "passed": true
+    },
+    {
+      "check": "independent session-free RuleFact replay_one_stamp",
+      "passed": true
+    },
+    {
+      "check": "one save per newly accepted revision",
+      "passed": true
+    },
+    {
+      "check": "session snapshot consistent with save protocol",
+      "passed": true
+    },
+    {
+      "check": "unique event B:1",
+      "passed": true
+    },
+    {
+      "check": "unique event B:2",
+      "passed": true
+    },
+    {
+      "check": "unique event B:3",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events replay_one_stamp/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent save requests replay_one_stamp/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent context replay_one_stamp/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "session attempt agrees replay_two_stamps",
+      "passed": true
+    },
+    {
+      "check": "session fact legal replay_two_stamps",
+      "passed": true
+    },
+    {
+      "check": "independent session-free RuleFact replay_two_stamps",
+      "passed": true
+    },
+    {
+      "check": "one save per newly accepted revision",
+      "passed": true
+    },
+    {
+      "check": "session snapshot consistent with save protocol",
+      "passed": true
+    },
+    {
+      "check": "unique event C:1",
+      "passed": true
+    },
+    {
+      "check": "unique event C:2",
+      "passed": true
+    },
+    {
+      "check": "unique event C:3",
+      "passed": true
+    },
+    {
+      "check": "independent exact published events replay_two_stamps/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent save requests replay_two_stamps/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "independent context replay_two_stamps/EXIT_FACT",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T03",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T04",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T05",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T06",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T07",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T08",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T09",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T10",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T11",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T12",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T13",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T14",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T15",
+      "passed": true
+    },
+    {
+      "check": "approval ancestors T16",
+      "passed": true
+    },
+    {
+      "check": "unique contract module owner future/rules/RuleFacts.ts",
+      "passed": true
+    },
+    {
+      "check": "unique contract module owner future/session/SessionCoordinator.ts",
+      "passed": true
+    },
+    {
+      "check": "unique contract module owner future/app-state/AppStateMachine.ts",
+      "passed": true
+    },
+    {
+      "check": "unique contract module owner future/events/SessionBus.ts",
+      "passed": true
+    },
+    {
+      "check": "unique contract module owner future/scenes/Boot.scene",
+      "passed": true
+    },
+    {
+      "check": "unique contract module owner future/save/SaveCoordinator.ts",
+      "passed": true
+    },
+    {
+      "check": "unique contract module owner future/progress/ProgressPolicy.ts",
+      "passed": true
+    },
+    {
+      "check": "unique contract module owner future/integration/CompositionRoot.ts",
+      "passed": true
+    },
+    {
+      "check": "author isolated rerun tools/validate.py",
+      "passed": true
+    },
+    {
+      "check": "author isolated rerun tools/check_audit_mutants.py",
+      "passed": true
+    },
+    {
+      "check": "entire authored validator report reproduced exactly",
+      "passed": true
+    },
+    {
+      "check": "entire mutation report reproduced exactly",
+      "passed": true
+    },
+    {
+      "check": "positive baseline and 12 rejected mutations",
+      "passed": true
+    },
+    {
+      "check": "frozen authored files unchanged",
+      "passed": true
+    }
+  ],
+  "witnesses_replayed": 20,
+  "full_graph_search_repeated": false,
+  "original_level_model": "149 reachable states / 645 reachable actions / 2344 subset comparisons; layout/rule equality retained",
+  "independent_save_classifications": [
+    {
+      "id": "new_campaign",
+      "independent_status": "ACCEPT"
+    },
+    {
+      "id": "valid_partial",
+      "independent_status": "ACCEPT"
+    },
+    {
+      "id": "replay_completed_level",
+      "independent_status": "ACCEPT"
+    },
+    {
+      "id": "highest_unlocked_active",
+      "independent_status": "ACCEPT"
+    },
+    {
+      "id": "won_not_recorded",
+      "independent_status": "ACCEPT_REPAIR_COMPLETION"
+    },
+    {
+      "id": "newer_version_read_only",
+      "independent_status": "READ_ONLY_NEWER_VERSION"
+    },
+    {
+      "id": "different_content_recovery",
+      "independent_status": "RECOVERY_CONTENT_VERSION"
+    },
+    {
+      "id": "revision_negative",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "revision_over_safe_integer",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "revision_fraction",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "revision_boolean",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "max_safe_revision_unchanged",
+      "independent_status": "ACCEPT"
+    },
+    {
+      "id": "revision_exhausted_completion_repair",
+      "independent_status": "RECOVERY_REVISION_EXHAUSTED"
+    },
+    {
+      "id": "extra_root_field",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "extra_settings_field",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "duplicate_tutorial",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "unknown_tutorial",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "duplicate_log",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "blocked_log",
+      "independent_status": "REJECT_REPLAY"
+    },
+    {
+      "id": "unknown_arrow_log",
+      "independent_status": "REJECT_REPLAY"
+    },
+    {
+      "id": "locked_active",
+      "independent_status": "REJECT_LOCKED_ACTIVE"
+    },
+    {
+      "id": "missing_completed_prefix",
+      "independent_status": "REJECT_COMPLETED_PREFIX"
+    },
+    {
+      "id": "unordered_completed_prefix",
+      "independent_status": "REJECT_COMPLETED_PREFIX"
+    },
+    {
+      "id": "duplicate_completed",
+      "independent_status": "REJECT_SCHEMA"
+    },
+    {
+      "id": "duplicate_json_revision_key",
+      "independent_status": "REJECT_JSON"
+    },
+    {
+      "id": "duplicate_nested_setting_key",
+      "independent_status": "REJECT_JSON"
+    },
+    {
+      "id": "oversize_input",
+      "independent_status": "REJECT_OVERSIZE"
+    }
+  ],
+  "independent_session_sequences": [
+    {
+      "id": "first_clear_undo_recomplete",
+      "save_revisions": [
+        8,
+        9,
+        10
+      ],
+      "steps": [
+        {
+          "kind": "EXIT_FACT",
+          "events": 3,
+          "revision": 8,
+          "new_save_requests": 1
+        },
+        {
+          "kind": "SAVE_ACK",
+          "events": 1,
+          "revision": 8,
+          "new_save_requests": 0
+        },
+        {
+          "kind": "ANIMATION_INTERRUPTED",
+          "events": 0,
+          "revision": 8,
+          "new_save_requests": 0
+        },
+        {
+          "kind": "UNDO_FACT",
+          "events": 2,
+          "revision": 9,
+          "new_save_requests": 1
+        },
+        {
+          "kind": "SAVE_ACK",
+          "events": 1,
+          "revision": 9,
+          "new_save_requests": 0
+        },
+        {
+          "kind": "EXIT_FACT",
+          "events": 3,
+          "revision": 10,
+          "new_save_requests": 1
+        },
+        {
+          "kind": "SAVE_ACK",
+          "events": 1,
+          "revision": 10,
+          "new_save_requests": 0
+        },
+        {
+          "kind": "SAVE_ACK",
+          "events": 0,
+          "revision": 10,
+          "new_save_requests": 0
+        },
+        {
+          "kind": "STALE_COMMAND",
+          "events": 1,
+          "revision": 10,
+          "new_save_requests": 0
+        }
+      ]
+    },
+    {
+      "id": "replay_one_stamp",
+      "save_revisions": [
+        8
+      ],
+      "steps": [
+        {
+          "kind": "EXIT_FACT",
+          "events": 3,
+          "revision": 8,
+          "new_save_requests": 1
+        }
+      ]
+    },
+    {
+      "id": "replay_two_stamps",
+      "save_revisions": [
+        8
+      ],
+      "steps": [
+        {
+          "kind": "EXIT_FACT",
+          "events": 3,
+          "revision": 8,
+          "new_save_requests": 1
+        }
+      ]
+    }
+  ],
+  "module_owners": [
+    {
+      "path": "future/rules/RuleFacts.ts",
+      "task": "T04"
+    },
+    {
+      "path": "future/session/SessionCoordinator.ts",
+      "task": "T06"
+    },
+    {
+      "path": "future/app-state/AppStateMachine.ts",
+      "task": "T06"
+    },
+    {
+      "path": "future/events/SessionBus.ts",
+      "task": "T06"
+    },
+    {
+      "path": "future/scenes/Boot.scene",
+      "task": "T06"
+    },
+    {
+      "path": "future/save/SaveCoordinator.ts",
+      "task": "T07"
+    },
+    {
+      "path": "future/progress/ProgressPolicy.ts",
+      "task": "T08"
+    },
+    {
+      "path": "future/integration/CompositionRoot.ts",
+      "task": "T08"
+    }
+  ],
+  "author_script_reruns": [
+    {
+      "script": "tools/validate.py",
+      "returncode": 0,
+      "stdout": "{\"result\": \"PASS\", \"levels\": 20, \"solutions_verified\": 20, \"reachable_states\": 149, \"transition_checks\": 645, \"adversarial_cases\": 9, \"schemas\": 3, \"tasks\": 16, \"contract_mutations\": 10, \"save_vectors\": 27, \"session_vectors\": 3, \"layouts_unchanged\": true}"
+    },
+    {
+      "script": "tools/check_audit_mutants.py",
+      "returncode": 0,
+      "stdout": "PASS: original 4 reviewer mutations and 8 additional negatives rejected by full checker; current 20 levels PASS."
+    }
+  ],
+  "mutations_rejected": 12,
+  "closed_findings": [
+    "G01-M02",
+    "G01-M03",
+    "G01-m01",
+    "G01-m02"
+  ],
+  "remaining_findings": [
+    "G01-M01"
+  ]
+}

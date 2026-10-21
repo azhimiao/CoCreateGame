@@ -1,0 +1,149 @@
+{
+  "access_date": "2026-10-21",
+  "rights": "Third-party research evidence, not own production assets",
+  "screenshots": [
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-001-official-page.png",
+      "at": "2026-10-21T10:40:19.911Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 7184,
+      "game_elapsed_ms": 7184,
+      "sha256": "efa5a6329c29a73f3817745b60421e3607ce389866707e2e7099737c82e03dae",
+      "bytes": 638329,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-002-before-click.png",
+      "at": "2026-10-21T10:40:54.784Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 42057,
+      "game_elapsed_ms": 42057,
+      "sha256": "1cdec2c9cd80f8ec79daae2e4b04929091489830490125723fd7ec025d51c30c",
+      "bytes": 853019,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-003-after-click.png",
+      "at": "2026-10-21T10:40:55.813Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 43086,
+      "game_elapsed_ms": 43086,
+      "sha256": "5ecd381cb38ff11c0c57cff64d5b9fd60f2f2d3d8f63e4fe12c1e3514945fd46",
+      "bytes": 846451,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-004-before-click.png",
+      "at": "2026-10-21T10:40:56.441Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 43714,
+      "game_elapsed_ms": 43714,
+      "sha256": "734583f6881bde7b1528d0304595bf1b58a6081fc3abbc7d68191b9a7e5317af",
+      "bytes": 844954,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-005-after-click.png",
+      "at": "2026-10-21T10:40:58.915Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 46188,
+      "game_elapsed_ms": 46188,
+      "sha256": "bc8e875dc55c333b7b8a9d5c401fb10c40e8640cfdf9bdaa8f33d5fb0cc0c53c",
+      "bytes": 20262,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-001-official-page.png",
+      "at": "2026-10-21T10:45:02.824Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 290097,
+      "game_elapsed_ms": 5510,
+      "sha256": "d0d867b5218eae97872b9e0ea2085987ff38dc29caad0763347685681c420deb",
+      "bytes": 33452,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-002-screw-ui-check.png",
+      "at": "2026-10-21T10:45:30.178Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 317451,
+      "game_elapsed_ms": 32864,
+      "sha256": "aa3e40d8af20577174fc5e716ced0e6f00563a388b22594d3dff8239a96efdf8",
+      "bytes": 385827,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-003-before-click.png",
+      "at": "2026-10-21T10:45:52.346Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 339619,
+      "game_elapsed_ms": 55032,
+      "sha256": "aa3e40d8af20577174fc5e716ced0e6f00563a388b22594d3dff8239a96efdf8",
+      "bytes": 385827,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-004-after-click.png",
+      "at": "2026-10-21T10:45:54.203Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 341476,
+      "game_elapsed_ms": 56889,
+      "sha256": "afb2ab1a2af0e9df42238d617415e6e1061afa991dd4039c3208f48b1865d841",
+      "bytes": 553577,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-005-screw-after-essential-load.png",
+      "at": "2026-10-21T10:46:25.324Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 372597,
+      "game_elapsed_ms": 88010,
+      "sha256": "d41b4d29895eb8d259356251dee2799aaa1d4a85ac8beea9b2af26f4b83caf11",
+      "bytes": 633299,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-006-screw-final-loading-check.png",
+      "at": "2026-10-21T10:46:52.233Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 399506,
+      "game_elapsed_ms": 114919,
+      "sha256": "4dc72be5175c82081ab949dacaade803ae8d5dfc2b27254e1a91ee376407a882",
+      "bytes": 633495,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-007-screw-ready-or-blocked.png",
+      "at": "2026-10-21T10:47:30.042Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 437315,
+      "game_elapsed_ms": 152728,
+      "sha256": "fbbf474e8642acb88dad94fdc1431e020175af83fe15cc3155ac6c799cbc7141",
+      "bytes": 633020,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-008-last-budget-check.png",
+      "at": "2026-10-21T10:47:55.422Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 462695,
+      "game_elapsed_ms": 178108,
+      "sha256": "e05ded1e70b2a701eddcd3048e22070b375336407013887007abc50cab9eb0e8",
+      "bytes": 613123,
+      "width": 1365,
+      "height": 900
+    }
+  ]
+}

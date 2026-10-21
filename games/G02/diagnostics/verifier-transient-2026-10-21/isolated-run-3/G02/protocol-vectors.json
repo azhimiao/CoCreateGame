@@ -1,0 +1,1083 @@
+{
+  "scope": "OFFLINE_ABSTRACT_PROTOCOL_TABLES_NOT_GAME_RUNTIME",
+  "fixture_rule_verdict": "Injected test decisions; game rules are tested separately in verify.py",
+  "cases": [
+    {
+      "id": "retry_identity_before_busy_stale_pause_win",
+      "steps": [
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "revision": 1,
+            "saves": 1,
+            "events": 1
+          }
+        },
+        {
+          "action": "status",
+          "value": "ANIMATING"
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "cached": true,
+            "receipt_equals": "first",
+            "revision": 1,
+            "saves": 1,
+            "events": 1
+          }
+        },
+        {
+          "action": "status",
+          "value": "PAUSE"
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "cached": true,
+            "receipt_equals": "first",
+            "revision": 1,
+            "saves": 1,
+            "events": 1
+          }
+        },
+        {
+          "action": "status",
+          "value": "WIN"
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "cached": true,
+            "receipt_equals": "first",
+            "revision": 1,
+            "saves": 1,
+            "events": 1
+          }
+        },
+        {
+          "action": "status",
+          "value": "PLAY"
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "cached": true,
+            "receipt_equals": "first",
+            "revision": 1,
+            "saves": 1,
+            "events": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T1"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "ID_CONFLICT",
+            "revision": 1,
+            "saves": 1,
+            "events": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "cached": true,
+            "receipt_equals": "first",
+            "revision": 1,
+            "events": 1,
+            "saves": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 2,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "STALE_REVISION",
+            "revision": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 3,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "revision": 1
+          }
+        },
+        {
+          "action": "status",
+          "value": "ANIMATING"
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 3,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "cached": true
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 4,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "BUSY"
+          }
+        },
+        {
+          "action": "status",
+          "value": "PLAY"
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 4,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "BUSY",
+            "cached": true
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 5,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "revision": 2,
+            "saves": 2,
+            "events": 5
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R0",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "STALE_RUN",
+            "saves": 2,
+            "events": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "final_seal_retry_in_win",
+      "steps": [
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "seal",
+            "at": "T0"
+          },
+          "fixture_rule_verdict": "ACCEPT_WIN",
+          "expect": {
+            "reason": "OK",
+            "revision": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "seal",
+            "at": "T0"
+          },
+          "fixture_rule_verdict": "ACCEPT_WIN",
+          "expect": {
+            "reason": "OK",
+            "cached": true,
+            "saves": 1,
+            "events": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 2,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "NOT_PLAYING",
+            "revision": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "numeric_9_10",
+      "steps": [
+        {
+          "action": "fill",
+          "start": 1,
+          "end": 10,
+          "mode": "reject"
+        },
+        {
+          "action": "assert",
+          "expect": {
+            "high": 10,
+            "floor": 1,
+            "cache_size": 10,
+            "revision": 0
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 9,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "cached": true
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 10,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "cached": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "numeric_window_127_128_129",
+      "steps": [
+        {
+          "action": "fill",
+          "start": 1,
+          "end": 127,
+          "mode": "reject"
+        },
+        {
+          "action": "assert",
+          "expect": {
+            "high": 127,
+            "floor": 1,
+            "cache_size": 127
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 128,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "floor": 1,
+            "cache_size": 128
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 129,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "floor": 2,
+            "cache_size": 128
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "STALE_COMMAND"
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 2,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "cached": true
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 128,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "cached": true
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 129,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "cached": true
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 131,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "SEQUENCE_GAP",
+            "high": 129
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 130,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "high": 130,
+            "revision": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "mixed_accept_reject_undo",
+      "steps": [
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "logical": 1,
+            "revision": 1,
+            "history": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 2,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {
+            "reason": "TOP_MISMATCH",
+            "history": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 3,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "logical": 2,
+            "revision": 2
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 4,
+            "expected_revision": 2,
+            "op": "undo"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "logical": 1,
+            "revision": 3,
+            "history": 1
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 5,
+            "expected_revision": 3,
+            "op": "undo"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "logical": 0,
+            "revision": 4,
+            "history": 0
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 6,
+            "expected_revision": 4,
+            "op": "undo"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "EMPTY_HISTORY",
+            "revision": 4
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 7,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "STALE_REVISION",
+            "revision": 4
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 3,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "cached": true,
+            "receipt_revision": 2,
+            "revision": 4,
+            "saves": 4,
+            "events": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "restore_new_epoch_old_late_callback",
+      "steps": [
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {}
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 2,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "TOP_MISMATCH",
+          "expect": {}
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 3,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {}
+        },
+        {
+          "action": "restore",
+          "new_epoch": "E2",
+          "expect": {
+            "revision": 2,
+            "logical": 2,
+            "history": 2,
+            "high": 0,
+            "cache_size": 0
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 3,
+            "expected_revision": 1,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "STALE_EPOCH",
+            "revision": 2,
+            "saves": 2,
+            "events": 3
+          }
+        },
+        {
+          "action": "callback",
+          "epoch": "E1",
+          "expect": {
+            "ignored": true,
+            "revision": 2,
+            "saves": 2,
+            "events": 3
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E2",
+            "command_seq": 1,
+            "expected_revision": 2,
+            "op": "undo"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "revision": 3,
+            "logical": 1,
+            "history": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "checkpoint_4096_independent_of_cache",
+      "steps": [
+        {
+          "action": "fill",
+          "start": 1,
+          "end": 4096,
+          "mode": "forward"
+        },
+        {
+          "action": "assert",
+          "expect": {
+            "revision": 4096,
+            "logical": 4096,
+            "history": 128,
+            "replay_size": 4096,
+            "checkpoint_ordinal": 0,
+            "cache_size": 128,
+            "floor": 3969
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 4097,
+            "expected_revision": 4096,
+            "op": "undo"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "revision": 4097,
+            "logical": 4095,
+            "history": 127,
+            "checkpoint_ordinal": 4096,
+            "replay_size": 1,
+            "floor": 3970
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 4096,
+            "expected_revision": 4095,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "cached": true,
+            "receipt_revision": 4096,
+            "revision": 4097
+          }
+        },
+        {
+          "action": "replay_checkpoint",
+          "expect": {
+            "replay_matches": true,
+            "revision": 4097,
+            "logical": 4095,
+            "history": 127
+          }
+        },
+        {
+          "action": "restore",
+          "new_epoch": "E2",
+          "expect": {
+            "revision": 4097,
+            "logical": 4095,
+            "history": 127,
+            "high": 0
+          }
+        },
+        {
+          "action": "callback",
+          "epoch": "E1",
+          "expect": {
+            "ignored": true,
+            "revision": 4097
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E2",
+            "command_seq": 1,
+            "expected_revision": 4097,
+            "op": "undo"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "revision": 4098,
+            "logical": 4094,
+            "history": 126
+          }
+        }
+      ]
+    },
+    {
+      "id": "undo_history_127_128_129",
+      "steps": [
+        {
+          "action": "fill",
+          "start": 1,
+          "end": 127,
+          "mode": "forward"
+        },
+        {
+          "action": "assert",
+          "expect": {
+            "history": 127,
+            "revision": 127
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 128,
+            "expected_revision": 127,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "history": 128,
+            "revision": 128
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 129,
+            "expected_revision": 128,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "history": 128,
+            "revision": 129
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 130,
+            "expected_revision": 129,
+            "op": "undo"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "history": 127,
+            "logical": 128,
+            "revision": 130
+          }
+        },
+        {
+          "action": "fill",
+          "start": 131,
+          "end": 257,
+          "mode": "undo"
+        },
+        {
+          "action": "assert",
+          "expect": {
+            "history": 0,
+            "logical": 1,
+            "revision": 257
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 258,
+            "expected_revision": 257,
+            "op": "undo"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "EMPTY_HISTORY",
+            "logical": 1,
+            "revision": 257
+          }
+        }
+      ]
+    },
+    {
+      "id": "typed_identity_no_string_sort",
+      "steps": [
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": "10",
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "BAD_ENVELOPE",
+            "high": 0,
+            "events": 0,
+            "saves": 0
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 2,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "SEQUENCE_GAP",
+            "high": 0,
+            "events": 0
+          }
+        },
+        {
+          "action": "dispatch",
+          "command": {
+            "run_id": "R1",
+            "command_epoch": "E1",
+            "command_seq": 1,
+            "expected_revision": 0,
+            "op": "move",
+            "src": "T0",
+            "dst": "T2"
+          },
+          "fixture_rule_verdict": "ACCEPT",
+          "expect": {
+            "reason": "OK",
+            "high": 1,
+            "revision": 1
+          }
+        }
+      ]
+    }
+  ]
+}

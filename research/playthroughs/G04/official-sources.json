@@ -1,0 +1,40 @@
+{
+  "access_date": "2026-10-21",
+  "evidence_type": "OFFICIAL_GAME_HOST_PAGE",
+  "browser_observation_report": "observation.md",
+  "sources": [
+    {
+      "name": "Bloxorz",
+      "url": "https://www.coolmathgames.com/0-bloxorz",
+      "verification": ["Web search and official page open", "Playwright official-page navigation returned HTTP 200", "Observed official /0-bloxorz/play iframe"],
+      "official_description_paraphrase": "Arrow keys are the documented movement control; falling off is described as restarting the level.",
+      "description_is_not_playthrough": true,
+      "direct_observation_status": "BLOCKED",
+      "dimensions": { "http_status": "one page response code", "input_groups": "3 dispatched groups, zero confirmed effective core inputs", "time": "seconds since navigation, not effective play seconds" },
+      "unknown": ["Actual movement and fall/restart", "Level completion", "getContext error root cause", "Other browsers or later availability", "Player outcomes or commercial results"]
+    },
+    {
+      "name": "Liquid 2",
+      "url": "https://www.coolmathgames.com/0-liquid-2",
+      "verification": ["Web search and official page open", "Playwright official-page navigation returned HTTP 200", "Actual screenshot showed current-browser unavailable notice"],
+      "official_description_paraphrase": "Left/right or A/D are described as rotating the scene to guide liquid to an orange destination.",
+      "description_is_not_playthrough": true,
+      "direct_observation_status": "BLOCKED",
+      "dimensions": { "http_status": "one page response code", "input_groups": "2 dispatched groups, zero confirmed effective core inputs", "time": "navigation-to-stop about 32 seconds, not 30 seconds of play" },
+      "unknown": ["Liquid response", "Goal and loss checks in practice", "Retry", "Availability in a different environment", "Commercial results"]
+    },
+    {
+      "name": "Paint Master",
+      "url": "https://www.coolmathgames.com/0-paint-master",
+      "discovered_from": "https://www.coolmathgames.com/",
+      "verification": ["First direct web-open failed; this did not establish site unavailability", "Official homepage featured link named Paint Master was opened and resolved to the URL", "Playwright official-page navigation returned HTTP 200", "Observed embedded official-host game UI and effective core input"],
+      "official_description_paraphrase": "Row/column brushes paint over prior colors to match a target. Moves constrain the attempt; magic-brush assistance is described.",
+      "description_is_not_playthrough": true,
+      "direct_observation_status": "PARTIAL",
+      "dimensions": { "input_groups": "20 dispatched groups; 14 core brush inputs and 6 UI inputs in one browser session", "observed_success": "one level completion", "observed_failure": "one intentional move-exhaustion attempt", "observed_retry": "one new run via result/menu/START, then one effective brush input", "time": "283.708-second span between first core input and last response screenshot; intermittent, not continuous play", "scores_and_moves": "visible readings in this run only, no internal economy formula" },
+      "unknown": ["Continuous first-30-second or five-minute observation", "Full-game victory", "Scoring formula", "Reason for changed target after restart", "Magic brush or undo actual effects", "Reward-ad fulfillment", "Player behavior or retention", "Revenue and licensing rights"]
+    }
+  ],
+  "excluded_inferences": ["HTTP 200 proves game is playable", "Hidden Flash notice proves a game is blocked", "Pixel difference proves input effectiveness", "Failed auxiliary requests prove the root cause", "Researcher-induced failure is player failure-rate evidence", "Visible in-game coins are developer income"],
+  "rights": "All visible third-party game/site content remains third-party research evidence. No game source, extracted asset pack, license grant, registration, upload or external contact is included."
+}

@@ -1,0 +1,18 @@
+{
+  "scope": "OFFLINE_VERIFIER_EXECUTION_DIAGNOSTIC_NOT_GAMEPLAY",
+  "failed_at": "2026-10-21T19:23:32+08:00",
+  "source": "tools/validate_preparation.py ran an isolated copy of the frozen G02 dossier",
+  "error_type": "TypeError",
+  "message": "tuple indices must be integers or slices, not tuple",
+  "traceback_locations": [
+    "tools/verify.py:353 verify: assert solve(baseline)[0] is not None",
+    "tools/verify.py:103 solve: nxt = step(level, state, action)",
+    "tools/verify.py:61 step: if action not in list(actions(level, state))",
+    "tools/verify.py:42 actions: if sealed[i] or not unlocked(level, state, i) or not stack"
+  ],
+  "frozen_verifier_sha256": "6d4fc587800aed08432ee7de8dd3d96fdade0d6566e3f707bceac30762b164f6",
+  "unchanged_source_retry_at": "2026-10-21T19:24:15+08:00",
+  "unchanged_source_retry_result": "PASS",
+  "cause": "UNKNOWN; author asked to investigate reproducibility without modifying frozen inputs",
+  "limits": "A successful retry does not establish the cause of the earlier error. No game build or runtime defect is claimed."
+}

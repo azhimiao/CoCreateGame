@@ -1,0 +1,892 @@
+{
+  "checked_at_utc": "2026-10-21T11:05:39.989548+00:00",
+  "result": "PASS",
+  "scope": "Independent r2 contract/specification audit; no product source/build/storage/SDK implemented or tested; no repeated 79998-state scan",
+  "game_spec_sha256": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+  "zip_sha256": "0b1bce595af0643fe9404b04ee038d2e465702f3474369f540e915b89478ceac",
+  "checks": [
+    {
+      "check": "levels unchanged from independently searched revision",
+      "passed": true
+    },
+    {
+      "check": "experiment_levels unchanged from independently searched revision",
+      "passed": true
+    },
+    {
+      "check": "rules unchanged from independently searched revision",
+      "passed": true
+    },
+    {
+      "check": "progression unchanged from independently searched revision",
+      "passed": true
+    },
+    {
+      "check": "input report hash 00_Project_Charter.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 01_Market_Evidence.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 02_Benchmark_Playthrough.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 03_Full_GDD.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 04_Systems_and_Data.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 05_Levels_Economy.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 06_UI_Art_Audio.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 07_Tech_Architecture.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 08_OpenSource_Licenses.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 09_Implementation_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 10_QA_Test_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 11_Distribution_Business.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash 12_Falsifiability.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash build_contract_data.py",
+      "passed": true
+    },
+    {
+      "check": "input report hash event-contract.schema.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash EVENT_CONTRACT.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash evidence-register.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash game-spec.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash game-spec.schema.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash observation-index.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash pack-preparation.py",
+      "passed": true
+    },
+    {
+      "check": "input report hash qa-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash README.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash requirements-spec.txt",
+      "passed": true
+    },
+    {
+      "check": "input report hash REVIEW_REQUEST.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash REVISIONS.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash save-envelope.schema.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash save-fixtures.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash SAVE_CONTRACT.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash SELF_REVIEW.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash session-contract-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash STATUS.md",
+      "passed": true
+    },
+    {
+      "check": "input report hash tasks.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash tasks.schema.json",
+      "passed": true
+    },
+    {
+      "check": "input report hash validate_contracts.py",
+      "passed": true
+    },
+    {
+      "check": "input report hash validate_spec.py",
+      "passed": true
+    },
+    {
+      "check": "game-spec.schema.json and current instance valid",
+      "passed": true
+    },
+    {
+      "check": "tasks.schema.json and current instance valid",
+      "passed": true
+    },
+    {
+      "check": "prior campaign counterexample rejected out_of_range",
+      "passed": true
+    },
+    {
+      "check": "prior campaign counterexample rejected variant",
+      "passed": true
+    },
+    {
+      "check": "prior campaign counterexample rejected duplicate",
+      "passed": true
+    },
+    {
+      "check": "prior campaign counterexample rejected reverse",
+      "passed": true
+    },
+    {
+      "check": "prior TS package correction retained",
+      "passed": true
+    },
+    {
+      "check": "16 task DAG acyclic with valid IDs",
+      "passed": true
+    },
+    {
+      "check": "human decision ancestor retained for build tasks",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scenes/Boot.scene",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scenes/Boot.scene.meta",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scripts/app/CompositionRoot.ts",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scripts/app/AppStateMachine.ts",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scripts/session/SessionReducer.ts",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scripts/session/SessionController.ts",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scripts/session/EventBus.ts",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scripts/rules/RuleCore.ts",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scenes/BuildProbe.scene",
+      "passed": true
+    },
+    {
+      "check": "unique owner implementation/assets/scenes/BuildProbe.scene.meta",
+      "passed": true
+    },
+    {
+      "check": "Boot integration explicitly depends on session/save/progress",
+      "passed": true
+    },
+    {
+      "check": "external independent audit outputs exact",
+      "passed": true
+    },
+    {
+      "check": "fixture current raw content hash",
+      "passed": true
+    },
+    {
+      "check": "independent CJ1 known bytes",
+      "passed": true
+    },
+    {
+      "check": "independent CJ1 known checksum",
+      "passed": true
+    },
+    {
+      "check": "chinese_active_playing independent payload digest",
+      "passed": true
+    },
+    {
+      "check": "chinese_active_playing legal replay command",
+      "passed": true
+    },
+    {
+      "check": "chinese_active_playing independent full replay state",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo independent payload digest",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo legal replay command",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo legal replay command",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo legal replay command",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo legal replay command",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo legal replay command",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo legal replay command",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo independent full replay state",
+      "passed": true
+    },
+    {
+      "check": "failed_can_undo FAILED undo state",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch bad_checksum",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch duplicate_settings_authority",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch forged_final_bits",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch completed_without_best_used",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch unlocked_chain_forged",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch future_schema",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch unknown_rule",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch other_profile",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch content_update",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch saved_won_session",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch wrong_level_name",
+      "passed": true
+    },
+    {
+      "check": "fixed error branch invalid_timestamp",
+      "passed": true
+    },
+    {
+      "check": "independent mutation settings_inside_active",
+      "passed": true
+    },
+    {
+      "check": "independent mutation negative_revision",
+      "passed": true
+    },
+    {
+      "check": "independent mutation unsafe_revision",
+      "passed": true
+    },
+    {
+      "check": "independent mutation forged_failure",
+      "passed": true
+    },
+    {
+      "check": "independent mutation forged_used",
+      "passed": true
+    },
+    {
+      "check": "independent mutation duplicate_progress",
+      "passed": true
+    },
+    {
+      "check": "independent mutation invalid_leap_day",
+      "passed": true
+    },
+    {
+      "check": "independent mutation impossible_raw_counters",
+      "passed": true
+    },
+    {
+      "check": "M02 original identical-rule-input counterexample has session-free facts",
+      "passed": true
+    },
+    {
+      "check": "independent envelope a-00000000000000000000000000000004/0",
+      "passed": true
+    },
+    {
+      "check": "independent envelope a-00000000000000000000000000000004/1",
+      "passed": true
+    },
+    {
+      "check": "independent envelope a-00000000000000000000000000000004/2",
+      "passed": true
+    },
+    {
+      "check": "independent envelope a-00000000000000000000000000000005/0",
+      "passed": true
+    },
+    {
+      "check": "independent envelope a-00000000000000000000000000000005/1",
+      "passed": true
+    },
+    {
+      "check": "independent envelope a-00000000000000000000000000000005/2",
+      "passed": true
+    },
+    {
+      "check": "RuleFact schema rejects session metadata",
+      "passed": true
+    },
+    {
+      "check": "Session LevelWon requires enrichment",
+      "passed": true
+    },
+    {
+      "check": "18:59 archive hash equals external receipt",
+      "passed": true
+    },
+    {
+      "check": "archive CRC",
+      "passed": true
+    },
+    {
+      "check": "exact unique ZIP member set",
+      "passed": true
+    },
+    {
+      "check": "internal external manifest exact bytes",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 00_Project_Charter.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 01_Market_Evidence.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 02_Benchmark_Playthrough.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 03_Full_GDD.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 04_Systems_and_Data.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 05_Levels_Economy.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 06_UI_Art_Audio.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 07_Tech_Architecture.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 08_OpenSource_Licenses.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 09_Implementation_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 10_QA_Test_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 11_Distribution_Business.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP 12_Falsifiability.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP build_contract_data.py",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP event-contract.schema.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP EVENT_CONTRACT.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP evidence-register.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP game-spec.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP game-spec.schema.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP observation-index.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP pack-preparation.py",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP qa-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP README.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP requirements-spec.txt",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP REVIEW_REQUEST.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP REVISIONS.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP save-envelope.schema.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP save-fixtures.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP SAVE_CONTRACT.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP SELF_REVIEW.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP session-contract-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP STATUS.md",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP tasks.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP tasks.schema.json",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP validate_contracts.py",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP validate_spec.py",
+      "passed": true
+    },
+    {
+      "check": "manifest disk ZIP validation-report.json",
+      "passed": true
+    },
+    {
+      "check": "external observation ../../research/playthroughs/G04/observation.md",
+      "passed": true
+    },
+    {
+      "check": "external observation ../../research/playthroughs/G04/operation-log.md",
+      "passed": true
+    },
+    {
+      "check": "external observation ../../research/playthroughs/G04/operations.jsonl",
+      "passed": true
+    },
+    {
+      "check": "external observation ../../research/playthroughs/G04/screenshots/manifest.json",
+      "passed": true
+    },
+    {
+      "check": "external observation ../../research/playthroughs/G04/evidence-audit.json",
+      "passed": true
+    },
+    {
+      "check": "external observation ../../research/playthroughs/G04/official-sources.json",
+      "passed": true
+    },
+    {
+      "check": "M01 exact partial observation boundary",
+      "passed": true
+    },
+    {
+      "check": "author contract checker rerun",
+      "passed": true
+    },
+    {
+      "check": "author contract result",
+      "passed": true
+    },
+    {
+      "check": "rerun contract report exactly matches shipped report",
+      "passed": true
+    },
+    {
+      "check": "m01 unique breakpoints and board sizes",
+      "passed": true
+    },
+    {
+      "check": "m01 target/control containers fit specified dimensions",
+      "passed": true
+    },
+    {
+      "check": "m02 author now discloses independently identified content risks",
+      "passed": true
+    },
+    {
+      "check": "author current files still match frozen r2 snapshot",
+      "passed": true
+    }
+  ],
+  "check_count": 160,
+  "artifact_owners": [
+    {
+      "path": "implementation/assets/scenes/Boot.scene",
+      "owners": [
+        "G04-T07"
+      ]
+    },
+    {
+      "path": "implementation/assets/scenes/Boot.scene.meta",
+      "owners": [
+        "G04-T07"
+      ]
+    },
+    {
+      "path": "implementation/assets/scripts/app/CompositionRoot.ts",
+      "owners": [
+        "G04-T07"
+      ]
+    },
+    {
+      "path": "implementation/assets/scripts/app/AppStateMachine.ts",
+      "owners": [
+        "G04-T07"
+      ]
+    },
+    {
+      "path": "implementation/assets/scripts/session/SessionReducer.ts",
+      "owners": [
+        "G04-T03"
+      ]
+    },
+    {
+      "path": "implementation/assets/scripts/session/SessionController.ts",
+      "owners": [
+        "G04-T03"
+      ]
+    },
+    {
+      "path": "implementation/assets/scripts/session/EventBus.ts",
+      "owners": [
+        "G04-T03"
+      ]
+    },
+    {
+      "path": "implementation/assets/scripts/rules/RuleCore.ts",
+      "owners": [
+        "G04-T03"
+      ]
+    },
+    {
+      "path": "implementation/assets/scenes/BuildProbe.scene",
+      "owners": [
+        "G04-T02"
+      ]
+    },
+    {
+      "path": "implementation/assets/scenes/BuildProbe.scene.meta",
+      "owners": [
+        "G04-T02"
+      ]
+    }
+  ],
+  "save_fixture_replays": [
+    {
+      "id": "chinese_active_playing",
+      "state": {
+        "position": [
+          0,
+          1,
+          0
+        ],
+        "bits": 1,
+        "pending": 0,
+        "nextBeacon": 0,
+        "used": 1,
+        "status": "PLAYING",
+        "failure": null
+      },
+      "checksum": "dd98a2e56e489dc65eed7ad83fcff03dda1c6a7b6f79198e440c338b430a3b24"
+    },
+    {
+      "id": "failed_can_undo",
+      "state": {
+        "position": [
+          0,
+          0,
+          1
+        ],
+        "bits": 1,
+        "pending": 0,
+        "nextBeacon": 0,
+        "used": 6,
+        "status": "FAILED",
+        "failure": "MOVE_LIMIT"
+      },
+      "checksum": "00c01efa925ed3725700e8b65bedd4b3f9e36b0f129f35c070b49ae610db61d1"
+    }
+  ],
+  "fixed_error_branches": [
+    {
+      "case": "bad_checksum",
+      "result": "CHECKSUM_MISMATCH"
+    },
+    {
+      "case": "duplicate_settings_authority",
+      "result": "SCHEMA_INVALID"
+    },
+    {
+      "case": "forged_final_bits",
+      "result": "REPLAY_MISMATCH"
+    },
+    {
+      "case": "completed_without_best_used",
+      "result": "SCHEMA_INVALID"
+    },
+    {
+      "case": "unlocked_chain_forged",
+      "result": "PROGRESS_INVALID"
+    },
+    {
+      "case": "future_schema",
+      "result": "UNSUPPORTED_SCHEMA"
+    },
+    {
+      "case": "unknown_rule",
+      "result": "UNSUPPORTED_RULE"
+    },
+    {
+      "case": "other_profile",
+      "result": "PROFILE_MISMATCH"
+    },
+    {
+      "case": "content_update",
+      "result": "CONTENT_CHANGED"
+    },
+    {
+      "case": "saved_won_session",
+      "result": "SCHEMA_INVALID"
+    },
+    {
+      "case": "wrong_level_name",
+      "result": "SESSION_INVALID"
+    },
+    {
+      "case": "invalid_timestamp",
+      "result": "SCHEMA_INVALID"
+    }
+  ],
+  "independent_save_mutations": [
+    {
+      "case": "settings_inside_active",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID"
+    },
+    {
+      "case": "negative_revision",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID"
+    },
+    {
+      "case": "unsafe_revision",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID"
+    },
+    {
+      "case": "forged_failure",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID"
+    },
+    {
+      "case": "forged_used",
+      "expected": "REPLAY_MISMATCH",
+      "actual": "REPLAY_MISMATCH"
+    },
+    {
+      "case": "duplicate_progress",
+      "expected": "PROGRESS_INVALID",
+      "actual": "PROGRESS_INVALID"
+    },
+    {
+      "case": "invalid_leap_day",
+      "expected": "SCHEMA_INVALID",
+      "actual": "SCHEMA_INVALID"
+    },
+    {
+      "case": "impossible_raw_counters",
+      "expected": "SESSION_INVALID",
+      "actual": "SESSION_INVALID"
+    }
+  ],
+  "session_pair_counterexample": [
+    {
+      "assisted": false,
+      "start_seq": 20,
+      "next_seq_after_commit": 23,
+      "terminal_event": {
+        "v": 1,
+        "seq": 22,
+        "attemptId": "a-00000000000000000000000000000004",
+        "levelId": "G04-L01",
+        "source": "keyboard",
+        "type": "LevelWon",
+        "payload": {
+          "used": 2,
+          "par": 2,
+          "assisted": false,
+          "stars": 3
+        }
+      }
+    },
+    {
+      "assisted": true,
+      "start_seq": 200,
+      "next_seq_after_commit": 203,
+      "terminal_event": {
+        "v": 1,
+        "seq": 202,
+        "attemptId": "a-00000000000000000000000000000005",
+        "levelId": "G04-L01",
+        "source": "keyboard",
+        "type": "LevelWon",
+        "payload": {
+          "used": 2,
+          "par": 2,
+          "assisted": true,
+          "stars": 2
+        }
+      }
+    }
+  ],
+  "author_contract_rerun": "PASS",
+  "closed_findings": [
+    "G04-M02",
+    "G04-M03",
+    "G04-m01",
+    "G04-m02",
+    "G04-m03"
+  ],
+  "remaining_findings": [
+    "G04-M01"
+  ],
+  "source_unchanged": true
+}

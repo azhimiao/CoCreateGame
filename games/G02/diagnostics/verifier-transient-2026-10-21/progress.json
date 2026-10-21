@@ -1,0 +1,62 @@
+[
+  {
+    "run": 1,
+    "started_utc": "2026-10-21T11:25:37.394313+00:00",
+    "ended_utc": "2026-10-21T11:25:41.922987+00:00",
+    "exit_code": 0,
+    "overall_status": "PASS",
+    "elapsed_seconds": 4.528674,
+    "source_files_match_frozen_manifest": true,
+    "error": null,
+    "stdout": "run-1.stdout.log",
+    "stderr": "run-1.stderr.log"
+  },
+  {
+    "run": 2,
+    "started_utc": "2026-10-21T11:25:41.971504+00:00",
+    "ended_utc": "2026-10-21T11:25:46.443034+00:00",
+    "exit_code": 0,
+    "overall_status": "PASS",
+    "elapsed_seconds": 4.47153,
+    "source_files_match_frozen_manifest": true,
+    "error": null,
+    "stdout": "run-2.stdout.log",
+    "stderr": "run-2.stderr.log"
+  },
+  {
+    "run": 3,
+    "started_utc": "2026-10-21T11:25:46.481248+00:00",
+    "ended_utc": "2026-10-21T11:25:50.982526+00:00",
+    "exit_code": 0,
+    "overall_status": "PASS",
+    "elapsed_seconds": 4.501278,
+    "source_files_match_frozen_manifest": true,
+    "error": null,
+    "stdout": "run-3.stdout.log",
+    "stderr": "run-3.stderr.log"
+  },
+  {
+    "run": 4,
+    "started_utc": "2026-10-21T11:25:51.030673+00:00",
+    "ended_utc": "2026-10-21T11:25:55.493560+00:00",
+    "exit_code": 0,
+    "overall_status": "PASS",
+    "elapsed_seconds": 4.462887,
+    "source_files_match_frozen_manifest": true,
+    "error": null,
+    "stdout": "run-4.stdout.log",
+    "stderr": "run-4.stderr.log"
+  },
+  {
+    "run": 5,
+    "started_utc": "2026-10-21T11:25:55.544227+00:00",
+    "ended_utc": "2026-10-21T11:26:00.120548+00:00",
+    "exit_code": 0,
+    "overall_status": "PASS",
+    "elapsed_seconds": 4.576321,
+    "source_files_match_frozen_manifest": true,
+    "error": null,
+    "stdout": "run-5.stdout.log",
+    "stderr": "run-5.stderr.log"
+  }
+]

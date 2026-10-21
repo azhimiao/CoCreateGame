@@ -1,0 +1,259 @@
+{
+  "result": "PASS",
+  "scope": "offline current full checker; no Cocos/browser/storage runtime",
+  "original_review_mutants_rejected": 4,
+  "additional_mutants_rejected": 8,
+  "positive_control": "20/20,149 states,645 checks",
+  "cases": [
+    {
+      "case": "unmodified_current_data",
+      "exit_code": 0,
+      "accepted": true,
+      "expected": "PASS",
+      "diagnostic": "",
+      "origin": "positive control"
+    },
+    {
+      "case": "duplicate_campaign_id",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18', 'L19', 'L20'] was expected",
+      "origin": "exact original reviewer delta replayed on current spec; current metadata/session contract retained",
+      "sources": {
+        "game-spec.json": {
+          "source_sha256": "b1a732ce0298c41548fd9316ee891af502c3fece82ef5f26f4676cfca50e4e05",
+          "baseline_sha256": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070",
+          "delta": [
+            {
+              "path": [
+                "progression",
+                "order",
+                19
+              ],
+              "value": "L19"
+            },
+            {
+              "path": [
+                "levels",
+                19,
+                "id"
+              ],
+              "value": "L19"
+            }
+          ]
+        },
+        "tasks.json": {
+          "source_sha256": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+          "baseline_sha256": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+          "delta": []
+        }
+      }
+    },
+    {
+      "case": "reversed_commit_order",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: ['validate complete sweep in pre-state', 'remove arrow', 'XOR each listed gate once', 'advance manifest cursor if nonempty', 'evaluate win then deadlock', 'persist logical state', 'animate'] was expected",
+      "origin": "exact original reviewer delta replayed on current spec; current metadata/session contract retained",
+      "sources": {
+        "game-spec.json": {
+          "source_sha256": "a7964d1ee3a3053ecec53828bfffad11fb5e84abd8569ab15e6dc010f5e5fc41",
+          "baseline_sha256": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070",
+          "delta": [
+            {
+              "path": [
+                "rules",
+                "commit_order",
+                0
+              ],
+              "value": "animate"
+            },
+            {
+              "path": [
+                "rules",
+                "commit_order",
+                1
+              ],
+              "value": "persist logical state"
+            },
+            {
+              "path": [
+                "rules",
+                "commit_order",
+                2
+              ],
+              "value": "evaluate win then deadlock"
+            },
+            {
+              "path": [
+                "rules",
+                "commit_order",
+                4
+              ],
+              "value": "XOR each listed gate once"
+            },
+            {
+              "path": [
+                "rules",
+                "commit_order",
+                5
+              ],
+              "value": "remove arrow"
+            },
+            {
+              "path": [
+                "rules",
+                "commit_order",
+                6
+              ],
+              "value": "validate complete sweep in pre-state"
+            }
+          ]
+        },
+        "tasks.json": {
+          "source_sha256": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+          "baseline_sha256": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+          "delta": []
+        }
+      }
+    },
+    {
+      "case": "out_of_bounds",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: -1 is less than the minimum of 0",
+      "origin": "exact original reviewer delta replayed on current spec; current metadata/session contract retained",
+      "sources": {
+        "game-spec.json": {
+          "source_sha256": "57e2faf3b1f516ab7b8d60a4aff489d088186d3348dc334a35eb9ca82d89f5db",
+          "baseline_sha256": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070",
+          "delta": [
+            {
+              "path": [
+                "levels",
+                0,
+                "arrows",
+                0,
+                "cells",
+                0,
+                0
+              ],
+              "value": -1
+            }
+          ]
+        },
+        "tasks.json": {
+          "source_sha256": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+          "baseline_sha256": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+          "delta": []
+        }
+      }
+    },
+    {
+      "case": "approval_gate_bypass",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "ValueError: ('TASK_OWNERSHIP_OR_HANDOFF_MISSING', 'T04')",
+      "origin": "exact original reviewer delta replayed on current spec; current metadata/session contract retained",
+      "sources": {
+        "game-spec.json": {
+          "source_sha256": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070",
+          "baseline_sha256": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070",
+          "delta": []
+        },
+        "tasks.json": {
+          "source_sha256": "9e4df6435f9869e0e7461c73a9161290f0e2e451e2c04cb9fd13c628284315a5",
+          "baseline_sha256": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+          "delta": [
+            {
+              "path": [
+                "tasks",
+                3,
+                "depends_on"
+              ],
+              "value": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case": "missing_campaign_id",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18', 'L19', 'L20'] was expected",
+      "origin": "additional negative fixture"
+    },
+    {
+      "case": "wrong_campaign_id",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18', 'L19', 'L20'] was expected",
+      "origin": "additional negative fixture"
+    },
+    {
+      "case": "reordered_campaign",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18', 'L19', 'L20'] was expected",
+      "origin": "additional negative fixture"
+    },
+    {
+      "case": "duplicate_progression_only",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18', 'L19', 'L20'] was expected",
+      "origin": "additional negative fixture"
+    },
+    {
+      "case": "duplicate_levels_only",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: 'L20' was expected",
+      "origin": "additional negative fixture"
+    },
+    {
+      "case": "missing_commit_phase",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: ['validate complete sweep in pre-state', 'remove arrow', 'XOR each listed gate once', 'advance manifest cursor if nonempty', 'evaluate win then deadlock', 'persist logical state', 'animate'] was expected",
+      "origin": "additional negative fixture"
+    },
+    {
+      "case": "reversed_legal_priority",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: ['UNKNOWN_OR_REMOVED', 'MANIFEST_MISMATCH', 'ARROW_COLLISION', 'WALL_COLLISION', 'CLOSED_GATE'] was expected",
+      "origin": "additional negative fixture"
+    },
+    {
+      "case": "wrong_publisher",
+      "exit_code": 1,
+      "accepted": false,
+      "expected": "REJECT",
+      "diagnostic": "jsonschema.exceptions.ValidationError: 'SessionBus.publish, called only by SessionCoordinator' was expected",
+      "origin": "additional negative fixture"
+    }
+  ],
+  "checker_sha256": {
+    "tools/validate.py": "8f38879bd7681a004b31aeb93220e2d4a624e76ffec5ac373d981639ac233482",
+    "tools/contracts.py": "4da95b9b381fb8648583963ba94cce271b68e157f86f90ea7903e196a67e32ba",
+    "tools/check_contracts.py": "d99314f251235f2e6f73589e9e0b501473f30c10e7fcfcd4be11205b0eebf589",
+    "game-spec.schema.json": "b70da66d0d78e9fc496e5454c73697740223c16f6eb7aa377495c90862b4baa8",
+    "tasks.schema.json": "50bbe0ca0177b88e406f3eae36a4b05a7e8c9ef242b0ab0e3935abe78fa03885",
+    "save-envelope.schema.json": "950d039f78f8d395f7e52d0953bba7bce080b9bdf4f2794b5fd7d5ca284c3db2",
+    "game-spec.json": "f7ae41c19422324a29c99bf5fd7bbd4d53a364d44aed9f85152701d35f89832f",
+    "tasks.json": "238506feaca4885bcaad69b578499575efb869283f1b65a2aec042d25a52410e"
+  }
+}

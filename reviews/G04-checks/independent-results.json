@@ -1,0 +1,3862 @@
+{
+  "project_id": "G04",
+  "scope": "INDEPENDENT_OFFLINE_SPEC_AUDIT",
+  "generated_at_utc": "2026-10-21T10:18:28.531226+00:00",
+  "python": "3.11.15",
+  "engine_build_executed": false,
+  "player_test_executed": false,
+  "author_input_hash_matches": {
+    "game-spec.json": true,
+    "game-spec.schema.json": true,
+    "qa-vectors.json": true,
+    "tasks.json": true,
+    "tasks.schema.json": true,
+    "validate_spec.py": true
+  },
+  "schemas": "PASS",
+  "levels": [
+    {
+      "id": "G04-L01",
+      "par": 2,
+      "move_limit": 6,
+      "witness": "RR",
+      "trace": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          2,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RR",
+      "reachable_full_states": 10,
+      "transition_count": 50,
+      "goal_lengths": [
+        2,
+        6
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 1
+      },
+      "undoable_edges": 8
+    },
+    {
+      "id": "G04-L02",
+      "par": 4,
+      "move_limit": 8,
+      "witness": "RRDD",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          2,
+          1,
+          0,
+          0,
+          4,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRDD",
+      "reachable_full_states": 51,
+      "transition_count": 255,
+      "goal_lengths": [
+        4,
+        6,
+        8
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 12
+      },
+      "undoable_edges": 73
+    },
+    {
+      "id": "G04-L03",
+      "par": 5,
+      "move_limit": 9,
+      "witness": "RRXLL",
+      "trace": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          5,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRXLL",
+      "reachable_full_states": 24,
+      "transition_count": 120,
+      "goal_lengths": [
+        5,
+        7,
+        9
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 4
+      },
+      "undoable_edges": 30
+    },
+    {
+      "id": "G04-L04",
+      "par": 5,
+      "move_limit": 9,
+      "witness": "DRRXD",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          1,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          1,
+          0,
+          0,
+          5,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "DRRXD",
+      "reachable_full_states": 45,
+      "transition_count": 225,
+      "goal_lengths": [
+        5,
+        7,
+        9
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 12
+      },
+      "undoable_edges": 62
+    },
+    {
+      "id": "G04-L05",
+      "par": 9,
+      "move_limit": 14,
+      "witness": "LURRXUDLL",
+      "trace": [
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          1,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          9,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "LURRXUDLL",
+      "reachable_full_states": 136,
+      "transition_count": 680,
+      "goal_lengths": [
+        9,
+        11,
+        13
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 28
+      },
+      "undoable_edges": 268
+    },
+    {
+      "id": "G04-L06",
+      "par": 8,
+      "move_limit": 12,
+      "witness": "UUXRRXDD",
+      "trace": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          0,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          2,
+          1,
+          0,
+          0,
+          8,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "UUXRRXDD",
+      "reachable_full_states": 92,
+      "transition_count": 460,
+      "goal_lengths": [
+        8,
+        10,
+        12
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 20
+      },
+      "undoable_edges": 161
+    },
+    {
+      "id": "G04-L07",
+      "par": 7,
+      "move_limit": 11,
+      "witness": "RRDDXLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          2,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          2,
+          0,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          0,
+          0,
+          0,
+          7,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRDDXLL",
+      "reachable_full_states": 73,
+      "transition_count": 365,
+      "goal_lengths": [
+        7,
+        9,
+        11
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 17
+      },
+      "undoable_edges": 112
+    },
+    {
+      "id": "G04-L08",
+      "par": 11,
+      "move_limit": 17,
+      "witness": "RRRDDLRXLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          1,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          2,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          2,
+          3,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          2,
+          3,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          3,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          3,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          2,
+          3,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          3,
+          0,
+          0,
+          11,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRDDLRXLLL",
+      "reachable_full_states": 174,
+      "transition_count": 870,
+      "goal_lengths": [
+        11,
+        13,
+        15,
+        17
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 27
+      },
+      "undoable_edges": 277
+    },
+    {
+      "id": "G04-L09",
+      "par": 11,
+      "move_limit": 17,
+      "witness": "RRRDDLRXLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          3,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          3,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          1,
+          3,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          2,
+          3,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          2,
+          2,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          2,
+          2,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          2,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          2,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          2,
+          2,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          2,
+          0,
+          0,
+          11,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRDDLRXLLL",
+      "reachable_full_states": 152,
+      "transition_count": 760,
+      "goal_lengths": [
+        11,
+        13,
+        15,
+        17
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 21
+      },
+      "undoable_edges": 242
+    },
+    {
+      "id": "G04-L10",
+      "par": 9,
+      "move_limit": 14,
+      "witness": "RRRDDXLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          1,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          2,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          1,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          1,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          2,
+          1,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          1,
+          0,
+          0,
+          9,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRDDXLLL",
+      "reachable_full_states": 131,
+      "transition_count": 655,
+      "goal_lengths": [
+        9,
+        11,
+        13
+      ],
+      "failure_edges": {
+        "FLOOR_CLOSED": 15,
+        "MOVE_LIMIT": 23
+      },
+      "undoable_edges": 228
+    },
+    {
+      "id": "G04-L11",
+      "par": 17,
+      "move_limit": 26,
+      "witness": "RRRRDDXLLRRDDLLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          1,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          2,
+          1,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          1,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          1,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          0,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          0,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          0,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          3,
+          0,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          4,
+          0,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          4,
+          0,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          4,
+          0,
+          0,
+          0,
+          15,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          4,
+          0,
+          0,
+          0,
+          16,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          4,
+          0,
+          0,
+          0,
+          17,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRDDXLLRRDDLLLL",
+      "reachable_full_states": 479,
+      "transition_count": 2395,
+      "goal_lengths": [
+        17,
+        19,
+        21,
+        23,
+        25
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 57
+      },
+      "undoable_edges": 849
+    },
+    {
+      "id": "G04-L12",
+      "par": 15,
+      "move_limit": 23,
+      "witness": "RRRRDDXDDLLLRLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          1,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          2,
+          1,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          1,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          3,
+          1,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          4,
+          1,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          4,
+          1,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          4,
+          1,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          4,
+          0,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          4,
+          0,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          4,
+          1,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          4,
+          1,
+          0,
+          0,
+          15,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRDDXDDLLLRLL",
+      "reachable_full_states": 638,
+      "transition_count": 3190,
+      "goal_lengths": [
+        15,
+        17,
+        19,
+        21,
+        23
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 106
+      },
+      "undoable_edges": 1139
+    },
+    {
+      "id": "G04-L13",
+      "par": 26,
+      "move_limit": 39,
+      "witness": "RRRRXLLRRDDLLLLDDRRRRXLLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          0,
+          0,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          0,
+          0,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          0,
+          1,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          0,
+          1,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          0,
+          1,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          1,
+          1,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          1,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          1,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          1,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          2,
+          1,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          1,
+          0,
+          0,
+          15,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          3,
+          1,
+          0,
+          0,
+          16,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          4,
+          1,
+          0,
+          0,
+          17,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          4,
+          1,
+          0,
+          0,
+          18,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          4,
+          3,
+          0,
+          0,
+          19,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          4,
+          3,
+          0,
+          0,
+          20,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          4,
+          3,
+          0,
+          0,
+          21,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          4,
+          3,
+          0,
+          0,
+          22,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          4,
+          3,
+          0,
+          0,
+          23,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          4,
+          3,
+          0,
+          0,
+          24,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          4,
+          3,
+          0,
+          0,
+          25,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          4,
+          3,
+          0,
+          0,
+          26,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRXLLRRDDLLLLDDRRRRXLLLL",
+      "reachable_full_states": 1529,
+      "transition_count": 7645,
+      "goal_lengths": [
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 139
+      },
+      "undoable_edges": 3008
+    },
+    {
+      "id": "G04-L14",
+      "par": 17,
+      "move_limit": 26,
+      "witness": "RRRRDDXLLRRDDLLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          3,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          3,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          3,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          1,
+          3,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          2,
+          3,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          3,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          3,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          5,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          5,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          5,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          3,
+          5,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          4,
+          5,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          4,
+          5,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          4,
+          5,
+          0,
+          0,
+          15,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          4,
+          5,
+          0,
+          0,
+          16,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          4,
+          5,
+          0,
+          0,
+          17,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRDDXLLRRDDLLLL",
+      "reachable_full_states": 538,
+      "transition_count": 2690,
+      "goal_lengths": [
+        17,
+        19,
+        21,
+        23,
+        25
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 67
+      },
+      "undoable_edges": 951
+    },
+    {
+      "id": "G04-L15",
+      "par": 19,
+      "move_limit": 29,
+      "witness": "RRRRDDLRXLLRRDDLLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          1,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          2,
+          1,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          2,
+          3,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          2,
+          3,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          3,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          3,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          7,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          7,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          7,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          3,
+          7,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          4,
+          7,
+          0,
+          0,
+          15,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          4,
+          7,
+          0,
+          0,
+          16,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          4,
+          7,
+          0,
+          0,
+          17,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          4,
+          7,
+          0,
+          0,
+          18,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          4,
+          7,
+          0,
+          0,
+          19,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRDDLRXLLRRDDLLLL",
+      "reachable_full_states": 1175,
+      "transition_count": 5875,
+      "goal_lengths": [
+        19,
+        21,
+        23,
+        25,
+        27,
+        29
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 134
+      },
+      "undoable_edges": 2112
+    },
+    {
+      "id": "G04-L16",
+      "par": 19,
+      "move_limit": 29,
+      "witness": "RRRRDDLRXLLRRDDLLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          1,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          2,
+          1,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          2,
+          3,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          2,
+          3,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          3,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          3,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          2,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          2,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          2,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          3,
+          2,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          4,
+          2,
+          0,
+          0,
+          15,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          4,
+          2,
+          0,
+          0,
+          16,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          4,
+          2,
+          0,
+          0,
+          17,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          4,
+          2,
+          0,
+          0,
+          18,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          4,
+          2,
+          0,
+          0,
+          19,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRDDLRXLLRRDDLLLL",
+      "reachable_full_states": 1070,
+      "transition_count": 5350,
+      "goal_lengths": [
+        19,
+        21,
+        23,
+        25,
+        27,
+        29
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 119
+      },
+      "undoable_edges": 1933
+    },
+    {
+      "id": "G04-L17",
+      "par": 22,
+      "move_limit": 33,
+      "witness": "RRRRXLLRRDDLLRRDDXLLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          0,
+          0,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          0,
+          0,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          0,
+          3,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          0,
+          3,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          0,
+          3,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          1,
+          3,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          3,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          3,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          6,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          6,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          6,
+          0,
+          0,
+          15,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          3,
+          6,
+          0,
+          0,
+          16,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          4,
+          6,
+          0,
+          0,
+          17,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          4,
+          6,
+          0,
+          0,
+          18,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          4,
+          6,
+          0,
+          0,
+          19,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          4,
+          6,
+          0,
+          0,
+          20,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          4,
+          6,
+          0,
+          0,
+          21,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          4,
+          6,
+          0,
+          0,
+          22,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRXLLRRDDLLRRDDXLLLL",
+      "reachable_full_states": 1410,
+      "transition_count": 7050,
+      "goal_lengths": [
+        22,
+        24,
+        26,
+        28,
+        30,
+        32
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 135
+      },
+      "undoable_edges": 2754
+    },
+    {
+      "id": "G04-L18",
+      "par": 15,
+      "move_limit": 23,
+      "witness": "UURRLLXUURLRRRR",
+      "trace": [
+        [
+          0,
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          3,
+          1,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          2,
+          2,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          2,
+          2,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          2,
+          2,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          2,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          1,
+          2,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          0,
+          3,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          0,
+          3,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          0,
+          2,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          0,
+          2,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          0,
+          2,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          0,
+          2,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          0,
+          2,
+          0,
+          0,
+          15,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "UURRLLXUURLRRRR",
+      "reachable_full_states": 825,
+      "transition_count": 4125,
+      "goal_lengths": [
+        15,
+        17,
+        19,
+        21,
+        23
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 118
+      },
+      "undoable_edges": 1529
+    },
+    {
+      "id": "G04-L19",
+      "par": 26,
+      "move_limit": 39,
+      "witness": "RRRRXLLRRDDLLLLDDRRRRXLLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          0,
+          0,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          0,
+          0,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          0,
+          3,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          0,
+          3,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          0,
+          3,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          1,
+          3,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          2,
+          3,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          2,
+          3,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          6,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          2,
+          6,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          6,
+          0,
+          0,
+          15,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          3,
+          6,
+          0,
+          0,
+          16,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          4,
+          6,
+          0,
+          0,
+          17,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          4,
+          6,
+          0,
+          0,
+          18,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          4,
+          7,
+          0,
+          0,
+          19,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          4,
+          7,
+          0,
+          0,
+          20,
+          "PLAYING"
+        ],
+        [
+          1,
+          4,
+          4,
+          7,
+          0,
+          0,
+          21,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          4,
+          7,
+          0,
+          0,
+          22,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          4,
+          7,
+          0,
+          0,
+          23,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          4,
+          7,
+          0,
+          0,
+          24,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          4,
+          7,
+          0,
+          0,
+          25,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          4,
+          7,
+          0,
+          0,
+          26,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRXLLRRDDLLLLDDRRRRXLLLL",
+      "reachable_full_states": 2829,
+      "transition_count": 14145,
+      "goal_lengths": [
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 275
+      },
+      "undoable_edges": 5580
+    },
+    {
+      "id": "G04-L20",
+      "par": 18,
+      "move_limit": 27,
+      "witness": "RRRRDDLLLLXRRLLXDD",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          1,
+          0,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          4,
+          2,
+          0,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          2,
+          1,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          9,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          10,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          1,
+          0,
+          0,
+          11,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          2,
+          1,
+          0,
+          0,
+          12,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          2,
+          7,
+          0,
+          0,
+          13,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          2,
+          7,
+          0,
+          0,
+          14,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          2,
+          7,
+          0,
+          0,
+          15,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          2,
+          7,
+          0,
+          0,
+          16,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          3,
+          7,
+          0,
+          0,
+          17,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          4,
+          7,
+          0,
+          0,
+          18,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RRRRDDLLLLXRRLLXDD",
+      "reachable_full_states": 1631,
+      "transition_count": 8155,
+      "goal_lengths": [
+        18,
+        20,
+        22,
+        24,
+        26
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 280
+      },
+      "undoable_edges": 3111
+    },
+    {
+      "id": "G04-X1-A",
+      "par": 9,
+      "move_limit": 14,
+      "witness": "URDDURXLL",
+      "trace": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          2,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          2,
+          5,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          0,
+          0,
+          2,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          1,
+          0,
+          0,
+          2,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          2,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          2,
+          9,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "URDDURXLL",
+      "reachable_full_states": 188,
+      "transition_count": 940,
+      "goal_lengths": [
+        9,
+        11,
+        13
+      ],
+      "failure_edges": {
+        "BEACON_ORDER": 20,
+        "MOVE_LIMIT": 41
+      },
+      "undoable_edges": 417
+    },
+    {
+      "id": "G04-X2-A",
+      "par": 9,
+      "move_limit": 14,
+      "witness": "RDRURXLLL",
+      "trace": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          "PLAYING"
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          2,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          3,
+          "PLAYING"
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          4,
+          "PLAYING"
+        ],
+        [
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          5,
+          "PLAYING"
+        ],
+        [
+          1,
+          3,
+          0,
+          1,
+          0,
+          0,
+          6,
+          "PLAYING"
+        ],
+        [
+          1,
+          2,
+          0,
+          1,
+          0,
+          0,
+          7,
+          "PLAYING"
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          8,
+          "PLAYING"
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          9,
+          "WON"
+        ]
+      ],
+      "trace_matches_author_report": true,
+      "shortest": "RDRURXLLL",
+      "reachable_full_states": 133,
+      "transition_count": 665,
+      "goal_lengths": [
+        9,
+        11,
+        13
+      ],
+      "failure_edges": {
+        "FLOOR_CLOSED": 6,
+        "MOVE_LIMIT": 23
+      },
+      "undoable_edges": 254
+    }
+  ],
+  "differential_transitions": 79998,
+  "golden_vectors": [
+    {
+      "id": "Q01_block_edge",
+      "passed": true
+    },
+    {
+      "id": "Q02_no_lift",
+      "passed": true
+    },
+    {
+      "id": "Q03_entry_retrigger",
+      "passed": true
+    },
+    {
+      "id": "Q04_goal_before_budget",
+      "passed": true
+    },
+    {
+      "id": "Q05_goal_wrong_bits",
+      "passed": true
+    },
+    {
+      "id": "Q06_budget_failure",
+      "passed": true
+    },
+    {
+      "id": "Q07_close_own_floor",
+      "passed": true
+    },
+    {
+      "id": "Q08_undo_failure",
+      "passed": true
+    },
+    {
+      "id": "Q09_restart",
+      "passed": true
+    },
+    {
+      "id": "Q10_wrong_beacon",
+      "passed": true
+    },
+    {
+      "id": "Q11_old_beacon_idempotent",
+      "passed": true
+    },
+    {
+      "id": "Q12_delayed_flush",
+      "passed": true
+    },
+    {
+      "id": "Q13_invalid_does_not_tick",
+      "passed": true
+    },
+    {
+      "id": "Q14_delay_closes_destination",
+      "passed": true
+    },
+    {
+      "id": "Q15_shift_entry_switch",
+      "passed": true
+    },
+    {
+      "id": "Q16_terminal_ignored",
+      "passed": true
+    },
+    {
+      "id": "Q17_closed_gate_precheck",
+      "passed": true
+    },
+    {
+      "id": "Q18_wall",
+      "passed": true
+    },
+    {
+      "id": "Q19_empty_undo",
+      "passed": true
+    },
+    {
+      "id": "Q20_undo_pending",
+      "passed": true
+    },
+    {
+      "id": "Q21_pending_blocks_goal",
+      "passed": true
+    }
+  ],
+  "experiment_controls": [
+    {
+      "id": "G04-X1-A",
+      "shortest": "RRXLL",
+      "reachable_full_states": 79,
+      "transition_count": 395,
+      "goal_lengths": [
+        5,
+        7,
+        9,
+        11,
+        13
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 14
+      },
+      "undoable_edges": 178
+    },
+    {
+      "id": "G04-X2-A",
+      "shortest": "RRRXLLL",
+      "reachable_full_states": 133,
+      "transition_count": 665,
+      "goal_lengths": [
+        7,
+        9,
+        11,
+        13
+      ],
+      "failure_edges": {
+        "MOVE_LIMIT": 24
+      },
+      "undoable_edges": 266
+    }
+  ],
+  "task_order": [
+    "G04-T00",
+    "G04-T01",
+    "G04-T02",
+    "G04-T03",
+    "G04-T06",
+    "G04-T04",
+    "G04-T05",
+    "G04-T08",
+    "G04-T07",
+    "G04-T09",
+    "G04-T10",
+    "G04-T11",
+    "G04-T12",
+    "G04-T13",
+    "G04-T14",
+    "G04-T15"
+  ],
+  "all_build_tasks_after_human_gate": true,
+  "mutation_probes": [
+    {
+      "id": "campaign_unknown_id",
+      "schema_accepts": false,
+      "author_checker": "REJECTED",
+      "error": "ValidationError",
+      "detail": "['G04-L01', 'G04-L02', 'G04-L03', 'G04-L04', 'G04-L05', 'G04-L06', 'G04-L07', 'G04-L08', 'G04-L09', 'G04-L10', 'G04-L11', 'G04-L12', 'G04-L13', 'G04-L14', 'G04-L15', 'G04-L16', 'G04-L17', 'G04-L18', 'G04-L19', 'G04-L20'] was expected\n\nFailed validating 'const' in schema['properties']['progression']['properties']['campaign_order']:\n    {'const': ['G04-L01',\n               'G04-L02',\n               'G04-L03',\n               'G04-L04',\n               'G04-L05',\n               'G04-L06',\n               'G04-L07',\n               'G04-L08',\n               'G04-L09',\n               'G04-L10',\n               'G04-L11',\n               'G04-L12',\n               'G04-L13',\n               'G04-L14',\n               'G04-L15',\n               'G04-L16',\n               'G04-L17',\n               'G04-L18',\n               'G04-L19',\n               'G04-L20']}\n\nOn instance['progression']['campaign_order']:\n    ['G04-L99',\n     'G04-L02',\n     'G04-L03',\n     'G04-L04',\n     'G04-L05',\n     'G04-L06',\n     'G04-L07',\n     'G04-L08',\n     'G04-L09',\n     'G04-L10',\n     'G04-L11',\n     'G04-L12',\n     'G04-L13',\n     'G04-L14',\n     'G04-L15',\n     'G04-L16',\n     'G04-L17',\n     'G04-L18',\n     'G04-L19',\n     'G04-L20']"
+    },
+    {
+      "id": "campaign_duplicate_id",
+      "schema_accepts": false,
+      "author_checker": "REJECTED",
+      "error": "ValidationError",
+      "detail": "['G04-L01', 'G04-L02', 'G04-L03', 'G04-L04', 'G04-L05', 'G04-L06', 'G04-L07', 'G04-L08', 'G04-L09', 'G04-L10', 'G04-L11', 'G04-L12', 'G04-L13', 'G04-L14', 'G04-L15', 'G04-L16', 'G04-L17', 'G04-L18', 'G04-L19', 'G04-L20'] was expected\n\nFailed validating 'const' in schema['properties']['progression']['properties']['campaign_order']:\n    {'const': ['G04-L01',\n               'G04-L02',\n               'G04-L03',\n               'G04-L04',\n               'G04-L05',\n               'G04-L06',\n               'G04-L07',\n               'G04-L08',\n               'G04-L09',\n               'G04-L10',\n               'G04-L11',\n               'G04-L12',\n               'G04-L13',\n               'G04-L14',\n               'G04-L15',\n               'G04-L16',\n               'G04-L17',\n               'G04-L18',\n               'G04-L19',\n               'G04-L20']}\n\nOn instance['progression']['campaign_order']:\n    ['G04-L01',\n     'G04-L01',\n     'G04-L03',\n     'G04-L04',\n     'G04-L05',\n     'G04-L06',\n     'G04-L07',\n     'G04-L08',\n     'G04-L09',\n     'G04-L10',\n     'G04-L11',\n     'G04-L12',\n     'G04-L13',\n     'G04-L14',\n     'G04-L15',\n     'G04-L16',\n     'G04-L17',\n     'G04-L18',\n     'G04-L19',\n     'G04-L20']"
+    },
+    {
+      "id": "campaign_wrong_order",
+      "schema_accepts": false,
+      "author_checker": "REJECTED",
+      "error": "ValidationError",
+      "detail": "['G04-L01', 'G04-L02', 'G04-L03', 'G04-L04', 'G04-L05', 'G04-L06', 'G04-L07', 'G04-L08', 'G04-L09', 'G04-L10', 'G04-L11', 'G04-L12', 'G04-L13', 'G04-L14', 'G04-L15', 'G04-L16', 'G04-L17', 'G04-L18', 'G04-L19', 'G04-L20'] was expected\n\nFailed validating 'const' in schema['properties']['progression']['properties']['campaign_order']:\n    {'const': ['G04-L01',\n               'G04-L02',\n               'G04-L03',\n               'G04-L04',\n               'G04-L05',\n               'G04-L06',\n               'G04-L07',\n               'G04-L08',\n               'G04-L09',\n               'G04-L10',\n               'G04-L11',\n               'G04-L12',\n               'G04-L13',\n               'G04-L14',\n               'G04-L15',\n               'G04-L16',\n               'G04-L17',\n               'G04-L18',\n               'G04-L19',\n               'G04-L20']}\n\nOn instance['progression']['campaign_order']:\n    ['G04-L20',\n     'G04-L19',\n     'G04-L18',\n     'G04-L17',\n     'G04-L16',\n     'G04-L15',\n     'G04-L14',\n     'G04-L13',\n     'G04-L12',\n     'G04-L11',\n     'G04-L10',\n     'G04-L09',\n     'G04-L08',\n     'G04-L07',\n     'G04-L06',\n     'G04-L05',\n     'G04-L04',\n     'G04-L03',\n     'G04-L02',\n     'G04-L01']"
+    },
+    {
+      "id": "nonliteral_rule_order",
+      "schema_accepts": false,
+      "author_checker": "REJECTED",
+      "error": "ValidationError",
+      "detail": "['validate_destination_with_old_bits', 'commit_position_and_move', 'apply_old_pending_and_clear', 'check_floor', 'trigger_arrival_switch', 'check_floor', 'check_beacon_order', 'check_goal', 'check_move_limit'] was expected\n\nFailed validating 'const' in schema['properties']['rules']['properties']['arrival_order']:\n    {'const': ['validate_destination_with_old_bits',\n               'commit_position_and_move',\n               'apply_old_pending_and_clear',\n               'check_floor',\n               'trigger_arrival_switch',\n               'check_floor',\n               'check_beacon_order',\n               'check_goal',\n               'check_move_limit']}\n\nOn instance['rules']['arrival_order']:\n    ['check_move_limit',\n     'check_goal',\n     'check_beacon_order',\n     'check_floor',\n     'trigger_arrival_switch',\n     'check_floor',\n     'apply_old_pending_and_clear',\n     'commit_position_and_move',\n     'validate_destination_with_old_bits']"
+    },
+    {
+      "id": "level_id_outside_campaign",
+      "schema_accepts": true,
+      "author_checker": "PASS",
+      "accepted_invalid_document": true
+    },
+    {
+      "id": "campaign_contains_experiment_variant",
+      "schema_accepts": true,
+      "author_checker": "PASS",
+      "accepted_invalid_document": true
+    },
+    {
+      "id": "switch_mask_out_of_bit_range",
+      "schema_accepts": true,
+      "author_checker": "REJECTED",
+      "error": "AssertionError",
+      "detail": ""
+    },
+    {
+      "id": "duplicate_switch_position",
+      "schema_accepts": true,
+      "author_checker": "REJECTED",
+      "error": "AssertionError",
+      "detail": "duplicate cell entity"
+    }
+  ],
+  "ablation": [
+    {
+      "id": "G04-L01",
+      "original_par": 2,
+      "no_gates_shortest": "RR"
+    },
+    {
+      "id": "G04-L02",
+      "original_par": 4,
+      "no_gates_shortest": "RRDD"
+    },
+    {
+      "id": "G04-L03",
+      "original_par": 5,
+      "no_gates_shortest": "RRXLL"
+    },
+    {
+      "id": "G04-L04",
+      "original_par": 5,
+      "no_gates_shortest": "DRRXD"
+    },
+    {
+      "id": "G04-L05",
+      "original_par": 9,
+      "no_gates_shortest": "URXLL"
+    },
+    {
+      "id": "G04-L06",
+      "original_par": 8,
+      "no_gates_shortest": "UUXRRXDD"
+    },
+    {
+      "id": "G04-L07",
+      "original_par": 7,
+      "no_gates_shortest": "RRDDXLL"
+    },
+    {
+      "id": "G04-L08",
+      "original_par": 11,
+      "no_gates_shortest": "RRRDDLRXLLL"
+    },
+    {
+      "id": "G04-L09",
+      "original_par": 11,
+      "no_gates_shortest": "RRRDDLRXLLL"
+    },
+    {
+      "id": "G04-L10",
+      "original_par": 9,
+      "no_gates_shortest": "RRRDDXLLL"
+    },
+    {
+      "id": "G04-L11",
+      "original_par": 17,
+      "no_gates_shortest": "RRRLRRDDXDDLLLL"
+    },
+    {
+      "id": "G04-L12",
+      "original_par": 15,
+      "no_gates_shortest": "RRRRDDXDDLLLRLL"
+    },
+    {
+      "id": "G04-L13",
+      "original_par": 26,
+      "no_gates_shortest": "RRRRXLLRRXDDDDXLLRRXLLLL"
+    },
+    {
+      "id": "G04-L14",
+      "original_par": 17,
+      "no_gates_shortest": "RRRRDDXLLRRDDLLLL"
+    },
+    {
+      "id": "G04-L15",
+      "original_par": 19,
+      "no_gates_shortest": "RRRRDDLRXLLRRDDLLLL"
+    },
+    {
+      "id": "G04-L16",
+      "original_par": 19,
+      "no_gates_shortest": "RRRLRRDDLLLLDDX"
+    },
+    {
+      "id": "G04-L17",
+      "original_par": 22,
+      "no_gates_shortest": "RRRRXLLRRDDLLRRDDXLLLL"
+    },
+    {
+      "id": "G04-L18",
+      "original_par": 15,
+      "no_gates_shortest": "UURRLLXUURLRRRR"
+    },
+    {
+      "id": "G04-L19",
+      "original_par": 26,
+      "no_gates_shortest": "RRRRXLLRRDDLLLLDDRRRRXLLLL"
+    },
+    {
+      "id": "G04-L20",
+      "original_par": 18,
+      "no_gates_shortest": "DDRRLLXRRLLXDD"
+    }
+  ],
+  "result": "LOGIC_PASS_WITH_REVIEW_FINDINGS"
+}

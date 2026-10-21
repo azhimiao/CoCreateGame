@@ -1,0 +1,43 @@
+{
+  "accessed_at": "2026-10-21",
+  "validated_at_utc": "2026-10-21T11:10:04.496511+00:00",
+  "result": "PASS",
+  "check_count": 622,
+  "cards": 24,
+  "deep_analyses": 12,
+  "per_platform": {
+    "P01": {
+      "cards": 4,
+      "deep_analyses": 2
+    },
+    "P02": {
+      "cards": 4,
+      "deep_analyses": 2
+    },
+    "P03": {
+      "cards": 4,
+      "deep_analyses": 2
+    },
+    "P04": {
+      "cards": 4,
+      "deep_analyses": 2
+    },
+    "P05": {
+      "cards": 4,
+      "deep_analyses": 2
+    },
+    "P06": {
+      "cards": 4,
+      "deep_analyses": 2
+    }
+  },
+  "official_or_publisher_source_records": 31,
+  "browser_journal_events": 23,
+  "referenced_screenshots": 21,
+  "missing_references": [],
+  "limitations": [
+    "No new web or browser activity during validation.",
+    "Semantic claims retain the source/observation limits in methodology.md.",
+    "Local runtime directory remains after policy rejection and MUST be excluded from packaging."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "scope": "OFFLINE_DOCUMENT_INDEX_ONLY",
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "initialProjects": 10,
+      "filteredProjects": 3,
+      "modalOpened": true,
+      "modalTextLength": 3263,
+      "horizontalOverflow": false,
+      "missingEmbeddedDocuments": [],
+      "missingLocalLinks": [],
+      "pageErrors": [],
+      "result": "PASS"
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "initialProjects": 10,
+      "filteredProjects": 3,
+      "modalOpened": true,
+      "modalTextLength": 3263,
+      "horizontalOverflow": false,
+      "missingEmbeddedDocuments": [],
+      "missingLocalLinks": [],
+      "pageErrors": [],
+      "result": "PASS"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "initialProjects": 10,
+      "filteredProjects": 3,
+      "modalOpened": true,
+      "modalTextLength": 3263,
+      "horizontalOverflow": false,
+      "missingEmbeddedDocuments": [],
+      "missingLocalLinks": [],
+      "pageErrors": [],
+      "result": "PASS"
+    }
+  ]
+}

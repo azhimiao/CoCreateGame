@@ -1,0 +1,1224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:foundry:G01:game-spec:1.0.0",
+  "$defs": {
+    "level": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^L(0[1-9]|1[0-9]|20)$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_status": {
+          "const": "HYPOTHESIS"
+        },
+        "mode": {
+          "enum": [
+            "BASE",
+            "RELAY",
+            "MANIFEST",
+            "COMBINED"
+          ]
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 7
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 7
+        },
+        "arrows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "direction": {
+                "enum": [
+                  "N",
+                  "E",
+                  "S",
+                  "W"
+                ]
+              },
+              "cells": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 1,
+                "maxItems": 8
+              },
+              "toggles": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "id",
+              "direction",
+              "cells",
+              "toggles"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "maxItems": 8
+        },
+        "gates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "cells": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 1,
+                "maxItems": 8
+              },
+              "initial_open": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "cells",
+              "initial_open"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "maxItems": 2
+        },
+        "walls": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 0
+        },
+        "manifest": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "N",
+              "E",
+              "S",
+              "W"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 8
+        },
+        "initial_state": {
+          "type": "object",
+          "properties": {
+            "removed": {
+              "const": []
+            },
+            "manifest_cursor": {
+              "const": 0
+            }
+          },
+          "required": [
+            "removed",
+            "manifest_cursor"
+          ],
+          "additionalProperties": false
+        },
+        "win": {
+          "type": "object",
+          "properties": {
+            "all_arrows_removed": {
+              "const": true
+            },
+            "manifest_consumed": {
+              "const": true
+            }
+          },
+          "required": [
+            "all_arrows_removed",
+            "manifest_consumed"
+          ],
+          "additionalProperties": false
+        },
+        "solution": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "EXIT"
+              },
+              "arrow_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              }
+            },
+            "required": [
+              "type",
+              "arrow_id"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "maxItems": 8
+        },
+        "learning_objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "target_seconds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "evidence_status",
+        "mode",
+        "width",
+        "height",
+        "arrows",
+        "gates",
+        "walls",
+        "manifest",
+        "initial_state",
+        "win",
+        "solution",
+        "learning_objective",
+        "seed",
+        "target_seconds"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "spec_version": {
+      "const": "1.0.0"
+    },
+    "game_id": {
+      "const": "G01"
+    },
+    "working_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "REVISION_REQUIRED"
+    },
+    "ready_for_build": {
+      "const": false
+    },
+    "independent_review": {
+      "const": "RECHECK_PENDING"
+    },
+    "human_build_approval": {
+      "const": false
+    },
+    "preparation_date": {
+      "const": "2026-10-21"
+    },
+    "all_design_values": {
+      "const": "HYPOTHESIS"
+    },
+    "candidate_platform_ids": {
+      "const": [
+        "P02",
+        "P04",
+        "P05"
+      ]
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1
+    },
+    "engine": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "Cocos Creator"
+        },
+        "candidate_version": {
+          "const": "3.8.8"
+        },
+        "language": {
+          "const": "TypeScript"
+        },
+        "version_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checked_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "installation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "build_tested": {
+          "const": false
+        }
+      },
+      "required": [
+        "name",
+        "candidate_version",
+        "language",
+        "version_source",
+        "checked_date",
+        "installation",
+        "build_tested"
+      ],
+      "additionalProperties": false
+    },
+    "rules": {
+      "type": "object",
+      "properties": {
+        "coordinates": {
+          "type": "string",
+          "minLength": 1
+        },
+        "arrow_shape": {
+          "type": "string",
+          "minLength": 1
+        },
+        "movement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "collision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exit_edge": {
+          "type": "string",
+          "minLength": 1
+        },
+        "legal_order": {
+          "type": "array",
+          "const": [
+            "UNKNOWN_OR_REMOVED",
+            "MANIFEST_MISMATCH",
+            "ARROW_COLLISION",
+            "WALL_COLLISION",
+            "CLOSED_GATE"
+          ]
+        },
+        "commit_order": {
+          "type": "array",
+          "const": [
+            "validate complete sweep in pre-state",
+            "remove arrow",
+            "XOR each listed gate once",
+            "advance manifest cursor if nonempty",
+            "evaluate win then deadlock",
+            "persist logical state",
+            "animate"
+          ]
+        },
+        "gate_semantics": {
+          "type": "string",
+          "minLength": 1
+        },
+        "manifest_semantics": {
+          "type": "string",
+          "minLength": 1
+        },
+        "invalid_action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deadlock": {
+          "type": "string",
+          "minLength": 1
+        },
+        "win": {
+          "type": "string",
+          "minLength": 1
+        },
+        "undo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rng": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_state_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "coordinates",
+        "arrow_shape",
+        "movement",
+        "collision",
+        "exit_edge",
+        "legal_order",
+        "commit_order",
+        "gate_semantics",
+        "manifest_semantics",
+        "invalid_action",
+        "deadlock",
+        "win",
+        "undo",
+        "hint",
+        "rng",
+        "canonical_state_key"
+      ],
+      "additionalProperties": false
+    },
+    "session_contract": {
+      "type": "object",
+      "properties": {
+        "rule_return": {
+          "const": "Accepted(nextAttempt, ruleFacts) or Reject; never publishes events"
+        },
+        "rule_fact_fields": {
+          "const": [
+            "kind",
+            "level_id",
+            "arrow_id",
+            "from_mask",
+            "to_mask",
+            "gate_changes",
+            "manifest_cursor",
+            "won",
+            "deadlocked"
+          ]
+        },
+        "forbidden_rule_fields": {
+          "const": [
+            "eventId",
+            "sessionId",
+            "firstClear",
+            "stampCount",
+            "completed"
+          ]
+        },
+        "publisher": {
+          "const": "SessionBus.publish, called only by SessionCoordinator"
+        },
+        "event_id": {
+          "const": "boot-local sessionId + colon + strictly increasing positive sequence; allocated only by SessionCoordinator"
+        },
+        "completion_owner": {
+          "const": "SessionCoordinator; firstClear computed from pre-action Progress.completed; stampCount from post-union completed set"
+        },
+        "save_owner": {
+          "const": "SessionCoordinator emits one SaveRequested per accepted revision; SaveCoordinator only persists and returns result"
+        },
+        "save_ack": {
+          "const": "SessionCoordinator publishes deduplicated SaveSucceeded/SaveFailed; acknowledgement never increments revision or triggers save"
+        },
+        "undo_policy": {
+          "const": "Undo retains completed; completing again emits firstClear=false with unchanged stampCount; no REDO command exists"
+        },
+        "interrupt_policy": {
+          "const": "Animation interruption never resubmits rule command or already queued snapshot; visibility flush deduplicates revision"
+        },
+        "rejection_policy": {
+          "const": "Rejected action does not change revision/completed or request save"
+        },
+        "tasks": {
+          "const": {
+            "rule_facts": "T04",
+            "session_state_machine_bus": "T06",
+            "save_transport": "T07",
+            "campaign_progress_integration": "T08"
+          }
+        }
+      },
+      "required": [
+        "rule_return",
+        "rule_fact_fields",
+        "forbidden_rule_fields",
+        "publisher",
+        "event_id",
+        "completion_owner",
+        "save_owner",
+        "save_ack",
+        "undo_policy",
+        "interrupt_policy",
+        "rejection_policy",
+        "tasks"
+      ],
+      "additionalProperties": false
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "enum": [
+              "BASE",
+              "RELAY",
+              "MANIFEST",
+              "COMBINED"
+            ]
+          },
+          "relay": {
+            "type": "boolean"
+          },
+          "manifest": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "relay",
+          "manifest"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "progression": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "type": "array",
+          "const": [
+            "L01",
+            "L02",
+            "L03",
+            "L04",
+            "L05",
+            "L06",
+            "L07",
+            "L08",
+            "L09",
+            "L10",
+            "L11",
+            "L12",
+            "L13",
+            "L14",
+            "L15",
+            "L16",
+            "L17",
+            "L18",
+            "L19",
+            "L20"
+          ],
+          "uniqueItems": true,
+          "minItems": 20,
+          "maxItems": 20
+        },
+        "unlock": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rewards": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hint_cost": {
+          "const": 0
+        },
+        "undo_cost": {
+          "const": 0
+        },
+        "retry_cost": {
+          "const": 0
+        },
+        "ads": {
+          "type": "string",
+          "minLength": 1
+        },
+        "end": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "order",
+        "unlock",
+        "rewards",
+        "hint_cost",
+        "undo_cost",
+        "retry_cost",
+        "ads",
+        "end"
+      ],
+      "additionalProperties": false
+    },
+    "ui": {
+      "type": "object",
+      "properties": {
+        "screens": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 13,
+          "maxItems": 13
+        },
+        "portrait_reference": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "landscape_reference": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "min_viewport": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "touch_min_css_px": {
+          "const": 44
+        },
+        "pointer_commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "keyboard": {
+          "type": "string",
+          "minLength": 1
+        },
+        "palette": {
+          "type": "object",
+          "properties": {
+            "background": {
+              "type": "string",
+              "minLength": 1
+            },
+            "surface": {
+              "type": "string",
+              "minLength": 1
+            },
+            "arrow": {
+              "type": "string",
+              "minLength": 1
+            },
+            "signal_g": {
+              "type": "string",
+              "minLength": 1
+            },
+            "signal_h": {
+              "type": "string",
+              "minLength": 1
+            },
+            "error": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "background",
+            "surface",
+            "arrow",
+            "signal_g",
+            "signal_h",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        "reduced_motion": {
+          "type": "boolean"
+        },
+        "default_music": {
+          "type": "boolean"
+        },
+        "default_sound": {
+          "type": "boolean"
+        },
+        "languages": {
+          "const": [
+            "en",
+            "zh-CN"
+          ]
+        }
+      },
+      "required": [
+        "screens",
+        "portrait_reference",
+        "landscape_reference",
+        "min_viewport",
+        "touch_min_css_px",
+        "pointer_commit",
+        "keyboard",
+        "palette",
+        "reduced_motion",
+        "default_music",
+        "default_sound",
+        "languages"
+      ],
+      "additionalProperties": false
+    },
+    "save": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "authoritative": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "migration": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cloud": {
+          "type": "string",
+          "minLength": 1
+        },
+        "private_mode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "envelope_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "version",
+        "key",
+        "fields",
+        "authoritative",
+        "commit",
+        "migration",
+        "cloud",
+        "private_mode",
+        "envelope_schema"
+      ],
+      "additionalProperties": false
+    },
+    "channel_profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "enum": [
+              "LOCAL_QA",
+              "P02_BASIC",
+              "P02_FULL",
+              "P04",
+              "P05",
+              "P01_RESERVED"
+            ]
+          },
+          "sdk": {
+            "type": "string",
+            "minLength": 1
+          },
+          "analytics": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ads": {
+            "const": false
+          },
+          "total_mb_cap": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "file_cap": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "sdk",
+          "analytics",
+          "ads",
+          "total_mb_cap",
+          "file_cap"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "performance_hypotheses": {
+      "type": "object",
+      "properties": {
+        "total_web_mb": {
+          "type": "number",
+          "minimum": 0
+        },
+        "initial_web_mb": {
+          "type": "number",
+          "minimum": 0
+        },
+        "frame_p95_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "input_feedback_p95_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "local_solver_max_states": {
+          "type": "number",
+          "minimum": 0
+        },
+        "local_solver_budget_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "measured": {
+          "const": false
+        }
+      },
+      "required": [
+        "total_web_mb",
+        "initial_web_mb",
+        "frame_p95_ms",
+        "input_feedback_p95_ms",
+        "local_solver_max_states",
+        "local_solver_budget_ms",
+        "measured"
+      ],
+      "additionalProperties": false
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": false,
+      "prefixItems": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L01"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L02"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L03"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L04"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L05"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L06"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L07"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L08"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L09"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L10"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L11"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L12"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L13"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L14"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L15"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L16"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L17"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L18"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L19"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/$defs/level"
+            },
+            {
+              "properties": {
+                "id": {
+                  "const": "L20"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "spec_version",
+    "game_id",
+    "working_title",
+    "status",
+    "ready_for_build",
+    "independent_review",
+    "human_build_approval",
+    "preparation_date",
+    "all_design_values",
+    "candidate_platform_ids",
+    "audience",
+    "engine",
+    "rules",
+    "session_contract",
+    "variants",
+    "progression",
+    "ui",
+    "save",
+    "channel_profiles",
+    "performance_hypotheses",
+    "levels"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,125 @@
+[
+  {
+    "id": "P01",
+    "name": "Coolmath Games",
+    "role": "非独家授权采购",
+    "submission_url": "https://www.coolmathgames.com/submit-a-game",
+    "target_game_ids": [
+      "G04",
+      "G09",
+      "G05",
+      "G01"
+    ],
+    "reference_examples": [
+      "Paint Master",
+      "Rodha 2",
+      "Suika Watermelon Game",
+      "Tiny Fishing"
+    ],
+    "critical_caveat": "固定授权价/复购未证实",
+    "status": "VERIFY_CURRENT_TERMS_BEFORE_SUBMISSION"
+  },
+  {
+    "id": "P02",
+    "name": "CrazyGames",
+    "role": "网页测试与正式发行",
+    "submission_url": "https://developer.crazygames.com/",
+    "target_game_ids": [
+      "G01",
+      "G02",
+      "G03",
+      "G06",
+      "G04"
+    ],
+    "reference_examples": [
+      "Arrow Escape: Puzzle",
+      "Screw Out: Bolts and Nuts",
+      "Piece of Cake: Merge and Bake",
+      "Deadly Descent"
+    ],
+    "critical_caveat": "Basic 测试未必进入 Full，不保证收入",
+    "status": "VERIFY_CURRENT_TERMS_BEFORE_SUBMISSION"
+  },
+  {
+    "id": "P03",
+    "name": "Poki",
+    "role": "精选发行与推广",
+    "submission_url": "https://developers.poki.com/guide/share",
+    "target_game_ids": [
+      "G05",
+      "G06",
+      "G07",
+      "G10",
+      "G01"
+    ],
+    "reference_examples": [
+      "Level Devil",
+      "Drive Mad",
+      "Monkey Mart",
+      "Blocky Blast Puzzle"
+    ],
+    "critical_caveat": "Web 独家可能妨碍多个网页渠道销售",
+    "status": "VERIFY_CURRENT_TERMS_BEFORE_SUBMISSION"
+  },
+  {
+    "id": "P04",
+    "name": "Playgama",
+    "role": "HTML5 多平台分销",
+    "submission_url": "https://developer.playgama.com/",
+    "target_game_ids": [
+      "G01",
+      "G02",
+      "G03",
+      "G07",
+      "G09",
+      "G10"
+    ],
+    "reference_examples": [
+      "Arrow Puzzle",
+      "Good Sort Master: Triple Match",
+      "Piece of Cake: Merge & Bake",
+      "My Perfect Farm: Idle Tycoon"
+    ],
+    "critical_caveat": "不代为向 Poki/CrazyGames 投稿；无保底流量",
+    "status": "VERIFY_CURRENT_TERMS_BEFORE_SUBMISSION"
+  },
+  {
+    "id": "P05",
+    "name": "Azur Games",
+    "role": "移动发行与买量测试",
+    "submission_url": "https://azurgames.com/publish-with-us/",
+    "target_game_ids": [
+      "G01",
+      "G02",
+      "G07",
+      "G09"
+    ],
+    "reference_examples": [
+      "Block/Arrow Puzzle（行业品类，非其在售单款）",
+      "Sort Puzzle（行业品类）",
+      "Color Sort Puz（历史案例）"
+    ],
+    "critical_caveat": "需视频/APK，测试分配和合同待确认",
+    "status": "VERIFY_CURRENT_TERMS_BEFORE_SUBMISSION"
+  },
+  {
+    "id": "P06",
+    "name": "TapNation",
+    "role": "移动发行及运营",
+    "submission_url": "https://www.tap-nation.io/publishing/",
+    "target_game_ids": [
+      "G02",
+      "G03",
+      "G07",
+      "G08"
+    ],
+    "reference_examples": [
+      "Thief Puzzle",
+      "Color Water Sort",
+      "Guess Their Answer",
+      "Hero Making Tycoon"
+    ],
+    "critical_caveat": "历史发行目录，不等于当前收购榜",
+    "status": "VERIFY_CURRENT_TERMS_BEFORE_SUBMISSION"
+  }
+]

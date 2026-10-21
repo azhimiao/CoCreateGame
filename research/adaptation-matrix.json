@@ -1,0 +1,532 @@
+[
+  {
+    "game_id": "G01",
+    "family": "Arrow/路径解谜",
+    "channels": {
+      "P01": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "网格/路径求解，可本地化；移动需另审SDK。",
+    "rights_note": "箭头轨迹/拓扑原创，不能复用商业谜题及品牌。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G02",
+    "family": "分类与收纳",
+    "channels": {
+      "P01": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "容器和分类规则明确；移动广告节奏需实测。",
+    "rights_note": "主题/图标/关卡原创，不能照搬商业商品/螺丝布置。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G03",
+    "family": "合成订单/轻经营",
+    "channels": {
+      "P01": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "订单资源曲线尚未模拟；P06需移动测试数据。",
+    "rights_note": "配方/经济/剧情和烘焙资产原创或许可。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G04",
+    "family": "逻辑图层/机关",
+    "channels": {
+      "P01": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "Coolmath思考类适配；另出CrazyGames独立版本。",
+    "rights_note": "图层、机关、关卡表达与参考明确区分。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G05",
+    "family": "陷阱平台跳跃",
+    "channels": {
+      "P01": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "需真实控制手感及公平性；Poki独家需择路线。",
+    "rights_note": "不照搬Level Devil陷阱位置、角色和声音。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G06",
+    "family": "物理驾驶",
+    "channels": {
+      "P01": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "连续物理/低端设备兼容未测；Web候选。",
+    "rights_note": "第三方物理库许可及车/赛道资产分别审查。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G07",
+    "family": "自动化经营/成长",
+    "channels": {
+      "P01": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "经济/自动化瓶颈待模拟；移动与Web数据分开。",
+    "rights_note": "工人/角色/店面表达原创，共用经济库须保留。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G08",
+    "family": "群体答案问答",
+    "channels": {
+      "P01": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "真实答案语料与多文化差异阻塞；不得宣称真人联机。",
+    "rights_note": "调查/问答/译文需许可，不复制电视节目表达。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G09",
+    "family": "物理合成",
+    "channels": {
+      "P01": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "合成和堆叠稳定性需实测；不自研无必要物理引擎。",
+    "rights_note": "球体/果实/角色和音画原创，原版商标不可复用。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  },
+  {
+    "game_id": "G10",
+    "family": "装扮创造",
+    "channels": {
+      "P01": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P01-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P02": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P02-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P03": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P03-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "OTHER_WEB_RELEASES_IF_EXCLUSIVE"
+      },
+      "P04": {
+        "candidate": true,
+        "status": "CANDIDATE_UNAPPROVED",
+        "build_profile": "P04-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "P03_WEB_EXCLUSIVE_CONFLICT"
+      },
+      "P05": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P05-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      },
+      "P06": {
+        "candidate": false,
+        "status": "NOT_IN_INPUT_CANDIDATES",
+        "build_profile": "P06-isolated",
+        "commercial_terms": "UNKNOWN_UNTIL_AGREEMENT",
+        "conflict": "MOBILE_PUBLISHER_EXCLUSIVITY_TO_REVIEW"
+      }
+    },
+    "technical_note": "资产量及叠层成本先验证；保存导出限制须定义。",
+    "rights_note": "角色/服饰/肖像/字体权利独立台账，禁止未授权IP。",
+    "licensed_assets": "NONE_IMPORTED",
+    "contract_status": "NO_CONTRACT_OBTAINED_OR_SIGNED",
+    "ready_for_build": false
+  }
+]

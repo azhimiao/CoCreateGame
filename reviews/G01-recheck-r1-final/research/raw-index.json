@@ -1,0 +1,47 @@
+{
+  "hash_scope": "exact saved tool-response bytes; not canonical page HTML",
+  "records": [
+    {
+      "path": "research/raw/research_0.txt",
+      "bytes": 30622,
+      "sha256": "f98a93a469603fbd977105a9d2edfb0c1367223e652079750f79c45a01d1071e",
+      "distribution": "EXCLUDED"
+    },
+    {
+      "path": "research/raw/research_1.txt",
+      "bytes": 25827,
+      "sha256": "b914adcc4893007ad185abfbef3bedc02f3f0d88cba8dbb86f6e119abffb6042",
+      "distribution": "EXCLUDED"
+    },
+    {
+      "path": "research/raw/research_constraints.txt",
+      "bytes": 32172,
+      "sha256": "3fc8a5dda2cb999cb19ddfe5ea90141cf5049a876e694d011c4e4d481d638887",
+      "distribution": "EXCLUDED"
+    },
+    {
+      "path": "research/raw/research_final_targeted.txt",
+      "bytes": 15393,
+      "sha256": "90aab39e8a4ae5ed7fc1d206107f873fef56b12b72fbc78aa233c11f37622996",
+      "distribution": "EXCLUDED"
+    },
+    {
+      "path": "research/raw/research_licenses_final.txt",
+      "bytes": 15040,
+      "sha256": "ace0e0fd6ab6957197b2dfb6bd9a61668d8c70cf000da8109fc0571dc1112fc8",
+      "distribution": "EXCLUDED"
+    },
+    {
+      "path": "research/raw/research_more_0.txt",
+      "bytes": 27060,
+      "sha256": "2c6303646b9c9afa5df9c72ccd6ab9afa5cdbc3c97fdaedf454824d2171ba189",
+      "distribution": "EXCLUDED"
+    },
+    {
+      "path": "research/raw/research_more_1.txt",
+      "bytes": 18031,
+      "sha256": "4cbb471265851e2dff27158b6b4edffcc9678c5addad68a19ac5781a4a3cfdf6",
+      "distribution": "EXCLUDED"
+    }
+  ]
+}

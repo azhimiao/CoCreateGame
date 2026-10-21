@@ -1,0 +1,646 @@
+{
+  "access_date": "2026-10-21",
+  "rights": "Third-party research evidence only; not original or licensed production assets",
+  "screenshots": [
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-bloxorz-001-official-page.png",
+      "at": "2026-10-21T10:09:16.803Z",
+      "game": "bloxorz",
+      "elapsed_ms": 4779,
+      "sha256": "2014166417a4a734413169aefeb71f89a8d5fd3693dc3fabddbc46f826b42716",
+      "bytes": 5472,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-bloxorz-002-after-countdown.png",
+      "at": "2026-10-21T10:09:36.281Z",
+      "game": "bloxorz",
+      "elapsed_ms": 24257,
+      "sha256": "92ced7ad27555b3af36193fa3879aa692d93b8647451a830b83197a4f7449a12",
+      "bytes": 229630,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-bloxorz-003-before-click.png",
+      "at": "2026-10-21T10:09:55.640Z",
+      "game": "bloxorz",
+      "elapsed_ms": 43617,
+      "sha256": "95c6e6e43138bd51995dc25a9aaa179f688c08db8251ffd14989a5cf8d9fb36a",
+      "bytes": 229682,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-bloxorz-004-after-click.png",
+      "at": "2026-10-21T10:09:57.513Z",
+      "game": "bloxorz",
+      "elapsed_ms": 45489,
+      "sha256": "051ffd69f29413b1b040256afb6a4d5ba03f1d518466779cde8722f9950e6e78",
+      "bytes": 229622,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-bloxorz-005-before-key.png",
+      "at": "2026-10-21T10:09:57.835Z",
+      "game": "bloxorz",
+      "elapsed_ms": 45811,
+      "sha256": "b71676552f2c2d7cfa593c94ee0bf5a8e0c3beaa2f768eec94177eb7df150094",
+      "bytes": 229630,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-bloxorz-006-after-key.png",
+      "at": "2026-10-21T10:09:59.698Z",
+      "game": "bloxorz",
+      "elapsed_ms": 47675,
+      "sha256": "051ffd69f29413b1b040256afb6a4d5ba03f1d518466779cde8722f9950e6e78",
+      "bytes": 229622,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-bloxorz-007-before-key.png",
+      "at": "2026-10-21T10:10:37.325Z",
+      "game": "bloxorz",
+      "elapsed_ms": 85301,
+      "sha256": "c23162c543c4613108041aa54db4c94474be10103e552ce4730060f4126a379d",
+      "bytes": 229489,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-bloxorz-008-after-key.png",
+      "at": "2026-10-21T10:10:40.478Z",
+      "game": "bloxorz",
+      "elapsed_ms": 88454,
+      "sha256": "46d881748372c9ccf1733c7dc1cfbb403c51766c82697c1d5b645065aca91a06",
+      "bytes": 252028,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-liquid2-009-official-page.png",
+      "at": "2026-10-21T10:12:57.803Z",
+      "game": "liquid2",
+      "elapsed_ms": 1268,
+      "sha256": "2014166417a4a734413169aefeb71f89a8d5fd3693dc3fabddbc46f826b42716",
+      "bytes": 5472,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-liquid2-010-liquid-initial-load.png",
+      "at": "2026-10-21T10:13:06.327Z",
+      "game": "liquid2",
+      "elapsed_ms": 9792,
+      "sha256": "2e86d4b4d9bb889b8bf01c0d547812790eab3dfe5593937e50667770ebfa7764",
+      "bytes": 473713,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-liquid2-011-before-click.png",
+      "at": "2026-10-21T10:13:25.385Z",
+      "game": "liquid2",
+      "elapsed_ms": 28850,
+      "sha256": "2e86d4b4d9bb889b8bf01c0d547812790eab3dfe5593937e50667770ebfa7764",
+      "bytes": 473713,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-liquid2-012-after-click.png",
+      "at": "2026-10-21T10:13:26.454Z",
+      "game": "liquid2",
+      "elapsed_ms": 29919,
+      "sha256": "6fc5b09d98b2bddb72e8de164d7425f3dcfa82f121b70f09f43a805783de0816",
+      "bytes": 473714,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-liquid2-013-before-key.png",
+      "at": "2026-10-21T10:13:26.960Z",
+      "game": "liquid2",
+      "elapsed_ms": 30425,
+      "sha256": "6fc5b09d98b2bddb72e8de164d7425f3dcfa82f121b70f09f43a805783de0816",
+      "bytes": 473714,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-liquid2-014-after-key.png",
+      "at": "2026-10-21T10:13:28.801Z",
+      "game": "liquid2",
+      "elapsed_ms": 32266,
+      "sha256": "6fc5b09d98b2bddb72e8de164d7425f3dcfa82f121b70f09f43a805783de0816",
+      "bytes": 473714,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-browser-015-liquid-final-confirmation.png",
+      "at": "2026-10-21T10:13:38.039Z",
+      "game": null,
+      "elapsed_ms": null,
+      "sha256": "2e86d4b4d9bb889b8bf01c0d547812790eab3dfe5593937e50667770ebfa7764",
+      "bytes": 473713,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-016-official-page.png",
+      "at": "2026-10-21T10:14:19.802Z",
+      "game": "paintmaster",
+      "elapsed_ms": 1647,
+      "sha256": "2014166417a4a734413169aefeb71f89a8d5fd3693dc3fabddbc46f826b42716",
+      "bytes": 5472,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-017-paint-load-check.png",
+      "at": "2026-10-21T10:14:34.166Z",
+      "game": "paintmaster",
+      "elapsed_ms": 16010,
+      "sha256": "d929d628ba55e1ad13294e2089cf2dd452df5f64678e14f0408bdd5f3e285c4d",
+      "bytes": 173511,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-018-before-click-text.png",
+      "at": "2026-10-21T10:14:43.462Z",
+      "game": "paintmaster",
+      "elapsed_ms": 25306,
+      "sha256": "d929d628ba55e1ad13294e2089cf2dd452df5f64678e14f0408bdd5f3e285c4d",
+      "bytes": 173511,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-019-after-click-text.png",
+      "at": "2026-10-21T10:14:45.217Z",
+      "game": "paintmaster",
+      "elapsed_ms": 27061,
+      "sha256": "bdfde189c16cb62abaf19fb51be61c30ac049186aec723bfe5e543475fcffd35",
+      "bytes": 168830,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-020-paint-after-launch.png",
+      "at": "2026-10-21T10:15:00.834Z",
+      "game": "paintmaster",
+      "elapsed_ms": 42678,
+      "sha256": "599f3ca60e1bfb6d41eab29a0009448e3be9d924557259380d9acf2627b87edc",
+      "bytes": 144050,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-021-paint-loading-recheck.png",
+      "at": "2026-10-21T10:15:21.988Z",
+      "game": "paintmaster",
+      "elapsed_ms": 63832,
+      "sha256": "cbd130574d21b983873b781bb9c14b3adfca71434b621244cebd0a1c26bbd48f",
+      "bytes": 218217,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-022-before-click.png",
+      "at": "2026-10-21T10:15:41.394Z",
+      "game": "paintmaster",
+      "elapsed_ms": 83238,
+      "sha256": "cbd130574d21b983873b781bb9c14b3adfca71434b621244cebd0a1c26bbd48f",
+      "bytes": 218217,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-023-after-click.png",
+      "at": "2026-10-21T10:15:43.443Z",
+      "game": "paintmaster",
+      "elapsed_ms": 85287,
+      "sha256": "e325350a839c9f4256a7d75aa25975772d60d5396129924bb9d3b8b0e6428646",
+      "bytes": 218224,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-024-paint-title-controls.png",
+      "at": "2026-10-21T10:15:59.976Z",
+      "game": "paintmaster",
+      "elapsed_ms": 101820,
+      "sha256": "f3be240fb7ec4dacf2a11d6344d926df61021a1dcc10880bf3242a0a10e1158b",
+      "bytes": 311657,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-025-before-click.png",
+      "at": "2026-10-21T10:16:16.880Z",
+      "game": "paintmaster",
+      "elapsed_ms": 118724,
+      "sha256": "c9c161db5c4c80a08217d60d9e3b2d86daf3580cfb879512141df3bcc0c0494b",
+      "bytes": 313331,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-026-after-click.png",
+      "at": "2026-10-21T10:16:19.471Z",
+      "game": "paintmaster",
+      "elapsed_ms": 121315,
+      "sha256": "794dddd4bb8dcecc349850be60f299faf1a76462097d9d1e2cf44af68c651b4a",
+      "bytes": 243475,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-027-before-click.png",
+      "at": "2026-10-21T10:16:34.089Z",
+      "game": "paintmaster",
+      "elapsed_ms": 135933,
+      "sha256": "8c799eea10dcf84975be38ff69915c6edf18418f9e7e89d7bbb4f778558da164",
+      "bytes": 244573,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-028-after-click.png",
+      "at": "2026-10-21T10:16:36.157Z",
+      "game": "paintmaster",
+      "elapsed_ms": 138001,
+      "sha256": "657c093288c0e621b5c8e88d95f95fe621fa1b4afd5dbd26a9ca9d454a714359",
+      "bytes": 245980,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-029-before-click.png",
+      "at": "2026-10-21T10:16:56.421Z",
+      "game": "paintmaster",
+      "elapsed_ms": 158265,
+      "sha256": "b4b0e9a91530533f7a39e6d6fe4c975ca8349c8d9ad346a0217cb4b1f74b3938",
+      "bytes": 243353,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-030-after-click.png",
+      "at": "2026-10-21T10:16:58.710Z",
+      "game": "paintmaster",
+      "elapsed_ms": 160554,
+      "sha256": "52066a33da028cce1feec0e274f97802d679f67de6305671e9f7ff9e40a8d516",
+      "bytes": 245771,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-031-before-click.png",
+      "at": "2026-10-21T10:17:00.146Z",
+      "game": "paintmaster",
+      "elapsed_ms": 161990,
+      "sha256": "eb001132af4b1377b78683fa0ae7ab7d21b38c2bad353b3e319dee22505e1c8c",
+      "bytes": 243526,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-032-after-click.png",
+      "at": "2026-10-21T10:17:03.010Z",
+      "game": "paintmaster",
+      "elapsed_ms": 164854,
+      "sha256": "6fabc22e8d0826fe2f1d621fcfed8d8cd9d2bd015787f06a0e05267dd4a8a39d",
+      "bytes": 244655,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-033-paint-level-progression.png",
+      "at": "2026-10-21T10:17:15.753Z",
+      "game": "paintmaster",
+      "elapsed_ms": 177597,
+      "sha256": "2dcebba8ebd7b964247692951b4da672993b725189851d3c87bb30c88fcf4040",
+      "bytes": 243429,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-034-before-click.png",
+      "at": "2026-10-21T10:17:46.865Z",
+      "game": "paintmaster",
+      "elapsed_ms": 208709,
+      "sha256": "ee1991d867cf2d448c0389c021db8296566c881bceb632edaa0850ea8e8ea56e",
+      "bytes": 244261,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-035-after-click.png",
+      "at": "2026-10-21T10:17:48.942Z",
+      "game": "paintmaster",
+      "elapsed_ms": 210786,
+      "sha256": "f59a29c79898c05c598b25d5e3b8ec2cf9c19d2591e582fc74a7959aa1cf83ef",
+      "bytes": 245436,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-036-before-click.png",
+      "at": "2026-10-21T10:17:50.450Z",
+      "game": "paintmaster",
+      "elapsed_ms": 212294,
+      "sha256": "cb006df73ab139724f52c20f96fe33646f0d9263b9a1a5f1f986127b8707335f",
+      "bytes": 242256,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-037-after-click.png",
+      "at": "2026-10-21T10:17:52.511Z",
+      "game": "paintmaster",
+      "elapsed_ms": 214355,
+      "sha256": "ea320dd6368eacd7deebed9624dd120466d049b987e4cec97f83975909607b94",
+      "bytes": 245598,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-038-before-click.png",
+      "at": "2026-10-21T10:18:12.168Z",
+      "game": "paintmaster",
+      "elapsed_ms": 234012,
+      "sha256": "7eed4bba9ba141fa6e719b154fc6669e875e18d85a681ac3b17479ea97734c54",
+      "bytes": 242406,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-039-after-click.png",
+      "at": "2026-10-21T10:18:14.023Z",
+      "game": "paintmaster",
+      "elapsed_ms": 235867,
+      "sha256": "e58ac995db27ee9f854d8cbbab91b6ae5b5ccb1614dc176fa2304fec234c5723",
+      "bytes": 245822,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-040-before-click.png",
+      "at": "2026-10-21T10:18:15.499Z",
+      "game": "paintmaster",
+      "elapsed_ms": 237343,
+      "sha256": "3e7bdd694583a791c51d4d41ffb605e5742ddc51f442c84c17b859ddeb38c144",
+      "bytes": 242257,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-041-after-click.png",
+      "at": "2026-10-21T10:18:17.585Z",
+      "game": "paintmaster",
+      "elapsed_ms": 239429,
+      "sha256": "f922249ee64d1fc2c2aa13a103d7f4b59da020381136e55fc548bb0ea87c0a6b",
+      "bytes": 245235,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-042-before-click.png",
+      "at": "2026-10-21T10:18:19.135Z",
+      "game": "paintmaster",
+      "elapsed_ms": 240979,
+      "sha256": "f6fb6b83e8766d7426db15b7061ee4ebc8cd558dc7c449ae3595319fd6b1cac9",
+      "bytes": 241788,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-043-after-click.png",
+      "at": "2026-10-21T10:18:21.173Z",
+      "game": "paintmaster",
+      "elapsed_ms": 243017,
+      "sha256": "153cba0ee13db7bd18db69cd22a31c67fabb27e1f057761e7c7cb1c481c40679",
+      "bytes": 245663,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-044-before-click.png",
+      "at": "2026-10-21T10:18:22.542Z",
+      "game": "paintmaster",
+      "elapsed_ms": 244386,
+      "sha256": "be756e309bf9a23e1aac7d2ddd19b206d770334184a62905a5c655b967e535c4",
+      "bytes": 242285,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-045-after-click.png",
+      "at": "2026-10-21T10:18:24.698Z",
+      "game": "paintmaster",
+      "elapsed_ms": 246542,
+      "sha256": "adc29585ca5b11484fe06a6b7dfc54e16682652902ad14504238b5c2a3c59e41",
+      "bytes": 245736,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-046-before-click.png",
+      "at": "2026-10-21T10:18:26.075Z",
+      "game": "paintmaster",
+      "elapsed_ms": 247919,
+      "sha256": "ee688719812799745ac8963be8d307a1aebcb6162ab29a3494d837e048fa0de1",
+      "bytes": 241631,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-047-after-click.png",
+      "at": "2026-10-21T10:18:28.046Z",
+      "game": "paintmaster",
+      "elapsed_ms": 249890,
+      "sha256": "e5eac43a87c7395736f6bfc07a85bedf4f3e176516b4d4da8faa446fe8b97aea",
+      "bytes": 245593,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-048-before-click.png",
+      "at": "2026-10-21T10:18:29.340Z",
+      "game": "paintmaster",
+      "elapsed_ms": 251184,
+      "sha256": "23ae0327412887d46d302a6830591d5680f4f462a6697d77daae7fa8e0702b99",
+      "bytes": 242818,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-049-after-click.png",
+      "at": "2026-10-21T10:18:31.283Z",
+      "game": "paintmaster",
+      "elapsed_ms": 253127,
+      "sha256": "bfb84e288bc1d1df813da245138a4b94c6dfee196a55b90d2afd3eab9ad890cd",
+      "bytes": 245560,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-050-before-click.png",
+      "at": "2026-10-21T10:18:32.672Z",
+      "game": "paintmaster",
+      "elapsed_ms": 254516,
+      "sha256": "2af57f237205a757e6f90a716b80bcb52e7698248323b232914e620252f6de87",
+      "bytes": 242575,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-051-after-click.png",
+      "at": "2026-10-21T10:18:34.741Z",
+      "game": "paintmaster",
+      "elapsed_ms": 256585,
+      "sha256": "4c95e3d5a25d9421208939c4d0e14fe7e8485a99c9d0e88195cc7c0aabd11aef",
+      "bytes": 245897,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-052-before-click.png",
+      "at": "2026-10-21T10:18:36.236Z",
+      "game": "paintmaster",
+      "elapsed_ms": 258080,
+      "sha256": "6477b2b89e96949dbc40228688ab5012dc398065cc8f87b6b6b03a9922b13881",
+      "bytes": 241338,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-053-after-click.png",
+      "at": "2026-10-21T10:18:38.388Z",
+      "game": "paintmaster",
+      "elapsed_ms": 260232,
+      "sha256": "f8dd5b2843602b36de141f733f60dc3d0fd3b38d59a9dd7089ea84e48161db6a",
+      "bytes": 231206,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-054-paint-game-over-controls.png",
+      "at": "2026-10-21T10:19:33.563Z",
+      "game": "paintmaster",
+      "elapsed_ms": 315407,
+      "sha256": "5f3b20a93bc5fb70a8bb5d3ef667c6bdf4ac0adf82e756c65fa7028243005bfb",
+      "bytes": 245829,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-055-before-click.png",
+      "at": "2026-10-21T10:19:52.139Z",
+      "game": "paintmaster",
+      "elapsed_ms": 333983,
+      "sha256": "cb0e2e941549f6d061bddf435bb3557ff588b35f2fa4754a95f670a4d22eba65",
+      "bytes": 245332,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-056-after-click.png",
+      "at": "2026-10-21T10:19:54.827Z",
+      "game": "paintmaster",
+      "elapsed_ms": 336671,
+      "sha256": "7bc1f09b501b2dda209b826124075537c5c7d5b9baad108c992335965f28f85a",
+      "bytes": 236101,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-057-paint-results-controls.png",
+      "at": "2026-10-21T10:20:13.838Z",
+      "game": "paintmaster",
+      "elapsed_ms": 355682,
+      "sha256": "c92f404fea32c42a83d19f7f50592f28f9655895e9f0b888cf08b0ed6e18033e",
+      "bytes": 266306,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-058-before-click.png",
+      "at": "2026-10-21T10:20:32.846Z",
+      "game": "paintmaster",
+      "elapsed_ms": 374690,
+      "sha256": "114d5eb651f4e5955b133d3758846301bf56d3200dd23e6d0abed61c430bc9b9",
+      "bytes": 266122,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-059-after-click.png",
+      "at": "2026-10-21T10:20:36.058Z",
+      "game": "paintmaster",
+      "elapsed_ms": 377902,
+      "sha256": "968338bac99ec3e484c9e0798348ce8f2f84e3dd411d57033c79f4d314634a6d",
+      "bytes": 249462,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-060-paint-return-after-results.png",
+      "at": "2026-10-21T10:20:53.501Z",
+      "game": "paintmaster",
+      "elapsed_ms": 395345,
+      "sha256": "5d6a2062493fa8068e7bfc6b6dc9bb5d020e0362d4c12c2fcc15585fa6930e02",
+      "bytes": 313542,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-061-before-click.png",
+      "at": "2026-10-21T10:21:03.362Z",
+      "game": "paintmaster",
+      "elapsed_ms": 405206,
+      "sha256": "71097bb9b36f12c68542129837213e9a87fdcb92c0bbdbe404a6a43973f143b1",
+      "bytes": 312947,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-062-after-click.png",
+      "at": "2026-10-21T10:21:05.645Z",
+      "game": "paintmaster",
+      "elapsed_ms": 407489,
+      "sha256": "43d7c98839d40925ce1fccaf13aa9a49d99d4f06ea75a94c7f15e09d0a751aa6",
+      "bytes": 243939,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-063-before-click.png",
+      "at": "2026-10-21T10:21:16.007Z",
+      "game": "paintmaster",
+      "elapsed_ms": 417851,
+      "sha256": "16283c7b9650d9b45d2de78229a3fd937a307960f0bd8fce592181112c6bf792",
+      "bytes": 242894,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-08-52-583Z-paintmaster-064-after-click.png",
+      "at": "2026-10-21T10:21:17.798Z",
+      "game": "paintmaster",
+      "elapsed_ms": 419642,
+      "sha256": "dcb6cd6179120243eb8aaaeb82fae94aa81a516f4405c71b6bdff5d4b443c6e6",
+      "bytes": 245634,
+      "width": 1365,
+      "height": 900
+    }
+  ]
+}

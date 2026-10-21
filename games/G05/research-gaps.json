@@ -1,0 +1,257 @@
+{
+  "project_id": "G05",
+  "family": "陷阱平台跳跃",
+  "preparation_batch": "P2",
+  "updated_at": "2026-10-21",
+  "status": "SPEC_NOT_COMPLETE",
+  "project_status": "EVIDENCE_COLLECTED",
+  "ready_for_build": false,
+  "candidate_platform_ids": [
+    "P01",
+    "P03"
+  ],
+  "scope": "NON_P0_PREPARATION_ONLY",
+  "approval": {
+    "game_id_and_construction_dossier": "NOT_GRANTED",
+    "final_game_development": false,
+    "submission": false,
+    "external_contact": false,
+    "paid_purchase": false
+  },
+  "benchmark_playthrough_status": "NOT_PERFORMED",
+  "independent_review_status": "NOT_PERFORMED",
+  "evidence": [
+    {
+      "claim_id": "G05-E01",
+      "reference_title": "Level Devil",
+      "source_url": "https://poki.com/en/g/level-devil",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "平台列 December 2023；更新 September 2026",
+      "evidence_type": "OFFICIAL_HOST_GAME_PAGE",
+      "claim": "Poki 署名 Unept；描述突发坍塌、移动障碍及控制变化，给出左右移动与跳跃、手机屏幕按键。页面说明不是本轮实际关卡回放。",
+      "metric_definition": "机制/输入类别；平台点赞与评分属于站内投票，非去重玩家量/留存/收益，本轮不引用浮动计数。",
+      "unknown": "具体关卡触发坐标、tick、容错窗口、复活耗时、真实挫败/重玩率 UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "How Level Devil works / Controls / Types of traps"
+    },
+    {
+      "claim_id": "G05-E02",
+      "reference_title": "Rodha 2",
+      "source_url": "https://www.coolmathgames.com/0-rodha-2",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "页面列 Release/Updated Oct 15, 2026",
+      "evidence_type": "OFFICIAL_HOST_GAME_PAGE",
+      "claim": "Coolmath说明方向跳跃、空中双跳、触旗后检查点重生与完成主线后挑战模式。它作为可见障碍/时机对照，不能冒充隐藏陷阱同类。",
+      "metric_definition": "公开玩法描述与版本日期；不是实测时长、安装数或采购频率。",
+      "unknown": "实际操作手感、初次游玩流程、检查点间隔、真实运行状态及收益 UNKNOWN。抽取文本含通用Flash回退提示，不能据此确认游戏使用Flash或停运。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Instructions / Release / Platforms"
+    }
+  ],
+  "channel_evidence": [
+    {
+      "platform_id": "P01",
+      "source_url": "https://www.coolmathgames.com/submit-a-game",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_SUBMISSION_RULE",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方表示可购买非独家托管许可；要求 HTML5、思考性玩法、无暴力粗口、去广告/外链/回传统计及姓名输入。报价、购买量和具体合同 UNKNOWN。",
+      "recheck": "正式投稿及签约当日"
+    },
+    {
+      "platform_id": "P03",
+      "source_url": "https://developers.poki.com/guide/revenue-deal-types",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_DEAL_DESCRIPTION",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方区分 Web 独家与一次性非独家许可；独家默认期限为五年但以实际协议为准，范围含开放 Web、Discord、YouTube Playables；移动商店不在默认 Web 独家范围。",
+      "recheck": "选定发行路径及签约当日"
+    }
+  ],
+  "original_hypotheses": [
+    {
+      "id": "G05-H1",
+      "status": "HYPOTHESIS",
+      "claim": "HYPOTHESIS G05-H1：在短关中让陷阱具有稳定、可回读的触发因果，会比只靠第一次意外惩罚提高失败后的理解与自主重试，而不显著降低挑战感。",
+      "variants": [
+        {
+          "label": "B0 基线",
+          "description": "自拟短关，固定可见障碍与相同运动参数；不含死亡提示或玩家机关预演。"
+        },
+        {
+          "label": "V1 回读线索",
+          "description": "只在死亡后显示导致本次失败的机关触发链，并保留已经发现的线索；不改变碰撞/跳跃难度。"
+        },
+        {
+          "label": "V2 开关预演",
+          "description": "只允许到达安全观测点时预演一次机关相位，之后正式跳跃；不显示死亡因果回读。"
+        }
+      ],
+      "results": "UNKNOWN"
+    }
+  ],
+  "saturation_signal": {
+    "observation": "Level Devil 页列出多类突发陷阱；Rodha 2 已提供检查点、双跳和挑战模式。两参考表明短关重试与机关变体供给存在，不能据此估计新作拒绝率。饱和程度 UNKNOWN；需要同渠道目录去重采样后再谈供给拥挤。",
+    "interpretation": "SUPPLY_SIMILARITY_ONLY",
+    "failed_game_rate": "UNKNOWN",
+    "profit_effect": "UNKNOWN"
+  },
+  "research_gaps": [
+    {
+      "id": "G05-R02",
+      "document": "02_Benchmark_Playthrough.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "Level Devil的首个陷阱是在接近、落地还是按键后触发？Rodha 2的落地续移与双跳怎样区别于常规平台？第一次死亡多久恢复？",
+      "required_evidence": "各记录0–30秒/前5分钟、首次失败、再次成功、检查点和退出回归；输入轨迹与画面时间戳配对。提示页回退文本须用真实浏览器验证，未进入关卡不记为实玩。",
+      "reason": "没有任何直接操控或可用回放，隐藏触发与手感仍UNKNOWN。"
+    },
+    {
+      "id": "G05-R03",
+      "document": "03_Full_GDD.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "采用连续跑跳还是方向跳跃？失败后机关重置哪些状态？回读线索/预演会不会直接泄题？",
+      "required_evidence": "只选一种控制；列入口到复玩的状态图、跳跃/死亡/重试规则和玩家可见因果；B0/V1/V2各自定义，说明提示可关闭及异常状态。",
+      "reason": "角色控制、因果揭示和失败规则未选定。"
+    },
+    {
+      "id": "G05-R04",
+      "document": "04_Systems_and_Data.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "输入缓冲、土狼时间、台面/危险/开关事件以什么tick判定？关卡复位如何避免重复机关？",
+      "required_evidence": "输入/碰撞/触发事件先后表与同帧冲突例子；列可回放的状态字段、复位事务和版本要求。缓冲等数值须标自有设计并另测。",
+      "reason": "tick、碰撞形状和事件顺序未定义，不制造GameSpec。"
+    },
+    {
+      "id": "G05-R05",
+      "document": "05_Levels_Economy.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "前20关分别教哪条因果？如何避免后关只增加隐藏陷阱？每关有无不依赖抢帧的解法？",
+      "required_evidence": "20个原创具名关卡的布局/触发图、胜利路径、失败原因、提示、引入机制及可达性/真人记录；不得复制参考关卡坐标。",
+      "reason": "关卡语法与难度曲线尚未研究。"
+    },
+    {
+      "id": "G05-R06",
+      "document": "06_UI_Art_Audio.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "玩家能否在手机上分辨地板消失前的线索？重试按钮会不会被拇指遮挡？",
+      "required_evidence": "角色/地面/危险/可交互物的视觉语法，键位与安全区草图，逐动画和音效触发清单；保留误触/色觉与无声模式识别记录。",
+      "reason": "没有最终UI、动作帧、声音和素材许可。"
+    },
+    {
+      "id": "G05-R07",
+      "document": "07_Tech_Architecture.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "Cocos候选如何实现固定步长与插值？失焦、掉帧、广告暂停后是否重复消费跳跃输入？",
+      "required_evidence": "版本/物理或自定义角色控制比较，输入时钟方案、最长追帧边界和目标设备协议；后续批准实验需提供跳跃回放与帧时间记录。",
+      "reason": "引擎与运动模型未经测量，不批准自行实现整游。"
+    },
+    {
+      "id": "G05-R08",
+      "document": "08_OpenSource_Licenses.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "角色控制算法/库许可是否允许分发？动作、机关声音和字体由谁提供？",
+      "required_evidence": "分别列代码版本/许可、角色原始源文件权属、音频来源和署名要求；相似陷阱概念不授予具体关卡/表达的复制权。",
+      "reason": "没有选定库和可授权的美术音频资产。"
+    },
+    {
+      "id": "G05-R09",
+      "document": "09_Implementation_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "先冻结手感还是先铺20关？关卡作者如何知道不可更改的碰撞/重试约束？",
+      "required_evidence": "未来任务依赖应为控制验收→机关语法→关卡→平台；每项明确输入参数版本、输出关卡文件与可达/体验DoD。",
+      "reason": "控制与关卡定义未闭合，任务JSON会制造可施工假象。"
+    },
+    {
+      "id": "G05-R10",
+      "document": "10_QA_Test_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "如何区分不公平突袭、延迟导致死亡和玩家失误？重试后碰撞状态是否清零？",
+      "required_evidence": "未来覆盖同帧开关/死亡、触控释放、失焦/恢复、重试状态散列、不同帧率可达性及无讲解盲测；保存每次失败因果。",
+      "reason": "无规则阈值或操作样本，测试未执行。"
+    },
+    {
+      "id": "G05-R11",
+      "document": "11_Distribution_Business.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "P01思考性/无暴力版本能否保留挑战？P03独家与P01托管怎样择一或谈例外？",
+      "required_evidence": "按官方入口和实际协议逐条核对；列去广告/外链/回传构建差异、关卡表达版权表和兼容授权范围。",
+      "reason": "没有采购意向、合同和已批准发行方案。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "G05-B1",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "Level Devil/Rodha 2没有直接试玩和首败重试证据"
+    },
+    {
+      "id": "G05-B2",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "控制tick、碰撞、公平线索及原创20关均未冻结"
+    },
+    {
+      "id": "G05-B3",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "P01思考性/安全表达及美术音频许可待核"
+    },
+    {
+      "id": "G05-B4",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "P03网页独家与P01托管可能冲突"
+    },
+    {
+      "id": "G05-M1",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "finding": "02–11缺完整施工定义；本轮不具备独立实现条件"
+    },
+    {
+      "id": "G05-m1",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "finding": "官方动态页没有本地原始快照，决策前需归档"
+    }
+  ],
+  "not_created": [
+    {
+      "file": "game-spec.json",
+      "reason": "规则/实体/数值未冻结，不能伪造可执行规格"
+    },
+    {
+      "file": "tasks.json",
+      "reason": "施工输入与验收未闭合，不能伪造工程任务依赖"
+    }
+  ],
+  "stop_line": {
+    "status": "PROPOSED_NOT_APPROVED",
+    "rule": "建议后续资料研究最多6人时、两轮核查（HYPOTHESIS预算建议，未批准）。两参考仍无法记录输入→触发→死亡→重试因果时，暂停20关设计；若两轮未来盲测仍无法区分误触/不可见信息/操作挑战，或需要抄原作桥段才显有趣，建议撤回变体或KILLED。",
+    "cash_budget": "UNKNOWN"
+  },
+  "next_action": "先记录Level Devil与Rodha 2各自的第一败/重试、键盘/触控和检查点路径，保留版本与时间戳；建立公平性判读表后再选择原创控制和机关语言。",
+  "exit_gate": [
+    "直接试玩证据",
+    "03–11完整模块",
+    "许可与合同冲突关闭",
+    "独立反向审计BLOCKER关闭",
+    "人类批准游戏ID及施工档案"
+  ],
+  "scope_note": "仅更新本项目目录；根STATUS.md及data保持只读。项目状态为目录内局部研究进度，未同步根项目清单。"
+}

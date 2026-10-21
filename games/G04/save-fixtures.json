@@ -1,0 +1,2460 @@
+{
+  "fixture_revision": "r2",
+  "content_hash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+  "canonical_vector": {
+    "value": {
+      "z": "中文会话",
+      "a": {
+        "b": [
+          2,
+          true,
+          null,
+          "上层\n校准"
+        ],
+        "a": "折光机关"
+      }
+    },
+    "canonical_utf8": "{\"a\":{\"a\":\"折光机关\",\"b\":[2,true,null,\"上层\\n校准\"]},\"z\":\"中文会话\"}",
+    "canonical_hex": "7b2261223a7b2261223a22e68a98e58589e69cbae585b3222c2262223a5b322c747275652c6e756c6c2c22e4b88ae5b1825c6ee6a0a1e58786225d7d2c227a223a22e4b8ade69687e4bc9ae8af9d227d",
+    "sha256": "372e61a9d1cdac88e09bd95385e55bc97909763d0b81840e5c3f4a7e42fa07da"
+  },
+  "valid": [
+    {
+      "id": "chinese_active_playing",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "dd98a2e56e489dc65eed7ad83fcff03dda1c6a7b6f79198e440c338b430a3b24"
+      },
+      "expected": "OK",
+      "expected_payload_sha256": "dd98a2e56e489dc65eed7ad83fcff03dda1c6a7b6f79198e440c338b430a3b24"
+    },
+    {
+      "id": "failed_can_undo",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 8,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L01",
+          "levelName": "第一束光",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000003",
+          "assisted": true,
+          "nextSeq": 30,
+          "totalAccepted": 6,
+          "undoCount": 0,
+          "acceptedCommands": [
+            "R",
+            "L",
+            "R",
+            "L",
+            "R",
+            "L"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              0,
+              1
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 6,
+            "status": "FAILED",
+            "failure": "MOVE_LIMIT"
+          }
+        },
+        "checksum": "00c01efa925ed3725700e8b65bedd4b3f9e36b0f129f35c070b49ae610db61d1"
+      },
+      "expected": "OK",
+      "expected_payload_sha256": "00c01efa925ed3725700e8b65bedd4b3f9e36b0f129f35c070b49ae610db61d1",
+      "expected_undo_state": {
+        "position": [
+          0,
+          1,
+          1
+        ],
+        "bits": 1,
+        "pending": 0,
+        "nextBeacon": 0,
+        "used": 5,
+        "status": "PLAYING",
+        "failure": null
+      }
+    }
+  ],
+  "invalid_or_migration": [
+    {
+      "id": "bad_checksum",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": true,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "dd98a2e56e489dc65eed7ad83fcff03dda1c6a7b6f79198e440c338b430a3b24"
+      },
+      "expected": "CHECKSUM_MISMATCH"
+    },
+    {
+      "id": "duplicate_settings_authority",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001",
+          "settings": {
+            "sfx": true,
+            "music": false,
+            "reducedMotion": false,
+            "locale": "zh-CN",
+            "contrast": "standard"
+          }
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "ba9183079b09718b94ffafe6d3bef4c4447ff71e8d5426a8b93b18b8e0bda84a"
+      },
+      "expected": "SCHEMA_INVALID"
+    },
+    {
+      "id": "forged_final_bits",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 7,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "d81dedb57f7ff72e3e9cd818efaf6e4cc151ba5ba10b049833aa47870a3139f6"
+      },
+      "expected": "REPLAY_MISMATCH"
+    },
+    {
+      "id": "completed_without_best_used",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "535c3a11be5cfb78d4e38b6816374c5fc0db5ca62dce39a0439048a08ff70d4c"
+      },
+      "expected": "SCHEMA_INVALID"
+    },
+    {
+      "id": "unlocked_chain_forged",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 20,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "dc134f628d21f681c37ea917f98d600de217b2bc363ea71f80666e65e435d2ed"
+      },
+      "expected": "PROGRESS_INVALID"
+    },
+    {
+      "id": "future_schema",
+      "value": {
+        "schemaVersion": 2,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "58db446a5893e753872fabc06ba3de4f795c233193970b2896bdff81aaa1f09d"
+      },
+      "expected": "UNSUPPORTED_SCHEMA"
+    },
+    {
+      "id": "unknown_rule",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "2.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "b69abd07373d4e1561cb5b655c168854c414aed7655370879c7f45f132f0ada3"
+      },
+      "expected": "UNSUPPORTED_RULE"
+    },
+    {
+      "id": "other_profile",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "P01",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "c5ff18642e823e5be9a5b62be6fdd3cf56651a891e58e499fe04cb00e80f1db6"
+      },
+      "expected": "PROFILE_MISMATCH"
+    },
+    {
+      "id": "content_update",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "f43ec6ef06b87eafa9b7d8bf904ae1278a0f0f8cf168d606db495ba086435b8a"
+      },
+      "expected": "CONTENT_CHANGED"
+    },
+    {
+      "id": "saved_won_session",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "WON",
+            "failure": null
+          }
+        },
+        "checksum": "efe0d7981dc539021b091a62ccd6347cf7531107aa2a888c36f13cc0b5b66db5"
+      },
+      "expected": "SCHEMA_INVALID"
+    },
+    {
+      "id": "wrong_level_name",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-10-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "伪造关名",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "ed53923232d511be248f0d57d9b92e003f75e628afe2c394d4c71e4978d934ba"
+      },
+      "expected": "SESSION_INVALID"
+    },
+    {
+      "id": "invalid_timestamp",
+      "value": {
+        "schemaVersion": 1,
+        "ruleVersion": "1.0.0",
+        "profile": "local-qa",
+        "contentHash": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+        "revision": 7,
+        "updatedAt": "2026-13-21T10:30:00.000Z",
+        "progress": {
+          "records": [
+            {
+              "levelId": "G04-L01",
+              "completed": true,
+              "bestStars": 3,
+              "bestUsed": 2
+            },
+            {
+              "levelId": "G04-L02",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L03",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L04",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L05",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L06",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L07",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L08",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L09",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L10",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L11",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L12",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L13",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L14",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L15",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L16",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L17",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L18",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L19",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            },
+            {
+              "levelId": "G04-L20",
+              "completed": false,
+              "bestStars": 0,
+              "bestUsed": null
+            }
+          ],
+          "highestUnlocked": 2,
+          "lastCommittedAttemptId": "a-00000000000000000000000000000001"
+        },
+        "settings": {
+          "sfx": true,
+          "music": false,
+          "reducedMotion": false,
+          "locale": "zh-CN",
+          "contrast": "standard"
+        },
+        "activeSession": {
+          "levelId": "G04-L02",
+          "levelName": "绕行不是答案",
+          "variant": "B0",
+          "attemptId": "a-00000000000000000000000000000002",
+          "assisted": true,
+          "nextSeq": 12,
+          "totalAccepted": 3,
+          "undoCount": 2,
+          "acceptedCommands": [
+            "R"
+          ],
+          "ruleState": {
+            "position": [
+              0,
+              1,
+              0
+            ],
+            "bits": 1,
+            "pending": 0,
+            "nextBeacon": 0,
+            "used": 1,
+            "status": "PLAYING",
+            "failure": null
+          }
+        },
+        "checksum": "20ec1ff30393707f3eb00557821446a6eba237f128bc6e90df12c752a9e48033"
+      },
+      "expected": "SCHEMA_INVALID"
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "project_id": "G06",
+  "family": "物理驾驶",
+  "preparation_batch": "P2",
+  "updated_at": "2026-10-21",
+  "status": "SPEC_NOT_COMPLETE",
+  "project_status": "EVIDENCE_COLLECTED",
+  "ready_for_build": false,
+  "candidate_platform_ids": [
+    "P02",
+    "P03"
+  ],
+  "scope": "NON_P0_PREPARATION_ONLY",
+  "approval": {
+    "game_id_and_construction_dossier": "NOT_GRANTED",
+    "final_game_development": false,
+    "submission": false,
+    "external_contact": false,
+    "paid_purchase": false
+  },
+  "benchmark_playthrough_status": "NOT_PERFORMED",
+  "independent_review_status": "NOT_PERFORMED",
+  "evidence": [
+    {
+      "claim_id": "G06-E01",
+      "reference_title": "Drive Mad",
+      "source_url": "https://poki.com/en/g/drive-mad",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "平台称Web自2022；当前页更新September 2026，不能视作移动首次发布日",
+      "evidence_type": "OFFICIAL_HOST_GAME_PAGE",
+      "claim": "Poki署名Fancade；说明加速、制动/后退和平衡，包含不同物理障碍。只按该页确认控制理念，不采用它的市场宣传作成功率。",
+      "metric_definition": "控制类别和目标描述；页面提到特定地区/时窗游玩数及厂商累计口径，但本研究不使用这些数字推算收益或候选规模。",
+      "unknown": "质量/摩擦/扭矩、空中控制公式、回放确定性、玩家留存和开发者回款UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "How to play / Controls / About Drive Mad"
+    },
+    {
+      "claim_id": "G06-E02",
+      "reference_title": "Deadly Descent",
+      "source_url": "https://playgama.com/game/deadly-descent",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "平台列September 2024；当前更新October 2026",
+      "evidence_type": "OFFICIAL_HOST_GAME_PAGE",
+      "claim": "Playgama署名Andrey Melnikov；说明下山越障、车辆损坏和按赛道记录最大距离；页面列Unity是元数据，未检查原始构建。",
+      "metric_definition": "公开机制/引擎标签；排行榜分数不是游玩量或收入，页面自称高性能不视作真机基准。",
+      "unknown": "真实损伤公式、操控延迟、帧率、获客/收益UNKNOWN。CrazyGames同名直链本轮抓取不可用，未据此断言在P02上线。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Developer / Game Engine / About Game / Key Features"
+    },
+    {
+      "claim_id": "G06-E03",
+      "reference_title": "Moto X3M",
+      "source_url": "https://www.coolmathgames.com/0-moto-x3m",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "平台列Release Sep 22, 2016；Updated Jul 08, 2026",
+      "evidence_type": "OFFICIAL_HOST_GAME_PAGE",
+      "claim": "Coolmath说明加速/刹车/翻转、计时评级、特技减时和检查点重试；作为竞速目标反例，不与平衡运载混同。",
+      "metric_definition": "控制/计分说明和网页版本日期；评分投票不是留存或净收益。",
+      "unknown": "特技判定角度、实际减时、重试耗时、触控手感UNKNOWN。抽取的Flash回退文字不能证明实际游戏失效。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Instructions / How many levels / Release"
+    }
+  ],
+  "channel_evidence": [
+    {
+      "platform_id": "P02",
+      "source_url": "https://docs.crazygames.com/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_LAUNCH_RULE",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方区分 Basic 与 Full；Basic 关闭变现，根据本平台参与指标决定后续。作品存在不代表候选获准 Full 或有收入。",
+      "recheck": "确定测试计划及正式投稿当日"
+    },
+    {
+      "platform_id": "P03",
+      "source_url": "https://developers.poki.com/guide/revenue-deal-types",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_DEAL_DESCRIPTION",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方区分 Web 独家与一次性非独家许可；独家默认期限为五年但以实际协议为准，范围含开放 Web、Discord、YouTube Playables；移动商店不在默认 Web 独家范围。",
+      "recheck": "选定发行路径及签约当日"
+    }
+  ],
+  "original_hypotheses": [
+    {
+      "id": "G06-H1",
+      "status": "HYPOTHESIS",
+      "claim": "HYPOTHESIS G06-H1：把失败前的重心/路线决策显式交给玩家，能让驾驶重试更多归因于可改进的计划，而不是仅靠反复碰运气。",
+      "variants": [
+        {
+          "label": "B0 基线",
+          "description": "固定货物固定点、唯一自拟路线，只控制加减速；使用相同车辆与物理参数。"
+        },
+        {
+          "label": "V1 固定点选择",
+          "description": "只允许出发前从两个合法位置选择货物固定点，改变重心；不增加支路或中途改装。"
+        },
+        {
+          "label": "V2 路线选择",
+          "description": "固定B0货物，只提供两个具有不同坡度/转弯代价的支路；不开放固定点选择。"
+        }
+      ],
+      "results": "UNKNOWN"
+    }
+  ],
+  "saturation_signal": {
+    "observation": "Drive Mad页推荐Monster Tracks、Stunt Car Extreme；Moto X3M页列多款系列；Deadly Descent页有大量驾驶相关项。这是成熟供给与系列扩充信号，不是被拒/亏损游戏样本，不能推出本候选失败率。仅换车皮而沿用障碍次序不构成足够差异。",
+    "interpretation": "SUPPLY_SIMILARITY_ONLY",
+    "failed_game_rate": "UNKNOWN",
+    "profit_effect": "UNKNOWN"
+  },
+  "research_gaps": [
+    {
+      "id": "G06-R02",
+      "document": "02_Benchmark_Playthrough.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "Drive Mad的两键分别怎样影响空中姿态？Deadly Descent失败是车辆损毁还是出界？Moto X3M计时与检查点怎样处理重试？",
+      "required_evidence": "三参考分开留输入与首败记录；至少两款覆盖前30秒、前5分钟和后续一次目标变化。录像注明视角、设备、版本；不能凭营销文案填扭矩/损伤。",
+      "reason": "无直接试玩；目标函数和操作语义未实测。"
+    },
+    {
+      "id": "G06-R03",
+      "document": "03_Full_GDD.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "候选到底是平衡运载还是破坏竞速？交货成功、车辆翻覆、货物脱落和超时谁优先？",
+      "required_evidence": "冻结维度/目标/输入，写下出发选择→行驶→失败或交货→复玩的全部状态。构造车先到/货后到、翻覆后接触终点等边界判定。",
+      "reason": "维度、成功/失败目标和两变体未选择。"
+    },
+    {
+      "id": "G06-R04",
+      "document": "04_Systems_and_Data.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "车辆/轮胎/货物/约束/机关怎么建模？同tick接触损坏与抵达如何裁决？重放需要保存哪些物理状态？",
+      "required_evidence": "引擎中立实体与事件表、单位制和碰撞层；定义同构建重放范围及跨设备容差，不能声称seed使所有物理平台完全确定。",
+      "reason": "状态、判定优先级、随机及回放契约缺失。"
+    },
+    {
+      "id": "G06-R05",
+      "document": "05_Levels_Economy.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "前20条原创路线各教什么？V1是否总是后置/低位固定最优？V2的风险收益是否只有长度差？",
+      "required_evidence": "每条路线的坡度/机关/货物约束、目标与多解说明、失败反例、可达/盲测证据；驾驶性能参数有来源或标自拟，不复制参考轨迹。",
+      "reason": "物理模型未定，无法诚实给关卡坐标与速度阈值。"
+    },
+    {
+      "id": "G06-R06",
+      "document": "06_UI_Art_Audio.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "如何让重心、货物状态和风险可见但不铺满屏幕？触控区是否挡住前方坡道？",
+      "required_evidence": "键盘/触控、出发固定点选择、行驶、重试/交货各屏；原创车/货物视觉规范与动作音效表，测小屏遮挡和可辨性。",
+      "reason": "没有维度对应资产规范和最终控件。"
+    },
+    {
+      "id": "G06-R07",
+      "document": "07_Tech_Architecture.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "成熟2D/3D物理方案何者满足Web加载与低端设备？失焦后如何恢复刚体？",
+      "required_evidence": "引擎/物理库版本及许可证、单位/步长/追帧上限方案；批准实验后测包体/帧时间/接触稳定/同构建重放差异；不从头造刚体求解器。",
+      "reason": "架构选择及性能/稳定性结果UNKNOWN。"
+    },
+    {
+      "id": "G06-R08",
+      "document": "08_OpenSource_Licenses.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "车辆模型/轮胎音效/物理插件可以改编及向发行商分发吗？原始工程是否允许交付？",
+      "required_evidence": "逐代码/插件/模型/贴图/音频登记URL、版本、许可证、署名与转授权；含车标或参考车型外观的素材需另审。",
+      "reason": "未取得任何库或车型/声音资产许可。"
+    },
+    {
+      "id": "G06-R09",
+      "document": "09_Implementation_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "物理可复现与关卡作者工具何者先验收？货物选择与赛道如何并行而不改物理底层？",
+      "required_evidence": "未来拆分物理契约→验证→少量原创路线→资产/渠道；每项固定输入版本、输出和失败重放证据，再估总工时。",
+      "reason": "没有稳定物理定义，不能建立执行任务JSON。"
+    },
+    {
+      "id": "G06-R10",
+      "document": "10_QA_Test_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "高速穿透、关节断裂、帧率变化、终点与失败同tick如何测？不同设备不一致到什么程度可接受？",
+      "required_evidence": "未来QA记录物理异常、终局分歧、误差容限、暂停恢复/触控丢失/重试干净状态；盲测区分计划改进与随机感。",
+      "reason": "关键终局规则、设备预算与实际运行证据缺失。"
+    },
+    {
+      "id": "G06-R11",
+      "document": "11_Distribution_Business.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "P02 Basic无广告怎么评估运载循环？P03独家怎样与P02发行二选一？",
+      "required_evidence": "引用01的官方流程，提出兼容或互斥路径、各SDK暂停/恢复需求、视频/截图清单与合同未决表；禁止虚构分成/驾驶品类RPM。",
+      "reason": "无测试资格、合同或专用版本定义。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "G06-B1",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "三个驾驶参考没有直接控制/失败/重试记录"
+    },
+    {
+      "id": "G06-B2",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "2D或3D、货物规则及回放误差契约未定"
+    },
+    {
+      "id": "G06-B3",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "成熟物理方案/性能与原创车路素材许可未核"
+    },
+    {
+      "id": "G06-B4",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "P03网页独家与P02发行路径未消冲突"
+    },
+    {
+      "id": "G06-M1",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "finding": "02–11缺完整施工定义；本轮不具备独立实现条件"
+    },
+    {
+      "id": "G06-m1",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "finding": "官方动态页没有本地原始快照，决策前需归档"
+    }
+  ],
+  "not_created": [
+    {
+      "file": "game-spec.json",
+      "reason": "规则/实体/数值未冻结，不能伪造可执行规格"
+    },
+    {
+      "file": "tasks.json",
+      "reason": "施工输入与验收未闭合，不能伪造工程任务依赖"
+    }
+  ],
+  "stop_line": {
+    "status": "PROPOSED_NOT_APPROVED",
+    "rule": "建议资料研究最多6人时、两轮定向补证（HYPOTHESIS建议，非已批准预算）。在无法区分三类控制/失败目标前停止赛道扩写；后续若两轮受控实验仍不能稳定复现判定，或只有一套最优固定点/路线，停止对应变体并重新评估KILLED，不自研刚体求解器补洞。",
+    "cash_budget": "UNKNOWN"
+  },
+  "next_action": "对三个参考分别记下输入、翻车/损坏/计时目标与重试路径；先做驾驶目标比较和物理候选评审，再讨论是否批准同构建回放技术实验。",
+  "exit_gate": [
+    "直接试玩证据",
+    "03–11完整模块",
+    "许可与合同冲突关闭",
+    "独立反向审计BLOCKER关闭",
+    "人类批准游戏ID及施工档案"
+  ],
+  "scope_note": "仅更新本项目目录；根STATUS.md及data保持只读。项目状态为目录内局部研究进度，未同步根项目清单。"
+}

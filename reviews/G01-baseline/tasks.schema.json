@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:foundry:G01:tasks:1.0.0",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "game_id": {
+      "const": "G01"
+    },
+    "scope": {
+      "const": "games/G01/"
+    },
+    "status": {
+      "const": "PLANNED_ONLY"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^T[0-9]{2}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^T[0-9]{2}$"
+            },
+            "uniqueItems": true
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "write_scope": {
+            "const": "games/G01/"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "definition_of_done": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "verification": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "stage": {
+            "enum": [
+              "PREPARATION",
+              "DECISION",
+              "AFTER_HUMAN_BUILD_APPROVAL",
+              "AFTER_FULL_INVITATION"
+            ]
+          },
+          "approval_gate": {
+            "enum": [
+              "NONE",
+              "HUMAN",
+              "BUILD_APPROVAL",
+              "SEPARATE_SUBMISSION_APPROVAL",
+              "FULL_INVITATION"
+            ]
+          },
+          "status": {
+            "const": "NOT_STARTED"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "depends_on",
+          "role",
+          "write_scope",
+          "files",
+          "inputs",
+          "outputs",
+          "definition_of_done",
+          "verification",
+          "stage",
+          "approval_gate",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 16,
+      "maxItems": 16
+    }
+  },
+  "required": [
+    "version",
+    "game_id",
+    "scope",
+    "status",
+    "tasks"
+  ],
+  "additionalProperties": false
+}

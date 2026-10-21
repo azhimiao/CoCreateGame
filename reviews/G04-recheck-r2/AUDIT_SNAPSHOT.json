@@ -1,0 +1,206 @@
+{
+  "frozen_at_utc": "2026-10-21T11:02:02.560014+00:00",
+  "source": "games/G04",
+  "files": [
+    {
+      "path": "00_Project_Charter.md",
+      "bytes": 3934,
+      "sha256": "bb811666bef113b1a5ac156b4a611023a5352c5f58e44c74ca3a47b403873e7e"
+    },
+    {
+      "path": "01_Market_Evidence.md",
+      "bytes": 5915,
+      "sha256": "e186f5da1bbe7134db1f5da5755a19d60c0507e631133c47738aae8088c0a900"
+    },
+    {
+      "path": "02_Benchmark_Playthrough.md",
+      "bytes": 9756,
+      "sha256": "ce2d32355de866f946f7f27b7e8924ee69b0406844282efce700f100a97c99f0"
+    },
+    {
+      "path": "03_Full_GDD.md",
+      "bytes": 7515,
+      "sha256": "56b1977f2568e0ea628a560cee6e779297d0b33a850eeef8a32531eb31d685cb"
+    },
+    {
+      "path": "04_Systems_and_Data.md",
+      "bytes": 9531,
+      "sha256": "21727e1d1457ecb5cd03d30c26a62e896ed7972cc528303b2fc76b5b67e856bc"
+    },
+    {
+      "path": "05_Levels_Economy.md",
+      "bytes": 21198,
+      "sha256": "856f7c8d3210c8005c4629a6a0333cca89b75857753d6aedaac4db96e2f2d6be"
+    },
+    {
+      "path": "06_UI_Art_Audio.md",
+      "bytes": 10813,
+      "sha256": "0ac19bc6e2e913474dbded8b2644b40f4f0cd741cc29fc68ae0aa1f6b93a75c9"
+    },
+    {
+      "path": "07_Tech_Architecture.md",
+      "bytes": 7605,
+      "sha256": "e53e1de69b2de8d79f06ea57a04b7d2166120465350c03a6b83c1c7f3cd5e850"
+    },
+    {
+      "path": "08_OpenSource_Licenses.md",
+      "bytes": 4481,
+      "sha256": "21b8efa505651b17a864d0f7ce69d44e615be793515c1122b5ec94dd94862485"
+    },
+    {
+      "path": "09_Implementation_Plan.md",
+      "bytes": 6216,
+      "sha256": "c70c68a4a6cc4ddda725891d09067335e4043309ab1f3163d1cf349cb9303686"
+    },
+    {
+      "path": "10_QA_Test_Plan.md",
+      "bytes": 8092,
+      "sha256": "a77dffba02658cc496eb3d14fa0e2b6071ddd8797883283f07573e9f01597389"
+    },
+    {
+      "path": "11_Distribution_Business.md",
+      "bytes": 6239,
+      "sha256": "f750053aa8ebfbd5c5c93f518b4b3956a47f6310cdfca21b3b1e4a9e15bf753e"
+    },
+    {
+      "path": "12_Falsifiability.md",
+      "bytes": 6153,
+      "sha256": "14212f9194d3b9167642639b9e4b3f457a62e1ba74361b0d47ac6233bf2871ad"
+    },
+    {
+      "path": "archive-verification.json",
+      "bytes": 563,
+      "sha256": "ac7f20ca2f0a025329f588003007d2ff3b437285043560bc32718eb7e30db670"
+    },
+    {
+      "path": "build_contract_data.py",
+      "bytes": 11532,
+      "sha256": "e4e26cd8993810b40048dd324d6aa4723372da289f96b44568e90c0da97ba0fe"
+    },
+    {
+      "path": "DELIVERY_MANIFEST.json",
+      "bytes": 6402,
+      "sha256": "62664694de704a91645ff61a8730d9908ca23c58b40862847aca9e86ef7d8ac3"
+    },
+    {
+      "path": "event-contract.schema.json",
+      "bytes": 31660,
+      "sha256": "018744ffaefbd52aae60e64562be31fc99e5bc2f8509a2454e186cc312bac877"
+    },
+    {
+      "path": "EVENT_CONTRACT.md",
+      "bytes": 5883,
+      "sha256": "2342f935a771c42df94d029214bb214757ae080dcb5430b40cafc1de9fccf70d"
+    },
+    {
+      "path": "evidence-register.json",
+      "bytes": 13846,
+      "sha256": "e481772aa1ea7fc9c830b49cf3f13e750a16732724f707c8f4ac5b6c179d2de5"
+    },
+    {
+      "path": "G04_Preparation_2026-10-21_v1.0.0.zip",
+      "bytes": 134395,
+      "sha256": "0b1bce595af0643fe9404b04ee038d2e465702f3474369f540e915b89478ceac"
+    },
+    {
+      "path": "game-spec.json",
+      "bytes": 42121,
+      "sha256": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da"
+    },
+    {
+      "path": "game-spec.schema.json",
+      "bytes": 16569,
+      "sha256": "1e21cba0658c5c28657a0a3124315668fc2094a3e8a3c1d5d263192c7ea33e8f"
+    },
+    {
+      "path": "observation-index.json",
+      "bytes": 24289,
+      "sha256": "3eeb4cd50e2ffc1d8801902773ebc7c21a5a886bf104695d4ecd438b9e77f91f"
+    },
+    {
+      "path": "pack-preparation.py",
+      "bytes": 4387,
+      "sha256": "900d25e1f2e68b73e8a1316f9e20365b43911c7fdb6f563a06b54c2e00d0675d"
+    },
+    {
+      "path": "qa-vectors.json",
+      "bytes": 28332,
+      "sha256": "337d64277dada2848661d441ce01b10ec793b45dfe1e4e3334818e388f5ee0f1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2765,
+      "sha256": "9c9e0bed8b7bde5e48ed0edc84b4764a061983c640c7d177a6c96d13a19121bb"
+    },
+    {
+      "path": "requirements-spec.txt",
+      "bytes": 87,
+      "sha256": "394d3d138522b43c6f1fe421ae8eba3b273ddeb3d9f753125df00e7a798f17b1"
+    },
+    {
+      "path": "REVIEW_REQUEST.md",
+      "bytes": 4596,
+      "sha256": "45310c3a4a8db123008a6b4ad6c746c397e89f284f60e0779c698341b81f5539"
+    },
+    {
+      "path": "REVISIONS.md",
+      "bytes": 3923,
+      "sha256": "6229d5800395e70c5d7b7751fcd59bc1c5e28e567c4d46f1ff9eb0e5a2e3a441"
+    },
+    {
+      "path": "save-envelope.schema.json",
+      "bytes": 8877,
+      "sha256": "497f8fa05a00116942f8ea5109b4a761b5962d8f39eb18a15bc1ee48f82b8eae"
+    },
+    {
+      "path": "save-fixtures.json",
+      "bytes": 69165,
+      "sha256": "66da7261fad45bcfc6097be45317a928055209781841b554f3613ddb1157cbb9"
+    },
+    {
+      "path": "SAVE_CONTRACT.md",
+      "bytes": 7945,
+      "sha256": "1ee913cd47a3016251616dd81a38e2a4f880f8d7b627747ba8c01fe3b9ba0e49"
+    },
+    {
+      "path": "SELF_REVIEW.md",
+      "bytes": 4285,
+      "sha256": "cfe3aea75e9c1e42ce7c1e72df6b67741869ac0e84057fb0edb3ab653394ff0d"
+    },
+    {
+      "path": "session-contract-vectors.json",
+      "bytes": 4514,
+      "sha256": "ac37eddc0ff1ae5616b7ecb9582a1abc1624c597b9c3c8eacbf23133c4287218"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 3364,
+      "sha256": "cf71052f8cb04fbb7657deb8ed68d0adbb5e3edf5aa003ac6584488b5eb00d74"
+    },
+    {
+      "path": "tasks.json",
+      "bytes": 19968,
+      "sha256": "aaa30d3f39422358bea51e45337d517aa363f6d00557a67e0a7a6b0847243846"
+    },
+    {
+      "path": "tasks.schema.json",
+      "bytes": 6013,
+      "sha256": "a2a337bbf9145a31de92508c2932af9a20ef54bfa5983b6aa42ff85faeb3bec9"
+    },
+    {
+      "path": "validate_contracts.py",
+      "bytes": 15497,
+      "sha256": "ea5425cc57643a68df3bafc6c1e3ecb6756b8d61d84c8d0dc62435ce0eda15f1"
+    },
+    {
+      "path": "validate_spec.py",
+      "bytes": 12961,
+      "sha256": "300e12a6c8ed1a89f6f8177e806bc9107ea2e6c6ba1d1a530ab232cab282f376"
+    },
+    {
+      "path": "validation-report.json",
+      "bytes": 72633,
+      "sha256": "cb2d74dff376fea182121bac4da72be28084dcfddc46a1684743b3171c4dc58a"
+    }
+  ]
+}

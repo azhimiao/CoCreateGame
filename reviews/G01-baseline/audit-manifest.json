@@ -1,0 +1,146 @@
+{
+  "source": "games/G01",
+  "captured_at": "2026-10-21T18:20:55.453342+08:00",
+  "files": {
+    "00_Project_Charter.md": {
+      "sha256": "35439d44c2464d44163d0b4a41ede381087d468bf4b1908f3722456d7d651cf1",
+      "bytes": 4172
+    },
+    "01_Market_Evidence.md": {
+      "sha256": "b6584e6f224240cb1928da290c7073aa41d189944875042739459fa062419c91",
+      "bytes": 5333
+    },
+    "02_Benchmark_Playthrough.md": {
+      "sha256": "c48833f7bd37153ad81d2ff327d2622a24346e0140616065f3989f6a03e38007",
+      "bytes": 4467
+    },
+    "03_Full_GDD.md": {
+      "sha256": "fa4d4d6bbf79b24a7b1f6ef27f56cbcbcb5b33892177c5008d1fc881d11b3ce6",
+      "bytes": 6774
+    },
+    "04_Systems_and_Data.md": {
+      "sha256": "d0c9c1f4fd6f580e47d4a494fe0936c79be7b14efb7e337c622657f837a830fe",
+      "bytes": 8122
+    },
+    "05_Levels_Economy.md": {
+      "sha256": "eb07e3856f2a9b2f472c319c75847ee20a9df80072bd823a9cdcb1812f0c24c7",
+      "bytes": 21999
+    },
+    "06_UI_Art_Audio.md": {
+      "sha256": "50b7ccf300d3a7dcf7a74ffc97a9188da14acfe3b93766dceacc36c40faa472e",
+      "bytes": 9666
+    },
+    "07_Tech_Architecture.md": {
+      "sha256": "067ae8c93357c3612b4bcb53b75860c8787cc2216688c9e2855197c554db3d41",
+      "bytes": 7452
+    },
+    "08_OpenSource_Licenses.md": {
+      "sha256": "15f4edd98ee135e5a82b1cf1b18dc21618f77c4983666925e6e49d18a9ec4536",
+      "bytes": 4850
+    },
+    "09_Implementation_Plan.md": {
+      "sha256": "03132e2858d92bd9a8e31eeafb84bdc721d410800c3d40600ea2337e431793da",
+      "bytes": 4580
+    },
+    "10_QA_Test_Plan.md": {
+      "sha256": "8ce19cd0886cb03a854cf76d97b861f0ca83f382f4edc34f9abb8bec90ed8efb",
+      "bytes": 6880
+    },
+    "11_Distribution_Business.md": {
+      "sha256": "22af639831c7bc7d9577c277a1e2ce86c69f9196c7048241580578ab9b41a2af",
+      "bytes": 7439
+    },
+    "12_Falsifiability.md": {
+      "sha256": "ebf35992b026454f8907f07f6d9c727c5e807657109a31e888c8227eddd98ea7",
+      "bytes": 6016
+    },
+    "game-spec.json": {
+      "sha256": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070",
+      "bytes": 50750
+    },
+    "game-spec.schema.json": {
+      "sha256": "5acdac4564c696196a748ffe47ac09e78ccdbfaac8686d5b3102f087a497f1ec",
+      "bytes": 19678
+    },
+    "README.md": {
+      "sha256": "41771623f49e93094917f0f0d30d2159416eb56d0a1bdd524367d581e1ac40b2",
+      "bytes": 384
+    },
+    "research/evidence.json": {
+      "sha256": "893c7c20a5388c346046f17e2afc32a84c470919ff6e631e2b2b6f975cec3c03",
+      "bytes": 22323
+    },
+    "research/raw/research_0.txt": {
+      "sha256": "f98a93a469603fbd977105a9d2edfb0c1367223e652079750f79c45a01d1071e",
+      "bytes": 30622
+    },
+    "research/raw/research_1.txt": {
+      "sha256": "b914adcc4893007ad185abfbef3bedc02f3f0d88cba8dbb86f6e119abffb6042",
+      "bytes": 25827
+    },
+    "research/raw/research_constraints.txt": {
+      "sha256": "3fc8a5dda2cb999cb19ddfe5ea90141cf5049a876e694d011c4e4d481d638887",
+      "bytes": 32172
+    },
+    "research/raw/research_final_targeted.txt": {
+      "sha256": "90aab39e8a4ae5ed7fc1d206107f873fef56b12b72fbc78aa233c11f37622996",
+      "bytes": 15393
+    },
+    "research/raw/research_licenses_final.txt": {
+      "sha256": "ace0e0fd6ab6957197b2dfb6bd9a61668d8c70cf000da8109fc0571dc1112fc8",
+      "bytes": 15040
+    },
+    "research/raw/research_more_0.txt": {
+      "sha256": "2c6303646b9c9afa5df9c72ccd6ab9afa5cdbc3c97fdaedf454824d2171ba189",
+      "bytes": 27060
+    },
+    "research/raw/research_more_1.txt": {
+      "sha256": "4cbb471265851e2dff27158b6b4edffcc9678c5addad68a19ac5781a4a3cfdf6",
+      "bytes": 18031
+    },
+    "research/raw-index.json": {
+      "sha256": "ab0ff9aa1269ae4a3f31975430300f1fe045fd1d2cfb36a8a0e3d466378b3f95",
+      "bytes": 1570
+    },
+    "research/README.md": {
+      "sha256": "a8298591e37cd1c2ac3d58df81ffb048514a5e0674cc2c808cf04f48cbc63c82",
+      "bytes": 831
+    },
+    "tasks.json": {
+      "sha256": "a5ef18daca1b6f2897e0e651cc2773def3160daec07ecfed7adf41c1c81378c7",
+      "bytes": 12779
+    },
+    "tasks.schema.json": {
+      "sha256": "50bbe0ca0177b88e406f3eae36a4b05a7e8c9ef242b0ab0e3935abe78fa03885",
+      "bytes": 3165
+    },
+    "tools/prepare_data.py": {
+      "sha256": "5520953f6a1f699794a78cce72ad508275f19c2358c35830f7aa19b72de9ba1e",
+      "bytes": 21338
+    },
+    "tools/prepare_evidence.py": {
+      "sha256": "46ed2de88bb76d4c4bf0a285611ec2fec7fb33242cea141642c23c06fe5c25f4",
+      "bytes": 9393
+    },
+    "tools/requirements-validation.txt": {
+      "sha256": "5b6d38c8d4aa162dcc99dec1e1ddbee79d19595ddb20d0072c8a87c63f563020",
+      "bytes": 97
+    },
+    "tools/validate.py": {
+      "sha256": "c0632a0469745f7a4ab79a02797c3b894100f4d7bab7837354fc5595b5086c9b",
+      "bytes": 10016
+    },
+    "tools/write_level_catalog.py": {
+      "sha256": "cb0ff8cbdf2e3e64033bbef911b938e5c862bbac0fd5202410ac57a8e0762b54",
+      "bytes": 4581
+    },
+    "validation/report.json": {
+      "sha256": "27273570223d7abaae2130c2c82c0280d83f3c86a9b3006a3b0e0c94ae3c1b22",
+      "bytes": 13479
+    },
+    "validation/solution-traces.json": {
+      "sha256": "82d1514e67dc0eef7d25bd1366cd4e527ae3f767b1eb126e30423511c05e9711",
+      "bytes": 15784
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "before": {
+    "global_names": [
+      "Counter",
+      "Path",
+      "ROOT",
+      "__builtins__",
+      "__cached__",
+      "__doc__",
+      "__file__",
+      "__loader__",
+      "__name__",
+      "__package__",
+      "__spec__",
+      "actions",
+      "annotations",
+      "argparse",
+      "copy",
+      "deque",
+      "hashlib",
+      "importlib",
+      "initial",
+      "inspect",
+      "invariant",
+      "json",
+      "layout_checks",
+      "platform",
+      "protocol_checks",
+      "read",
+      "release_gate_checks",
+      "revision_metadata_checks",
+      "rule_vectors",
+      "solve",
+      "step",
+      "structural",
+      "sys",
+      "task_order",
+      "traceback",
+      "unlocked",
+      "validate_schemas",
+      "verify",
+      "won"
+    ],
+    "actions_id": 1482196362688,
+    "actions_code_id": 1482190366896,
+    "enumerate_id": 140727341751760,
+    "enumerate_repr": "<class 'enumerate'>",
+    "global_enumerate_present": false,
+    "enumerate_sample": [
+      [
+        0,
+        [
+          "A"
+        ]
+      ],
+      [
+        1,
+        [
+          "B"
+        ]
+      ]
+    ],
+    "trace": "None",
+    "profile": "None"
+  },
+  "after": {
+    "global_names": [
+      "Counter",
+      "Path",
+      "ROOT",
+      "__builtins__",
+      "__cached__",
+      "__doc__",
+      "__file__",
+      "__loader__",
+      "__name__",
+      "__package__",
+      "__spec__",
+      "actions",
+      "annotations",
+      "argparse",
+      "copy",
+      "deque",
+      "hashlib",
+      "importlib",
+      "initial",
+      "inspect",
+      "invariant",
+      "json",
+      "layout_checks",
+      "platform",
+      "protocol_checks",
+      "read",
+      "release_gate_checks",
+      "revision_metadata_checks",
+      "rule_vectors",
+      "solve",
+      "step",
+      "structural",
+      "sys",
+      "task_order",
+      "traceback",
+      "unlocked",
+      "validate_schemas",
+      "verify",
+      "won"
+    ],
+    "actions_id": 1482196362688,
+    "actions_code_id": 1482190366896,
+    "enumerate_id": 140727341751760,
+    "enumerate_repr": "<class 'enumerate'>",
+    "global_enumerate_present": false,
+    "enumerate_sample": [
+      [
+        0,
+        [
+          "A"
+        ]
+      ],
+      [
+        1,
+        [
+          "B"
+        ]
+      ]
+    ],
+    "trace": "None",
+    "profile": "None"
+  },
+  "same_namespace_and_builtin": true,
+  "rule_vector_count": 31,
+  "full_verify_called": false
+}

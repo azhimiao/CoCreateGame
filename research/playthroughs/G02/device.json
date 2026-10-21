@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-21T10:39:51.048Z",
+  "session_id": "2026-10-21T10-39-50-665Z",
+  "game": null,
+  "game_elapsed_ms": null,
+  "attempt_elapsed_ms": null,
+  "event": "browser_ready",
+  "browser_version": "149.0.7827.55",
+  "executable": "C:\\Users\\whipa\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1228\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+  "viewport": {
+    "width": 1365,
+    "height": 900
+  },
+  "device": {
+    "type": "desktop-headless",
+    "touch": false,
+    "device_scale_factor": 1,
+    "locale": "en-US",
+    "timezone": "Asia/Shanghai",
+    "os": "win32",
+    "node": "v20.11.0"
+  },
+  "profile": "runtime/profile",
+  "rights": "Third-party screenshots for research only, never own production assets",
+  "coverage": "Discrete screenshots; no continuous30s/5min claim",
+  "attempt_cap_ms": 480000,
+  "rendering_flags": [
+    "--disable-dev-shm-usage",
+    "--use-angle=swiftshader",
+    "--enable-unsafe-swiftshader"
+  ],
+  "continuous_recording": false,
+  "mobile_emulation": false,
+  "limitations": [
+    "Discrete screenshots only",
+    "Software renderer, no physical GPU performance result",
+    "Single desktop headless browser, no phone test",
+    "Fresh local profile, no login"
+  ],
+  "runtime_exists": false
+}

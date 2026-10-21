@@ -1,0 +1,749 @@
+[
+  {
+    "level_id": "L01",
+    "steps": [
+      {
+        "arrow_id": "a",
+        "mask_before": 0,
+        "mask_after": 1,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "b",
+        "mask_before": 1,
+        "mask_after": 3,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L02",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 2,
+        "mask_after": 3,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 3,
+        "mask_after": 7,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L03",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 2,
+        "mask_after": 3,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 3,
+        "mask_after": 7,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 7,
+        "mask_after": 15,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L04",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 2,
+        "mask_after": 3,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 3,
+        "mask_after": 11,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 11,
+        "mask_after": 15,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "e",
+        "mask_before": 15,
+        "mask_after": 31,
+        "gate_open_after": {},
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L05",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 2,
+        "mask_after": 3,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L06",
+    "steps": [
+      {
+        "arrow_id": "c",
+        "mask_before": 0,
+        "mask_after": 4,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "b",
+        "mask_before": 4,
+        "mask_after": 6,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 6,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L07",
+    "steps": [
+      {
+        "arrow_id": "c",
+        "mask_before": 0,
+        "mask_after": 4,
+        "gate_open_after": {
+          "g": true,
+          "h": false
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "b",
+        "mask_before": 4,
+        "mask_after": 6,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 6,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L08",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 2,
+        "mask_after": 3,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 3,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": false
+        },
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L09",
+    "steps": [
+      {
+        "arrow_id": "c",
+        "mask_before": 0,
+        "mask_after": 4,
+        "gate_open_after": {
+          "g": true,
+          "h": false
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 4,
+        "mask_after": 5,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "b",
+        "mask_before": 5,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 7,
+        "mask_after": 15,
+        "gate_open_after": {
+          "g": false,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L10",
+    "steps": [
+      {
+        "arrow_id": "c",
+        "mask_before": 0,
+        "mask_after": 4,
+        "gate_open_after": {
+          "g": true,
+          "h": false
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 4,
+        "mask_after": 5,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "b",
+        "mask_before": 5,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 7,
+        "mask_after": 15,
+        "gate_open_after": {
+          "g": false,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      },
+      {
+        "arrow_id": "e",
+        "mask_before": 15,
+        "mask_after": 31,
+        "gate_open_after": {
+          "g": false,
+          "h": true
+        },
+        "manifest_cursor_after": 0
+      }
+    ]
+  },
+  {
+    "level_id": "L11",
+    "steps": [
+      {
+        "arrow_id": "a",
+        "mask_before": 0,
+        "mask_after": 1,
+        "gate_open_after": {},
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "b",
+        "mask_before": 1,
+        "mask_after": 3,
+        "gate_open_after": {},
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 3,
+        "mask_after": 7,
+        "gate_open_after": {},
+        "manifest_cursor_after": 3
+      }
+    ]
+  },
+  {
+    "level_id": "L12",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {},
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 2,
+        "mask_after": 3,
+        "gate_open_after": {},
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 3,
+        "mask_after": 7,
+        "gate_open_after": {},
+        "manifest_cursor_after": 3
+      }
+    ]
+  },
+  {
+    "level_id": "L13",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {},
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 2,
+        "mask_after": 6,
+        "gate_open_after": {},
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 6,
+        "mask_after": 7,
+        "gate_open_after": {},
+        "manifest_cursor_after": 3
+      }
+    ]
+  },
+  {
+    "level_id": "L14",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {},
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 2,
+        "mask_after": 6,
+        "gate_open_after": {},
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 6,
+        "mask_after": 7,
+        "gate_open_after": {},
+        "manifest_cursor_after": 3
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 7,
+        "mask_after": 15,
+        "gate_open_after": {},
+        "manifest_cursor_after": 4
+      },
+      {
+        "arrow_id": "e",
+        "mask_before": 15,
+        "mask_after": 31,
+        "gate_open_after": {},
+        "manifest_cursor_after": 5
+      }
+    ]
+  },
+  {
+    "level_id": "L15",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {},
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 2,
+        "mask_after": 3,
+        "gate_open_after": {},
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 3,
+        "mask_after": 7,
+        "gate_open_after": {},
+        "manifest_cursor_after": 3
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 7,
+        "mask_after": 15,
+        "gate_open_after": {},
+        "manifest_cursor_after": 4
+      },
+      {
+        "arrow_id": "e",
+        "mask_before": 15,
+        "mask_after": 31,
+        "gate_open_after": {},
+        "manifest_cursor_after": 5
+      }
+    ]
+  },
+  {
+    "level_id": "L16",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 2,
+        "mask_after": 3,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 3,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": false
+        },
+        "manifest_cursor_after": 3
+      }
+    ]
+  },
+  {
+    "level_id": "L17",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 2,
+        "mask_after": 6,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 6,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": true
+        },
+        "manifest_cursor_after": 3
+      }
+    ]
+  },
+  {
+    "level_id": "L18",
+    "steps": [
+      {
+        "arrow_id": "c",
+        "mask_before": 0,
+        "mask_after": 4,
+        "gate_open_after": {
+          "g": true,
+          "h": false
+        },
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 4,
+        "mask_after": 5,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "b",
+        "mask_before": 5,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 3
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 7,
+        "mask_after": 15,
+        "gate_open_after": {
+          "g": false,
+          "h": true
+        },
+        "manifest_cursor_after": 4
+      }
+    ]
+  },
+  {
+    "level_id": "L19",
+    "steps": [
+      {
+        "arrow_id": "c",
+        "mask_before": 0,
+        "mask_after": 4,
+        "gate_open_after": {
+          "g": true,
+          "h": false
+        },
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 4,
+        "mask_after": 5,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "b",
+        "mask_before": 5,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 3
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 7,
+        "mask_after": 15,
+        "gate_open_after": {
+          "g": false,
+          "h": false
+        },
+        "manifest_cursor_after": 4
+      },
+      {
+        "arrow_id": "e",
+        "mask_before": 15,
+        "mask_after": 31,
+        "gate_open_after": {
+          "g": false,
+          "h": false
+        },
+        "manifest_cursor_after": 5
+      },
+      {
+        "arrow_id": "f",
+        "mask_before": 31,
+        "mask_after": 63,
+        "gate_open_after": {
+          "g": false,
+          "h": false
+        },
+        "manifest_cursor_after": 6
+      }
+    ]
+  },
+  {
+    "level_id": "L20",
+    "steps": [
+      {
+        "arrow_id": "b",
+        "mask_before": 0,
+        "mask_after": 2,
+        "gate_open_after": {
+          "g": true,
+          "h": false
+        },
+        "manifest_cursor_after": 1
+      },
+      {
+        "arrow_id": "c",
+        "mask_before": 2,
+        "mask_after": 6,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 2
+      },
+      {
+        "arrow_id": "a",
+        "mask_before": 6,
+        "mask_after": 7,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 3
+      },
+      {
+        "arrow_id": "d",
+        "mask_before": 7,
+        "mask_after": 15,
+        "gate_open_after": {
+          "g": true,
+          "h": true
+        },
+        "manifest_cursor_after": 4
+      },
+      {
+        "arrow_id": "e",
+        "mask_before": 15,
+        "mask_after": 31,
+        "gate_open_after": {
+          "g": false,
+          "h": true
+        },
+        "manifest_cursor_after": 5
+      },
+      {
+        "arrow_id": "f",
+        "mask_before": 31,
+        "mask_after": 63,
+        "gate_open_after": {
+          "g": false,
+          "h": true
+        },
+        "manifest_cursor_after": 6
+      },
+      {
+        "arrow_id": "z",
+        "mask_before": 63,
+        "mask_after": 127,
+        "gate_open_after": {
+          "g": false,
+          "h": false
+        },
+        "manifest_cursor_after": 7
+      }
+    ]
+  }
+]

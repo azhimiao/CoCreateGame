@@ -1,0 +1,32 @@
+{
+  "captured_at": "2026-10-21T18:24:48.108747+08:00",
+  "changed_files": [
+    "archive-verification.json",
+    "DELIVERY_MANIFEST.json",
+    "G04_Preparation_2026-10-21_v1.0.0.zip",
+    "game-spec.schema.json",
+    "validate_spec.py",
+    "validation-report.json"
+  ],
+  "game_spec_unchanged": true,
+  "checks": [
+    {
+      "case": "unaltered",
+      "result": "PASS",
+      "stdout": "{\"result\": \"PASS\", \"campaign_levels\": 20, \"experiment_levels\": 2, \"golden_vectors\": 21, \"tasks\": 16, \"engine_build_executed\": false}\n"
+    },
+    {
+      "case": "level_id_outside_campaign",
+      "result": "REJECTED",
+      "exception": "ValidationError",
+      "reason": "'G04-L99' does not match '^G04-L(0[1-9]|1[0-9]|20)$'\n\nFailed validating 'pattern' in schema['properties']['levels']['items']['allOf'][1]['properties']['id']:\n    {'pattern': '^G04-L(0[1-9]|1[0-9]|20)$'}\n\nOn instance['levels'][0]['id']:\n    'G04-L99'"
+    },
+    {
+      "case": "campaign_contains_experiment_variant",
+      "result": "REJECTED",
+      "exception": "ValidationError",
+      "reason": "'B0' was expected\n\nFailed validating 'const' in schema['properties']['levels']['items']['allOf'][1]['properties']['variant']:\n    {'const': 'B0'}\n\nOn instance['levels'][0]['variant']:\n    'X2'"
+    }
+  ],
+  "original_finding_status": "CLOSED"
+}

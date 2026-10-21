@@ -1,0 +1,16 @@
+{
+  "overall_status": "PASS",
+  "scope": "ZIP_INTEGRITY_NOT_GAME_BUILD",
+  "date": "2026-10-21",
+  "archive": "G02_Preparation_2026-10-21.zip",
+  "archive_bytes": 140777,
+  "archive_sha256": "9b541c8b76bae1030fb7fa81ae65afe782662e3bc10b98f21313d9df6a8c3241",
+  "document_count_00_12": 13,
+  "archive_members": 37,
+  "payload_files_hashed": 36,
+  "crc_ok": true,
+  "all_members_equal_to_workspace": true,
+  "manifest_sha256_verified": true,
+  "independent_audit": "PENDING_RE_REVIEW",
+  "ready_for_build": false
+}

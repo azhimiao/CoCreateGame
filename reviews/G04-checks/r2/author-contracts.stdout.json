@@ -1,0 +1,648 @@
+{
+  "scope": "OFFLINE_CONTRACT_MODELS_ONLY",
+  "engine_build_executed": false,
+  "browser_storage_executed": false,
+  "saves": [
+    {
+      "id": "chinese_active_playing",
+      "result": "OK",
+      "passed": true
+    },
+    {
+      "id": "failed_can_undo",
+      "result": "OK",
+      "passed": true
+    },
+    {
+      "id": "bad_checksum",
+      "result": "CHECKSUM_MISMATCH",
+      "passed": true
+    },
+    {
+      "id": "duplicate_settings_authority",
+      "result": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "forged_final_bits",
+      "result": "REPLAY_MISMATCH",
+      "passed": true
+    },
+    {
+      "id": "completed_without_best_used",
+      "result": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "unlocked_chain_forged",
+      "result": "PROGRESS_INVALID",
+      "passed": true
+    },
+    {
+      "id": "future_schema",
+      "result": "UNSUPPORTED_SCHEMA",
+      "passed": true
+    },
+    {
+      "id": "unknown_rule",
+      "result": "UNSUPPORTED_RULE",
+      "passed": true
+    },
+    {
+      "id": "other_profile",
+      "result": "PROFILE_MISMATCH",
+      "passed": true
+    },
+    {
+      "id": "content_update",
+      "result": "CONTENT_CHANGED",
+      "passed": true
+    },
+    {
+      "id": "saved_won_session",
+      "result": "SCHEMA_INVALID",
+      "passed": true
+    },
+    {
+      "id": "wrong_level_name",
+      "result": "SESSION_INVALID",
+      "passed": true
+    },
+    {
+      "id": "invalid_timestamp",
+      "result": "SCHEMA_INVALID",
+      "passed": true
+    }
+  ],
+  "strict_json_rejections": [
+    "duplicate",
+    "surrogate",
+    "unsafe_integer",
+    "fraction",
+    "nan",
+    "bom",
+    "bad_utf8"
+  ],
+  "slot_selection": [
+    "same_snapshot_A",
+    "equal_revision_conflict",
+    "highest_revision_B"
+  ],
+  "session_pairs": [
+    {
+      "attemptId": "a-00000000000000000000000000000004",
+      "last_seq": 22,
+      "stars": 3,
+      "passed": true
+    },
+    {
+      "attemptId": "a-00000000000000000000000000000005",
+      "last_seq": 202,
+      "stars": 2,
+      "passed": true
+    }
+  ],
+  "terminal_guard_model": {
+    "commitWin": 1,
+    "LevelWon": 1,
+    "callbacks": 3,
+    "note": "Model assertion; future T03/T07 must exercise actual TS/SDK reentry."
+  },
+  "artifact_owners": [
+    {
+      "path": "implementation/assets/scenes/Boot.scene",
+      "owner_task": "G04-T07"
+    },
+    {
+      "path": "implementation/assets/scenes/Boot.scene.meta",
+      "owner_task": "G04-T07"
+    },
+    {
+      "path": "implementation/assets/scripts/app/CompositionRoot.ts",
+      "owner_task": "G04-T07"
+    },
+    {
+      "path": "implementation/assets/scripts/app/AppStateMachine.ts",
+      "owner_task": "G04-T07"
+    },
+    {
+      "path": "implementation/assets/scripts/session/SessionReducer.ts",
+      "owner_task": "G04-T03"
+    },
+    {
+      "path": "implementation/assets/scripts/session/SessionController.ts",
+      "owner_task": "G04-T03"
+    },
+    {
+      "path": "implementation/assets/scripts/session/EventBus.ts",
+      "owner_task": "G04-T03"
+    },
+    {
+      "path": "implementation/assets/scripts/rules/RuleCore.ts",
+      "owner_task": "G04-T03"
+    },
+    {
+      "path": "implementation/assets/scenes/BuildProbe.scene",
+      "owner_task": "G04-T02"
+    },
+    {
+      "path": "implementation/assets/scenes/BuildProbe.scene.meta",
+      "owner_task": "G04-T02"
+    }
+  ],
+  "ownership_negative_cases": [
+    {
+      "case": "missing_boot_owner",
+      "result": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "case": "duplicate_session_owner",
+      "result": "REJECTED_AS_EXPECTED"
+    }
+  ],
+  "geometry": [
+    {
+      "width": 390,
+      "height": 844,
+      "branch": "PORTRAIT",
+      "board": 358,
+      "boards": 1,
+      "window_too_small": false,
+      "five_cell_tap_move": true
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "branch": "PORTRAIT",
+      "board": 208,
+      "boards": 1,
+      "window_too_small": false,
+      "five_cell_tap_move": false
+    },
+    {
+      "width": 600,
+      "height": 400,
+      "branch": "LANDSCAPE",
+      "board": 312,
+      "boards": 1,
+      "window_too_small": false,
+      "five_cell_tap_move": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "branch": "LANDSCAPE",
+      "board": 270.0,
+      "boards": 2,
+      "window_too_small": false,
+      "five_cell_tap_move": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "branch": "WIDE",
+      "board": 240.0,
+      "boards": 2,
+      "window_too_small": false,
+      "five_cell_tap_move": true
+    },
+    {
+      "width": 320,
+      "height": 480,
+      "branch": "PORTRAIT",
+      "board": 120,
+      "boards": 1,
+      "window_too_small": true,
+      "five_cell_tap_move": false
+    }
+  ],
+  "gate_ablation": [
+    {
+      "id": "G04-L01",
+      "original_shortest": 2,
+      "without_gates_shortest": 2,
+      "without_gates_solution": [
+        "R",
+        "R"
+      ]
+    },
+    {
+      "id": "G04-L02",
+      "original_shortest": 4,
+      "without_gates_shortest": 4,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "D",
+        "D"
+      ]
+    },
+    {
+      "id": "G04-L03",
+      "original_shortest": 5,
+      "without_gates_shortest": 5,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "X",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L04",
+      "original_shortest": 5,
+      "without_gates_shortest": 5,
+      "without_gates_solution": [
+        "D",
+        "R",
+        "R",
+        "X",
+        "D"
+      ]
+    },
+    {
+      "id": "G04-L05",
+      "original_shortest": 9,
+      "without_gates_shortest": 5,
+      "without_gates_solution": [
+        "U",
+        "R",
+        "X",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L06",
+      "original_shortest": 8,
+      "without_gates_shortest": 8,
+      "without_gates_solution": [
+        "U",
+        "U",
+        "X",
+        "R",
+        "R",
+        "X",
+        "D",
+        "D"
+      ]
+    },
+    {
+      "id": "G04-L07",
+      "original_shortest": 7,
+      "without_gates_shortest": 7,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L08",
+      "original_shortest": 11,
+      "without_gates_shortest": 11,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L09",
+      "original_shortest": 11,
+      "without_gates_shortest": 11,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L10",
+      "original_shortest": 9,
+      "without_gates_shortest": 9,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L11",
+      "original_shortest": 17,
+      "without_gates_shortest": 15,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L12",
+      "original_shortest": 15,
+      "without_gates_shortest": 15,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "R",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L13",
+      "original_shortest": 26,
+      "without_gates_shortest": 24,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "X",
+        "D",
+        "D",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L14",
+      "original_shortest": 17,
+      "without_gates_shortest": 17,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L15",
+      "original_shortest": 19,
+      "without_gates_shortest": 19,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L16",
+      "original_shortest": 19,
+      "without_gates_shortest": 15,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L",
+        "D",
+        "D",
+        "X"
+      ]
+    },
+    {
+      "id": "G04-L17",
+      "original_shortest": 22,
+      "without_gates_shortest": 22,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L18",
+      "original_shortest": 15,
+      "without_gates_shortest": 15,
+      "without_gates_solution": [
+        "U",
+        "U",
+        "R",
+        "R",
+        "L",
+        "L",
+        "X",
+        "U",
+        "U",
+        "R",
+        "L",
+        "R",
+        "R",
+        "R",
+        "R"
+      ]
+    },
+    {
+      "id": "G04-L19",
+      "original_shortest": 26,
+      "without_gates_shortest": 26,
+      "without_gates_solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L",
+        "D",
+        "D",
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "id": "G04-L20",
+      "original_shortest": 18,
+      "without_gates_shortest": 14,
+      "without_gates_solution": [
+        "D",
+        "D",
+        "R",
+        "R",
+        "L",
+        "L",
+        "X",
+        "R",
+        "R",
+        "L",
+        "L",
+        "X",
+        "D",
+        "D"
+      ]
+    }
+  ],
+  "gate_ablation_unchanged": 15,
+  "same_witness_pairs": [
+    [
+      "G04-L08",
+      "G04-L09"
+    ],
+    [
+      "G04-L11",
+      "G04-L14"
+    ],
+    [
+      "G04-L13",
+      "G04-L19"
+    ],
+    [
+      "G04-L15",
+      "G04-L16"
+    ]
+  ],
+  "canonical_sha256": "372e61a9d1cdac88e09bd95385e55bc97909763d0b81840e5c3f4a7e42fa07da",
+  "node_cj1_parity": {
+    "result": "PASS",
+    "node": "v20.11.0",
+    "vectorHex": "7b2261223a7b2261223a22e68a98e58589e69cbae585b3222c2262223a5b322c747275652c6e756c6c2c22e4b88ae5b1825c6ee6a0a1e58786225d7d2c227a223a22e4b8ade69687e4bc9ae8af9d227d",
+    "vector": "372e61a9d1cdac88e09bd95385e55bc97909763d0b81840e5c3f4a7e42fa07da",
+    "saves": [
+      [
+        "chinese_active_playing",
+        "dd98a2e56e489dc65eed7ad83fcff03dda1c6a7b6f79198e440c338b430a3b24"
+      ],
+      [
+        "failed_can_undo",
+        "00c01efa925ed3725700e8b65bedd4b3f9e36b0f129f35c070b49ae610db61d1"
+      ]
+    ],
+    "scope": "Node JSON/crypto only; no Cocos/TypeScript/runtime storage"
+  },
+  "result": "PASS"
+}

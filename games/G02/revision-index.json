@@ -1,0 +1,125 @@
+{
+  "project_id": "G02",
+  "date": "2026-10-21",
+  "author_status": "FIXES_COMPLETE_PENDING_SAME_REVIEWER_JASON",
+  "project_state": "REVISION_REQUIRED",
+  "independent_review": "PENDING_RE_REVIEW",
+  "ready_for_build": false,
+  "original_audit_sha256": {
+    "reviews/G02-audit.md": "91349070ca161418b34ec6efa2348f0cd2cdf6f5be9e8e777338057b0411a525",
+    "reviews/G02-audit.json": "0609491b80f2ad98d5ccc92fdd082ba0187520de653e0738c0a796f1cb84c1f3"
+  },
+  "findings": [
+    {
+      "id": "B-G02-01",
+      "severity": "BLOCKER",
+      "fix": "identity_dedup_before_status_revision",
+      "files": [
+        "04_Systems_and_Data.md",
+        "03_Full_GDD.md",
+        "10_QA_Test_Plan.md",
+        "protocol-vectors.json"
+      ],
+      "checks": [
+        "retry_identity_before_busy_stale_pause_win",
+        "final_seal_retry_in_win"
+      ],
+      "author_resolution": "FIXED_PENDING_INDEPENDENT_CONFIRMATION",
+      "independent_closed": false
+    },
+    {
+      "id": "M-G02-01",
+      "severity": "MAJOR",
+      "fix": "fresh_epoch_numeric_window_undo_checkpoint",
+      "files": [
+        "04_Systems_and_Data.md",
+        "game-spec.json",
+        "game-spec.schema.json",
+        "protocol-vectors.json"
+      ],
+      "checks": [
+        "numeric_9_10",
+        "numeric_window_127_128_129",
+        "mixed_accept_reject_undo",
+        "restore_new_epoch_old_late_callback",
+        "checkpoint_4096_independent_of_cache",
+        "undo_history_127_128_129",
+        "typed_identity_no_string_sort"
+      ],
+      "author_resolution": "FIXED_PENDING_INDEPENDENT_CONFIRMATION",
+      "independent_closed": false
+    },
+    {
+      "id": "M-G02-02",
+      "severity": "MAJOR",
+      "fix": "no_scroll_play_pointer_ownership",
+      "files": [
+        "03_Full_GDD.md",
+        "04_Systems_and_Data.md",
+        "06_UI_Art_Audio.md",
+        "07_Tech_Architecture.md",
+        "10_QA_Test_Plan.md",
+        "layout-cases.json"
+      ],
+      "checks": [
+        "static_layout_cases"
+      ],
+      "author_resolution": "FIXED_PENDING_INDEPENDENT_CONFIRMATION",
+      "independent_closed": false
+    },
+    {
+      "id": "N-G02-01",
+      "severity": "MINOR",
+      "fix": "isolated_same_top_and_actual_snapshot_restore",
+      "files": [
+        "tools/verify.py",
+        "10_QA_Test_Plan.md"
+      ],
+      "checks": [
+        "rule_vectors_passed"
+      ],
+      "author_resolution": "FIXED_PENDING_INDEPENDENT_CONFIRMATION",
+      "independent_closed": false
+    },
+    {
+      "id": "N-G02-02",
+      "severity": "MINOR",
+      "fix": "optional_trays_no_mastery_claim",
+      "files": [
+        "05_Levels_Economy.md",
+        "12_Falsifiability.md",
+        "game-spec.json",
+        "game-spec.schema.json"
+      ],
+      "checks": [
+        "L09",
+        "L13"
+      ],
+      "author_resolution": "FIXED_PENDING_INDEPENDENT_CONFIRMATION",
+      "independent_closed": false
+    },
+    {
+      "id": "N-G02-03",
+      "severity": "MINOR",
+      "fix": "platform_scoped_release_dag",
+      "files": [
+        "09_Implementation_Plan.md",
+        "11_Distribution_Business.md",
+        "tasks.json",
+        "tasks.schema.json"
+      ],
+      "checks": [
+        "release_branch_checks"
+      ],
+      "author_resolution": "FIXED_PENDING_INDEPENDENT_CONFIRMATION",
+      "independent_closed": false
+    }
+  ],
+  "remaining_evidence_major": [
+    "Reference core gameplay inputs remain zero; no continuous first30s/5min",
+    "Cocos/SDK/device/real font rendering not run",
+    "Player experience and final asset rights pending"
+  ],
+  "verification_command": "python -B games/G02/tools/verify.py --all",
+  "package_command": "python -B games/G02/tools/package_delivery.py"
+}

@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "archive": "G04_Preparation_2026-10-21_v1.0.0.zip",
+  "bytes": 84945,
+  "sha256": "c6c520b2d0cfa86a407f07a7b318fa6a343d48a5064f7554a216d3ae476c8bcd",
+  "member_count": 27,
+  "payload_file_count": 26,
+  "crc": "PASS",
+  "member_set": "PASS",
+  "payload_hashes": "PASS",
+  "manifest_bytes": "PASS",
+  "substantive_documents": 13,
+  "engine_build_executed": false,
+  "verification": "Read ZIP without extraction; compared every archived member to on-disk manifest",
+  "generated_at_utc": "2026-10-21T10:24:12.922581+00:00"
+}

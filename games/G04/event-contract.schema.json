@@ -1,0 +1,1219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:G04:events:1",
+  "$defs": {
+    "RuleState": {
+      "type": "object",
+      "properties": {
+        "position": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "bits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "nextBeacon": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "used": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "status": {
+          "enum": [
+            "PLAYING",
+            "FAILED",
+            "WON"
+          ]
+        },
+        "failure": {
+          "enum": [
+            null,
+            "FLOOR_CLOSED",
+            "BEACON_ORDER",
+            "MOVE_LIMIT"
+          ]
+        }
+      },
+      "required": [
+        "position",
+        "bits",
+        "pending",
+        "nextBeacon",
+        "used",
+        "status",
+        "failure"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "FAILED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "failure": {
+                "enum": [
+                  "FLOOR_CLOSED",
+                  "BEACON_ORDER",
+                  "MOVE_LIMIT"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "failure": {
+                "const": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "RuleFact": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "CommandAccepted"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "command": {
+                  "enum": [
+                    "U",
+                    "R",
+                    "D",
+                    "L",
+                    "X"
+                  ]
+                },
+                "used": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 128
+                },
+                "from": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "to": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "required": [
+                "command",
+                "used",
+                "from",
+                "to"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "PendingApplied"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "mask": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 7
+                },
+                "bits": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 7
+                }
+              },
+              "required": [
+                "mask",
+                "bits"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "SwitchEntered"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "mask": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 7
+                },
+                "mode": {
+                  "enum": [
+                    "IMMEDIATE",
+                    "DELAYED"
+                  ]
+                },
+                "bits": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 7
+                },
+                "pending": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 7
+                }
+              },
+              "required": [
+                "mask",
+                "mode",
+                "bits",
+                "pending"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "BeaconAdvanced"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 5
+                }
+              },
+              "required": [
+                "index"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "StateCommitted"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "state": {
+                  "$ref": "#/$defs/RuleState"
+                }
+              },
+              "required": [
+                "state"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "RuleWon"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "used": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 128
+                },
+                "par": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 128
+                }
+              },
+              "required": [
+                "used",
+                "par"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "RuleFailed"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "reason": {
+                  "enum": [
+                    "FLOOR_CLOSED",
+                    "BEACON_ORDER",
+                    "MOVE_LIMIT"
+                  ]
+                }
+              },
+              "required": [
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "CommandRejected"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "reason": {
+                  "enum": [
+                    "BLOCKED",
+                    "NO_LIFT",
+                    "INVALID_ACTION_OR_TERMINAL"
+                  ]
+                }
+              },
+              "required": [
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SessionEvent": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "CommandAccepted"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "command": {
+                  "enum": [
+                    "U",
+                    "R",
+                    "D",
+                    "L",
+                    "X"
+                  ]
+                },
+                "used": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 128
+                },
+                "from": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "to": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "required": [
+                "command",
+                "used",
+                "from",
+                "to"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "PendingApplied"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "mask": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 7
+                },
+                "bits": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 7
+                }
+              },
+              "required": [
+                "mask",
+                "bits"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "SwitchEntered"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "mask": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 7
+                },
+                "mode": {
+                  "enum": [
+                    "IMMEDIATE",
+                    "DELAYED"
+                  ]
+                },
+                "bits": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 7
+                },
+                "pending": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 7
+                }
+              },
+              "required": [
+                "mask",
+                "mode",
+                "bits",
+                "pending"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "BeaconAdvanced"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 5
+                }
+              },
+              "required": [
+                "index"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "StateCommitted"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "state": {
+                  "$ref": "#/$defs/RuleState"
+                }
+              },
+              "required": [
+                "state"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "LevelWon"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "used": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 128
+                },
+                "par": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 128
+                },
+                "assisted": {
+                  "type": "boolean"
+                },
+                "stars": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 3
+                }
+              },
+              "required": [
+                "used",
+                "par",
+                "assisted",
+                "stars"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "LevelFailed"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "reason": {
+                  "enum": [
+                    "FLOOR_CLOSED",
+                    "BEACON_ORDER",
+                    "MOVE_LIMIT"
+                  ]
+                }
+              },
+              "required": [
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "CommandRejected"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "reason": {
+                  "enum": [
+                    "BLOCKED",
+                    "NO_LIFT",
+                    "INVALID_ACTION_OR_TERMINAL"
+                  ]
+                }
+              },
+              "required": [
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "UndoApplied"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "restored": {
+                  "$ref": "#/$defs/RuleState"
+                }
+              },
+              "required": [
+                "restored"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "AttemptRestarted"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "previousAttemptId": {
+                  "type": "string",
+                  "pattern": "^a-[0-9a-f]{32}$"
+                },
+                "newAttemptId": {
+                  "type": "string",
+                  "pattern": "^a-[0-9a-f]{32}$"
+                }
+              },
+              "required": [
+                "previousAttemptId",
+                "newAttemptId"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "HintConfirmed"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "assisted": {
+                  "const": true
+                }
+              },
+              "required": [
+                "assisted"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "v": {
+              "const": 1
+            },
+            "seq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "attemptId": {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            },
+            "levelId": {
+              "type": "string",
+              "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+            },
+            "source": {
+              "enum": [
+                "keyboard",
+                "touch",
+                "mouse",
+                "system",
+                "qa"
+              ]
+            },
+            "type": {
+              "const": "SaveDegraded"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "reason": {
+                  "enum": [
+                    "QUOTA",
+                    "SECURITY",
+                    "TIMEOUT",
+                    "IO"
+                  ]
+                }
+              },
+              "required": [
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "v",
+            "seq",
+            "attemptId",
+            "levelId",
+            "source",
+            "type",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/RuleFact"
+    },
+    {
+      "$ref": "#/$defs/SessionEvent"
+    }
+  ]
+}

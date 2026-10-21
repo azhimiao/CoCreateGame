@@ -1,0 +1,119 @@
+[
+  {
+    "id": "P01",
+    "name": "Coolmath Games",
+    "role": "非独家许可采购",
+    "stage": "HTML5可玩候选；展示版可在采购后依要求调整",
+    "contact": "官方投稿表单；不猜测采购个人邮箱",
+    "entry": "https://www.coolmathgames.com/submit-a-game",
+    "claims": [
+      "C01",
+      "C02"
+    ],
+    "sdk": "无平台SDK通用承诺；独立clean构建，不加载广告/外链/开发者统计。",
+    "traffic": "编辑采购意愿，不是承诺购买、固定价或独立玩家数量。",
+    "payment": "报价、账期、退款/违约扣款、续约、验收权UNKNOWN，正式询价后才能建应收。",
+    "rights": "核对托管域名、期限、地域、转授权、源代码交付；保留共用机制库。",
+    "checked_on": "2026-10-21"
+  },
+  {
+    "id": "P02",
+    "name": "CrazyGames",
+    "role": "Basic玩家测试及Full分成",
+    "stage": "完成基本QA的HTML5构建，不是只有GDD",
+    "contact": "开发者门户及官方FAQ Contact",
+    "entry": "https://developer.crazygames.com/",
+    "claims": [
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08"
+    ],
+    "sdk": "Basic可无SDK但禁广告/IAP；Full接独立CrazyGames适配器。",
+    "traffic": "有限测试；实际展示/启动/游玩留存分别记录，晋级基准不等于采购保证。",
+    "payment": "公开100欧元最低结算，NET60；较早处理只是文档目标。费率、银行费用及退款/追回条款另审。",
+    "rights": "FAQ所有权不替代Terms；收款地区资格、内容定位、已有排他许可须审。",
+    "checked_on": "2026-10-21"
+  },
+  {
+    "id": "P03",
+    "name": "Poki",
+    "role": "精选测试及可选独家/非独家许可",
+    "stage": "可玩无登录链接或实际玩法视频，3张实机截图",
+    "contact": "官方share表单/获得权限后的开发者门户",
+    "entry": "https://developers.poki.com/guide/share",
+    "claims": [
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14"
+    ],
+    "sdk": "Web Fit/发行需Poki SDK；本地打包资产和字体，桌面16:9及手机布局分开验收。",
+    "traffic": "有分阶段真人/页面测试，营销支持依协议；500是Player fit玩家样本，不能与CrazyGames的plays混用。",
+    "payment": "协议定义分成/一次性许可额；银行/PayPal；统一比例、门槛、付款周期和退款规则UNKNOWN。",
+    "rights": "Web独家与P01/P02/P04同一IP分发原则上冲突；默认5年仅指示值，合同优先。",
+    "checked_on": "2026-10-21"
+  },
+  {
+    "id": "P04",
+    "name": "Playgama",
+    "role": "HTML5及合作站点分销",
+    "stage": "HTML5 ZIP、Bridge及元数据，经过QA/审核",
+    "contact": "developer.success@playgama.com；官方开发者门户",
+    "entry": "https://developer.playgama.com/",
+    "claims": [
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22"
+    ],
+    "sdk": "Bridge独立版本；不混装Poki/CrazyGames SDK；关闭GA4等第三方遥测。",
+    "traffic": "网络总体覆盖和SDK可支持列表都不等于单款保证流量，也不替代Poki/CrazyGames单独审核。",
+    "payment": "区分合作站点分发净收入分段与站内/iframe固定50%；100美元门槛；净额扣除和支付账期/追回仍需协议。",
+    "rights": "注册就接受条款，不能为研究自行注册；撤回游戏不等于服务器删除；核对转授权/排除渠道/终止及删除。",
+    "checked_on": "2026-10-21"
+  },
+  {
+    "id": "P05",
+    "name": "Azur Games",
+    "role": "移动发行和有条件买量测试",
+    "stage": "原型视频、APK链接、团队信息；先内部评估",
+    "contact": "publishing@azurgames.com；官方投稿表单",
+    "entry": "https://azurgames.com/publish-with-us/",
+    "claims": [
+      "C23",
+      "C24"
+    ],
+    "sdk": "发行商评估后指定归因/数据SDK；Android签名、ABI、目标API与SDK版本需书面确认。",
+    "traffic": "只有通过内部评估后才可能购买测试流量；预算、样本、国家、停止规则UNKNOWN。",
+    "payment": "没有公开本团队CPI、分成、报价、回收顺序或结算承诺；不按公司总安装数预测收入。",
+    "rights": "签署前核IP、移动排他范围、共用库保留、买量回收、数据访问、退出和迭代义务。",
+    "checked_on": "2026-10-21"
+  },
+  {
+    "id": "P06",
+    "name": "TapNation",
+    "role": "移动发行运营及可选买断",
+    "stage": "概念/原型/build，但当前表单包含收入和D1等必填字段",
+    "contact": "官方submit表单及Contact；不猜测私人邮箱",
+    "entry": "https://www.tap-nation.io/submit/",
+    "claims": [
+      "C25",
+      "C26",
+      "C27"
+    ],
+    "sdk": "开发平台可选不代表SDK兼容已验证；合作后锁定移动引擎/归因/广告/隐私配置。",
+    "traffic": "合作评估、A/B/UA是能力描述；没有给本项目的保底测试/采购金额。",
+    "payment": "分成、里程碑、买断价、回本优先级、付款及退款/追回UNKNOWN。",
+    "rights": "官网表示协商创作权且可选买断；不得据此认为IP自动永久归团队。",
+    "checked_on": "2026-10-21"
+  }
+]

@@ -1,0 +1,121 @@
+{
+  "captured_at": "2026-10-21T18:38:45.861831+08:00",
+  "files": [
+    {
+      "path": "00_Project_Charter.md",
+      "sha256": "35439d44c2464d44163d0b4a41ede381087d468bf4b1908f3722456d7d651cf1"
+    },
+    {
+      "path": "01_Market_Evidence.md",
+      "sha256": "b6584e6f224240cb1928da290c7073aa41d189944875042739459fa062419c91"
+    },
+    {
+      "path": "02_Benchmark_Playthrough.md",
+      "sha256": "c48833f7bd37153ad81d2ff327d2622a24346e0140616065f3989f6a03e38007"
+    },
+    {
+      "path": "03_Full_GDD.md",
+      "sha256": "fa4d4d6bbf79b24a7b1f6ef27f56cbcbcb5b33892177c5008d1fc881d11b3ce6"
+    },
+    {
+      "path": "04_Systems_and_Data.md",
+      "sha256": "d0c9c1f4fd6f580e47d4a494fe0936c79be7b14efb7e337c622657f837a830fe"
+    },
+    {
+      "path": "05_Levels_Economy.md",
+      "sha256": "eb07e3856f2a9b2f472c319c75847ee20a9df80072bd823a9cdcb1812f0c24c7"
+    },
+    {
+      "path": "06_UI_Art_Audio.md",
+      "sha256": "50b7ccf300d3a7dcf7a74ffc97a9188da14acfe3b93766dceacc36c40faa472e"
+    },
+    {
+      "path": "07_Tech_Architecture.md",
+      "sha256": "5e658b4d32e9338e13d33b7b0cdc2173371149ab8c8b3272a34683866cde01b7"
+    },
+    {
+      "path": "08_OpenSource_Licenses.md",
+      "sha256": "15f4edd98ee135e5a82b1cf1b18dc21618f77c4983666925e6e49d18a9ec4536"
+    },
+    {
+      "path": "09_Implementation_Plan.md",
+      "sha256": "7bd7f8e1bb62c99398d06dbb807133bc796e1bab215712c074247860d397476e"
+    },
+    {
+      "path": "10_QA_Test_Plan.md",
+      "sha256": "c5859d26fa9e12317bc734f7fe8da81b82e48001e66df0aabf3164fc287f5b57"
+    },
+    {
+      "path": "11_Distribution_Business.md",
+      "sha256": "22af639831c7bc7d9577c277a1e2ce86c69f9196c7048241580578ab9b41a2af"
+    },
+    {
+      "path": "12_Falsifiability.md",
+      "sha256": "ebf35992b026454f8907f07f6d9c727c5e807657109a31e888c8227eddd98ea7"
+    },
+    {
+      "path": "game-spec.json",
+      "sha256": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070"
+    },
+    {
+      "path": "game-spec.schema.json",
+      "sha256": "5acdac4564c696196a748ffe47ac09e78ccdbfaac8686d5b3102f087a497f1ec"
+    },
+    {
+      "path": "README.md",
+      "sha256": "da5d02ec034c342ba50da7df8f88553b2a8e899d05b6333792342a60dcbc9900"
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "e317bc362c8d390331a80d51e669912637d5dd24477978efebc2d39fd9976148"
+    },
+    {
+      "path": "tasks.json",
+      "sha256": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df"
+    },
+    {
+      "path": "tasks.schema.json",
+      "sha256": "50bbe0ca0177b88e406f3eae36a4b05a7e8c9ef242b0ab0e3935abe78fa03885"
+    },
+    {
+      "path": "research/evidence.json",
+      "sha256": "893c7c20a5388c346046f17e2afc32a84c470919ff6e631e2b2b6f975cec3c03"
+    },
+    {
+      "path": "research/raw-index.json",
+      "sha256": "ab0ff9aa1269ae4a3f31975430300f1fe045fd1d2cfb36a8a0e3d466378b3f95"
+    },
+    {
+      "path": "research/README.md",
+      "sha256": "a8298591e37cd1c2ac3d58df81ffb048514a5e0674cc2c808cf04f48cbc63c82"
+    },
+    {
+      "path": "tools/prepare_data.py",
+      "sha256": "7275ca1f3e167b87bd58ca765fd8036bbe381265e02f6a5dc70a94b06fa8c359"
+    },
+    {
+      "path": "tools/prepare_evidence.py",
+      "sha256": "46ed2de88bb76d4c4bf0a285611ec2fec7fb33242cea141642c23c06fe5c25f4"
+    },
+    {
+      "path": "tools/requirements-validation.txt",
+      "sha256": "5b6d38c8d4aa162dcc99dec1e1ddbee79d19595ddb20d0072c8a87c63f563020"
+    },
+    {
+      "path": "tools/validate.py",
+      "sha256": "ce8a823ed93aa2abd4255177a5a60d8de075baa82d673829cf1e8f69309dac10"
+    },
+    {
+      "path": "tools/write_level_catalog.py",
+      "sha256": "cb0ff8cbdf2e3e64033bbef911b938e5c862bbac0fd5202410ac57a8e0762b54"
+    },
+    {
+      "path": "validation/report.json",
+      "sha256": "667251bf1af44cfeb6da414a4642c17c104d1af6605bdca5a5b9313deeabf692"
+    },
+    {
+      "path": "validation/solution-traces.json",
+      "sha256": "82d1514e67dc0eef7d25bd1366cd4e527ae3f767b1eb126e30423511c05e9711"
+    }
+  ]
+}

@@ -1,0 +1,5193 @@
+{
+  "metadata": {
+    "schema_version": "1.0.0",
+    "title": "AI Game Foundry official benchmark evidence",
+    "accessed_at": "2026-10-21",
+    "timezone": "Asia/Shanghai",
+    "scope_platform_ids": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06"
+    ],
+    "scope_game_ids": [
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "G05",
+      "G06",
+      "G07",
+      "G08",
+      "G09",
+      "G10"
+    ],
+    "build_authorized": false,
+    "write_root": "F:\\CoCreateGame\\research\\benchmarks",
+    "methodology": "methodology.md",
+    "delivery_exclude_paths": [
+      "evidence/runtime/"
+    ],
+    "local_runtime_cleanup": "NOT_REMOVED_POLICY_REJECTION; exclude from delivery; see evidence/cleanup.json"
+  },
+  "summary": {
+    "cards": 24,
+    "platforms": 6,
+    "unique_title_groups": 23,
+    "unique_title_groups_caveat": "Piece of Cake两条仅按同名暂列一组，身份/版本等价UNKNOWN；其余不因家族相似合并。",
+    "deep_analysis_platform_records": 12,
+    "complete_direct_playthroughs": 0,
+    "complete_direct_first_30_seconds": 0,
+    "complete_direct_first_5_minutes": 0,
+    "partial_confirmed_core_input_games": 1,
+    "partial_entry_only_games": 1,
+    "load_attempt_only_games": 1,
+    "browser_attempted_games": 3,
+    "secondary_reconstruction_deep_analyses": 12,
+    "secondary_reconstruction_with_partial_gameplay_supplement": 1,
+    "official_videos_watched": 0,
+    "cards_without_confirmed_core_input": 23,
+    "per_platform": {
+      "P01": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P02": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P03": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P04": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P05": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P06": {
+        "cards": 4,
+        "deep_analyses": 2
+      }
+    }
+  },
+  "sources": [
+    {
+      "source_id": "CM-PAINT",
+      "source_url": "https://www.coolmathgames.com/hi/0-paint-master",
+      "title": "Paint Master 官方说明（印地语页面）",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-10-20",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "英文主链接在 web 工具不可读；同站印地语正文可读，浏览器亦实到。官方本地化文本不等于独立来源。",
+      "video_watched": false
+    },
+    {
+      "source_id": "CM-RODHA",
+      "source_url": "https://www.coolmathgames.com/0-rodha-2",
+      "title": "Rodha 2 官方说明",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-10-15",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "CM-SUIKA",
+      "source_url": "https://www.coolmathgames.com/0-suika-watermelon-game",
+      "title": "Suika Watermelon Game 官方说明",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-07-08",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "CM-SUIKA-GUIDE",
+      "source_url": "https://www.coolmathgames.com/blog/suika-watermelon-game-strategy",
+      "title": "How to Play Suika Watermelon Guide",
+      "accessed_at": "2026-10-21",
+      "published_at": "2024-01-17",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_TUTORIAL",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "CM-TINY",
+      "source_url": "https://www.coolmathgames.com/0-tiny-fishing",
+      "title": "Tiny Fishing 官方说明",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-08-04",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "CG-ARROW",
+      "source_url": "https://www.crazygames.com/it/game/arrow-escape-puzzle",
+      "title": "Arrow Escape: Puzzle 官方意大利语教学页",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "web 返回具名作品正文，但标示抓取缓存为约五个月前；英文/德文/罗马尼亚文直达曾跳转 Brain 类别，当前可玩性 UNKNOWN。不能以访问日期冒充内容刷新日期。",
+      "video_watched": false
+    },
+    {
+      "source_id": "CG-SCREW",
+      "source_url": "https://www.crazygames.com/game/screw-out-bolts-and-nuts",
+      "title": "Screw Out: Bolts and Nuts 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-05-26",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "CG-CAKE",
+      "source_url": "https://www.crazygames.com/game/piece-of-cake-merge-and-bake",
+      "title": "Piece of Cake: Merge and Bake 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2025-05-28",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "CG-DESCENT",
+      "source_url": "https://www.crazygames.com/game/deadly-descent-bzs",
+      "title": "Deadly Descent 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-01-20",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "PK-LEVEL",
+      "source_url": "https://poki.com/en/g/level-devil",
+      "title": "Level Devil 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-09",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "PK-DRIVE",
+      "source_url": "https://poki.com/en/g/drive-mad",
+      "title": "Drive Mad 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-09",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "FC-DRIVE",
+      "source_url": "https://www.fancade.com/wiki/Drive_Mad",
+      "title": "Drive Mad：Fancade 域内 Wiki",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "DEVELOPER_HOSTED_COMMUNITY_WIKI",
+      "access_method": "web",
+      "access_note": "开发者官方域托管的可编辑 Wiki；贡献者身份未核实，且明确区分 Fancade 内版本与独立 Web 版本；仅交叉确认输入，不借用具体关卡序号。",
+      "video_watched": false
+    },
+    {
+      "source_id": "PK-MONKEY",
+      "source_url": "https://poki.com/en/g/monkey-mart",
+      "title": "Monkey Mart 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-03",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "PK-BLOCK",
+      "source_url": "https://poki.com/en/g/blocky-blast-puzzle",
+      "title": "Blocky Blast Puzzle 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-03",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "PG-ARROW",
+      "source_url": "https://playgama.com/game/arrow-puzzle",
+      "title": "Arrow Puzzle 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-06",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "PG-SORT",
+      "source_url": "https://playgama.com/game/good-sort-master",
+      "title": "Good Sort Master: Triple Match 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-06",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "PG-CAKE",
+      "source_url": "https://playgama.com/game/piece-of-cake-merge--bake",
+      "title": "Piece of Cake: Merge & Bake 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-08",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "PG-FARM",
+      "source_url": "https://playgama.com/game/my-perfect-farm-idle-tycoon",
+      "title": "My Perfect Farm: Idle Tycoon 官方教学",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-10",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "AZ-CATALOG",
+      "source_url": "https://azurgames.com/games/",
+      "title": "Azur 官方历史作品目录",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "AZ-SORT-CASE",
+      "source_url": "https://azurgames.com/blog/how-unconventional-setting-affects-the-success-of-a-hyper-casual-game-in-an-occupied-niche/",
+      "title": "Azur Color Sort Puz 历史运营案例",
+      "accessed_at": "2026-10-21",
+      "published_at": "2023-02-09",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "PUBLISHER_HISTORICAL_CASE_STUDY",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "AZ-SORT-STORE",
+      "source_url": "https://play.google.com/store/apps/details?hl=en_US&id=com.Pizzart.CrowdSort",
+      "title": "Color Sort Puz: Sorting games — CASUAL AZUR GAMES",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2025-10-06",
+      "evidence_type": "PUBLISHER_STORE_LISTING",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "AZ-STACK-STORE",
+      "source_url": "https://play.google.com/store/apps/details?id=com.azurgames.stackball",
+      "title": "Stack Ball - Crash Platforms — CASUAL AZUR GAMES",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-10-08",
+      "evidence_type": "PUBLISHER_STORE_LISTING",
+      "access_method": "web",
+      "access_note": "本次打开正文 Updated on 为 Oct 8, 2026；搜索索引及其他语言曾显示更早日期，采用已打开英语正文，不混拼版本。",
+      "video_watched": false
+    },
+    {
+      "source_id": "AZ-TOWER-STORE",
+      "source_url": "https://play.google.com/store/apps/details?id=com.quantumgames.skyscraper",
+      "title": "Tower Craft: Build Skyscraper — CASUAL AZUR GAMES",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-10-08",
+      "evidence_type": "PUBLISHER_STORE_LISTING",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "TN-THIEF",
+      "source_url": "https://www.tap-nation.io/games/thief-puzzle-to-pass-a-level/",
+      "title": "Thief Puzzle 官方历史作品页",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "TN-THIEF-CASE",
+      "source_url": "https://tap-nation.io/blog/thief-puzzle-a-case-study-of-a-hyper-casual-puzzle-mobile-game/",
+      "title": "Thief Puzzle 官方案例",
+      "accessed_at": "2026-10-21",
+      "published_at": "2026-06-02",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "PUBLISHER_HISTORICAL_CASE_STUDY",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "TN-WATER",
+      "source_url": "https://www.tap-nation.io/games/color-water-sort-puzzle-games/",
+      "title": "Color Water Sort Puzzle Games 官方历史作品页",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "TN-WATER-STORE",
+      "source_url": "https://play.google.com/store/apps/details?id=com.playspare.watersort3d",
+      "title": "Color Water Sort Puzzle Games — TapNation",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-10-16",
+      "evidence_type": "PUBLISHER_STORE_LISTING",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "TN-GUESS",
+      "source_url": "https://www.tap-nation.io/games/guess-their-answer/",
+      "title": "Guess Their Answer 官方历史作品页",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "TN-GUESS-CASE",
+      "source_url": "https://tap-nation.io/blog/guess-their-answer-a-case-study-of-a-top-trivia-mobile-game/",
+      "title": "Guess Their Answer 官方流程案例",
+      "accessed_at": "2026-10-21",
+      "published_at": "2026-06-01",
+      "updated_at": "2026-06-02",
+      "evidence_type": "PUBLISHER_HISTORICAL_CASE_STUDY",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "TN-GUESS-STORE",
+      "source_url": "https://play.google.com/store/apps/details?id=com.qoni.guesstheiranswer",
+      "title": "Guess Their Answer - IQ Games — TapNation",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "2026-09-23",
+      "evidence_type": "PUBLISHER_STORE_LISTING",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "TN-HERO",
+      "source_url": "https://www.tap-nation.io/games/hero-making-tycoon/",
+      "title": "Hero Making Tycoon 官方历史作品页",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "updated_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "access_method": "web",
+      "access_note": "已通过 web 读取官方正文；不代表执行游戏。",
+      "video_watched": false
+    },
+    {
+      "source_id": "BROWSER-SESSION",
+      "source_url": "evidence/session.json",
+      "title": "本次浏览器命令与截图日志",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "DIRECT_OBSERVATION_LIMITED",
+      "access_method": "existing_playwright_core_and_cached_chromium",
+      "access_note": "运行浏览器正常页面，不注入游戏状态、不抓专有源码；只确认截图可见内容；从未读取cookies。",
+      "video_watched": false
+    }
+  ],
+  "benchmarks": [
+    {
+      "benchmark_id": "P01-paint-master",
+      "platform_id": "P01",
+      "game_id": [
+        "G04"
+      ],
+      "name": "Paint Master",
+      "source_url": "https://www.coolmathgames.com/hi/0-paint-master",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2026-10-08",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "CM-PAINT"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "CM-PAINT"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "按行列刷色并用覆盖顺序复现目标图案；每次刷色耗一步，过关补步，步数耗尽结束。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "直接贴近G04的覆盖依赖和顺序规划；有官方输入、失败条件与辅助规则。"
+      },
+      "counter_evidence": [
+        "本地化页有广告声明及通用兼容性提示，不能据此推断实际广告频次或引擎。",
+        "浏览器只见游戏区域空白，未观察棋盘，不能把说明当亲测。"
+      ],
+      "known": [
+        {
+          "text": "按行列刷色并用覆盖顺序复现目标图案；每次刷色耗一步，过关补步，步数耗尽结束。",
+          "source_ids": [
+            "CM-PAINT"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        },
+        {
+          "text": "桌面访问官方印地语页面，等待后游戏区仍空白，未见iframe/canvas；未执行棋盘输入。",
+          "source_ids": [
+            "BROWSER-SESSION"
+          ],
+          "verification": "DIRECT_OBSERVATION_LIMITED"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [
+        {
+          "name": "rating",
+          "value": "4.3/5; 624 votes",
+          "metric_definition": "访问时页面用户评分与投票数，统计窗口未公开；不是游玩量。",
+          "source_url": "https://www.coolmathgames.com/hi/0-paint-master",
+          "accessed_at": "2026-10-21",
+          "observation_or_reporting_window": "UNKNOWN",
+          "independently_audited": false
+        }
+      ],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "LOAD_ATTEMPT_ONLY",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": [
+          "evidence/screenshots/p01-paint-master-loaded.png"
+        ],
+        "observed_scope": "桌面访问官方印地语页面，等待后游戏区仍空白，未见iframe/canvas；未执行棋盘输入。",
+        "session_log": "evidence/session.json"
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "CM-PAINT",
+          "source_url": "https://www.coolmathgames.com/hi/0-paint-master",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_GAME_PAGE",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "CM-PAINT"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "仅同站本地化官方教学，缺独立开发者教学/已观看官方视频。",
+            "浏览器未加载棋盘，所有玩法仍是间接重建。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "可核实操作链：观察顶部目标→点右侧行刷/底部列刷→对应行列着色且覆盖旧色→比较目标；这只是说明重建。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "首次加载到可操作的时间"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "首关图案、初始步数、教程遮罩顺序"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "第一操作发生在第几秒"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "可重建循环：完成图案→进入下一关并补步→继续规划覆盖顺序；不是五分钟内实际完成关数。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟实际通过关数和难度变化"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "每关补步量、关卡生成规则"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "是否跨关沿用剩余步数及具体结算顺序"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "行/列边缘的画刷是点击/触碰输入；新颜色覆盖旧层。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "同一画刷能否连续重复、动画中输入是否排队"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "误触撤销与键盘支持"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "画布匹配目标即完成一关。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "匹配检测在动画前还是后、最后一步恰好匹配如何优先结算"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "可用步数耗尽会结束游戏。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "错误图案是否额外扣分"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "用完步数与胜利同时发生的优先级"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "结束后的重试按钮、恢复点、广告续关与是否重置Magic Brush"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "完成关卡增加可用步数；魔法刷可直接把一行/列变成目标对应颜色，不耗步，每局限用三次。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "局的定义、三次额度重置时机"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "总关数、后期机制、分数曲线"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [
+              {
+                "text": "官方说明位置：目标在顶部、Move圆形计数在右侧、Magic Brush在右下；这些尚未在棋盘实测。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际棋盘尺寸、动效时长、音频、触控命中范围"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [
+              {
+                "text": "页面说明含嵌入式视频广告；不提供频次和奖励兑换表。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际广告是否出现、触发与时长"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "金币/IAP/开发者收入"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "官方列Browser、Mobile，并给出移动主页添加说明。",
+                "source_ids": [
+                  "CM-PAINT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "Android/iOS真机、横竖屏行为"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "加载性能；本次桌面仅观察到空白游戏区"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "选一行刷与一列刷并比较交点覆盖",
+            "耗尽步数，检查失败/重试",
+            "验证Magic Brush额度与重置边界"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P01-rodha-2",
+      "platform_id": "P01",
+      "game_id": [
+        "G05"
+      ],
+      "name": "Rodha 2",
+      "source_url": "https://www.coolmathgames.com/0-rodha-2",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2026-10-15",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "CM-RODHA"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "CM-RODHA"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "左右定向跳跃、空中二段跳，避开危险抵达传送门；旗帜为检查点，通关获得金币并可用广告增加奖励。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "检验G05的动作输入、检查点和失败恢复；属包内具名参考。"
+      },
+      "counter_evidence": [
+        "官方文本明确有广告奖励，不能将其推广为所有Coolmath游戏的广告规则。",
+        "页面出现通用Flash不兼容提示，不足以认定本作品使用Flash；未操作验证。"
+      ],
+      "known": [
+        {
+          "text": "左右定向跳跃、空中二段跳，避开危险抵达传送门；旗帜为检查点，通关获得金币并可用广告增加奖励。",
+          "source_ids": [
+            "CM-RODHA"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P01-suika-watermelon",
+      "platform_id": "P01",
+      "game_id": [
+        "G09"
+      ],
+      "name": "Suika Watermelon Game",
+      "source_url": "https://www.coolmathgames.com/0-suika-watermelon-game",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2024-01-16",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "CM-SUIKA",
+        "CM-SUIKA-GUIDE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "CM-SUIKA"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "拖动并松开投放水果，同类碰撞合成为更大水果，以高分为目标；箱体装满结束。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G09的投放、碰撞与空间压力有教学页和官方攻略交叉支持。"
+      },
+      "counter_evidence": [
+        "研究对象仅是Coolmath所载版本；不宣称是其他同名Suika作品的相同实现。",
+        "官方攻略的水果顺序与数量不是物理参数、随机分布或完整数值表。"
+      ],
+      "known": [
+        {
+          "text": "拖动并松开投放水果，同类碰撞合成为更大水果，以高分为目标；箱体装满结束。",
+          "source_ids": [
+            "CM-SUIKA"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "CM-SUIKA",
+          "source_url": "https://www.coolmathgames.com/0-suika-watermelon-game",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_GAME_PAGE",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        },
+        {
+          "source_id": "CM-SUIKA-GUIDE",
+          "source_url": "https://www.coolmathgames.com/blog/suika-watermelon-game-strategy",
+          "accessed_at": "2026-10-21",
+          "published_at": "2024-01-17",
+          "evidence_type": "OFFICIAL_TUTORIAL",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "CM-SUIKA",
+            "CM-SUIKA-GUIDE"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "两个同平台官方页面互相补充，仍不是独立玩家观察；未观看视频、未直接操作。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "可核实链：观察当前与下一水果→拖到投放横坐标→松开→等待落下/碰撞→同类合并。时间未观测。",
+                "source_ids": [
+                  "CM-SUIKA",
+                  "CM-SUIKA-GUIDE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "首屏教程、起手水果与随机种子"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "第一次合成耗时、首局初始分数"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "官方攻略建议看下一水果、把大果靠近并管理剩余空间；可以在卡住时使用推挤。",
+                "source_ids": [
+                  "CM-SUIKA-GUIDE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟实际得分与果序"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "投放间隔、队列概率、暂停/恢复行为"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "鼠标或手指拖动定位，松开投放；左右按钮可整体推水果。",
+                "source_ids": [
+                  "CM-SUIKA",
+                  "CM-SUIKA-GUIDE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "能否键盘控制、投放与碰撞动画中是否锁输入"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "目标是尽可能高分和合出更大水果；不是已证实的逐关胜利。",
+                "source_ids": [
+                  "CM-SUIKA"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "分数公式、单果分值和西瓜后是否有终局动画"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "箱体装满至边缘会结束。",
+                "source_ids": [
+                  "CM-SUIKA"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "越线检测区、高度容忍、滞留时间、碰撞回弹越线如何判定"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "结束后的重来入口、保留最高分、广告续命、推挤次数重置"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "合并→腾出/占用新空间→放下一果→争取更高阶果；官方教程列左右各五次推挤。",
+                "source_ids": [
+                  "CM-SUIKA",
+                  "CM-SUIKA-GUIDE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "随机分布、摩擦/弹性、长局存档、难度随时间变化"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [
+              {
+                "text": "攻略说明右侧有水果阶次索引，并提示关注下一水果；推挤按钮在下方/左右。",
+                "source_ids": [
+                  "CM-SUIKA-GUIDE",
+                  "CM-SUIKA"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "本次具体布局截图、分辨率适配、音频/震动"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "广告位置/频次/续命"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "可购货币、IAP、真实单款收益"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "官网支持浏览器与移动设备；触控与鼠标说明均存在。",
+                "source_ids": [
+                  "CM-SUIKA"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际手机帧率、合成高峰性能、触摸拖动偏移"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "拖放同阶果并保存合成前后状态",
+            "逐步堆到箱口核对实际失败边界",
+            "核查推挤次数及重新开始"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P01-tiny-fishing",
+      "platform_id": "P01",
+      "game_id": [
+        "G07"
+      ],
+      "name": "Tiny Fishing",
+      "source_url": "https://www.coolmathgames.com/0-tiny-fishing",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2020-09-22",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "CM-TINY"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "CM-TINY"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "仅映射G07的升级与离线成长部分，不能替代完整自动化经营对标。"
+      },
+      "official_summary": "点转盘抛钩、拖动鱼钩捕鱼、回到水面结算现金并升级钩具；官方说明离线仍有收益。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "用来研究短操作与升级/回访连接，G07仅作邻接对标。"
+      },
+      "counter_evidence": [
+        "捕鱼是主动操作，不等于工人/订单自动化经营。",
+        "单鱼收益、升级价格曲线及离线收益上限均UNKNOWN。"
+      ],
+      "known": [
+        {
+          "text": "点转盘抛钩、拖动鱼钩捕鱼、回到水面结算现金并升级钩具；官方说明离线仍有收益。",
+          "source_ids": [
+            "CM-TINY"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P02-arrow-escape-puzzle",
+      "platform_id": "P02",
+      "game_id": [
+        "G01"
+      ],
+      "name": "Arrow Escape: Puzzle",
+      "source_url": "https://www.crazygames.com/it/game/arrow-escape-puzzle",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2026-02",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "CG-ARROW"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "CG-ARROW"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "沿箭头朝向移除未被阻挡的箭头，按依赖顺序清空棋盘；官方功能文案写单击/触碰，Controls另写拖动。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "优先保留包内G01参考，同时暴露控制文本与页面可用性的不确定性。"
+      },
+      "counter_evidence": [
+        "英文和若干语言链接重定向到Brain目录；意大利语正文来自web缓存，当前可玩性UNKNOWN。",
+        "同页一触一动与拖动描述有歧义；未亲测不能裁定。",
+        "不得把Playgama Arrow Puzzle的扣生命规则移植到本作品。"
+      ],
+      "known": [
+        {
+          "text": "沿箭头朝向移除未被阻挡的箭头，按依赖顺序清空棋盘；官方功能文案写单击/触碰，Controls另写拖动。",
+          "source_ids": [
+            "CG-ARROW"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "CG-ARROW",
+          "source_url": "https://www.crazygames.com/it/game/arrow-escape-puzzle",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_GAME_PAGE",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "CG-ARROW"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "官方页面为缓存正文，部分直达重定向；当前运行版本未核实。",
+            "无开发者独立教学或观看过的官方视频；不能用另一Arrow作品填补失败规则。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "说明可重建：找朝向前方无阻挡的箭头→触碰/拖动该箭头→腾出通路→再选箭头。",
+                "source_ids": [
+                  "CG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "加载、教程、首棋盘、首个合法/非法动作的实际反馈"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "触碰与拖动到底哪个生效"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "可重建短关清盘后进入后续关；官方说关卡短并非本次测得时长。",
+                "source_ids": [
+                  "CG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟关数、难度、广告中断"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "生命、计时器、提示首次出现条件"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "箭头只能沿尖端朝向、在前方清空后移除；同页输入文字有触碰/拖动歧义。",
+                "source_ids": [
+                  "CG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "点击被挡箭头后是否消耗资源"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "触发在按下、松开还是拖动阈值"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "移除棋盘全部箭头。",
+                "source_ids": [
+                  "CG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "结算奖励、关卡计数、特殊障碍是否需清除"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "失败条件、是否有生命/倒计时/步数"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "死锁时自动判负还是提示"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "重试按钮、付费/广告恢复、是否回滚一步"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "按阻挡关系决定清除次序；后续复杂度变化未提供可复现数据。",
+                "source_ids": [
+                  "CG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "箭头数量曲线、障碍种类、提示/关卡包解锁"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实机箭头命中区、生命/关号/提示按钮"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "颜色是否编码规则、色弱可达性"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "所有道具价格、广告点、IAP、收益"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "缓存官方页列桌面、移动、平板浏览器和CrazyGames App；不能等同本次兼容性通过。",
+                "source_ids": [
+                  "CG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "当前可玩性、重定向原因、触控实际效果"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "先确认具名游戏仍可进入，再比较点击和拖动",
+            "选一个被挡箭头观察是否扣资源",
+            "清盘、失败、重试各记录一次"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P02-screw-out",
+      "platform_id": "P02",
+      "game_id": [
+        "G02"
+      ],
+      "name": "Screw Out: Bolts and Nuts",
+      "source_url": "https://www.crazygames.com/game/screw-out-bolts-and-nuts",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2025-03",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "CG-SCREW"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "CG-SCREW"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "点击拆除彩色螺丝，匹配顶部颜色容器；不匹配螺丝占有限暂存槽，填满导致失败风险。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G02的拆除遮挡、有限缓冲与容器刷新有官方详细教学。"
+      },
+      "counter_evidence": [
+        "正文对暂存满的表述存在满即失败/满后再拆失败的边界差异，须实际检查。",
+        "官方点数道具价格不能证明现实货币、广告兑换或单位时间收益。"
+      ],
+      "known": [
+        {
+          "text": "点击拆除彩色螺丝，匹配顶部颜色容器；不匹配螺丝占有限暂存槽，填满导致失败风险。",
+          "source_ids": [
+            "CG-SCREW"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "CG-SCREW",
+          "source_url": "https://www.crazygames.com/game/screw-out-bolts-and-nuts",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_GAME_PAGE",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "CG-SCREW"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "只有平台教学单一来源；没有独立开发者教学/已观看视频。",
+            "未直接试玩，暂存失败边界须列为P0规则阻塞。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "说明可重建：看顶部颜色容器→选可触及且匹配的螺丝→点击拆下→填入容器/暂存区。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际教程、首关容器数、暂存槽初值"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "首次拆除动画与响应时间"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "拆完固定某片形状的螺丝后该片移除；填满一个颜色容器后换色，继续处理遮挡。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟通关数和露出顺序"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "物理掉落是否改变剩余螺丝可选性"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "左键拆螺丝，颜色匹配优先入顶部容器，不匹配占额外孔位。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "不可见/被遮挡螺丝能否点"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "动画期间多点能否排队"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "完成要求的螺丝分类可完成该关；FAQ说明同色三颗填满容器后刷新。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "顶部目标填满与全部板片移除哪个先触发胜利"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "有限不匹配暂存区满会触发失败风险；正文对满即失败或满后再拆有表述差异。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "失败检测准确时机、槽数、是否留一次补救动作"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "失败弹窗、复活/重试、恢复哪个状态"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "是否保留已用道具或本关奖励"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "匹配→容器刷新→利用暂存腾挪→拆除更多形状；教学列磁铁、钻孔、锤子、跳关工具。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "每关产出点数、道具发放、后期颜色/遮挡曲线"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [
+              {
+                "text": "官方教学把目标容器置顶、形状和螺丝置下；未取得实机布局。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "各道具按钮位置、槽位反馈、动画时长"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [
+              {
+                "text": "教学所列道具点数价格：磁铁1500、钻孔1200、锤子1800、跳关3000；仅平台文字快照，不是已测经济。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "点数获取速率、付费货币、广告兑换、IAP、开发者收益"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "官方列Unity 2022、竖屏及桌面/移动/平板浏览器。",
+                "source_ids": [
+                  "CG-SCREW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际引擎构建、触控、掉板物理性能、内存"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "用不匹配螺丝填满暂存，验证失败时机",
+            "连续拆三颗同色观察容器刷新",
+            "记录板片移除和剩余目标变化"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P02-piece-of-cake",
+      "platform_id": "P02",
+      "game_id": [
+        "G03"
+      ],
+      "name": "Piece of Cake: Merge and Bake",
+      "source_url": "https://www.crazygames.com/game/piece-of-cake-merge-and-bake",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2024-10",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "CG-CAKE",
+        "PG-CAKE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "CG-CAKE"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "生成并合成食物满足顾客订单，获得资金修复咖啡馆并推进故事；拖动对象进行合成。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "可研究G03从合成到订单与装修的完整价值链。"
+      },
+      "counter_evidence": [
+        "正文说清空所有匹配，但订单/持续生成结构不等于传统清盘胜利条件。",
+        "与Playgama同名作品存在开发者名称、发布时间和控制说明差异，不能认定版本完全一致。"
+      ],
+      "known": [
+        {
+          "text": "生成并合成食物满足顾客订单，获得资金修复咖啡馆并推进故事；拖动对象进行合成。",
+          "source_ids": [
+            "CG-CAKE"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P02-deadly-descent",
+      "platform_id": "P02",
+      "game_id": [
+        "G06"
+      ],
+      "name": "Deadly Descent",
+      "source_url": "https://www.crazygames.com/game/deadly-descent-bzs",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2025-08",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "CG-DESCENT"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "CG-DESCENT"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "用WASD或方向键控制可损坏车辆，穿过障碍抵达终点；C切镜头，移动端有屏幕按钮/方向盘。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "为G06补充损坏与速度控制型驾驶对标。"
+      },
+      "counter_evidence": [
+        "车辆损坏仍可能行驶，不能把任何碰撞都定义为失败。",
+        "所谓真实物理/移动端流畅是平台文案，未测帧率或真机。"
+      ],
+      "known": [
+        {
+          "text": "用WASD或方向键控制可损坏车辆，穿过障碍抵达终点；C切镜头，移动端有屏幕按钮/方向盘。",
+          "source_ids": [
+            "CG-DESCENT"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P03-level-devil",
+      "platform_id": "P03",
+      "game_id": [
+        "G05"
+      ],
+      "name": "Level Devil",
+      "source_url": "https://poki.com/en/g/level-devil",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2023-12",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "PK-LEVEL"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "PK-LEVEL"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "左右移动并跳跃抵达出口，地板、尖刺等突发陷阱引发失败，后续会增加控制变化。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G05可研究惊讶反馈与重复尝试，但具体关卡表达不得复制。"
+      },
+      "counter_evidence": [
+        "官方教学不是本次玩家轨迹；本次只进入首关画面，未证明通过、死亡或重试。",
+        "加载与新内容弹窗造成中断，不能把按键/菜单操作算完整试玩。"
+      ],
+      "known": [
+        {
+          "text": "左右移动并跳跃抵达出口，地板、尖刺等突发陷阱引发失败，后续会增加控制变化。",
+          "source_ids": [
+            "PK-LEVEL"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        },
+        {
+          "text": "进入了地图菜单、新内容YES/NO弹窗和首次关卡场景；最后截图有角色与出口，但没有角色位移前后对照，不能确认核心输入生效；不计完成试玩。",
+          "source_ids": [
+            "BROWSER-SESSION"
+          ],
+          "verification": "DIRECT_OBSERVATION_LIMITED"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "PARTIAL_ENTRY_ONLY",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": [
+          "evidence/screenshots/p03-level-devil-loaded.png",
+          "evidence/screenshots/p03-level-devil-after-wait.png",
+          "evidence/screenshots/p03-level-devil-front-space.png",
+          "evidence/screenshots/p03-level-devil-character-moved.png"
+        ],
+        "observed_scope": "进入了地图菜单、新内容YES/NO弹窗和首次关卡场景；最后截图有角色与出口，但没有角色位移前后对照，不能确认核心输入生效；不计完成试玩。",
+        "session_log": "evidence/session.json"
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "PK-LEVEL",
+          "source_url": "https://poki.com/en/g/level-devil",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_GAME_PAGE",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "PK-LEVEL"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "本次只有菜单/弹窗输入和首次关卡场景，尚无可归因的角色位移前后对照。",
+            "开发者博客检索可发现但打开遇429，没有用它支持玩法；未观看视频。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "说明链：选关→左右移动/跳跃→避开突发陷阱→争取出口。实际初始30秒未知。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "从首次可操作起的连续30秒轨迹"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "首个陷阱触发条件、输入延迟"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "本次最后按键是否已在角色可控时生效"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "官方描述围绕失败后学习陷阱、再尝试与新陷阱推进。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际五分钟死亡数、通关数、重试间隔"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "菜单与弹窗占用时长不算玩法时长"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "官方列A/D或左右方向移动，W/上/空格跳跃；移动端屏幕按钮。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "本次角色位移是否由按键导致、跳跃高度、输入缓冲"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "抵达关卡出口门。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "具体碰撞阈值、通关过场、结算奖励"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "陷坑、尖刺与其他突然变化可导致失败。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "本次首关实际失败条件及死亡动画"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "关卡各陷阱位置/参数；不得复制原关卡表达"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [
+              {
+                "text": "官方教学说明多次尝试、学习陷阱是核心体验。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际重试键、复活延迟、是否回到小段开头"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "官方举例后续控制反转、平台变化等，属于厂商描述。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "解锁顺序、难度曲线、编辑器内容与主线的关系"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [
+              {
+                "text": "官方页面有具名教学与键位说明。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "主线菜单到角色关卡的完整可复现首局序列"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "各图标实际功能、音频、触摸按钮布局"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际播广告、触发频率、跳关/提示经济"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "本次休息文案不能证明广告已播放"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "官方列desktop、phone、tablet；本次访问环境为Windows桌面Chromium，1365×900。",
+                "source_ids": [
+                  "PK-LEVEL"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "Android/iOS真机、后台/前台与点击事件对游戏的影响"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "后续由授权研究者记录角色移动/跳跃前后状态",
+            "失败与重试各一次",
+            "连续计时观察30秒及五分钟"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P03-drive-mad",
+      "platform_id": "P03",
+      "game_id": [
+        "G06"
+      ],
+      "name": "Drive Mad",
+      "source_url": "https://poki.com/en/g/drive-mad",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2022-07",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "PK-DRIVE",
+        "FC-DRIVE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "PK-DRIVE"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "只控制前进和刹车/倒车，利用加减速控制车辆平衡并抵达终点。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G06以很少输入形成物理判断；有官方教学、开发者域Wiki及局部按键前后截图。"
+      },
+      "counter_evidence": [
+        "开发者域Wiki明确区分内置版与独立Web版；不移用其关卡39/43/45细节。",
+        "两秒按键只证实局部控制，不能声称完整五分钟、通关或已量出手感。"
+      ],
+      "known": [
+        {
+          "text": "只控制前进和刹车/倒车，利用加减速控制车辆平衡并抵达终点。",
+          "source_ids": [
+            "PK-DRIVE"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        },
+        {
+          "text": "在官方Poki网页运行区执行ArrowRight按住2000ms，前后截图显示车辆从起点平台移动至格纹终点附近；未记录结算、失败或重试，不能认定通关。",
+          "source_ids": [
+            "BROWSER-SESSION"
+          ],
+          "verification": "DIRECT_OBSERVATION_LIMITED"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "PARTIAL_GAMEPLAY_CONFIRMED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": true,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": [
+          "evidence/screenshots/p03-drive-mad-ready.png",
+          "evidence/screenshots/p03-drive-mad-forward-2s.png"
+        ],
+        "observed_scope": "在官方Poki网页运行区执行ArrowRight按住2000ms，前后截图显示车辆从起点平台移动至格纹终点附近；未记录结算、失败或重试，不能认定通关。",
+        "session_log": "evidence/session.json"
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "PK-DRIVE",
+          "source_url": "https://poki.com/en/g/drive-mad",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_GAME_PAGE",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        },
+        {
+          "source_id": "FC-DRIVE",
+          "source_url": "https://www.fancade.com/wiki/Drive_Mad",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "DEVELOPER_HOSTED_COMMUNITY_WIKI",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "PK-DRIVE",
+            "FC-DRIVE"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "Fancade官方域Wiki是可编辑补充，非独立审计且有版本差异。",
+            "局部按键片段不涵盖完整开局、胜负、重试或五分钟。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "官方规则链：前进→控制坡道/腾空角度→稳定落地→到终点；本次只证明两秒向前操作片段。",
+                "source_ids": [
+                  "PK-DRIVE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "完整首30秒及首次教程"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "起手是否有统一关名、胜利触发实际时点"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "官方描述随关卡变换路面和车辆挑战，以平衡而非一直加速推进。",
+                "source_ids": [
+                  "PK-DRIVE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟实际关数、失败数、广告中断"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "不得把官方关数当本次已玩数量"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "Poki教学为右键前进、左键后退；Fancade域Wiki补充左侧刹车/倒车，右侧加速。",
+                "source_ids": [
+                  "PK-DRIVE",
+                  "FC-DRIVE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "加速度、刹车力、悬挂参数、设备触控命中区"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "官方教学以抵达终点为目标。",
+                "source_ids": [
+                  "PK-DRIVE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "本次截图靠近格纹终点但没有结算画面，不能认定过关"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "开发者域Wiki说倒扣落地会损坏车辆，但不同Web版本的边界须实测。",
+                "source_ids": [
+                  "FC-DRIVE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "本次实际翻车/落水、失败过场"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "车体损坏的阈值与可恢复角度"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "失败后自动还是按键重开"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "重置延迟、跳关/广告条件"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "少量输入反复调整车辆平衡、应对新路线；独立Web与Fancade内版本不同。",
+                "source_ids": [
+                  "PK-DRIVE",
+                  "FC-DRIVE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "具体版本解锁/杯赛与存档规则"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "本次未测试任何中期赛道"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [
+              {
+                "text": "官方教程支持仅前进/后退两种输入。",
+                "source_ids": [
+                  "PK-DRIVE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "截图所见暂停、VS、新世界按钮的实际功能"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "失败界面、键位重映射、音频"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际广告播放、跳关奖励、IAP或货币"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "只观察到平台广告占位，不据此计算游戏广告频率"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "Poki列桌面、手机、平板；本次Windows桌面Chromium1365×900可加载并执行局部键盘输入。",
+                "source_ids": [
+                  "PK-DRIVE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "手机触控/性能、低配设备、物理回放确定性"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "短按/长按前后车姿对照",
+            "主动翻车并记录重试",
+            "从新档完整计时首五分钟"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P03-monkey-mart",
+      "platform_id": "P03",
+      "game_id": [
+        "G07"
+      ],
+      "name": "Monkey Mart",
+      "source_url": "https://poki.com/en/g/monkey-mart",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2022-11",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "PK-MONKEY"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "PK-MONKEY"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "移动猴子到作物、货架和收银台附近自动执行工作，售货收入用于升级、雇员和扩店。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G07体现移动、自动工作、运输和经营反馈的衔接。"
+      },
+      "counter_evidence": [
+        "官方controls区竟只列全屏点击，须用正文与实际操作补齐移动键。",
+        "工人产率、定价、离线收益与设备性能未测。"
+      ],
+      "known": [
+        {
+          "text": "移动猴子到作物、货架和收银台附近自动执行工作，售货收入用于升级、雇员和扩店。",
+          "source_ids": [
+            "PK-MONKEY"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P03-blocky-blast",
+      "platform_id": "P03",
+      "game_id": [],
+      "name": "Blocky Blast Puzzle",
+      "source_url": "https://poki.com/en/g/blocky-blast-puzzle",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2024-04",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "PK-BLOCK"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "PK-BLOCK"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "NONE",
+        "explanation": "NONE：静态摆块消行，和G04图层/机关、G09物理合成均不等价；不新增候选。"
+      },
+      "official_summary": "拖放形状填满行列以消除，保留可放置空间；官方说明含续命广告和存块等功能。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "包内真实热门参考，用作同平台空间决策的边界样本。"
+      },
+      "counter_evidence": [
+        "摆块消行并非Arrow、Sort或物理合成；不为覆盖指标强塞入十家族。",
+        "未实测广告续命、跳过次数和计分规则。"
+      ],
+      "known": [
+        {
+          "text": "拖放形状填满行列以消除，保留可放置空间；官方说明含续命广告和存块等功能。",
+          "source_ids": [
+            "PK-BLOCK"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P04-arrow-puzzle",
+      "platform_id": "P04",
+      "game_id": [
+        "G01"
+      ],
+      "name": "Arrow Puzzle",
+      "source_url": "https://playgama.com/game/arrow-puzzle",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2026-04",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "PG-ARROW"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "PG-ARROW"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "触碰前方通路畅通的箭头使其离场，按顺序清空棋盘；官方教学说点击被阻挡箭头会扣生命。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G01可比较依赖解锁与错误操作惩罚，和CrazyGames具名作品分别存档。"
+      },
+      "counter_evidence": [
+        "生命总数、扣完后的付费/广告恢复未知。",
+        "页面排行榜daily人数定义不透明，不采作DAU、游玩量或留存。"
+      ],
+      "known": [
+        {
+          "text": "触碰前方通路畅通的箭头使其离场，按顺序清空棋盘；官方教学说点击被阻挡箭头会扣生命。",
+          "source_ids": [
+            "PG-ARROW"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "PG-ARROW",
+          "source_url": "https://playgama.com/game/arrow-puzzle",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_GAME_PAGE",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "PG-ARROW"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "仅Playgama官方教学一源；同站其他语言不是独立交叉证据。",
+            "没有直接G01规则观察，也未观看官方视频；必须补实玩。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "说明重建：识别箭头尖端→找无阻挡前方路径→点箭头→箭头移除并打开其他路径。",
+                "source_ids": [
+                  "PG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "真正首屏、教程、棋盘和起始生命"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "首次输入/反馈时长"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "清空一板完成关卡，可继续后续板；官方另提每日挑战与提示。",
+                "source_ids": [
+                  "PG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟关数、每日挑战开启时机"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "新障碍、难度曲线、广告出现时点"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "官方Controls为触碰路径畅通的箭头；教学明确被挡时会扣一条生命。",
+                "source_ids": [
+                  "PG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "按下/松开触发、快速连点处理"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "箭头外形折线是否都参与阻挡"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "移除全部箭头完成该关。",
+                "source_ids": [
+                  "PG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "奖励、剩余生命是否影响结算"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "点被阻挡箭头损失生命。",
+                "source_ids": [
+                  "PG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "生命总数、耗尽结果、空点是否惩罚"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "无解棋盘如何处理"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "重试入口、生命恢复、广告/货币续关、是否重新生成"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "规划移除顺序、使用提示、进入后续挑战。",
+                "source_ids": [
+                  "PG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "提示内容及价格、关卡包总数、日常奖励"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "本次实际棋盘、生命计数、提示、日常入口和动画"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "颜色与方向的冗余可读性"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "全部广告触发点、免费/付费提示、内购"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "排行榜不构成经济指标"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "官方列竖屏与PC/Android/iOS浏览访问；列出多语言。",
+                "source_ids": [
+                  "PG-ARROW"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际触控、设备/性能、存档跨设备行为"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "各点一次畅通与被挡箭头并记录状态",
+            "耗完生命记录重试",
+            "完整清盘一次并记录下一关"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P04-good-sort-master",
+      "platform_id": "P04",
+      "game_id": [
+        "G02"
+      ],
+      "name": "Good Sort Master: Triple Match",
+      "source_url": "https://playgama.com/game/good-sort-master",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2024-10",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "PG-SORT"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "PG-SORT"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "拖动货架物品，把三个相同物品放在同一架位触发消除，清空所有物品过关。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G02的货架空间、三件匹配和视觉收纳区别于倒水和螺丝排序。"
+      },
+      "counter_evidence": [
+        "官方FAQ声称无计时和生命；尚未核对具体运行版本，不将其写成已测数值。",
+        "页面的零延迟/低端设备完美运行/无物理开销是宣传性断言，未验证。"
+      ],
+      "known": [
+        {
+          "text": "拖动货架物品，把三个相同物品放在同一架位触发消除，清空所有物品过关。",
+          "source_ids": [
+            "PG-SORT"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "PG-SORT",
+          "source_url": "https://playgama.com/game/good-sort-master",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_GAME_PAGE",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "PG-SORT"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "单一平台教学；官网所链Microsoft Store只有JS壳，未获得可用的独立说明。",
+            "无G02直接操作轨迹；页面性能宣称不当实测。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "说明重建：看架上重复物→拖动物件到同一架位→集齐三个相同物→三件消失。",
+                "source_ids": [
+                  "PG-SORT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "首关物件种类、槽位、初始布局"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "引导手势顺序及响应时长"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "重复移动与三件消除，使阻挡物移开，直至架上清空并进入下一关。",
+                "source_ids": [
+                  "PG-SORT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟通关/卡住次数"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "移动合法性、是否有隐藏层、何时补充新物件"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "桌面鼠标拖动；手机触碰拖动，在同一架位凑三个相同物。",
+                "source_ids": [
+                  "PG-SORT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "满槽、回退、交换、层后物件能否拖"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "自动吸附阈值"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "移除全部架上物品完成关卡。",
+                "source_ids": [
+                  "PG-SORT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "重复物数量不足时如何收尾、是否有额外任务"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "官方FAQ声称没有倒计时/生命系统。",
+                "source_ids": [
+                  "PG-SORT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "无合法移动是否弹失败"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "无生命不等于不会死锁或有无限撤销"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "重开、撤销、洗牌及死锁补救"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "重开是否相同布局"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "官方说后续架位布局/物件更丰富；不能把宣传举例当关卡数据表。",
+                "source_ids": [
+                  "PG-SORT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "真实关卡引入序、随机关与固定关比例"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [
+              {
+                "text": "官方描述货架格位和食品物件；未实测具体布局。",
+                "source_ids": [
+                  "PG-SORT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "遮挡、拖动影子、可落位高亮、成功/失败弹窗"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "广告触发、辅助道具、货币、IAP"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "移除广告是否影响辅助功能"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "官方列Unity、竖屏和PC/Android/iOS浏览器。",
+                "source_ids": [
+                  "PG-SORT"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "低配帧率、内存、存档、手机触控"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "Microsoft Store官网直链打开仅JS壳，未用于确认玩法"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "拖入三件同物记录消除",
+            "填满架位测试非法拖动与死锁",
+            "验证无计时/生命是否属当前版本"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P04-piece-of-cake",
+      "platform_id": "P04",
+      "game_id": [
+        "G03"
+      ],
+      "name": "Piece of Cake: Merge & Bake",
+      "source_url": "https://playgama.com/game/piece-of-cake-merge--bake",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2025-03",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "PG-CAKE",
+        "CG-CAKE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "PG-CAKE"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "合并食材、扩大制作空间、修复咖啡馆与解锁区域；官方列HAPPY GAMES STUDIO及Defold。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "同名跨平台作品保留各自关联证据，用于G03版本比较。"
+      },
+      "counter_evidence": [
+        "本页写桌面右键交互，CrazyGames写左键；未试不能消除差异。",
+        "可按标题暂列同名作品组，但正式身份、权利主体和版本等价UNKNOWN。"
+      ],
+      "known": [
+        {
+          "text": "合并食材、扩大制作空间、修复咖啡馆与解锁区域；官方列HAPPY GAMES STUDIO及Defold。",
+          "source_ids": [
+            "PG-CAKE"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P04-my-perfect-farm",
+      "platform_id": "P04",
+      "game_id": [
+        "G07"
+      ],
+      "name": "My Perfect Farm: Idle Tycoon",
+      "source_url": "https://playgama.com/game/my-perfect-farm-idle-tycoon",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "2026-08",
+      "game_release_date_scope": "官方页面所列本渠道版本；不当作全球首发。",
+      "evidence_type": "OFFICIAL_GAME_PAGE",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "PG-FARM"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "PG-FARM"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "该平台官方具名游戏页"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "种植收获、饲养动物、销售产物，再投入雇员和区域扩张；官方列Tapfire。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G07的生产、搬运、出售、扩张链可与Monkey Mart作结构比较。"
+      },
+      "counter_evidence": [
+        "页面PC/Android/iOS指可访问设备，不自动证明独立原生商店包。",
+        "标题Idle不能证明离线收益，产出周期、售价和广告点均UNKNOWN。"
+      ],
+      "known": [
+        {
+          "text": "种植收获、饲养动物、销售产物，再投入雇员和区域扩张；官方列Tapfire。",
+          "source_ids": [
+            "PG-FARM"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P05-color-sort-puz",
+      "platform_id": "P05",
+      "game_id": [
+        "G02"
+      ],
+      "name": "Color Sort Puz: Sorting games",
+      "source_url": "https://azurgames.com/blog/how-unconventional-setting-affects-the-success-of-a-hyper-casual-game-in-an-occupied-niche/",
+      "accessed_at": "2026-10-21",
+      "published_at": "2023-02-09",
+      "game_release_date": "UNKNOWN",
+      "game_release_date_scope": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "AZ-SORT-CASE",
+        "AZ-SORT-STORE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "AZ-SORT-CASE"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "发行商具名历史案例/作品关系"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "Azur在2023年具名说明与Pizzart合作发行：把倒水排序表现为彩色人群在通道间移动。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "替换包内行业品类占位；具名官方案例与同包名商店页共同证明发行关系和规则。"
+      },
+      "counter_evidence": [
+        "2023案例说撤销改为每关两次免费再看激励广告，商店文案仍写无限撤销，当前实现UNKNOWN。",
+        "商店一段允许空容器/同色，另一段只写空容器，合法移动边界有自相矛盾。",
+        "历史收入为厂商自述总收入，非审计净利润、开发者到手或2026新作预期。"
+      ],
+      "known": [
+        {
+          "text": "Azur在2023年具名说明与Pizzart合作发行：把倒水排序表现为彩色人群在通道间移动。",
+          "source_ids": [
+            "AZ-SORT-CASE"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [
+        {
+          "name": "reported_total_revenue",
+          "value": "> USD 1.5 million",
+          "metric_definition": "2023案例自述项目累计总收入；收入期间、税费和渠道拆分未完整披露；非开发者净收益。",
+          "source_url": "https://azurgames.com/blog/how-unconventional-setting-affects-the-success-of-a-hyper-casual-game-in-an-occupied-niche/",
+          "accessed_at": "2026-10-21",
+          "observation_or_reporting_window": "截至2023-02-09案例时点",
+          "independently_audited": false
+        },
+        {
+          "name": "reported_total_spend",
+          "value": "> USD 1 million",
+          "metric_definition": "同期案例自述累计支出，成本覆盖范围未完整披露，禁止相减得净利。",
+          "source_url": "https://azurgames.com/blog/how-unconventional-setting-affects-the-success-of-a-hyper-casual-game-in-an-occupied-niche/",
+          "accessed_at": "2026-10-21",
+          "observation_or_reporting_window": "截至2023-02-09案例时点",
+          "independently_audited": false
+        }
+      ],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "AZ-SORT-CASE",
+          "source_url": "https://azurgames.com/blog/how-unconventional-setting-affects-the-success-of-a-hyper-casual-game-in-an-occupied-niche/",
+          "accessed_at": "2026-10-21",
+          "published_at": "2023-02-09",
+          "evidence_type": "PUBLISHER_HISTORICAL_CASE_STUDY",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        },
+        {
+          "source_id": "AZ-SORT-STORE",
+          "source_url": "https://play.google.com/store/apps/details?hl=en_US&id=com.Pizzart.CrowdSort",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "PUBLISHER_STORE_LISTING",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "AZ-SORT-CASE",
+            "AZ-SORT-STORE"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "官方历史案例+发行商商店互相支持身份与骨架，但撤销/合法移动文案冲突。",
+            "未看官方Trailer，不以按钮存在充当观看。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "案例/商店支持的链：观察彩色人群所在通道→选源→选空或同色容器→人群移动；未测时间。",
+                "source_ids": [
+                  "AZ-SORT-CASE",
+                  "AZ-SORT-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际首屏、教程、通道容量与首次动作"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "人群批量移动数量、合法规则文本冲突"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "按颜色归并并推进后续关卡；卡住时可撤销/重开；这是描述重建。",
+                "source_ids": [
+                  "AZ-SORT-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟实际关卡数、广告量"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "2023案例修改是否仍在当前包内"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "商店列单指点击排序；说明可将动作排队，无需等动画结束。",
+                "source_ids": [
+                  "AZ-SORT-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "连续点击排序队列、不可达目标反馈"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "同色容器/仅空容器这两段矛盾的运行结果"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "把人群按颜色归到各自容器。",
+                "source_ids": [
+                  "AZ-SORT-STORE",
+                  "AZ-SORT-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "空槽允许数、胜利是否要求每个非空容器装满"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "商店宣传无计时，并允许卡住时撤销或重开。",
+                "source_ids": [
+                  "AZ-SORT-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "死锁自动检测、失败计数与任何体力系统"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [
+              {
+                "text": "商店明确可撤销/重开。2023案例曾把每关免费撤销改成两次，激励广告增加三次。",
+                "source_ids": [
+                  "AZ-SORT-STORE",
+                  "AZ-SORT-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "无限撤销商店文本与限次案例哪个适用当前版"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "重试是否重置免费额度"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "案例说运营中继续平衡关卡，曾试隐藏底部颜色的Boss关但老玩家有抵触。",
+                "source_ids": [
+                  "AZ-SORT-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "该试验是否最终上线、当前机制顺序"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "新用户与老用户差异"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [
+              {
+                "text": "商店说明有夜间模式、撤销和关卡重开。",
+                "source_ids": [
+                  "AZ-SORT-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "当前按钮布局、无障碍、动画和人群碰撞是否只做表现"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [
+              {
+                "text": "商店标广告/IAP；2023案例给出特定撤销激励广告实验。",
+                "source_ids": [
+                  "AZ-SORT-STORE",
+                  "AZ-SORT-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "当前广告频率与兑换、IAP价格"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "历史累计收入不等于净利，开发者分成UNKNOWN"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "关联商店包名com.Pizzart.CrowdSort，署名CASUAL AZUR GAMES。",
+                "source_ids": [
+                  "AZ-SORT-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "最低OS、真机性能、历史与当前APK一致性"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "未安装移动App、未试玩"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "核查当前APK版本与撤销额度",
+            "分别选空/同色/异色容器观察合法性",
+            "记录胜利、死锁、重开与广告前后状态"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P05-tower-craft",
+      "platform_id": "P05",
+      "game_id": [
+        "G07"
+      ],
+      "name": "Tower Craft / Tower Craft: Build Skyscraper",
+      "source_url": "https://azurgames.com/games/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "UNKNOWN",
+      "game_release_date_scope": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "AZ-CATALOG",
+        "AZ-TOWER-STORE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "AZ-CATALOG"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "发行商具名历史案例/作品关系"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "Azur官网具名列Tower Craft；同发行商商店说明为点击建塔、现金与升级选择的放置建设游戏。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "补充G07的垂直建设/点击增长历史样本。"
+      },
+      "counter_evidence": [
+        "官网目录没有发行日期及单作商业指标。",
+        "商店下载档位是Android累计安装门槛，不是近期新增、活跃或开发者回款。"
+      ],
+      "known": [
+        {
+          "text": "Azur官网具名列Tower Craft；同发行商商店说明为点击建塔、现金与升级选择的放置建设游戏。",
+          "source_ids": [
+            "AZ-CATALOG"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P05-stack-ball",
+      "platform_id": "P05",
+      "game_id": [],
+      "name": "Stack Ball - Crash Platforms",
+      "source_url": "https://azurgames.com/games/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "UNKNOWN",
+      "game_release_date_scope": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "AZ-CATALOG",
+        "AZ-STACK-STORE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "AZ-CATALOG"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "发行商具名历史案例/作品关系"
+      },
+      "mapping": {
+        "status": "NONE",
+        "explanation": "NONE：垂直破平台时机街机；十家族外边界样本，不新增游戏家族。"
+      },
+      "official_summary": "Azur官网具名Stack Ball；同发行商商店说明为穿过旋转彩色平台到达底部，撞黑色平台通常破碎重来。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "作为Azur具名短回合动作发行经验样本，避免拿品类名称冒充作品。"
+      },
+      "counter_evidence": [
+        "非横向陷阱平台跳跃、非物理合成，不能强行映射G05/G09。",
+        "商店500M+为Android累计安装档位，统计窗口不公开；与采购意愿、净收入无关。"
+      ],
+      "known": [
+        {
+          "text": "Azur官网具名Stack Ball；同发行商商店说明为穿过旋转彩色平台到达底部，撞黑色平台通常破碎重来。",
+          "source_ids": [
+            "AZ-CATALOG"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "AZ-CATALOG",
+          "source_url": "https://azurgames.com/games/",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        },
+        {
+          "source_id": "AZ-STACK-STORE",
+          "source_url": "https://play.google.com/store/apps/details?id=com.azurgames.stackball",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "PUBLISHER_STORE_LISTING",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "AZ-CATALOG",
+            "AZ-STACK-STORE"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "目录与商店交叉验证作品/目标，手势仍UNKNOWN。",
+            "完全间接重建，不能从同名仿作教学补手势。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "官方可核实骨架：球在旋转平台上跳动，穿过彩色平台向底部推进；避免普通状态撞黑平台。",
+                "source_ids": [
+                  "AZ-CATALOG",
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "首次触控究竟按住还是点按、第一关布局"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "正式教程与首次落下时长"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "官方描述可选择加速破坏或停下等待机会；重复下落挑战。",
+                "source_ids": [
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟过关数、失败数、广告"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "火球出现顺序与触发阈值"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "商店确认速度/等待策略，但正文没有充分说明准确手势。",
+                "source_ids": [
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "核心触控按住/松开规则"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "是否能控制平台转向，输入窗口"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "穿过平台到达下方终点。",
+                "source_ids": [
+                  "AZ-CATALOG",
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "最后层触发、结算奖励、下一关入口"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "普通状态撞到黑色平台使球破碎，须重新开始下落；火球高速状态可击破黑平台。",
+                "source_ids": [
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "碰撞判定、火球阈值/时长"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "破碎与广告续命关系"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [
+              {
+                "text": "商店说失败后重新下落。",
+                "source_ids": [
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际按钮、关卡/层数恢复、复活与等待"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "重复判断旋转安全区、推进到底部；未验证关卡生成或解锁。",
+                "source_ids": [
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "皮肤、货币、难度、永久成长是否存在"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际关号、进度、火球指示、失败/重试按钮"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "商店截图不是亲测UI"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [
+              {
+                "text": "发行商商店标明广告和应用内购买。",
+                "source_ids": [
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "广告位置与频率、IAP条目/价格、RPM、净收益"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "官网具名目录与Android包com.azurgames.stackball同属Azur关系证据。",
+                "source_ids": [
+                  "AZ-CATALOG",
+                  "AZ-STACK-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "Android最低版本、iOS同款关系、真机性能"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "未安装、未执行核心输入"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "先获取准确按住/松开手势",
+            "普通球/火球分别碰黑平台",
+            "胜负、重试及广告各存一次证据"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P05-bottle-jump",
+      "platform_id": "P05",
+      "game_id": [],
+      "name": "Bottle Jump 3D",
+      "source_url": "https://azurgames.com/games/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "UNKNOWN",
+      "game_release_date_scope": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "AZ-CATALOG"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "AZ-CATALOG"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "发行商具名历史案例/作品关系"
+      },
+      "mapping": {
+        "status": "NONE",
+        "explanation": "NONE：翻瓶动作；只证明历史具名作品关联，不能推导P0解谜采购需求。"
+      },
+      "official_summary": "Azur官网明确列出在室内障碍间翻转水瓶的具名街机作品。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "第四个可核查Azur官方作品，展示动作发行经验但不假造其偏好。"
+      },
+      "counter_evidence": [
+        "目前只有官方目录短介绍，精确输入、失败/重试、经济和首发日期UNKNOWN。",
+        "水瓶跳跃不是驾驶；不能为了覆盖G06而强行归类。"
+      ],
+      "known": [
+        {
+          "text": "Azur官网明确列出在室内障碍间翻转水瓶的具名街机作品。",
+          "source_ids": [
+            "AZ-CATALOG"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P06-thief-puzzle",
+      "platform_id": "P06",
+      "game_id": [
+        "G04"
+      ],
+      "name": "Thief Puzzle: to pass a level",
+      "source_url": "https://www.tap-nation.io/games/thief-puzzle-to-pass-a-level/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "UNKNOWN",
+      "game_release_date_scope": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "TN-THIEF",
+        "TN-THIEF-CASE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "TN-THIEF"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "发行商具名历史案例/作品关系"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "G04邻接：环境机关/路径逻辑，不能代替Paint Master的覆盖依赖。"
+      },
+      "official_summary": "伸长盗贼手臂绕过环境和陷阱取到目标；官方案例描述短关成功/失败及奖励、装扮。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G04的路径与机关环境邻接参考；强视觉角色表达不可直接复刻。"
+      },
+      "counter_evidence": [
+        "不等于图层覆盖；G04只能借鉴机关观察及路径规划。",
+        "厂商案例下载与榜位为历史自述，非本次独立审计，也非2026最新榜。"
+      ],
+      "known": [
+        {
+          "text": "伸长盗贼手臂绕过环境和陷阱取到目标；官方案例描述短关成功/失败及奖励、装扮。",
+          "source_ids": [
+            "TN-THIEF"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P06-color-water-sort",
+      "platform_id": "P06",
+      "game_id": [
+        "G02"
+      ],
+      "name": "Color Water Sort Puzzle Games",
+      "source_url": "https://www.tap-nation.io/games/color-water-sort-puzzle-games/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "UNKNOWN",
+      "game_release_date_scope": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "TN-WATER",
+        "TN-WATER-STORE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "TN-WATER"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "发行商具名历史案例/作品关系"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "把彩色液体按同色与容量限制倒入试管，每关完成获得宝石并可换提示；官方说明无时间限制。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G02有发行商官网教学、官网直链商店与一致包名三者关联。"
+      },
+      "counter_evidence": [
+        "无时间限制不等于不能陷入无合法移动。",
+        "Play Pass与普通广告版不同，不能从商店广告标识推出每关必播或无广告。"
+      ],
+      "known": [
+        {
+          "text": "把彩色液体按同色与容量限制倒入试管，每关完成获得宝石并可换提示；官方说明无时间限制。",
+          "source_ids": [
+            "TN-WATER"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "TN-WATER",
+          "source_url": "https://www.tap-nation.io/games/color-water-sort-puzzle-games/",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        },
+        {
+          "source_id": "TN-WATER-STORE",
+          "source_url": "https://play.google.com/store/apps/details?id=com.playspare.watersort3d",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "PUBLISHER_STORE_LISTING",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "TN-WATER",
+            "TN-WATER-STORE"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "官网与其直链商店互相支持身份、倒色与宝石提示；两者仍属同一发行商描述。",
+            "无实际操作与视频轨迹，容量/倾倒段数不能猜。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "官网/商店支持：观察颜色与空余空间→选源管和目标管→在允许条件下倒色→继续归并。",
+                "source_ids": [
+                  "TN-WATER",
+                  "TN-WATER-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "第一关管数、每管容量、具体点击/滑动手势"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "新手教程与首次倒色时长"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "把颜色归到各自管中完成关卡，获宝石后可换提示，再继续关卡。",
+                "source_ids": [
+                  "TN-WATER",
+                  "TN-WATER-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟关数、宝石实际收益、首个难点"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "每次倒单格还是连续同色段"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "官方给单指/滑动控制；目标有容量且顶色兼容才允许倒入。",
+                "source_ids": [
+                  "TN-WATER",
+                  "TN-WATER-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "空管例外的精确定义、满管点击反馈"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "手势是点击两管还是拖动、动画中输入"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "每管聚合同色，解完当前谜题。",
+                "source_ids": [
+                  "TN-WATER-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "允许未满的纯色管或必须满管"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "胜利与最后一段动画结算顺序"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [
+              {
+                "text": "官方说无倒计时，也提醒避免把自己卡住。",
+                "source_ids": [
+                  "TN-WATER",
+                  "TN-WATER-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "无合法移动是否自动失败、体力、步数限制"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "撤销、重开、额外管及失败后恢复状态"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "宝石/广告能否换撤销；未凭玩家评论认定"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "关卡→宝石→提示→更复杂谜题，官方说有大量关卡。",
+                "source_ids": [
+                  "TN-WATER"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "确切关卡顺序、颜色数量曲线、提示算法"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "宝石供应与消耗数值"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [
+              {
+                "text": "官方页面提供多关宣传截图，但本次没在运行App中复现。",
+                "source_ids": [
+                  "TN-WATER"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "实际试管布局、提示/撤销按钮、色弱方案"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "音频、触控尺寸"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [
+              {
+                "text": "Google Play标广告/IAP，并另有Play Pass分发说明；官网说宝石可换提示。",
+                "source_ids": [
+                  "TN-WATER-STORE",
+                  "TN-WATER"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "普通版/Play Pass实际广告差异"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "每关奖励、提示成本、IAP价格、开发者分成"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "官网直接链接发行商商店包com.playspare.watersort3d。",
+                "source_ids": [
+                  "TN-WATER",
+                  "TN-WATER-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "最低Android/iOS条件、真机横竖屏、恢复存档"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "未安装或执行移动版"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "空管/同色/异色/满管分别试一次",
+            "构造无合法移动并记录补救",
+            "核查通关宝石和提示扣款"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P06-guess-their-answer",
+      "platform_id": "P06",
+      "game_id": [
+        "G08"
+      ],
+      "name": "Guess Their Answer",
+      "source_url": "https://www.tap-nation.io/games/guess-their-answer/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "UNKNOWN",
+      "game_release_date_scope": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "TN-GUESS",
+        "TN-GUESS-CASE",
+        "TN-GUESS-STORE"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "TN-GUESS"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "发行商具名历史案例/作品关系"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "根据题目输入大众可能给出的答案，以匹配常见回答获得分数并和对手比较；案例说明硬币与装扮成长。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G08唯一直接对应包内群体答案玩法的具名参考。"
+      },
+      "counter_evidence": [
+        "厂商同时称实时对战与离线单人，当前对手真人/机器人机制UNKNOWN。",
+        "大众答案的问卷来源、样本量、授权与地区语言分布UNKNOWN；不能当公开调查数据。",
+        "官网案例内榜位类别/年份混杂，未采纳其全球第一或收入排行作选品结论。"
+      ],
+      "known": [
+        {
+          "text": "根据题目输入大众可能给出的答案，以匹配常见回答获得分数并和对手比较；案例说明硬币与装扮成长。",
+          "source_ids": [
+            "TN-GUESS"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [
+        {
+          "source_id": "TN-GUESS",
+          "source_url": "https://www.tap-nation.io/games/guess-their-answer/",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        },
+        {
+          "source_id": "TN-GUESS-CASE",
+          "source_url": "https://tap-nation.io/blog/guess-their-answer-a-case-study-of-a-top-trivia-mobile-game/",
+          "accessed_at": "2026-10-21",
+          "published_at": "2026-06-01",
+          "evidence_type": "PUBLISHER_HISTORICAL_CASE_STUDY",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        },
+        {
+          "source_id": "TN-GUESS-STORE",
+          "source_url": "https://play.google.com/store/apps/details?id=com.qoni.guesstheiranswer",
+          "accessed_at": "2026-10-21",
+          "published_at": "UNKNOWN",
+          "evidence_type": "PUBLISHER_STORE_LISTING",
+          "role": "官方说明/教学交叉核查，非本次回放"
+        }
+      ],
+      "deep_analysis": {
+        "mode": "SECONDARY_RECONSTRUCTION",
+        "timing": {
+          "first_30_seconds": "UNKNOWN",
+          "first_5_minutes": "UNKNOWN",
+          "basis": "未录制从首次可操作起连续30秒/5分钟轨迹；下面按官方规则重建可能顺序，不是定时回放。"
+        },
+        "sources_crosscheck": {
+          "source_ids": [
+            "TN-GUESS",
+            "TN-GUESS-CASE",
+            "TN-GUESS-STORE"
+          ],
+          "result": "已核对官方说明；冲突/单一来源限制逐项保留。",
+          "gaps": [
+            "官网/案例/商店交叉说明骨架，实时PvP与离线宣传的实现边界未核实。",
+            "数据来源与对手身份不能从营销文案推定；未观看Trailer。"
+          ]
+        },
+        "sections": {
+          "first_30_seconds": {
+            "known": [
+              {
+                "text": "案例重建：显示问题→输入大众可能回答→匹配常见答案得分；不是事实知识判对错。",
+                "source_ids": [
+                  "TN-GUESS",
+                  "TN-GUESS-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "开局教程/昵称、键盘、首题、实际计时长度"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "本地语言词表和第一答案接受规则"
+              }
+            ],
+            "hypotheses": []
+          },
+          "first_5_minutes": {
+            "known": [
+              {
+                "text": "官方案例链：限时输入多个答案→与对手分数比较→领取硬币/进度→开启新题。",
+                "source_ids": [
+                  "TN-GUESS-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "五分钟题数、赛制、首次广告/商店入口"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "对手真人或AI、网络掉线流程"
+              }
+            ],
+            "hypotheses": []
+          },
+          "core_input": {
+            "known": [
+              {
+                "text": "案例明确为键入答案；商店/官网也使用this-or-that营销措辞，不据此认定全部为二选一。",
+                "source_ids": [
+                  "TN-GUESS-CASE",
+                  "TN-GUESS-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "拼写纠错、同义词、重复答案、敏感词处理"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "移动输入法遮挡及发送入口"
+              }
+            ],
+            "hypotheses": []
+          },
+          "success": {
+            "known": [
+              {
+                "text": "匹配更常见回答得更多分，并以分数争胜/提高排名。",
+                "source_ids": [
+                  "TN-GUESS",
+                  "TN-GUESS-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "每题得分公式、平局、局数、晋级门槛"
+              }
+            ],
+            "hypotheses": []
+          },
+          "failure": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "无匹配答案反馈、超时/分数落败具体结算"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "断网判负、无效输入惩罚"
+              }
+            ],
+            "hypotheses": []
+          },
+          "retry": {
+            "known": [
+              {
+                "text": "案例描述继续新题/新比赛的复玩循环。",
+                "source_ids": [
+                  "TN-GUESS-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "重赛同题还是新题、免费次数、广告复活"
+              }
+            ],
+            "hypotheses": []
+          },
+          "mid_term_loop": {
+            "known": [
+              {
+                "text": "胜局与硬币用于角色/装扮等成长；题库复玩和排名是案例所述长期目标。",
+                "source_ids": [
+                  "TN-GUESS-CASE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "题库授权/调查来源、题目去重、难度"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "每种语言人群答案分布与公平性"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ui": {
+            "known": [],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "题目/倒计时/对手分数/键盘的实际摆放"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "答案反馈动画、昵称隐私、音频"
+              }
+            ],
+            "hypotheses": []
+          },
+          "ads_economy": {
+            "known": [
+              {
+                "text": "发行商案例列装扮/去广告/题包IAP，商店标广告与内购。",
+                "source_ids": [
+                  "TN-GUESS-CASE",
+                  "TN-GUESS-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "当前商品价格、广告位置/频率、奖励与价格曲线"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "不使用玩家评论推导固定广告节奏"
+              }
+            ],
+            "hypotheses": []
+          },
+          "devices": {
+            "known": [
+              {
+                "text": "发行商官网与商店包com.qoni.guesstheiranswer相连；官方案例声称支持离线单人。",
+                "source_ids": [
+                  "TN-GUESS",
+                  "TN-GUESS-CASE",
+                  "TN-GUESS-STORE"
+                ],
+                "verification": "OFFICIAL_DESCRIPTION"
+              }
+            ],
+            "unknown": [
+              {
+                "value": "UNKNOWN",
+                "field": "离线/在线模式切换、真实PvP机制"
+              },
+              {
+                "value": "UNKNOWN",
+                "field": "真机键盘、最低系统与性能"
+              }
+            ],
+            "hypotheses": []
+          }
+        },
+        "next_direct_probe": {
+          "status": "HYPOTHESIS",
+          "actions": [
+            "记录一道题的输入、接受/拒绝答案和计分",
+            "测试重复/同义词/拼写错误",
+            "完整一局胜负、复玩与离线模式"
+          ],
+          "acceptance": "保存输入前后状态、失败及重试截图/日志；从首次可操作计时，不把加载或广告等待计入游戏时长。"
+        },
+        "video_evidence": {
+          "watched": false,
+          "observed_timecodes": [],
+          "reason": "本次未观看官方视频；页面Video/Gameplay Video标题或Trailer按钮不构成已观看证据。"
+        }
+      },
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED_WITH_RECONSTRUCTION",
+      "ready_for_build": false
+    },
+    {
+      "benchmark_id": "P06-hero-making-tycoon",
+      "platform_id": "P06",
+      "game_id": [
+        "G07"
+      ],
+      "name": "Hero Making Tycoon",
+      "source_url": "https://www.tap-nation.io/games/hero-making-tycoon/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "game_release_date": "UNKNOWN",
+      "game_release_date_scope": "UNKNOWN",
+      "evidence_type": "OFFICIAL_HISTORICAL_PORTFOLIO",
+      "metric_definition": "官方具名作品/教学页的存在与玩法说明；不是采购榜、游玩量、留存、收入或开发者净回款。",
+      "source_ids": [
+        "TN-HERO"
+      ],
+      "platform_association": {
+        "source_ids": [
+          "TN-HERO"
+        ],
+        "status": "OFFICIAL_PAGE_CONFIRMED",
+        "statement": "发行商具名历史案例/作品关系"
+      },
+      "mapping": {
+        "status": "ANALYST_FAMILY_MAPPING",
+        "explanation": "按玩法骨架映射现有候选家族；不表示已批准开发。"
+      },
+      "official_summary": "土豆人经种植和自动装备生产线变为职业英雄，与怪物战斗；离线产出资源用于升级工厂。",
+      "selection_rationale": {
+        "status": "ANALYST_INFERENCE",
+        "text": "G07的自动生产、战斗消耗与离线回访有官方具名描述。"
+      },
+      "counter_evidence": [
+        "产线站数、各职业成本、战斗失败惩罚与离线封顶UNKNOWN。",
+        "官网宣称怪物/机械数量不是已检查的完整内容清单。"
+      ],
+      "known": [
+        {
+          "text": "土豆人经种植和自动装备生产线变为职业英雄，与怪物战斗；离线产出资源用于升级工厂。",
+          "source_ids": [
+            "TN-HERO"
+          ],
+          "verification": "OFFICIAL_DESCRIPTION"
+        }
+      ],
+      "unknown": {
+        "current_procurement_demand": "UNKNOWN",
+        "single_game_revenue": "UNKNOWN",
+        "developer_net_receipts": "UNKNOWN",
+        "license_price": "UNKNOWN",
+        "retention": "UNKNOWN",
+        "active_players": "UNKNOWN",
+        "causal_reason_for_popularity": "UNKNOWN",
+        "full_version_parity": "UNKNOWN"
+      },
+      "metrics": [],
+      "ranking_status": "NOT_MEASURED",
+      "direct_play": {
+        "status": "NOT_ATTEMPTED",
+        "completed_playthrough": false,
+        "confirmed_gameplay_input": false,
+        "complete_first_30_seconds": false,
+        "complete_first_5_minutes": false,
+        "evidence_paths": []
+      },
+      "deep_analysis_source": [],
+      "deep_analysis": null,
+      "recheck": "在游戏实测/设计冻结前重核；动态评分与页面版本可变化。",
+      "research_status": "EVIDENCE_COLLECTED",
+      "ready_for_build": false
+    }
+  ],
+  "gaps": [
+    {
+      "severity": "BLOCKER",
+      "item": "G01/G02缺直接合法/非法操作、失败与重试观察，G04 Paint Master未加载棋盘。"
+    },
+    {
+      "severity": "BLOCKER",
+      "item": "12份深析缺完整定时轨迹；关键规则/经济UNKNOWN，不是可施工档案。"
+    },
+    {
+      "severity": "MAJOR",
+      "item": "五份深析缺独立官方交叉来源/实际已观看视频；Arrow Escape有缓存和重定向。"
+    },
+    {
+      "severity": "MAJOR",
+      "item": "Color Sort Puz撤销与合法移动文本冲突；Screw Out失败边界；同名Piece of Cake版本差异。"
+    },
+    {
+      "severity": "MAJOR",
+      "item": "没有Android/iOS真机；广告触发与后期成长未经直接验证。"
+    },
+    {
+      "severity": "MINOR",
+      "item": "24卡未覆盖G10；不增加ID，后续另补具名装扮作品。"
+    }
+  ]
+}

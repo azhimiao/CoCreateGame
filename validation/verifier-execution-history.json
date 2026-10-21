@@ -1,0 +1,14 @@
+{
+  "scope": "Final integration execution history; this does not alter frozen project sources or independent findings",
+  "events": [
+    {"at":"2026-10-21T19:23:32+08:00","python":"3.11.15","staging":"system temporary directory","G02_result":"TypeError","record":"G02-transient-failure.json"},
+    {"at":"2026-10-21T19:24:15+08:00","python":"3.11.15","staging":"system temporary directory","result":"PASS"},
+    {"at":"2026-10-21T19:26:00+08:00","python":"3.11.15","result":"5 isolated new-process runs PASS","record":"../games/G02/diagnostics/verifier-transient-2026-10-21/diagnosis.json"},
+    {"at":"2026-10-21T19:27:30+08:00","python":"3.11.15","staging":"system temporary directory","G02_exit_code":3221225477,"stdout_stderr":"EMPTY","record":"G02-native-exit-2026-10-21.json"},
+    {"at":"2026-10-21T19:28:19+08:00","python":"3.13.3","staging":"system temporary directory","G02_exit_code":3221225477,"stdout_stderr":"EMPTY"},
+    {"at":"2026-10-21T19:28:51+08:00","python":"3.13.3","staging":"validation/runtime/ isolated copies","copy_excludes":"diagnostics, runtime, raw, ZIPs, bytecode caches","faulthandler":true,"result":"PASS"}
+  ],
+  "cause": "UNKNOWN",
+  "interpretation": "The final full check passed. Several configuration changes preceded that run, so this history does not establish that Python version, staging location, copied diagnostics, hardware or any specific source line caused the earlier failures. No frozen game-spec/verifier source was patched.",
+  "next_natural_failure": "Preserve the failed copy, full stdout/stderr, return code and frame locals before another run."
+}

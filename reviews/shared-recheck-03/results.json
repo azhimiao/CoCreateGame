@@ -1,0 +1,448 @@
+{
+  "checked_at_utc": "2026-10-21T11:00:00.917643+00:00",
+  "scope": "SRA-m03 only; source directories read only; validator executes frozen reviews copy",
+  "probe_correction": "shared-recheck-02 overasserted the policy predicate on nonexistent differently-cased paths. Full local_reference rejects these nonexistent paths, and existing Windows runtime paths normalize to the excluded lowercase directory. No source defect established by those preliminary assertions.",
+  "input_validator_sha256": "1f31c1e0e10b254aeb5612d6c5ae01ab280d913163313e27ad462c740abebbe4",
+  "original_manifest_payload": [
+    {
+      "path": "benchmarks.json",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "methodology.md",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "build_benchmarks.py",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "validate_delivery.py",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "validation.json",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "P01.md",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "P02.md",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "P03.md",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "P04.md",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "P05.md",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "P06.md",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/browser-probe.cjs",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/session.json",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/cleanup.json",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p01-paint-master-loaded.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-drive-mad-forward-2s.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-drive-mad-loaded.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-drive-mad-ready.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-after-move.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-after-wait.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-character-moved.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-dismiss-held.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-dismiss-news.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-enter-pits.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-front-right.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-front-space.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-loaded.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-pits-entered.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-pits-right.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-pits-start.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-reopen.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-right-2s.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-second-space.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-stage-entry.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    },
+    {
+      "path": "evidence/screenshots/p03-level-devil-stage-start.png",
+      "size_matches": true,
+      "sha256_matches": true,
+      "inside_package": true,
+      "runtime_or_raw": false
+    }
+  ],
+  "original_manifest_associated_read_only": [
+    {
+      "path": "observation-summary.md",
+      "relative_to": "research/",
+      "size_matches": true,
+      "sha256_matches": true,
+      "excluded_from_payload": true
+    }
+  ],
+  "reference_probes": [
+    {
+      "reference": "../observation-summary.md",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "matches": true
+    },
+    {
+      "reference": ".././observation-summary.md#evidence",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "matches": true
+    },
+    {
+      "reference": "..%2fobservation-summary.md",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "matches": true
+    },
+    {
+      "reference": "methodology.md",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "matches": true
+    },
+    {
+      "reference": "evidence/session.json",
+      "expected_allowed": true,
+      "actual_allowed": true,
+      "matches": true
+    },
+    {
+      "reference": "../../MASTER_HANDOFF.md",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "../../../Windows/win.ini",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "evidence/runtime/profile/cache",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "raw/page.txt",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "../methodology.md",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "../contracts-and-rights.md",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "../observation-summary.md.bak",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "..%2f..%2fMASTER_HANDOFF.md",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "evidence/../runtime/profile/cache",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "reference": "evidence/runtime/../../../../MASTER_HANDOFF.md",
+      "expected_allowed": false,
+      "actual_allowed": false,
+      "matches": true
+    },
+    {
+      "entrypoint_reject": "../../MASTER_HANDOFF.md",
+      "matches": true
+    },
+    {
+      "entrypoint_reject": "..%2f..%2fMASTER_HANDOFF.md",
+      "matches": true
+    },
+    {
+      "entrypoint_reject": "../methodology.md",
+      "matches": true
+    },
+    {
+      "entrypoint_reject": "evidence/runtime/profile/cache",
+      "matches": true
+    },
+    {
+      "entrypoint_reject": "raw/page.txt",
+      "matches": true
+    },
+    {
+      "entrypoint_reject": "evidence/Runtime/profile/cache",
+      "matches": true
+    },
+    {
+      "entrypoint_reject": "RAW/page.txt",
+      "matches": true
+    },
+    {
+      "existing_source_runtime_case": "evidence/runtime",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "existing_source_runtime_case": "evidence/Runtime",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "existing_source_runtime_case": "evidence/RUNTIME",
+      "exists": true,
+      "matches": true
+    }
+  ],
+  "validator_returncode": 0,
+  "rerun_report": {
+    "accessed_at": "2026-10-21",
+    "validated_at_utc": "2026-10-21T11:00:00.892195+00:00",
+    "result": "PASS",
+    "check_count": 622,
+    "cards": 24,
+    "deep_analyses": 12,
+    "per_platform": {
+      "P01": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P02": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P03": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P04": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P05": {
+        "cards": 4,
+        "deep_analyses": 2
+      },
+      "P06": {
+        "cards": 4,
+        "deep_analyses": 2
+      }
+    },
+    "official_or_publisher_source_records": 31,
+    "browser_journal_events": 23,
+    "referenced_screenshots": 21,
+    "missing_references": [],
+    "limitations": [
+      "No new web or browser activity during validation.",
+      "Semantic claims retain the source/observation limits in methodology.md.",
+      "Local runtime directory remains after policy rejection and MUST be excluded from packaging."
+    ]
+  },
+  "source_unchanged": {
+    "validate_delivery.py": true,
+    "validation.json": true,
+    "delivery_manifest.json": true,
+    "../observation-summary.md": true
+  },
+  "result": "PASS"
+}

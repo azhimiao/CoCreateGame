@@ -1,0 +1,43 @@
+{
+  "game_id": "G04",
+  "verdict": "REVISE",
+  "audited_revision": "r2",
+  "audited_at": "2026-10-21T11:05:39Z",
+  "source_sha256": {
+    "game-spec.json": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da",
+    "archive": "0b1bce595af0643fe9404b04ee038d2e465702f3474369f540e915b89478ceac"
+  },
+  "summary": "r2已独立关闭事件/Session/Boot交接、完整存档合同及三项minor；20关布局与规则未变，不重复全量搜索。Paint Master后补局部实证已计入，连续首30秒/5分钟及Bloxorz/Liquid2核心输入仍缺，因此保持REVISE。",
+  "unresolved_blockers": [],
+  "unresolved_majors": [
+    {
+      "id": "G04-M01",
+      "severity": "MAJOR",
+      "title": "对标关键流程及首30秒/5分钟覆盖仍不足",
+      "locations": [
+        {"file": "games/G04/02_Benchmark_Playthrough.md", "section": "r2后补证据逐节点索引"},
+        {"file": "research/playthroughs/G04/observation.md", "section": "Paint Master操作与Bloxorz/Liquid2受阻"}
+      ],
+      "evidence": "Paint Master确认14次核心输入、一次过关、耗尽失败、菜单重开和再操作；离散操作跨度283.708秒非连续窗口。Bloxorz/Liquid2核心输入仍未确认，三者均无完整连续首30秒/5分钟。",
+      "fix": "关键取舍继续使用可复核操作或带定位的官方说明/合法公开视频并披露局限；无法补足的节点和时间窗保持UNKNOWN，不把驻留或离散截图补成实玩。",
+      "validation": "第三人能按节点区分直接响应、官方重建与未知；若时间窗仍不完整，维持该Ready边界。PROMPT_01允许受限间接分析，不要求12份真人录像。"
+    }
+  ],
+  "closed_findings": [
+    {"id": "G04-M02", "severity": "MAJOR", "revision": "r2", "result": "CLOSED", "evidence": "Pure RuleFact / Session enrichment separated; one Controller publisher and atomic seq; T03/T07/T02 ownership and dependencies explicit; unique owners and counterexamples independently verified."},
+    {"id": "G04-M03", "severity": "MAJOR", "revision": "r2", "result": "CLOSED", "evidence": "Complete SaveEnvelope schema/fixtures, one settings authority, deterministic CJ1 UTF-8 contract and checksum, replay/error branches independently checked."},
+    {"id": "G04-m01", "severity": "MINOR", "revision": "r2", "result": "CLOSED", "evidence": "Deterministic breakpoint priority and computed geometry verified for six viewports; target, controls and side panel fit stated dimensions."},
+    {"id": "G04-m02", "severity": "MINOR", "revision": "r2", "result": "CLOSED", "evidence": "Four identical-witness pairs and 15/20 unchanged shortest paths under gate ablation disclosed with falsifiable content-diagnostic plan; no claim that these prove fun."},
+    {"id": "G04-m03", "severity": "MINOR", "revision": "r2", "result": "CLOSED", "evidence": "T00 audit path exactly maps to reviews/G04-audit.md/json and schema-constrained task write scope; pack/manifest/receipt hashes agree."}
+  ],
+  "independent_validation": {
+    "result": "PASS",
+    "check_count": 160,
+    "author_contract_validator_rerun": "PASS",
+    "artifact_owner_checks": 10,
+    "independent_save_mutations": 8,
+    "save_fixtures_independently_replayed": 2,
+    "author_files_unchanged_since_snapshot": true,
+    "full_level_search_repeated": false
+  }
+}

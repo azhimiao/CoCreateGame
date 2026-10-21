@@ -1,0 +1,297 @@
+{
+  "frozen_at_utc": "2026-10-21T11:09:54.894881+00:00",
+  "source": "games/G01",
+  "file_count": 49,
+  "files": [
+    {
+      "path": "00_Project_Charter.md",
+      "bytes": 4127,
+      "sha256": "31ec7b1e57fccea875987e8a1465616fcae2d95d2a41a2c9057df202115ddcad"
+    },
+    {
+      "path": "01_Market_Evidence.md",
+      "bytes": 5504,
+      "sha256": "e259babee67a5de17f74c104aa40704352d5498eea5081aca71f9e86ecf075b6"
+    },
+    {
+      "path": "02_Benchmark_Playthrough.md",
+      "bytes": 7921,
+      "sha256": "cdc28ef42b211563d9da52dd7b6eb05e3f3e343726ebfeeca0b37c32ed6bcc6e"
+    },
+    {
+      "path": "03_Full_GDD.md",
+      "bytes": 7144,
+      "sha256": "ba57bb22bf548a3129fb7e5e0640b1b14b77cfc7d468805197c8aee7fb4a03ff"
+    },
+    {
+      "path": "04_Systems_and_Data.md",
+      "bytes": 14929,
+      "sha256": "aa957dadb4d2d12dca6116bb9d3d6576e2ba453b87b1b5cc0aa2946c286a26cb"
+    },
+    {
+      "path": "05_Levels_Economy.md",
+      "bytes": 22395,
+      "sha256": "a3af704bef9cd03a7feea79bd30cfd7fa56764667a0d239d4a1637c85281a4d8"
+    },
+    {
+      "path": "06_UI_Art_Audio.md",
+      "bytes": 9752,
+      "sha256": "15096f444fe4e4ee3dbe1fbfd56262f03cea36454915618fe264e4479412fe0d"
+    },
+    {
+      "path": "07_Tech_Architecture.md",
+      "bytes": 8589,
+      "sha256": "7e8577e80423c07369dae72c21ad5226e80605ded77bd38dd9ab1b4120a8a679"
+    },
+    {
+      "path": "08_OpenSource_Licenses.md",
+      "bytes": 4850,
+      "sha256": "15f4edd98ee135e5a82b1cf1b18dc21618f77c4983666925e6e49d18a9ec4536"
+    },
+    {
+      "path": "09_Implementation_Plan.md",
+      "bytes": 5036,
+      "sha256": "858b582740d89e7158371c0590ced7ee44afdc409ec135c787e193d11f64d771"
+    },
+    {
+      "path": "10_QA_Test_Plan.md",
+      "bytes": 8862,
+      "sha256": "d9c23516465b5fee47f33d4915b422029585564c9b0c266f98c56c30292df9c3"
+    },
+    {
+      "path": "11_Distribution_Business.md",
+      "bytes": 7439,
+      "sha256": "22af639831c7bc7d9577c277a1e2ce86c69f9196c7048241580578ab9b41a2af"
+    },
+    {
+      "path": "12_Falsifiability.md",
+      "bytes": 7308,
+      "sha256": "b812a5d71344f03e5835a1fe62d64a5e649c600f4fb510380cedb9d403666bd2"
+    },
+    {
+      "path": "contracts/save-vectors.json",
+      "bytes": 79772,
+      "sha256": "1ee2af0e320be4c163590953c531fe915cba5261f78f96d20cdc6c1f47d127fb"
+    },
+    {
+      "path": "contracts/session-vectors.json",
+      "bytes": 16240,
+      "sha256": "2beb1649e44a1687a96b9e9d79553d410ee2b380dfd6c7e218346f1b5682500c"
+    },
+    {
+      "path": "game-spec.json",
+      "bytes": 52634,
+      "sha256": "f7ae41c19422324a29c99bf5fd7bbd4d53a364d44aed9f85152701d35f89832f"
+    },
+    {
+      "path": "game-spec.schema.json",
+      "bytes": 28372,
+      "sha256": "b70da66d0d78e9fc496e5454c73697740223c16f6eb7aa377495c90862b4baa8"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2672,
+      "sha256": "456b6105bee2ddd950adc1cf633ae076460b9029303d54a66a1a8d58cc66e14a"
+    },
+    {
+      "path": "research/evidence.json",
+      "bytes": 22978,
+      "sha256": "d63af3fcc4c1f82d87b14aba4f66b34c7a23d433a441093a4c0d948002633530"
+    },
+    {
+      "path": "research/observation-coverage.json",
+      "bytes": 5512,
+      "sha256": "a23f6df9b628421c9424c4d0545be3da8e9e399f2b2e4fa5e84155b3f03919fd"
+    },
+    {
+      "path": "research/raw/research_0.txt",
+      "bytes": 30622,
+      "sha256": "f98a93a469603fbd977105a9d2edfb0c1367223e652079750f79c45a01d1071e"
+    },
+    {
+      "path": "research/raw/research_1.txt",
+      "bytes": 25827,
+      "sha256": "b914adcc4893007ad185abfbef3bedc02f3f0d88cba8dbb86f6e119abffb6042"
+    },
+    {
+      "path": "research/raw/research_constraints.txt",
+      "bytes": 32172,
+      "sha256": "3fc8a5dda2cb999cb19ddfe5ea90141cf5049a876e694d011c4e4d481d638887"
+    },
+    {
+      "path": "research/raw/research_final_targeted.txt",
+      "bytes": 15393,
+      "sha256": "90aab39e8a4ae5ed7fc1d206107f873fef56b12b72fbc78aa233c11f37622996"
+    },
+    {
+      "path": "research/raw/research_licenses_final.txt",
+      "bytes": 15040,
+      "sha256": "ace0e0fd6ab6957197b2dfb6bd9a61668d8c70cf000da8109fc0571dc1112fc8"
+    },
+    {
+      "path": "research/raw/research_more_0.txt",
+      "bytes": 27060,
+      "sha256": "2c6303646b9c9afa5df9c72ccd6ab9afa5cdbc3c97fdaedf454824d2171ba189"
+    },
+    {
+      "path": "research/raw/research_more_1.txt",
+      "bytes": 18031,
+      "sha256": "4cbb471265851e2dff27158b6b4edffcc9678c5addad68a19ac5781a4a3cfdf6"
+    },
+    {
+      "path": "research/raw-index.json",
+      "bytes": 1570,
+      "sha256": "ab0ff9aa1269ae4a3f31975430300f1fe045fd1d2cfb36a8a0e3d466378b3f95"
+    },
+    {
+      "path": "research/README.md",
+      "bytes": 1190,
+      "sha256": "b000b0f082754d7d1dc2287c2abf3803ce0ba44940f4f834c712b7d9926db3f6"
+    },
+    {
+      "path": "REVISIONS.md",
+      "bytes": 3228,
+      "sha256": "9f58c0238855f90e0240e7f5dd43d46649e03400c893a599eae29be081bb4e37"
+    },
+    {
+      "path": "save-envelope.schema.json",
+      "bytes": 2514,
+      "sha256": "950d039f78f8d395f7e52d0953bba7bce080b9bdf4f2794b5fd7d5ca284c3db2"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 2959,
+      "sha256": "2623568e44e77a56872b989b3b45cea2997666a6183539d5f0aa199bb38b0fb1"
+    },
+    {
+      "path": "tasks.json",
+      "bytes": 14467,
+      "sha256": "238506feaca4885bcaad69b578499575efb869283f1b65a2aec042d25a52410e"
+    },
+    {
+      "path": "tasks.schema.json",
+      "bytes": 3165,
+      "sha256": "50bbe0ca0177b88e406f3eae36a4b05a7e8c9ef242b0ab0e3935abe78fa03885"
+    },
+    {
+      "path": "tools/__pycache__/check_contracts.cpython-311.pyc",
+      "bytes": 20328,
+      "sha256": "12734d0572917db271643a97bcfc863a109f7cd1727c3fe71738cbd791949664"
+    },
+    {
+      "path": "tools/__pycache__/contracts.cpython-311.pyc",
+      "bytes": 2605,
+      "sha256": "72395b34fc0b8eebf5086a72fc9fc54541b31209584ab4514820c1b0e146764d"
+    },
+    {
+      "path": "tools/check_audit_mutants.py",
+      "bytes": 6441,
+      "sha256": "187a5c5cfaff42d28cf04cdeeffb6aaea3456cd701d9a218c45aa19f407c78fe"
+    },
+    {
+      "path": "tools/check_contracts.py",
+      "bytes": 13041,
+      "sha256": "d99314f251235f2e6f73589e9e0b501473f30c10e7fcfcd4be11205b0eebf589"
+    },
+    {
+      "path": "tools/contracts.py",
+      "bytes": 2045,
+      "sha256": "4da95b9b381fb8648583963ba94cce271b68e157f86f90ea7903e196a67e32ba"
+    },
+    {
+      "path": "tools/link_observation.py",
+      "bytes": 4543,
+      "sha256": "282bc5316b895f8eb8091238c2ce6f93fa2244155f6ceafdd9ab57bd84c7a1b4"
+    },
+    {
+      "path": "tools/prepare_data.py",
+      "bytes": 24330,
+      "sha256": "490715ffe0a84a705a3ca05589e40ecd8dc2df321d96b935bf86f147f349bca1"
+    },
+    {
+      "path": "tools/prepare_evidence.py",
+      "bytes": 9569,
+      "sha256": "35d06e682231dfb3eded4f5f3662ddb99c5efb86cc4a97e044ee34850e7bdbb3"
+    },
+    {
+      "path": "tools/requirements-validation.txt",
+      "bytes": 97,
+      "sha256": "5b6d38c8d4aa162dcc99dec1e1ddbee79d19595ddb20d0072c8a87c63f563020"
+    },
+    {
+      "path": "tools/validate.py",
+      "bytes": 14278,
+      "sha256": "8f38879bd7681a004b31aeb93220e2d4a624e76ffec5ac373d981639ac233482"
+    },
+    {
+      "path": "tools/write_level_catalog.py",
+      "bytes": 4808,
+      "sha256": "0e5fd93b68996d7f344774485608019604fbf57b3b02c5b9817f0a57d307bedd"
+    },
+    {
+      "path": "validation/audit-mutants.json",
+      "bytes": 10049,
+      "sha256": "3e0e11743df16b1216920de6cc83ff2e52443285c9bf95fef1dc017ed0417279"
+    },
+    {
+      "path": "validation/report.json",
+      "bytes": 26760,
+      "sha256": "a916effb4ecb5d7ab4e0bbbabea73cc43975953652404500dbd8cb3b3091599d"
+    },
+    {
+      "path": "validation/revision-baseline.json",
+      "bytes": 2530,
+      "sha256": "f1d0b16fa856ca888472fc833ddf643acb261f48576bd2d9129fd5954599aedc"
+    },
+    {
+      "path": "validation/solution-traces.json",
+      "bytes": 15784,
+      "sha256": "82d1514e67dc0eef7d25bd1366cd4e527ae3f767b1eb126e30423511c05e9711"
+    }
+  ],
+  "changed_since_r0": [
+    "00_Project_Charter.md",
+    "01_Market_Evidence.md",
+    "02_Benchmark_Playthrough.md",
+    "03_Full_GDD.md",
+    "04_Systems_and_Data.md",
+    "05_Levels_Economy.md",
+    "06_UI_Art_Audio.md",
+    "07_Tech_Architecture.md",
+    "09_Implementation_Plan.md",
+    "10_QA_Test_Plan.md",
+    "12_Falsifiability.md",
+    "contracts/save-vectors.json",
+    "contracts/session-vectors.json",
+    "game-spec.json",
+    "game-spec.schema.json",
+    "README.md",
+    "research/evidence.json",
+    "research/observation-coverage.json",
+    "research/raw/research_0.txt",
+    "research/raw/research_1.txt",
+    "research/raw/research_constraints.txt",
+    "research/raw/research_final_targeted.txt",
+    "research/raw/research_licenses_final.txt",
+    "research/raw/research_more_0.txt",
+    "research/raw/research_more_1.txt",
+    "research/README.md",
+    "REVISIONS.md",
+    "save-envelope.schema.json",
+    "STATUS.md",
+    "tasks.json",
+    "tools/__pycache__/check_contracts.cpython-311.pyc",
+    "tools/__pycache__/contracts.cpython-311.pyc",
+    "tools/check_audit_mutants.py",
+    "tools/check_contracts.py",
+    "tools/contracts.py",
+    "tools/link_observation.py",
+    "tools/prepare_data.py",
+    "tools/prepare_evidence.py",
+    "tools/validate.py",
+    "tools/write_level_catalog.py",
+    "validation/audit-mutants.json",
+    "validation/report.json",
+    "validation/revision-baseline.json"
+  ]
+}

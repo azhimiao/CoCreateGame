@@ -1,0 +1,1155 @@
+{
+  "checked_at_utc": "2026-10-21T11:25:37.359630+00:00",
+  "result": "PASS",
+  "scope": "Auditor consistency/aggregation only; source read only, no engine or full root delivery verification",
+  "check_count": 175,
+  "checks": [
+    {
+      "check": "G01 unchanged 00_Project_Charter.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 01_Market_Evidence.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 02_Benchmark_Playthrough.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 03_Full_GDD.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 04_Systems_and_Data.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 05_Levels_Economy.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 06_UI_Art_Audio.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 07_Tech_Architecture.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 08_OpenSource_Licenses.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 09_Implementation_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 10_QA_Test_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 11_Distribution_Business.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged 12_Falsifiability.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged contracts/save-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged contracts/session-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged game-spec.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged game-spec.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged README.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged research/evidence.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged research/observation-coverage.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged research/raw-index.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged research/README.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged REVISIONS.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged save-envelope.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged STATUS.md",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tasks.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tasks.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/check_audit_mutants.py",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/check_contracts.py",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/contracts.py",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/link_observation.py",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/prepare_data.py",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/prepare_evidence.py",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/requirements-validation.txt",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/validate.py",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged tools/write_level_catalog.py",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged validation/audit-mutants.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged validation/report.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged validation/revision-baseline.json",
+      "passed": true
+    },
+    {
+      "check": "G01 unchanged validation/solution-traces.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 00_Project_Charter.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 01_Market_Evidence.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 02_Benchmark_Playthrough.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 03_Full_GDD.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 04_Systems_and_Data.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 05_Levels_Economy.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 06_UI_Art_Audio.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 07_Tech_Architecture.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 08_OpenSource_Licenses.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 09_Implementation_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 10_QA_Test_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 11_Distribution_Business.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged 12_Falsifiability.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged archive-verification.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged build_contract_data.py",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged DELIVERY_MANIFEST.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged event-contract.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged EVENT_CONTRACT.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged evidence-register.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged G04_Preparation_2026-10-21_v1.0.0.zip",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged game-spec.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged game-spec.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged observation-index.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged pack-preparation.py",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged qa-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged README.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged requirements-spec.txt",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged REVIEW_REQUEST.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged REVISIONS.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged save-envelope.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged save-fixtures.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged SAVE_CONTRACT.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged SELF_REVIEW.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged session-contract-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged STATUS.md",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged tasks.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged tasks.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged validate_contracts.py",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged validate_spec.py",
+      "passed": true
+    },
+    {
+      "check": "G04 unchanged validation-report.json",
+      "passed": true
+    },
+    {
+      "check": "G02 independent rereview PASS",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 00_Project_Charter.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 01_Market_Evidence.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 02_Benchmark_Playthrough.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 03_Full_GDD.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 04_Systems_and_Data.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 05_Levels_Economy.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 06_UI_Art_Audio.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 07_Tech_Architecture.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 08_OpenSource_Licenses.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 09_Implementation_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 10_QA_Test_Plan.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 11_Distribution_Business.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged 12_Falsifiability.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged G02_Preparation_2026-10-21.zip",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged game-spec.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged game-spec.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged HANDOFF_STATE.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged INDEPENDENT_AUDIT_REQUEST.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged layout-cases.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged package-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged protocol-vectors.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged README.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged requirements-preparation.txt",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged revision-index.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged REVISIONS.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged SELF_REVIEW.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged STATUS.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged tasks.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged tasks.schema.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged audit/independent-review-receipt.md",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged evidence/team-browser-observation-index.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged tools/author_contracts.py",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged tools/author_data.py",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged tools/check_contracts.py",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged tools/package_delivery.py",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged tools/render_levels.py",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged tools/verify.py",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged verification/package-check.json",
+      "passed": true
+    },
+    {
+      "check": "G02 unchanged verification/verification-report.json",
+      "passed": true
+    },
+    {
+      "check": "G02 final reviewer report G02-audit.md",
+      "passed": true
+    },
+    {
+      "check": "G02 final reviewer report G02-audit.json",
+      "passed": true
+    },
+    {
+      "check": "G02 independent level scope",
+      "passed": true
+    },
+    {
+      "check": "G02 vectors/layout/archive scope",
+      "passed": true
+    },
+    {
+      "check": "benchmark validator diff is count metadata line only",
+      "passed": true
+    },
+    {
+      "check": "benchmark manifest validation count 622",
+      "passed": true
+    },
+    {
+      "check": "benchmark final report PASS metadata",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata benchmarks.json",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata methodology.md",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata build_benchmarks.py",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata validate_delivery.py",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata validation.json",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata P01.md",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata P02.md",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata P03.md",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata P04.md",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata P05.md",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata P06.md",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/browser-probe.cjs",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/session.json",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/cleanup.json",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p01-paint-master-loaded.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-drive-mad-forward-2s.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-drive-mad-loaded.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-drive-mad-ready.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-after-move.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-after-wait.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-character-moved.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-dismiss-held.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-dismiss-news.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-enter-pits.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-front-right.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-front-space.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-loaded.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-pits-entered.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-pits-right.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-pits-start.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-reopen.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-right-2s.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-second-space.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-stage-entry.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark final payload metadata evidence/screenshots/p03-level-devil-stage-start.png",
+      "passed": true
+    },
+    {
+      "check": "benchmark exact readonly associated metadata",
+      "passed": true
+    },
+    {
+      "check": "benchmark associated hash",
+      "passed": true
+    },
+    {
+      "check": "current verdict G01",
+      "passed": true
+    },
+    {
+      "check": "only research major G01",
+      "passed": true
+    },
+    {
+      "check": "actionable major evidence G01",
+      "passed": true
+    },
+    {
+      "check": "current verdict G02",
+      "passed": true
+    },
+    {
+      "check": "only research major G02",
+      "passed": true
+    },
+    {
+      "check": "actionable major evidence G02",
+      "passed": true
+    },
+    {
+      "check": "current verdict G04",
+      "passed": true
+    },
+    {
+      "check": "only research major G04",
+      "passed": true
+    },
+    {
+      "check": "actionable major evidence G04",
+      "passed": true
+    },
+    {
+      "check": "exact requested decisions membership/order",
+      "passed": true
+    },
+    {
+      "check": "decisions persisted exactly",
+      "passed": true
+    }
+  ],
+  "source_freezes": [
+    {
+      "game_id": "G01",
+      "frozen_files": 40,
+      "unchanged": true,
+      "files": [
+        {
+          "path": "00_Project_Charter.md",
+          "sha256": "31ec7b1e57fccea875987e8a1465616fcae2d95d2a41a2c9057df202115ddcad"
+        },
+        {
+          "path": "01_Market_Evidence.md",
+          "sha256": "e259babee67a5de17f74c104aa40704352d5498eea5081aca71f9e86ecf075b6"
+        },
+        {
+          "path": "02_Benchmark_Playthrough.md",
+          "sha256": "cdc28ef42b211563d9da52dd7b6eb05e3f3e343726ebfeeca0b37c32ed6bcc6e"
+        },
+        {
+          "path": "03_Full_GDD.md",
+          "sha256": "ba57bb22bf548a3129fb7e5e0640b1b14b77cfc7d468805197c8aee7fb4a03ff"
+        },
+        {
+          "path": "04_Systems_and_Data.md",
+          "sha256": "aa957dadb4d2d12dca6116bb9d3d6576e2ba453b87b1b5cc0aa2946c286a26cb"
+        },
+        {
+          "path": "05_Levels_Economy.md",
+          "sha256": "a3af704bef9cd03a7feea79bd30cfd7fa56764667a0d239d4a1637c85281a4d8"
+        },
+        {
+          "path": "06_UI_Art_Audio.md",
+          "sha256": "15096f444fe4e4ee3dbe1fbfd56262f03cea36454915618fe264e4479412fe0d"
+        },
+        {
+          "path": "07_Tech_Architecture.md",
+          "sha256": "7e8577e80423c07369dae72c21ad5226e80605ded77bd38dd9ab1b4120a8a679"
+        },
+        {
+          "path": "08_OpenSource_Licenses.md",
+          "sha256": "15f4edd98ee135e5a82b1cf1b18dc21618f77c4983666925e6e49d18a9ec4536"
+        },
+        {
+          "path": "09_Implementation_Plan.md",
+          "sha256": "858b582740d89e7158371c0590ced7ee44afdc409ec135c787e193d11f64d771"
+        },
+        {
+          "path": "10_QA_Test_Plan.md",
+          "sha256": "d9c23516465b5fee47f33d4915b422029585564c9b0c266f98c56c30292df9c3"
+        },
+        {
+          "path": "11_Distribution_Business.md",
+          "sha256": "22af639831c7bc7d9577c277a1e2ce86c69f9196c7048241580578ab9b41a2af"
+        },
+        {
+          "path": "12_Falsifiability.md",
+          "sha256": "b812a5d71344f03e5835a1fe62d64a5e649c600f4fb510380cedb9d403666bd2"
+        },
+        {
+          "path": "contracts/save-vectors.json",
+          "sha256": "1ee2af0e320be4c163590953c531fe915cba5261f78f96d20cdc6c1f47d127fb"
+        },
+        {
+          "path": "contracts/session-vectors.json",
+          "sha256": "2beb1649e44a1687a96b9e9d79553d410ee2b380dfd6c7e218346f1b5682500c"
+        },
+        {
+          "path": "game-spec.json",
+          "sha256": "f7ae41c19422324a29c99bf5fd7bbd4d53a364d44aed9f85152701d35f89832f"
+        },
+        {
+          "path": "game-spec.schema.json",
+          "sha256": "b70da66d0d78e9fc496e5454c73697740223c16f6eb7aa377495c90862b4baa8"
+        },
+        {
+          "path": "README.md",
+          "sha256": "456b6105bee2ddd950adc1cf633ae076460b9029303d54a66a1a8d58cc66e14a"
+        },
+        {
+          "path": "research/evidence.json",
+          "sha256": "d63af3fcc4c1f82d87b14aba4f66b34c7a23d433a441093a4c0d948002633530"
+        },
+        {
+          "path": "research/observation-coverage.json",
+          "sha256": "a23f6df9b628421c9424c4d0545be3da8e9e399f2b2e4fa5e84155b3f03919fd"
+        },
+        {
+          "path": "research/raw-index.json",
+          "sha256": "ab0ff9aa1269ae4a3f31975430300f1fe045fd1d2cfb36a8a0e3d466378b3f95"
+        },
+        {
+          "path": "research/README.md",
+          "sha256": "b000b0f082754d7d1dc2287c2abf3803ce0ba44940f4f834c712b7d9926db3f6"
+        },
+        {
+          "path": "REVISIONS.md",
+          "sha256": "9f58c0238855f90e0240e7f5dd43d46649e03400c893a599eae29be081bb4e37"
+        },
+        {
+          "path": "save-envelope.schema.json",
+          "sha256": "950d039f78f8d395f7e52d0953bba7bce080b9bdf4f2794b5fd7d5ca284c3db2"
+        },
+        {
+          "path": "STATUS.md",
+          "sha256": "2623568e44e77a56872b989b3b45cea2997666a6183539d5f0aa199bb38b0fb1"
+        },
+        {
+          "path": "tasks.json",
+          "sha256": "238506feaca4885bcaad69b578499575efb869283f1b65a2aec042d25a52410e"
+        },
+        {
+          "path": "tasks.schema.json",
+          "sha256": "50bbe0ca0177b88e406f3eae36a4b05a7e8c9ef242b0ab0e3935abe78fa03885"
+        },
+        {
+          "path": "tools/check_audit_mutants.py",
+          "sha256": "187a5c5cfaff42d28cf04cdeeffb6aaea3456cd701d9a218c45aa19f407c78fe"
+        },
+        {
+          "path": "tools/check_contracts.py",
+          "sha256": "d99314f251235f2e6f73589e9e0b501473f30c10e7fcfcd4be11205b0eebf589"
+        },
+        {
+          "path": "tools/contracts.py",
+          "sha256": "4da95b9b381fb8648583963ba94cce271b68e157f86f90ea7903e196a67e32ba"
+        },
+        {
+          "path": "tools/link_observation.py",
+          "sha256": "282bc5316b895f8eb8091238c2ce6f93fa2244155f6ceafdd9ab57bd84c7a1b4"
+        },
+        {
+          "path": "tools/prepare_data.py",
+          "sha256": "490715ffe0a84a705a3ca05589e40ecd8dc2df321d96b935bf86f147f349bca1"
+        },
+        {
+          "path": "tools/prepare_evidence.py",
+          "sha256": "35d06e682231dfb3eded4f5f3662ddb99c5efb86cc4a97e044ee34850e7bdbb3"
+        },
+        {
+          "path": "tools/requirements-validation.txt",
+          "sha256": "5b6d38c8d4aa162dcc99dec1e1ddbee79d19595ddb20d0072c8a87c63f563020"
+        },
+        {
+          "path": "tools/validate.py",
+          "sha256": "8f38879bd7681a004b31aeb93220e2d4a624e76ffec5ac373d981639ac233482"
+        },
+        {
+          "path": "tools/write_level_catalog.py",
+          "sha256": "0e5fd93b68996d7f344774485608019604fbf57b3b02c5b9817f0a57d307bedd"
+        },
+        {
+          "path": "validation/audit-mutants.json",
+          "sha256": "3e0e11743df16b1216920de6cc83ff2e52443285c9bf95fef1dc017ed0417279"
+        },
+        {
+          "path": "validation/report.json",
+          "sha256": "5d41ebc4d770a32ba1dd24b62409a28b1c0fb6c24894f9d0a46658c7b9cca7c8"
+        },
+        {
+          "path": "validation/revision-baseline.json",
+          "sha256": "f1d0b16fa856ca888472fc833ddf643acb261f48576bd2d9129fd5954599aedc"
+        },
+        {
+          "path": "validation/solution-traces.json",
+          "sha256": "82d1514e67dc0eef7d25bd1366cd4e527ae3f767b1eb126e30423511c05e9711"
+        }
+      ]
+    },
+    {
+      "game_id": "G04",
+      "frozen_files": 40,
+      "unchanged": true,
+      "files": [
+        {
+          "path": "00_Project_Charter.md",
+          "sha256": "bb811666bef113b1a5ac156b4a611023a5352c5f58e44c74ca3a47b403873e7e"
+        },
+        {
+          "path": "01_Market_Evidence.md",
+          "sha256": "e186f5da1bbe7134db1f5da5755a19d60c0507e631133c47738aae8088c0a900"
+        },
+        {
+          "path": "02_Benchmark_Playthrough.md",
+          "sha256": "ce2d32355de866f946f7f27b7e8924ee69b0406844282efce700f100a97c99f0"
+        },
+        {
+          "path": "03_Full_GDD.md",
+          "sha256": "56b1977f2568e0ea628a560cee6e779297d0b33a850eeef8a32531eb31d685cb"
+        },
+        {
+          "path": "04_Systems_and_Data.md",
+          "sha256": "21727e1d1457ecb5cd03d30c26a62e896ed7972cc528303b2fc76b5b67e856bc"
+        },
+        {
+          "path": "05_Levels_Economy.md",
+          "sha256": "856f7c8d3210c8005c4629a6a0333cca89b75857753d6aedaac4db96e2f2d6be"
+        },
+        {
+          "path": "06_UI_Art_Audio.md",
+          "sha256": "0ac19bc6e2e913474dbded8b2644b40f4f0cd741cc29fc68ae0aa1f6b93a75c9"
+        },
+        {
+          "path": "07_Tech_Architecture.md",
+          "sha256": "e53e1de69b2de8d79f06ea57a04b7d2166120465350c03a6b83c1c7f3cd5e850"
+        },
+        {
+          "path": "08_OpenSource_Licenses.md",
+          "sha256": "21b8efa505651b17a864d0f7ce69d44e615be793515c1122b5ec94dd94862485"
+        },
+        {
+          "path": "09_Implementation_Plan.md",
+          "sha256": "c70c68a4a6cc4ddda725891d09067335e4043309ab1f3163d1cf349cb9303686"
+        },
+        {
+          "path": "10_QA_Test_Plan.md",
+          "sha256": "a77dffba02658cc496eb3d14fa0e2b6071ddd8797883283f07573e9f01597389"
+        },
+        {
+          "path": "11_Distribution_Business.md",
+          "sha256": "f750053aa8ebfbd5c5c93f518b4b3956a47f6310cdfca21b3b1e4a9e15bf753e"
+        },
+        {
+          "path": "12_Falsifiability.md",
+          "sha256": "14212f9194d3b9167642639b9e4b3f457a62e1ba74361b0d47ac6233bf2871ad"
+        },
+        {
+          "path": "archive-verification.json",
+          "sha256": "ac7f20ca2f0a025329f588003007d2ff3b437285043560bc32718eb7e30db670"
+        },
+        {
+          "path": "build_contract_data.py",
+          "sha256": "e4e26cd8993810b40048dd324d6aa4723372da289f96b44568e90c0da97ba0fe"
+        },
+        {
+          "path": "DELIVERY_MANIFEST.json",
+          "sha256": "62664694de704a91645ff61a8730d9908ca23c58b40862847aca9e86ef7d8ac3"
+        },
+        {
+          "path": "event-contract.schema.json",
+          "sha256": "018744ffaefbd52aae60e64562be31fc99e5bc2f8509a2454e186cc312bac877"
+        },
+        {
+          "path": "EVENT_CONTRACT.md",
+          "sha256": "2342f935a771c42df94d029214bb214757ae080dcb5430b40cafc1de9fccf70d"
+        },
+        {
+          "path": "evidence-register.json",
+          "sha256": "e481772aa1ea7fc9c830b49cf3f13e750a16732724f707c8f4ac5b6c179d2de5"
+        },
+        {
+          "path": "G04_Preparation_2026-10-21_v1.0.0.zip",
+          "sha256": "0b1bce595af0643fe9404b04ee038d2e465702f3474369f540e915b89478ceac"
+        },
+        {
+          "path": "game-spec.json",
+          "sha256": "dc0c5248a5e037fa96bf61ecf4eb5ffb4bb2533910f4010442f8e1959baac8da"
+        },
+        {
+          "path": "game-spec.schema.json",
+          "sha256": "1e21cba0658c5c28657a0a3124315668fc2094a3e8a3c1d5d263192c7ea33e8f"
+        },
+        {
+          "path": "observation-index.json",
+          "sha256": "3eeb4cd50e2ffc1d8801902773ebc7c21a5a886bf104695d4ecd438b9e77f91f"
+        },
+        {
+          "path": "pack-preparation.py",
+          "sha256": "900d25e1f2e68b73e8a1316f9e20365b43911c7fdb6f563a06b54c2e00d0675d"
+        },
+        {
+          "path": "qa-vectors.json",
+          "sha256": "337d64277dada2848661d441ce01b10ec793b45dfe1e4e3334818e388f5ee0f1"
+        },
+        {
+          "path": "README.md",
+          "sha256": "9c9e0bed8b7bde5e48ed0edc84b4764a061983c640c7d177a6c96d13a19121bb"
+        },
+        {
+          "path": "requirements-spec.txt",
+          "sha256": "394d3d138522b43c6f1fe421ae8eba3b273ddeb3d9f753125df00e7a798f17b1"
+        },
+        {
+          "path": "REVIEW_REQUEST.md",
+          "sha256": "45310c3a4a8db123008a6b4ad6c746c397e89f284f60e0779c698341b81f5539"
+        },
+        {
+          "path": "REVISIONS.md",
+          "sha256": "6229d5800395e70c5d7b7751fcd59bc1c5e28e567c4d46f1ff9eb0e5a2e3a441"
+        },
+        {
+          "path": "save-envelope.schema.json",
+          "sha256": "497f8fa05a00116942f8ea5109b4a761b5962d8f39eb18a15bc1ee48f82b8eae"
+        },
+        {
+          "path": "save-fixtures.json",
+          "sha256": "66da7261fad45bcfc6097be45317a928055209781841b554f3613ddb1157cbb9"
+        },
+        {
+          "path": "SAVE_CONTRACT.md",
+          "sha256": "1ee913cd47a3016251616dd81a38e2a4f880f8d7b627747ba8c01fe3b9ba0e49"
+        },
+        {
+          "path": "SELF_REVIEW.md",
+          "sha256": "cfe3aea75e9c1e42ce7c1e72df6b67741869ac0e84057fb0edb3ab653394ff0d"
+        },
+        {
+          "path": "session-contract-vectors.json",
+          "sha256": "ac37eddc0ff1ae5616b7ecb9582a1abc1624c597b9c3c8eacbf23133c4287218"
+        },
+        {
+          "path": "STATUS.md",
+          "sha256": "cf71052f8cb04fbb7657deb8ed68d0adbb5e3edf5aa003ac6584488b5eb00d74"
+        },
+        {
+          "path": "tasks.json",
+          "sha256": "aaa30d3f39422358bea51e45337d517aa363f6d00557a67e0a7a6b0847243846"
+        },
+        {
+          "path": "tasks.schema.json",
+          "sha256": "a2a337bbf9145a31de92508c2932af9a20ef54bfa5983b6aa42ff85faeb3bec9"
+        },
+        {
+          "path": "validate_contracts.py",
+          "sha256": "ea5425cc57643a68df3bafc6c1e3ecb6756b8d61d84c8d0dc62435ce0eda15f1"
+        },
+        {
+          "path": "validate_spec.py",
+          "sha256": "300e12a6c8ed1a89f6f8177e806bc9107ea2e6c6ba1d1a530ab232cab282f376"
+        },
+        {
+          "path": "validation-report.json",
+          "sha256": "cb2d74dff376fea182121bac4da72be28084dcfddc46a1684743b3171c4dc58a"
+        }
+      ]
+    },
+    {
+      "game_id": "G02",
+      "frozen_files": 39,
+      "unchanged": true,
+      "source_sha256": {
+        "00_Project_Charter.md": "9eee6998c62fef317e13496efb868ebe83e55c06114bbc4861eb52e0c4caf022",
+        "01_Market_Evidence.md": "f9fc0ab70826b7c4cc0b8516c2d4c0a65a9544dfbe12c397daf073dde80ecc59",
+        "02_Benchmark_Playthrough.md": "8f350e19880793eabd9ac4f39531b28215f1661ac4e5c33bff43044c451c6056",
+        "03_Full_GDD.md": "1ac0ca88690e79ced038e38c9158ede601f0071927e961bd830b665d3680341d",
+        "04_Systems_and_Data.md": "943d9b1d64b6297396cbc85b45c448ce84775eb27d8c6f911a7a1dc46b392ed5",
+        "05_Levels_Economy.md": "5106ee8b8b7a305b55229a21d78ebcfa700e89a4dfc09c028b8ec52fd042a412",
+        "06_UI_Art_Audio.md": "1e0b0ccd0bc5cf4a4f9ed8cf23bd2269cd0722d3692f2a2cae38a5abc29de1f6",
+        "07_Tech_Architecture.md": "1baf1e1cdb1bc9ceaf14a9e32f83c45ca41608d3a38eecdaced1b8235ef35e67",
+        "08_OpenSource_Licenses.md": "79a521a7a751dccce4ff2e526edf57183646d02e47e6c4ad7c4f5084e208c13b",
+        "09_Implementation_Plan.md": "677ba1378e733bcd98670140c801cadcdefdf3a9146506f9bbff1564401a57d7",
+        "10_QA_Test_Plan.md": "99be705b984f7bb39d2a5cfa9809c3e361d81ffecd9e52d135a9b4f4dcdb6a7a",
+        "11_Distribution_Business.md": "034c2c99feada34c828f365bb35be00bce15508e373bd03e6504a0a5ef712224",
+        "12_Falsifiability.md": "14452fe2aaec29a74564be522d4905af250ab5948f54996adb2a07387e362712",
+        "G02_Preparation_2026-10-21.zip": "9b541c8b76bae1030fb7fa81ae65afe782662e3bc10b98f21313d9df6a8c3241",
+        "game-spec.json": "c9acded2840cc970a2fdfb3fba27ec4db9f94c7ccf0d5f86fffcea6af21d0516",
+        "game-spec.schema.json": "b9c88e20252c5623504763345b92f3efeafadecf1c3020bbe832dc0ad5a72d19",
+        "HANDOFF_STATE.md": "276b1997fc8d16a7a03997d7c2ae3f5425595ebc3fb3f78173e95f120a139839",
+        "INDEPENDENT_AUDIT_REQUEST.md": "13a235eb1173a272084aca8ca6c9a6ba1067b1743b9a991f1e5b06deff797e7a",
+        "layout-cases.json": "b2018c19bd301599b7d9d8c9679e3fe6f89783f316a52a915bbb2708d788987c",
+        "package-manifest.json": "e184a40a395c6bd81e660a88433cff39b95622e6b6a486219dcf32f8fd05fc36",
+        "protocol-vectors.json": "fbaebb961eb76fee9bd4e664df0e4248d98a1172fdb1c99850b4979ce2870282",
+        "README.md": "ce890fd86ce8d65f541129ff6c6ae3fa45506507e3a382c1af957676f4351622",
+        "requirements-preparation.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+        "revision-index.json": "172c4763367e0d17eb299c15f714a5b5faf3ae65573a64129d5eb6915e04c12d",
+        "REVISIONS.md": "2b5bd9fa710eea8eb66a646c9352f3fcbec9df8013938e0d4c197271291963b0",
+        "SELF_REVIEW.md": "07c1c451aadef56b13dc71234f4302d5595c7ed5db7d7e415cbb11dd1c9a65cb",
+        "STATUS.md": "be9a3ced8ec3609bb1b7d63c21cf624de14f5d323de32c55784749c14b930169",
+        "tasks.json": "7dede4c4375b0c063f6c85ea2525990197b5516218810bc9bea09509fb26209c",
+        "tasks.schema.json": "f7c28d0e8dcb2a9532cd716d4c8bf684181f8234b73cf2d80d59661e21b3f269",
+        "audit/independent-review-receipt.md": "506ac8eb015483f236b4c0dcf44122567833f104c946c8ac59b2ca6f7b5cfb7a",
+        "evidence/team-browser-observation-index.json": "016d8b7bdf2271e7544fe546a093cefe95b8c6b9418352b3eea36a1520ff39cc",
+        "tools/author_contracts.py": "309ebd73deeb27ac733376da007c713f1b9c7db77dc10c76f8c4518696ee8962",
+        "tools/author_data.py": "c59bd6b2d323416b06503ec3b44e13952216f86e37863ce3cfdcf4d88369413d",
+        "tools/check_contracts.py": "4f69099b83a2f60b5f6ef9b8ef1fbd30b49b97ff6c1c9469b17093b327b95bb2",
+        "tools/package_delivery.py": "f3e7d757ed31474ad6f4493b6a53891f10e72fcda054ca168b4ee914f3fd21a6",
+        "tools/render_levels.py": "aed4fada82e10f2d8631ec687529919ece3cf2b56d5bb10452ed687b921d6965",
+        "tools/verify.py": "6d4fc587800aed08432ee7de8dd3d96fdade0d6566e3f707bceac30762b164f6",
+        "verification/package-check.json": "fde2b40fc013a7931a75c4055eb952dd91d8dab7e3408ae30d1dd8ee9eefc27b",
+        "verification/verification-report.json": "5ac631af446ddf63a6531962f3ff53d7d4704ad5531d55d5cc15216a15a6ca7b"
+      },
+      "scope": "Jason full independent review; aggregator checks scope, conclusion and current hashes only"
+    }
+  ],
+  "current_audit_reports": [
+    {
+      "game_id": "G01",
+      "markdown_sha256": "aabc75f8b3886cf6e72d98d69d21695367b51a5a23388682c930d52917956f41",
+      "json_sha256": "d9492978d21236c60dbc6b3c9fa74f99580bb78d378d69663d7af0bfbf9706fa",
+      "unresolved_major_ids": [
+        "G01-M01"
+      ]
+    },
+    {
+      "game_id": "G02",
+      "markdown_sha256": "e97c6ab62d3fb63f7042cc4acdb5ec1250cf37242c9080a1e86478653ac484bd",
+      "json_sha256": "e9d394069ea5380a37193e0e2ab171d4a3657e6a241c477df49540063a0ea397",
+      "unresolved_major_ids": [
+        "M-G02-03"
+      ]
+    },
+    {
+      "game_id": "G04",
+      "markdown_sha256": "b4d3bb9b7cdeceaa5816add110424aafc8e3287a7e7523ba16fcaac522392c63",
+      "json_sha256": "1dbcf6c8582e5c5617f6a8f37e5efc8372b9a3942976d3d406d017bca8f0a3a7",
+      "unresolved_major_ids": [
+        "G04-M01"
+      ]
+    }
+  ],
+  "decisions_sha256": "fa6b3bbccdc7d483c2afb9c6d0c8e1a592a6e02386651e8ba5a971773b0f25ad",
+  "benchmark_final_metadata": {
+    "checked_at_utc": "2026-10-21T11:25:37.355060+00:00",
+    "scope": "Final metadata-only update; no repeat of closed SRA-m03 semantic/path checks",
+    "result": "PASS",
+    "validation_check_count": 622,
+    "manifest_payload_count": 35,
+    "associated_read_only_count": 1,
+    "validator_change": "Only adds manifest.validation_check_count = report.check_count; readonly path policy unchanged",
+    "sha256": {
+      "validate_delivery.py": "00df7afa01e362b9fdb9a0e791783af6cc38e6e27aaba9e054762461af1fc4cd",
+      "validation.json": "45c046a1457e6b2455a7d52a7e0beb968391693f4ad31554cc5e557e860f2449",
+      "delivery_manifest.json": "ba450a2e2a2f3479484ae79dcca7fa5dbbfe779fee8cbacfdf011b5e4ee013bf"
+    },
+    "original_closed_result": "reviews/shared-recheck-03/results.json"
+  },
+  "historical_author_status": "PENDING_RE_REVIEW / RECHECK_PENDING describe frozen handoff; independent audit reports and decisions give current conclusions; no author repack required",
+  "counts": {
+    "games": 3,
+    "unresolved_blockers": 0,
+    "unresolved_majors": 3,
+    "verdicts": {
+      "REVISE": 3
+    }
+  },
+  "g02_scope_review": "Full independent Jason report covers 00-12, cold workflow/rules/interfaces/save reconstruction, 20 levels, DAG/ownership, originality and falsification, official SDK/license/stats/business segregation, and honest missing play evidence; no duplicate full audit by aggregator.",
+  "execution_diagnostic_boundary": {
+    "source": "validation/G02-transient-failure.json",
+    "source_sha256": "615340685a1adf3038c326c3fe2f17952c467aa1bb448322124822f6d9e9b0ca",
+    "reported_error": "TypeError: tuple indices must be integers or slices, not tuple",
+    "reported_failed_at": "2026-10-21T19:23:32+08:00",
+    "reported_unchanged_retry_at": "2026-10-21T19:24:15+08:00",
+    "reported_retry_result": "PASS",
+    "cause": "UNKNOWN",
+    "bounded_author_probe": "Pending at auditor freeze; no speculative root cause",
+    "gameplay_finding_reopened": false,
+    "interpretation": "Independent audit reruns and latest root retry PASS do not explain or erase the earlier reported TypeError. This aggregator read the preserved diagnostic summary, not the original complete failed tool output."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "input_archive": "C:/Users/whipa/Downloads/AI_Game_Foundry_Codex_%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87%E6%80%BB%E5%8C%85_2026-10-21.zip",
+  "input_archive_sha256": "F4D6AD211C3FE0224598BACA759814874DDB305CD4411546912725859C7B6F91",
+  "workspace": "F:/CoCreateGame",
+  "client_date": "2026-10-21",
+  "timezone": "Asia/Shanghai",
+  "task": "Complete the preparation deliverables specified by the archive",
+  "source_documents_are": "Task requirements and reference material, not independent user authorization for deployment, messaging or contracting",
+  "scope": {
+    "platform_ids": ["P01", "P02", "P03", "P04", "P05", "P06"],
+    "game_family_ids": ["G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10"],
+    "full_preparation_batch": ["G01", "G02", "G04"],
+    "other_families": "Candidate dossiers and explicit research gaps"
+  },
+  "archive_stage_boundary": "PROMPT_01 through independent PROMPT_03 audit; PROMPT_04 requires a separately selected game and build authorization",
+  "final_game_development_started": false,
+  "external_submission_sent": false,
+  "business_messages_sent": false,
+  "contracts_signed": false,
+  "paid_sdk_purchase": false
+}

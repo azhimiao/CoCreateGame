@@ -1,0 +1,2 @@
+PASS: 20/20 solutions + BFS; 2 schemas; 31 rule vectors; DAG 19 nodes; 9 protocol tables; 5 static layout cases
+Report: F:\CoCreateGame\games\G02\diagnostics\verifier-transient-2026-10-21\isolated-run-2\G02\verification\verification-report.json

@@ -1,0 +1,204 @@
+{
+  "levelId": "G04-L01",
+  "before": {
+    "position": [
+      0,
+      1,
+      1
+    ],
+    "bits": 1,
+    "pending": 0,
+    "nextBeacon": 0,
+    "used": 1,
+    "status": "PLAYING",
+    "failure": null
+  },
+  "command": {
+    "op": "R",
+    "source": "keyboard"
+  },
+  "expected_facts": [
+    {
+      "type": "CommandAccepted",
+      "payload": {
+        "command": "R",
+        "used": 2,
+        "from": [
+          0,
+          1,
+          1
+        ],
+        "to": [
+          0,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "type": "StateCommitted",
+      "payload": {
+        "state": {
+          "position": [
+            0,
+            2,
+            1
+          ],
+          "bits": 1,
+          "pending": 0,
+          "nextBeacon": 0,
+          "used": 2,
+          "status": "WON",
+          "failure": null
+        }
+      }
+    },
+    {
+      "type": "RuleWon",
+      "payload": {
+        "used": 2,
+        "par": 2
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "assisted": false,
+      "attemptId": "a-00000000000000000000000000000004",
+      "nextSeq": 20,
+      "expected_events": [
+        {
+          "v": 1,
+          "seq": 20,
+          "attemptId": "a-00000000000000000000000000000004",
+          "levelId": "G04-L01",
+          "source": "keyboard",
+          "type": "CommandAccepted",
+          "payload": {
+            "command": "R",
+            "used": 2,
+            "from": [
+              0,
+              1,
+              1
+            ],
+            "to": [
+              0,
+              2,
+              1
+            ]
+          }
+        },
+        {
+          "v": 1,
+          "seq": 21,
+          "attemptId": "a-00000000000000000000000000000004",
+          "levelId": "G04-L01",
+          "source": "keyboard",
+          "type": "StateCommitted",
+          "payload": {
+            "state": {
+              "position": [
+                0,
+                2,
+                1
+              ],
+              "bits": 1,
+              "pending": 0,
+              "nextBeacon": 0,
+              "used": 2,
+              "status": "WON",
+              "failure": null
+            }
+          }
+        },
+        {
+          "v": 1,
+          "seq": 22,
+          "attemptId": "a-00000000000000000000000000000004",
+          "levelId": "G04-L01",
+          "source": "keyboard",
+          "type": "LevelWon",
+          "payload": {
+            "used": 2,
+            "par": 2,
+            "assisted": false,
+            "stars": 3
+          }
+        }
+      ]
+    },
+    {
+      "assisted": true,
+      "attemptId": "a-00000000000000000000000000000005",
+      "nextSeq": 200,
+      "expected_events": [
+        {
+          "v": 1,
+          "seq": 200,
+          "attemptId": "a-00000000000000000000000000000005",
+          "levelId": "G04-L01",
+          "source": "keyboard",
+          "type": "CommandAccepted",
+          "payload": {
+            "command": "R",
+            "used": 2,
+            "from": [
+              0,
+              1,
+              1
+            ],
+            "to": [
+              0,
+              2,
+              1
+            ]
+          }
+        },
+        {
+          "v": 1,
+          "seq": 201,
+          "attemptId": "a-00000000000000000000000000000005",
+          "levelId": "G04-L01",
+          "source": "keyboard",
+          "type": "StateCommitted",
+          "payload": {
+            "state": {
+              "position": [
+                0,
+                2,
+                1
+              ],
+              "bits": 1,
+              "pending": 0,
+              "nextBeacon": 0,
+              "used": 2,
+              "status": "WON",
+              "failure": null
+            }
+          }
+        },
+        {
+          "v": 1,
+          "seq": 202,
+          "attemptId": "a-00000000000000000000000000000005",
+          "levelId": "G04-L01",
+          "source": "keyboard",
+          "type": "LevelWon",
+          "payload": {
+            "used": 2,
+            "par": 2,
+            "assisted": true,
+            "stars": 2
+          }
+        }
+      ]
+    }
+  ],
+  "terminal_repeat": {
+    "repeated_callbacks": 3,
+    "expected_commit_win_calls": 1,
+    "expected_level_won_publications": 1
+  },
+  "note": "Fixed specification expectations; no TS, scene, animation or SDK has been executed."
+}

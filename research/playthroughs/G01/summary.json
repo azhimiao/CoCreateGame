@@ -1,0 +1,29 @@
+{
+  "accessed_at": "2026-10-21",
+  "status": "PARTIAL_TUTORIAL_VISIBLE_INPUT_UNCONFIRMED",
+  "legal_core_move_confirmed": false,
+  "illegal_core_move_confirmed": false,
+  "victory_confirmed": false,
+  "failure_confirmed": false,
+  "in_game_retry_confirmed": false,
+  "complete_first_30_seconds": false,
+  "complete_first_5_minutes": false,
+  "complete_direct_playthroughs": 0,
+  "official_videos_watched": 0,
+  "attempted_game_urls": 2,
+  "games_with_tutorial_ui_observed": 1,
+  "browser_contexts": 2,
+  "normal_context_closes": 2,
+  "first_environment_at_utc": "2026-10-21T10:38:35.952Z",
+  "final_close_at_utc": "2026-10-21T10:45:56.204Z",
+  "attempt_span_seconds": 440.252,
+  "timing_definition": "First environment record to final normal context close, including review/tool overhead and one restart; not gameplay duration.",
+  "successful_operation_records": 21,
+  "operation_errors": 1,
+  "screenshots": 21,
+  "delivery_exclusions": [
+    "runtime/",
+    "runtime/**"
+  ],
+  "remaining_gap": "Core legal/illegal arrow transitions and win/loss/retry remain UNKNOWN; no build-ready promotion."
+}

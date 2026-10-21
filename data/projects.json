@@ -1,0 +1,171 @@
+[
+  {
+    "id": "G01",
+    "family": "Arrow/路径解谜",
+    "preparation_batch": "P0",
+    "reference_examples": [
+      "Arrow Puzzle",
+      "Arrow Escape: Puzzle"
+    ],
+    "candidate_platform_ids": [
+      "P02",
+      "P04",
+      "P05"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G02",
+    "family": "分类与收纳",
+    "preparation_batch": "P0",
+    "reference_examples": [
+      "Good Sort Master: Triple Match",
+      "Color Water Sort",
+      "Screw Out"
+    ],
+    "candidate_platform_ids": [
+      "P02",
+      "P04",
+      "P05",
+      "P06"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G03",
+    "family": "合成订单/轻经营",
+    "preparation_batch": "P1",
+    "reference_examples": [
+      "Piece of Cake: Merge & Bake",
+      "Designville: Merge & Design"
+    ],
+    "candidate_platform_ids": [
+      "P02",
+      "P04",
+      "P06"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G04",
+    "family": "逻辑图层/机关",
+    "preparation_batch": "P0",
+    "reference_examples": [
+      "Paint Master",
+      "Bloxorz",
+      "Liquid 2"
+    ],
+    "candidate_platform_ids": [
+      "P01",
+      "P02"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G05",
+    "family": "陷阱平台跳跃",
+    "preparation_batch": "P2",
+    "reference_examples": [
+      "Level Devil",
+      "Rodha 2"
+    ],
+    "candidate_platform_ids": [
+      "P01",
+      "P03"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G06",
+    "family": "物理驾驶",
+    "preparation_batch": "P2",
+    "reference_examples": [
+      "Drive Mad",
+      "Deadly Descent",
+      "Moto X3M"
+    ],
+    "candidate_platform_ids": [
+      "P02",
+      "P03"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G07",
+    "family": "自动化经营/成长",
+    "preparation_batch": "P1",
+    "reference_examples": [
+      "Monkey Mart",
+      "My Perfect Hotel",
+      "Hero Making Tycoon"
+    ],
+    "candidate_platform_ids": [
+      "P03",
+      "P04",
+      "P06"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G08",
+    "family": "群体答案问答",
+    "preparation_batch": "P1",
+    "reference_examples": [
+      "Guess Their Answer",
+      "补充第二对标待验证"
+    ],
+    "candidate_platform_ids": [
+      "P06"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G09",
+    "family": "物理合成",
+    "preparation_batch": "P2",
+    "reference_examples": [
+      "Suika Watermelon Game",
+      "补充第二对标待验证"
+    ],
+    "candidate_platform_ids": [
+      "P01",
+      "P04"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  },
+  {
+    "id": "G10",
+    "family": "装扮创造",
+    "preparation_batch": "P2",
+    "reference_examples": [
+      "Vortella's Dress Up",
+      "TB World",
+      "Super Dress"
+    ],
+    "candidate_platform_ids": [
+      "P03",
+      "P04"
+    ],
+    "status": "UNRESEARCHED",
+    "ready_for_build": false,
+    "research_note": "参考作品需完成直接试玩、市场证据审查和法律区分"
+  }
+]

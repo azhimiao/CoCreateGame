@@ -1,0 +1,637 @@
+{
+  "contract_revision": "audit-r1",
+  "scope": "fixed facts and expected Session-enriched events; NOT Session implementation",
+  "history_equivalence_pairs": [
+    [
+      "first_clear_undo_recomplete",
+      "replay_one_stamp"
+    ],
+    [
+      "replay_one_stamp",
+      "replay_two_stamps"
+    ]
+  ],
+  "cases": [
+    {
+      "id": "first_clear_undo_recomplete",
+      "initial_context": {
+        "session_id": "A",
+        "next_seq": 41,
+        "revision": 7,
+        "completed": [],
+        "level_id": "L01",
+        "accepted_exits": [
+          "a"
+        ]
+      },
+      "steps": [
+        {
+          "kind": "EXIT_FACT",
+          "expected_events": [
+            {
+              "name": "ExitCommitted",
+              "eventId": "A:41",
+              "revision": 8,
+              "payload": {
+                "arrowId": "b",
+                "fromMask": 1,
+                "toMask": 3,
+                "gatesChanged": [],
+                "cursor": 0
+              }
+            },
+            {
+              "name": "LevelCompleted",
+              "eventId": "A:42",
+              "revision": 8,
+              "payload": {
+                "levelId": "L01",
+                "firstClear": true,
+                "stampCount": 1
+              }
+            },
+            {
+              "name": "SaveRequested",
+              "eventId": "A:43",
+              "revision": 8,
+              "payload": {
+                "snapshotRevision": 8
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 44,
+            "revision": 8,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "rule_fact": {
+            "kind": "ExitAccepted",
+            "level_id": "L01",
+            "arrow_id": "b",
+            "from_mask": 1,
+            "to_mask": 3,
+            "gate_changes": [],
+            "manifest_cursor": 0,
+            "won": true,
+            "deadlocked": false
+          },
+          "attempt_before": {
+            "levelId": "L01",
+            "accepted_exits": [
+              "a"
+            ],
+            "revision": 7
+          },
+          "expected_save_snapshot": {
+            "version": 1,
+            "content_version": "1.0.0",
+            "revision": 8,
+            "completed": [
+              "L01"
+            ],
+            "active_level": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ],
+            "tutorial_seen": [
+              "base"
+            ],
+            "settings": {
+              "language": "en",
+              "sound": true,
+              "music": false,
+              "reducedMotion": false
+            }
+          }
+        },
+        {
+          "kind": "SAVE_ACK",
+          "expected_events": [
+            {
+              "name": "SaveSucceeded",
+              "eventId": "A:44",
+              "revision": 8,
+              "payload": {
+                "snapshotRevision": 8
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 45,
+            "revision": 8,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "ack_revision": 8
+        },
+        {
+          "kind": "ANIMATION_INTERRUPTED",
+          "expected_events": [],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 45,
+            "revision": 8,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "expected_gameplay_or_save_events": [],
+          "expected_new_save_requests": 0
+        },
+        {
+          "kind": "UNDO_FACT",
+          "expected_events": [
+            {
+              "name": "UndoCommitted",
+              "eventId": "A:45",
+              "revision": 9,
+              "payload": {
+                "fromMask": 3,
+                "toMask": 1
+              }
+            },
+            {
+              "name": "SaveRequested",
+              "eventId": "A:46",
+              "revision": 9,
+              "payload": {
+                "snapshotRevision": 9
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 47,
+            "revision": 9,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a"
+            ]
+          },
+          "rule_fact": {
+            "kind": "UndoAccepted",
+            "level_id": "L01",
+            "from_mask": 3,
+            "to_mask": 1,
+            "won": false,
+            "deadlocked": false
+          },
+          "attempt_before": {
+            "levelId": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ],
+            "revision": 8
+          },
+          "expected_save_snapshot": {
+            "version": 1,
+            "content_version": "1.0.0",
+            "revision": 9,
+            "completed": [
+              "L01"
+            ],
+            "active_level": "L01",
+            "accepted_exits": [
+              "a"
+            ],
+            "tutorial_seen": [
+              "base"
+            ],
+            "settings": {
+              "language": "en",
+              "sound": true,
+              "music": false,
+              "reducedMotion": false
+            }
+          }
+        },
+        {
+          "kind": "SAVE_ACK",
+          "expected_events": [
+            {
+              "name": "SaveSucceeded",
+              "eventId": "A:47",
+              "revision": 9,
+              "payload": {
+                "snapshotRevision": 9
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 48,
+            "revision": 9,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a"
+            ]
+          },
+          "ack_revision": 9
+        },
+        {
+          "kind": "EXIT_FACT",
+          "expected_events": [
+            {
+              "name": "ExitCommitted",
+              "eventId": "A:48",
+              "revision": 10,
+              "payload": {
+                "arrowId": "b",
+                "fromMask": 1,
+                "toMask": 3,
+                "gatesChanged": [],
+                "cursor": 0
+              }
+            },
+            {
+              "name": "LevelCompleted",
+              "eventId": "A:49",
+              "revision": 10,
+              "payload": {
+                "levelId": "L01",
+                "firstClear": false,
+                "stampCount": 1
+              }
+            },
+            {
+              "name": "SaveRequested",
+              "eventId": "A:50",
+              "revision": 10,
+              "payload": {
+                "snapshotRevision": 10
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 51,
+            "revision": 10,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "rule_fact": {
+            "kind": "ExitAccepted",
+            "level_id": "L01",
+            "arrow_id": "b",
+            "from_mask": 1,
+            "to_mask": 3,
+            "gate_changes": [],
+            "manifest_cursor": 0,
+            "won": true,
+            "deadlocked": false
+          },
+          "attempt_before": {
+            "levelId": "L01",
+            "accepted_exits": [
+              "a"
+            ],
+            "revision": 9
+          },
+          "expected_save_snapshot": {
+            "version": 1,
+            "content_version": "1.0.0",
+            "revision": 10,
+            "completed": [
+              "L01"
+            ],
+            "active_level": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ],
+            "tutorial_seen": [
+              "base"
+            ],
+            "settings": {
+              "language": "en",
+              "sound": true,
+              "music": false,
+              "reducedMotion": false
+            }
+          }
+        },
+        {
+          "kind": "SAVE_ACK",
+          "expected_events": [
+            {
+              "name": "SaveSucceeded",
+              "eventId": "A:51",
+              "revision": 10,
+              "payload": {
+                "snapshotRevision": 10
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 52,
+            "revision": 10,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "ack_revision": 10
+        },
+        {
+          "kind": "SAVE_ACK",
+          "expected_events": [],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 52,
+            "revision": 10,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "ack_revision": 10
+        },
+        {
+          "kind": "STALE_COMMAND",
+          "expected_events": [
+            {
+              "name": "ExitRejected",
+              "eventId": "A:52",
+              "revision": 10,
+              "payload": {
+                "arrowId": "b",
+                "reason": "STALE_REVISION"
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "A",
+            "next_seq": 53,
+            "revision": 10,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "arrow_id": "b",
+          "expected_revision": 9
+        }
+      ]
+    },
+    {
+      "id": "replay_one_stamp",
+      "initial_context": {
+        "session_id": "B",
+        "next_seq": 1,
+        "revision": 7,
+        "completed": [
+          "L01"
+        ],
+        "level_id": "L01",
+        "accepted_exits": [
+          "a"
+        ]
+      },
+      "steps": [
+        {
+          "kind": "EXIT_FACT",
+          "expected_events": [
+            {
+              "name": "ExitCommitted",
+              "eventId": "B:1",
+              "revision": 8,
+              "payload": {
+                "arrowId": "b",
+                "fromMask": 1,
+                "toMask": 3,
+                "gatesChanged": [],
+                "cursor": 0
+              }
+            },
+            {
+              "name": "LevelCompleted",
+              "eventId": "B:2",
+              "revision": 8,
+              "payload": {
+                "levelId": "L01",
+                "firstClear": false,
+                "stampCount": 1
+              }
+            },
+            {
+              "name": "SaveRequested",
+              "eventId": "B:3",
+              "revision": 8,
+              "payload": {
+                "snapshotRevision": 8
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "B",
+            "next_seq": 4,
+            "revision": 8,
+            "completed": [
+              "L01"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "rule_fact": {
+            "kind": "ExitAccepted",
+            "level_id": "L01",
+            "arrow_id": "b",
+            "from_mask": 1,
+            "to_mask": 3,
+            "gate_changes": [],
+            "manifest_cursor": 0,
+            "won": true,
+            "deadlocked": false
+          },
+          "attempt_before": {
+            "levelId": "L01",
+            "accepted_exits": [
+              "a"
+            ],
+            "revision": 7
+          },
+          "expected_save_snapshot": {
+            "version": 1,
+            "content_version": "1.0.0",
+            "revision": 8,
+            "completed": [
+              "L01"
+            ],
+            "active_level": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ],
+            "tutorial_seen": [
+              "base"
+            ],
+            "settings": {
+              "language": "en",
+              "sound": true,
+              "music": false,
+              "reducedMotion": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "replay_two_stamps",
+      "initial_context": {
+        "session_id": "C",
+        "next_seq": 1,
+        "revision": 7,
+        "completed": [
+          "L01",
+          "L02"
+        ],
+        "level_id": "L01",
+        "accepted_exits": [
+          "a"
+        ]
+      },
+      "steps": [
+        {
+          "kind": "EXIT_FACT",
+          "expected_events": [
+            {
+              "name": "ExitCommitted",
+              "eventId": "C:1",
+              "revision": 8,
+              "payload": {
+                "arrowId": "b",
+                "fromMask": 1,
+                "toMask": 3,
+                "gatesChanged": [],
+                "cursor": 0
+              }
+            },
+            {
+              "name": "LevelCompleted",
+              "eventId": "C:2",
+              "revision": 8,
+              "payload": {
+                "levelId": "L01",
+                "firstClear": false,
+                "stampCount": 2
+              }
+            },
+            {
+              "name": "SaveRequested",
+              "eventId": "C:3",
+              "revision": 8,
+              "payload": {
+                "snapshotRevision": 8
+              }
+            }
+          ],
+          "expected_context": {
+            "session_id": "C",
+            "next_seq": 4,
+            "revision": 8,
+            "completed": [
+              "L01",
+              "L02"
+            ],
+            "level_id": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ]
+          },
+          "rule_fact": {
+            "kind": "ExitAccepted",
+            "level_id": "L01",
+            "arrow_id": "b",
+            "from_mask": 1,
+            "to_mask": 3,
+            "gate_changes": [],
+            "manifest_cursor": 0,
+            "won": true,
+            "deadlocked": false
+          },
+          "attempt_before": {
+            "levelId": "L01",
+            "accepted_exits": [
+              "a"
+            ],
+            "revision": 7
+          },
+          "expected_save_snapshot": {
+            "version": 1,
+            "content_version": "1.0.0",
+            "revision": 8,
+            "completed": [
+              "L01",
+              "L02"
+            ],
+            "active_level": "L01",
+            "accepted_exits": [
+              "a",
+              "b"
+            ],
+            "tutorial_seen": [
+              "base"
+            ],
+            "settings": {
+              "language": "en",
+              "sound": true,
+              "music": false,
+              "reducedMotion": false
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

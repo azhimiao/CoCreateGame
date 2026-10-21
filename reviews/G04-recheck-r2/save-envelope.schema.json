@@ -1,0 +1,407 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "ruleVersion": {
+      "const": "1.0.0"
+    },
+    "profile": {
+      "enum": [
+        "local-qa",
+        "P01",
+        "P02-basic-nosdk",
+        "P02-basic-sdk",
+        "P02-full"
+      ]
+    },
+    "contentHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "progress": {
+      "$ref": "#/$defs/Progress"
+    },
+    "settings": {
+      "$ref": "#/$defs/Settings"
+    },
+    "activeSession": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/ActiveSession"
+        }
+      ]
+    },
+    "checksum": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "ruleVersion",
+    "profile",
+    "contentHash",
+    "revision",
+    "updatedAt",
+    "progress",
+    "settings",
+    "activeSession",
+    "checksum"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:G04:save-envelope:1",
+  "$defs": {
+    "RuleState": {
+      "type": "object",
+      "properties": {
+        "position": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "bits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "nextBeacon": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        },
+        "used": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "status": {
+          "enum": [
+            "PLAYING",
+            "FAILED",
+            "WON"
+          ]
+        },
+        "failure": {
+          "enum": [
+            null,
+            "FLOOR_CLOSED",
+            "BEACON_ORDER",
+            "MOVE_LIMIT"
+          ]
+        }
+      },
+      "required": [
+        "position",
+        "bits",
+        "pending",
+        "nextBeacon",
+        "used",
+        "status",
+        "failure"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "FAILED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "failure": {
+                "enum": [
+                  "FLOOR_CLOSED",
+                  "BEACON_ORDER",
+                  "MOVE_LIMIT"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "failure": {
+                "const": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Settings": {
+      "type": "object",
+      "properties": {
+        "sfx": {
+          "type": "boolean",
+          "default": true
+        },
+        "music": {
+          "type": "boolean",
+          "default": false
+        },
+        "reducedMotion": {
+          "type": "boolean",
+          "default": false
+        },
+        "locale": {
+          "enum": [
+            "zh-CN",
+            "en"
+          ],
+          "default": "zh-CN"
+        },
+        "contrast": {
+          "enum": [
+            "standard",
+            "high"
+          ],
+          "default": "standard"
+        }
+      },
+      "required": [
+        "sfx",
+        "music",
+        "reducedMotion",
+        "locale",
+        "contrast"
+      ],
+      "additionalProperties": false
+    },
+    "ProgressRecord": {
+      "type": "object",
+      "properties": {
+        "levelId": {
+          "type": "string",
+          "pattern": "^G04-L(?:0[1-9]|1[0-9]|20)$"
+        },
+        "completed": {
+          "type": "boolean"
+        },
+        "bestStars": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "bestUsed": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 128
+            }
+          ]
+        }
+      },
+      "required": [
+        "levelId",
+        "completed",
+        "bestStars",
+        "bestUsed"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "completed": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "bestStars": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              },
+              "bestUsed": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 128
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "bestStars": {
+                "const": 0
+              },
+              "bestUsed": {
+                "const": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Progress": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProgressRecord"
+          },
+          "minItems": 20,
+          "maxItems": 20
+        },
+        "highestUnlocked": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "lastCommittedAttemptId": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^a-[0-9a-f]{32}$"
+            }
+          ]
+        }
+      },
+      "required": [
+        "records",
+        "highestUnlocked",
+        "lastCommittedAttemptId"
+      ],
+      "additionalProperties": false
+    },
+    "ActiveSession": {
+      "type": "object",
+      "properties": {
+        "levelId": {
+          "type": "string",
+          "pattern": "^G04-(L(?:0[1-9]|1[0-9]|20)|X[12]-A)$"
+        },
+        "levelName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "variant": {
+          "enum": [
+            "B0",
+            "X1",
+            "X2"
+          ]
+        },
+        "attemptId": {
+          "type": "string",
+          "pattern": "^a-[0-9a-f]{32}$"
+        },
+        "assisted": {
+          "type": "boolean"
+        },
+        "nextSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "totalAccepted": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "undoCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "acceptedCommands": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "U",
+              "R",
+              "D",
+              "L",
+              "X"
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 128
+        },
+        "ruleState": {
+          "$ref": "#/$defs/RuleState"
+        }
+      },
+      "required": [
+        "levelId",
+        "levelName",
+        "variant",
+        "attemptId",
+        "assisted",
+        "nextSeq",
+        "totalAccepted",
+        "undoCount",
+        "acceptedCommands",
+        "ruleState"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "properties": {
+            "ruleState": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "PLAYING",
+                    "FAILED"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

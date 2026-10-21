@@ -1,0 +1,39 @@
+{
+  "accessed_at": "2026-10-21",
+  "sources": [
+    {
+      "platform_id": "P04",
+      "game_id": "G01",
+      "name": "Arrow Puzzle",
+      "source_url": "https://playgama.com/game/arrow-puzzle",
+      "final_browser_url": "https://playgama.com/game/arrow-puzzle",
+      "published_at": "UNKNOWN",
+      "official_channel_release": "2026-04",
+      "official_page_updated": "2026-06",
+      "accessed_at": "2026-10-21",
+      "access_method": ["web tool official HTML", "local Chromium normal page access"],
+      "evidence_type": "OFFICIAL_DESCRIPTION_PLUS_PARTIAL_DIRECT_UI_OBSERVATION",
+      "metric_definition": "Single-machine page/UI observation and attempted ordinary pointer input; no confirmed core gameplay transition, player population, performance benchmark or revenue measurement.",
+      "official_summary": "官方说明前方无遮挡才可移除箭头，受阻扣生命，清空棋盘通关；本次未直接验证这些规则。",
+      "counter_evidence": "进入教学界面后多次鼠标输入未形成可确认箭头/生命变化，原因UNKNOWN。",
+      "observed_game_frame_url_without_query": "https://arrow-puzzle.games.playgama.net/cmqlez4if01dan40hn02s8wcf/index.html",
+      "game_build_version": "UNKNOWN"
+    },
+    {
+      "platform_id": "P02",
+      "game_id": "G01",
+      "name": "Arrow Escape: Puzzle",
+      "source_url": "https://www.crazygames.com/it/game/arrow-escape-puzzle",
+      "final_browser_url": "https://www.crazygames.com/it/t/brain",
+      "published_at": "UNKNOWN",
+      "accessed_at": "2026-10-21",
+      "access_method": ["web tool official page request", "local Chromium normal page access"],
+      "evidence_type": "DIRECT_REDIRECT_OBSERVATION",
+      "metric_definition": "Requested game URL redirects to the platform category in this visit; no game controls observed.",
+      "official_summary": "本次落点是官方意大利语Brain分类，未获取原作品玩法。",
+      "counter_evidence": "最终HTTP 200对应分类页，不是原作品正常可玩的证据；不据此推断全球下架。",
+      "game_build_version": "UNKNOWN"
+    }
+  ],
+  "official_videos_watched": 0
+}

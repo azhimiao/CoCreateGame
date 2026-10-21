@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-10-21T18:26:03.287572+08:00",
+  "engine": {
+    "name": "Cocos Creator",
+    "version": "3.8.7",
+    "typescript_language_baseline": "4.1.0",
+    "local_build_verified": false,
+    "typescript_typecheck_version": "4.1.2"
+  },
+  "rules_and_levels_unchanged": true,
+  "input_hashes_match": true,
+  "checker_stdout": "{\"result\": \"PASS\", \"campaign_levels\": 20, \"experiment_levels\": 2, \"golden_vectors\": 21, \"tasks\": 16, \"engine_build_executed\": false}\n",
+  "toolchain_finding_status": "CLOSED"
+}

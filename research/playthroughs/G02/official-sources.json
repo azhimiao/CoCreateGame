@@ -1,0 +1,31 @@
+{
+  "access_date": "2026-10-21",
+  "benchmark_snapshot": "research/benchmarks/benchmarks.json",
+  "benchmark_initial_sha256": "cfb4e1a53c79aca7999799aec7827c9b8423e8993a4f07464677438c590ec7bb",
+  "sources": [
+    {
+      "benchmark_id": "P04-good-sort-master",
+      "name": "Good Sort Master: Triple Match",
+      "url": "https://playgama.com/game/good-sort-master",
+      "type": "OFFICIAL_GAME_PAGE",
+      "verification": "URL read from original benchmark snapshot, opened with web tool, then visited in Playwright browser; HTTP 200",
+      "official_description_paraphrase": "Move shelf objects with mouse dragging; groups of three identical items in a compartment clear; removing all items completes a level.",
+      "description_is_not_direct_play": true,
+      "dimensions": "Official instructions describe intended behavior; browser HTTP status is one navigation response. No player sample or measured performance.",
+      "unknown": ["Actual accepted and rejected shelf moves", "Triple match in this runtime", "Full-compartment behavior", "Win/loss/retry", "Continuous first30s/five-minute coverage", "Real player or revenue metrics"]
+    },
+    {
+      "benchmark_id": "P02-screw-out",
+      "name": "Screw Out: Bolts and Nuts",
+      "url": "https://www.crazygames.com/game/screw-out-bolts-and-nuts",
+      "type": "OFFICIAL_GAME_PAGE",
+      "verification": "URL read from original benchmark snapshot, opened with web tool, then visited in two normal browser phases; HTTP 200",
+      "official_description_paraphrase": "Left-click colored bolts, route matching bolts to holders and unmatched bolts to limited extra slots; a completed holder refreshes.",
+      "description_conflict": "One paragraph says full extra slots lose the round; another says a subsequent unscrew with no space causes game over. This boundary still requires direct observation.",
+      "description_is_not_direct_play": true,
+      "dimensions": "Loading percent/MB and canvas geometry are visible loader/DOM readings, not gameplay, performance benchmarks or package measurements verified independently.",
+      "unknown": ["Accepted/blocked bolt removal", "Observed same-color holder completion", "Actual extra-slot count", "Full versus next-unscrew loss boundary", "Win/loss/retry", "Scoring or economy formula", "Continuous first30s/five-minute coverage", "Commercial results"]
+    }
+  ],
+  "rights": "Third-party screenshots retained only as research evidence. No copied game code, extracted assets, license grant, registration, paid action or control bypass. Normal browser resource loading is not an exported source or asset archive."
+}

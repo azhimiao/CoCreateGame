@@ -1,0 +1,18 @@
+{
+  "accessed_at": "2026-10-21",
+  "verified_absolute_target": "F:\\CoCreateGame\\research\\benchmarks\\evidence\\runtime",
+  "absolute_target_verified_before_delete": true,
+  "browser_shutdown_method": "Playwright context.close() awaited; subsequently exited the stdin-waiting collection drivers",
+  "matching_browser_or_driver_processes_remaining": 0,
+  "runtime_removed": false,
+  "cleanup_status": "AUTOMATIC_APPROVAL_REJECTED",
+  "rejected_action": "Remove-Item -LiteralPath F:\\CoCreateGame\\research\\benchmarks\\evidence\\runtime -Recurse -Force",
+  "rejection_reason": "blocked by policy; no more specific reason returned",
+  "required_delivery_exclusions": ["evidence/runtime/", "evidence/runtime/**"],
+  "session_log": "session.json",
+  "session_log_renamed_from": "browser-session.json",
+  "original_session_events_preserved": true,
+  "screenshot_directory": "screenshots/",
+  "cookies_exported": false,
+  "cache_in_allowlisted_delivery": false
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:foundry:G01:save-envelope:1.0.0",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "content_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "completed": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "L01",
+          "L02",
+          "L03",
+          "L04",
+          "L05",
+          "L06",
+          "L07",
+          "L08",
+          "L09",
+          "L10",
+          "L11",
+          "L12",
+          "L13",
+          "L14",
+          "L15",
+          "L16",
+          "L17",
+          "L18",
+          "L19",
+          "L20"
+        ]
+      },
+      "uniqueItems": true,
+      "maxItems": 20
+    },
+    "active_level": {
+      "enum": [
+        "L01",
+        "L02",
+        "L03",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08",
+        "L09",
+        "L10",
+        "L11",
+        "L12",
+        "L13",
+        "L14",
+        "L15",
+        "L16",
+        "L17",
+        "L18",
+        "L19",
+        "L20"
+      ]
+    },
+    "accepted_exits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*$"
+      },
+      "uniqueItems": true,
+      "maxItems": 8
+    },
+    "tutorial_seen": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "base",
+          "relay",
+          "manifest",
+          "combined"
+        ]
+      },
+      "uniqueItems": true,
+      "maxItems": 4
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "enum": [
+            "en",
+            "zh-CN"
+          ]
+        },
+        "sound": {
+          "type": "boolean"
+        },
+        "music": {
+          "type": "boolean"
+        },
+        "reducedMotion": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "language",
+        "sound",
+        "music",
+        "reducedMotion"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "version",
+    "content_version",
+    "revision",
+    "completed",
+    "active_level",
+    "accepted_exits",
+    "tutorial_seen",
+    "settings"
+  ],
+  "additionalProperties": false
+}

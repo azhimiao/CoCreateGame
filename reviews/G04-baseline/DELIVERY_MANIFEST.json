@@ -1,0 +1,146 @@
+{
+  "project_id": "G04",
+  "version": "1.0.0",
+  "status": "INDEPENDENT_REVIEW",
+  "ready_for_build": false,
+  "access_date": "2026-10-21",
+  "generated_at_utc": "2026-10-21T10:12:48.346303+00:00",
+  "package_type": "PREPARATION_DOCUMENTS_AND_OFFLINE_SPEC_CHECKS",
+  "excluded_from_payload": [
+    "G04_Preparation_2026-10-21_v1.0.0.zip",
+    "DELIVERY_MANIFEST.json (self)",
+    "archive-verification.json (external receipt)"
+  ],
+  "files": [
+    {
+      "path": "00_Project_Charter.md",
+      "bytes": 3882,
+      "sha256": "6a94a5e37b04b84e901dfd50e421eb6f22c88a583eef9490ecde61a06c025d58"
+    },
+    {
+      "path": "01_Market_Evidence.md",
+      "bytes": 5765,
+      "sha256": "50c9c29e170b7ec01c97fcd3f5327560d1e8433e0a2ae0dc784b406dffd67c82"
+    },
+    {
+      "path": "02_Benchmark_Playthrough.md",
+      "bytes": 4175,
+      "sha256": "b45e5c2d32589303b62d0b3f23785b944db27fc5721f92a339b1f91b03ef5cc5"
+    },
+    {
+      "path": "03_Full_GDD.md",
+      "bytes": 7515,
+      "sha256": "56b1977f2568e0ea628a560cee6e779297d0b33a850eeef8a32531eb31d685cb"
+    },
+    {
+      "path": "04_Systems_and_Data.md",
+      "bytes": 7893,
+      "sha256": "e21af7b9d727719fd0f553459c32085c0c53b1717375f55ba91db6881a2bf544"
+    },
+    {
+      "path": "05_Levels_Economy.md",
+      "bytes": 18816,
+      "sha256": "8ec941b98c91e8b301cb1286b322569361e310637bddcf334b554a25a182aa89"
+    },
+    {
+      "path": "06_UI_Art_Audio.md",
+      "bytes": 10060,
+      "sha256": "6988abee22eec0a05fd42a5f8738b97e88552e588729feb937543577cebbaa64"
+    },
+    {
+      "path": "07_Tech_Architecture.md",
+      "bytes": 6948,
+      "sha256": "3fc2081d779eed3ba38c3b39249c47296bfa4d048f3d0a02bf39fab9ed92ee62"
+    },
+    {
+      "path": "08_OpenSource_Licenses.md",
+      "bytes": 4405,
+      "sha256": "e07a2539d8e801cfdcf54ab838c084cb909d840e8f48f5b55d1944fef74c98b1"
+    },
+    {
+      "path": "09_Implementation_Plan.md",
+      "bytes": 5146,
+      "sha256": "171e103c4f0c152badca8b867942e34f1fb587d928ce4578eef69e24b61eda85"
+    },
+    {
+      "path": "10_QA_Test_Plan.md",
+      "bytes": 6584,
+      "sha256": "308048e26b38ad29a7fc362e70758a2eff794c3260fa0eeabe48e8c41c99f894"
+    },
+    {
+      "path": "11_Distribution_Business.md",
+      "bytes": 6239,
+      "sha256": "f750053aa8ebfbd5c5c93f518b4b3956a47f6310cdfca21b3b1e4a9e15bf753e"
+    },
+    {
+      "path": "12_Falsifiability.md",
+      "bytes": 6035,
+      "sha256": "08035fea0f4af47ea85bb12c935fd76e628c8b7f687d609836f9f3aba34b19dd"
+    },
+    {
+      "path": "evidence-register.json",
+      "bytes": 12665,
+      "sha256": "4c1c4e93e8640bdd8498aae24ed9576e0ae1781384a5f8342e39a53c1600ab5a"
+    },
+    {
+      "path": "game-spec.json",
+      "bytes": 41671,
+      "sha256": "135e3e5d41517eaf5046db8131119b09a2224c9d17292efee3610d4fe0ebaf4c"
+    },
+    {
+      "path": "game-spec.schema.json",
+      "bytes": 15302,
+      "sha256": "320c618cf329ebcddfcd11f8e3de49b3a0e484747f74d15f2c4936d5ff47b7db"
+    },
+    {
+      "path": "pack-preparation.py",
+      "bytes": 4079,
+      "sha256": "f7711196c1ceecb9c67218b85ce14b1831d4fb2095017ceb0dd6335c57499575"
+    },
+    {
+      "path": "qa-vectors.json",
+      "bytes": 28332,
+      "sha256": "337d64277dada2848661d441ce01b10ec793b45dfe1e4e3334818e388f5ee0f1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2976,
+      "sha256": "ad184d7e6f018bb36781d9bc24fd49b32d9ebef551bec80367f9c33bc377489c"
+    },
+    {
+      "path": "requirements-spec.txt",
+      "bytes": 87,
+      "sha256": "394d3d138522b43c6f1fe421ae8eba3b273ddeb3d9f753125df00e7a798f17b1"
+    },
+    {
+      "path": "REVIEW_REQUEST.md",
+      "bytes": 3129,
+      "sha256": "be4b5b0a3844b0e91e14bc3a8cb4462492f325224c2950878e865c3897fe10a2"
+    },
+    {
+      "path": "SELF_REVIEW.md",
+      "bytes": 3658,
+      "sha256": "34e24a354c3bd05999185005667184d704193b8fca7aee8cf9e7b3ad873dae0e"
+    },
+    {
+      "path": "tasks.json",
+      "bytes": 16314,
+      "sha256": "947a35995a3adc4ddb93adad974eea25cc6cda82d552810d669103e587cd84bb"
+    },
+    {
+      "path": "tasks.schema.json",
+      "bytes": 3596,
+      "sha256": "8bbb1e4d51fbf9040fc94ad829e4956419ed7c23e6a43dec60037177ae07277a"
+    },
+    {
+      "path": "validate_spec.py",
+      "bytes": 11175,
+      "sha256": "6c41eb2ca0ecc9807ac927c357c6a7cb34f2d1defdbe77bee4a3685ab17e55ba"
+    },
+    {
+      "path": "validation-report.json",
+      "bytes": 55416,
+      "sha256": "1d4a577351890cf5787ac1378266b0c1ad8346702d6cb6455060bb3151d6dfb5"
+    }
+  ]
+}

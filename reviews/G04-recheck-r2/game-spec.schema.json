@@ -1,0 +1,673 @@
+{
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "./game-spec.schema.json"
+    },
+    "spec_version": {
+      "const": "1.0.0"
+    },
+    "project_id": {
+      "const": "G04"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "REVISION_REQUIRED"
+    },
+    "ready_for_build": {
+      "const": false
+    },
+    "design_evidence": {
+      "const": "HYPOTHESIS"
+    },
+    "access_date": {
+      "const": "2026-10-21"
+    },
+    "platform_ids": {
+      "const": [
+        "P01",
+        "P02"
+      ]
+    },
+    "engine": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "const": "Cocos Creator"
+        },
+        "version": {
+          "const": "3.8.7"
+        },
+        "typescript_language_baseline": {
+          "const": "4.1.0"
+        },
+        "local_build_verified": {
+          "const": false
+        },
+        "typescript_typecheck_version": {
+          "const": "4.1.2"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "typescript_language_baseline",
+        "local_build_verified",
+        "typescript_typecheck_version"
+      ],
+      "additionalProperties": false
+    },
+    "rules": {
+      "type": "object",
+      "properties": {
+        "coordinate_order": {
+          "const": [
+            "layer",
+            "x",
+            "y"
+          ]
+        },
+        "layer_names": {
+          "const": [
+            "lower",
+            "upper"
+          ]
+        },
+        "actions": {
+          "const": [
+            "U",
+            "R",
+            "D",
+            "L",
+            "X"
+          ]
+        },
+        "switch_operation": {
+          "const": "XOR_ON_ENTRY"
+        },
+        "gate_test": {
+          "const": "((bits >> bit) & 1) == value"
+        },
+        "shift": {
+          "const": "same x,y other layer; requires lift; costs 1"
+        },
+        "invalid_action": {
+          "const": "no state/history/budget/pending changes"
+        },
+        "arrival_order": {
+          "const": [
+            "validate_destination_with_old_bits",
+            "commit_position_and_move",
+            "apply_old_pending_and_clear",
+            "check_floor",
+            "trigger_arrival_switch",
+            "check_floor",
+            "check_beacon_order",
+            "check_goal",
+            "check_move_limit"
+          ]
+        },
+        "goal": {
+          "const": "position and exact bits and pending==0 and all beacons; goal precedes move exhaustion"
+        },
+        "undo": {
+          "const": "restore whole pre-accepted-action snapshot; unlimited in PLAYING/FAILED; WON locked"
+        },
+        "restart": {
+          "const": "initial state; empty history; keep completion records"
+        },
+        "randomness": {
+          "const": "NONE"
+        },
+        "failures": {
+          "const": [
+            "FLOOR_CLOSED",
+            "BEACON_ORDER",
+            "MOVE_LIMIT"
+          ]
+        },
+        "dead_end": {
+          "const": "no automatic failure; undo/restart available"
+        },
+        "initial_effects": {
+          "const": "no arrival trigger at initialization"
+        },
+        "max_bits": {
+          "const": 3
+        },
+        "max_history": {
+          "const": 128
+        },
+        "variants": {
+          "const": [
+            {
+              "id": "B0",
+              "switch_delay": 0,
+              "ordered_beacons": false
+            },
+            {
+              "id": "X1",
+              "switch_delay": 0,
+              "ordered_beacons": true
+            },
+            {
+              "id": "X2",
+              "switch_delay": 1,
+              "ordered_beacons": false
+            }
+          ]
+        },
+        "experiments_combined": {
+          "const": false
+        }
+      },
+      "required": [
+        "coordinate_order",
+        "layer_names",
+        "actions",
+        "switch_operation",
+        "gate_test",
+        "shift",
+        "invalid_action",
+        "arrival_order",
+        "goal",
+        "undo",
+        "restart",
+        "randomness",
+        "failures",
+        "dead_end",
+        "initial_effects",
+        "max_bits",
+        "max_history",
+        "variants",
+        "experiments_combined"
+      ],
+      "additionalProperties": false
+    },
+    "progression": {
+      "type": "object",
+      "properties": {
+        "campaign_order": {
+          "const": [
+            "G04-L01",
+            "G04-L02",
+            "G04-L03",
+            "G04-L04",
+            "G04-L05",
+            "G04-L06",
+            "G04-L07",
+            "G04-L08",
+            "G04-L09",
+            "G04-L10",
+            "G04-L11",
+            "G04-L12",
+            "G04-L13",
+            "G04-L14",
+            "G04-L15",
+            "G04-L16",
+            "G04-L17",
+            "G04-L18",
+            "G04-L19",
+            "G04-L20"
+          ]
+        },
+        "unlock": {
+          "const": "L01 open; first win unlocks next; completed replayable"
+        },
+        "stars": {
+          "const": "3 <= par, 2 <= par+2, 1 otherwise within limit; hints disable 3-star award"
+        },
+        "hint": {
+          "const": "free; mark assisted before reveal; BFS from current state; reveal one next action; no auto move"
+        },
+        "no_currency": {
+          "const": true
+        },
+        "no_lives": {
+          "const": true
+        },
+        "no_iap": {
+          "const": true
+        },
+        "no_ads_in_v1": {
+          "const": true
+        }
+      },
+      "required": [
+        "campaign_order",
+        "unlock",
+        "stars",
+        "hint",
+        "no_currency",
+        "no_lives",
+        "no_iap",
+        "no_ads_in_v1"
+      ],
+      "additionalProperties": false
+    },
+    "platform_constraints": {
+      "const": {
+        "P01": {
+          "ads": false,
+          "external_links": false,
+          "developer_telemetry": false,
+          "name_entry": false
+        },
+        "P02": {
+          "total_mb_max": 250,
+          "files_max": 1500,
+          "initial_mb_max": 50,
+          "mobile_home_initial_mb_max": 20,
+          "without_sdk_total_mb_max": 50,
+          "without_sdk_mobile_home_total_mb_max": 20,
+          "full_sdk_required": true,
+          "basic_monetization": false,
+          "audience": "16+ general puzzle; comply PEGI-12; not child-directed"
+        },
+        "P04_if_later_authorized": {
+          "in_candidate_scope": false,
+          "third_party_analytics": false,
+          "analytics": "platform Bridge or local offline QA only"
+        }
+      }
+    },
+    "levels": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/level"
+          },
+          {
+            "properties": {
+              "id": {
+                "pattern": "^G04-L(0[1-9]|1[0-9]|20)$"
+              },
+              "variant": {
+                "const": "B0"
+              },
+              "beacons": {
+                "maxItems": 0
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 20,
+      "maxItems": 20
+    },
+    "experiment_levels": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/level"
+          },
+          {
+            "properties": {
+              "variant": {
+                "enum": [
+                  "X1",
+                  "X2"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "contracts": {
+      "const": {
+        "revision": "r2",
+        "events": "EVENT_CONTRACT.md",
+        "event_schema": "event-contract.schema.json",
+        "save": "SAVE_CONTRACT.md",
+        "save_schema": "save-envelope.schema.json",
+        "settings_authority": "SaveEnvelope.settings",
+        "save_canonicalization": "CJ1_UTF8_SHA256",
+        "event_publisher": "SessionController.dispatch",
+        "boot_owner_task": "G04-T07"
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "spec_version",
+    "project_id",
+    "title",
+    "status",
+    "ready_for_build",
+    "design_evidence",
+    "access_date",
+    "platform_ids",
+    "engine",
+    "rules",
+    "progression",
+    "platform_constraints",
+    "levels",
+    "experiment_levels",
+    "contracts"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:game-foundry:G04:game-spec:1.0.0",
+  "$defs": {
+    "level": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^G04-(L[0-9]{2}|X[12]-[A-Z])$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "variant": {
+          "enum": [
+            "B0",
+            "X1",
+            "X2"
+          ]
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 5
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 5
+        },
+        "bit_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "floors": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[.#]{3,5}$"
+            },
+            "minItems": 3,
+            "maxItems": 5
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "initial": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4
+                }
+              ],
+              "items": false,
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "bits": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 7
+            }
+          },
+          "required": [
+            "position",
+            "bits"
+          ],
+          "additionalProperties": false
+        },
+        "victory": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4
+                }
+              ],
+              "items": false,
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "bits": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 7
+            },
+            "pending": {
+              "const": 0
+            },
+            "all_beacons": {
+              "const": true
+            }
+          },
+          "required": [
+            "position",
+            "bits",
+            "pending",
+            "all_beacons"
+          ],
+          "additionalProperties": false
+        },
+        "lifts": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "uniqueItems": true
+        },
+        "switches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "at": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4
+                  }
+                ],
+                "items": false,
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "mask": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 7
+              }
+            },
+            "required": [
+              "at",
+              "mask"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "gates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "at": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4
+                  }
+                ],
+                "items": false,
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "bit": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2
+              },
+              "value": {
+                "enum": [
+                  0,
+                  1
+                ]
+              }
+            },
+            "required": [
+              "at",
+              "bit",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "beacons": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              },
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4
+              }
+            ],
+            "items": false,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "uniqueItems": true,
+          "maxItems": 6
+        },
+        "move_limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "par": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "solution": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "U",
+              "R",
+              "D",
+              "L",
+              "X"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "design_intent": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "variant",
+        "width",
+        "height",
+        "bit_count",
+        "floors",
+        "initial",
+        "victory",
+        "lifts",
+        "switches",
+        "gates",
+        "beacons",
+        "move_limit",
+        "par",
+        "solution",
+        "design_intent"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

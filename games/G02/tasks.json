@@ -1,0 +1,642 @@
+{
+  "schema_version": "1.1.0",
+  "project_id": "G02",
+  "date": "2026-10-21",
+  "planning_only": true,
+  "tasks": [
+    {
+      "id": "T01",
+      "phase": "review",
+      "title": "同一独立审查者修订复核",
+      "owner_role": "research-reviewer",
+      "depends_on": [],
+      "status": "PENDING_RE_REVIEW",
+      "inputs": [
+        "REVISIONS、00—12、两JSON及两Schema、向量/验证报告；reviews/G02-audit.md/.json只读原件"
+      ],
+      "outputs": [
+        "games/G02/audit/independent-review-receipt.md"
+      ],
+      "definition_of_done": [
+        "首审REVISE；作者只登记原件hash/六项修订与证据，关闭由同一独立审查者决定"
+      ],
+      "verification_commands": [
+        "python -B tools/verify.py --all"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 2,
+      "gate": "no_automatic_publication",
+      "platform_ids": [
+        "P02",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T02",
+      "phase": "review",
+      "title": "人类批准G02与施工档案",
+      "owner_role": "owner",
+      "depends_on": [
+        "T01"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "独立审计与修正差异"
+      ],
+      "outputs": [
+        "games/G02/audit/human-build-approval.md"
+      ],
+      "definition_of_done": [
+        "明确批准ID/档案hash/预算/渠道；未批准保持门禁"
+      ],
+      "verification_commands": [
+        "人工核对签批记录与所有BLOCKER关闭"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 2,
+      "gate": "no_automatic_publication",
+      "platform_ids": [
+        "P02",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T03",
+      "phase": "build",
+      "title": "工具链可行性切片",
+      "owner_role": "engineer",
+      "depends_on": [
+        "T02"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "07版本候选与官方链接"
+      ],
+      "outputs": [
+        "games/G02/implementation/toolchain/toolchain-lock.json"
+      ],
+      "definition_of_done": [
+        "固定编辑器安装hash；TS类型检查和空项目Web构建；只报告实际日志"
+      ],
+      "verification_commands": [
+        "Creator CLI --project <path> --build <exported-config>; exit=36; typecheck"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T04",
+      "phase": "build",
+      "title": "无引擎规则核",
+      "owner_role": "core-engineer",
+      "depends_on": [
+        "T03"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "03规则、04接口、20关合法解"
+      ],
+      "outputs": [
+        "games/G02/implementation/core/RuleCore.ts"
+      ],
+      "definition_of_done": [
+        "接受/拒绝、单因顶色/容量隔离、真实快照恢复重锁、状态不变性与Python向量一致"
+      ],
+      "verification_commands": [
+        "npm run test:rules"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T05",
+      "phase": "build",
+      "title": "存档回放与提示",
+      "owner_role": "data-engineer",
+      "depends_on": [
+        "T04"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "04总序/v2存档、protocol-vectors.json"
+      ],
+      "outputs": [
+        "games/G02/implementation/data/Persistence.ts"
+      ],
+      "definition_of_done": [
+        "身份/去重先于BUSY/STALE，失败缓存，缓存0事件保存；恢复新epoch，128窗口/撤销，4096终点checkpoint首条UNDO，UNKNOWN"
+      ],
+      "verification_commands": [
+        "npm run test:persistence; npm run test:replay"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T06",
+      "phase": "build",
+      "title": "原创音画与许可证入库",
+      "owner_role": "artist",
+      "depends_on": [
+        "T03"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "06逐项资产预算、08许可"
+      ],
+      "outputs": [
+        "games/G02/implementation/art/asset-ledger.json"
+      ],
+      "definition_of_done": [
+        "每项作者/源文件/hash/授权；音画尺寸与字体子集正确；无参考游戏专有表达"
+      ],
+      "verification_commands": [
+        "人工逐项核对asset-ledger；npm run check:assets"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T07",
+      "phase": "build",
+      "title": "全部屏幕与输入",
+      "owner_role": "ui-engineer",
+      "depends_on": [
+        "T04",
+        "T06"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "06坐标/03玩家路径、layout-cases.json"
+      ],
+      "outputs": [
+        "games/G02/implementation/ui/GameShell.ts"
+      ],
+      "definition_of_done": [
+        "11屏、320×568含safe/font1.3/小横屏，PLAY6盘无滚动，44CSS热区、菜单单owner、真实字体测量及触控、减少动效"
+      ],
+      "verification_commands": [
+        "npm run test:ui"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T08",
+      "phase": "build",
+      "title": "20关与单因子实验",
+      "owner_role": "game-designer",
+      "depends_on": [
+        "T04",
+        "T05",
+        "T07"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "05关表、12实验计划"
+      ],
+      "outputs": [
+        "games/G02/implementation/content/experiment-config.json"
+      ],
+      "definition_of_done": [
+        "默认顺序、V0/X1/X2互斥试验组、采集无第三方统计"
+      ],
+      "verification_commands": [
+        "npm run test:levels; python tools/verify.py --all"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02",
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T09",
+      "phase": "build",
+      "title": "P02独立适配",
+      "owner_role": "platform-engineer-p02",
+      "depends_on": [
+        "T03"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "07、11、E04/E05"
+      ],
+      "outputs": [
+        "games/G02/implementation/platforms/p02/Adapter.ts"
+      ],
+      "definition_of_done": [
+        "Basic无变现；Full强制SDK；生命周期与音频；250MB/1500文件/无SDK50MB/移动20MB"
+      ],
+      "verification_commands": [
+        "npm run test:platform -- P02; npm run check:bundle -- P02"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T10",
+      "phase": "build",
+      "title": "P04独立适配",
+      "owner_role": "platform-engineer-p04",
+      "depends_on": [
+        "T03"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "07、11、E06/E07"
+      ],
+      "outputs": [
+        "games/G02/implementation/platforms/p04/Adapter.ts"
+      ],
+      "definition_of_done": [
+        "Bridge存档/生命周期；零GA4/外部统计；横竖屏和所有弹窗关闭"
+      ],
+      "verification_commands": [
+        "npm run test:platform -- P04; npm run test:network -- P04"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P04"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T11",
+      "phase": "build",
+      "title": "Web集成和浏览器真机矩阵",
+      "owner_role": "qa-engineer",
+      "depends_on": [
+        "T05",
+        "T07",
+        "T08",
+        "T09",
+        "T10"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "10测试矩阵"
+      ],
+      "outputs": [
+        "games/G02/implementation/qa/web-results.json"
+      ],
+      "definition_of_done": [
+        "全部自动检查与实际设备记录；实测下载/性能；无凭空通过"
+      ],
+      "verification_commands": [
+        "npm run test:integration; npm run test:browser; npm run check:bundle"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02",
+        "P04"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T12",
+      "phase": "build",
+      "title": "盲测与可证伪决策",
+      "owner_role": "ux-researcher",
+      "depends_on": [
+        "T11"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "12抽样阈值与本地事件"
+      ],
+      "outputs": [
+        "games/G02/implementation/qa/player-study.md"
+      ],
+      "definition_of_done": [
+        "记录分母、设备、退出和变体；按阈值REVISION/KILL；真实结果保留"
+      ],
+      "verification_commands": [
+        "人工执行12盲测协议并核对本地导出记录"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P02",
+        "P04"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T13",
+      "phase": "review",
+      "title": "P05 SDK书面条件核实",
+      "owner_role": "publisher-liaison-p05",
+      "depends_on": [
+        "T02"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "11问题单、另行受权后P05答复"
+      ],
+      "outputs": [
+        "games/G02/audit/p05-sdk-confirmation.md"
+      ],
+      "definition_of_done": [
+        "仅P05明确引擎/SDK/版本/数据权/签名/包形；不代表P06；本轮不联系外部"
+      ],
+      "verification_commands": [
+        "核对P05书面条件；无答复维持BLOCKED"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 2,
+      "gate": "external_contact_requires_separate_user_authorization",
+      "platform_ids": [
+        "P05"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T14",
+      "phase": "build",
+      "title": "P05原生分支与实际安装研究",
+      "owner_role": "mobile-engineer-p05",
+      "depends_on": [
+        "T03",
+        "T04",
+        "T05",
+        "T06",
+        "T13"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "P05书面条件、规则和原创资产"
+      ],
+      "outputs": [
+        "games/G02/implementation/mobile/p05/native-feasibility.md"
+      ],
+      "definition_of_done": [
+        "仅P05：选择可接SDK的Cocos原生或独立移植；完整移动UI/签名安装/崩溃前后台/SDK/隐私/性能及移动盲测证据"
+      ],
+      "verification_commands": [
+        "P05指定构建安装命令待T13确认，未确认不得执行"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P05"
+      ],
+      "required_conditions": [
+        "p05_sdk_written"
+      ],
+      "verified_conditions": []
+    },
+    {
+      "id": "T15",
+      "phase": "release",
+      "title": "P02/P04网页发行审批",
+      "owner_role": "release-reviewer-web",
+      "depends_on": [
+        "T11",
+        "T12"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "11合同字段、许可证和网页真实QA"
+      ],
+      "outputs": [
+        "games/G02/audit/web-release-gate.md"
+      ],
+      "definition_of_done": [
+        "仅P02/P04，分别用户批准渠道提交；权利无冲突；不代表P05/P06；不自动提交"
+      ],
+      "verification_commands": [
+        "分别核对P02/P04当前条款、真实QA及书面批准"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "no_automatic_publication",
+      "platform_ids": [
+        "P02",
+        "P04"
+      ],
+      "required_conditions": [
+        "p02_p04_rights_clear",
+        "web_device_qa",
+        "per_channel_human_submit_approval"
+      ],
+      "verified_conditions": []
+    },
+    {
+      "id": "T16",
+      "phase": "review",
+      "title": "P06 SDK书面条件核实",
+      "owner_role": "publisher-liaison-p06",
+      "depends_on": [
+        "T02"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "11问题单、另行受权后P06答复"
+      ],
+      "outputs": [
+        "games/G02/audit/p06-sdk-confirmation.md"
+      ],
+      "definition_of_done": [
+        "仅P06确认引擎/SDK/版本/权利/签名/包形；不继承P05确认；本轮不联系外部"
+      ],
+      "verification_commands": [
+        "核对P06书面条件；无答复维持BLOCKED"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 2,
+      "gate": "external_contact_requires_separate_user_authorization",
+      "platform_ids": [
+        "P06"
+      ],
+      "required_conditions": [],
+      "verified_conditions": []
+    },
+    {
+      "id": "T17",
+      "phase": "build",
+      "title": "P06原生分支与实际安装研究",
+      "owner_role": "mobile-engineer-p06",
+      "depends_on": [
+        "T03",
+        "T04",
+        "T05",
+        "T06",
+        "T16"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "P06专属书面条件、规则和原创资产"
+      ],
+      "outputs": [
+        "games/G02/implementation/mobile/p06/native-feasibility.md"
+      ],
+      "definition_of_done": [
+        "仅P06：引擎SDK可行性、完整移动UI/原生签名安装/生命周期/隐私/性能/移动盲测；Web构建不作APK证据"
+      ],
+      "verification_commands": [
+        "P06指定构建安装命令待T16确认，未确认不得执行"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "build_requires_T02",
+      "platform_ids": [
+        "P06"
+      ],
+      "required_conditions": [
+        "p06_sdk_written"
+      ],
+      "verified_conditions": []
+    },
+    {
+      "id": "T18",
+      "phase": "release",
+      "title": "P05移动发行单独审批",
+      "owner_role": "release-reviewer-p05",
+      "depends_on": [
+        "T13",
+        "T14"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "P05 SDK确认/原生QA/移动盲测/权利合同"
+      ],
+      "outputs": [
+        "games/G02/audit/p05-release-gate.md"
+      ],
+      "definition_of_done": [
+        "P05书面条件、T14真实结果、渠道权利和人类提交批准全部满足；独立于Web和P06"
+      ],
+      "verification_commands": [
+        "人工核对P05专属条件，UNKNOWN不能通过"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "no_automatic_publication",
+      "platform_ids": [
+        "P05"
+      ],
+      "required_conditions": [
+        "p05_sdk_written",
+        "p05_native_qa",
+        "p05_mobile_study",
+        "p05_rights_clear",
+        "p05_human_submit_approval"
+      ],
+      "verified_conditions": []
+    },
+    {
+      "id": "T19",
+      "phase": "release",
+      "title": "P06移动发行单独审批",
+      "owner_role": "release-reviewer-p06",
+      "depends_on": [
+        "T16",
+        "T17"
+      ],
+      "status": "BLOCKED_BY_GATE",
+      "inputs": [
+        "P06 SDK确认/原生QA/移动盲测/权利合同"
+      ],
+      "outputs": [
+        "games/G02/audit/p06-release-gate.md"
+      ],
+      "definition_of_done": [
+        "P06书面条件、T17真实结果、渠道权利和人类提交批准全部满足；不得复用P05批准"
+      ],
+      "verification_commands": [
+        "人工核对P06专属条件，UNKNOWN不能通过"
+      ],
+      "execution_status": "NOT_EXECUTED",
+      "estimated_hours_hypothesis": 6,
+      "gate": "no_automatic_publication",
+      "platform_ids": [
+        "P06"
+      ],
+      "required_conditions": [
+        "p06_sdk_written",
+        "p06_native_qa",
+        "p06_mobile_study",
+        "p06_rights_clear",
+        "p06_human_submit_approval"
+      ],
+      "verified_conditions": []
+    }
+  ],
+  "command_policy": "Preparation Python verifiers and packaging only; npm/Creator/mobile commands are future contracts, NOT_EXECUTED"
+}

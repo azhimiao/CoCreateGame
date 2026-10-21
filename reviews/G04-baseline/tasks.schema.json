@@ -1,0 +1,145 @@
+{
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "./tasks.schema.json"
+    },
+    "project_id": {
+      "const": "G04"
+    },
+    "spec_version": {
+      "const": "1.0.0"
+    },
+    "execution_policy": {
+      "const": "PREPARATION_ONLY_UNTIL_HUMAN_APPROVAL"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^G04-T[0-9]{2}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^G04-T[0-9]{2}$"
+            },
+            "uniqueItems": true
+          },
+          "owner_role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "const": "PLANNED"
+          },
+          "gate": {
+            "enum": [
+              "PREPARATION_REVIEW_ONLY",
+              "HUMAN_DECISION_REQUIRED",
+              "AFTER_HUMAN_BUILD_APPROVAL",
+              "HUMAN_SUBMISSION_APPROVAL_REQUIRED"
+            ]
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "write_scope": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^(review|implementation)/"
+            },
+            "minItems": 1
+          },
+          "definition_of_done": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "validation_commands": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "estimated_person_days": {
+            "type": "object",
+            "properties": {
+              "low": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "high": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "evidence": {
+                "const": "HYPOTHESIS"
+              }
+            },
+            "required": [
+              "low",
+              "high",
+              "evidence"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "depends_on",
+          "owner_role",
+          "status",
+          "gate",
+          "inputs",
+          "outputs",
+          "write_scope",
+          "definition_of_done",
+          "validation_commands",
+          "estimated_person_days"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 16,
+      "maxItems": 16
+    }
+  },
+  "required": [
+    "$schema",
+    "project_id",
+    "spec_version",
+    "execution_policy",
+    "tasks"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:game-foundry:G04:tasks:1.0.0"
+}

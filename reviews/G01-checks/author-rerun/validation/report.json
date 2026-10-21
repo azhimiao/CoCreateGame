@@ -1,0 +1,653 @@
+{
+  "result": "PASS",
+  "scope": "offline preparation data only; not Cocos/browser/device/player/business validation",
+  "recorded_date": "2026-10-21",
+  "python": "3.11.15",
+  "jsonschema": "4.26.0",
+  "design_values": "HYPOTHESIS",
+  "schemas": [
+    {
+      "file": "game-spec.json",
+      "valid": true,
+      "additional_properties_rejected": true
+    },
+    {
+      "file": "tasks.json",
+      "valid": true,
+      "additional_properties_rejected": true
+    }
+  ],
+  "dag": {
+    "tasks": 16,
+    "acyclic": true,
+    "topological_order": [
+      "T01",
+      "T02",
+      "T03",
+      "T05",
+      "T04",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T11",
+      "T12",
+      "T13",
+      "T14",
+      "T15",
+      "T16"
+    ],
+    "approval_before_build": true
+  },
+  "adversarial_checks": [
+    "BENT_SWEEP_BLOCKED",
+    "PRESTATE_GATE_THEN_TOGGLE",
+    "DOUBLE_TOGGLE_DEADLOCK_AND_UNDO",
+    "MANIFEST_SAME_DIRECTION_TRAP",
+    "SELF_OPEN_FORBIDDEN",
+    "WALL_BLOCKED",
+    "DUPLICATE_EXIT_REJECTED",
+    "TAIL_SWEEP_NOT_HEAD_RAY",
+    "OVERLAP_REJECTED"
+  ],
+  "levels": [
+    {
+      "id": "L01",
+      "name": "开港",
+      "arrows": 2,
+      "provided_solution_valid": true,
+      "reachable_states": 3,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "a"
+      ],
+      "first_winning": [
+        "a"
+      ],
+      "solver_solution": [
+        "a",
+        "b"
+      ],
+      "transition_checks": 6
+    },
+    {
+      "id": "L02",
+      "name": "先疏后发",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 6,
+      "winning_solution_count": 3,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "b",
+        "c"
+      ],
+      "first_winning": [
+        "b",
+        "c"
+      ],
+      "solver_solution": [
+        "b",
+        "a",
+        "c"
+      ],
+      "transition_checks": 18
+    },
+    {
+      "id": "L03",
+      "name": "弯条也要净空",
+      "arrows": 4,
+      "provided_solution_valid": true,
+      "reachable_states": 12,
+      "winning_solution_count": 12,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "b",
+        "c",
+        "d"
+      ],
+      "first_winning": [
+        "b",
+        "c",
+        "d"
+      ],
+      "solver_solution": [
+        "b",
+        "a",
+        "c",
+        "d"
+      ],
+      "transition_checks": 48
+    },
+    {
+      "id": "L04",
+      "name": "交叉码头",
+      "arrows": 5,
+      "provided_solution_valid": true,
+      "reachable_states": 18,
+      "winning_solution_count": 30,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "b",
+        "d",
+        "e"
+      ],
+      "first_winning": [
+        "b",
+        "d",
+        "e"
+      ],
+      "solver_solution": [
+        "b",
+        "a",
+        "d",
+        "c",
+        "e"
+      ],
+      "transition_checks": 90
+    },
+    {
+      "id": "L05",
+      "name": "第一盏信号",
+      "arrows": 2,
+      "provided_solution_valid": true,
+      "reachable_states": 3,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "b"
+      ],
+      "first_winning": [
+        "b"
+      ],
+      "solver_solution": [
+        "b",
+        "a"
+      ],
+      "transition_checks": 6
+    },
+    {
+      "id": "L06",
+      "name": "开门之前",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 5,
+      "winning_solution_count": 2,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "b",
+        "c"
+      ],
+      "first_winning": [
+        "b",
+        "c"
+      ],
+      "solver_solution": [
+        "b",
+        "c",
+        "a"
+      ],
+      "transition_checks": 15
+    },
+    {
+      "id": "L07",
+      "name": "双灯串联",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 4,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "c"
+      ],
+      "first_winning": [
+        "c"
+      ],
+      "solver_solution": [
+        "c",
+        "b",
+        "a"
+      ],
+      "transition_checks": 12
+    },
+    {
+      "id": "L08",
+      "name": "不要连按开关",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 7,
+      "winning_solution_count": 2,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "deadlock_witness": {
+        "accepted_exits": [
+          "b",
+          "c"
+        ],
+        "remaining": [
+          "a"
+        ],
+        "gate_open": {
+          "g": false
+        }
+      },
+      "first_legal": [
+        "b",
+        "c"
+      ],
+      "first_winning": [
+        "b",
+        "c"
+      ],
+      "solver_solution": [
+        "b",
+        "a",
+        "c"
+      ],
+      "transition_checks": 21
+    },
+    {
+      "id": "L09",
+      "name": "两门交替",
+      "arrows": 4,
+      "provided_solution_valid": true,
+      "reachable_states": 10,
+      "winning_solution_count": 4,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "deadlock_witness": {
+        "accepted_exits": [
+          "c",
+          "d"
+        ],
+        "remaining": [
+          "a",
+          "b"
+        ],
+        "gate_open": {
+          "g": false,
+          "h": false
+        }
+      },
+      "first_legal": [
+        "c",
+        "d"
+      ],
+      "first_winning": [
+        "c",
+        "d"
+      ],
+      "solver_solution": [
+        "c",
+        "a",
+        "b",
+        "d"
+      ],
+      "transition_checks": 40
+    },
+    {
+      "id": "L10",
+      "name": "弯桥继电",
+      "arrows": 5,
+      "provided_solution_valid": true,
+      "reachable_states": 20,
+      "winning_solution_count": 20,
+      "deadlock_states": 1,
+      "losing_states": 2,
+      "deadlock_witness": {
+        "accepted_exits": [
+          "c",
+          "d",
+          "e"
+        ],
+        "remaining": [
+          "a",
+          "b"
+        ],
+        "gate_open": {
+          "g": false,
+          "h": false
+        }
+      },
+      "first_legal": [
+        "c",
+        "d",
+        "e"
+      ],
+      "first_winning": [
+        "c",
+        "d",
+        "e"
+      ],
+      "solver_solution": [
+        "c",
+        "a",
+        "b",
+        "d",
+        "e"
+      ],
+      "transition_checks": 100
+    },
+    {
+      "id": "L11",
+      "name": "船期单",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 4,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "a"
+      ],
+      "first_winning": [
+        "a"
+      ],
+      "solver_solution": [
+        "a",
+        "b",
+        "c"
+      ],
+      "transition_checks": 12
+    },
+    {
+      "id": "L12",
+      "name": "先清航线",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 4,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "b"
+      ],
+      "first_winning": [
+        "b"
+      ],
+      "solver_solution": [
+        "b",
+        "a",
+        "c"
+      ],
+      "transition_checks": 12
+    },
+    {
+      "id": "L13",
+      "name": "同向二选一",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 5,
+      "winning_solution_count": 1,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "deadlock_witness": {
+        "accepted_exits": [
+          "a"
+        ],
+        "remaining": [
+          "b",
+          "c"
+        ],
+        "gate_open": {}
+      },
+      "first_legal": [
+        "a",
+        "b"
+      ],
+      "first_winning": [
+        "b"
+      ],
+      "solver_solution": [
+        "b",
+        "c",
+        "a"
+      ],
+      "transition_checks": 15
+    },
+    {
+      "id": "L14",
+      "name": "两次交接",
+      "arrows": 5,
+      "provided_solution_valid": true,
+      "reachable_states": 7,
+      "winning_solution_count": 1,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "deadlock_witness": {
+        "accepted_exits": [
+          "a"
+        ],
+        "remaining": [
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "gate_open": {}
+      },
+      "first_legal": [
+        "a",
+        "b"
+      ],
+      "first_winning": [
+        "b"
+      ],
+      "solver_solution": [
+        "b",
+        "c",
+        "a",
+        "d",
+        "e"
+      ],
+      "transition_checks": 35
+    },
+    {
+      "id": "L15",
+      "name": "曲线船期",
+      "arrows": 5,
+      "provided_solution_valid": true,
+      "reachable_states": 6,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "b"
+      ],
+      "first_winning": [
+        "b"
+      ],
+      "solver_solution": [
+        "b",
+        "a",
+        "c",
+        "d",
+        "e"
+      ],
+      "transition_checks": 30
+    },
+    {
+      "id": "L16",
+      "name": "灯号与船期",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 4,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "b"
+      ],
+      "first_winning": [
+        "b"
+      ],
+      "solver_solution": [
+        "b",
+        "a",
+        "c"
+      ],
+      "transition_checks": 12
+    },
+    {
+      "id": "L17",
+      "name": "同向不同信号",
+      "arrows": 3,
+      "provided_solution_valid": true,
+      "reachable_states": 5,
+      "winning_solution_count": 1,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "deadlock_witness": {
+        "accepted_exits": [
+          "a"
+        ],
+        "remaining": [
+          "b",
+          "c"
+        ],
+        "gate_open": {
+          "g": false
+        }
+      },
+      "first_legal": [
+        "a",
+        "b"
+      ],
+      "first_winning": [
+        "b"
+      ],
+      "solver_solution": [
+        "b",
+        "c",
+        "a"
+      ],
+      "transition_checks": 15
+    },
+    {
+      "id": "L18",
+      "name": "双灯船队",
+      "arrows": 4,
+      "provided_solution_valid": true,
+      "reachable_states": 5,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "c"
+      ],
+      "first_winning": [
+        "c"
+      ],
+      "solver_solution": [
+        "c",
+        "a",
+        "b",
+        "d"
+      ],
+      "transition_checks": 20
+    },
+    {
+      "id": "L19",
+      "name": "双信号分流",
+      "arrows": 6,
+      "provided_solution_valid": true,
+      "reachable_states": 9,
+      "winning_solution_count": 2,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "deadlock_witness": null,
+      "first_legal": [
+        "c"
+      ],
+      "first_winning": [
+        "c"
+      ],
+      "solver_solution": [
+        "c",
+        "a",
+        "b",
+        "d",
+        "e",
+        "f"
+      ],
+      "transition_checks": 54
+    },
+    {
+      "id": "L20",
+      "name": "最后一班",
+      "arrows": 7,
+      "provided_solution_valid": true,
+      "reachable_states": 12,
+      "winning_solution_count": 4,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "deadlock_witness": {
+        "accepted_exits": [
+          "a"
+        ],
+        "remaining": [
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "z"
+        ],
+        "gate_open": {
+          "g": false,
+          "h": false
+        }
+      },
+      "first_legal": [
+        "a",
+        "b"
+      ],
+      "first_winning": [
+        "b"
+      ],
+      "solver_solution": [
+        "b",
+        "c",
+        "a",
+        "d",
+        "e",
+        "f",
+        "z"
+      ],
+      "transition_checks": 84
+    }
+  ],
+  "totals": {
+    "levels": 20,
+    "solutions_verified": 20,
+    "reachable_states": 149,
+    "transition_checks": 645
+  },
+  "inputs_sha256": {
+    "game-spec.json": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070",
+    "tasks.json": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+    "game-spec.schema.json": "5acdac4564c696196a748ffe47ac09e78ccdbfaac8686d5b3102f087a497f1ec",
+    "tasks.schema.json": "50bbe0ca0177b88e406f3eae36a4b05a7e8c9ef242b0ab0e3935abe78fa03885"
+  }
+}

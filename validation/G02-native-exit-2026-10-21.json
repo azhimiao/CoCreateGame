@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-21T19:27:30+08:00",
+  "scope": "OFFLINE_VERIFIER_PROCESS_EXIT_NOT_GAME_RUNTIME",
+  "python": "F:/clawtry/hermes/hermes-agent/venv/Scripts/python.exe",
+  "python_version": "3.11.15",
+  "verifier": "games/G02/tools/verify.py --all in an isolated copy",
+  "exit_code": 3221225477,
+  "windows_status_hex": "0xC0000005",
+  "stdout_stderr": "EMPTY",
+  "frozen_verifier_sha256": "6d4fc587800aed08432ee7de8dd3d96fdade0d6566e3f707bceac30762b164f6",
+  "prior_bounded_runs": "5 isolated new-process runs on 3.11.15 passed; see diagnostic directory",
+  "cause": "UNKNOWN; no source change or runtime attribution established",
+  "next_action": "Run final preparation validation using the already-installed CPython 3.13.3 with jsonschema 4.23.0; retain both failure diagnostics."
+}

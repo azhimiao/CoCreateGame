@@ -1,0 +1,117 @@
+{
+  "frozen_at_utc": "2026-10-21T11:25:56.021117+00:00",
+  "scope": "Current independent review deliverables; self excluded, historical baselines retained separately; not the root delivery ZIP manifest",
+  "verdicts": {
+    "G01": "REVISE",
+    "G02": "REVISE",
+    "G04": "REVISE"
+  },
+  "files": [
+    {
+      "path": "decisions.json",
+      "bytes": 5742,
+      "sha256": "fa6b3bbccdc7d483c2afb9c6d0c8e1a592a6e02386651e8ba5a971773b0f25ad"
+    },
+    {
+      "path": "G01-audit.md",
+      "bytes": 20630,
+      "sha256": "aabc75f8b3886cf6e72d98d69d21695367b51a5a23388682c930d52917956f41"
+    },
+    {
+      "path": "G01-audit.json",
+      "bytes": 3642,
+      "sha256": "d9492978d21236c60dbc6b3c9fa74f99580bb78d378d69663d7af0bfbf9706fa"
+    },
+    {
+      "path": "G02-audit.md",
+      "bytes": 16428,
+      "sha256": "e97c6ab62d3fb63f7042cc4acdb5ec1250cf37242c9080a1e86478653ac484bd"
+    },
+    {
+      "path": "G02-audit.json",
+      "bytes": 2449,
+      "sha256": "e9d394069ea5380a37193e0e2ab171d4a3657e6a241c477df49540063a0ea397"
+    },
+    {
+      "path": "G04-audit.md",
+      "bytes": 21968,
+      "sha256": "b4d3bb9b7cdeceaa5816add110424aafc8e3287a7e7523ba16fcaac522392c63"
+    },
+    {
+      "path": "G04-audit.json",
+      "bytes": 3329,
+      "sha256": "1dbcf6c8582e5c5617f6a8f37e5efc8372b9a3942976d3d406d017bca8f0a3a7"
+    },
+    {
+      "path": "final-audit-integration.md",
+      "bytes": 4884,
+      "sha256": "9a81ca69ad6041e6d7ef69b917e05dba0ffc2486a47c0e790db1f5f7055221b6"
+    },
+    {
+      "path": "final-integration-checks.json",
+      "bytes": 37644,
+      "sha256": "195105387b58667b816d7680c3601d01a003f6a7812af87dbb16bf4b5000e546"
+    },
+    {
+      "path": "shared-research-audit.md",
+      "bytes": 16815,
+      "sha256": "5ea428280e9a5953d9856c25c6a03e129b190f090e1416dac03ecf3b52b271a0"
+    },
+    {
+      "path": "shared-research-recheck.md",
+      "bytes": 10803,
+      "sha256": "57e3ae0ae1a9192fe8a2cac6f659b7d261e55eab24f67503d064795758053c5a"
+    },
+    {
+      "path": "non-p0-spotcheck.md",
+      "bytes": 2372,
+      "sha256": "639791f4339d0262f181702bfc61f519df2b245a6b387208d704f32023c4e5c3"
+    },
+    {
+      "path": "observation-recheck.json",
+      "bytes": 21154,
+      "sha256": "848bfaaf6a30c7903e201ff82753b0a9eefc5161f088444dbedbd58fbde80865"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 3124,
+      "sha256": "38e47edaa50ee1f227b0c1f434d983f4da846666d819357bf59e10bed3a44676"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2340,
+      "sha256": "12230a553740097f727040a4f77852727fd300ceead8fe35a4190f8eb56ad73a"
+    },
+    {
+      "path": "G01-checks/r1/results.json",
+      "bytes": 34355,
+      "sha256": "62be8f365bceee9245ddd3a51d19a88280e2fb0379edcff9e17f8b25e344a827"
+    },
+    {
+      "path": "G04-checks/r2/results.json",
+      "bytes": 21739,
+      "sha256": "ffeafa03b98ec456d83e26df05613a7b8b7010d9c8ad096f00a3b74e9f5fd054"
+    },
+    {
+      "path": "G02-rereview-results.json",
+      "bytes": 8712,
+      "sha256": "109daafbd3ed02e83085796e627b73c351faa7d56fd2edf2992e1b00e0884440"
+    },
+    {
+      "path": "shared-recheck-03/results.json",
+      "bytes": 12229,
+      "sha256": "974d8713ef7f286a7b63adcb44ce83cc089090b53a1c0cf62659c7e7767cf92c"
+    },
+    {
+      "path": "shared-final-metadata/results.json",
+      "bytes": 778,
+      "sha256": "4c156784c29ce7a08a0a211834982e509d24651f501a31ce36e1314423748546"
+    },
+    {
+      "path": "execution-diagnostics/G02-transient-failure.json",
+      "bytes": 1070,
+      "sha256": "615340685a1adf3038c326c3fe2f17952c467aa1bb448322124822f6d9e9b0ca"
+    }
+  ],
+  "execution_diagnostic_boundary": "G02 reported transient TypeError; unchanged-source retry PASS; cause UNKNOWN; bounded author probe not concluded at review freeze. No gameplay Finding reopened."
+}

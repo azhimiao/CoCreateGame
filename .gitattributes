@@ -1,0 +1,9 @@
+# Preserve source bytes: SHA-256 manifests and frozen audit evidence depend on exact bytes.
+* -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.zip binary
+*.pdf binary

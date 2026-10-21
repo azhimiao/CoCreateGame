@@ -1,0 +1,75 @@
+{
+  "game_id": "G01",
+  "verdict": "REVISE",
+  "audited_revision": "audit-r1",
+  "audited_at": "2026-10-21T11:18:44.533476+00:00",
+  "source_sha256": {
+    "game-spec.json": "f7ae41c19422324a29c99bf5fd7bbd4d53a364d44aed9f85152701d35f89832f",
+    "tasks.json": "238506feaca4885bcaad69b578499575efb869283f1b65a2aec042d25a52410e",
+    "validation/report.json": "5d41ebc4d770a32ba1dd24b62409a28b1c0fb6c24894f9d0a46658c7b9cca7c8"
+  },
+  "summary": "audit-r1独立291项PASS，原4审计变异及8新增负例拒绝；20关布局不变、见证重放通过。M02/M03及两项minor已关闭，27存档与3局11步Session合同闭合。只保留M01：后补教学观察未确认核心响应，关键节点及连续首30秒/5分钟仍缺，保持REVISE。",
+  "unresolved_blockers": [],
+  "unresolved_majors": [
+    {
+      "id": "G01-M01",
+      "severity": "MAJOR",
+      "title": "对标关键流程及首30秒/5分钟覆盖不足",
+      "locations": [
+        {
+          "file": "games/G01/02_Benchmark_Playthrough.md",
+          "section": "O01后补逐节点覆盖表"
+        },
+        {
+          "file": "research/playthroughs/G01/observation.md",
+          "section": "核心输入未确认/完整时间窗未取得"
+        }
+      ],
+      "evidence": "后补21张截图大小/hash独立全验，Playgama到教学棋盘但未确认核心操作响应，CrazyGames转分类页；7分20.252秒含广告/排障/两会话，非连续实玩。关键胜负/重试/回归及完整首30秒/5分钟仍缺。",
+      "fix": "沿用PROMPT_01允许的官方教学/合法公开视频等受限方法，逐节点标来源、定位、覆盖与UNKNOWN；补能支持取舍的操作或可核回放，无法补足则维持研究/Ready边界。",
+      "validation": "第三人能区分输入确实响应、官方重建与未知；不把教学图、未确认操作或驻留时长当完整实玩，也不一律否定间接证据。"
+    }
+  ],
+  "closed_findings": [
+    {
+      "id": "G01-M02",
+      "severity": "MAJOR",
+      "revision": "audit-r1",
+      "result": "CLOSED",
+      "evidence": "精确campaign集合/顺序/唯一性与固定规则声明受schema和独立语义共同约束；原4审计delta及新增8负例全部拒绝，两份完整报告精确复现。"
+    },
+    {
+      "id": "G01-M03",
+      "severity": "MAJOR",
+      "revision": "audit-r1",
+      "result": "CLOSED",
+      "evidence": "纯规则事实与Session富化/唯一publisher分离；8关键模块唯一owner、16任务批准依赖有效；独立重建3局11步事件/进度/保存，首通、撤销再胜、中断、重复ACK与过期命令闭合。"
+    },
+    {
+      "id": "G01-m01",
+      "severity": "MINOR",
+      "revision": "audit-r1",
+      "result": "CLOSED",
+      "evidence": "L16/L18目标改为辨认，L19保护效应及消融反证披露；布局不变，未来实验不预设组合增益。"
+    },
+    {
+      "id": "G01-m02",
+      "severity": "MINOR",
+      "revision": "audit-r1",
+      "result": "CLOSED",
+      "evidence": "完整SaveEnvelope schema与27边界样例独立分类/日志重放相符，完成修复二次读取幂等；真实Storage故障测试仍为未来任务。"
+    }
+  ],
+  "independent_validation": {
+    "result": "PASS",
+    "check_count": 291,
+    "witnesses_replayed": 20,
+    "full_graph_search_repeated": false,
+    "mutations_rejected": 12,
+    "frozen_source_files_unchanged": true,
+    "independent_save_cases": 27,
+    "independent_session_cases": 3,
+    "independent_session_steps": 11,
+    "actual_storage_or_engine_execution": false
+  }
+}

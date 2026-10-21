@@ -1,0 +1,257 @@
+{
+  "project_id": "G09",
+  "family": "物理合成",
+  "preparation_batch": "P2",
+  "updated_at": "2026-10-21",
+  "status": "SPEC_NOT_COMPLETE",
+  "project_status": "EVIDENCE_COLLECTED",
+  "ready_for_build": false,
+  "candidate_platform_ids": [
+    "P01",
+    "P04"
+  ],
+  "scope": "NON_P0_PREPARATION_ONLY",
+  "approval": {
+    "game_id_and_construction_dossier": "NOT_GRANTED",
+    "final_game_development": false,
+    "submission": false,
+    "external_contact": false,
+    "paid_purchase": false
+  },
+  "benchmark_playthrough_status": "NOT_PERFORMED",
+  "independent_review_status": "NOT_PERFORMED",
+  "evidence": [
+    {
+      "claim_id": "G09-E01",
+      "reference_title": "Suika Watermelon Game（Coolmath托管版本）",
+      "source_url": "https://www.coolmathgames.com/0-suika-watermelon-game",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "平台列Release Jan 16, 2024；Updated Jul 08, 2026",
+      "evidence_type": "OFFICIAL_HOST_GAME_PAGE",
+      "claim": "Coolmath说明相同水果接触合成更大水果、拖放入盒、满盒终局，并有次数有限的左右推动。只确认该站版本描述，不把它自动认定为Aladdin X原作或取得其权利。",
+      "metric_definition": "机制/控件有无及站内版本日期；投票与得分不是下载、留存或收入。",
+      "unknown": "原始权利链、物体半径/质量、生成分布、计分、实际越界延迟与帧率UNKNOWN。抽取含Flash回退提示，实际运行须另核。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Instructions / Use your pushes / Release"
+    },
+    {
+      "claim_id": "G09-E02",
+      "reference_title": "Watermelon Drop",
+      "source_url": "https://poki.com/en/g/watermelon-drop",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "Poki列Release December 2023；Latest update January 2024",
+      "evidence_type": "OFFICIAL_HOST_GAME_PAGE",
+      "claim": "Poki署名yeqwep；说明杯中同类果蔬接触后变大、鼠标定位点击投放，容器满且果蔬越边时结束，并对分数给评级。作为第二个独立具名物理合成参考。",
+      "metric_definition": "操作、合成与终局的官方描述；评级属于单局分数反馈，站内投票不能换成DAU/利润。",
+      "unknown": "具体碰撞/合成顺序、生成概率、评级阈值、终局容错、回放一致性和收益UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "How to play Watermelon Drop / Who created / About this game"
+    }
+  ],
+  "channel_evidence": [
+    {
+      "platform_id": "P01",
+      "source_url": "https://www.coolmathgames.com/submit-a-game",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_SUBMISSION_RULE",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方表示可购买非独家托管许可；要求 HTML5、思考性玩法、无暴力粗口、去广告/外链/回传统计及姓名输入。报价、购买量和具体合同 UNKNOWN。",
+      "recheck": "正式投稿及签约当日"
+    },
+    {
+      "platform_id": "P04",
+      "source_url": "https://wiki.playgama.com/playgama/quick-start",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_DISTRIBUTION_GUIDE",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方流程包含 Bridge、上传、QA/审核与跨站报表；这是分销流程，未给候选保底流量或净回款。",
+      "recheck": "适配方案冻结及上传前"
+    }
+  ],
+  "original_hypotheses": [
+    {
+      "id": "G09-H1",
+      "status": "HYPOTHESIS",
+      "claim": "HYPOTHESIS G09-H1：通过有限且可解释的舱位/队列选择，能使空间管理产生可复述的策略差异，而不让玩家感觉分数主要由随机弹跳决定。",
+      "variants": [
+        {
+          "label": "B0 基线",
+          "description": "同一自拟容器、物体与序列，单舱自由水平投放；无隔板或暂存。"
+        },
+        {
+          "label": "V1 双舱隔板",
+          "description": "只在每次物理稳定后的投放阶段选择固定隔板的开/闭，决定是否让两舱连通；不加队列暂存，合法切换条件待定义。"
+        },
+        {
+          "label": "V2 一次暂存",
+          "description": "保留单舱，只允许将当前待落物暂存并换成下一物体；次数/补回规则待审，不加隔板。"
+        }
+      ],
+      "results": "UNKNOWN"
+    }
+  ],
+  "saturation_signal": {
+    "observation": "两款具名参考都为下落接触合成，Poki页面还链接Cats Drop、Jelly Fruit Merge等，证明主题变体供给存在。Coolmath参考已提供有限方向推动，因此“加一次救场”不能自称已证实原创。目录相似作品是供给信号，不是失败数据；饱和程度和净收入影响UNKNOWN。",
+    "interpretation": "SUPPLY_SIMILARITY_ONLY",
+    "failed_game_rate": "UNKNOWN",
+    "profit_effect": "UNKNOWN"
+  },
+  "research_gaps": [
+    {
+      "id": "G09-R02",
+      "document": "02_Benchmark_Playthrough.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "两款的投放确认是点击还是释放？一次投放后何时可再投？推动能否在未稳定时用？临时越界后回落会否失败？",
+      "required_evidence": "两款各记录前30秒/5分钟与一次堆积失败、连锁合成和重试；逐事件标输入/生成/接触/合成/越界。没有帧级观测不写确切延迟。",
+      "reason": "无直接运行记录，接触与终局仅有页面文字。"
+    },
+    {
+      "id": "G09-R03",
+      "document": "03_Full_GDD.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "同等级定义、最大级行为、投放冷却、队列预告、暂存和隔板合法切换怎样确定？物体短暂越界/合成胀大怎样裁决？",
+      "required_evidence": "冻结B0/V1/V2之一后，给稳定/投放/物理运行/合成提交/警戒/结算状态与边界；能回答最后一级如何处理及不可恢复局面。",
+      "reason": "合成、队列、隔板与越界规则未定。"
+    },
+    {
+      "id": "G09-R04",
+      "document": "04_Systems_and_Data.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "多个同类同时接触怎么选配对？销毁/生成与得分何时原子提交？seed和物理状态怎样入档？",
+      "required_evidence": "对象唯一ID、合成候选排序、安全提交事件及去重反例；定义单位、随机序列和同构建回放/跨端容差，不制造假GameSpec。",
+      "reason": "接触事务、事件顺序、物体层级和存档契约缺失。"
+    },
+    {
+      "id": "G09-R05",
+      "document": "05_Levels_Economy.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "如何设计前30分钟的局内学习/目标，而不是无定义无限投放？尺寸/概率会否使某序列必败？",
+      "required_evidence": "自有物体层级、容器空间比、生成/得分假设与序列压力场景；同序列多策略对照和边界失败例。此家族可用前30分钟内容，不伪装已有20关。",
+      "reason": "没有实测或自拟冻结数值，不能填伪装经济表。"
+    },
+    {
+      "id": "G09-R06",
+      "document": "06_UI_Art_Audio.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "待落物/下一物、警戒线、暂存与隔板怎样不遮挡容器？推动与投放控件是否混淆？",
+      "required_evidence": "投放/稳定等待/警戒/结算/重试的草图，非仅颜色的等级识别和原始音效需求；小屏拇指遮挡/误触记录。",
+      "reason": "最终UI、等级轮廓与动效许可缺失。"
+    },
+    {
+      "id": "G09-R07",
+      "document": "07_Tech_Architecture.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "哪些成熟物理方案能控制堆叠接触成本？对象上限/休眠/掉帧追帧怎样限制？",
+      "required_evidence": "候选引擎/物理库版本、相同输入回放范围及容差；后续批准实验要交密堆叠/连锁压力下帧时间、穿透与终局分歧，不能声称跨端完全确定。",
+      "reason": "物理库、性能预算及真机结果UNKNOWN。"
+    },
+    {
+      "id": "G09-R08",
+      "document": "08_OpenSource_Licenses.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "物理库代码许可是否含打包分发？胶囊、背景和声音来源能否向P01/P04转授权？",
+      "required_evidence": "逐项URL/版本/许可证/权利人/署名、商业改编与分发边界；明确Suika名称/表情/原作品牌不随玩法研究获得授权。",
+      "reason": "未选用合法库和原创素材，权利链UNKNOWN。"
+    },
+    {
+      "id": "G09-R09",
+      "document": "09_Implementation_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "先锁定合成事务还是先做物体皮肤？关卡/参数作者怎样不修改底层求解器？",
+      "required_evidence": "未来依赖为终局/事务定义→技术审查→序列/尺寸实验→内容表现→分渠道；每项输出可复现碰撞/合成证据。",
+      "reason": "核心事件不完整，不能生成工程tasks。"
+    },
+    {
+      "id": "G09-R10",
+      "document": "10_QA_Test_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "同物体被三次接触会不会重复合成？合成膨胀导致越界如何复测？暂停/恢复会否多落一个？",
+      "required_evidence": "未来覆盖三体同tick、最大级、墙边连锁、密堆叠、临时越界、广告暂停、存档恢复与同序列多策略；分别报告技术错误和随机公平感。",
+      "reason": "无规则阈值、运行或玩家证据，QA未执行。"
+    },
+    {
+      "id": "G09-R11",
+      "document": "11_Distribution_Business.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "P01无广告/回传/姓名版本能否独立存档？P04桥接是否改变暂停/恢复及榜单？",
+      "required_evidence": "列两构建能力差异、许可域名/地域/转授权/撤回/源码条件；平台报表必须区分投放/启动/收益，不把分数排行榜当流量。",
+      "reason": "合同相容性、SDK需求与真实回款UNKNOWN。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "G09-B1",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "两款物理合成参考无首投/连锁/越界直接记录"
+    },
+    {
+      "id": "G09-B2",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "接触配对、合成原子提交、队列及终局规则未定"
+    },
+    {
+      "id": "G09-B3",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "密堆叠性能/回放范围与胶囊素材许可未核"
+    },
+    {
+      "id": "G09-B4",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "P01/P04构建差异与合同相容性未确认"
+    },
+    {
+      "id": "G09-M1",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "finding": "02–11缺完整施工定义；本轮不具备独立实现条件"
+    },
+    {
+      "id": "G09-m1",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "finding": "官方动态页没有本地原始快照，决策前需归档"
+    }
+  ],
+  "not_created": [
+    {
+      "file": "game-spec.json",
+      "reason": "规则/实体/数值未冻结，不能伪造可执行规格"
+    },
+    {
+      "file": "tasks.json",
+      "reason": "施工输入与验收未闭合，不能伪造工程任务依赖"
+    }
+  ],
+  "stop_line": {
+    "status": "PROPOSED_NOT_APPROVED",
+    "rule": "建议资料研究最多8人时、两轮补证（HYPOTHESIS预算建议，未批准）。仍不能说明接触合成/越界终局边界时停止参数和关卡扩写；未来两轮技术/玩家筛查若仍有重复合成、不可解释越界或没有可辨策略，停止相应变体/建议KILLED，不靠更多皮肤扩大投入。",
+    "cash_budget": "UNKNOWN"
+  },
+  "next_action": "取得Coolmath Suika和Watermelon Drop的首投/接触合成/堆积失败/重试记录，专门复核推动/越界差异；先审物理事务和随机队列，再讨论原创隔板或暂存方案。",
+  "exit_gate": [
+    "直接试玩证据",
+    "03–11完整模块",
+    "许可与合同冲突关闭",
+    "独立反向审计BLOCKER关闭",
+    "人类批准游戏ID及施工档案"
+  ],
+  "scope_note": "仅更新本项目目录；根STATUS.md及data保持只读。项目状态为目录内局部研究进度，未同步根项目清单。"
+}

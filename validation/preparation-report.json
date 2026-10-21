@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-10-21T20:12:55+08:00",
+  "result": "PASS",
+  "checks": [
+    "Frozen six channels and ten project IDs",
+    "30 claims resolve to 24 official sources with locators",
+    "Ten-family adaptation matrix covers all six channels",
+    "355 JSON documents parse as UTF-8",
+    "G01/game-spec: schema PASS",
+    "G01/tasks: schema PASS",
+    "G01/tasks: DAG 16 tasks PASS",
+    "G01: 20 concrete level records",
+    "G02/game-spec: schema PASS",
+    "G02/tasks: schema PASS",
+    "G02/tasks: DAG 19 tasks PASS",
+    "G02: 20 concrete level records",
+    "G04/game-spec: schema PASS",
+    "G04/tasks: schema PASS",
+    "G04/tasks: DAG 16 tasks PASS",
+    "G04: 20 concrete level records",
+    "G01: offline specification verifier PASS in isolated copy (not gameplay QA)",
+    "G02: offline specification verifier PASS in isolated copy (not gameplay QA)",
+    "G04: offline specification verifier PASS in isolated copy (not gameplay QA)",
+    "P01: 4 benchmark cards",
+    "P01: 2 detailed analyses (method labels retained)",
+    "P02: 4 benchmark cards",
+    "P02: 2 detailed analyses (method labels retained)",
+    "P03: 4 benchmark cards",
+    "P03: 2 detailed analyses (method labels retained)",
+    "P04: 4 benchmark cards",
+    "P04: 2 detailed analyses (method labels retained)",
+    "P05: 4 benchmark cards",
+    "P05: 2 detailed analyses (method labels retained)",
+    "P06: 4 benchmark cards",
+    "P06: 2 detailed analyses (method labels retained)",
+    "Current benchmark delivery manifest and associated observation hash match (622 checks)",
+    "98 logged screenshot hashes match across 3 observation logs",
+    "Three independent audit decisions present and consistent (verdict is not artifact PASS)"
+  ],
+  "errors": [],
+  "limitations": [
+    "Schema/level witnesses do not prove player enjoyment, market fit, originality clearance, SDK builds or partner acceptance.",
+    "Indirect benchmark analyses are not recorded playthroughs. Unobserved timing and economics remain UNKNOWN."
+  ],
+  "environment": {
+    "python_executable": "F:\\clawtry\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "python_version": "3.11.15 (main, Jul 23 2026, 14:42:43) [MSC v.1944 64 bit (AMD64)]",
+    "verifiers_use_same_interpreter": true
+  },
+  "checks_scope": "PREPARATION_ARTIFACTS_ONLY",
+  "game_build_executed": false
+}

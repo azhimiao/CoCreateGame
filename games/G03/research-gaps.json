@@ -1,0 +1,282 @@
+{
+  "project_id": "G03",
+  "family": "合成订单/轻经营",
+  "preparation_batch": "P1",
+  "updated_at": "2026-10-21",
+  "status": "SPEC_NOT_COMPLETE",
+  "project_status": "EVIDENCE_COLLECTED",
+  "ready_for_build": false,
+  "candidate_platform_ids": [
+    "P02",
+    "P04",
+    "P06"
+  ],
+  "scope": "NON_P0_PREPARATION_ONLY",
+  "approval": {
+    "game_id_and_construction_dossier": "NOT_GRANTED",
+    "final_game_development": false,
+    "submission": false,
+    "external_contact": false,
+    "paid_purchase": false
+  },
+  "benchmark_playthrough_status": "NOT_PERFORMED",
+  "independent_review_status": "NOT_PERFORMED",
+  "evidence": [
+    {
+      "claim_id": "G03-E01",
+      "reference_title": "Piece of Cake: Merge and Bake",
+      "source_url": "https://www.crazygames.com/game/piece-of-cake-merge-and-bake",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "平台列 Released October 2024；Last Updated May 28, 2025（网页版本元数据）",
+      "evidence_type": "OFFICIAL_HOST_GAME_PAGE",
+      "claim": "CrazyGames 署名 HG POINT LTD；说明相同物品合成、客户订单取得资源并修复咖啡馆/推进故事，支持拖动。只核查了页面说明。",
+      "metric_definition": "描述性机制有无；页面评分为平台投票指标且标有近6个月口径，不能换算游玩量、留存或净收入。",
+      "unknown": "体力恢复、真实配方、订单定价、首局时长、广告密度、开发者净回款 UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Developer / How to Play / Controls / More Games Like This"
+    },
+    {
+      "claim_id": "G03-E02",
+      "reference_title": "DesignVille（官网现名 Merge & Story；登记名 Merge & Design）",
+      "source_url": "https://designville.games/",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "UNKNOWN；当前页无明确发布/更新日",
+      "evidence_type": "OFFICIAL_GAME_SITE",
+      "claim": "官网描述合成工具、客户装修任务、设计房间/花园与经营设计工作室；宣称手机、平板、电脑可玩。登记名与官网现名差异已保留，不假定版本完全相同。",
+      "metric_definition": "玩法及设备支持的官方描述（分类/布尔）；没有本轮实际设备测试。",
+      "unknown": "名称变更时间、具体订单与合成链、Web和移动经济差异、留存/收益 UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Merge items / Show your designer skills / Play anywhere"
+    },
+    {
+      "claim_id": "G03-E03",
+      "reference_title": "TAPCLAP 官方目录对 DesignVille 的归属链接",
+      "source_url": "https://tapclap.com/",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "UNKNOWN",
+      "evidence_type": "OFFICIAL_PUBLISHER_CATALOG",
+      "claim": "TAPCLAP 的 Our games 将 DesignVille 链至 designville.games，辅助确认官网来源；不作为第三款独立对标。",
+      "metric_definition": "作品收录/链接关系（布尔），不是当前采购需求。",
+      "unknown": "发行协议及可复制内容许可 UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Our games / designville"
+    }
+  ],
+  "channel_evidence": [
+    {
+      "platform_id": "P02",
+      "source_url": "https://docs.crazygames.com/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_LAUNCH_RULE",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方区分 Basic 与 Full；Basic 关闭变现，根据本平台参与指标决定后续。作品存在不代表候选获准 Full 或有收入。",
+      "recheck": "确定测试计划及正式投稿当日"
+    },
+    {
+      "platform_id": "P04",
+      "source_url": "https://wiki.playgama.com/playgama/quick-start",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_DISTRIBUTION_GUIDE",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方流程包含 Bridge、上传、QA/审核与跨站报表；这是分销流程，未给候选保底流量或净回款。",
+      "recheck": "适配方案冻结及上传前"
+    },
+    {
+      "platform_id": "P06",
+      "source_url": "https://www.tap-nation.io/publishing/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_PUBLISHING_DESCRIPTION",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方接收 concept/prototype/build，并表示适配后协商分成、里程碑、创意所有权和支持范围；存在可选买断说明。未获得本项目测试资金、SDK条件或合同。",
+      "recheck": "测试预算及合作条款讨论当日"
+    }
+  ],
+  "original_hypotheses": [
+    {
+      "id": "G03-H1",
+      "status": "HYPOTHESIS",
+      "claim": "HYPOTHESIS G03-H1：让同一零件在短单收益与长期修复解锁间竞争，且清晰显示占用关系，比仅做合成后换装修外观更能产生可复述的经营选择。",
+      "variants": [
+        {
+          "label": "B0 基线",
+          "description": "自拟简单合成订单，修复只改变外观；相同素材数量、合成深度与资源输入。不是对标源码或经济的复制。"
+        },
+        {
+          "label": "V1 库存预留",
+          "description": "只加入订单预留槽与可撤销预留，让玩家有意识决定先交哪单；不加入修复带来的配方变化。"
+        },
+        {
+          "label": "V2 功能修复",
+          "description": "只让一个可见修复决定后续订单分支；不加入预留槽。先独立检验修复是否产生选择，再研究组合。"
+        }
+      ],
+      "results": "UNKNOWN"
+    }
+  ],
+  "saturation_signal": {
+    "observation": "E01 的相似推荐列出 Tropical Merge、Mergest Kingdom 等；E02 已有合成加装修/客户任务。它们是供给相似性信号，未形成统一目录采样，不能推出品类饱和、失败率或利润下降。只换店铺题材不构成已证明差异。",
+    "interpretation": "SUPPLY_SIMILARITY_ONLY",
+    "failed_game_rate": "UNKNOWN",
+    "profit_effect": "UNKNOWN"
+  },
+  "research_gaps": [
+    {
+      "id": "G03-R02",
+      "document": "02_Benchmark_Playthrough.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "两参考各自的生成器首次出现、第一次合成/交单/修复先后如何？满盘或缺能量时实际能否继续？同名移动与Web是否同版？",
+      "required_evidence": "各两条带版本/设备/时间戳的直接记录；覆盖0–30秒、30秒–5分钟、一条中期订单与退出回归。逐事件列输入、库存变化、反馈；没有录像的节点继续 UNKNOWN。",
+      "reason": "缺实玩与订单资源观测，无法按网页宣传反推经济。"
+    },
+    {
+      "id": "G03-R03",
+      "document": "03_Full_GDD.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "工作台容量、可合成条件、订单取消/重复交付、免费供应、修复收益、失败和离线推进分别怎样定义？B0/V1/V2保留哪条？",
+      "required_evidence": "经人类选择变体后给每个节点的输入、前后状态、反馈和异常；构造满盘且订单暂不可交的可恢复路径。无广告、无付费也有明确进展方案。",
+      "reason": "产品分支与资源规则未冻结。"
+    },
+    {
+      "id": "G03-R04",
+      "document": "04_Systems_and_Data.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "物品实例与配方类别如何分离？合成、预留、交单是否同一事务？订单刷新时已预留物品怎样处理？",
+      "required_evidence": "实体/事件表、资源守恒式、交付幂等及拖放回滚例子；列生产器销毁和存档迁移反例。字段必须追溯到选定规则。",
+      "reason": "缺类型、事务边界和存档版本，不生成 game-spec.json。"
+    },
+    {
+      "id": "G03-R05",
+      "document": "05_Levels_Economy.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "如何列出前30分钟各来源/去向、合成成本、占格与修复解锁？订单是否存在随机不可达？",
+      "required_evidence": "带来源标签的数值表；分别模拟积极交单、囤货、误合成、拒看广告四种路径，展示每步资源与空位。自拟数值标 HYPOTHESIS，不能抄成参考实测。",
+      "reason": "真实参考经济与自有平衡参数 UNKNOWN。"
+    },
+    {
+      "id": "G03-R06",
+      "document": "06_UI_Art_Audio.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "工作台、订单栏与装修入口能否同屏理解？预留槽是否误导为永久丢失？不同等级零件怎样避免只靠颜色识别？",
+      "required_evidence": "各屏状态草图、触控冲突表、素材阶梯样张及授权清单；盲测能指出订单占用和修复后发生什么，保留原始误触记录。",
+      "reason": "资产数量、最终屏幕与规格未定。"
+    },
+    {
+      "id": "G03-R07",
+      "document": "07_Tech_Architecture.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "Cocos/TS网页候选能否隔离库存模拟与渲染？P06移动SDK若要求不同底座，哪些数据可共享？",
+      "required_evidence": "候选引擎版本/依赖许可比较、存档事务设计与目标设备测试协议；后续经批准的最小技术实验须给包体/加载/内存原始记录。",
+      "reason": "引擎、SDK及性能预算尚无测量；本轮不造实验游戏。"
+    },
+    {
+      "id": "G03-R08",
+      "document": "08_OpenSource_Licenses.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "合成拖放组件、图标、场景/角色、字体和音效分别从哪里合法取得？商用是否含改编与分销？",
+      "required_evidence": "逐资产 URL/权利人/许可证文本版本/归属要求/可转授权范围；代码与美术分别核验，官网能玩不构成素材许可。",
+      "reason": "未选任何开源包或资产，全部许可 UNKNOWN。"
+    },
+    {
+      "id": "G03-R09",
+      "document": "09_Implementation_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "先做资源闭环还是先画装修？谁负责配方审查、软锁证明与美术成本？",
+      "required_evidence": "仅在03–08闭合后分解任务，写输入配方表、输出文件、依赖、资源守恒/满盘验收证据。先完成经济审查再估工程工期。",
+      "reason": "需求前置未满足，未建立任务ID/工时承诺或 tasks.json。"
+    },
+    {
+      "id": "G03-R10",
+      "document": "10_QA_Test_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "怎样发现交单双扣/双奖、离线重复收益、满盘死局、误触及升级假成长？",
+      "required_evidence": "未来测试矩阵包含事务重放、断电存档、前30分钟多策略模拟、手机拖放与玩家复述；每项说明失败快照和复现输入。",
+      "reason": "规则、数值及真机样本均不足，未执行测试。"
+    },
+    {
+      "id": "G03-R11",
+      "document": "11_Distribution_Business.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "P02 Basic无变现时闭环成立吗？P04的存档/广告边界与P06移动独家范围怎样分离？",
+      "required_evidence": "按00/01中的渠道事实逐项列专用版本差异、合同未决字段与拒绝冲突方案；ROI只留实际净回款/全部成本参数，不填虚构RPM。",
+      "reason": "无正式测试资格、报价、合同或实际收入。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "G03-B1",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "两款参考缺直接试玩与库存/订单事件记录"
+    },
+    {
+      "id": "G03-B2",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "自有生成/配方/订单/修复经济和满盘解法未定"
+    },
+    {
+      "id": "G03-B3",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "原创装修/零件资产工时与许可未核"
+    },
+    {
+      "id": "G03-B4",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "Web/移动独家及SDK边界未明确"
+    },
+    {
+      "id": "G03-M1",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "finding": "02–11缺完整施工定义；本轮不具备独立实现条件"
+    },
+    {
+      "id": "G03-m1",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "finding": "官方动态页没有本地原始快照，决策前需归档"
+    }
+  ],
+  "not_created": [
+    {
+      "file": "game-spec.json",
+      "reason": "规则/实体/数值未冻结，不能伪造可执行规格"
+    },
+    {
+      "file": "tasks.json",
+      "reason": "施工输入与验收未闭合，不能伪造工程任务依赖"
+    }
+  ],
+  "stop_line": {
+    "status": "PROPOSED_NOT_APPROVED",
+    "rule": "建议下一轮资料研究上限 8 人时、最多两轮定向核查（内部 HYPOTHESIS 预算建议，未批准支出）。若仍无法还原一个无广告资源闭环，暂停 GDD 数值扩写；若自有方案两轮筛查均只有外观差异或必须付费/看广告才能脱困，撤回该变体，必要时建议 KILLED。",
+    "cash_budget": "UNKNOWN"
+  },
+  "next_action": "分别取得两款参考的带时间戳前5分钟与至少一条订单→装修路径记录；随后先画资源流与软锁反例，再确定是否值得做前30分钟经济设计。",
+  "exit_gate": [
+    "直接试玩证据",
+    "03–11完整模块",
+    "许可与合同冲突关闭",
+    "独立反向审计BLOCKER关闭",
+    "人类批准游戏ID及施工档案"
+  ],
+  "scope_note": "仅更新本项目目录；根STATUS.md及data保持只读。项目状态为目录内局部研究进度，未同步根项目清单。"
+}

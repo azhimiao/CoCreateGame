@@ -1,0 +1,162 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.1.0"
+    },
+    "project_id": {
+      "const": "G02"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "planning_only": {
+      "const": true
+    },
+    "command_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 19,
+      "maxItems": 19,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^T(0[1-9]|1[0-9])$"
+          },
+          "phase": {
+            "enum": [
+              "review",
+              "build",
+              "release"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner_role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "status": {
+            "enum": [
+              "PENDING_RE_REVIEW",
+              "BLOCKED_BY_GATE"
+            ]
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "outputs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^games/G02/[^.].*"
+            }
+          },
+          "definition_of_done": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "verification_commands": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "execution_status": {
+            "const": "NOT_EXECUTED"
+          },
+          "estimated_hours_hypothesis": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "gate": {
+            "type": "string",
+            "minLength": 1
+          },
+          "platform_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "P02",
+                "P04",
+                "P05",
+                "P06"
+              ]
+            }
+          },
+          "required_conditions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "verified_conditions": {
+            "const": []
+          }
+        },
+        "required": [
+          "id",
+          "phase",
+          "title",
+          "owner_role",
+          "depends_on",
+          "status",
+          "inputs",
+          "outputs",
+          "definition_of_done",
+          "verification_commands",
+          "execution_status",
+          "estimated_hours_hypothesis",
+          "gate",
+          "platform_ids",
+          "required_conditions",
+          "verified_conditions"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "date",
+    "planning_only",
+    "command_policy",
+    "tasks"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "G02 task DAG v1"
+}

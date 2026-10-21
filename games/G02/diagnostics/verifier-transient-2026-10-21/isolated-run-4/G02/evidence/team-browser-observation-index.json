@@ -1,0 +1,197 @@
+{
+  "date": "2026-10-21",
+  "evidence_type": "DIRECT_BROWSER_OBSERVATION",
+  "overall_status": "BLOCKED_CORE_BEHAVIOR",
+  "source_directory": "research/playthroughs/G02",
+  "source_files_sha256": {
+    "observation.md": "db9e9867e537f9e79e3b48ceee8de82ce83799f98432c0242201a9a1eac1fe01",
+    "outcome-assessment.json": "9836dc0e0fbe8aa6277d755c4da513f775ef580b76537ec166a916bccd119ea1",
+    "operations.jsonl": "cc5b13d74375ecbe7bd42e1a0b3fb1c3d945841d076169964179732f80c80a63",
+    "screenshots/manifest.json": "dab6cef1f5b7307095608160db5e2665dfa258464d8c3ffb98e840976c43b7e7"
+  },
+  "screenshots_integrity": "PASS_13_OF_13_SHA256_AND_BYTES_READ_ONLY_CHECK_AT_INCORPORATION",
+  "screenshots": [
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-001-official-page.png",
+      "at": "2026-10-21T10:40:19.911Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 7184,
+      "game_elapsed_ms": 7184,
+      "sha256": "efa5a6329c29a73f3817745b60421e3607ce389866707e2e7099737c82e03dae",
+      "bytes": 638329,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-002-before-click.png",
+      "at": "2026-10-21T10:40:54.784Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 42057,
+      "game_elapsed_ms": 42057,
+      "sha256": "1cdec2c9cd80f8ec79daae2e4b04929091489830490125723fd7ec025d51c30c",
+      "bytes": 853019,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-003-after-click.png",
+      "at": "2026-10-21T10:40:55.813Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 43086,
+      "game_elapsed_ms": 43086,
+      "sha256": "5ecd381cb38ff11c0c57cff64d5b9fd60f2f2d3d8f63e4fe12c1e3514945fd46",
+      "bytes": 846451,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-004-before-click.png",
+      "at": "2026-10-21T10:40:56.441Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 43714,
+      "game_elapsed_ms": 43714,
+      "sha256": "734583f6881bde7b1528d0304595bf1b58a6081fc3abbc7d68191b9a7e5317af",
+      "bytes": 844954,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-39-50-665Z-goodsort-005-after-click.png",
+      "at": "2026-10-21T10:40:58.915Z",
+      "game": "goodsort",
+      "attempt_elapsed_ms": 46188,
+      "game_elapsed_ms": 46188,
+      "sha256": "bc8e875dc55c333b7b8a9d5c401fb10c40e8640cfdf9bdaa8f33d5fb0cc0c53c",
+      "bytes": 20262,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-001-official-page.png",
+      "at": "2026-10-21T10:45:02.824Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 290097,
+      "game_elapsed_ms": 5510,
+      "sha256": "d0d867b5218eae97872b9e0ea2085987ff38dc29caad0763347685681c420deb",
+      "bytes": 33452,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-002-screw-ui-check.png",
+      "at": "2026-10-21T10:45:30.178Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 317451,
+      "game_elapsed_ms": 32864,
+      "sha256": "aa3e40d8af20577174fc5e716ced0e6f00563a388b22594d3dff8239a96efdf8",
+      "bytes": 385827,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-003-before-click.png",
+      "at": "2026-10-21T10:45:52.346Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 339619,
+      "game_elapsed_ms": 55032,
+      "sha256": "aa3e40d8af20577174fc5e716ced0e6f00563a388b22594d3dff8239a96efdf8",
+      "bytes": 385827,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-004-after-click.png",
+      "at": "2026-10-21T10:45:54.203Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 341476,
+      "game_elapsed_ms": 56889,
+      "sha256": "afb2ab1a2af0e9df42238d617415e6e1061afa991dd4039c3208f48b1865d841",
+      "bytes": 553577,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-005-screw-after-essential-load.png",
+      "at": "2026-10-21T10:46:25.324Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 372597,
+      "game_elapsed_ms": 88010,
+      "sha256": "d41b4d29895eb8d259356251dee2799aaa1d4a85ac8beea9b2af26f4b83caf11",
+      "bytes": 633299,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-006-screw-final-loading-check.png",
+      "at": "2026-10-21T10:46:52.233Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 399506,
+      "game_elapsed_ms": 114919,
+      "sha256": "4dc72be5175c82081ab949dacaade803ae8d5dfc2b27254e1a91ee376407a882",
+      "bytes": 633495,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-007-screw-ready-or-blocked.png",
+      "at": "2026-10-21T10:47:30.042Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 437315,
+      "game_elapsed_ms": 152728,
+      "sha256": "fbbf474e8642acb88dad94fdc1431e020175af83fe15cc3155ac6c799cbc7141",
+      "bytes": 633020,
+      "width": 1365,
+      "height": 900
+    },
+    {
+      "file": "screenshots/2026-10-21T10-44-40-833Z-screwout-008-last-budget-check.png",
+      "at": "2026-10-21T10:47:55.422Z",
+      "game": "screwout",
+      "attempt_elapsed_ms": 462695,
+      "game_elapsed_ms": 178108,
+      "sha256": "e05ded1e70b2a701eddcd3048e22070b375336407013887007abc50cab9eb0e8",
+      "bytes": 613123,
+      "width": 1365,
+      "height": 900
+    }
+  ],
+  "confirmed_effective_core_inputs": 0,
+  "site_ui_inputs": 3,
+  "continuous_first_30_seconds": "UNKNOWN_NOT_RECORDED",
+  "continuous_first_5_minutes": "UNKNOWN_NOT_RECORDED",
+  "game_results": [
+    {
+      "game": "goodsort",
+      "status": "BLOCKED",
+      "entry_ui_response": "OBSERVED",
+      "board_loaded": "NOT_CONFIRMED",
+      "confirmed_effective_core_inputs": 0,
+      "legal_placement": "NOT_OBSERVED",
+      "illegal_placement": "NOT_OBSERVED",
+      "match": "NOT_OBSERVED",
+      "full_compartment": "NOT_OBSERVED",
+      "win_loss_retry": "NOT_OBSERVED",
+      "reason": "Reached host preroll/loading overlay; later screenshots timed out. No board confirmed."
+    },
+    {
+      "game": "screwout",
+      "status": "PARTIAL_ENTRY_ONLY_CORE_BLOCKED",
+      "entry_ui_response": "OBSERVED_ONLY_ESSENTIAL_CLICK",
+      "board_loaded": "OBSERVED_LEVEL1_AT_10:47:55.422Z",
+      "board_evidence": "screenshots/2026-10-21T10-44-40-833Z-screwout-008-last-budget-check.png",
+      "confirmed_effective_core_inputs": 0,
+      "legal_removal": "NOT_OBSERVED",
+      "illegal_removal": "NOT_OBSERVED",
+      "color_match": "NOT_OBSERVED",
+      "full_buffer_boundary": "UNKNOWN",
+      "win_loss_retry": "NOT_OBSERVED",
+      "reason": "First confirmed board screenshot at total462.695s; during visual review the480s deadline closed the browser. Follow-up click batch was not dispatched and has no input_start log; no action effect is claimed."
+    }
+  ],
+  "time_budget_seconds": 480.006,
+  "scope": "TEAM_SUPPLEMENT_SEPARATE_FROM_AUTHORS_INITIAL_WEB_ONLY_RESEARCH; screenshots are third-party research evidence, NOT production assets; originals stay in shared research directory, not this ZIP",
+  "original_urls": [
+    "https://playgama.com/game/good-sort-master",
+    "https://www.crazygames.com/game/screw-out-bolts-and-nuts"
+  ]
+}

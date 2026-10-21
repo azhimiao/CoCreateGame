@@ -1,0 +1,5 @@
+{
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"F:\\CoCreateGame\\reviews\\G04-checks\\author-rerun\\validate_spec.py\", line 260, in <module>\n    main()\n  File \"F:\\CoCreateGame\\reviews\\G04-checks\\author-rerun\\validate_spec.py\", line 188, in main\n    from jsonschema import Draft202012Validator\nModuleNotFoundError: No module named 'jsonschema'\n"
+}

@@ -1,0 +1,54 @@
+{
+  "processed_at": "2026-10-21T10:22:12.964Z",
+  "operations_records": 217,
+  "log_processing": {
+    "before_sha256": "f8a905d0e61df1471de52dc42398653f2790926aeafe9fc34cc02b98861f9369",
+    "after_sha256": "c8a2a14757fdbb4217d734963916a7c05eb155f9d383404c7b65b7fee97408eb",
+    "auxiliary_frame_dom_excerpts_omitted": 54,
+    "url_redactions": 8,
+    "retained": "All event timestamps, commands, screenshot hashes, errors and observer outcome statements remain unchanged.",
+    "raw_log_retained": false,
+    "reason": "Avoid retaining incidental auxiliary-frame scripts/challenge paths/analytics identifiers. No game source or extracted game asset is archived."
+  },
+  "games": [
+    {
+      "game": "bloxorz",
+      "official_url": "https://www.coolmathgames.com/0-bloxorz",
+      "started_at": "2026-10-21T10:09:12.024Z",
+      "administrative_finished_at": "2026-10-21T10:12:56.533Z",
+      "last_input_dispatched_at": "2026-10-21T10:10:37.329Z",
+      "last_input_elapsed_ms": 85305,
+      "dispatched_input_groups": 3,
+      "status": "BLOCKED",
+      "effective_core_input_confirmed": false
+    },
+    {
+      "game": "liquid2",
+      "official_url": "https://www.coolmathgames.com/0-liquid-2",
+      "started_at": "2026-10-21T10:12:56.536Z",
+      "administrative_finished_at": "2026-10-21T10:13:28.805Z",
+      "last_input_dispatched_at": "2026-10-21T10:13:26.961Z",
+      "last_input_elapsed_ms": 30426,
+      "dispatched_input_groups": 2,
+      "status": "BLOCKED",
+      "effective_core_input_confirmed": false
+    },
+    {
+      "game": "paintmaster",
+      "official_url": "https://www.coolmathgames.com/0-paint-master",
+      "started_at": "2026-10-21T10:14:18.156Z",
+      "administrative_finished_at": "2026-10-21T10:21:32.868Z",
+      "last_input_dispatched_at": "2026-10-21T10:21:16.008Z",
+      "last_input_elapsed_ms": 417852,
+      "dispatched_input_groups": 20,
+      "status": "PARTIAL",
+      "effective_core_input_confirmed": true
+    }
+  ],
+  "screenshot_count": 64,
+  "screenshot_hashes_verified": true,
+  "runtime_exists": false,
+  "first_30_seconds_continuous_playthrough": "NOT_RECORDED",
+  "five_minutes_continuous_playthrough": "NOT_RECORDED",
+  "scope": "Only research/playthroughs/G04 written by this task; no games or benchmarks updates."
+}

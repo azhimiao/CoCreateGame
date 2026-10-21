@@ -1,0 +1,523 @@
+{
+  "version": "1.0.0",
+  "game_id": "G01",
+  "scope": "games/G01/",
+  "status": "PLANNED_ONLY",
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "独立逆向审计",
+      "depends_on": [],
+      "role": "independent reviewer",
+      "write_scope": "games/G01/",
+      "files": [
+        "audit/independent-findings.md"
+      ],
+      "inputs": [
+        "00–12",
+        "game-spec.json",
+        "tasks.json"
+      ],
+      "outputs": [
+        "逐规则复述",
+        "BLOCKER/MAJOR/MINOR 台账"
+      ],
+      "definition_of_done": [
+        "只读档案即可复述",
+        "每项含文件锚点及复验步骤",
+        "作者不能签作独立审查"
+      ],
+      "verification": [
+        "人工冷读审查"
+      ],
+      "stage": "PREPARATION",
+      "approval_gate": "NONE",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T02",
+      "title": "人类批准档案与游戏 ID",
+      "depends_on": [
+        "T01"
+      ],
+      "role": "human owner",
+      "write_scope": "games/G01/",
+      "files": [
+        "audit/approval-record.md"
+      ],
+      "inputs": [
+        "独立审计与修订版"
+      ],
+      "outputs": [
+        "明确 G01、版本、允许开发范围"
+      ],
+      "definition_of_done": [
+        "全部阻断关闭",
+        "明确书面开发许可"
+      ],
+      "verification": [
+        "人工核对批准记录"
+      ],
+      "stage": "DECISION",
+      "approval_gate": "HUMAN",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T03",
+      "title": "安装锁版与引擎许可核验",
+      "depends_on": [
+        "T02"
+      ],
+      "role": "toolchain engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/toolchain/"
+      ],
+      "inputs": [
+        "07",
+        "08"
+      ],
+      "outputs": [
+        "3.8.8 编辑器校验和",
+        "许可清单",
+        "TS编译器确切版本"
+      ],
+      "definition_of_done": [
+        "Dashboard 来源可追溯",
+        "命令行构建最小空项目成功",
+        "不将MIT引擎等同编辑器许可"
+      ],
+      "verification": [
+        "Creator --version",
+        "导出空 Web 测试"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T04",
+      "title": "确定性规则与测试向量",
+      "depends_on": [
+        "T03"
+      ],
+      "role": "rules engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/rules/",
+        "future/tests/rules/"
+      ],
+      "inputs": [
+        "03",
+        "04",
+        "game-spec.json",
+        "validation/report.json"
+      ],
+      "outputs": [
+        "独立 TS 数据规则",
+        "Python/TS 一致性报告"
+      ],
+      "definition_of_done": [
+        "20关每一步状态一致",
+        "全扫掠/门时序/死锁/非法操作一致"
+      ],
+      "verification": [
+        "未来 npm run test:rules"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T05",
+      "title": "原创视觉音频生产",
+      "depends_on": [
+        "T02"
+      ],
+      "role": "asset artist",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/assets/",
+        "future/assets/licenses/"
+      ],
+      "inputs": [
+        "06",
+        "08"
+      ],
+      "outputs": [
+        "全部资产源文件与导出",
+        "逐文件权属"
+      ],
+      "definition_of_done": [
+        "清单无缺项",
+        "文本可读",
+        "禁用对标截图/图形/音效"
+      ],
+      "verification": [
+        "人工视觉听觉检查",
+        "逐文件SHA256"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T06",
+      "title": "适配UI与可访问输入",
+      "depends_on": [
+        "T04",
+        "T05"
+      ],
+      "role": "UI engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/ui/",
+        "future/scenes/"
+      ],
+      "inputs": [
+        "06",
+        "04"
+      ],
+      "outputs": [
+        "13屏及对话框",
+        "横竖屏"
+      ],
+      "definition_of_done": [
+        "44px触区",
+        "键盘等价",
+        "每屏返回路径明确",
+        "门形状编码"
+      ],
+      "verification": [
+        "未来 npm run test:ui"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T07",
+      "title": "存档与恢复",
+      "depends_on": [
+        "T04"
+      ],
+      "role": "persistence engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/save/",
+        "future/tests/save/"
+      ],
+      "inputs": [
+        "04"
+      ],
+      "outputs": [
+        "v1原子本地存档",
+        "恢复UI数据接口"
+      ],
+      "definition_of_done": [
+        "断写/配额/版本异常覆盖",
+        "云冲突不静默丢失"
+      ],
+      "verification": [
+        "未来 npm run test:save"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T08",
+      "title": "完整20关与教程装配",
+      "depends_on": [
+        "T06",
+        "T07"
+      ],
+      "role": "content integrator",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/content/",
+        "future/tutorial/"
+      ],
+      "inputs": [
+        "05",
+        "game-spec.json"
+      ],
+      "outputs": [
+        "20关流程",
+        "首通印章与结束页"
+      ],
+      "definition_of_done": [
+        "关序锁与重玩正确",
+        "20关映射哈希一致",
+        "无付费/广告墙"
+      ],
+      "verification": [
+        "未来 npm run test:campaign"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T09",
+      "title": "本地浏览器真机性能",
+      "depends_on": [
+        "T08"
+      ],
+      "role": "QA engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/qa/local/"
+      ],
+      "inputs": [
+        "07",
+        "10"
+      ],
+      "outputs": [
+        "原始测量日志",
+        "设备与浏览器版本"
+      ],
+      "definition_of_done": [
+        "包体/文件数/首屏/帧率实际记录",
+        "未知不得填通过",
+        "WebGL丢失可恢复"
+      ],
+      "verification": [
+        "未来 npm run test:web",
+        "真机矩阵"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T10",
+      "title": "盲测及两变体消融",
+      "depends_on": [
+        "T09"
+      ],
+      "role": "research QA",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/qa/players/"
+      ],
+      "inputs": [
+        "12"
+      ],
+      "outputs": [
+        "同意记录与匿名原始数据",
+        "BASE/RELAY/MANIFEST比较"
+      ],
+      "definition_of_done": [
+        "达到预注册样本或标不足",
+        "区分误触与规则不懂",
+        "不虚报留存"
+      ],
+      "verification": [
+        "人工按12章协议分析"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T11",
+      "title": "渠道合同与权利隔离",
+      "depends_on": [
+        "T10"
+      ],
+      "role": "business reviewer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/business/"
+      ],
+      "inputs": [
+        "11",
+        "08"
+      ],
+      "outputs": [
+        "每渠道权利矩阵",
+        "停止/继续建议"
+      ],
+      "definition_of_done": [
+        "列明IP保留/排他/回收/退出",
+        "缺正文不得提交"
+      ],
+      "verification": [
+        "人工逐条合同审查"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T12",
+      "title": "P02 Basic 独立包",
+      "depends_on": [
+        "T09",
+        "T11"
+      ],
+      "role": "P02 adapter engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/platforms/P02_BASIC/"
+      ],
+      "inputs": [
+        "07",
+        "11"
+      ],
+      "outputs": [
+        "无SDK无广告Basic包",
+        "网络白名单QA"
+      ],
+      "definition_of_done": [
+        "<=20MB总包",
+        "无第三方回传",
+        "PEGI12且非儿童定位",
+        "<=1500文件"
+      ],
+      "verification": [
+        "未来 npm run build:p02-basic",
+        "网络抓包"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T13",
+      "title": "P04 独立 Bridge 包",
+      "depends_on": [
+        "T09",
+        "T11"
+      ],
+      "role": "P04 adapter engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/platforms/P04/"
+      ],
+      "inputs": [
+        "07",
+        "11"
+      ],
+      "outputs": [
+        "Bridge包",
+        "平台统计接口验证"
+      ],
+      "definition_of_done": [
+        "无GA4等统计",
+        "无P02SDK",
+        "root index.html",
+        "<=300MB",
+        "拒绝外部登录依赖"
+      ],
+      "verification": [
+        "未来 npm run build:p04",
+        "Bridge QA与抓包"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T14",
+      "title": "P05 SDK可行性与原生试包",
+      "depends_on": [
+        "T09",
+        "T11"
+      ],
+      "role": "mobile engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/platforms/P05/"
+      ],
+      "inputs": [
+        "07",
+        "11"
+      ],
+      "outputs": [
+        "SDK书面支持记录",
+        "Android试包或停止报告"
+      ],
+      "definition_of_done": [
+        "Cocos支持必须确认",
+        "不得把Web包当APK",
+        "ABI/16KB内存页实际检验"
+      ],
+      "verification": [
+        "未来指定SDK样例编译",
+        "Android真机检查"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "BUILD_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T15",
+      "title": "各渠道提交前资料与最终闸门",
+      "depends_on": [
+        "T12",
+        "T13",
+        "T14"
+      ],
+      "role": "release manager",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/release/"
+      ],
+      "inputs": [
+        "10",
+        "11"
+      ],
+      "outputs": [
+        "逐渠道截图视频版权表",
+        "提交建议"
+      ],
+      "definition_of_done": [
+        "所有拟提交渠道分别QA",
+        "某渠道停止可用正式停止报告结项",
+        "人类批准后才可对外提交"
+      ],
+      "verification": [
+        "人工逐包签核"
+      ],
+      "stage": "AFTER_HUMAN_BUILD_APPROVAL",
+      "approval_gate": "SEPARATE_SUBMISSION_APPROVAL",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": "T16",
+      "title": "P02 Full SDK 升级（条件分支）",
+      "depends_on": [
+        "T12"
+      ],
+      "role": "P02 adapter engineer",
+      "write_scope": "games/G01/",
+      "files": [
+        "future/platforms/P02_FULL/"
+      ],
+      "inputs": [
+        "正式Full邀请",
+        "最新SDK文档"
+      ],
+      "outputs": [
+        "Full专用包",
+        "生命周期事件验证"
+      ],
+      "definition_of_done": [
+        "只有正式邀请后启动",
+        "Full SDK必须",
+        "初始<=50MB/移动<=20MB",
+        "总<=250MB/1500文件",
+        "产品仍默认无广告"
+      ],
+      "verification": [
+        "未来 npm run build:p02-full",
+        "平台Full QA"
+      ],
+      "stage": "AFTER_FULL_INVITATION",
+      "approval_gate": "FULL_INVITATION",
+      "status": "NOT_STARTED"
+    }
+  ]
+}

@@ -1,0 +1,678 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>AI 游戏工厂 · Codex 项目准备总纲</title><style>
+:root{--bg:#f6f8fb;--paper:#fff;--ink:#172b45;--sub:#5a6c82;--blue:#2864a3;--line:#dfe6ef;--soft:#ecf3fa;--tag:#eef2f7}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.73}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}button,input{font:inherit}.shell{display:grid;grid-template-columns:258px minmax(0,1fr)}aside{height:100vh;position:sticky;top:0;overflow:auto;border-right:1px solid var(--line);background:#fff;padding:28px 16px}.brand{font-weight:900;letter-spacing:-.025em;padding:6px 12px 14px;font-size:17px}.eyebrow{font-size:11px;color:#6c8198;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.nav-title{padding:18px 12px 7px;text-transform:uppercase;font-size:11px;letter-spacing:.1em;color:#95a1ad}.side-nav a{display:block;font-size:12px;border-radius:7px;padding:7px 10px;color:#4b6180}.side-nav a:hover{background:#eef4fa}.side-note{border-top:1px solid var(--line);padding:14px 12px;color:#7d8ca0;font-size:12px;line-height:1.6}main{max-width:1240px;padding:0 48px 72px;margin:auto;min-width:0}.hero{padding:60px 0 40px;border-bottom:1px solid var(--line)}.hero h1{font-size:42px;line-height:1.22;letter-spacing:-.04em;margin:9px 0 17px}.hero p{max-width:870px;color:var(--sub);font-size:16px}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0}.fact{padding:15px 20px;background:white;border:1px solid var(--line);border-radius:13px}.fact .n{font-size:32px;font-weight:800;line-height:1.1}.fact .label{color:#708297;font-size:13px}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:26px 0 20px}.toolbar input{padding:11px 14px;border:1px solid #cbd7e5;background:#fff;border-radius:9px;flex:1;min-width:170px}.toolbar button,.quicklink{background:white;border:1px solid var(--line);color:var(--ink);padding:9px 13px;border-radius:8px;cursor:pointer;font-size:13px}.toolbar button.active{background:#e1edfa;border-color:#a6c1e6;color:#214b83}.sec-kicker{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:.1em;margin:34px 0 0}.sec-title{font-size:24px;letter-spacing:-.025em;margin:4px 0 17px}.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.p-card,.g-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0}.p-card h3,.g-card h3{margin:5px 0;font-size:18px;line-height:1.35}.p-card p,.g-card p{font-size:12px;line-height:1.55;margin:9px 0}.p-card a{font-size:12px;font-weight:700}.p-id{font-size:12px;color:#6c8097}.dot{display:inline-block;background:#93b8d9;width:5px;height:5px;border-radius:50%;vertical-align:middle}.quiet{color:#64758b}.game-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.g-top{display:flex;justify-content:space-between;font-size:12px;font-weight:700;color:#346da5}.g-top small{color:#8290a5}.chips{display:flex;gap:4px;flex-wrap:wrap}.chips span{border-radius:50px;background:var(--tag);padding:2px 7px;font-size:10px;color:#667c92}#full-report{margin-top:54px}article.report{background:#fff;padding:36px 42px;border:1px solid var(--line);border-radius:14px;max-width:100%;font-size:14px}article.report h1{font-size:29px;letter-spacing:-.035em;line-height:1.35}article.report h2{font-size:23px;border-bottom:1px solid #e3e8f1;padding-bottom:10px;margin-top:60px;scroll-margin-top:16px}article.report h3{font-size:18px;color:#254b70;margin-top:32px}article.report h4{font-size:15px}article.report blockquote{border-left:4px solid #94b6d6;margin:20px 0;padding:8px 18px;background:#f4f8fd;color:#4c6784}article.report pre{overflow:auto;background:#11273d;color:#f1f7fc;padding:20px;border-radius:9px;line-height:1.55}article.report code{font-size:12px}article.report p code,article.report li code{background:#edf2f6;padding:2px 5px;border-radius:4px;color:#334a61}article.report table{width:100%;border-collapse:collapse;display:block;overflow-x:auto;font-size:12.5px;margin:18px 0}article.report th{background:#f0f5f9;font-weight:750;text-align:left}article.report th,article.report td{padding:10px 11px;border:1px solid #e1e8f0;vertical-align:top;min-width:90px}article.report li{margin:5px 0}article.report hr{border:0;border-top:1px solid var(--line);margin:33px 0}.hidden{display:none!important}.footer{padding:25px 0 70px;font-size:12px;color:#8a98a8;text-align:center}@media(max-width:1000px){.shell{grid-template-columns:1fr}aside{position:relative;height:auto;max-height:220px;border-bottom:1px solid var(--line)}main{padding:0 24px 36px}.platform-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){main{padding:0 14px}.hero h1{font-size:31px}.facts{grid-template-columns:1fr 1fr}.platform-grid,.game-grid{grid-template-columns:1fr}article.report{padding:20px 15px}.hero{padding-top:32px}}@media print{aside,.toolbar,.cards-only,.footer{display:none}main{margin:0;padding:0;max-width:none}.shell{display:block}article.report{border:0;padding:0;background:white}body{background:white}article.report h2{break-before:page;page-break-after:avoid}article.report table{font-size:10px}}
+</style></head><body><div class="shell"><aside><div class="brand">GAME FOUNDRY<br><span class="eyebrow">CODEX HANDOFF · 2026.10.21</span></div><div class="nav-title">本文导航</div><nav class="side-nav"><a href="#section-1" data-label="0. 一页执行摘要">0. 一页执行摘要</a><a href="#section-2" data-label="1. 会话演变：为什么最后收敛到这里">1. 会话演变：为什么最后收敛到这里</a><a href="#section-3" data-label="2. 六渠道逐家定位、准入与需求证据">2. 六渠道逐家定位、准入与需求证据</a><a href="#section-4" data-label="3. 十个项目家族：供 Codex 研究，不是预先批准开发">3. 十个项目家族：供 Codex 研究，不是预先批准开发</a><a href="#section-5" data-label="4. 游戏项目「可施工」的强制交付标准">4. 游戏项目「可施工」的强制交付标准</a><a href="#section-6" data-label="5. 技术架构：AI 原生游戏制造，而非必须自研底层引擎">5. 技术架构：AI 原生游戏制造，而非必须自研底层引擎</a><a href="#section-7" data-label="6. 证据体系：避免「已有需求」变成虚假的确定性">6. 证据体系：避免「已有需求」变成虚假的确定性</a><a href="#section-8" data-label="7. 可证伪的核心研究与商业假设">7. 可证伪的核心研究与商业假设</a><a href="#section-9" data-label="8. 商业模型和权利边界">8. 商业模型和权利边界</a><a href="#section-10" data-label="9. 施工流水线：Codex 项目准备模式">9. 施工流水线：Codex 项目准备模式</a><a href="#section-11" data-label="10. 本轮 Codex 必须首先完成的交付清单">10. 本轮 Codex 必须首先完成的交付清单</a><a href="#section-12" data-label="11. 未解决且商业上必须尽早搞清的问题">11. 未解决且商业上必须尽早搞清的问题</a><a href="#section-13" data-label="12. 当前结论：继续、调整、暂停">12. 当前结论：继续、调整、暂停</a><a href="#section-14" data-label="13. 官方来源索引（本次重点重新核实，2026-10-21）">13. 官方来源索引（本次重点重新核实，2026-10-21）</a><a href="#section-15" data-label="14. 与旧会话成果的关系">14. 与旧会话成果的关系</a></nav><div class="side-note">范围锁：P01–P06 / G01–G10<br>此网页为研究与施工准备，不代表已通过商业验证。</div></aside><main><header class="hero"><div class="eyebrow">PROJECT BRIEF · SINGLE SOURCE OF TRUTH</div><h1>AI 游戏工厂<br>项目准备与商业审计总纲</h1><p>基于完整会话形成的纠偏后执行方案。先保留自有 IP，研究已有玩家需求和具体游戏流程，再产出逐款可施工档案；不给 Codex 留下重新发明玩法的空白。</p><div class="facts"><div class="fact"><div class="n">06</div><div class="label">首轮锁定渠道</div></div><div class="fact"><div class="n">10</div><div class="label">可审查游戏家族</div></div><div class="fact"><div class="n">03</div><div class="label">项目准备批次</div></div></div><div class="toolbar"><button onclick="document.getElementById('full-report').scrollIntoView()">阅读完整总纲 ↘</button><button onclick="copyPrompt()">复制 Codex 启动指令</button><button onclick="window.print()">打印或另存 PDF</button></div></header><section class="cards-only"><div class="sec-kicker">SCOPE / DISTRIBUTION</div><h2 class="sec-title">六家合作对象</h2><div class="platform-grid"><article class="p-card" data-filter="coolmath games 非独家授权采购">
+<div class="p-id">P01 <span class="dot"></span> 核查后进入</div>
+<h3>Coolmath Games</h3><p class="quiet">非独家授权采购</p><p><strong>需要验证：</strong>固定授权价/复购未证实</p>
+<a href="https://www.coolmathgames.com/submit-a-game" target="_blank" rel="noopener">官方入口 ↗</a></article><article class="p-card" data-filter="crazygames 网页测试与正式发行">
+<div class="p-id">P02 <span class="dot"></span> 核查后进入</div>
+<h3>CrazyGames</h3><p class="quiet">网页测试与正式发行</p><p><strong>需要验证：</strong>Basic 测试未必进入 Full，不保证收入</p>
+<a href="https://developer.crazygames.com/" target="_blank" rel="noopener">官方入口 ↗</a></article><article class="p-card" data-filter="poki 精选发行与推广">
+<div class="p-id">P03 <span class="dot"></span> 核查后进入</div>
+<h3>Poki</h3><p class="quiet">精选发行与推广</p><p><strong>需要验证：</strong>Web 独家可能妨碍多个网页渠道销售</p>
+<a href="https://developers.poki.com/guide/share" target="_blank" rel="noopener">官方入口 ↗</a></article><article class="p-card" data-filter="playgama html5 多平台分销">
+<div class="p-id">P04 <span class="dot"></span> 核查后进入</div>
+<h3>Playgama</h3><p class="quiet">HTML5 多平台分销</p><p><strong>需要验证：</strong>不代为向 Poki/CrazyGames 投稿；无保底流量</p>
+<a href="https://developer.playgama.com/" target="_blank" rel="noopener">官方入口 ↗</a></article><article class="p-card" data-filter="azur games 移动发行与买量测试">
+<div class="p-id">P05 <span class="dot"></span> 核查后进入</div>
+<h3>Azur Games</h3><p class="quiet">移动发行与买量测试</p><p><strong>需要验证：</strong>需视频/APK，测试分配和合同待确认</p>
+<a href="https://azurgames.com/publish-with-us/" target="_blank" rel="noopener">官方入口 ↗</a></article><article class="p-card" data-filter="tapnation 移动发行及运营">
+<div class="p-id">P06 <span class="dot"></span> 核查后进入</div>
+<h3>TapNation</h3><p class="quiet">移动发行及运营</p><p><strong>需要验证：</strong>历史发行目录，不等于当前收购榜</p>
+<a href="https://www.tap-nation.io/publishing/" target="_blank" rel="noopener">官方入口 ↗</a></article></div><div class="sec-kicker">PRODUCT UNIVERSE</div><h2 class="sec-title">十个候选家族</h2><div class="toolbar"><input id="lookup" placeholder="筛选项目或平台名称……"><button data-b="ALL" class="active">全部</button><button data-b="P0">P0</button><button data-b="P1">P1</button><button data-b="P2">P2</button></div><div class="game-grid"><div class="g-card" data-batch="P0" data-filter="g01 arrow/路径解谜 arrow puzzle arrow escape: puzzle">
+<div class="g-top"><span>G01</span><small>P0 · 待施工</small></div><h3>Arrow/路径解谜</h3>
+<p class="quiet">Arrow Puzzle、Arrow Escape: Puzzle</p><div class="chips"><span>P02</span><span>P04</span><span>P05</span></div></div><div class="g-card" data-batch="P0" data-filter="g02 分类与收纳 good sort master: triple match color water sort screw out">
+<div class="g-top"><span>G02</span><small>P0 · 待施工</small></div><h3>分类与收纳</h3>
+<p class="quiet">Good Sort Master: Triple Match、Color Water Sort、Screw Out</p><div class="chips"><span>P02</span><span>P04</span><span>P05</span><span>P06</span></div></div><div class="g-card" data-batch="P1" data-filter="g03 合成订单/轻经营 piece of cake: merge &amp; bake designville: merge &amp; design">
+<div class="g-top"><span>G03</span><small>P1 · 待施工</small></div><h3>合成订单/轻经营</h3>
+<p class="quiet">Piece of Cake: Merge &amp; Bake、Designville: Merge &amp; Design</p><div class="chips"><span>P02</span><span>P04</span><span>P06</span></div></div><div class="g-card" data-batch="P0" data-filter="g04 逻辑图层/机关 paint master bloxorz liquid 2">
+<div class="g-top"><span>G04</span><small>P0 · 待施工</small></div><h3>逻辑图层/机关</h3>
+<p class="quiet">Paint Master、Bloxorz、Liquid 2</p><div class="chips"><span>P01</span><span>P02</span></div></div><div class="g-card" data-batch="P2" data-filter="g05 陷阱平台跳跃 level devil rodha 2">
+<div class="g-top"><span>G05</span><small>P2 · 待施工</small></div><h3>陷阱平台跳跃</h3>
+<p class="quiet">Level Devil、Rodha 2</p><div class="chips"><span>P01</span><span>P03</span></div></div><div class="g-card" data-batch="P2" data-filter="g06 物理驾驶 drive mad deadly descent moto x3m">
+<div class="g-top"><span>G06</span><small>P2 · 待施工</small></div><h3>物理驾驶</h3>
+<p class="quiet">Drive Mad、Deadly Descent、Moto X3M</p><div class="chips"><span>P02</span><span>P03</span></div></div><div class="g-card" data-batch="P1" data-filter="g07 自动化经营/成长 monkey mart my perfect hotel hero making tycoon">
+<div class="g-top"><span>G07</span><small>P1 · 待施工</small></div><h3>自动化经营/成长</h3>
+<p class="quiet">Monkey Mart、My Perfect Hotel、Hero Making Tycoon</p><div class="chips"><span>P03</span><span>P04</span><span>P06</span></div></div><div class="g-card" data-batch="P1" data-filter="g08 群体答案问答 guess their answer 补充第二对标待验证">
+<div class="g-top"><span>G08</span><small>P1 · 待施工</small></div><h3>群体答案问答</h3>
+<p class="quiet">Guess Their Answer、补充第二对标待验证</p><div class="chips"><span>P06</span></div></div><div class="g-card" data-batch="P2" data-filter="g09 物理合成 suika watermelon game 补充第二对标待验证">
+<div class="g-top"><span>G09</span><small>P2 · 待施工</small></div><h3>物理合成</h3>
+<p class="quiet">Suika Watermelon Game、补充第二对标待验证</p><div class="chips"><span>P01</span><span>P04</span></div></div><div class="g-card" data-batch="P2" data-filter="g10 装扮创造 vortella&#x27;s dress up tb world super dress">
+<div class="g-top"><span>G10</span><small>P2 · 待施工</small></div><h3>装扮创造</h3>
+<p class="quiet">Vortella&#x27;s Dress Up、TB World、Super Dress</p><div class="chips"><span>P03</span><span>P04</span></div></div></div></section><section id="full-report"><div class="sec-kicker">FULL RESEARCH MEMO</div><h2 class="sec-title">完整结论、项目要求与可证伪性</h2><article class="report"><h1>AI 游戏工厂：完整会话结论与 Codex 项目准备总纲</h1>
+<p><strong>版本</strong>：V1.0｜<strong>冻结日期</strong>：2026-10-21｜<strong>定位</strong>：项目准备与市场审查，不是开发完成报告</p>
+<blockquote>
+<p><strong>给 Codex 的首要指令</strong>：严格执行本文件的范围与证据准则。第一阶段只研究、审计和制作每个项目的完整施工档案，不要直接启动某一款游戏的代码开发，不要重新增加平台，也不要把候选游戏误写为已验证产品。</p>
+</blockquote>
+<hr />
+<h2 id="section-1">0. 一页执行摘要</h2>
+<h3>0.1 目标</h3>
+<p>建立<strong>自有 AI 游戏制造系统 + 自有游戏 IP 组合 + 外部发行/授权渠道</strong>的资产型公司。AI Coding 如同可编程制造设备，游戏机制、关卡算法、美术规范、自动测试组件是可复用的「材料」，不同游戏是可以独立授权、运营、出售的产品资产。</p>
+<p>主要追求：可复制的制造效率、持有知识产权、通过外部发行商/分销网络获取用户与收入、可重复授权、长期现金流。<strong>不是</strong>按小时开发、一次性客户定制外包、靠堆数量卖低质源码。</p>
+<h3>0.2 冻结范围：6 个目标对象（不允许擅自扩大）</h3>
+<ul>
+<li><strong>网页与授权（4）</strong>：Coolmath Games（非独家授权买家）、CrazyGames（自有流量及测试）、Poki（精选发行及推广）、Playgama（多站点分销）。</li>
+<li><strong>移动发行（2）</strong>：Azur Games（移动测试及买量）、TapNation（移动发行、推广与运营）。</li>
+<li><strong>辅助工具，不计入发行目标</strong>：itch.io 可以托管 Demo；Google Play / App Store 是移动端交付终点或发行商使用的商店，不是本轮单独研究的商业合作对象。</li>
+<li><strong>二轮暂缓</strong>：Steam、Epic、Roblox、微信小游戏、抖音小游戏、GameDistribution、GamePix、Voodoo、Homa、SayGames 等。其曾在对话中讨论过，但本轮不进入项目数量 KPI；必要时作为技术/商务背景引用。</li>
+</ul>
+<h3>0.3 冻结候选：10 个游戏项目家族</h3>
+<p>G01 箭头路径消除；G02 分类排序收纳；G03 合成订单+轻经营；G04 逻辑图层与机关解谜；G05 陷阱平台跳跃；G06 物理驾驶挑战；G07 自动化经营/放置成长；G08 群体答案问答竞技；G09 物理合成与空间管理；G10 角色装扮与创造。</p>
+<p>这些是<strong>项目家族和工作编号，不是已经完成的完整 GDD，也不是 10 款保证可以发行的游戏</strong>。</p>
+<h3>0.4 批次（项目准备，非立即批量开工）</h3>
+<ul>
+<li>P0：G01、G02、G04（规则型解谜，共享网格/状态/求解/关卡）。</li>
+<li>P1：G03、G07、G08（经营、经济、知识内容与成长）。</li>
+<li>P2：G05、G06、G09、G10（平台控制、连续物理、特殊美术资产）。</li>
+</ul>
+<p>每批先形成可施工文档，经过独立审查才允许批准开发。允许多个 Codex 会话并行做研究，但必须使用统一 ID、证据库与质量标准。</p>
+<h3>0.5 最关键的商业结论</h3>
+<ol>
+<li><strong>先有市场证据、再做项目施工图、最后开始开发</strong>；不能让开发 Agent 重新猜测游戏形态。</li>
+<li><strong>发行≠买量≠授权采购≠收入</strong>。六家提供不同价值，必须分别评价。</li>
+<li><strong>热榜 ≠ 当前采购需求 ≠ 新作回报率</strong>。对标作品只证明玩家偏好线索，不证明新游戏成功概率。</li>
+<li><strong>IP 可交易但重复授权能力尚未被证明能规模化</strong>。Coolmath 官方确有非独家采购；Playgama 有多站点分发；Poki 独家可能与非独家铺货冲突；移动发行协议必须审查权利。</li>
+<li><strong>AI 降低编码成本并不自动提升利润</strong>，美术、关卡体验、质量控制、发行审核、获客是关键瓶颈。</li>
+<li>先做项目库与 3–5 项独立可施工项目，不立刻造通用引擎，也不为 6 个渠道机械制作 24–30 款互不相关游戏。</li>
+</ol>
+<hr />
+<h2 id="section-2">1. 会话演变：为什么最后收敛到这里</h2>
+<ol>
+<li><strong>起点</strong>：把 AI Coding 当作 3D 打印，尝试从底层「材料」构造游戏，实现规模化制造，委托海外渠道分销。初期偏向不用现成游戏引擎。</li>
+<li><strong>技术方案第一版</strong>：TypeScript/Canvas、GameSpec、规则组件、自动试玩；形成了概念性的 AI Game Foundry 和示范代码。</li>
+<li><strong>Godot 讨论</strong>：发现游戏引擎本身已是通用制造底座。结论变为不必重写渲染/物理全部基础设施；更独特的价值在于<strong>AI 可理解的机制模块、约束装配和验证系统</strong>。</li>
+<li><strong>量化选品</strong>：研究热门游戏、变体实验、游戏数据、成本和 ROI。识别 Arrow/Sort/Block、陷阱闯关、物理驾驶、经营成长几个可复用家族。</li>
+<li><strong>商业模式修正</strong>：最初偏重 HTML5 投稿和广告分成；随后明确用户不想「自助上架后等流量」，而是要有采购者/经销商/推广方。区分非独家授权、独家发行、完全买断、广告分销、移动发行商付费测试。</li>
+<li><strong>产业覆盖修正</strong>：曾扩展至移动、PC、Roblox、国内小游戏做比较；之后根据首轮资源限制，<strong>主动收敛为 4 个网页渠道 + 2 个移动发行方</strong>。</li>
+<li><strong>完整施工要求</strong>：用户不接受只凭一种点子生成单款游戏，要求每个平台有 3–5 个有具体对标和证据的候选，且每个入选项目必须形成「可让 Codex 独立施工」的全套文档。</li>
+<li><strong>Vector Shift</strong>：曾制作 Arrow 方向的 8 关、随后 20 关技术原型、求解器、QA；它证明某些规则引擎的实现可行，但<strong>不是</strong>全局市场选品完成、商业质量认证或本轮唯一游戏。保留为机制实验档案，不强制作为 G01 的正式设计。</li>
+<li><strong>最终工作方式</strong>：先平台证据与真实对标 → 每个平台提出 3–5 个候选 → 去重为 10 家族 → 每个独立 GDD/技术/关卡/美术/经济/QA/授权资料 → 审批后才实施。</li>
+</ol>
+<p><strong>已被否决的执行偏差</strong>：自动扩张至 20 多个平台；把小公司定制外包作为主要生意；只做一个演示游戏替代完整项目库；只给「做精致一些」的模糊指令；把买家挂牌价当真实成交价；把某平台总流量当单游戏流量。</p>
+<hr />
+<h2 id="section-3">2. 六渠道逐家定位、准入与需求证据</h2>
+<p><strong>事实等级说明</strong>：A = 2026-10-21 重新访问到的官方页面；B = 前面对话引用的官方/第三方资料但本文件没有重检全部细节；C = 个体经验或推断。各渠道联系人、条件、条款都应在正式投稿/签约当日重新检查。</p>
+<h3>P01 Coolmath Games（非独家授权采购）</h3>
+<ul>
+<li><strong>价值</strong>：官方表示对于符合要求的作品愿购买<strong>非独家许可</strong>，不是单纯免费上架。正式报价、采购量、购买周期未公开。</li>
+<li><strong>官方准入</strong>：HTML5；具有逻辑、策略或问题解决元素；无暴力/不雅内容；为其制作的版本移除广告、外链、开发者回传统计；可以在提交时不完全满足所有要求，但要愿意调整。A。[S01]</li>
+<li><strong>官方入口</strong>：<a href="https://www.coolmathgames.com/submit-a-game">https://www.coolmathgames.com/submit-a-game</a> ；<a href="https://developers.coolmathgames.com/">https://developers.coolmathgames.com/</a></li>
+<li><strong>热门/对标来源</strong>：官网 Top 10 在本次核查时列 Run 3、Tiny Fishing、Suika Watermelon Game、Cookie Clicker、Moto X3M 等；本周推荐有 Paint Master、Rodha 2。注意该列表不是「近期新作营收榜」。A。[S02]</li>
+<li><strong>优先方向</strong>：G04 逻辑图层/机关；G09 物理合成；G05 带逻辑的精准闯关；G01 的策略性变体。</li>
+<li><strong>施工/销售差异</strong>：单独无广告无外链构建；版权清单；授权范围、源代码是否必要、单域名/长期/转授权及付款时间需另问。</li>
+</ul>
+<h3>P02 CrazyGames（玩家测试 + 正式发行）</h3>
+<ul>
+<li><strong>价值</strong>：Basic Launch 限量测试，指标达标后可能 Full Launch 并打开广告分成，不是保证推广或固定收购。</li>
+<li><strong>官方流程</strong>：Basic Launch 7–21 天；至少 7 天并达到 500 次游玩方按正常流程结束；Basic 期间广告及内购变现关闭；关注游戏转化、平均游玩时间、留存。A。[S03]</li>
+<li><strong>入口</strong>：<a href="https://developer.crazygames.com/%EF%BC%9B%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3">https://developer.crazygames.com/；技术文档</a> <a href="https://docs.crazygames.com/">https://docs.crazygames.com/</a></li>
+<li><strong>对标类别</strong>：Arrow Escape / 螺丝整理 / Merge Bake 等解谜，物理驾驶与 3D 动作另为独立类别。网站类别页可以作<strong>存在性/展示证据</strong>，并非可靠单款收益证明。[S04]</li>
+<li><strong>候选</strong>：G01、G02、G03、G06、G04。</li>
+<li><strong>风险</strong>：不能从 Basic 获得游戏收入；不能凭达到门槛推断一定有流量或一定正式发行；SDK 在 Full 阶段独立适配。</li>
+</ul>
+<h3>P03 Poki（精选测试 + 发行推广）</h3>
+<ul>
+<li><strong>价值</strong>：真人测试、类别流量测试、精选平台与合同推广；受游戏原创性、完成度与技术表现限制。</li>
+<li><strong>官方准入</strong>：强调质量、玩家适配、技术优化；反对换皮克隆及粗糙 AI 生成游戏。支持原型提交，但玩家 fit → web fit → final review 逐级推进。A。[S05][S06]</li>
+<li><strong>测试</strong>：每轮 10 份试玩录像；Player Fit 500 玩家，健康参考为平均 3 分钟以上、25% 以上的试玩超过 3 分钟；Web Fit 测类别页面点击/转化；官方建议正式评审前瞄准 ≥65% 的 conversion-to-play 与 ≥5 分钟平均游玩（经营模拟 ≥10 分钟）。这些是平台参考，不是保证录用或跨渠道 KPI。A。[S06]</li>
+<li><strong>投稿</strong>：<a href="https://developers.poki.com/guide/share">https://developers.poki.com/guide/share</a> 需可玩链接/视频、3 张截图、游戏简介及团队资料。[S07]</li>
+<li><strong>独家风险</strong>：网页独家默认约五年且覆盖 YouTube Playables/Discord 等 Web 形式；移动 App/Steam 不在其默认 Web 排他范围。也可能采用一次性非独家许可但无同等持续推广/分成。必须先谈合同；不要默认可与 Playgama 同时分销。A。[S08]</li>
+<li><strong>本次官网热门页</strong>：Subway Surfers、Monkey Mart、Blocky Blast Puzzle、Level Devil、Stickman Hook 等；是「当前展示热门」，不等于全部是新作。[S09]</li>
+<li><strong>候选</strong>：G05、G06、G07、G10，此外 G01 若有显著原创且强完成度也可提出。</li>
+</ul>
+<h3>P04 Playgama（多站点分销网络）</h3>
+<ul>
+<li><strong>价值</strong>：一次技术接入，向合作渠道分发，聚合统计及结算。官方网络覆盖是总体流量，不是单款保底。</li>
+<li><strong>官方流程</strong>：注册开发者 → 集成 Bridge SDK → 上传 HTML5 游戏包 → QA/审核 → 分发合作渠道 → 看报表；SDK 处理广告、存档和站点适配。A。[S10]</li>
+<li><strong>官网声明限制</strong>：虽然 SDK 兼容一些门户，但 Playgama <strong>不代为向 Poki 和 CrazyGames 投稿</strong>；这些要单独提案。A。[S11]</li>
+<li><strong>入口</strong>：<a href="https://developer.playgama.com/%EF%BC%9Bhttps://wiki.playgama.com/playgama/quick-start">https://developer.playgama.com/；https://wiki.playgama.com/playgama/quick-start</a></li>
+<li><strong>本次 Trending Now</strong>：Piece of Cake: Merge &amp; Bake、Arrow Puzzle、Good Sort Master、Deadly Descent、My Perfect Farm 等；仅能证明近期上榜展示，不是单款 RPM 或收入资料。[S12]</li>
+<li><strong>候选</strong>：G01、G02、G03、G07、G09、G10。</li>
+<li><strong>合同点</strong>：要求分渠道展示量、游戏启动量、开发者分成的计算口径与具体协议；独家渠道清单、撤回时效与桥接 SDK 冲突需核实。</li>
+</ul>
+<h3>P05 Azur Games（移动发行商）</h3>
+<ul>
+<li><strong>价值</strong>：有条件为原型购买测试流量、评估 CPI/留存、随后提出发行合作；不是自助应用商店。</li>
+<li><strong>官方投稿表单</strong>：姓名邮箱、游戏名、玩法视频、是否已上架、APK 下载链接、团队和开发平台。官方说明内部评估后才买少量流量，测试留存及 CPI，之后可能发合同。A。[S13]</li>
+<li><strong>入口</strong>：<a href="https://azurgames.com/publish-with-us/%EF%BC%9B%E5%85%AC%E5%BC%80%E5%8F%91%E8%A1%8C%E9%82%AE%E4%BB%B6">https://azurgames.com/publish-with-us/；公开发行邮件</a> publishing@azurgames.com（其官网可核实）。[S13]</li>
+<li><strong>对标证据</strong>：官网《World War Heroes》等是公司作品，不是 2026 当前采购榜；关于 Block/Arrow/Sort 的行业分析，证明品类流量趋势，但不等于 Azur 承诺采购这种原型。两种证据不可混同。</li>
+<li><strong>候选</strong>：G01/G02 的移动衍生版、G07、G09（其中哪个最适合需再做适配研究）。</li>
+<li><strong>工程要求</strong>：安卓可安装测试包、视频广告可展示的核心玩法、可测的进度和回访环节、适当的数据埋点；正式测试使用其指定 SDK 而非一开始擅自集成。</li>
+<li><strong>待商务明确</strong>：买量规模、数据访问权、IP 归属、回本顺序、团队修改义务、跨其他平台的权利。</li>
+</ul>
+<h3>P06 TapNation（移动发行、运营和可选买断）</h3>
+<ul>
+<li><strong>价值</strong>：接收 concept/prototype/build；官方表示评估约两周，如适配再谈分成、里程碑、创意所有权和推广范围；后续可能买断。A。[S14]</li>
+<li><strong>入口</strong>：<a href="https://www.tap-nation.io/publishing/">https://www.tap-nation.io/publishing/</a> 站内 Submit Your Game；作品目录 <a href="https://www.tap-nation.io/games/">https://www.tap-nation.io/games/</a></li>
+<li><strong>代表作品</strong>：Thief Puzzle、Guess Their Answer、Color Water Sort、Hero Making Tycoon 等；这些主要是<strong>历史发行样本</strong>，不能写成 2026 新品销售榜。[S15]</li>
+<li><strong>候选</strong>：G02、G07、G08、G03（若留存/经济链达标）。</li>
+<li><strong>合同点</strong>：何时触发独家/买断选项；推广投资和收益回收顺序；开发者有没有权利停止迭代；游戏 IP 和共用机制库的分界。</li>
+</ul>
+<h3>六渠道与技术路线</h3>
+<ul>
+<li><strong>网页四家</strong>：首选 2D 轻量项目以 Cocos Creator + TypeScript 实现（也可在项目技术审计中提出 Godot/自研 Canvas 的例外），通过独立 platform adapter 输出不同构建，<strong>不假定某个 Bridge SDK 在所有平台无条件兼容</strong>。</li>
+<li><strong>移动两家</strong>：根据客户 SDK 条件单独选择 Unity/C# 或其他能满足要求的方案；<strong>不要擅自假设 Cocos 的 Web 游戏直接转换成合格移动测试包</strong>。</li>
+<li><strong>跨引擎</strong>：共享 GameSpec、数值表、机制数学定义、关卡数据、测试向量、文案和素材规范；不能假设 TypeScript 源码原封不动跑在 C# 环境。</li>
+</ul>
+<hr />
+<h2 id="section-4">3. 十个项目家族：供 Codex 研究，不是预先批准开发</h2>
+<p>以下项目的「创新方向」仅是待验证假设。Codex 必须先基于对标原作实际试玩流程，给出原创方案与反例，不得把下列一句话扩写成无证据的完整规则。</p>
+<table>
+<thead>
+<tr>
+  <th>ID</th>
+  <th>家族</th>
+  <th>主要对标</th>
+  <th>核心循环 / 可复用系统</th>
+  <th>首选渠道</th>
+  <th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>G01</td>
+  <td>Arrow 路径消除</td>
+  <td>Arrow Puzzle；Arrow Escape</td>
+  <td>路径受阻→选择移除→连锁/解锁；棋盘、依赖图、求解器</td>
+  <td>CrazyGames、Playgama、Azur（需移动重构）</td>
+  <td>P0·待施工</td>
+</tr>
+<tr>
+  <td>G02</td>
+  <td>Sort 分类收纳</td>
+  <td>Good Sort Master；Color Water Sort；Screw Out</td>
+  <td>选取/移动→限位匹配→清空任务；库存、拖放、提示</td>
+  <td>Playgama、CrazyGames、Azur、TapNation</td>
+  <td>P0·待施工</td>
+</tr>
+<tr>
+  <td>G03</td>
+  <td>合成+小店</td>
+  <td>Piece of Cake: Merge &amp; Bake；Designville</td>
+  <td>合成→交付订单→获取资源→装修/解锁</td>
+  <td>CrazyGames、Playgama、TapNation（待验证）</td>
+  <td>P1·待施工</td>
+</tr>
+<tr>
+  <td>G04</td>
+  <td>逻辑图层/机关</td>
+  <td>Paint Master；Bloxorz；Liquid 2</td>
+  <td>理解依赖→有限操作→验证解题；逻辑规划、图、求解</td>
+  <td>Coolmath、CrazyGames</td>
+  <td>P0·待施工</td>
+</tr>
+<tr>
+  <td>G05</td>
+  <td>陷阱平台</td>
+  <td>Level Devil；Rodha 2</td>
+  <td>短关观察→操作→失败反馈→重试；平台控制、状态触发</td>
+  <td>Poki、Coolmath（强调解谜）</td>
+  <td>P2·待施工</td>
+</tr>
+<tr>
+  <td>G06</td>
+  <td>物理驾驶</td>
+  <td>Drive Mad；Deadly Descent；Moto X3M</td>
+  <td>控车→越障→抵达终点；物理、关卡、轨道生成</td>
+  <td>Poki、CrazyGames</td>
+  <td>P2·待施工</td>
+</tr>
+<tr>
+  <td>G07</td>
+  <td>自动化经营</td>
+  <td>Monkey Mart；My Perfect Hotel；Hero Making Tycoon</td>
+  <td>经营产出→搬运/服务→升级→扩张</td>
+  <td>Poki、Playgama、TapNation</td>
+  <td>P1·待施工</td>
+</tr>
+<tr>
+  <td>G08</td>
+  <td>群体答案问答</td>
+  <td>Guess Their Answer；其他 trivia 榜样待找</td>
+  <td>输入/选择答案→与常见答案比对→赛局晋级</td>
+  <td>TapNation（可扩平台需证据）</td>
+  <td>P1·待施工</td>
+</tr>
+<tr>
+  <td>G09</td>
+  <td>物理合成空间</td>
+  <td>Suika Watermelon Game；其他物理合成实例待补</td>
+  <td>投放→碰撞→合成→空间压力与高分</td>
+  <td>Coolmath、Playgama</td>
+  <td>P2·待施工</td>
+</tr>
+<tr>
+  <td>G10</td>
+  <td>装扮与创造</td>
+  <td>Vortella's Dress Up；TB World；Super Dress</td>
+  <td>选择素材→装扮/创造→分享/收集</td>
+  <td>Poki、Playgama</td>
+  <td>P2·待施工</td>
+</tr>
+</tbody>
+</table>
+<h3>G01｜Arrow / 路径解谜</h3>
+<ul>
+<li>调查强项：玩法规则容易形式化，能够用搜索算法验证「有解/无解」「最短步数」「分支复杂度」。</li>
+<li>需要调查：对标游戏真实输入、失败惩罚、生命/提示、各机制引入顺序、奖励和后期变化。</li>
+<li>候选新机制：相位/颜色状态、条件旋转、障碍变形（须通过玩家试验证明相较基准版有益）。</li>
+<li>商业风险：2026 年同质化竞争；平台可能因换皮拒绝；Vector Shift 不能因已做出原型而免审。</li>
+</ul>
+<h3>G02｜分类/排序收纳</h3>
+<ul>
+<li>子类不能混为一谈：颜色水瓶、货架三消、螺丝拆除涉及不同状态空间和解题反馈。</li>
+<li>调查关键：何时失败、缓冲槽数量、提示机制、是否随机生成、操作误触与手感。</li>
+<li>组件资产：拖动/交换、缓冲槽、状态回滚、关卡可解性检查。</li>
+</ul>
+<h3>G03｜合成+订单+经营</h3>
+<ul>
+<li>必须反向重建「合成规则—订单—收益—容量—装修/解锁」数据闭环，不能仅做合成手感。</li>
+<li>需要输出前 30 分钟经济模拟、免费资源供应、瓶颈、虚假成长防护、适度广告机会（符合渠道规定）。</li>
+<li>较重的美术与数值成本，不能仅凭热门样本就排在最先开工。</li>
+</ul>
+<h3>G04｜逻辑机关/层叠</h3>
+<ul>
+<li>不等同于 Arrow 轻微换皮；需有可清楚解释的新规则，如绘制次序/层叠关系/可移动重力/路径控制。</li>
+<li>与 Coolmath「thinking game」买方条件匹配；重点验证关卡设计和解题满足感。</li>
+<li>应产出关卡求解器、难度分档、20 关具名规格、关卡作者工具建议。</li>
+</ul>
+<h3>G05｜陷阱平台跳跃</h3>
+<ul>
+<li>竞争关键是控制手感、反馈、公平性与低挫败；参考 Level Devil 不可复刻其具体关卡陷阱排列、美术、音效。</li>
+<li>需定义 tick、碰撞、死亡与复活时间、镜头、操作延迟、关卡重试节奏。</li>
+</ul>
+<h3>G06｜物理驾驶</h3>
+<ul>
+<li>不能仅复制 Drive Mad 的车/赛道；先对标操控感与障碍种类，设计独立物理场景逻辑。</li>
+<li>需要确定是否能使用成熟物理库；拒绝无必要地从头写刚体求解器。</li>
+<li>原型性能、不同屏幕操控、物理回放一致性是主要难点。</li>
+</ul>
+<h3>G07｜经营与放置成长</h3>
+<ul>
+<li>建立订单/资源/工人/升级/产量/时间等经济系统的数值表及可模拟模型。</li>
+<li>玩法初步成立的最低要求不只是「能点出金币」，而是明确多个可检验的成长决策。</li>
+</ul>
+<h3>G08｜群体答案问答</h3>
+<ul>
+<li>需要真实答案语料的来源/授权，不能虚构「全世界最常见答案」的调查排名。</li>
+<li>可选择原创众包问卷或合规公开数据；多语言与文化差异可能显著影响表现。</li>
+</ul>
+<h3>G09｜物理合成</h3>
+<ul>
+<li>确定对象接触、随机生成、队列预告、空间约束、失败判定以及可复现随机种子。</li>
+<li>物理堆叠模拟与实际手机性能之间的权衡，必须在技术审计中测量。</li>
+</ul>
+<h3>G10｜装扮与创造</h3>
+<ul>
+<li>美术资产数量和一致性是首要生产成本，不能因为逻辑简单就认定最便宜。</li>
+<li>必须定义可用部位、叠层遮挡、衣物约束、风格标签、角色版权和保存分享限制。</li>
+</ul>
+<hr />
+<h2 id="section-5">4. 游戏项目「可施工」的强制交付标准</h2>
+<p>每个 <code>games/Gxx/</code> 必须有<strong>独立内容</strong>，而不是把模板复制十份后改游戏名：</p>
+<table>
+<thead>
+<tr>
+  <th>文件</th>
+  <th>必需内容</th>
+  <th>准备结束的通过标准</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>00_Project_Charter.md</code></td>
+  <td>目标玩家、渠道、商业诉求、范围限制</td>
+  <td>有具体受众和明确目标平台</td>
+</tr>
+<tr>
+  <td><code>01_Market_Evidence.md</code></td>
+  <td>≥2 个对标、来源、日期、数据口径、反面证据</td>
+  <td>重要事实可追溯，排名/收入不混用</td>
+</tr>
+<tr>
+  <td><code>02_Benchmark_Playthrough.md</code></td>
+  <td>具体操作、前 30 秒、前 5 分钟、失败/成功、后期循环</td>
+  <td>直接观察与推测分开</td>
+</tr>
+<tr>
+  <td><code>03_Full_GDD.md</code></td>
+  <td>全流程/游戏规则/状态/教程/成长/失败/胜利</td>
+  <td>不需 Agent 重新猜游戏是什么</td>
+</tr>
+<tr>
+  <td><code>04_Systems_and_Data.md</code></td>
+  <td>对象、组件、事件、GameSpec、状态机、输入输出</td>
+  <td>数据类型、边界、依赖明确</td>
+</tr>
+<tr>
+  <td><code>05_Levels_Economy.md</code></td>
+  <td>前 20 关或前 30 分钟内容；数值表；生成与验证</td>
+  <td>不出现「AI 自动生成大量关卡」这种空话</td>
+</tr>
+<tr>
+  <td><code>06_UI_Art_Audio.md</code></td>
+  <td>每一屏、布局、触控、动画、素材规格</td>
+  <td>UI 既有参考亦有可实现规格</td>
+</tr>
+<tr>
+  <td><code>07_Tech_Architecture.md</code></td>
+  <td>引擎版本、模块与 API、平台适配、构建与性能</td>
+  <td>可由另一工程 Agent 独立落地</td>
+</tr>
+<tr>
+  <td><code>08_OpenSource_Licenses.md</code></td>
+  <td>源码/资产 URL、许可、维护状态、使用范围</td>
+  <td>不依赖来源不明素材</td>
+</tr>
+<tr>
+  <td><code>09_Implementation_Plan.md</code></td>
+  <td>任务 ID、前置依赖、I/O、文件、验收</td>
+  <td>任务可以并行且互不冲突</td>
+</tr>
+<tr>
+  <td><code>10_QA_Test_Plan.md</code></td>
+  <td>单元、模拟、浏览器、真机、玩家体验、回归</td>
+  <td>每条关键规则都有验证方法</td>
+</tr>
+<tr>
+  <td><code>11_Distribution_Business.md</code></td>
+  <td>发行平台专用版本、合同风险、收益假设</td>
+  <td>不把技术投稿等同取得流量</td>
+</tr>
+<tr>
+  <td><code>12_Falsifiability.md</code></td>
+  <td>风险、反例、杀死项目条件、证据缺口</td>
+  <td>允许 Kill/Revise 而不是全部通过</td>
+</tr>
+<tr>
+  <td><code>game-spec.json</code></td>
+  <td>可机读规则、实体、关卡与目标</td>
+  <td>schema 校验通过</td>
+</tr>
+<tr>
+  <td><code>tasks.json</code></td>
+  <td>可机读任务依赖与 DoD</td>
+  <td>能自动分配给 Codex 会话</td>
+</tr>
+</tbody>
+</table>
+<p><strong>施工门槛</strong>：未在真实对标中观察的关键玩法必须标“自有假设”；核心规则、数据、屏幕、素材、测试中任何一个模块未知，不允许标记 <code>READY_FOR_BUILD</code>。工程 Agent 可以选择实现细节，但不可重写产品定义。</p>
+<h3>每款游戏必要的玩家路径</h3>
+<p>入口/加载 → 3–10 秒可操作引导 → 首局核心行为 → 得到反馈 → 第一胜/第一败 → 复玩 → 新机制 → 中期目标 → 持续成长/挑战 → 存档/退出 → 回归。每个节点必须描述：玩家输入、系统状态变化、视觉音频反馈、展示文案、预期行为指标、异常情况。</p>
+<h3>质量不是「AI 认为很好玩」</h3>
+<ul>
+<li><strong>逻辑</strong>：确定性 seed，单元测试、状态快照、replay、关卡可解性/可达性。</li>
+<li><strong>体验</strong>：盲测，不提前讲解；测首分钟开始/离开、前三关/前五分钟、误触与挫败原因。</li>
+<li><strong>表现</strong>：统一美术方向、加载、动画节奏、声音、响应式布局；特意检查简单占位 UI 冒充成品。</li>
+<li><strong>商业</strong>：平台审核、真实曝光与游戏启动量、可观察收入、开发者实际净回款、渠道归因。</li>
+<li><strong>知识产权</strong>：不复用商业游戏的专有素材、关卡或代码。玩法思想可研究，表达与资产需要原创或合法授权。</li>
+</ul>
+<hr />
+<h2 id="section-6">5. 技术架构：AI 原生游戏制造，而非必须自研底层引擎</h2>
+<h3>5.1 讨论过的路线</h3>
+<ul>
+<li>自研 TS/Canvas：可用于非常轻的 2D Web 游戏；完全自研渲染/物理/资源管线通常不是第一轮最优投入。</li>
+<li>Godot：开源、方便无头构建与 AI 编辑，2D/3D；但部分 Web 兼容或移动发行 SDK 存在适配成本。</li>
+<li>Cocos Creator + TS：<strong>网页/国内小游戏能力可复用</strong>，对当前网页四家及部分移动产物是合理首选；仍须做渠道 SDK QA。</li>
+<li>Unity + C#：对于专业移动发行测试及行业 SDK 更常见；发行商指定 SDK/构建要求优先。</li>
+<li>Phaser / PixiJS / 原生 TS：轻量 Web 的替代路径，应在单项目审计中用实际包体、性能、构建稳定性比较。</li>
+</ul>
+<p><strong>当前暂定</strong>：Web-first 家族优先 Cocos Creator + TS；移动原型按发行商接口要求决定；跨引擎仅共享<strong>引擎中立</strong>的规则数据、资产描述、测试向量，不承诺「一套 TS 源码运行所有端」。</p>
+<h3>5.2 最小通用制造层</h3>
+<pre><code class="language-text">Research/Evidence → Benchmark Playthrough → GameSpec (versioned schema)
+                                   ↓
+                     Rule/Mechanic Registry
+                                   ↓
+                   Game-Specific Construction Plan
+                                   ↓
+                    Engine Adapter (Cocos/Unity/...)
+                                   ↓
+                  Headless Simulation + Browser QA
+                                   ↓
+                Platform-Specific SDK / Release Builds
+                                   ↓
+                 Channel Data + IP/License Ledger
+</code></pre>
+<p>通用组件候选：网格与图、对象状态、输入事件、碰撞、排序/匹配、关卡生成/求解、经济数值、存档、回放、QA、平台适配、统计事件 Schema。</p>
+<h3>5.3 Claude Code Game Studios 的正确角色</h3>
+<p>以前讨论的 <code>Donchitos/Claude-Code-Game-Studios</code> 属于<strong>Agent 角色、技能与项目开发流程框架</strong>，不是游戏引擎，不是现成商业化工厂。它可作为 Codex Agent 分工、QA 和开发流程参考；迁移命令/Hook 需实际验证，不能复制文件就假定兼容。应独立审查仓库当前许可证与活跃状态。</p>
+<h3>5.4 已做过的 Vector Shift 与历史附件</h3>
+<ul>
+<li>历史会话中有 <code>AI_Game_Foundry_Benchmark_Research_Skill_2026-10-21.zip</code>、<code>Vector_Shift_v0.2_20_Level_Game_Source_QA.zip</code> 等资料。</li>
+<li><strong>地位</strong>：机制、关卡求解和工具链的原型参考；不证明市场适配、原创差异能提升留存、平台审核通过、销量或 ROI。</li>
+<li><strong>本次 Codex 任务</strong>：可以阅读其思路并独立审查；禁止将它直接定为 G01 商业发行候选或强行延续其原玩法。</li>
+</ul>
+<hr />
+<h2 id="section-7">6. 证据体系：避免「已有需求」变成虚假的确定性</h2>
+<h3>6.1 每个结论至少标注</h3>
+<ul>
+<li><code>claim_id</code>，一句可核查论点。</li>
+<li><code>source_url</code>，发布日期、事实发生日期、访问日期。</li>
+<li><code>evidence_type</code>：官方投稿规范 / 当前平台榜单 / 历史作品目录 / 第三方统计 / 开发者自述 / 自己的实验。</li>
+<li><code>metric_definition</code>：是展示顺序、游玩量、下载、DAU、收入、开发者到手收益，还是只属于公司宣传。</li>
+<li><code>confidence</code>：A（近期官方/可核实时点数据）、B（独立统计）、C（自述/小样本）、D（假设）。</li>
+<li><code>counter_evidence</code> 和 <code>expiration/recheck</code>（榜单和发行条款会过时）。</li>
+</ul>
+<h3>6.2 禁止发生的错误</h3>
+<ul>
+<li>把热门作品当平台<strong>当下正在采购</strong>的游戏类型。</li>
+<li>把公司历史成功游戏当 2026 年新作。</li>
+<li>把总用户规模、总下载量、平台触达写成<strong>单款</strong>保证流量。</li>
+<li>把报价（卖方标价）写成成交价；把用户支付写成开发者净回款。</li>
+<li>把源码可运行/测试通过写成真实玩家喜欢或官方批准。</li>
+<li>在没有试玩视频/游戏体验时编造「完整数值」；自拟数值必须另列自有设计假设。</li>
+<li>因为有 MIT 仓库便假定其图片、音频、字体均可商用。</li>
+</ul>
+<hr />
+<h2 id="section-8">7. 可证伪的核心研究与商业假设</h2>
+<table>
+<thead>
+<tr>
+  <th>H</th>
+  <th>假设</th>
+  <th>反证/门槛与测试（示例，不是官方成功标准）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>H01</td>
+  <td>六家渠道对外开放新团队合作</td>
+  <td>查官方入口+实际提交/邮件回复；若仅老合作方/公司资格，则标不可进入</td>
+</tr>
+<tr>
+  <td>H02</td>
+  <td>同一机制家族可产生具有实质差异的多款游戏</td>
+  <td>盲评机制树；若只是换美术/参数/关卡，则不计独立项目</td>
+</tr>
+<tr>
+  <td>H03</td>
+  <td>成熟热门玩法更容易获得真实玩家兴趣</td>
+  <td>同渠道/相似曝光对照；无显著体验提升则不可用「热门」论证</td>
+</tr>
+<tr>
+  <td>H04</td>
+  <td>第二款研发成本因为组件复用显著下降</td>
+  <td>同口径记录实际人力+AI+返工成本；若未下降则拆析瓶颈</td>
+</tr>
+<tr>
+  <td>H05</td>
+  <td>自动关卡生成既能有解又有好体验</td>
+  <td>求解器 + 真人测试；可解但玩家觉得枯燥 → 失败</td>
+</tr>
+<tr>
+  <td>H06</td>
+  <td>Web 同一资产能适配多个渠道</td>
+  <td>各自构建、SDK 隔离、QA、合同冲突检查；失败要记录原因</td>
+</tr>
+<tr>
+  <td>H07</td>
+  <td>Coolmath 可以用固定非独家许可变现</td>
+  <td>正式报价/付费/协议；只有投稿成功不是验证</td>
+</tr>
+<tr>
+  <td>H08</td>
+  <td>Playgama 能给新游戏有意义的分销流量</td>
+  <td>取得按渠道实际曝光/启动/收益；不能以网络用户规模代替</td>
+</tr>
+<tr>
+  <td>H09</td>
+  <td>Poki 愿意推荐原创新作并改善收益</td>
+  <td>玩家测试/审查与合同；若要求排他但净回报不合理则拒绝</td>
+</tr>
+<tr>
+  <td>H10</td>
+  <td>CrazyGames Basic 具有有效测试价值</td>
+  <td>正常完成测试并得到可用反馈；未晋级不等于机制必然失败</td>
+</tr>
+<tr>
+  <td>H11</td>
+  <td>Azur/TapNation 愿承担真实测试/UA</td>
+  <td>获取具体预算、谁付费、结算基数；只说支持不算验证</td>
+</tr>
+<tr>
+  <td>H12</td>
+  <td>非独家游戏许可可以向多个买家重复销售</td>
+  <td>同一 IP 取得 ≥2 份相容的真实付费许可才初步支持</td>
+</tr>
+<tr>
+  <td>H13</td>
+  <td>游戏长尾能产生超越维护成本的收益</td>
+  <td>按月净回款与维护成本追踪至少若干月；不能只看上线首周</td>
+</tr>
+<tr>
+  <td>H14</td>
+  <td>发行/多渠道收入覆盖全部项目组合成本</td>
+  <td>纳入失败游戏成本，做组合级 ROI；负收益则暂停扩产</td>
+</tr>
+<tr>
+  <td>H15</td>
+  <td>AI Agent 工作流比自由编程更省成本</td>
+  <td>同复杂度对照，统计失败率、返工、QA 和总时间</td>
+</tr>
+<tr>
+  <td>H16</td>
+  <td>完整施工图减少开发 Agent 的设计偏差</td>
+  <td>独立 Agent 不访问原研究背景按 GDD 施工；偏离项数量可统计</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kill 原则</strong>：可主动淘汰候选。对一个家族的坏体验、重授权困难或无法获取真实流量，要停止该家族的增量投资；保留通用制造资产，而不是为满足「每平台 5 款」而强行制作。</p>
+<hr />
+<h2 id="section-9">8. 商业模型和权利边界</h2>
+<h3>8.1 分清五种交易</h3>
+<ol>
+<li><strong>直接投稿/展示</strong>：允许上架，不保证推荐或收益。</li>
+<li><strong>分销/联运</strong>：合作网站采纳后按广告/IAP 等分成，分销商未必购买游戏本身。</li>
+<li><strong>非独家商用许可</strong>：多个买家可分别支付许可费，前提合同互不冲突。</li>
+<li><strong>网页独家发行</strong>：可能得到更强平台推广，但限制开放 Web 的重复发行。</li>
+<li><strong>完全买断/IP 资产收购</strong>：一次交易出售约定权利，可能损失长期授权空间。</li>
+</ol>
+<p>用户的商业目标是资产及长期收益，因此<strong>优先研究 2+3，再选择性评估 4+5</strong>。禁止把客户指定需求、连续改稿的定制外包列为本轮主体商业模式。</p>
+<h3>8.2 必查合同字段</h3>
+<p><code>copyright_owner</code>、<code>licensed_scope</code>、<code>territory</code>、<code>platforms</code>、<code>term</code>、<code>exclusivity</code>、<code>sublicense</code>、<code>source_code_delivery</code>、<code>derivative_works</code>、<code>engine_reservation</code>、<code>rev_share_base</code>、<code>ad_spend_recoupment</code>、<code>audit_rights</code>、<code>payments</code>、<code>minimum_promotion</code>、<code>termination</code>、<code>delisting</code>、<code>successors</code>。</p>
+<p><strong>必须划分底层通用机制/引擎与游戏专有权利</strong>。即便卖出某款游戏，也不应默认转让整个规则引擎、通用零件库、生产流程和非专有代码；若运行游戏需要使用通用运行时，合同另授必需的运行许可。</p>
+<h3>8.3 ROI 必须以全组合口径计算</h3>
+<pre><code>组合贡献利润 = 所有游戏的实际净授权收入 + 实际净分成回款
+            - 全部研发/素材/测试/获客/法务/维护/失败原型等成本
+ROI = 组合贡献利润 / 全部投入成本
+</code></pre>
+<p>不允许以「假设每 1000 次游玩得到 X 美元」替代真实 RPM，也不能因为 1 款成功就忽略 9 款失败。缺数据时先输出可求范围和参数敏感性，不宣称已测得行业 ROI。</p>
+<hr />
+<h2 id="section-10">9. 施工流水线：Codex 项目准备模式</h2>
+<h3>T0 建立证据库</h3>
+<p>输入：仅六个目标渠道和官方链接。输出：渠道准入/合同/趋势证据表、更新日期、失效标记。禁止扩平台。</p>
+<h3>T1 平台 → 具体对标游戏卡</h3>
+<p>每个平台挑 3–5 款<strong>证据充分</strong>的参考游戏；至少 2 款进行深入试玩与操作路径还原。要写出每款为什么火（有真实证据才可说）、目标受众是什么、为什么与渠道匹配，不能只列名字。</p>
+<h3>T2 去重 → G01–G10 各自项目可行性档案</h3>
+<p>每家族至少 2 个可靠对标游戏，保留原版玩法骨架与原创变体部分的明确分界；给出发行目标和技术复杂度。允许选择 Kill，也允许发现资料不足后提出研究补证。</p>
+<h3>T3 每款完整可施工项目档案</h3>
+<p>按第 4 节 12+ 文件规范。每项至少有真实参考流程、完整可执行规则、前 20 关或前 30 分钟数值、全部界面、素材明细、自动化测试、平台构建和发行风险。</p>
+<h3>T4 对抗审查（必须独立）</h3>
+<p>让另一 Codex 会话扮演 QA、发行经理和法律风险研究员，逐条找问题：是否凭空数值、是否只是克隆、是否有无解关卡、是否对齐平台、是否真的可施工、是否能保留 IP。输出带文件路径的 Findings，严重问题阻塞下一阶段。</p>
+<h3>T5 建造与渠道实验（需用户批准）</h3>
+<p>先通过最小可玩的垂直切片与真人反馈，再做完整美术及大量内容；目标不是纯技术展示而是可投稿的 Release Candidate。由正式合作方的真实回复及反馈继续决策。</p>
+<p><strong>并行纪律</strong>：不同 Codex 会话对不同 Gxx 的单独目录有写权限；通用机制库通过接口申请合并，不能多 Agent 同时覆盖。研究和 QA 角色独立于开发角色。</p>
+<hr />
+<h2 id="section-11">10. 本轮 Codex 必须首先完成的交付清单</h2>
+<p>首阶段目标是 <strong>PREPARED，不是 SHIPPED</strong>。</p>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>六个平台的最新官方准入资料与商务联系方式再次核查，并记录重核日期。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>每个平台 3–5 个参考作品证据卡，至少 2 个深度试玩流程。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>G01–G10 建立独立目录和候选项目文件，实际对标不足必须记录未解决。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>P0 的 G01、G02、G04 各自形成完整可施工档案（第 4 节文件），并开展独立反方审计。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>全部候选有平台适配/许可证/合同冲突表。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>不进行任何未经用户批准的发行合同签署、付费 SDK 采购、真实商店上架或大范围代码开发。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>持续更新 <code>STATUS.md</code>：调研进度、证据缺口、Kill/Revise/Ready 状态和下步动作。</li>
+</ul>
+<h3>明确的首日任务（复制给 Codex 执行）</h3>
+<blockquote>
+<p>阅读 MASTER_HANDOFF.md、AGENTS.md、data/platforms.json、data/projects.json。校验六家目标渠道和 10 个 ID 不可更改。新建研究台账，不写游戏。优先重新核对 P01–P06 官方合作方式与最新条款，建立 S01… 证据引文；然后展开 G01/G02/G04 每个至少两个真实游戏的完整对标试玩/流程研究，分别写到 <code>games/Gxx/</code>。把所有无法通过网页证实的操作、收费、排名和技术细节标为 <code>UNKNOWN</code>。完成后先独立反方审查，再逐项提议哪些可以进入 GDD 编写。不要将现有 Vector Shift 当默认商品。</p>
+</blockquote>
+<hr />
+<h2 id="section-12">11. 未解决且商业上必须尽早搞清的问题</h2>
+<ol>
+<li>Coolmath 是否有当前的单款非独家授权价格区间、签约流程和复购可能？</li>
+<li>Poki 独家（及非独家许可）对我们的资产增值是否优于 Playgama 非独家铺货？两者不能未经合同检查并行。</li>
+<li>CrazyGames 与 Playgama 的真实单游戏净收入和发行通过率是多少？公开榜单不能替代。</li>
+<li>Azur/TapNation 对独立小型团队的原型测试是否仍开放，是否承诺金额或仅有条件投放？</li>
+<li>统一 Web 游戏构建是否真的比不同平台 SDK 分包节省成本？</li>
+<li>单款成熟玩法 + 一个有意义创新，能否获得玩家体验和审核的正向结果？</li>
+<li>平台热门作品中哪些是长期老 IP，哪些是最近上升的新游戏？具体统计窗口必须逐款确认。</li>
+<li>能否找到许可清晰、维护正常、性能达标的规则/关卡/美术开源模块？</li>
+<li>你用 Codex 完成的每个独立项目，成本和质量是否足以达到对外发行质量，而非 Demo 水平？</li>
+<li>高度集中型收益分布下，10 个家族最合理的试验预算、停止投入线和现金流周期如何设置？</li>
+</ol>
+<hr />
+<h2 id="section-13">12. 当前结论：继续、调整、暂停</h2>
+<h3>保留</h3>
+<ul>
+<li>自有机制库、规则 DSL、验证工具、自动构建与可回放 QA 的技术研发价值。</li>
+<li>游戏 IP、非独家许可和分成等资产模式的商业可能性。</li>
+<li>六渠道分工；具体对标和真人数据比纯 AI 想法更有用。</li>
+<li>按游戏家族复用、跨平台分发，但 SDK 与合同必须隔离。</li>
+</ul>
+<h3>修正</h3>
+<ul>
+<li>不要一开始不用所有现成引擎；先按采购/发行要求选择 Cocos 或 Unity 等底座。</li>
+<li>不要每平台都制造 5 款完全独立作品；应以去重后的 G01–G10 为主，维护多平台适配矩阵。</li>
+<li>不把榜单视为新作利润预测，不把个别开发者盈利故事当平均回报率。</li>
+<li>技术 QA 与真人好玩、商业成功分别验证。</li>
+</ul>
+<h3>暂停</h3>
+<ul>
+<li>完整从零造引擎；单 Agent 直接做 10 个成品；把 Vector Shift 立即当正式产品推进。</li>
+<li>未审条款同时投给独家发行平台；以客户定制外包作为主要业务。</li>
+<li>继续扩大发行平台清单；以网页平台上架自动产生收入作为商业前提。</li>
+</ul>
+<h3>下一里程碑</h3>
+<p><strong>得到三套完整、独立、可审计的 G01/G02/G04 施工档案，以及每个平台 3–5 个具体对标的证据卡，然后由用户筛选审批第一批真正施工游戏。</strong> 这个阶段还不声称已经完成 10 个项目的设计，也不预设所有项目都会进入开发。</p>
+<hr />
+<h2 id="section-14">13. 官方来源索引（本次重点重新核实，2026-10-21）</h2>
+<ul>
+<li><strong>S01</strong> Coolmath 投稿/购买非独家许可：<a href="https://www.coolmathgames.com/submit-a-game">https://www.coolmathgames.com/submit-a-game</a></li>
+<li><strong>S02</strong> Coolmath 当前首页 Top10 / Featured：<a href="https://www.coolmathgames.com/">https://www.coolmathgames.com/</a></li>
+<li><strong>S03</strong> CrazyGames Basic/Full 发行流程：<a href="https://docs.crazygames.com/">https://docs.crazygames.com/</a></li>
+<li><strong>S04</strong> CrazyGames Puzzle 目录：<a href="https://www.crazygames.com/c/puzzle">https://www.crazygames.com/c/puzzle</a></li>
+<li><strong>S05</strong> Poki 选品：<a href="https://developers.poki.com/guide/what-we-look-for">https://developers.poki.com/guide/what-we-look-for</a></li>
+<li><strong>S06</strong> Poki 五级测试与参考指标：<a href="https://developers.poki.com/guide/how-testing-works">https://developers.poki.com/guide/how-testing-works</a></li>
+<li><strong>S07</strong> Poki 提案/提交字段：<a href="https://developers.poki.com/guide/share">https://developers.poki.com/guide/share</a></li>
+<li><strong>S08</strong> Poki 独家与非独家：<a href="https://developers.poki.com/guide/revenue-deal-types">https://developers.poki.com/guide/revenue-deal-types</a></li>
+<li><strong>S09</strong> Poki 当前热门：<a href="https://poki.com/en/popular">https://poki.com/en/popular</a></li>
+<li><strong>S10</strong> Playgama 注册与上架：<a href="https://wiki.playgama.com/playgama/quick-start">https://wiki.playgama.com/playgama/quick-start</a></li>
+<li><strong>S11</strong> Playgama 官方说明（不代投 Poki/CrazyGames）：<a href="https://wiki.playgama.com/playgama">https://wiki.playgama.com/playgama</a></li>
+<li><strong>S12</strong> Playgama Trending Now：<a href="https://playgama.com/category/trending_now">https://playgama.com/category/trending_now</a></li>
+<li><strong>S13</strong> Azur 官方投稿表单与公开业务邮件：<a href="https://azurgames.com/publish-with-us/">https://azurgames.com/publish-with-us/</a></li>
+<li><strong>S14</strong> TapNation 合作与流程：<a href="https://www.tap-nation.io/publishing/">https://www.tap-nation.io/publishing/</a></li>
+<li><strong>S15</strong> TapNation 作品目录（历史代表作）：<a href="https://www.tap-nation.io/games/">https://www.tap-nation.io/games/</a></li>
+<li><strong>S16</strong> Poki AI 原创/克隆与内容要求：<a href="https://developers.poki.com/guide/content-player-safety">https://developers.poki.com/guide/content-player-safety</a></li>
+<li><strong>S17</strong> CrazyGames 官方技术/SDK 导航：<a href="https://docs.crazygames.com/">https://docs.crazygames.com/</a></li>
+<li><strong>S18</strong> Coolmath 开发者入口：<a href="https://developers.coolmathgames.com/">https://developers.coolmathgames.com/</a></li>
+</ul>
+<p><strong>来源使用规则</strong>：来源索引不是万能背书；A 级说明官网可核查对应事实，不保证采购、审核通过或单游戏收入。动态榜单应保留截图和抓取时间；所有金额、合同和审核结果以当前正式条款或商务书面回复为准。</p>
+<hr />
+<h2 id="section-15">14. 与旧会话成果的关系</h2>
+<p>早期已讨论/生成：AI Game Foundry starter、市场研究 HTML、35 家平台尽调、10 项游戏家族方向、Vector Shift v0.2 20 关原型和 QA、<code>Claude-Code-Game-Studios</code> 资料。</p>
+<p>本文件是<strong>纠偏后唯一的本轮执行总纲</strong>：旧成果可作为附录和参考，不得覆盖「六渠道、十项目、先准备后开发」三条冻结规则。旧调查中的 35 家公司属于历史探索范围，不是当前必须研究的目标名单。</p>
+</article></section><div class="footer">AI Game Foundry · 2026-10-21 · 官方资料动态更新，商业结果尚待验证</div></main></div><script>
+const q=document.getElementById('lookup');const items=[...document.querySelectorAll('[data-filter]')];let batch='ALL';function apply(){const s=q.value.trim().toLowerCase();for(const el of items){const matched=(!s||el.dataset.filter.includes(s));const inBatch=(!el.classList.contains('g-card')||batch==='ALL'||el.dataset.batch===batch);el.classList.toggle('hidden',!matched||!inBatch)} }q.addEventListener('input',apply);document.querySelectorAll('[data-b]').forEach(b=>b.addEventListener('click',()=>{batch=b.dataset.b;document.querySelectorAll('[data-b]').forEach(x=>x.classList.toggle('active',x===b));apply()}));
+function copyPrompt(){navigator.clipboard?.writeText('请先阅读 README.md、MASTER_HANDOFF.md、AGENTS.md、data/platforms.json 与 data/projects.json，然后执行 prompts/PROMPT_01_启动市场与施工准备.md。仅限六家渠道和 G01–G10；不要直接开发、投稿或签协议。');alert('已复制启动指令（若浏览器不支持剪贴板，请直接阅读 README.md）')}
+</script></body></html>

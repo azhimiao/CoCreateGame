@@ -1,0 +1,2435 @@
+{
+  "$schema": "./game-spec.schema.json",
+  "spec_version": "1.0.0",
+  "project_id": "G04",
+  "title": "折光机关 / Layer Relay",
+  "status": "REVISION_REQUIRED",
+  "ready_for_build": false,
+  "design_evidence": "HYPOTHESIS",
+  "access_date": "2026-10-21",
+  "platform_ids": [
+    "P01",
+    "P02"
+  ],
+  "engine": {
+    "name": "Cocos Creator",
+    "version": "3.8.7",
+    "typescript_language_baseline": "4.1.0",
+    "local_build_verified": false,
+    "typescript_typecheck_version": "4.1.2"
+  },
+  "rules": {
+    "coordinate_order": [
+      "layer",
+      "x",
+      "y"
+    ],
+    "layer_names": [
+      "lower",
+      "upper"
+    ],
+    "actions": [
+      "U",
+      "R",
+      "D",
+      "L",
+      "X"
+    ],
+    "switch_operation": "XOR_ON_ENTRY",
+    "gate_test": "((bits >> bit) & 1) == value",
+    "shift": "same x,y other layer; requires lift; costs 1",
+    "invalid_action": "no state/history/budget/pending changes",
+    "arrival_order": [
+      "validate_destination_with_old_bits",
+      "commit_position_and_move",
+      "apply_old_pending_and_clear",
+      "check_floor",
+      "trigger_arrival_switch",
+      "check_floor",
+      "check_beacon_order",
+      "check_goal",
+      "check_move_limit"
+    ],
+    "goal": "position and exact bits and pending==0 and all beacons; goal precedes move exhaustion",
+    "undo": "restore whole pre-accepted-action snapshot; unlimited in PLAYING/FAILED; WON locked",
+    "restart": "initial state; empty history; keep completion records",
+    "randomness": "NONE",
+    "failures": [
+      "FLOOR_CLOSED",
+      "BEACON_ORDER",
+      "MOVE_LIMIT"
+    ],
+    "dead_end": "no automatic failure; undo/restart available",
+    "initial_effects": "no arrival trigger at initialization",
+    "max_bits": 3,
+    "max_history": 128,
+    "variants": [
+      {
+        "id": "B0",
+        "switch_delay": 0,
+        "ordered_beacons": false
+      },
+      {
+        "id": "X1",
+        "switch_delay": 0,
+        "ordered_beacons": true
+      },
+      {
+        "id": "X2",
+        "switch_delay": 1,
+        "ordered_beacons": false
+      }
+    ],
+    "experiments_combined": false
+  },
+  "progression": {
+    "campaign_order": [
+      "G04-L01",
+      "G04-L02",
+      "G04-L03",
+      "G04-L04",
+      "G04-L05",
+      "G04-L06",
+      "G04-L07",
+      "G04-L08",
+      "G04-L09",
+      "G04-L10",
+      "G04-L11",
+      "G04-L12",
+      "G04-L13",
+      "G04-L14",
+      "G04-L15",
+      "G04-L16",
+      "G04-L17",
+      "G04-L18",
+      "G04-L19",
+      "G04-L20"
+    ],
+    "unlock": "L01 open; first win unlocks next; completed replayable",
+    "stars": "3 <= par, 2 <= par+2, 1 otherwise within limit; hints disable 3-star award",
+    "hint": "free; mark assisted before reveal; BFS from current state; reveal one next action; no auto move",
+    "no_currency": true,
+    "no_lives": true,
+    "no_iap": true,
+    "no_ads_in_v1": true
+  },
+  "platform_constraints": {
+    "P01": {
+      "ads": false,
+      "external_links": false,
+      "developer_telemetry": false,
+      "name_entry": false
+    },
+    "P02": {
+      "total_mb_max": 250,
+      "files_max": 1500,
+      "initial_mb_max": 50,
+      "mobile_home_initial_mb_max": 20,
+      "without_sdk_total_mb_max": 50,
+      "without_sdk_mobile_home_total_mb_max": 20,
+      "full_sdk_required": true,
+      "basic_monetization": false,
+      "audience": "16+ general puzzle; comply PEGI-12; not child-directed"
+    },
+    "P04_if_later_authorized": {
+      "in_candidate_scope": false,
+      "third_party_analytics": false,
+      "analytics": "platform Bridge or local offline QA only"
+    }
+  },
+  "levels": [
+    {
+      "id": "G04-L01",
+      "name": "第一束光",
+      "variant": "B0",
+      "width": 3,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          "###",
+          "...",
+          "###"
+        ],
+        [
+          "###",
+          "###",
+          "###"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          1
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          0,
+          2,
+          1
+        ],
+        "bits": 1,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [],
+      "switches": [
+        {
+          "at": [
+            0,
+            1,
+            1
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [],
+      "beacons": [],
+      "move_limit": 6,
+      "par": 2,
+      "solution": [
+        "R",
+        "R"
+      ],
+      "design_intent": "进入开关触发一次；走到目标还需位型相同"
+    },
+    {
+      "id": "G04-L02",
+      "name": "绕行不是答案",
+      "variant": "B0",
+      "width": 3,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          "...",
+          ".#.",
+          "..."
+        ],
+        [
+          "###",
+          "###",
+          "###"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          0,
+          2,
+          2
+        ],
+        "bits": 1,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [],
+      "switches": [
+        {
+          "at": [
+            0,
+            1,
+            0
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            2,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 8,
+      "par": 4,
+      "solution": [
+        "R",
+        "R",
+        "D",
+        "D"
+      ],
+      "design_intent": "目标位型排除绕开开关的假捷径"
+    },
+    {
+      "id": "G04-L03",
+      "name": "同位升降",
+      "variant": "B0",
+      "width": 3,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          "###",
+          "...",
+          "###"
+        ],
+        [
+          "###",
+          "...",
+          "###"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          1
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          1
+        ],
+        "bits": 0,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          2,
+          1
+        ]
+      ],
+      "switches": [],
+      "gates": [],
+      "beacons": [],
+      "move_limit": 9,
+      "par": 5,
+      "solution": [
+        "R",
+        "R",
+        "X",
+        "L",
+        "L"
+      ],
+      "design_intent": "观察层切换不移动棋子；必须走到升降台"
+    },
+    {
+      "id": "G04-L04",
+      "name": "上层来信",
+      "variant": "B0",
+      "width": 3,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          ".##",
+          "...",
+          "###"
+        ],
+        [
+          "###",
+          "...",
+          "##."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          2,
+          2
+        ],
+        "bits": 1,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          2,
+          1
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            0,
+            1
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "bit": 0,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 9,
+      "par": 5,
+      "solution": [
+        "D",
+        "R",
+        "R",
+        "X",
+        "D"
+      ],
+      "design_intent": "下层开关控制上层出口"
+    },
+    {
+      "id": "G04-L05",
+      "name": "互补走廊",
+      "variant": "B0",
+      "width": 3,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          "...",
+          "...",
+          "..."
+        ],
+        [
+          "...",
+          "...",
+          "###"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          1,
+          2
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          1
+        ],
+        "bits": 0,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          2,
+          1
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            0,
+            1
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            1,
+            2,
+            0
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            1,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            1,
+            1
+          ],
+          "bit": 0,
+          "value": 0
+        },
+        {
+          "at": [
+            0,
+            2,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 14,
+      "par": 9,
+      "solution": [
+        "L",
+        "U",
+        "R",
+        "R",
+        "X",
+        "U",
+        "D",
+        "L",
+        "L"
+      ],
+      "design_intent": "开下层通道后需在上层恢复相反位型"
+    },
+    {
+      "id": "G04-L06",
+      "name": "双井返回",
+      "variant": "B0",
+      "width": 3,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          "...",
+          ".#.",
+          "..."
+        ],
+        [
+          "...",
+          "###",
+          "###"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          2
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          0,
+          2,
+          2
+        ],
+        "bits": 1,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            1,
+            1,
+            0
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            2,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 12,
+      "par": 8,
+      "solution": [
+        "U",
+        "U",
+        "X",
+        "R",
+        "R",
+        "X",
+        "D",
+        "D"
+      ],
+      "design_intent": "上层开关要求经双升降井返回"
+    },
+    {
+      "id": "G04-L07",
+      "name": "回踩复位",
+      "variant": "B0",
+      "width": 3,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          "...",
+          ".#.",
+          "..."
+        ],
+        [
+          "###",
+          "###",
+          "..."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          2
+        ],
+        "bits": 0,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          2,
+          2
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            1,
+            0
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            1,
+            1,
+            2
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            2,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            0,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 11,
+      "par": 7,
+      "solution": [
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L"
+      ],
+      "design_intent": "两个同组开关相抵；位型目标为零仍需操作"
+    },
+    {
+      "id": "G04-L08",
+      "name": "两枚锁芯",
+      "variant": "B0",
+      "width": 4,
+      "height": 4,
+      "bit_count": 2,
+      "floors": [
+        [
+          "....",
+          "###.",
+          "....",
+          "####"
+        ],
+        [
+          "####",
+          "####",
+          "....",
+          "####"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          2
+        ],
+        "bits": 3,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          3,
+          2
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            1,
+            0
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            0,
+            2,
+            2
+          ],
+          "mask": 2
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            3,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            1,
+            2
+          ],
+          "bit": 1,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 17,
+      "par": 11,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "两组独立位与两扇独立门"
+    },
+    {
+      "id": "G04-L09",
+      "name": "一踏双响",
+      "variant": "B0",
+      "width": 4,
+      "height": 4,
+      "bit_count": 2,
+      "floors": [
+        [
+          "....",
+          "###.",
+          "....",
+          "####"
+        ],
+        [
+          "####",
+          "####",
+          "....",
+          "####"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          2
+        ],
+        "bits": 2,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          3,
+          2
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            1,
+            0
+          ],
+          "mask": 3
+        },
+        {
+          "at": [
+            0,
+            2,
+            2
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            3,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            1,
+            2
+          ],
+          "bit": 1,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 17,
+      "par": 11,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "掩码3同时翻转A和B，再单独复位A"
+    },
+    {
+      "id": "G04-L10",
+      "name": "安全落脚",
+      "variant": "B0",
+      "width": 4,
+      "height": 4,
+      "bit_count": 1,
+      "floors": [
+        [
+          "....",
+          ".#..",
+          "....",
+          "####"
+        ],
+        [
+          "####",
+          "####",
+          "....",
+          "####"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          2
+        ],
+        "bits": 1,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          3,
+          2
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            1,
+            0
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            0,
+            2,
+            1
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            2,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            1,
+            2
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            0,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 14,
+      "par": 9,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "门上开关关闭脚下会失败；安全绕行需要识别陷阱"
+    },
+    {
+      "id": "G04-L11",
+      "name": "反相渡口",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 1,
+      "floors": [
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ],
+        [
+          ".....",
+          ".####",
+          ".....",
+          "####.",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          4
+        ],
+        "bits": 0,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          2
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            2,
+            0
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            4,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            4,
+            3
+          ],
+          "bit": 0,
+          "value": 0
+        }
+      ],
+      "beacons": [],
+      "move_limit": 26,
+      "par": 17,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "跨层前后需要相反A位，长走廊规划"
+    },
+    {
+      "id": "G04-L12",
+      "name": "反向初值",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 2,
+      "floors": [
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ],
+        [
+          ".....",
+          ".####",
+          ".....",
+          "####.",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 3
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          4
+        ],
+        "bits": 1,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          2
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            2,
+            0
+          ],
+          "mask": 2
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            1,
+            1,
+            4
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            4,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            4,
+            3
+          ],
+          "bit": 1,
+          "value": 0
+        }
+      ],
+      "beacons": [],
+      "move_limit": 23,
+      "par": 15,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "R",
+        "L",
+        "L"
+      ],
+      "design_intent": "初始非零；第二次A翻转修复终局位型"
+    },
+    {
+      "id": "G04-L13",
+      "name": "断桥与旁路",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 2,
+      "floors": [
+        [
+          ".....",
+          ".###.",
+          ".....",
+          "####.",
+          "....."
+        ],
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          0,
+          0,
+          4
+        ],
+        "bits": 3,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            1,
+            2,
+            0
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            1,
+            2,
+            4
+          ],
+          "mask": 2
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            4,
+            3
+          ],
+          "bit": 1,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            0,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 39,
+      "par": 26,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L",
+        "D",
+        "D",
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "先从另一层取得B，再经不同升降台返回"
+    },
+    {
+      "id": "G04-L14",
+      "name": "位型不是颜色",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 3,
+      "floors": [
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ],
+        [
+          ".....",
+          ".####",
+          ".....",
+          "####.",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          4
+        ],
+        "bits": 5,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          2
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            2,
+            0
+          ],
+          "mask": 3
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 6
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            4,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            4,
+            3
+          ],
+          "bit": 2,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 26,
+      "par": 17,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "A+B与B+C组合得到A+C，不能按单色猜"
+    },
+    {
+      "id": "G04-L15",
+      "name": "目标下的门",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 3,
+      "floors": [
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ],
+        [
+          ".....",
+          ".####",
+          ".....",
+          "####.",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          4
+        ],
+        "bits": 7,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          2
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            2,
+            0
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            0,
+            3,
+            2
+          ],
+          "mask": 2
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 4
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            4,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            4,
+            3
+          ],
+          "bit": 1,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            0,
+            4
+          ],
+          "bit": 2,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 29,
+      "par": 19,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "三位累积且出口自身是门；抵达不是唯一胜利条件"
+    },
+    {
+      "id": "G04-L16",
+      "name": "提前复位的代价",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 2,
+      "floors": [
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ],
+        [
+          ".....",
+          ".####",
+          ".....",
+          "####.",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          4
+        ],
+        "bits": 2,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          2
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            2,
+            0
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            0,
+            3,
+            2
+          ],
+          "mask": 2
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            4,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            4,
+            3
+          ],
+          "bit": 0,
+          "value": 0
+        },
+        {
+          "at": [
+            1,
+            0,
+            4
+          ],
+          "bit": 1,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 29,
+      "par": 19,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "A只承担运输用途，终局必须复位，B保留"
+    },
+    {
+      "id": "G04-L17",
+      "name": "借道上层",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 3,
+      "floors": [
+        [
+          ".....",
+          ".###.",
+          ".....",
+          ".####",
+          "....."
+        ],
+        [
+          ".....",
+          "####.",
+          ".....",
+          "####.",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          0,
+          0,
+          4
+        ],
+        "bits": 6,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            1,
+            2,
+            0
+          ],
+          "mask": 3
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 5
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            0,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            0,
+            3
+          ],
+          "bit": 1,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            0,
+            4
+          ],
+          "bit": 2,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 33,
+      "par": 22,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "X",
+        "L",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "掩码3与5的结果6；下层直路初始被阻"
+    },
+    {
+      "id": "G04-L18",
+      "name": "上下互换",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 2,
+      "floors": [
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ],
+        [
+          ".....",
+          ".####",
+          ".....",
+          "####.",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          4
+        ],
+        "bits": 1
+      },
+      "victory": {
+        "position": [
+          1,
+          4,
+          0
+        ],
+        "bits": 2,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          0,
+          2
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            2,
+            2
+          ],
+          "mask": 3
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 1
+        },
+        {
+          "at": [
+            1,
+            0,
+            0
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            0,
+            3
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            0,
+            1
+          ],
+          "bit": 1,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            4,
+            0
+          ],
+          "bit": 0,
+          "value": 0
+        }
+      ],
+      "beacons": [],
+      "move_limit": 23,
+      "par": 15,
+      "solution": [
+        "U",
+        "U",
+        "R",
+        "R",
+        "L",
+        "L",
+        "X",
+        "U",
+        "U",
+        "R",
+        "L",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      "design_intent": "反向进入蛇形棋盘；终点层与位型共同约束"
+    },
+    {
+      "id": "G04-L19",
+      "name": "三组循环锁",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 3,
+      "floors": [
+        [
+          ".....",
+          ".###.",
+          ".....",
+          "####.",
+          "....."
+        ],
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          0,
+          0,
+          4
+        ],
+        "bits": 7,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            1,
+            2,
+            0
+          ],
+          "mask": 3
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 5
+        },
+        {
+          "at": [
+            1,
+            2,
+            4
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            0,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            4,
+            3
+          ],
+          "bit": 2,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            0,
+            4
+          ],
+          "bit": 1,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 39,
+      "par": 26,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L",
+        "D",
+        "D",
+        "R",
+        "R",
+        "R",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "两次联合翻转后补A，需检查所有目标位"
+    },
+    {
+      "id": "G04-L20",
+      "name": "折光总控",
+      "variant": "B0",
+      "width": 5,
+      "height": 5,
+      "bit_count": 3,
+      "floors": [
+        [
+          ".....",
+          ".###.",
+          ".....",
+          ".###.",
+          "....."
+        ],
+        [
+          ".....",
+          "####.",
+          ".....",
+          ".####",
+          "....."
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          0,
+          0,
+          4
+        ],
+        "bits": 7,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            1,
+            2,
+            0
+          ],
+          "mask": 3
+        },
+        {
+          "at": [
+            1,
+            2,
+            2
+          ],
+          "mask": 6
+        },
+        {
+          "at": [
+            1,
+            2,
+            4
+          ],
+          "mask": 2
+        },
+        {
+          "at": [
+            0,
+            2,
+            2
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            0,
+            1
+          ],
+          "bit": 0,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            0,
+            3
+          ],
+          "bit": 2,
+          "value": 1
+        },
+        {
+          "at": [
+            0,
+            0,
+            4
+          ],
+          "bit": 1,
+          "value": 1
+        },
+        {
+          "at": [
+            1,
+            4,
+            1
+          ],
+          "bit": 1,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 27,
+      "par": 18,
+      "solution": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "D",
+        "D",
+        "L",
+        "L",
+        "L",
+        "L",
+        "X",
+        "R",
+        "R",
+        "L",
+        "L",
+        "X",
+        "D",
+        "D"
+      ],
+      "design_intent": "直路和跨层多候选，组合掩码与终局复位综合题"
+    }
+  ],
+  "experiment_levels": [
+    {
+      "id": "G04-X1-A",
+      "name": "顺序双信标",
+      "variant": "X1",
+      "width": 3,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          "...",
+          "...",
+          "..."
+        ],
+        [
+          "###",
+          "...",
+          "###"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          1
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          1
+        ],
+        "bits": 0,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          2,
+          1
+        ]
+      ],
+      "switches": [],
+      "gates": [],
+      "beacons": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "move_limit": 14,
+      "par": 9,
+      "solution": [
+        "U",
+        "R",
+        "D",
+        "D",
+        "U",
+        "R",
+        "X",
+        "L",
+        "L"
+      ],
+      "design_intent": "相同位置输入在不同信标进度可能失败"
+    },
+    {
+      "id": "G04-X2-A",
+      "name": "一拍后生效",
+      "variant": "X2",
+      "width": 4,
+      "height": 3,
+      "bit_count": 1,
+      "floors": [
+        [
+          "....",
+          "....",
+          "####"
+        ],
+        [
+          "....",
+          "####",
+          "####"
+        ]
+      ],
+      "initial": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "bits": 0
+      },
+      "victory": {
+        "position": [
+          1,
+          0,
+          0
+        ],
+        "bits": 1,
+        "pending": 0,
+        "all_beacons": true
+      },
+      "lifts": [
+        [
+          3,
+          0
+        ]
+      ],
+      "switches": [
+        {
+          "at": [
+            0,
+            1,
+            0
+          ],
+          "mask": 1
+        }
+      ],
+      "gates": [
+        {
+          "at": [
+            0,
+            2,
+            0
+          ],
+          "bit": 0,
+          "value": 1
+        }
+      ],
+      "beacons": [],
+      "move_limit": 14,
+      "par": 9,
+      "solution": [
+        "R",
+        "D",
+        "R",
+        "U",
+        "R",
+        "X",
+        "L",
+        "L",
+        "L"
+      ],
+      "design_intent": "门在开关后一格；延迟版必须借旁路等待一次合法移动，不能用空等或无效输入推进"
+    }
+  ],
+  "contracts": {
+    "revision": "r2",
+    "events": "EVENT_CONTRACT.md",
+    "event_schema": "event-contract.schema.json",
+    "save": "SAVE_CONTRACT.md",
+    "save_schema": "save-envelope.schema.json",
+    "settings_authority": "SaveEnvelope.settings",
+    "save_canonicalization": "CJ1_UTF8_SHA256",
+    "event_publisher": "SessionController.dispatch",
+    "boot_owner_task": "G04-T07"
+  }
+}

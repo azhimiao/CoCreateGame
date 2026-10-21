@@ -1,0 +1,2 @@
+# Offline specification tools only; not a game dependency manifest.
+jsonschema==4.26.0

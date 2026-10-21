@@ -1,0 +1,80 @@
+{
+  "scope": "STATIC_GEOMETRY_AND_TEXT_BUDGET_NOT_RENDERED_UI",
+  "cases": [
+    {
+      "id": "small_portrait_safe_font13",
+      "viewport": [
+        320,
+        568
+      ],
+      "insets": [
+        8,
+        44,
+        8,
+        34
+      ],
+      "font_scale": 1.3,
+      "expected_mode": "portrait"
+    },
+    {
+      "id": "small_portrait_no_notch",
+      "viewport": [
+        320,
+        568
+      ],
+      "insets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font_scale": 1.0,
+      "expected_mode": "portrait"
+    },
+    {
+      "id": "small_landscape_safe_font13",
+      "viewport": [
+        568,
+        320
+      ],
+      "insets": [
+        44,
+        8,
+        34,
+        8
+      ],
+      "font_scale": 1.3,
+      "expected_mode": "landscape"
+    },
+    {
+      "id": "desktop",
+      "viewport": [
+        960,
+        600
+      ],
+      "insets": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font_scale": 1.3,
+      "expected_mode": "landscape"
+    },
+    {
+      "id": "standard_portrait",
+      "viewport": [
+        390,
+        844
+      ],
+      "insets": [
+        0,
+        44,
+        0,
+        34
+      ],
+      "font_scale": 1.3,
+      "expected_mode": "portrait"
+    }
+  ]
+}

@@ -1,0 +1,420 @@
+{
+  "captured_at": "2026-10-21T17:56:41+08:00",
+  "scope": "shared research only; G01/G02/G04 not reviewed",
+  "claims": 27,
+  "sources": 22,
+  "duplicate_claim_ids": [],
+  "duplicate_source_ids": [],
+  "claim_source_edges": [
+    {
+      "claim_id": "C01",
+      "source_id": "S01",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C02",
+      "source_id": "S01",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C03",
+      "source_id": "S03",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C04",
+      "source_id": "S19",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C05",
+      "source_id": "S20",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C06",
+      "source_id": "S21",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C07",
+      "source_id": "S22",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C08",
+      "source_id": "S22",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C09",
+      "source_id": "S06",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C10",
+      "source_id": "S07",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C11",
+      "source_id": "S08",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C12",
+      "source_id": "S16",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C13",
+      "source_id": "S23",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C14",
+      "source_id": "S24",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C15",
+      "source_id": "S10",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C16",
+      "source_id": "S11",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C17",
+      "source_id": "S25",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C18",
+      "source_id": "S26",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C19",
+      "source_id": "S27",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C20",
+      "source_id": "S28",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C21",
+      "source_id": "S28",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C22",
+      "source_id": "S29",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C23",
+      "source_id": "S13",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C24",
+      "source_id": "S13",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C25",
+      "source_id": "S14",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C26",
+      "source_id": "S14",
+      "registered": true,
+      "url_matches": true
+    },
+    {
+      "claim_id": "C27",
+      "source_id": "S30",
+      "registered": true,
+      "url_matches": true
+    }
+  ],
+  "author_access_log": {
+    "count": 22,
+    "http_200": 22,
+    "interpretation": "Author metadata; not independent semantic verification"
+  },
+  "benchmark_cards": [
+    {
+      "path": "research/benchmarks/P01.md",
+      "exists": false
+    },
+    {
+      "path": "research/benchmarks/P02.md",
+      "exists": false
+    },
+    {
+      "path": "research/benchmarks/P03.md",
+      "exists": false
+    },
+    {
+      "path": "research/benchmarks/P04.md",
+      "exists": false
+    },
+    {
+      "path": "research/benchmarks/P05.md",
+      "exists": false
+    },
+    {
+      "path": "research/benchmarks/P06.md",
+      "exists": false
+    }
+  ],
+  "advertised_preparation_validator_exists": true,
+  "session_operations": 23,
+  "session_operations_by_game": {
+    "level": 18,
+    "paint": 1,
+    "drive": 4
+  },
+  "session_interpretation": "Operations submitted and screenshots do not prove successful game input, victory, or a five-minute playthrough",
+  "playgama_formula_checks": [
+    {
+      "hypothetical_net_revenue_usd": 0,
+      "document_formula_usd": 0.0,
+      "official_piecewise_usd": 0.0,
+      "matches": true
+    },
+    {
+      "hypothetical_net_revenue_usd": 1000,
+      "document_formula_usd": 700.0,
+      "official_piecewise_usd": 700.0,
+      "matches": true
+    },
+    {
+      "hypothetical_net_revenue_usd": 1001,
+      "document_formula_usd": 700.8,
+      "official_piecewise_usd": 700.8,
+      "matches": true
+    },
+    {
+      "hypothetical_net_revenue_usd": 3000,
+      "document_formula_usd": 2300.0,
+      "official_piecewise_usd": 2300.0,
+      "matches": true
+    },
+    {
+      "hypothetical_net_revenue_usd": 3001,
+      "document_formula_usd": 2300.9,
+      "official_piecewise_usd": 2300.9,
+      "matches": true
+    },
+    {
+      "hypothetical_net_revenue_usd": 5000,
+      "document_formula_usd": 4100.0,
+      "official_piecewise_usd": 4100.0,
+      "matches": true
+    }
+  ],
+  "formula_interpretation": "Arithmetic against the independently read public FAQ only; hypothetical N, no measured income",
+  "files": [
+    {
+      "path": "MASTER_HANDOFF.md",
+      "exists": true,
+      "bytes": 39069,
+      "sha256": "b7c3b27092364d2dcb62603b49765aa1683dd03807fc38d4ef0c221bdf343bed"
+    },
+    {
+      "path": "AGENTS.md",
+      "exists": true,
+      "bytes": 2414,
+      "sha256": "2728f2fa8cf1fd4eae541f8a6a7fff0cdf7454346e49a94a822dcf64fca3c62a"
+    },
+    {
+      "path": "prompts/PROMPT_03_对抗审计与淘汰.md",
+      "exists": true,
+      "bytes": 1605,
+      "sha256": "f5eef27bde3cfcb57094206f3af3f924ccdd22205f41e88d3248e8afce76a038"
+    },
+    {
+      "path": "discrepancies.md",
+      "exists": true,
+      "bytes": 3056,
+      "sha256": "072869b64e55e959c197898092e9f0f1d62e43df8c06643020e9463d6451b83a"
+    },
+    {
+      "path": "STATUS.md",
+      "exists": true,
+      "bytes": 1279,
+      "sha256": "983e406dadabbc33a81710a02e1c30acae1abea4a089ed6621d2647184859f9d"
+    },
+    {
+      "path": "requirements-research.txt",
+      "exists": true,
+      "bytes": 38,
+      "sha256": "0865dbdf381e173b65df327c0975f1eb71b82e941413dc60e1800c16b4619ecc"
+    },
+    {
+      "path": "research/official-sources.json",
+      "exists": true,
+      "bytes": 8063,
+      "sha256": "57dc56473e2ed68fb876052a617ff8cbc56b0cfffafc5d11d0b32e476ce7fc6d"
+    },
+    {
+      "path": "research/claims.json",
+      "exists": true,
+      "bytes": 18259,
+      "sha256": "416741a456e2fbec986f9b281c5a1179c19a7ebc798c4288a2b7ab9db414dc55"
+    },
+    {
+      "path": "research/source-access-log.json",
+      "exists": true,
+      "bytes": 17716,
+      "sha256": "1202c1b0ce3d86e7970234a6905423b54a148f063543699630aba03ee82cdf77"
+    },
+    {
+      "path": "research/channel-profiles.json",
+      "exists": true,
+      "bytes": 5411,
+      "sha256": "df87de0217d6b99b7abb61626ad5c31a7a5014bb54bc7305a64b3eabf3016535"
+    },
+    {
+      "path": "research/methodology.md",
+      "exists": true,
+      "bytes": 3209,
+      "sha256": "745ecd3b6721af9fc9adb9311f6e3d50d03bcc5387d43c37c5e775a2bfa2bdc9"
+    },
+    {
+      "path": "research/contracts-and-rights.md",
+      "exists": true,
+      "bytes": 3611,
+      "sha256": "8852f98631a7f85127fb59e304c819ecb50ad561d8409239a624fb065cd3f276"
+    },
+    {
+      "path": "research/business-model.md",
+      "exists": true,
+      "bytes": 3108,
+      "sha256": "4a4b229081d4979e2f54ab18565876b26a72e898513cd9e946b756550e2db3b7"
+    },
+    {
+      "path": "tools/recheck_sources.py",
+      "exists": true,
+      "bytes": 2421,
+      "sha256": "faa1f55e8cdf56027a277b77d376a242e67ad75c6467f05ba6f35a7870d1009a"
+    },
+    {
+      "path": "research/benchmarks/evidence/browser-session.json",
+      "exists": true,
+      "bytes": 148159,
+      "sha256": "50684ec6303dc43962300bae19efff5e842e00c1ef8cd8367003bcc4676f7975"
+    },
+    {
+      "path": "research/platforms/P01.md",
+      "exists": true,
+      "bytes": 1705,
+      "sha256": "6ce4e3709e98c9e632f652caa71ff930f2ad26e449943baa2f119c9bcb543443"
+    },
+    {
+      "path": "research/platforms/P02.md",
+      "exists": true,
+      "bytes": 2511,
+      "sha256": "26bdcf61265efdac33042a881d60a442976c883e13554cd5163986b1566b093e"
+    },
+    {
+      "path": "research/platforms/P03.md",
+      "exists": true,
+      "bytes": 2796,
+      "sha256": "a720bafe33a275f30b50091f1726a4dc073bf7875fee5ca0aae49bb8f9ae02ea"
+    },
+    {
+      "path": "research/platforms/P04.md",
+      "exists": true,
+      "bytes": 3112,
+      "sha256": "d079f1027c7449d8ca36f32ef63ecb206d8c56ee892948575cb83caaa896c18f"
+    },
+    {
+      "path": "research/platforms/P05.md",
+      "exists": true,
+      "bytes": 1830,
+      "sha256": "68a621386b80fdd8d20b9d14f1aae58738f5c3cff734b07025bdbf504724641e"
+    },
+    {
+      "path": "research/platforms/P06.md",
+      "exists": true,
+      "bytes": 1950,
+      "sha256": "73a8b66c2ea965aab30bfc2e4d2d339af278070584ec3b907c24e2c97239972a"
+    },
+    {
+      "path": "research/benchmarks/evidence/screenshots/p01-paint-master-loaded.png",
+      "exists": true,
+      "bytes": 63339,
+      "sha256": "a03e3907d33e60246bf125b6525fcfae9933ac4196759c9fe33de297dccd7bb1",
+      "copied": false
+    },
+    {
+      "path": "research/benchmarks/evidence/screenshots/p03-drive-mad-forward-2s.png",
+      "exists": true,
+      "bytes": 784063,
+      "sha256": "275cd5ecf804dba0975ee35cab0fc562fd7d467f0c8deab5b46275a45de9ae0a",
+      "copied": false
+    },
+    {
+      "path": "research/benchmarks/evidence/screenshots/p03-level-devil-stage-start.png",
+      "exists": true,
+      "bytes": 729467,
+      "sha256": "6cd8ca8ab57ca2c128c0124c5445d1bea0e959e5ad6a97ba7be46ae7435e2043",
+      "copied": false
+    },
+    {
+      "path": "research/benchmarks/evidence/screenshots/p03-level-devil-enter-pits.png",
+      "exists": true,
+      "bytes": 729481,
+      "sha256": "738fc022e1e11f518610de912560c2e29ddbe84e852129d66cd2db2ab545502b",
+      "copied": false
+    },
+    {
+      "path": "research/benchmarks/evidence/screenshots/p03-level-devil-after-move.png",
+      "exists": true,
+      "bytes": 733360,
+      "sha256": "cce491e1e38476e02fea331cdda6c7624c66b65267f450279324d6f93eb0c046",
+      "copied": false
+    },
+    {
+      "path": "research/benchmarks/evidence/screenshots/p03-level-devil-pits-right.png",
+      "exists": true,
+      "bytes": 733511,
+      "sha256": "076197fdd4f552fa15ef36104d670b837327b33374b634632a9e97d448c5337e",
+      "copied": false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "accessed_at": "2026-10-21",
+  "checked_at_utc": "2026-10-21T10:46:10Z",
+  "verified_absolute_runtime_path": "F:\\CoCreateGame\\research\\playthroughs\\G01\\runtime",
+  "browser_contexts_normally_closed": 2,
+  "script_exit_codes": [0, 0],
+  "matching_browser_or_script_processes_remaining": 0,
+  "runtime_removed": false,
+  "runtime_status": "RETAINED_LOCAL_ONLY_EXCLUDED_FROM_DELIVERY",
+  "required_delivery_exclusions": ["runtime/", "runtime/**"],
+  "cookies_exported": false,
+  "recursive_packaging_allowed": false,
+  "packaging_instruction": "Package only the files named by delivery_manifest.json plus the manifest itself. Do not include runtime profile/cache/tmp."
+}

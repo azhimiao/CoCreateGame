@@ -1,0 +1,47 @@
+{
+  "assessment_type": "POST_SESSION_VISUAL_AND_LOG_REVIEW",
+  "access_date": "2026-10-21",
+  "overall_status": "BLOCKED_CORE_BEHAVIOR",
+  "scope_status": "BOUNDED_ATTEMPT_COMPLETED",
+  "game_results": [
+    {
+      "game": "goodsort",
+      "status": "BLOCKED",
+      "entry_ui_response": "OBSERVED",
+      "board_loaded": "NOT_CONFIRMED",
+      "confirmed_effective_core_inputs": 0,
+      "legal_placement": "NOT_OBSERVED",
+      "illegal_placement": "NOT_OBSERVED",
+      "match": "NOT_OBSERVED",
+      "full_compartment": "NOT_OBSERVED",
+      "win_loss_retry": "NOT_OBSERVED",
+      "reason": "Reached host preroll/loading overlay; later screenshots timed out. No board confirmed."
+    },
+    {
+      "game": "screwout",
+      "status": "PARTIAL_ENTRY_ONLY_CORE_BLOCKED",
+      "entry_ui_response": "OBSERVED_ONLY_ESSENTIAL_CLICK",
+      "board_loaded": "OBSERVED_LEVEL1_AT_10:47:55.422Z",
+      "board_evidence": "screenshots/2026-10-21T10-44-40-833Z-screwout-008-last-budget-check.png",
+      "confirmed_effective_core_inputs": 0,
+      "legal_removal": "NOT_OBSERVED",
+      "illegal_removal": "NOT_OBSERVED",
+      "color_match": "NOT_OBSERVED",
+      "full_buffer_boundary": "UNKNOWN",
+      "win_loss_retry": "NOT_OBSERVED",
+      "reason": "First confirmed board screenshot at total462.695s; during visual review the480s deadline closed the browser. Follow-up click batch was not dispatched and has no input_start log; no action effect is claimed."
+    }
+  ],
+  "timing": {
+    "first_navigation_at": "2026-10-21T10:40:12.727Z",
+    "attempt_cap_at": "2026-10-21T10:48:12.733Z",
+    "runtime_cleaned_at": "2026-10-21T10:48:12.927Z",
+    "wall_clock_to_cap_ms": 480006,
+    "continuous_first30s": false,
+    "continuous_first5min": false,
+    "confirmed_core_gameplay_seconds": 0,
+    "note": "All loading, diagnostics, browser restart and visual-review gaps included in total budget; zero does not establish that game input is impossible."
+  },
+  "next_research_gap": "A separate authorized session must obtain actual accepted/rejected core operations, matching, full-buffer loss boundary and game retry. This session supplies entry/loading evidence only.",
+  "limits": ["No game state injected", "No control bypass", "No game code or extracted assets archived", "No registration, payment, installation or external contact", "Browser was closed normally and task-local runtime removed"]
+}

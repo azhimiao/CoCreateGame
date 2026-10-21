@@ -1,0 +1,261 @@
+{
+  "scope": "INDEPENDENT_REVIEW_NOT_ENGINE_BUILD",
+  "independent_levels": [
+    {
+      "id": "L01",
+      "shortest": 2,
+      "reachable": 9,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L02",
+      "shortest": 5,
+      "reachable": 39,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L03",
+      "shortest": 7,
+      "reachable": 346,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L04",
+      "shortest": 5,
+      "reachable": 51,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L05",
+      "shortest": 11,
+      "reachable": 3935,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L06",
+      "shortest": 6,
+      "reachable": 132,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L07",
+      "shortest": 7,
+      "reachable": 498,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L08",
+      "shortest": 10,
+      "reachable": 6115,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L09",
+      "shortest": 7,
+      "reachable": 615,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L10",
+      "shortest": 6,
+      "reachable": 177,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L11",
+      "shortest": 5,
+      "reachable": 24,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L12",
+      "shortest": 7,
+      "reachable": 630,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L13",
+      "shortest": 5,
+      "reachable": 49,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L14",
+      "shortest": 11,
+      "reachable": 1373,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L15",
+      "shortest": 9,
+      "reachable": 9333,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L16",
+      "shortest": 6,
+      "reachable": 45,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L17",
+      "shortest": 7,
+      "reachable": 689,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L18",
+      "shortest": 6,
+      "reachable": 236,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L19",
+      "shortest": 10,
+      "reachable": 328,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    },
+    {
+      "id": "L20",
+      "shortest": 12,
+      "reachable": 1859,
+      "immediate_deadlocks": 0,
+      "no_path_to_win_states": 0
+    }
+  ],
+  "total_reachable": 26483,
+  "no_path_to_win": 0,
+  "author_vectors": 31,
+  "same_top_mutation": {
+    "result": "REJECTED_AS_EXPECTED",
+    "failed_vector": "same_top_spare_capacity_rejected",
+    "historical_baseline": "Old version let 24 vectors pass; now expectation is rejection."
+  },
+  "directed_retry_statuses": [
+    "ANIMATING",
+    "PAUSE",
+    "WIN",
+    "PLAY"
+  ],
+  "cached_rejection_retested": true,
+  "restore_new_epoch_old_retry_rejected": true,
+  "independent_layout": [
+    {
+      "case": "small_portrait_safe_font13",
+      "mode": "portrait",
+      "safe": [
+        304,
+        490
+      ],
+      "min_card_width": 96.0,
+      "status": "PASS"
+    },
+    {
+      "case": "small_portrait_no_notch",
+      "mode": "portrait",
+      "safe": [
+        320,
+        568
+      ],
+      "min_card_width": 101.33333333333333,
+      "status": "PASS"
+    },
+    {
+      "case": "small_landscape_safe_font13",
+      "mode": "landscape",
+      "safe": [
+        490,
+        304
+      ],
+      "min_card_width": 77.0,
+      "status": "PASS"
+    },
+    {
+      "case": "desktop",
+      "mode": "landscape",
+      "safe": [
+        960,
+        600
+      ],
+      "min_card_width": 155.33333333333334,
+      "status": "PASS"
+    },
+    {
+      "case": "standard_portrait",
+      "mode": "portrait",
+      "safe": [
+        390,
+        766
+      ],
+      "min_card_width": 124.66666666666667,
+      "status": "PASS"
+    }
+  ],
+  "zip_members": 37,
+  "manifest_payloads": 36,
+  "zip_sha256": "9b541c8b76bae1030fb7fa81ae65afe782662e3bc10b98f21313d9df6a8c3241",
+  "research_core_inputs": 0,
+  "research_screenshots_hashed": 13,
+  "source_sha256": {
+    "00_Project_Charter.md": "9eee6998c62fef317e13496efb868ebe83e55c06114bbc4861eb52e0c4caf022",
+    "01_Market_Evidence.md": "f9fc0ab70826b7c4cc0b8516c2d4c0a65a9544dfbe12c397daf073dde80ecc59",
+    "02_Benchmark_Playthrough.md": "8f350e19880793eabd9ac4f39531b28215f1661ac4e5c33bff43044c451c6056",
+    "03_Full_GDD.md": "1ac0ca88690e79ced038e38c9158ede601f0071927e961bd830b665d3680341d",
+    "04_Systems_and_Data.md": "943d9b1d64b6297396cbc85b45c448ce84775eb27d8c6f911a7a1dc46b392ed5",
+    "05_Levels_Economy.md": "5106ee8b8b7a305b55229a21d78ebcfa700e89a4dfc09c028b8ec52fd042a412",
+    "06_UI_Art_Audio.md": "1e0b0ccd0bc5cf4a4f9ed8cf23bd2269cd0722d3692f2a2cae38a5abc29de1f6",
+    "07_Tech_Architecture.md": "1baf1e1cdb1bc9ceaf14a9e32f83c45ca41608d3a38eecdaced1b8235ef35e67",
+    "08_OpenSource_Licenses.md": "79a521a7a751dccce4ff2e526edf57183646d02e47e6c4ad7c4f5084e208c13b",
+    "09_Implementation_Plan.md": "677ba1378e733bcd98670140c801cadcdefdf3a9146506f9bbff1564401a57d7",
+    "10_QA_Test_Plan.md": "99be705b984f7bb39d2a5cfa9809c3e361d81ffecd9e52d135a9b4f4dcdb6a7a",
+    "11_Distribution_Business.md": "034c2c99feada34c828f365bb35be00bce15508e373bd03e6504a0a5ef712224",
+    "12_Falsifiability.md": "14452fe2aaec29a74564be522d4905af250ab5948f54996adb2a07387e362712",
+    "G02_Preparation_2026-10-21.zip": "9b541c8b76bae1030fb7fa81ae65afe782662e3bc10b98f21313d9df6a8c3241",
+    "game-spec.json": "c9acded2840cc970a2fdfb3fba27ec4db9f94c7ccf0d5f86fffcea6af21d0516",
+    "game-spec.schema.json": "b9c88e20252c5623504763345b92f3efeafadecf1c3020bbe832dc0ad5a72d19",
+    "HANDOFF_STATE.md": "276b1997fc8d16a7a03997d7c2ae3f5425595ebc3fb3f78173e95f120a139839",
+    "INDEPENDENT_AUDIT_REQUEST.md": "13a235eb1173a272084aca8ca6c9a6ba1067b1743b9a991f1e5b06deff797e7a",
+    "layout-cases.json": "b2018c19bd301599b7d9d8c9679e3fe6f89783f316a52a915bbb2708d788987c",
+    "package-manifest.json": "e184a40a395c6bd81e660a88433cff39b95622e6b6a486219dcf32f8fd05fc36",
+    "protocol-vectors.json": "fbaebb961eb76fee9bd4e664df0e4248d98a1172fdb1c99850b4979ce2870282",
+    "README.md": "ce890fd86ce8d65f541129ff6c6ae3fa45506507e3a382c1af957676f4351622",
+    "requirements-preparation.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+    "revision-index.json": "172c4763367e0d17eb299c15f714a5b5faf3ae65573a64129d5eb6915e04c12d",
+    "REVISIONS.md": "2b5bd9fa710eea8eb66a646c9352f3fcbec9df8013938e0d4c197271291963b0",
+    "SELF_REVIEW.md": "07c1c451aadef56b13dc71234f4302d5595c7ed5db7d7e415cbb11dd1c9a65cb",
+    "STATUS.md": "be9a3ced8ec3609bb1b7d63c21cf624de14f5d323de32c55784749c14b930169",
+    "tasks.json": "7dede4c4375b0c063f6c85ea2525990197b5516218810bc9bea09509fb26209c",
+    "tasks.schema.json": "f7c28d0e8dcb2a9532cd716d4c8bf684181f8234b73cf2d80d59661e21b3f269",
+    "audit/independent-review-receipt.md": "506ac8eb015483f236b4c0dcf44122567833f104c946c8ac59b2ca6f7b5cfb7a",
+    "evidence/team-browser-observation-index.json": "016d8b7bdf2271e7544fe546a093cefe95b8c6b9418352b3eea36a1520ff39cc",
+    "tools/author_contracts.py": "309ebd73deeb27ac733376da007c713f1b9c7db77dc10c76f8c4518696ee8962",
+    "tools/author_data.py": "c59bd6b2d323416b06503ec3b44e13952216f86e37863ce3cfdcf4d88369413d",
+    "tools/check_contracts.py": "4f69099b83a2f60b5f6ef9b8ef1fbd30b49b97ff6c1c9469b17093b327b95bb2",
+    "tools/package_delivery.py": "f3e7d757ed31474ad6f4493b6a53891f10e72fcda054ca168b4ee914f3fd21a6",
+    "tools/render_levels.py": "aed4fada82e10f2d8631ec687529919ece3cf2b56d5bb10452ed687b921d6965",
+    "tools/verify.py": "6d4fc587800aed08432ee7de8dd3d96fdade0d6566e3f707bceac30762b164f6",
+    "verification/package-check.json": "fde2b40fc013a7931a75c4055eb952dd91d8dab7e3408ae30d1dd8ee9eefc27b",
+    "verification/verification-report.json": "5ac631af446ddf63a6531962f3ff53d7d4704ad5531d55d5cc15216a15a6ca7b"
+  },
+  "engine_build_executed": false,
+  "result": "PASS"
+}

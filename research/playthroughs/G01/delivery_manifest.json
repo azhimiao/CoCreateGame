@@ -1,0 +1,161 @@
+{
+  "accessed_at": "2026-10-21",
+  "root": "F:\\CoCreateGame\\research\\playthroughs\\G01",
+  "packaging_rule": "Include only listed files plus delivery_manifest.json itself; do not recursively package G01.",
+  "excluded_paths": [
+    "runtime/",
+    "runtime/**"
+  ],
+  "files": [
+    {
+      "path": "observation.md",
+      "bytes": 9717,
+      "sha256": "5e1d2894834839241b36fa194e7d6303cfa3af3d4174494bc40ec508867dc87f"
+    },
+    {
+      "path": "operations.jsonl",
+      "bytes": 264580,
+      "sha256": "4fc80fcfc018b331c2d9d801055b3213b2294cd05d330ee9ef9b597a85101575"
+    },
+    {
+      "path": "browser-observe.cjs",
+      "bytes": 5477,
+      "sha256": "f1fa87ca912833f434c7efbd557ed96f967cded4c123c0adaf47dce4ade5479c"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 2152,
+      "sha256": "b13c6d4dfd20ab3c0f579b0a2c1fec92b217d9313c95911d32f77b7e051331c9"
+    },
+    {
+      "path": "cleanup.json",
+      "bytes": 677,
+      "sha256": "ece7528c1ea34ffa96d209f8840fe87fa7a5a7ba79533ecc074431182e86ab46"
+    },
+    {
+      "path": "finalize_evidence.py",
+      "bytes": 4630,
+      "sha256": "bd2e70c67dc9e863cea440a5d90cfce28c09d6ad989b60c1c44c481eb70f63d8"
+    },
+    {
+      "path": "screenshot_hashes.json",
+      "bytes": 5729,
+      "sha256": "6d15c4e6b3a95c7c23ea97af8cf5dcc79bf2aaae333dad61822b48ed2c44b4d7"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 1129,
+      "sha256": "bc955fd472cf4f688259b8a896d2f527bc704ea29d0412d812aee5edd515e0a4"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 365,
+      "sha256": "f5ebff2b44e85ec39ebbb6f2150584378ece7e8debb6cb362a2ce25080bb1f0d"
+    },
+    {
+      "path": "screenshots/01-playgama-loaded.png",
+      "bytes": 597848,
+      "sha256": "2202be6da2c5d567f90b6cc00f9a18cd6aebc38bd4bc02ef39ab306f57eb8085"
+    },
+    {
+      "path": "screenshots/02-playgama-play-click.png",
+      "bytes": 15638,
+      "sha256": "4f55d8d3824e1ea2b39a6e489359c4a01e96e1063d3b68505efed9f2270dc76d"
+    },
+    {
+      "path": "screenshots/03-playgama-current.png",
+      "bytes": 502567,
+      "sha256": "359e8acbc60b052b81a8693d698b1208ef57d69ad2ee09b1794bba564f6c669f"
+    },
+    {
+      "path": "screenshots/04-tutorial-arrow-click.png",
+      "bytes": 501179,
+      "sha256": "4acefff64a41898d39082db4b170792c99c3f41938f606affda74c0039e6ba4b"
+    },
+    {
+      "path": "screenshots/05-continue-without-login.png",
+      "bytes": 458025,
+      "sha256": "063006aae11602da7d13d33fb2dea2cd29f0d03bcbf6b1f1e249fe7566b95541"
+    },
+    {
+      "path": "screenshots/06-tutorial-release-retry.png",
+      "bytes": 457437,
+      "sha256": "3d9133418e3a54ca154346a21c4dfa4c64ce49d8c1d5a7680376053d36d3bfc7"
+    },
+    {
+      "path": "screenshots/07-tutorial-left-arrow.png",
+      "bytes": 381068,
+      "sha256": "d69aff47a68ecde09644b23484b8864e1a879605579ceba596b2e9bb45f3b5dc"
+    },
+    {
+      "path": "screenshots/08-tutorial-short-pointer-drag.png",
+      "bytes": 663466,
+      "sha256": "151c7cbb09f4744367a9142b8a12f179f802339f9eecec5cf964bdc21b0a5a9e"
+    },
+    {
+      "path": "screenshots/09-tutorial-tip-drag.png",
+      "bytes": 678483,
+      "sha256": "01564f67cca00ee20d474c0c2202d55e2170379e27578c10a1d9c31a65f8eae7"
+    },
+    {
+      "path": "screenshots/10-tutorial-up-tip-drag.png",
+      "bytes": 674019,
+      "sha256": "fc2d601aadf8ce19f007a7c092f47b9931c8edd93e3f2f8afa9f188f6fb212a8"
+    },
+    {
+      "path": "screenshots/11-resumed-page.png",
+      "bytes": 477116,
+      "sha256": "f56aec70284479b3bd6ab8bf1ffa04d70694b9df02285f645adfaec6a88fc5b7"
+    },
+    {
+      "path": "screenshots/12-resumed-after-play.png",
+      "bytes": 44323,
+      "sha256": "bb896c1a6fe91e9195ecba3db98f8a818ab7c08f50f05b15939c487370cfd908"
+    },
+    {
+      "path": "screenshots/13-resumed-tutorial.png",
+      "bytes": 152574,
+      "sha256": "16d22764888ec859b720929726617fee348b36e5c47a0be535d910dec68393c0"
+    },
+    {
+      "path": "screenshots/14-held-tutorial-click.png",
+      "bytes": 152595,
+      "sha256": "7861e88e09154689d572c1e505e8dc5e634053d720c51dfe63cb50987d5e13e3"
+    },
+    {
+      "path": "screenshots/15-close-ad-button.png",
+      "bytes": 590148,
+      "sha256": "c5ef8b3ab7c0a680d3a984e6563b7703454012d3d07686b5e483aebe476a9cb8"
+    },
+    {
+      "path": "screenshots/16-resume-without-login.png",
+      "bytes": 587785,
+      "sha256": "001246e89d7e5e14e7f706dd66e4876d642f796405ea68a49bf7907a3964c955"
+    },
+    {
+      "path": "screenshots/17-held-game-arrow.png",
+      "bytes": 583175,
+      "sha256": "9894eb552fb3fb9be517830f0e3444a05f51e23d6debe28522fdfaad13c4bd29"
+    },
+    {
+      "path": "screenshots/18-tap-instruction-strip.png",
+      "bytes": 584380,
+      "sha256": "bb4f9b507bc5fc04fadca75fdef760701bc5b37d21f6065522f91030bb7b13b2"
+    },
+    {
+      "path": "screenshots/19-fullscreen-ui.png",
+      "bytes": 671346,
+      "sha256": "96e1a1731635cee974feb8cd57d0cf6a39dab88644896d19dd595f47bd758710"
+    },
+    {
+      "path": "screenshots/20-inline-arrow-click.png",
+      "bytes": 723793,
+      "sha256": "e2a2429b493ed2bb6de9030e90ad7f1b530db82566000e7b53d8dbc27520f460"
+    },
+    {
+      "path": "screenshots/21-crazygames-url-result.png",
+      "bytes": 43272,
+      "sha256": "a62ec0880d7c43d7dffee2fb1dccfada31e7697bfa61d001bfd058248e699f5a"
+    }
+  ]
+}

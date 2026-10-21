@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "validated_at_utc": "2026-10-21T10:49:18.636619+00:00",
+  "jsonl_lines": 26,
+  "screenshot_hashes_verified": 21,
+  "missing_references": [],
+  "attempt_span_below_480_seconds": true,
+  "normal_context_closes_verified": 2,
+  "asserted_observation_limits": "PARTIAL_TUTORIAL_VISIBLE_INPUT_UNCONFIRMED",
+  "runtime_excluded": true
+}

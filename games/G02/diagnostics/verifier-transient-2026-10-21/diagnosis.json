@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-21",
+  "scope": "BOUNDED_DIAGNOSIS_NOT_A_NEW_DELIVERY_OR_GAME_TEST",
+  "incident_record": "F:\\CoCreateGame\\validation\\G02-transient-failure.json",
+  "incident_record_sha256": "615340685a1adf3038c326c3fe2f17952c467aa1bb448322124822f6d9e9b0ca",
+  "python_executable": "F:\\clawtry\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+  "python_version": "3.11.15 (main, Jul 23 2026, 14:42:43) [MSC v.1944 64 bit (AMD64)]",
+  "python_executable_sha256": "0b29a9cccaa329af9248d749487c56a18226a737c0fce1976fc67cfcd50d5439",
+  "jsonschema": "4.26.0",
+  "subprocess_environment_change": {
+    "PYTHONUTF8": "1"
+  },
+  "fresh_processes": 5,
+  "runs": [
+    {
+      "run": 1,
+      "started_utc": "2026-10-21T11:25:37.394313+00:00",
+      "ended_utc": "2026-10-21T11:25:41.922987+00:00",
+      "exit_code": 0,
+      "overall_status": "PASS",
+      "elapsed_seconds": 4.528674,
+      "source_files_match_frozen_manifest": true,
+      "error": null,
+      "stdout": "run-1.stdout.log",
+      "stderr": "run-1.stderr.log"
+    },
+    {
+      "run": 2,
+      "started_utc": "2026-10-21T11:25:41.971504+00:00",
+      "ended_utc": "2026-10-21T11:25:46.443034+00:00",
+      "exit_code": 0,
+      "overall_status": "PASS",
+      "elapsed_seconds": 4.47153,
+      "source_files_match_frozen_manifest": true,
+      "error": null,
+      "stdout": "run-2.stdout.log",
+      "stderr": "run-2.stderr.log"
+    },
+    {
+      "run": 3,
+      "started_utc": "2026-10-21T11:25:46.481248+00:00",
+      "ended_utc": "2026-10-21T11:25:50.982526+00:00",
+      "exit_code": 0,
+      "overall_status": "PASS",
+      "elapsed_seconds": 4.501278,
+      "source_files_match_frozen_manifest": true,
+      "error": null,
+      "stdout": "run-3.stdout.log",
+      "stderr": "run-3.stderr.log"
+    },
+    {
+      "run": 4,
+      "started_utc": "2026-10-21T11:25:51.030673+00:00",
+      "ended_utc": "2026-10-21T11:25:55.493560+00:00",
+      "exit_code": 0,
+      "overall_status": "PASS",
+      "elapsed_seconds": 4.462887,
+      "source_files_match_frozen_manifest": true,
+      "error": null,
+      "stdout": "run-4.stdout.log",
+      "stderr": "run-4.stderr.log"
+    },
+    {
+      "run": 5,
+      "started_utc": "2026-10-21T11:25:55.544227+00:00",
+      "ended_utc": "2026-10-21T11:26:00.120548+00:00",
+      "exit_code": 0,
+      "overall_status": "PASS",
+      "elapsed_seconds": 4.576321,
+      "source_files_match_frozen_manifest": true,
+      "error": null,
+      "stdout": "run-5.stdout.log",
+      "stderr": "run-5.stderr.log"
+    }
+  ],
+  "namespace_probe_exit": 0,
+  "namespace_probe_unchanged": true,
+  "frozen_files_checked": 39,
+  "all_frozen_hashes_unchanged": true,
+  "archive_sha256": "9b541c8b76bae1030fb7fa81ae65afe782662e3bc10b98f21313d9df6a8c3241",
+  "cause": "UNKNOWN",
+  "conclusion": "NOT_REPRODUCED_IN_5_ISOLATED_RUNS",
+  "source_observation": "Reported failure in ablation solve occurs before rule_vectors() and its exec mutation probe in verify() evaluation order. No attribution to interpreter/environment is established.",
+  "changes_to_frozen_source": false,
+  "repackaged": false,
+  "limitation": "No locals/core dump preserved from the original transient failure; repeated PASS does not determine its cause or prove impossibility."
+}

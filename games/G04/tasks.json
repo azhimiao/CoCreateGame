@@ -1,0 +1,652 @@
+{
+  "$schema": "./tasks.schema.json",
+  "project_id": "G04",
+  "spec_version": "1.0.0",
+  "execution_policy": "PREPARATION_ONLY_UNTIL_HUMAN_APPROVAL",
+  "tasks": [
+    {
+      "id": "G04-T00",
+      "name": "独立盲审与规则复述",
+      "depends_on": [],
+      "owner_role": "Independent reviewer",
+      "status": "PLANNED",
+      "gate": "PREPARATION_REVIEW_ONLY",
+      "inputs": [
+        "00—12",
+        "game-spec.json",
+        "qa-vectors.json",
+        "EVENT_CONTRACT.md",
+        "SAVE_CONTRACT.md",
+        "save-envelope.schema.json",
+        "event-contract.schema.json",
+        "save-fixtures.json",
+        "session-contract-vectors.json",
+        "STATUS.md"
+      ],
+      "outputs": [
+        "../../reviews/G04-audit.md",
+        "../../reviews/G04-audit.json"
+      ],
+      "write_scope": [
+        "../../reviews/G04-audit.md",
+        "../../reviews/G04-audit.json"
+      ],
+      "definition_of_done": [
+        "只读施工档案，复述操作/次序/失败/撤销/实验；逐条严重度",
+        "所有BLOCKER明确关闭或维持阻断，不能由作者冒签"
+      ],
+      "validation_commands": [
+        "python -B validate_spec.py"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T01",
+      "name": "人类选品与施工批准",
+      "depends_on": [
+        "G04-T00"
+      ],
+      "owner_role": "Human decision",
+      "status": "PLANNED",
+      "gate": "HUMAN_DECISION_REQUIRED",
+      "inputs": [
+        "../../reviews/G04-audit.md",
+        "../../reviews/G04-audit.json"
+      ],
+      "outputs": [
+        "review/build-approval.md"
+      ],
+      "write_scope": [
+        "review/build-approval.md"
+      ],
+      "definition_of_done": [
+        "明确批准G04和规格版本/哈希；若未批准停止开发"
+      ],
+      "validation_commands": [
+        "人工核对批准文字与规格哈希"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T02",
+      "name": "固定编辑器与干净构建探针",
+      "depends_on": [
+        "G04-T01"
+      ],
+      "owner_role": "Build engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "07_Tech_Architecture.md"
+      ],
+      "outputs": [
+        "implementation/project-settings/",
+        "implementation/package.json",
+        "implementation/package-lock.json",
+        "implementation/tsconfig.json",
+        "implementation/build-evidence/",
+        "implementation/assets/scenes/BuildProbe.scene",
+        "implementation/assets/scenes/BuildProbe.scene.meta"
+      ],
+      "write_scope": [
+        "implementation/project-settings/",
+        "implementation/package.json",
+        "implementation/package-lock.json",
+        "implementation/tsconfig.json",
+        "implementation/build-evidence/",
+        "implementation/assets/scenes/BuildProbe.scene",
+        "implementation/assets/scenes/BuildProbe.scene.meta"
+      ],
+      "definition_of_done": [
+        "Cocos3.8.7实际安装路径/版本/包哈希，TS语义限制记录",
+        "空2D web-mobile构建与浏览器打开，记录包体/文件数；不宣称产品性能"
+      ],
+      "validation_commands": [
+        "实际编辑器构建日志；npm run typecheck"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T03",
+      "name": "纯规则、Session事务与唯一事件发布",
+      "depends_on": [
+        "G04-T02"
+      ],
+      "owner_role": "Rules engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "03_Full_GDD.md",
+        "game-spec.json",
+        "qa-vectors.json",
+        "EVENT_CONTRACT.md",
+        "event-contract.schema.json",
+        "session-contract-vectors.json"
+      ],
+      "outputs": [
+        "implementation/assets/scripts/rules/",
+        "implementation/tests/rules/",
+        "implementation/assets/scripts/session/",
+        "implementation/tests/session/"
+      ],
+      "write_scope": [
+        "implementation/assets/scripts/rules/",
+        "implementation/tests/rules/",
+        "implementation/assets/scripts/session/",
+        "implementation/tests/session/"
+      ],
+      "definition_of_done": [
+        "全部21条golden逐字段一致；BFS20+2关终态/最短长一致",
+        "渲染/SDK不能参与规则；不使用随机数与浮点坐标",
+        "reduceCommand只产RuleFact；reduceSession注入Session元数据；SessionController唯一提交状态和发布事件",
+        "两个相同RuleState而assisted/attemptId/seq不同的Session得到相同RuleWon与不同LevelWon；重复终态回调只结算一次"
+      ],
+      "validation_commands": [
+        "npm run test:rules",
+        "python -B validate_spec.py"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T04",
+      "name": "内容导入和关卡作者检查",
+      "depends_on": [
+        "G04-T03"
+      ],
+      "owner_role": "Content engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "game-spec.json",
+        "game-spec.schema.json"
+      ],
+      "outputs": [
+        "implementation/assets/data/",
+        "implementation/tools/content/"
+      ],
+      "write_scope": [
+        "implementation/assets/data/",
+        "implementation/tools/content/"
+      ],
+      "definition_of_done": [
+        "ID/尺寸/机关覆盖/有解/步数全部校验；禁止静默修关",
+        "作者工具只导入JSON并展示两层/门位/解路径，无自动投放"
+      ],
+      "validation_commands": [
+        "npm run validate:content"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T05",
+      "name": "棋盘渲染与输入",
+      "depends_on": [
+        "G04-T03"
+      ],
+      "owner_role": "UI engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "06_UI_Art_Audio.md"
+      ],
+      "outputs": [
+        "implementation/assets/scripts/board/",
+        "implementation/assets/prefabs/board/"
+      ],
+      "write_scope": [
+        "implementation/assets/scripts/board/",
+        "implementation/assets/prefabs/board/"
+      ],
+      "definition_of_done": [
+        "320宽及横屏安全区无覆盖；键盘/触摸/邻格输入同命令",
+        "连点/动画中输入策略/跨层预览测试"
+      ],
+      "validation_commands": [
+        "npm run test:input",
+        "npm run test:visual"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T06",
+      "name": "原创UI美术音频资产",
+      "depends_on": [
+        "G04-T02"
+      ],
+      "owner_role": "Asset author",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "06_UI_Art_Audio.md",
+        "08_OpenSource_Licenses.md"
+      ],
+      "outputs": [
+        "implementation/assets/art/",
+        "implementation/assets/audio/",
+        "implementation/licenses/"
+      ],
+      "write_scope": [
+        "implementation/assets/art/",
+        "implementation/assets/audio/",
+        "implementation/licenses/"
+      ],
+      "definition_of_done": [
+        "06清单逐项原创来源记录；无占位材质冒充完成",
+        "对比度/静音/减动效；全部必要版权文本"
+      ],
+      "validation_commands": [
+        "人工逐屏/逐资产签收；npm run audit:assets"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T07",
+      "name": "全屏幕流程与无障碍",
+      "depends_on": [
+        "G04-T03",
+        "G04-T05",
+        "G04-T06",
+        "G04-T08",
+        "G04-T09"
+      ],
+      "owner_role": "UI engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "03_Full_GDD.md",
+        "06_UI_Art_Audio.md",
+        "EVENT_CONTRACT.md",
+        "SAVE_CONTRACT.md"
+      ],
+      "outputs": [
+        "implementation/assets/scripts/screens/",
+        "implementation/assets/prefabs/screens/",
+        "implementation/assets/i18n/",
+        "implementation/assets/scenes/Boot.scene",
+        "implementation/assets/scenes/Boot.scene.meta",
+        "implementation/assets/scripts/app/"
+      ],
+      "write_scope": [
+        "implementation/assets/scripts/screens/",
+        "implementation/assets/prefabs/screens/",
+        "implementation/assets/i18n/",
+        "implementation/assets/scenes/Boot.scene",
+        "implementation/assets/scenes/Boot.scene.meta",
+        "implementation/assets/scripts/app/"
+      ],
+      "definition_of_done": [
+        "启动/地图/游戏/暂停/胜负/提示/设置/异常全部可达且可退出",
+        "中英完整，目标位型与当前位型同时显示",
+        "唯一拥有正式Boot.scene/.meta和app/CompositionRoot、AppStateMachine；T02仅BuildProbe",
+        "Boot只创建一个SessionController并注入纯commitWin、SaveCodec、适配器；重入/SDK回调不重复结算"
+      ],
+      "validation_commands": [
+        "npm run test:flow",
+        "npm run test:visual"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T08",
+      "name": "存档回放与异常恢复",
+      "depends_on": [
+        "G04-T03"
+      ],
+      "owner_role": "Persistence engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "04_Systems_and_Data.md",
+        "SAVE_CONTRACT.md",
+        "save-envelope.schema.json",
+        "save-fixtures.json"
+      ],
+      "outputs": [
+        "implementation/assets/scripts/persistence/",
+        "implementation/tests/persistence/"
+      ],
+      "write_scope": [
+        "implementation/assets/scripts/persistence/",
+        "implementation/tests/persistence/"
+      ],
+      "definition_of_done": [
+        "重放验证中间局；双槽写入；损坏隔离/配额满/版本不兼容路径可测",
+        "撤销恢复pending/信标/剩余步数；完成记录不因撤销重复发奖",
+        "完整Envelope/Progress/Settings严格Schema，唯一设置位置，CJ1字节/中文向量与SHA256一致",
+        "区分损坏/未来版本/双槽冲突/内容更新，FAILED回放后可撤销；不回收未验证设置"
+      ],
+      "validation_commands": [
+        "npm run test:save",
+        "npm run test:replay"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T09",
+      "name": "求解提示与成长结算",
+      "depends_on": [
+        "G04-T04",
+        "G04-T08"
+      ],
+      "owner_role": "Rules engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "05_Levels_Economy.md",
+        "SAVE_CONTRACT.md",
+        "EVENT_CONTRACT.md"
+      ],
+      "outputs": [
+        "implementation/assets/scripts/progression/",
+        "implementation/tests/progression/"
+      ],
+      "write_scope": [
+        "implementation/assets/scripts/progression/",
+        "implementation/tests/progression/"
+      ],
+      "definition_of_done": [
+        "从当前态求解且预算内；无解给撤销建议，不扣资源",
+        "提示标记不被撤销洗掉；首次胜利幂等解锁",
+        "commitWin为纯Progress函数，只接受SessionController已验证的一次胜利事务；不订阅EventBus/SDK自行写状态"
+      ],
+      "validation_commands": [
+        "npm run test:progression"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T10",
+      "name": "本地QA与P01隔离适配器",
+      "depends_on": [
+        "G04-T07",
+        "G04-T08",
+        "G04-T09"
+      ],
+      "owner_role": "Platform engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "07_Tech_Architecture.md",
+        "11_Distribution_Business.md"
+      ],
+      "outputs": [
+        "implementation/assets/scripts/platform/local/",
+        "implementation/assets/scripts/platform/p01/",
+        "implementation/build-profiles/"
+      ],
+      "write_scope": [
+        "implementation/assets/scripts/platform/local/",
+        "implementation/assets/scripts/platform/p01/",
+        "implementation/build-profiles/"
+      ],
+      "definition_of_done": [
+        "P01产物无广告/外链/开发者统计回传/姓名输入",
+        "发布构建移除本地QA事件导出；离线网络请求检查",
+        "仅平台适配与profile；不得另建Boot、SessionController或事件发布器"
+      ],
+      "validation_commands": [
+        "npm run build:p01",
+        "npm run audit:network"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T11",
+      "name": "P02 Basic与Full分别适配",
+      "depends_on": [
+        "G04-T10"
+      ],
+      "owner_role": "Platform engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "11_Distribution_Business.md"
+      ],
+      "outputs": [
+        "implementation/assets/scripts/platform/p02/",
+        "implementation/tests/platform/"
+      ],
+      "write_scope": [
+        "implementation/assets/scripts/platform/p02/",
+        "implementation/tests/platform/"
+      ],
+      "definition_of_done": [
+        "Basic禁变现；无SDK按全包50MB/20MB约束",
+        "Full集成官方SDK gameplay start/stop；250MB/1500文件/首包限制全检查；无全局第三方统计"
+      ],
+      "validation_commands": [
+        "npm run build:p02-basic",
+        "npm run build:p02-full",
+        "npm run audit:bundle"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T12",
+      "name": "浏览器真机与网络性能QA",
+      "depends_on": [
+        "G04-T10",
+        "G04-T11"
+      ],
+      "owner_role": "QA engineer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "10_QA_Test_Plan.md"
+      ],
+      "outputs": [
+        "implementation/qa/device/",
+        "implementation/qa/performance/"
+      ],
+      "write_scope": [
+        "implementation/qa/device/",
+        "implementation/qa/performance/"
+      ],
+      "definition_of_done": [
+        "桌面Chrome/Edge/Safari，4GB Chromebook，Android/iOS逐版本实测",
+        "记录原始HAR/帧时/内存/日志及失败，无可用设备即UNKNOWN"
+      ],
+      "validation_commands": [
+        "npm run test:e2e",
+        "npm run audit:network",
+        "npm run audit:bundle"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T13",
+      "name": "隔离机制实验与盲测",
+      "depends_on": [
+        "G04-T07",
+        "G04-T09",
+        "G04-T12"
+      ],
+      "owner_role": "Researcher",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "12_Falsifiability.md"
+      ],
+      "outputs": [
+        "implementation/research/"
+      ],
+      "write_scope": [
+        "implementation/research/"
+      ],
+      "definition_of_done": [
+        "B0/X1/X2分组不叠加；预登记同几何对照、样本/招募/退出口径",
+        "取得真实观察，不能由验解结果推定好玩"
+      ],
+      "validation_commands": [
+        "按12盲测协议记录本地数据"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T14",
+      "name": "IP与发行材料审查",
+      "depends_on": [
+        "G04-T06",
+        "G04-T12",
+        "G04-T13"
+      ],
+      "owner_role": "Producer/legal reviewer",
+      "status": "PLANNED",
+      "gate": "AFTER_HUMAN_BUILD_APPROVAL",
+      "inputs": [
+        "01_Market_Evidence.md",
+        "11_Distribution_Business.md"
+      ],
+      "outputs": [
+        "implementation/release/materials/",
+        "implementation/release/rights/"
+      ],
+      "write_scope": [
+        "implementation/release/materials/",
+        "implementation/release/rights/"
+      ],
+      "definition_of_done": [
+        "截图视频来自实际构建，版权链和合同字段完整",
+        "费用/收益未知写UNKNOWN；不自动投稿/发信/签约"
+      ],
+      "validation_commands": [
+        "人工权利与平台要求复核"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    },
+    {
+      "id": "G04-T15",
+      "name": "最终独立复核与提交决定",
+      "depends_on": [
+        "G04-T14"
+      ],
+      "owner_role": "Independent reviewer + Human",
+      "status": "PLANNED",
+      "gate": "HUMAN_SUBMISSION_APPROVAL_REQUIRED",
+      "inputs": [
+        "implementation/qa/",
+        "implementation/release/"
+      ],
+      "outputs": [
+        "implementation/release/final-review.md"
+      ],
+      "write_scope": [
+        "implementation/release/final-review.md"
+      ],
+      "definition_of_done": [
+        "全部阻断闭合；平台规则提交当日重核",
+        "人类另行授权后才允许投稿或签约；未授权维持未提交"
+      ],
+      "validation_commands": [
+        "人工审阅全部原始证据"
+      ],
+      "estimated_person_days": {
+        "low": 1,
+        "high": 3,
+        "evidence": "HYPOTHESIS"
+      }
+    }
+  ],
+  "required_artifacts": [
+    {
+      "path": "implementation/assets/scenes/Boot.scene",
+      "owner_task": "G04-T07"
+    },
+    {
+      "path": "implementation/assets/scenes/Boot.scene.meta",
+      "owner_task": "G04-T07"
+    },
+    {
+      "path": "implementation/assets/scripts/app/CompositionRoot.ts",
+      "owner_task": "G04-T07"
+    },
+    {
+      "path": "implementation/assets/scripts/app/AppStateMachine.ts",
+      "owner_task": "G04-T07"
+    },
+    {
+      "path": "implementation/assets/scripts/session/SessionReducer.ts",
+      "owner_task": "G04-T03"
+    },
+    {
+      "path": "implementation/assets/scripts/session/SessionController.ts",
+      "owner_task": "G04-T03"
+    },
+    {
+      "path": "implementation/assets/scripts/session/EventBus.ts",
+      "owner_task": "G04-T03"
+    },
+    {
+      "path": "implementation/assets/scripts/rules/RuleCore.ts",
+      "owner_task": "G04-T03"
+    },
+    {
+      "path": "implementation/assets/scenes/BuildProbe.scene",
+      "owner_task": "G04-T02"
+    },
+    {
+      "path": "implementation/assets/scenes/BuildProbe.scene.meta",
+      "owner_task": "G04-T02"
+    }
+  ]
+}

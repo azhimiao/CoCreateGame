@@ -1,0 +1,2547 @@
+{
+  "spec_version": "1.0.0",
+  "game_id": "G01",
+  "working_title": "信号港 / Signal Harbor",
+  "status": "SPEC_DRAFTED",
+  "ready_for_build": false,
+  "independent_review": "PENDING",
+  "human_build_approval": false,
+  "preparation_date": "2026-10-21",
+  "all_design_values": "HYPOTHESIS",
+  "candidate_platform_ids": [
+    "P02",
+    "P04",
+    "P05"
+  ],
+  "audience": "16+ logic-puzzle players; not child-directed",
+  "engine": {
+    "name": "Cocos Creator",
+    "candidate_version": "3.8.8",
+    "language": "TypeScript",
+    "version_source": "https://www.cocos.com/en/creator-download",
+    "checked_date": "2026-10-21",
+    "installation": "NOT_VERIFIED; executable not found on PATH",
+    "build_tested": false
+  },
+  "rules": {
+    "coordinates": "integer x right, y down; origin top-left; 0<=x<width,0<=y<height",
+    "arrow_shape": "ordered distinct orthogonally adjacent cells, tail to head; last segment equals direction; singleton allowed",
+    "movement": "rigid translation of ALL occupied cells by heading vector; no snake-following, rotation or partial movement",
+    "collision": "union of in-bounds translated cells for k=1..max(width,height), against other remaining arrows, walls and CLOSED gates; own initial cells ignored",
+    "exit_edge": "direction alone determines edge; any coordinate on that edge is valid",
+    "legal_order": [
+      "UNKNOWN_OR_REMOVED",
+      "MANIFEST_MISMATCH",
+      "ARROW_COLLISION",
+      "WALL_COLLISION",
+      "CLOSED_GATE"
+    ],
+    "commit_order": [
+      "animate",
+      "persist logical state",
+      "evaluate win then deadlock",
+      "advance manifest cursor if nonempty",
+      "XOR each listed gate once",
+      "remove arrow",
+      "validate complete sweep in pre-state"
+    ],
+    "gate_semantics": "initial_open XOR removed-arrow toggles; gates never rotate or move; open gates are passable and never occupy an initial arrow cell",
+    "manifest_semantics": "empty disables; otherwise one direction per arrow; next direction must match; no skip and no wildcard",
+    "invalid_action": "state unchanged; no hearts, time limit, currency or loss of attempt",
+    "deadlock": "remaining>0 AND no legal EXIT; undo/reset enabled; no ad rescue",
+    "win": "all arrows removed AND manifest cursor == manifest length",
+    "undo": "pop last accepted EXIT; recompute gates and manifest from original data and remaining log; no redo",
+    "hint": "lexicographically first arrow whose successor can reach win; no legal winning successor => show undo/reset",
+    "rng": "none in play; level seed is provenance only",
+    "canonical_state_key": "removed bitmask; gates and cursor derived"
+  },
+  "variants": [
+    {
+      "id": "BASE",
+      "relay": false,
+      "manifest": false
+    },
+    {
+      "id": "RELAY",
+      "relay": true,
+      "manifest": false
+    },
+    {
+      "id": "MANIFEST",
+      "relay": false,
+      "manifest": true
+    },
+    {
+      "id": "COMBINED",
+      "relay": true,
+      "manifest": true
+    }
+  ],
+  "progression": {
+    "order": [
+      "L01",
+      "L02",
+      "L03",
+      "L04",
+      "L05",
+      "L06",
+      "L07",
+      "L08",
+      "L09",
+      "L10",
+      "L11",
+      "L12",
+      "L13",
+      "L14",
+      "L15",
+      "L16",
+      "L17",
+      "L18",
+      "L19",
+      "L20"
+    ],
+    "unlock": "L01 open; L(n+1) after first completion Ln; all completed replayable",
+    "rewards": "one first-clear stamp per level, replay gives none; stamp count derived from completed-level set",
+    "hint_cost": 0,
+    "undo_cost": 0,
+    "retry_cost": 0,
+    "ads": "disabled in initial product; Full/P04 adapter ad capability reserved but not activated",
+    "end": "after L20 show all 20 stamps and replay/map buttons; no endless or daily mode"
+  },
+  "ui": {
+    "screens": [
+      "BOOT",
+      "HOME",
+      "MAP",
+      "PLAY",
+      "PAUSE",
+      "HELP",
+      "DEADLOCK",
+      "WIN",
+      "COMPLETE",
+      "SETTINGS",
+      "CREDITS",
+      "RECOVERY",
+      "ERROR"
+    ],
+    "portrait_reference": [
+      390,
+      844
+    ],
+    "landscape_reference": [
+      844,
+      390
+    ],
+    "min_viewport": [
+      320,
+      360
+    ],
+    "touch_min_css_px": 44,
+    "pointer_commit": "pointerup on same arrow after <=10 CSS px movement, pointercancel cancels; no hold timer",
+    "keyboard": "Tab focus by arrow ID then controls; Enter/Space activate; U undo; H hint; R opens reset confirmation; Escape pause/back",
+    "palette": {
+      "background": "#101F2B",
+      "surface": "#193546",
+      "arrow": "#F4EBD0",
+      "signal_g": "#F0B75E",
+      "signal_h": "#62C9CB",
+      "error": "#F27578"
+    },
+    "reduced_motion": true,
+    "default_music": false,
+    "default_sound": true,
+    "languages": [
+      "en",
+      "zh-CN"
+    ]
+  },
+  "save": {
+    "version": 1,
+    "key": "G01.signalharbor.{profile}.v1",
+    "fields": [
+      "version",
+      "content_version",
+      "revision",
+      "completed",
+      "active_level",
+      "accepted_exits",
+      "tutorial_seen",
+      "settings"
+    ],
+    "authoritative": "accepted_exits replay; never trust stored gates/cursor",
+    "commit": "temp JSON -> validate -> backup old -> main; recover newest valid revision; local commit after every EXIT/UNDO/RESET/WIN/settings",
+    "migration": "v0 absent starts new; v1 strict validation; unknown newer version read-only recovery, never overwrite automatically",
+    "cloud": "same channel only; union completed and choose newest valid active revision; equal revision conflict prompts user; no device fingerprint",
+    "private_mode": "memory-only with visible notice; no blocking gameplay"
+  },
+  "channel_profiles": [
+    {
+      "id": "LOCAL_QA",
+      "sdk": "none",
+      "analytics": "local opt-in bounded replay, no upload",
+      "ads": false,
+      "total_mb_cap": 15,
+      "file_cap": 250
+    },
+    {
+      "id": "P02_BASIC",
+      "sdk": "none",
+      "analytics": "platform-native outside bundle; no third-party SDK",
+      "ads": false,
+      "total_mb_cap": 20,
+      "file_cap": 250
+    },
+    {
+      "id": "P02_FULL",
+      "sdk": "CrazyGames required",
+      "analytics": "CrazyGames SDK only",
+      "ads": false,
+      "total_mb_cap": 250,
+      "file_cap": 1500
+    },
+    {
+      "id": "P04",
+      "sdk": "Playgama Bridge required",
+      "analytics": "Bridge only; no GA4 or equivalent",
+      "ads": false,
+      "total_mb_cap": 300,
+      "file_cap": 250
+    },
+    {
+      "id": "P05",
+      "sdk": "UNKNOWN pending written mobile compatibility",
+      "analytics": "none until publisher-specific isolated contract approval",
+      "ads": false,
+      "total_mb_cap": 100,
+      "file_cap": 250
+    },
+    {
+      "id": "P01_RESERVED",
+      "sdk": "none",
+      "analytics": "none; no developer callback",
+      "ads": false,
+      "total_mb_cap": 15,
+      "file_cap": 250
+    }
+  ],
+  "performance_hypotheses": {
+    "total_web_mb": 15,
+    "initial_web_mb": 8,
+    "frame_p95_ms": 20.0,
+    "input_feedback_p95_ms": 100,
+    "local_solver_max_states": 256,
+    "local_solver_budget_ms": 50,
+    "measured": false
+  },
+  "levels": [
+    {
+      "id": "L01",
+      "name": "开港",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "BASE",
+      "width": 4,
+      "height": 4,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        }
+      ],
+      "learning_objective": "点击整条箭头，清空棋盘",
+      "seed": 10101,
+      "target_seconds": [
+        13,
+        31
+      ]
+    },
+    {
+      "id": "L02",
+      "name": "先疏后发",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "BASE",
+      "width": 5,
+      "height": 4,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "W",
+          "cells": [
+            [
+              2,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        }
+      ],
+      "learning_objective": "路径被另一箭条占用时先移除阻挡者",
+      "seed": 10102,
+      "target_seconds": [
+        16,
+        37
+      ]
+    },
+    {
+      "id": "L03",
+      "name": "弯条也要净空",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "BASE",
+      "width": 5,
+      "height": 5,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "S",
+          "cells": [
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "d",
+          "direction": "W",
+          "cells": [
+            [
+              2,
+              4
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        }
+      ],
+      "learning_objective": "弯条整体平移，尾部的扫掠也算碰撞",
+      "seed": 10103,
+      "target_seconds": [
+        19,
+        43
+      ]
+    },
+    {
+      "id": "L04",
+      "name": "交叉码头",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "BASE",
+      "width": 6,
+      "height": 6,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "W",
+          "cells": [
+            [
+              5,
+              4
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "d",
+          "direction": "S",
+          "cells": [
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "e",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [
+        [
+          5,
+          0
+        ]
+      ],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "e"
+        }
+      ],
+      "learning_objective": "两组依赖、可自由交换的独立操作",
+      "seed": 10104,
+      "target_seconds": [
+        22,
+        49
+      ]
+    },
+    {
+      "id": "L05",
+      "name": "第一盏信号",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "RELAY",
+      "width": 5,
+      "height": 5,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "E",
+          "cells": [
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              3,
+              1
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        }
+      ],
+      "learning_objective": "带 g 印记箭条离港后翻转 g 门",
+      "seed": 10105,
+      "target_seconds": [
+        25,
+        55
+      ]
+    },
+    {
+      "id": "L06",
+      "name": "开门之前",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "RELAY",
+      "width": 6,
+      "height": 5,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              5,
+              1
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        }
+      ],
+      "learning_objective": "几何遮挡和门遮挡同时检查",
+      "seed": 10106,
+      "target_seconds": [
+        28,
+        61
+      ]
+    },
+    {
+      "id": "L07",
+      "name": "双灯串联",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "RELAY",
+      "width": 6,
+      "height": 6,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "toggles": [
+            "h"
+          ]
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              3,
+              3
+            ]
+          ],
+          "initial_open": false
+        },
+        {
+          "id": "h",
+          "cells": [
+            [
+              4,
+              1
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        }
+      ],
+      "learning_objective": "g 放行 b，b 再打开 h 给 a",
+      "seed": 10107,
+      "target_seconds": [
+        31,
+        67
+      ]
+    },
+    {
+      "id": "L08",
+      "name": "不要连按开关",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "RELAY",
+      "width": 5,
+      "height": 5,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "E",
+          "cells": [
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "c",
+          "direction": "W",
+          "cells": [
+            [
+              2,
+              4
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              3,
+              1
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        }
+      ],
+      "learning_objective": "两次翻转关门；合法操作也可能造成残局死锁",
+      "seed": 10108,
+      "target_seconds": [
+        34,
+        73
+      ]
+    },
+    {
+      "id": "L09",
+      "name": "两门交替",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "RELAY",
+      "width": 6,
+      "height": 6,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": [
+            "h"
+          ]
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "d",
+          "direction": "W",
+          "cells": [
+            [
+              2,
+              5
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              3,
+              1
+            ]
+          ],
+          "initial_open": false
+        },
+        {
+          "id": "h",
+          "cells": [
+            [
+              4,
+              2
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        }
+      ],
+      "learning_objective": "先用 g 通行，再交付 h；提前 d 会关 g",
+      "seed": 10109,
+      "target_seconds": [
+        37,
+        79
+      ]
+    },
+    {
+      "id": "L10",
+      "name": "弯桥继电",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "RELAY",
+      "width": 7,
+      "height": 6,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": [
+            "h"
+          ]
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              4
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "d",
+          "direction": "W",
+          "cells": [
+            [
+              2,
+              5
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "e",
+          "direction": "S",
+          "cells": [
+            [
+              6,
+              4
+            ],
+            [
+              6,
+              5
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              4,
+              1
+            ]
+          ],
+          "initial_open": false
+        },
+        {
+          "id": "h",
+          "cells": [
+            [
+              5,
+              3
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "e"
+        }
+      ],
+      "learning_objective": "弯条尾部、两组门和独立安全出口",
+      "seed": 10110,
+      "target_seconds": [
+        40,
+        85
+      ]
+    },
+    {
+      "id": "L11",
+      "name": "船期单",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "MANIFEST",
+      "width": 5,
+      "height": 5,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              3,
+              4
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "W",
+          "cells": [
+            [
+              2,
+              4
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [],
+      "manifest": [
+        "E",
+        "N",
+        "W"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        }
+      ],
+      "learning_objective": "必须按右、上、左出港",
+      "seed": 10111,
+      "target_seconds": [
+        43,
+        91
+      ]
+    },
+    {
+      "id": "L12",
+      "name": "先清航线",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "MANIFEST",
+      "width": 5,
+      "height": 5,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              3,
+              2
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "S",
+          "cells": [
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [],
+      "manifest": [
+        "N",
+        "E",
+        "S"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        }
+      ],
+      "learning_objective": "船期和几何依赖一致，错误方向不会消耗步数",
+      "seed": 10112,
+      "target_seconds": [
+        46,
+        97
+      ]
+    },
+    {
+      "id": "L13",
+      "name": "同向二选一",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "MANIFEST",
+      "width": 5,
+      "height": 5,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "N",
+          "cells": [
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              2
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [],
+      "manifest": [
+        "N",
+        "E",
+        "N"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        }
+      ],
+      "learning_objective": "第一步两条朝上，先 a 会让下一条朝右无法离港",
+      "seed": 10113,
+      "target_seconds": [
+        49,
+        103
+      ]
+    },
+    {
+      "id": "L14",
+      "name": "两次交接",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "MANIFEST",
+      "width": 6,
+      "height": 6,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "N",
+          "cells": [
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              4,
+              3
+            ],
+            [
+              4,
+              2
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "d",
+          "direction": "S",
+          "cells": [
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              5
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "e",
+          "direction": "W",
+          "cells": [
+            [
+              5,
+              4
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [],
+      "manifest": [
+        "N",
+        "E",
+        "N",
+        "S",
+        "W"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "e"
+        }
+      ],
+      "learning_objective": "同向选择后再处理另一组阻挡",
+      "seed": 10114,
+      "target_seconds": [
+        52,
+        109
+      ]
+    },
+    {
+      "id": "L15",
+      "name": "曲线船期",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "MANIFEST",
+      "width": 7,
+      "height": 6,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "S",
+          "cells": [
+            [
+              6,
+              4
+            ],
+            [
+              6,
+              5
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "d",
+          "direction": "W",
+          "cells": [
+            [
+              3,
+              4
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "e",
+          "direction": "N",
+          "cells": [
+            [
+              1,
+              5
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [],
+      "walls": [],
+      "manifest": [
+        "N",
+        "E",
+        "S",
+        "W",
+        "N"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "e"
+        }
+      ],
+      "learning_objective": "弯条放行后按五项船期完成",
+      "seed": 10115,
+      "target_seconds": [
+        55,
+        115
+      ]
+    },
+    {
+      "id": "L16",
+      "name": "灯号与船期",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "COMBINED",
+      "width": 5,
+      "height": 5,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "c",
+          "direction": "W",
+          "cells": [
+            [
+              2,
+              4
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              3,
+              1
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [
+        "N",
+        "E",
+        "W"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        }
+      ],
+      "learning_objective": "上港开灯、右港通行、左港收灯",
+      "seed": 10116,
+      "target_seconds": [
+        58,
+        121
+      ]
+    },
+    {
+      "id": "L17",
+      "name": "同向不同信号",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "COMBINED",
+      "width": 6,
+      "height": 6,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "N",
+          "cells": [
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              3,
+              2
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [
+        "N",
+        "E",
+        "N"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        }
+      ],
+      "learning_objective": "两条朝上只有 b 能打开下一班的门",
+      "seed": 10117,
+      "target_seconds": [
+        61,
+        127
+      ]
+    },
+    {
+      "id": "L18",
+      "name": "双灯船队",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "COMBINED",
+      "width": 6,
+      "height": 6,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": [
+            "h"
+          ]
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              4
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "d",
+          "direction": "W",
+          "cells": [
+            [
+              2,
+              5
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              3,
+              1
+            ]
+          ],
+          "initial_open": false
+        },
+        {
+          "id": "h",
+          "cells": [
+            [
+              4,
+              2
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [
+        "E",
+        "E",
+        "N",
+        "W"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        }
+      ],
+      "learning_objective": "第一班同向但必须先信号船",
+      "seed": 10118,
+      "target_seconds": [
+        64,
+        133
+      ]
+    },
+    {
+      "id": "L19",
+      "name": "双信号分流",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "COMBINED",
+      "width": 7,
+      "height": 7,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": [
+            "h"
+          ]
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              4
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "d",
+          "direction": "W",
+          "cells": [
+            [
+              3,
+              6
+            ],
+            [
+              2,
+              6
+            ]
+          ],
+          "toggles": [
+            "g",
+            "h"
+          ]
+        },
+        {
+          "id": "e",
+          "direction": "S",
+          "cells": [
+            [
+              6,
+              5
+            ],
+            [
+              6,
+              6
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "f",
+          "direction": "W",
+          "cells": [
+            [
+              3,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "toggles": []
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              4,
+              1
+            ]
+          ],
+          "initial_open": false
+        },
+        {
+          "id": "h",
+          "cells": [
+            [
+              5,
+              3
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [
+        "E",
+        "E",
+        "N",
+        "W",
+        "S",
+        "W"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "e"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "f"
+        }
+      ],
+      "learning_objective": "多门翻转发生在离港提交后，不会救自己",
+      "seed": 10119,
+      "target_seconds": [
+        67,
+        139
+      ]
+    },
+    {
+      "id": "L20",
+      "name": "最后一班",
+      "evidence_status": "HYPOTHESIS",
+      "mode": "COMBINED",
+      "width": 7,
+      "height": 7,
+      "arrows": [
+        {
+          "id": "a",
+          "direction": "N",
+          "cells": [
+            [
+              1,
+              1
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "b",
+          "direction": "N",
+          "cells": [
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "c",
+          "direction": "E",
+          "cells": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "toggles": [
+            "h"
+          ]
+        },
+        {
+          "id": "d",
+          "direction": "N",
+          "cells": [
+            [
+              6,
+              6
+            ],
+            [
+              6,
+              5
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "e",
+          "direction": "W",
+          "cells": [
+            [
+              3,
+              6
+            ],
+            [
+              2,
+              6
+            ]
+          ],
+          "toggles": [
+            "g"
+          ]
+        },
+        {
+          "id": "f",
+          "direction": "S",
+          "cells": [
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "toggles": []
+        },
+        {
+          "id": "z",
+          "direction": "W",
+          "cells": [
+            [
+              3,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "toggles": [
+            "h"
+          ]
+        }
+      ],
+      "gates": [
+        {
+          "id": "g",
+          "cells": [
+            [
+              3,
+              2
+            ]
+          ],
+          "initial_open": false
+        },
+        {
+          "id": "h",
+          "cells": [
+            [
+              6,
+              3
+            ]
+          ],
+          "initial_open": false
+        }
+      ],
+      "walls": [],
+      "manifest": [
+        "N",
+        "E",
+        "N",
+        "N",
+        "W",
+        "S",
+        "W"
+      ],
+      "initial_state": {
+        "removed": [],
+        "manifest_cursor": 0
+      },
+      "win": {
+        "all_arrows_removed": true,
+        "manifest_consumed": true
+      },
+      "solution": [
+        {
+          "type": "EXIT",
+          "arrow_id": "b"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "c"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "a"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "d"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "e"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "f"
+        },
+        {
+          "type": "EXIT",
+          "arrow_id": "z"
+        }
+      ],
+      "learning_objective": "两次同向选择与门闭合时机；计划七次离港",
+      "seed": 10120,
+      "target_seconds": [
+        70,
+        145
+      ]
+    }
+  ]
+}

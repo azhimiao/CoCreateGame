@@ -1,0 +1,153 @@
+{
+  "accessed_at": "2026-10-21",
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "path": "screenshots/01-playgama-loaded.png",
+      "sha256": "2202be6da2c5d567f90b6cc00f9a18cd6aebc38bd4bc02ef39ab306f57eb8085",
+      "bytes": 597848,
+      "operations_jsonl_line": 2,
+      "captured_at_utc": "2026-10-21T10:39:03.541Z"
+    },
+    {
+      "path": "screenshots/02-playgama-play-click.png",
+      "sha256": "4f55d8d3824e1ea2b39a6e489359c4a01e96e1063d3b68505efed9f2270dc76d",
+      "bytes": 15638,
+      "operations_jsonl_line": 3,
+      "captured_at_utc": "2026-10-21T10:39:29.788Z"
+    },
+    {
+      "path": "screenshots/03-playgama-current.png",
+      "sha256": "359e8acbc60b052b81a8693d698b1208ef57d69ad2ee09b1794bba564f6c669f",
+      "bytes": 502567,
+      "operations_jsonl_line": 5,
+      "captured_at_utc": "2026-10-21T10:40:13.284Z"
+    },
+    {
+      "path": "screenshots/04-tutorial-arrow-click.png",
+      "sha256": "4acefff64a41898d39082db4b170792c99c3f41938f606affda74c0039e6ba4b",
+      "bytes": 501179,
+      "operations_jsonl_line": 6,
+      "captured_at_utc": "2026-10-21T10:40:32.203Z"
+    },
+    {
+      "path": "screenshots/05-continue-without-login.png",
+      "sha256": "063006aae11602da7d13d33fb2dea2cd29f0d03bcbf6b1f1e249fe7566b95541",
+      "bytes": 458025,
+      "operations_jsonl_line": 7,
+      "captured_at_utc": "2026-10-21T10:40:54.099Z"
+    },
+    {
+      "path": "screenshots/06-tutorial-release-retry.png",
+      "sha256": "3d9133418e3a54ca154346a21c4dfa4c64ce49d8c1d5a7680376053d36d3bfc7",
+      "bytes": 457437,
+      "operations_jsonl_line": 8,
+      "captured_at_utc": "2026-10-21T10:40:55.853Z"
+    },
+    {
+      "path": "screenshots/07-tutorial-left-arrow.png",
+      "sha256": "d69aff47a68ecde09644b23484b8864e1a879605579ceba596b2e9bb45f3b5dc",
+      "bytes": 381068,
+      "operations_jsonl_line": 9,
+      "captured_at_utc": "2026-10-21T10:41:18.947Z"
+    },
+    {
+      "path": "screenshots/08-tutorial-short-pointer-drag.png",
+      "sha256": "151c7cbb09f4744367a9142b8a12f179f802339f9eecec5cf964bdc21b0a5a9e",
+      "bytes": 663466,
+      "operations_jsonl_line": 10,
+      "captured_at_utc": "2026-10-21T10:41:53.107Z"
+    },
+    {
+      "path": "screenshots/09-tutorial-tip-drag.png",
+      "sha256": "01564f67cca00ee20d474c0c2202d55e2170379e27578c10a1d9c31a65f8eae7",
+      "bytes": 678483,
+      "operations_jsonl_line": 11,
+      "captured_at_utc": "2026-10-21T10:42:29.759Z"
+    },
+    {
+      "path": "screenshots/10-tutorial-up-tip-drag.png",
+      "sha256": "fc2d601aadf8ce19f007a7c092f47b9931c8edd93e3f2f8afa9f188f6fb212a8",
+      "bytes": 674019,
+      "operations_jsonl_line": 12,
+      "captured_at_utc": "2026-10-21T10:42:34.874Z"
+    },
+    {
+      "path": "screenshots/11-resumed-page.png",
+      "sha256": "f56aec70284479b3bd6ab8bf1ffa04d70694b9df02285f645adfaec6a88fc5b7",
+      "bytes": 477116,
+      "operations_jsonl_line": 15,
+      "captured_at_utc": "2026-10-21T10:43:26.039Z"
+    },
+    {
+      "path": "screenshots/12-resumed-after-play.png",
+      "sha256": "bb896c1a6fe91e9195ecba3db98f8a818ab7c08f50f05b15939c487370cfd908",
+      "bytes": 44323,
+      "operations_jsonl_line": 16,
+      "captured_at_utc": "2026-10-21T10:43:34.013Z"
+    },
+    {
+      "path": "screenshots/13-resumed-tutorial.png",
+      "sha256": "16d22764888ec859b720929726617fee348b36e5c47a0be535d910dec68393c0",
+      "bytes": 152574,
+      "operations_jsonl_line": 17,
+      "captured_at_utc": "2026-10-21T10:43:46.806Z"
+    },
+    {
+      "path": "screenshots/14-held-tutorial-click.png",
+      "sha256": "7861e88e09154689d572c1e505e8dc5e634053d720c51dfe63cb50987d5e13e3",
+      "bytes": 152595,
+      "operations_jsonl_line": 18,
+      "captured_at_utc": "2026-10-21T10:43:48.239Z"
+    },
+    {
+      "path": "screenshots/15-close-ad-button.png",
+      "sha256": "c5ef8b3ab7c0a680d3a984e6563b7703454012d3d07686b5e483aebe476a9cb8",
+      "bytes": 590148,
+      "operations_jsonl_line": 19,
+      "captured_at_utc": "2026-10-21T10:44:17.144Z"
+    },
+    {
+      "path": "screenshots/16-resume-without-login.png",
+      "sha256": "001246e89d7e5e14e7f706dd66e4876d642f796405ea68a49bf7907a3964c955",
+      "bytes": 587785,
+      "operations_jsonl_line": 20,
+      "captured_at_utc": "2026-10-21T10:44:18.113Z"
+    },
+    {
+      "path": "screenshots/17-held-game-arrow.png",
+      "sha256": "9894eb552fb3fb9be517830f0e3444a05f51e23d6debe28522fdfaad13c4bd29",
+      "bytes": 583175,
+      "operations_jsonl_line": 21,
+      "captured_at_utc": "2026-10-21T10:44:19.937Z"
+    },
+    {
+      "path": "screenshots/18-tap-instruction-strip.png",
+      "sha256": "bb4f9b507bc5fc04fadca75fdef760701bc5b37d21f6065522f91030bb7b13b2",
+      "bytes": 584380,
+      "operations_jsonl_line": 22,
+      "captured_at_utc": "2026-10-21T10:44:46.144Z"
+    },
+    {
+      "path": "screenshots/19-fullscreen-ui.png",
+      "sha256": "96e1a1731635cee974feb8cd57d0cf6a39dab88644896d19dd595f47bd758710",
+      "bytes": 671346,
+      "operations_jsonl_line": 23,
+      "captured_at_utc": "2026-10-21T10:44:47.275Z"
+    },
+    {
+      "path": "screenshots/20-inline-arrow-click.png",
+      "sha256": "e2a2429b493ed2bb6de9030e90ad7f1b530db82566000e7b53d8dbc27520f460",
+      "bytes": 723793,
+      "operations_jsonl_line": 24,
+      "captured_at_utc": "2026-10-21T10:45:12.515Z"
+    },
+    {
+      "path": "screenshots/21-crazygames-url-result.png",
+      "sha256": "a62ec0880d7c43d7dffee2fb1dccfada31e7697bfa61d001bfd058248e699f5a",
+      "bytes": 43272,
+      "operations_jsonl_line": 25,
+      "captured_at_utc": "2026-10-21T10:45:55.862Z"
+    }
+  ]
+}

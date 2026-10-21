@@ -1,0 +1,33 @@
+{
+  "game_id": "G02",
+  "verdict": "REVISE",
+  "summary": "独立复核Raman 1.1冻结稿：原B-G02-01、M-G02-01/02及N-G02-01/02/03六项全部CLOSED，0未闭合BLOCKER。20关26483可达态及最短解、2schema、31规则向量、9协议表、5静态布局、19任务DAG和最终37成员ZIP通过只读复核。删除同顶色守卫的新隔离用例立即失败；旧24向量PASS仅为历史基线。仍有1项研究MAJOR：后补对标核心输入0，胜负重试及连续30秒/5分钟缺证。当前ZIP SHA256为9b541c8b76bae1030fb7fa81ae65afe782662e3bc10b98f21313d9df6a8c3241；完整当前hash、修复与闭合记录见同名MD。没有引擎/产品浏览器/真机性能验证，不自动READY。",
+  "unresolved_blockers": [],
+  "unresolved_majors": [
+    {
+      "id": "M-G02-03",
+      "severity": "MAJOR",
+      "category": "RESEARCH_EVIDENCE_GAP_NOT_FORMAL_RULE_DEFECT",
+      "title": "参考作品核心行为与完整时间窗仍缺直接证据",
+      "locations": [
+        {
+          "file": "games/G02/02_Benchmark_Playthrough.md",
+          "line": 46,
+          "section": "第5节团队后补节点"
+        },
+        {
+          "file": "research/playthroughs/G02/observation.md",
+          "section": "节点覆盖表及总窗口"
+        },
+        {
+          "file": "games/G02/12_Falsifiability.md",
+          "section": "第5节研究缺口"
+        }
+      ],
+      "evidence": "独立核对13图bytes/SHA通过；实际3次均站点UI输入，核心输入0。Good Sort棋盘未确认，Screw Out仅末帧Level1且拟发核心点击未派发。合法/非法/匹配/暂存满边界/胜负/游戏内重试缺失；480.006秒为尝试驻留，不是连续玩法；30秒/5分钟NOT_RECORDED。",
+      "impact": "不能认定已实玩或完成BENCHMARKED，也不能用官方说明证明原创机制体验或失败边界；尚未证明G02形式规则有错或市场失败。",
+      "fix": "按官方URL、日期与环境补核心输入到状态变化、受控拒绝/匹配/满槽边界/胜负和游戏内重试，保存连续30秒/300秒时轴。受阻样本明确BLOCKED，使用获准同家族样本或合规可核回放时标证据类型，保留UNKNOWN。",
+      "validation": "同一独立审查者逐节点核对输入日志、前后帧与连续时轴；核心输入仍为0不得关闭。市场/玩家/交易证据与未来引擎/真机测试按阶段分别验收，不以离线验解替代。"
+    }
+  ]
+}

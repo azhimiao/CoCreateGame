@@ -1,0 +1,260 @@
+{
+  "project_id": "G08",
+  "family": "群体答案问答",
+  "preparation_batch": "P1",
+  "updated_at": "2026-10-21",
+  "status": "SPEC_NOT_COMPLETE",
+  "project_status": "EVIDENCE_COLLECTED",
+  "ready_for_build": false,
+  "candidate_platform_ids": [
+    "P06"
+  ],
+  "scope": "NON_P0_PREPARATION_ONLY",
+  "approval": {
+    "game_id_and_construction_dossier": "NOT_GRANTED",
+    "final_game_development": false,
+    "submission": false,
+    "external_contact": false,
+    "paid_purchase": false
+  },
+  "benchmark_playthrough_status": "NOT_PERFORMED",
+  "independent_review_status": "NOT_PERFORMED",
+  "evidence": [
+    {
+      "claim_id": "G08-E01",
+      "reference_title": "Guess Their Answer",
+      "source_url": "https://www.tap-nation.io/games/guess-their-answer/",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "UNKNOWN；页面无明确发布/更新日",
+      "evidence_type": "OFFICIAL_PUBLISHER_GAME_PAGE",
+      "claim": "TapNation官方页说明猜多数人的常见回答、接近热门回答获得更多分数；提及实时对手/榜单是发行方陈述，未验证是否真人或联网。",
+      "metric_definition": "发行作品收录与群体回答计分理念（分类）；不是调查样本频次、开发者收益或当前采购承诺。",
+      "unknown": "题库来源、抽样地域/时间/分母、答案权重、匹配阈值、真人比例及利润UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Guess Their Answer介绍 / round说明"
+    },
+    {
+      "claim_id": "G08-E02",
+      "reference_title": "Family Feud: Online Game",
+      "source_url": "https://www.arkadium.com/games/family-feud/",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "当前游戏页日期UNKNOWN；品牌合作背景另见E03的2020-12-13公告",
+      "evidence_type": "OFFICIAL_LICENSED_GAME_PAGE",
+      "claim": "Arkadium官方游戏说明以调查受访者的高频回答取得更多分数，采用计时轮并设后续奖励轮。它是真正的群体答案对标，不是普通唯一答案trivia。",
+      "metric_definition": "玩法说明与官方宣称的真实调查来源；没有公开本轮使用题目的样本分母。正式授权关系以E03佐证，不表示本项目获得任何内容权。",
+      "unknown": "每题原始受访者、代表性、问卷时间/样本量、匹配词表、内容许可和收益UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "How to play Family Feud / About Family Feud"
+    },
+    {
+      "claim_id": "G08-E03",
+      "reference_title": "Family Feud品牌方的Arkadium合作公告（非第三款游戏）",
+      "source_url": "https://www.familyfeud.com/2020/12/13/arkadium/",
+      "accessed_at": "2026-10-21",
+      "published_or_updated": "2020-12-13",
+      "evidence_type": "OFFICIAL_BRAND_PARTNERSHIP_NEWS",
+      "claim": "Family Feud品牌官网公告Arkadium与其母公司Fremantle合作制作线上Family Feud并直接链接官方游戏页，形成E02来源链。仅证明该合作历史。",
+      "metric_definition": "官方公告中的合作关系/发布时间，不是2026活跃玩家、采购或本项目授权。",
+      "unknown": "当前合作条款、每题语料许可、可否向本项目授权UNKNOWN。",
+      "confidence": "A_FOR_OFFICIAL_PAGE_DESCRIPTION_ONLY",
+      "retrieval_method": "web工具读取官方页面文本；未进行交互试玩；未保存页面原始快照",
+      "locator": "Play Family Feud for free online at Arkadium / 正文合作及链接"
+    }
+  ],
+  "channel_evidence": [
+    {
+      "platform_id": "P06",
+      "source_url": "https://www.tap-nation.io/publishing/",
+      "accessed_at": "2026-10-21",
+      "published_at": "UNKNOWN",
+      "evidence_type": "OFFICIAL_PUBLISHING_DESCRIPTION",
+      "metric_definition": "准入/合作类型，不是候选成功率或收入",
+      "claim": "官方接收 concept/prototype/build，并表示适配后协商分成、里程碑、创意所有权和支持范围；存在可选买断说明。未获得本项目测试资金、SDK条件或合同。",
+      "recheck": "测试预算及合作条款讨论当日"
+    }
+  ],
+  "original_hypotheses": [
+    {
+      "id": "G08-H1",
+      "status": "HYPOTHESIS",
+      "claim": "HYPOTHESIS G08-H1：明确显示答案来自哪个样本，并允许围绕预测信心或不同群体差异展开决策，比宣称不明来源的“全球最常见答案”更可理解且更值得重玩。",
+      "variants": [
+        {
+          "label": "B0 基线",
+          "description": "同一合法调查题，展示明确样本标签与按该样本频次揭示；不加信心押分或分组比较。标签是诚实底线，不能用假来源作实验。"
+        },
+        {
+          "label": "V1 信心选择",
+          "description": "只增加提交前的低/高信心选择；额外得失规则待审，不改答案与样本频次。"
+        },
+        {
+          "label": "V2 群体比较",
+          "description": "只在有真实且获准使用的分组样本时允许预测哪组更常回答某项；不加信心选择，不伪造群体差异。"
+        }
+      ],
+      "results": "UNKNOWN"
+    }
+  ],
+  "saturation_signal": {
+    "observation": "Guess Their Answer与Family Feud两个具名产品都以常见回答而非唯一事实答案计分，证明机制已有供给与强IP参考。仅两产品不足以判断目录饱和，重复题率、同渠道供给密度和新作失败率UNKNOWN；不能用历史品牌知名度外推P06采购需求。",
+    "interpretation": "SUPPLY_SIMILARITY_ONLY",
+    "failed_game_rate": "UNKNOWN",
+    "profit_effect": "UNKNOWN"
+  },
+  "research_gaps": [
+    {
+      "id": "G08-R02",
+      "document": "02_Benchmark_Playthrough.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "两参考是否接受自由文本、同义词/错字？超时或合理但未列出的答案如何反馈？对手身份有无明确说明？",
+      "required_evidence": "每款直接记录前30秒/5分钟、首个匹配成功与拒绝、分数揭示、失败/胜利和再局；不声称题目频次或真人对手已验证。",
+      "reason": "仅核了官方规则说明，没有输入样本和判罚记录。"
+    },
+    {
+      "id": "G08-R03",
+      "document": "03_Full_GDD.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "候选采用何语言/群体、自由输入还是选择？分数按真实频次还是档位？信心得失、超时、重复答案与胜负怎样定义？",
+      "required_evidence": "选定B0/V1/V2后给整局状态、样本标签、揭示/复盘与匹配争议流程；明确机器人/真人/离线身份，禁止假实时宣传。",
+      "reason": "题库来源、对局目标和计分/匹配规则未冻结。"
+    },
+    {
+      "id": "G08-R04",
+      "document": "04_Systems_and_Data.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "Question、SurveyCohort、AnswerCluster和MatchResult如何关联版本？同义词能否跨题复用？",
+      "required_evidence": "每题来源/授权/样本标签/计数分母/聚类编辑记录；输入规范化与误拒/误接纳示例，列计时与IME提交顺序；不生成虚构调查数据JSON。",
+      "reason": "无合法题库、样本元数据或可审计匹配契约。"
+    },
+    {
+      "id": "G08-R05",
+      "document": "05_Levels_Economy.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "前30分钟题目怎样避免重复、文化偏见与学习答案后无挑战？信心选择是否有单一最优？",
+      "required_evidence": "原创题序/主题/复用间隔、真实样本覆盖与计分算例；V2必须用获准的分组调查，列缺样本时降级方案。不得拷贝Family Feud题库或填AI频次。",
+      "reason": "题目授权和实际频次缺失，不制造数值/内容表。"
+    },
+    {
+      "id": "G08-R06",
+      "document": "06_UI_Art_Audio.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "手机键盘会不会遮住计时/已接受答案？样本地域/时间怎样简明可见？拒绝提示是否让玩家感觉被判错？",
+      "required_evidence": "题目/输入/揭示/复盘/争议提示各屏，IME与长答案布局、来源标签样例；原创题目插图/音效/字体清单及可访问性验证。",
+      "reason": "最终界面、文案与许可未定。"
+    },
+    {
+      "id": "G08-R07",
+      "document": "07_Tech_Architecture.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "本地题库够用还是必须服务端更新？是否真需要联网对战？移动发行方SDK要求何种底座？",
+      "required_evidence": "先做无后端/有后端、机器人/真人的成本与真实性比较；确定版本、输入/计时/离线更新协议后，后续批准再实验，不预建匹配服务器。",
+      "reason": "发行SDK、网络模式、更新与数据留存条件UNKNOWN。"
+    },
+    {
+      "id": "G08-R08",
+      "document": "08_OpenSource_Licenses.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "原创问卷的同意是否覆盖商用聚合和转授权？公开数据是否允许商业改编？词库/字体是否另有许可？",
+      "required_evidence": "题级来源与许可证全文/版本、受访者同意方案、聚合/匿名化及撤回边界、第三方词库权利；浏览器能看并不等于题库可用。",
+      "reason": "没有可商用转授权语料或已批准采集方案。"
+    },
+    {
+      "id": "G08-R09",
+      "document": "09_Implementation_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "怎样把数据授权→题库审核→匹配→玩法实验串起来？谁能改答案聚类并保留审计？",
+      "required_evidence": "未来任务输入为已核合法题目，输出为审核表/匹配向量/对局实现；先给误接纳/误拒DoD和版本责任，再建工程任务。",
+      "reason": "基础语料缺失，tasks.json不能先写成可执行状态。"
+    },
+    {
+      "id": "G08-R10",
+      "document": "10_QA_Test_Plan.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "怎样测有效同义词被拒与不相关答案被收？不同语言IME、断网/超时、重复提交会否误判？",
+      "required_evidence": "未来构造经人工标注的正/负匹配集并分开报告误拒数/有效答案数、误接纳数/无效答案数；审样本标签/对手真实性与偏见反馈。",
+      "reason": "缺授权答案集、标签和实验样本，未执行测试。"
+    },
+    {
+      "id": "G08-R11",
+      "document": "11_Distribution_Business.md",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "question": "P06是否要求题库/调查数据/更新工具排他或可买断？语料权利可否覆盖其分销地域？",
+      "required_evidence": "按官方合作说明列合同字段，题库/调查数据/词表/通用代码分别划权；列调查/审核/本地化成本，不引用品牌下载推本作收益。",
+      "reason": "无测试约定、数据权利证明或实际合同；只有候选P06。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "G08-B1",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "Guess Their Answer/Family Feud没有直接首题及拒绝/揭示记录"
+    },
+    {
+      "id": "G08-B2",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "真实调查语料、商用转授权与采集预算/同意方案缺失"
+    },
+    {
+      "id": "G08-B3",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "目标语言/群体、计分/匹配/对手身份未定"
+    },
+    {
+      "id": "G08-B4",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "finding": "P06对题库/调查数据/词表/工具的排他与买断边界UNKNOWN"
+    },
+    {
+      "id": "G08-M1",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "finding": "02–11缺完整施工定义；本轮不具备独立实现条件"
+    },
+    {
+      "id": "G08-m1",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "finding": "官方动态页没有本地原始快照，决策前需归档"
+    }
+  ],
+  "not_created": [
+    {
+      "file": "game-spec.json",
+      "reason": "规则/实体/数值未冻结，不能伪造可执行规格"
+    },
+    {
+      "file": "tasks.json",
+      "reason": "施工输入与验收未闭合，不能伪造工程任务依赖"
+    }
+  ],
+  "stop_line": {
+    "status": "PROPOSED_NOT_APPROVED",
+    "rule": "建议下一轮资料研究最多8人时、两轮定向核查（HYPOTHESIS预算建议，未批准）。若仍无可商用并可转授权的样本来源/自采方案，暂停题库扩写，不用AI排名补洞；未来两轮匹配/玩家筛查仍有不可解释判罚或无可信分组样本，撤回相应变体，必要时KILLED。调查及招募现金预算UNKNOWN，须另行批准后才能发生。",
+    "cash_budget": "UNKNOWN"
+  },
+  "next_action": "先完成两参考的首题输入/匹配拒绝/计分揭示/再局直接记录；并列原创调查与可许可数据的来源、同意、成本方案，未取得合法语料前不进入题库量产。",
+  "exit_gate": [
+    "直接试玩证据",
+    "03–11完整模块",
+    "许可与合同冲突关闭",
+    "独立反向审计BLOCKER关闭",
+    "人类批准游戏ID及施工档案"
+  ],
+  "scope_note": "仅更新本项目目录；根STATUS.md及data保持只读。项目状态为目录内局部研究进度，未同步根项目清单。"
+}

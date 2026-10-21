@@ -1,0 +1,48 @@
+{
+  "recorded_date": "2026-10-21",
+  "purpose": "before audit revision; gameplay/layout and solution freeze",
+  "layout_fields": [
+    "id",
+    "width",
+    "height",
+    "mode",
+    "arrows",
+    "gates",
+    "walls",
+    "manifest",
+    "initial_state",
+    "win",
+    "solution",
+    "seed"
+  ],
+  "level_layout_sha256": {
+    "L01": "f242b63abc6f9e00edeedd96feade50f056ed11f1de7b379dc0ee7ac2de44ac4",
+    "L02": "e3858599e4110c158d12deea31b900da21c153b0f0cae969f805799a574cd318",
+    "L03": "343903c3605e4072f063e01e638fbff06ea3c90d2c3276e7fe483938f9d7784e",
+    "L04": "7ad240ad2ac841913faa2392ca6490e55a0e28c873446d5e908a9ca10f749ce5",
+    "L05": "3bd47c964f34101ce0f1881282d59db21cf3c09643831236e58abf68fd853fb3",
+    "L06": "f4243a6fad14ff13c3ec7c924c8d5866714201479c768df034ec1f766794f486",
+    "L07": "2085b6946fb136f562ddc86df64551c1d1169cc7f74600d1f0f34c006141a895",
+    "L08": "6b394cf0997b4363945389f447f8499a510c9be7d32758b3030471f45dd41c21",
+    "L09": "43bdcb32c8145063941e551e85c865d682561b64f7ac1cdd3e158f86a50bf36b",
+    "L10": "baccef8470b50f70c54b165e624db1e97456d525227cda3063e44b55e6d2b4ba",
+    "L11": "c9d977b399bfccb954b2b047d45d20527eca7b00328916fa850e8deb317a5ba1",
+    "L12": "3f67547f1fa1607916b52337b7cc97c9e7aaa10cf803cc8e526b1ea207de668c",
+    "L13": "55fff37a9763185feb7857166577445e4fdd12983d394491c5f195d2153d377c",
+    "L14": "5618fa1c54e7c10ff02dd6f3d43016f8d78b9fc41cde8b1e9c9e5bb7b203c9e9",
+    "L15": "13f7d523db851cab9566ae0e2acfa295f03d99eb1fd3fecae71959995220c18a",
+    "L16": "69308fa56291fe95995ee9b7bd0f21f045117c1b0383f557ece6b249eddb6e54",
+    "L17": "1462352b8eb9d2e72b848a19e9f9ad9e7df1281db3a9a2c66ad5e23859a2f7e0",
+    "L18": "9dbd78de77c854e0e3384651bd102bd201975878e88326d28389f064558f0337",
+    "L19": "29331a875e0d9f819553b542cda8e534fa2af8b110c33a88a644e07deb369f1c",
+    "L20": "2e8c73db33550eb6890ebaca6fc2feb9817a00fc6a22a333abcdf6d1e9658d0c"
+  },
+  "levels_sha256": "877e905a503bb6f5e0a4d094593feb4a7f2bcffb4127e72cb87c57ab3ea9f65e",
+  "input_sha256": {
+    "game-spec.json": "f2ceb1380135b4fd224a46ec3f7d4b60e98520d0e3297e6296b0f83edd3f4070",
+    "game-spec.schema.json": "5acdac4564c696196a748ffe47ac09e78ccdbfaac8686d5b3102f087a497f1ec",
+    "tasks.json": "3a7b2b3ba0ed61a3f04d4953491ed0ba58b2a63d0de64ae760694cf057e457df",
+    "tasks.schema.json": "50bbe0ca0177b88e406f3eae36a4b05a7e8c9ef242b0ab0e3935abe78fa03885",
+    "tools/validate.py": "ce8a823ed93aa2abd4255177a5a60d8de075baa82d673829cf1e8f69309dac10"
+  }
+}

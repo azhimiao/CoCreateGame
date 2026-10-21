@@ -1,0 +1,842 @@
+{
+  "result": "PASS_CURRENT_LEVELS",
+  "scope": "Independent finite data only; no game/runtime/browser/player tests",
+  "checked_at": "2026-10-21T18:38:48.354453+08:00",
+  "independent_algorithm": "frozenset states; analytic collinear body/obstacle distances",
+  "levels": [
+    {
+      "id": "L01",
+      "arrows": 2,
+      "witness": [
+        "a",
+        "b"
+      ],
+      "reachable_states": 3,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 3,
+          "solutions": 1,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 3,
+          "solutions": 1,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 3,
+          "solutions": 1,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L02",
+      "arrows": 3,
+      "witness": [
+        "b",
+        "a",
+        "c"
+      ],
+      "reachable_states": 6,
+      "winning_solution_count": 3,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L03",
+      "arrows": 4,
+      "witness": [
+        "b",
+        "a",
+        "c",
+        "d"
+      ],
+      "reachable_states": 12,
+      "winning_solution_count": 12,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 12,
+          "solutions": 12,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 12,
+          "solutions": 12,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 12,
+          "solutions": 12,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L04",
+      "arrows": 5,
+      "witness": [
+        "b",
+        "a",
+        "d",
+        "c",
+        "e"
+      ],
+      "reachable_states": 18,
+      "winning_solution_count": 30,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 18,
+          "solutions": 30,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 18,
+          "solutions": 30,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 18,
+          "solutions": 30,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L05",
+      "arrows": 2,
+      "witness": [
+        "b",
+        "a"
+      ],
+      "reachable_states": 3,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 4,
+          "solutions": 2,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 3,
+          "solutions": 1,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 4,
+          "solutions": 2,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L06",
+      "arrows": 3,
+      "witness": [
+        "c",
+        "b",
+        "a"
+      ],
+      "reachable_states": 5,
+      "winning_solution_count": 2,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 5,
+          "solutions": 2,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L07",
+      "arrows": 3,
+      "witness": [
+        "c",
+        "b",
+        "a"
+      ],
+      "reachable_states": 4,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 8,
+          "solutions": 6,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 4,
+          "solutions": 1,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 8,
+          "solutions": 6,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L08",
+      "arrows": 3,
+      "witness": [
+        "b",
+        "a",
+        "c"
+      ],
+      "reachable_states": 7,
+      "winning_solution_count": 2,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "trap_choices": [
+        {
+          "history": [
+            "b"
+          ],
+          "winning": [
+            "a"
+          ],
+          "losing": [
+            "c"
+          ]
+        },
+        {
+          "history": [
+            "c"
+          ],
+          "winning": [
+            "a"
+          ],
+          "losing": [
+            "b"
+          ]
+        }
+      ],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 8,
+          "solutions": 6,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 7,
+          "solutions": 2,
+          "losing_states": 1
+        },
+        "remove_both": {
+          "reachable_states": 8,
+          "solutions": 6,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L09",
+      "arrows": 4,
+      "witness": [
+        "c",
+        "a",
+        "b",
+        "d"
+      ],
+      "reachable_states": 10,
+      "winning_solution_count": 4,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "trap_choices": [
+        {
+          "history": [
+            "c"
+          ],
+          "winning": [
+            "a"
+          ],
+          "losing": [
+            "d"
+          ]
+        },
+        {
+          "history": [
+            "d"
+          ],
+          "winning": [
+            "a"
+          ],
+          "losing": [
+            "c"
+          ]
+        }
+      ],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 16,
+          "solutions": 24,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 10,
+          "solutions": 4,
+          "losing_states": 1
+        },
+        "remove_both": {
+          "reachable_states": 16,
+          "solutions": 24,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L10",
+      "arrows": 5,
+      "witness": [
+        "c",
+        "a",
+        "b",
+        "d",
+        "e"
+      ],
+      "reachable_states": 20,
+      "winning_solution_count": 20,
+      "deadlock_states": 1,
+      "losing_states": 2,
+      "trap_choices": [
+        {
+          "history": [
+            "c"
+          ],
+          "winning": [
+            "a",
+            "e"
+          ],
+          "losing": [
+            "d"
+          ]
+        },
+        {
+          "history": [
+            "d"
+          ],
+          "winning": [
+            "a",
+            "e"
+          ],
+          "losing": [
+            "c"
+          ]
+        },
+        {
+          "history": [
+            "c",
+            "e"
+          ],
+          "winning": [
+            "a"
+          ],
+          "losing": [
+            "d"
+          ]
+        },
+        {
+          "history": [
+            "d",
+            "e"
+          ],
+          "winning": [
+            "a"
+          ],
+          "losing": [
+            "c"
+          ]
+        }
+      ],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 32,
+          "solutions": 120,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 20,
+          "solutions": 20,
+          "losing_states": 2
+        },
+        "remove_both": {
+          "reachable_states": 32,
+          "solutions": 120,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L11",
+      "arrows": 3,
+      "witness": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reachable_states": 4,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 4,
+          "solutions": 1,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 8,
+          "solutions": 6,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 8,
+          "solutions": 6,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L12",
+      "arrows": 3,
+      "witness": [
+        "b",
+        "a",
+        "c"
+      ],
+      "reachable_states": 4,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 4,
+          "solutions": 1,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L13",
+      "arrows": 3,
+      "witness": [
+        "b",
+        "c",
+        "a"
+      ],
+      "reachable_states": 5,
+      "winning_solution_count": 1,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "trap_choices": [
+        {
+          "history": [],
+          "winning": [
+            "b"
+          ],
+          "losing": [
+            "a"
+          ]
+        }
+      ],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 5,
+          "solutions": 1,
+          "losing_states": 1
+        },
+        "remove_manifest": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L14",
+      "arrows": 5,
+      "witness": [
+        "b",
+        "c",
+        "a",
+        "d",
+        "e"
+      ],
+      "reachable_states": 7,
+      "winning_solution_count": 1,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "trap_choices": [
+        {
+          "history": [],
+          "winning": [
+            "b"
+          ],
+          "losing": [
+            "a"
+          ]
+        }
+      ],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 7,
+          "solutions": 1,
+          "losing_states": 1
+        },
+        "remove_manifest": {
+          "reachable_states": 18,
+          "solutions": 30,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 18,
+          "solutions": 30,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L15",
+      "arrows": 5,
+      "witness": [
+        "b",
+        "a",
+        "c",
+        "d",
+        "e"
+      ],
+      "reachable_states": 6,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 6,
+          "solutions": 1,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 16,
+          "solutions": 20,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 16,
+          "solutions": 20,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L16",
+      "arrows": 3,
+      "witness": [
+        "b",
+        "a",
+        "c"
+      ],
+      "reachable_states": 4,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 4,
+          "solutions": 1,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 7,
+          "solutions": 2,
+          "losing_states": 1
+        },
+        "remove_both": {
+          "reachable_states": 8,
+          "solutions": 6,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L17",
+      "arrows": 3,
+      "witness": [
+        "b",
+        "c",
+        "a"
+      ],
+      "reachable_states": 5,
+      "winning_solution_count": 1,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "trap_choices": [
+        {
+          "history": [],
+          "winning": [
+            "b"
+          ],
+          "losing": [
+            "a"
+          ]
+        }
+      ],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 6,
+          "solutions": 2,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 6,
+          "solutions": 3,
+          "losing_states": 0
+        },
+        "remove_both": {
+          "reachable_states": 8,
+          "solutions": 6,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L18",
+      "arrows": 4,
+      "witness": [
+        "c",
+        "a",
+        "b",
+        "d"
+      ],
+      "reachable_states": 5,
+      "winning_solution_count": 1,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 6,
+          "solutions": 2,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 10,
+          "solutions": 4,
+          "losing_states": 1
+        },
+        "remove_both": {
+          "reachable_states": 16,
+          "solutions": 24,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L19",
+      "arrows": 6,
+      "witness": [
+        "c",
+        "a",
+        "b",
+        "d",
+        "e",
+        "f"
+      ],
+      "reachable_states": 9,
+      "winning_solution_count": 2,
+      "deadlock_states": 0,
+      "losing_states": 0,
+      "trap_choices": [],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 10,
+          "solutions": 4,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 48,
+          "solutions": 60,
+          "losing_states": 16
+        },
+        "remove_both": {
+          "reachable_states": 64,
+          "solutions": 720,
+          "losing_states": 0
+        }
+      }
+    },
+    {
+      "id": "L20",
+      "arrows": 7,
+      "witness": [
+        "b",
+        "c",
+        "a",
+        "d",
+        "e",
+        "f",
+        "z"
+      ],
+      "reachable_states": 12,
+      "winning_solution_count": 4,
+      "deadlock_states": 1,
+      "losing_states": 1,
+      "trap_choices": [
+        {
+          "history": [],
+          "winning": [
+            "b"
+          ],
+          "losing": [
+            "a"
+          ]
+        }
+      ],
+      "ablation": {
+        "remove_gates": {
+          "reachable_states": 16,
+          "solutions": 12,
+          "losing_states": 0
+        },
+        "remove_manifest": {
+          "reachable_states": 96,
+          "solutions": 504,
+          "losing_states": 24
+        },
+        "remove_both": {
+          "reachable_states": 128,
+          "solutions": 5040,
+          "losing_states": 0
+        }
+      }
+    }
+  ],
+  "reachable_states": 149,
+  "reachable_transition_comparisons": 645,
+  "all_subset_transition_comparisons": 2344,
+  "document_projections": [
+    "L01",
+    "L02",
+    "L03",
+    "L04",
+    "L05",
+    "L06",
+    "L07",
+    "L08",
+    "L09",
+    "L10",
+    "L11",
+    "L12",
+    "L13",
+    "L14",
+    "L15",
+    "L16",
+    "L17",
+    "L18",
+    "L19",
+    "L20"
+  ],
+  "input_hashes_match": true,
+  "tasks_acyclic": true,
+  "approval_ancestors_valid": true,
+  "mutation_probes": [
+    {
+      "case": "duplicate_campaign_id",
+      "accepted": true,
+      "returncode": 0,
+      "stdout": "{\"result\": \"PASS\", \"levels\": 20, \"solutions_verified\": 20, \"reachable_states\": 149, \"transition_checks\": 645, \"adversarial_cases\": 9, \"schemas\": 2, \"tasks\": 16}\n",
+      "stderr": ""
+    },
+    {
+      "case": "reversed_commit_order",
+      "accepted": true,
+      "returncode": 0,
+      "stdout": "{\"result\": \"PASS\", \"levels\": 20, \"solutions_verified\": 20, \"reachable_states\": 149, \"transition_checks\": 645, \"adversarial_cases\": 9, \"schemas\": 2, \"tasks\": 16}\n",
+      "stderr": ""
+    },
+    {
+      "case": "approval_gate_bypass",
+      "accepted": false,
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"F:\\CoCreateGame\\reviews\\G01-checks\\mutation-probes\\approval_gate_bypass\\tools\\validate.py\", line 186, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"F:\\CoCreateGame\\reviews\\G01-checks\\mutation-probes\\approval_gate_bypass\\tools\\validate.py\", line 178, in main\n    design_values='HYPOTHESIS',schemas=schemas,dag=dag_checks(),adversarial_checks=adversarial_checks(spec),levels=rows,\n                                                   ^^^^^^^^^^^^\n  File \"F:\\CoCreateGame\\reviews\\G01-checks\\mutation-probes\\approval_gate_bypass\\tools\\validate.py\", line 136, in dag_checks\n    assert 'T02' in ancestors(t['id']),('approval missing',t['id'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('approval missing', 'T04')\n"
+    },
+    {
+      "case": "out_of_bounds",
+      "accepted": false,
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"F:\\CoCreateGame\\reviews\\G01-checks\\mutation-probes\\out_of_bounds\\tools\\validate.py\", line 186, in <module>\n    if __name__=='__main__': main()\n                             ^^^^^^\n  File \"F:\\CoCreateGame\\reviews\\G01-checks\\mutation-probes\\out_of_bounds\\tools\\validate.py\", line 162, in main\n    schemas=schema_checks(); spec=read('game-spec.json'); assert len(spec['levels'])==20\n            ^^^^^^^^^^^^^^^\n  File \"F:\\CoCreateGame\\reviews\\G01-checks\\mutation-probes\\out_of_bounds\\tools\\validate.py\", line 106, in schema_checks\n    validator=Draft202012Validator(schema); data=read(f+'.json'); validator.validate(data)\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"F:\\clawtry\\hermes\\hermes-agent\\venv\\Lib\\site-packages\\jsonschema\\validators.py\", line 450, in validate\n    raise error\njsonschema.exceptions.ValidationError: -1 is less than the minimum of 0\n\nFailed validating 'minimum' in schema['properties']['levels']['items']['properties']['arrows']['items']['properties']['cells']['items']['prefixItems'][0]:\n    {'type': 'integer', 'minimum': 0}\n\nOn instance['levels'][0]['arrows'][0]['cells'][0][0]:\n    -1\n"
+    }
+  ],
+  "author_rerun": {
+    "returncode": 0,
+    "stdout": "{\"result\": \"PASS\", \"levels\": 20, \"solutions_verified\": 20, \"reachable_states\": 149, \"transition_checks\": 645, \"adversarial_cases\": 9, \"schemas\": 2, \"tasks\": 16}\n",
+    "stderr": ""
+  }
+}

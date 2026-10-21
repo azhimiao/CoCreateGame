@@ -1,0 +1,1 @@
+{"result": "PASS", "levels": 20, "solutions_verified": 20, "reachable_states": 149, "transition_checks": 645, "adversarial_cases": 9, "schemas": 3, "tasks": 16, "contract_mutations": 10, "save_vectors": 27, "session_vectors": 3, "layouts_unchanged": true}

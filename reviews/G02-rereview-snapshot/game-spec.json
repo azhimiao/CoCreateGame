@@ -1,0 +1,2862 @@
+{
+  "schema_version": "1.1.0",
+  "project_id": "G02",
+  "working_title": "签章收纳台 / Seal & Sort Desk",
+  "date": "2026-10-21",
+  "state": "REVISION_REQUIRED",
+  "ready_for_build": false,
+  "independent_review": "PENDING_RE_REVIEW",
+  "development_authorized": false,
+  "candidate_platform_ids": [
+    "P02",
+    "P04",
+    "P05",
+    "P06"
+  ],
+  "audience": "13+ adolescents and adults; not child-targeted",
+  "assumption_label": "HYPOTHESIS: all original mechanics, levels, timings, budgets and player thresholds",
+  "rules": {
+    "stack_order": "bottom_to_top",
+    "move_units": 1,
+    "match": "empty_or_same_top",
+    "selected_input_policy": "other_tray_always_attempt_move_reject_preserves_source_cancel_before_reselect",
+    "capacity_unit": "one_item",
+    "seal": "manual_exact_demand_homogeneous_then_remove_items_and_retire_tray",
+    "unlock": "all_required_colours_sealed",
+    "filter": "destination_accepts_colour",
+    "undo": "unlimited_full_snapshot_including_seals_and_locks",
+    "redo": false,
+    "failure": "zero_legal_forward_actions_and_not_win",
+    "no_solution_inference": "never_from_search_timeout",
+    "win_priority": "win_before_deadlock",
+    "invalid_action_cost": 0,
+    "time_limit_seconds": null,
+    "move_limit": null,
+    "randomness": "none_in_20_authored_levels",
+    "timer_affects_rules": false
+  },
+  "variants": [
+    {
+      "id": "V0",
+      "locks": false,
+      "filters": false,
+      "hypothesis": "基础借位与手动封箱可理解性"
+    },
+    {
+      "id": "X1",
+      "locks": true,
+      "filters": false,
+      "hypothesis": "封箱解锁创造可读的先后决策"
+    },
+    {
+      "id": "X2",
+      "locks": false,
+      "filters": true,
+      "hypothesis": "接收标签改变路线规划而非只改外观"
+    },
+    {
+      "id": "X12",
+      "locks": true,
+      "filters": true,
+      "hypothesis": "组合收益需单独验证，不能外推两个单因子成功"
+    }
+  ],
+  "levels": [
+    {
+      "id": "L01",
+      "name": "双件入箱",
+      "variant": "V0",
+      "status": "HYPOTHESIS",
+      "intent": "一次移动后手动封箱；理解没有自动消除",
+      "demand": {
+        "A": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A"
+          ],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "A"
+          ],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A"
+        ]
+      },
+      "target_seconds": 25,
+      "tutorial": "将顶部圆片移到另一圆片，再点封箱",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        }
+      ],
+      "par_actions": 2,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L02",
+      "name": "交叉归位",
+      "variant": "V0",
+      "status": "HYPOTHESIS",
+      "intent": "一个空托盘用于交换顶层",
+      "demand": {
+        "A": 2,
+        "B": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B"
+        ]
+      },
+      "target_seconds": 55,
+      "tutorial": "空托盘先借位，异类顶层不能叠放",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T2"
+        },
+        {
+          "op": "seal",
+          "at": "T2"
+        }
+      ],
+      "par_actions": 5,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L03",
+      "name": "三角借位",
+      "variant": "V0",
+      "status": "HYPOTHESIS",
+      "intent": "三类闭环需要选择第一种归箱色",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "C",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [
+            "B",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 60,
+      "tutorial": "先找顶部同类，保留借位空间",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        }
+      ],
+      "par_actions": 7,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L04",
+      "name": "三件邮包",
+      "variant": "V0",
+      "status": "HYPOTHESIS",
+      "intent": "容量变三；同类连续两件仍须逐件移动",
+      "demand": {
+        "A": 3,
+        "B": 3
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 3,
+          "items": [
+            "A",
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 3,
+          "items": [
+            "B",
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B"
+        ]
+      },
+      "target_seconds": 65,
+      "tutorial": "每次只移动一件，三件同类可封箱",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        }
+      ],
+      "par_actions": 5,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L05",
+      "name": "斜纹整理",
+      "variant": "V0",
+      "status": "HYPOTHESIS",
+      "intent": "两处空位与三层深度",
+      "demand": {
+        "A": 3,
+        "B": 3,
+        "C": 3
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 3,
+          "items": [
+            "A",
+            "B",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 3,
+          "items": [
+            "B",
+            "C",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 3,
+          "items": [
+            "C",
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 70,
+      "tutorial": "观察全部层，规划两处借位",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        }
+      ],
+      "par_actions": 11,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L06",
+      "name": "圆章开锁",
+      "variant": "X1",
+      "status": "HYPOTHESIS",
+      "intent": "A封箱解锁现成C箱；按条件而非倒计时解锁",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [
+            "C",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [
+            "A"
+          ],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 75,
+      "tutorial": "封好圆片A后，星片托盘解锁",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T2"
+        },
+        {
+          "op": "seal",
+          "at": "T2"
+        }
+      ],
+      "par_actions": 6,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L07",
+      "name": "隔柜取星",
+      "variant": "X1",
+      "status": "HYPOTHESIS",
+      "intent": "锁内物品可见但不可取放；先封B",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [
+            "B"
+          ],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 80,
+      "tutorial": "菱片B封箱后才能取锁内星片",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        }
+      ],
+      "par_actions": 7,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L08",
+      "name": "两翼解锁",
+      "variant": "X1",
+      "status": "HYPOTHESIS",
+      "intent": "一个章解锁两个混合柜；先后两组排序",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2,
+        "D": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [
+            "C",
+            "D"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [
+            "A"
+          ],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 2,
+          "items": [
+            "D",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [
+            "A"
+          ],
+          "sealable": true
+        },
+        {
+          "id": "T5",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "target_seconds": 85,
+      "tutorial": "圆片A解锁右侧两柜",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T2"
+        },
+        {
+          "op": "seal",
+          "at": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T3",
+          "dst": "T1"
+        },
+        {
+          "op": "move",
+          "src": "T4",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        }
+      ],
+      "par_actions": 10,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L09",
+      "name": "留空等章",
+      "variant": "X1",
+      "status": "HYPOTHESIS",
+      "intent": "可选锁空盘展示解锁后增容；当前最短解不用它，不验证开锁掌握",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "C",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [
+            "B",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [
+            "A"
+          ],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 90,
+      "tutorial": "观察T4缺A章；可不使用T4完成，另问何时可用",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        }
+      ],
+      "par_actions": 7,
+      "feature_coverage": {
+        "optional_container_ids": [
+          "T4"
+        ],
+        "mandatory_mastery_claim": false,
+        "evidence": "Published solution never references optional tray; removing it preserves that legal winning sequence"
+      }
+    },
+    {
+      "id": "L10",
+      "name": "三层钥印",
+      "variant": "X1",
+      "status": "HYPOTHESIS",
+      "intent": "三件需求与B解锁",
+      "demand": {
+        "A": 3,
+        "B": 3,
+        "C": 3
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 3,
+          "items": [
+            "A",
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 3,
+          "items": [
+            "B",
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 3,
+          "items": [
+            "C",
+            "C",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [
+            "B"
+          ],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 95,
+      "tutorial": "三件菱片B封好才可封星片",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        }
+      ],
+      "par_actions": 6,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L11",
+      "name": "单签借位",
+      "variant": "X2",
+      "status": "HYPOTHESIS",
+      "intent": "唯一空盘只接A；改变第一步合法动作",
+      "demand": {
+        "A": 2,
+        "B": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B"
+        ]
+      },
+      "target_seconds": 100,
+      "tutorial": "标签圆片A的空盘不接菱片",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "seal",
+          "at": "T2"
+        }
+      ],
+      "par_actions": 5,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L12",
+      "name": "分流双签",
+      "variant": "X2",
+      "status": "HYPOTHESIS",
+      "intent": "两个定向缓冲；不依赖锁系统",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "C",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [
+            "B",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 105,
+      "tutorial": "看标签再移动，同色顶层仍须匹配",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        }
+      ],
+      "par_actions": 7,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L13",
+      "name": "窄盘暂存",
+      "variant": "X2",
+      "status": "HYPOTHESIS",
+      "intent": "B专色缓冲参与解；A窄盘T3为可选演示，不验证其使用或不可封规则掌握",
+      "demand": {
+        "A": 3,
+        "B": 3
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 3,
+          "items": [
+            "A",
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 3,
+          "items": [
+            "B",
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 1,
+          "items": [],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": false
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B"
+        ]
+      },
+      "target_seconds": 110,
+      "tutorial": "T3只接A且不可封；可不使用，另问能否在T3封箱",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        }
+      ],
+      "par_actions": 5,
+      "feature_coverage": {
+        "optional_container_ids": [
+          "T3"
+        ],
+        "mandatory_mastery_claim": false,
+        "evidence": "Published solution never references optional tray; removing it preserves that legal winning sequence"
+      }
+    },
+    {
+      "id": "L14",
+      "name": "三层双路",
+      "variant": "X2",
+      "status": "HYPOTHESIS",
+      "intent": "多层排序与A/C双签",
+      "demand": {
+        "A": 3,
+        "B": 3,
+        "C": 3
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 3,
+          "items": [
+            "A",
+            "B",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 3,
+          "items": [
+            "B",
+            "C",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 3,
+          "items": [
+            "C",
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "A",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 115,
+      "tutorial": "双标签表示可接两类，不能混顶",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        }
+      ],
+      "par_actions": 11,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L15",
+      "name": "四色邮路",
+      "variant": "X2",
+      "status": "HYPOTHESIS",
+      "intent": "四色循环与两条借位路线",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2,
+        "D": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [
+            "C",
+            "D"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [
+            "D",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "B",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T5",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "target_seconds": 120,
+      "tutorial": "按BD和AC标签分流顶部物件",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T3",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T2"
+        },
+        {
+          "op": "seal",
+          "at": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        }
+      ],
+      "par_actions": 9,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L16",
+      "name": "签章联动",
+      "variant": "X12",
+      "status": "HYPOTHESIS",
+      "intent": "先用A专色位，再封A开C",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [
+            "C",
+            "C"
+          ],
+          "accepts": [
+            "C"
+          ],
+          "unlock_after": [
+            "A"
+          ],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 125,
+      "tutorial": "标签与锁分别检查，二者都满足才可移动",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "seal",
+          "at": "T2"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        }
+      ],
+      "par_actions": 6,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L17",
+      "name": "先菱后星",
+      "variant": "X12",
+      "status": "HYPOTHESIS",
+      "intent": "已露C不可提前全部归箱；两种缓冲职责",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [
+            "B"
+          ],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A",
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T5",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 130,
+      "tutorial": "先拿菱章B，星片分流盘可先留空",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        }
+      ],
+      "par_actions": 7,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L18",
+      "name": "三层分签",
+      "variant": "X12",
+      "status": "HYPOTHESIS",
+      "intent": "先A定向借位，再开C，不能靠所有盘通用",
+      "demand": {
+        "A": 3,
+        "B": 3,
+        "C": 3
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 3,
+          "items": [
+            "A",
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 3,
+          "items": [
+            "B",
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 3,
+          "items": [
+            "C",
+            "C",
+            "C"
+          ],
+          "accepts": [
+            "C"
+          ],
+          "unlock_after": [
+            "A"
+          ],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "B",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "target_seconds": 135,
+      "tutorial": "A签盘只接圆片，BC签盘可临时收菱片",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T4",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        }
+      ],
+      "par_actions": 6,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L19",
+      "name": "双章门",
+      "variant": "X12",
+      "status": "HYPOTHESIS",
+      "intent": "AND锁必须A和B都封；两阶段分签排序",
+      "demand": {
+        "A": 2,
+        "B": 2,
+        "C": 2,
+        "D": 2
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 2,
+          "items": [
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 2,
+          "items": [
+            "B",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "A"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 2,
+          "items": [
+            "C",
+            "D"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [
+            "A",
+            "B"
+          ],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 2,
+          "items": [
+            "D",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [
+            "A",
+            "B"
+          ],
+          "sealable": true
+        },
+        {
+          "id": "T5",
+          "capacity": 2,
+          "items": [],
+          "accepts": [
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "target_seconds": 140,
+      "tutorial": "锁上的两个章都要点亮",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T1"
+        },
+        {
+          "op": "seal",
+          "at": "T1"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T2"
+        },
+        {
+          "op": "seal",
+          "at": "T2"
+        },
+        {
+          "op": "move",
+          "src": "T3",
+          "dst": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T4",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        }
+      ],
+      "par_actions": 10,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    },
+    {
+      "id": "L20",
+      "name": "邮路终试",
+      "variant": "X12",
+      "status": "HYPOTHESIS",
+      "intent": "三层三类借位加双章末箱；四类总复习",
+      "demand": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "containers": [
+        {
+          "id": "T0",
+          "capacity": 3,
+          "items": [
+            "A",
+            "B",
+            "C"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T1",
+          "capacity": 3,
+          "items": [
+            "B",
+            "C",
+            "A"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T2",
+          "capacity": 3,
+          "items": [
+            "C",
+            "A",
+            "B"
+          ],
+          "accepts": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T3",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "A",
+            "C"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T4",
+          "capacity": 3,
+          "items": [],
+          "accepts": [
+            "B"
+          ],
+          "unlock_after": [],
+          "sealable": true
+        },
+        {
+          "id": "T5",
+          "capacity": 3,
+          "items": [
+            "D",
+            "D",
+            "D"
+          ],
+          "accepts": [
+            "D"
+          ],
+          "unlock_after": [
+            "A",
+            "C"
+          ],
+          "sealable": true
+        }
+      ],
+      "win": {
+        "all_items_removed": true,
+        "sealed_colours": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "target_seconds": 145,
+      "tutorial": "先整理ABC，圆章和星章共同解锁叶片D",
+      "solution": [
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T0",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T3"
+        },
+        {
+          "op": "move",
+          "src": "T1",
+          "dst": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T4"
+        },
+        {
+          "op": "seal",
+          "at": "T4"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T0"
+        },
+        {
+          "op": "seal",
+          "at": "T0"
+        },
+        {
+          "op": "move",
+          "src": "T2",
+          "dst": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T3"
+        },
+        {
+          "op": "seal",
+          "at": "T5"
+        }
+      ],
+      "par_actions": 12,
+      "feature_coverage": {
+        "optional_container_ids": [],
+        "mandatory_mastery_claim": false,
+        "evidence": "No per-level teaching-mastery conclusion; legal solution is not a player comprehension measurement"
+      }
+    }
+  ],
+  "economy": {
+    "currency": "none",
+    "lives": "none",
+    "hint_cost": 0,
+    "undo_cost": 0,
+    "progression": "complete Lnn to unlock Lnn+1; completed replay unrestricted; L20 opens collection-complete screen",
+    "iap": false,
+    "rewarded_ads": false,
+    "basic_monetization": false,
+    "future_interstitial": "Full/approved publisher only; after results and explicit next, >=180 active seconds and >=3 completions since previous; never necessary"
+  },
+  "command_protocol": {
+    "version": 2,
+    "identity": [
+      "run_id",
+      "command_epoch",
+      "command_seq"
+    ],
+    "sequence_type": "integer_1_to_9007199254740991",
+    "order": [
+      "envelope_and_scope",
+      "cached_payload_identity",
+      "sequence_window",
+      "consume_next_sequence",
+      "status",
+      "expected_revision",
+      "rule_verdict"
+    ],
+    "receipt_window": 128,
+    "cache_rejections": true,
+    "cache_hit_events": 0,
+    "cache_hit_saves": 0,
+    "conflict": "ID_CONFLICT_no_replace",
+    "recovery": "fresh_epoch_preserve_run_revision_logical_and_undo_reset_sequence_to_1",
+    "old_epoch": "STALE_EPOCH_no_side_effect",
+    "replay_limit": 4096,
+    "checkpoint": "endpoint_with_logical_revision_action_count_and_undo_history",
+    "fixtures": "protocol-vectors.json",
+    "probe": "tools/check_contracts.py"
+  },
+  "research_observation": {
+    "initial_author_scope": "OFFICIAL_WEB_DESCRIPTION_ONLY_NO_CORE_PLAY",
+    "team_supplement": "evidence/team-browser-observation-index.json",
+    "status": "BLOCKED_CORE_BEHAVIOR",
+    "confirmed_core_inputs": 0,
+    "continuous_30s": "UNKNOWN",
+    "continuous_5min": "UNKNOWN"
+  },
+  "data": {
+    "save_version": 2,
+    "key": "g02.save.v2",
+    "maximum_history": 128,
+    "overflow": "drop_oldest_undo_snapshot_only",
+    "maximum_local_events": 1000,
+    "consent_default": "no_developer_network_telemetry",
+    "replay": "4096 consumed-command records; checkpoint includes logical state, revision, action count and undo history; independent from receipt cache"
+  },
+  "ui": {
+    "design_width": 390,
+    "design_height": 844,
+    "coordinate_origin": "safe_content_top_left",
+    "min_touch_css_px": 44,
+    "move_ms": 160,
+    "seal_ms": 240,
+    "unlock_ms": 180,
+    "reduced_motion_ms": 0,
+    "screens": [
+      "boot",
+      "home",
+      "level_select",
+      "play",
+      "pause_settings",
+      "restart_confirm",
+      "deadlock",
+      "win",
+      "collection_complete",
+      "error_recovery",
+      "credits"
+    ],
+    "layout_contract": {
+      "units": "CSS_px_after_safe_insets_no_uniform_downscale",
+      "play_scroll": false,
+      "portrait_min_safe": [
+        304,
+        480
+      ],
+      "landscape_min_safe": [
+        480,
+        296
+      ],
+      "portrait_columns": 3,
+      "landscape_columns": 6,
+      "card_height": 158,
+      "card_gap": 4,
+      "board_y": 84,
+      "header": [
+        0,
+        0,
+        "W",
+        44
+      ],
+      "orders": [
+        4,
+        48,
+        "W-8",
+        32
+      ],
+      "portrait_message": [
+        4,
+        408,
+        "W-8",
+        20
+      ],
+      "portrait_tools_y": 436,
+      "landscape_tools_y": 252,
+      "touch_min": 44,
+      "card_label": [
+        2,
+        0,
+        "cardW-4",
+        20
+      ],
+      "item_centres_y_bottom_to_top": [
+        90,
+        66,
+        42
+      ],
+      "item_visual_size": 24,
+      "top_hit_size": 44,
+      "seal_rect": [
+        4,
+        114,
+        "cardW-8",
+        44
+      ],
+      "font_scale_max": 1.3,
+      "label_base_font": 12,
+      "label_line_height": 20,
+      "message_base_font": 12,
+      "message_max_zh_characters": 14,
+      "other_screen_scroll_owner": "scroll_region_after_8px_cancel_tap_no_game_commands",
+      "fixtures": "layout-cases.json"
+    }
+  },
+  "technology": {
+    "engine_candidate": "Cocos Creator 3.8.8",
+    "typescript_checker_candidate": "5.6.3",
+    "language_subset": "Cocos official 3.8 language page documents TypeScript 4.1.0 subset",
+    "compatibility": "UNVERIFIED; pin installed editor build/hash and run T03 before adopting",
+    "engine_build": "NOT_RUN",
+    "mobile": "P05/P06 SDK and engine support pending publisher confirmation; separate native project or port"
+  },
+  "platform_constraints": [
+    {
+      "id": "P02",
+      "max_total_mb": 250,
+      "max_files": 1500,
+      "no_sdk_max_total_mb": 50,
+      "mobile_homepage_initial_mb": 20,
+      "full_sdk_required": true,
+      "basic_monetization": false,
+      "external_analytics": false,
+      "age_policy": "PEGI-12 compatible; reject child-targeted content",
+      "source": "E04;E05"
+    },
+    {
+      "id": "P04",
+      "sdk": "Playgama Bridge",
+      "external_analytics": false,
+      "analytics": "Bridge only or local offline QA; never GA4",
+      "source": "E06;E07"
+    },
+    {
+      "id": "P01",
+      "active_candidate": false,
+      "ads": false,
+      "external_links": false,
+      "developer_telemetry": false,
+      "source": "E10"
+    }
+  ],
+  "performance_targets": {
+    "status": "HYPOTHESIS_NOT_MEASURED",
+    "initial_mb": 12,
+    "total_mb": 20,
+    "files": 200,
+    "fps_mobile": 60,
+    "fps_fallback": 30,
+    "memory_mb": 160,
+    "first_playable_seconds_10mbps": 5
+  },
+  "blocking_unknowns": [
+    "Independent audit REVISE; six author fixes pending same-reviewer re-review",
+    "Reference hands-on trajectories UNKNOWN",
+    "Cocos/TypeScript combination not compiled",
+    "Player comprehension and enjoyment not measured",
+    "P05/P06 SDK/build requirements and commercial terms UNKNOWN",
+    "Final asset provenance and contract rights pending"
+  ]
+}

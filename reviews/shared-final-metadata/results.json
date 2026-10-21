@@ -1,0 +1,15 @@
+{
+  "checked_at_utc": "2026-10-21T11:25:37.355060+00:00",
+  "scope": "Final metadata-only update; no repeat of closed SRA-m03 semantic/path checks",
+  "result": "PASS",
+  "validation_check_count": 622,
+  "manifest_payload_count": 35,
+  "associated_read_only_count": 1,
+  "validator_change": "Only adds manifest.validation_check_count = report.check_count; readonly path policy unchanged",
+  "sha256": {
+    "validate_delivery.py": "00df7afa01e362b9fdb9a0e791783af6cc38e6e27aaba9e054762461af1fc4cd",
+    "validation.json": "45c046a1457e6b2455a7d52a7e0beb968391693f4ad31554cc5e557e860f2449",
+    "delivery_manifest.json": "ba450a2e2a2f3479484ae79dcca7fa5dbbfe779fee8cbacfdf011b5e4ee013bf"
+  },
+  "original_closed_result": "reviews/shared-recheck-03/results.json"
+}

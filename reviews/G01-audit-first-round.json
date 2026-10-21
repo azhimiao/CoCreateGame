@@ -1,0 +1,11 @@
+{
+  "game_id": "G01",
+  "verdict": "REVISE",
+  "summary": "20关见证、149个可达状态/645次可达动作及2344次全子集比较通过独立模型；原关卡未发现无解。需修campaign/规则声明校验防漏及Session/进度事件交接，对标流程证据仍不足以无条件Ready。",
+  "unresolved_blockers": [],
+  "unresolved_majors": [
+    {"id":"G01-M01","severity":"MAJOR","title":"对标关键流程及首30秒/5分钟覆盖不足","locations":[{"file":"games/G01/02_Benchmark_Playthrough.md","section":"方法声明/时间维度"}],"evidence":"官方说明为间接重建，输入矛盾及失败重试/回归未知；允许间接证据但不能补成完整实测。","fix":"并入后补观察，逐节点标来源/定位/覆盖和未知，不据文件齐全签Ready。","validation":"第三人区分真实输入响应、官方重建与未知，未覆盖时间窗保留缺口。"},
+    {"id":"G01-M02","severity":"MAJOR","title":"重复campaign ID和逆序规则声明仍获PASS","locations":[{"file":"games/G01/game-spec.schema.json","section":"progression/levels/rules"},{"file":"games/G01/tools/validate.py","line":162}],"evidence":"末关及order同步L20改L19仍PASS；仅反转commit_order也PASS，见reviews/G01-checks/independent-results.json。","fix":"绑定正式集合/顺序/唯一性及固定规则版本的声明与验解语义。","validation":"原20关及9规则反例PASS，重复/缺失/乱序/错号和逆序提交分别拒绝。"},
+    {"id":"G01-M03","severity":"MAJOR","title":"纯规则与Session/Progress事件边界及责任未闭合","locations":[{"file":"games/G01/04_Systems_and_Data.md","line":27},{"file":"games/G01/07_Tech_Architecture.md","line":18},{"file":"games/G01/tasks.json","section":"T04/T06/T08"}],"evidence":"commitExit输入缺session序号及completed历史，事件要求eventId/firstClear/stampCount；Session集成产物和owner未明确。","fix":"明确事实/富化事件及唯一发布者，分配Session/状态机/总线的任务写域。","validation":"相同局面不同completed历史的事件唯一，胜利撤销重做不重复章/保存，中断不二次提交。"}
+  ]
+}

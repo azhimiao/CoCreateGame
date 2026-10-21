@@ -1,0 +1,3700 @@
+{
+  "kind": "DESIGN_BASELINE_EVIDENCE",
+  "ruleset": "existing binary phase / removal only / first void exits",
+  "limitations": [
+    "Not a human difficulty or aesthetic rating.",
+    "Reachable states exclude undo/reset and stop at a cleared board.",
+    "A removal loses only if its destination cannot reach a cleared board with unlimited toggles.",
+    "Rotation fingerprint includes size, mask, semantic colors, facing, ordered body cells; excludes IDs and decoration.",
+    "Reflections, shifted padding, and abstract dependency-graph isomorphism are not deduplicated."
+  ],
+  "inputs": {
+    "levelsSha256": "daf612c57bb4e6eb53d2123a8270733dea4fe27ef09921fe9fc72d6b5040e9b9",
+    "coreSha256": "762e21912db9a0fd7f57474838654291f9db98969fde2e8d8f031fbe15651b02"
+  },
+  "summary": {
+    "levels": 52,
+    "sizeHistogram": {
+      "5": 5,
+      "6": 5,
+      "7": 28,
+      "8": 14
+    },
+    "shapeHistogram": {
+      "square": 22,
+      "plus": 5,
+      "diamond": 7,
+      "heart": 4,
+      "ring": 4,
+      "blob": 5,
+      "letter_c": 2,
+      "letter_t": 3
+    },
+    "arrows": {
+      "min": 2,
+      "median": 6,
+      "max": 9,
+      "mean": 5.6923
+    },
+    "fillRate": {
+      "min": 0.16,
+      "median": 0.7637,
+      "max": 0.9429,
+      "mean": 0.7393
+    },
+    "minToggleHistogram": {
+      "0": 2,
+      "1": 36,
+      "2": 14
+    },
+    "greedySolved": 52,
+    "greedyMatchesMinimum": 52,
+    "reachableStates": 2700,
+    "winningStates": 2700,
+    "legalRemovalTransitions": 5065,
+    "losingRemovalTransitions": 0,
+    "rotationDuplicateGroups": []
+  },
+  "levels": [
+    {
+      "id": "phase-01",
+      "size": 5,
+      "shape": "square",
+      "arrows": 2,
+      "bodyCells": 4,
+      "maskCells": 25,
+      "fillRate": 0.16,
+      "bodyLengths": {
+        "min": 2,
+        "median": 2,
+        "max": 2,
+        "mean": 2
+      },
+      "minActions": 2,
+      "minToggles": 0,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 0,
+        "matchesMinimum": true,
+        "removalWaves": 2,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          0
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "cbf00f834eb927369d9d8206976b34994965433c7b0626c9bcd8deda62d9aaa5",
+      "reachableStates": 6,
+      "winningStates": 6,
+      "legalRemovalTransitions": 4,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-02",
+      "size": 5,
+      "shape": "square",
+      "arrows": 5,
+      "bodyCells": 10,
+      "maskCells": 25,
+      "fillRate": 0.4,
+      "bodyLengths": {
+        "min": 2,
+        "median": 2,
+        "max": 2,
+        "mean": 2
+      },
+      "minActions": 5,
+      "minToggles": 0,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 0,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          }
+        ],
+        "actions": [
+          4,
+          2,
+          3,
+          1,
+          0
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "ecb32bbf0bf552720e67bfce3007b328df64b94551e1a4ed0b208abe6db2266a",
+      "reachableStates": 18,
+      "winningStates": 18,
+      "legalRemovalTransitions": 22,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-03",
+      "size": 5,
+      "shape": "square",
+      "arrows": 5,
+      "bodyCells": 10,
+      "maskCells": 25,
+      "fillRate": 0.4,
+      "bodyLengths": {
+        "min": 2,
+        "median": 2,
+        "max": 2,
+        "mean": 2
+      },
+      "minActions": 6,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              3,
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          }
+        ],
+        "actions": [
+          3,
+          4,
+          2,
+          "toggle",
+          0,
+          1
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "c124a4a7c63af9dfdbe21e40d766c4aa5bd63ebf3dbf3c67b8e3c3e27a22fc8b",
+      "reachableStates": 32,
+      "winningStates": 32,
+      "legalRemovalTransitions": 50,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-04",
+      "size": 5,
+      "shape": "square",
+      "arrows": 7,
+      "bodyCells": 13,
+      "maskCells": 25,
+      "fillRate": 0.52,
+      "bodyLengths": {
+        "min": 1,
+        "median": 2,
+        "max": 2,
+        "mean": 1.8571
+      },
+      "minActions": 8,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              3,
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0,
+              6
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1,
+              5
+            ]
+          }
+        ],
+        "actions": [
+          3,
+          4,
+          2,
+          "toggle",
+          0,
+          6,
+          1,
+          5
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "4366c239c43f999efa2777829a05b4f2b4e09e8821074b85a5fee5b386b34f53",
+      "reachableStates": 96,
+      "winningStates": 96,
+      "legalRemovalTransitions": 186,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-05",
+      "size": 5,
+      "shape": "square",
+      "arrows": 6,
+      "bodyCells": 12,
+      "maskCells": 25,
+      "fillRate": 0.48,
+      "bodyLengths": {
+        "min": 1,
+        "median": 2,
+        "max": 3,
+        "mean": 2
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 3,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              4,
+              5
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          4,
+          5,
+          1,
+          "toggle",
+          0,
+          3
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "acae4680fd767ede4b5c52ffe7f9dc6ff946bfbcf06a26b6067b6181777e23b4",
+      "reachableStates": 48,
+      "winningStates": 48,
+      "legalRemovalTransitions": 86,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-06",
+      "size": 6,
+      "shape": "square",
+      "arrows": 8,
+      "bodyCells": 20,
+      "maskCells": 36,
+      "fillRate": 0.5556,
+      "bodyLengths": {
+        "min": 2,
+        "median": 2.5,
+        "max": 3,
+        "mean": 2.5
+      },
+      "minActions": 9,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 6,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              6
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              7
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3,
+              4
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          6,
+          7,
+          5,
+          2,
+          1,
+          "toggle",
+          3,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "280f686fc148e1f69b2e4ff36d36e68ca359e9dd2043532ab98bb8b04d168e12",
+      "reachableStates": 70,
+      "winningStates": 70,
+      "legalRemovalTransitions": 116,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-07",
+      "size": 6,
+      "shape": "square",
+      "arrows": 9,
+      "bodyCells": 21,
+      "maskCells": 36,
+      "fillRate": 0.5833,
+      "bodyLengths": {
+        "min": 2,
+        "median": 2,
+        "max": 3,
+        "mean": 2.3333
+      },
+      "minActions": 10,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              5
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              6
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              7
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0,
+              3,
+              8
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          5,
+          2,
+          6,
+          7,
+          4,
+          "toggle",
+          0,
+          3,
+          8
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "1e79923c07fcf1b15463eddc08ced4498c9a1b1841a84183787ed03d1e5d9f39",
+      "reachableStates": 356,
+      "winningStates": 356,
+      "legalRemovalTransitions": 898,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-08",
+      "size": 6,
+      "shape": "square",
+      "arrows": 9,
+      "bodyCells": 21,
+      "maskCells": 36,
+      "fillRate": 0.5833,
+      "bodyLengths": {
+        "min": 2,
+        "median": 2,
+        "max": 3,
+        "mean": 2.3333
+      },
+      "minActions": 10,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              3,
+              7
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1,
+              6,
+              8
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2,
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          }
+        ],
+        "actions": [
+          3,
+          7,
+          "toggle",
+          1,
+          6,
+          8,
+          2,
+          4,
+          5,
+          0
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "c747578816d30547fe42c5b820068f044678b94ce1927ae150487679d8c73c1c",
+      "reachableStates": 88,
+      "winningStates": 88,
+      "legalRemovalTransitions": 118,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-09",
+      "size": 7,
+      "shape": "plus",
+      "arrows": 3,
+      "bodyCells": 16,
+      "maskCells": 24,
+      "fillRate": 0.6667,
+      "bodyLengths": {
+        "min": 4,
+        "median": 6,
+        "max": 6,
+        "mean": 5.3333
+      },
+      "minActions": 4,
+      "minToggles": 1,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          "toggle",
+          0,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "8a40872daebc595647ec0acb5260a1536b569b03f60a9b6c94d8cd622721caec",
+      "reachableStates": 10,
+      "winningStates": 10,
+      "legalRemovalTransitions": 8,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-10",
+      "size": 7,
+      "shape": "diamond",
+      "arrows": 4,
+      "bodyCells": 16,
+      "maskCells": 25,
+      "fillRate": 0.64,
+      "bodyLengths": {
+        "min": 3,
+        "median": 3.5,
+        "max": 6,
+        "mean": 4
+      },
+      "minActions": 5,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          3,
+          "toggle",
+          1,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "e164ab2d9bf81a9671543e63ba44ef8401eb75a2b3865c19b731385b58419f4b",
+      "reachableStates": 12,
+      "winningStates": 12,
+      "legalRemovalTransitions": 11,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-11",
+      "size": 7,
+      "shape": "heart",
+      "arrows": 4,
+      "bodyCells": 27,
+      "maskCells": 35,
+      "fillRate": 0.7714,
+      "bodyLengths": {
+        "min": 4,
+        "median": 7.5,
+        "max": 8,
+        "mean": 6.75
+      },
+      "minActions": 5,
+      "minToggles": 1,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          "toggle",
+          0,
+          2,
+          3
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "437840ae0f2c9cf712d731b27d472ea2e40e97ab3b4effbfd8bb442826148b8e",
+      "reachableStates": 14,
+      "winningStates": 14,
+      "legalRemovalTransitions": 14,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-12",
+      "size": 7,
+      "shape": "ring",
+      "arrows": 6,
+      "bodyCells": 25,
+      "maskCells": 40,
+      "fillRate": 0.625,
+      "bodyLengths": {
+        "min": 2,
+        "median": 4,
+        "max": 6,
+        "mean": 4.1667
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4,
+              5
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          3,
+          1,
+          2,
+          "toggle",
+          4,
+          5
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 1
+      },
+      "rotationFingerprint": "d563f5205312e771819916c280c98b05ddf67d2f425e0b7662a110beeb3f17cd",
+      "reachableStates": 64,
+      "winningStates": 64,
+      "legalRemovalTransitions": 106,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-13",
+      "size": 6,
+      "shape": "blob",
+      "arrows": 3,
+      "bodyCells": 16,
+      "maskCells": 24,
+      "fillRate": 0.6667,
+      "bodyLengths": {
+        "min": 4,
+        "median": 6,
+        "max": 6,
+        "mean": 5.3333
+      },
+      "minActions": 4,
+      "minToggles": 1,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          "toggle",
+          0,
+          1
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "b85863e2a6924c1d351a09ca752c37bbc259af022b511f72a151277c376060d2",
+      "reachableStates": 12,
+      "winningStates": 12,
+      "legalRemovalTransitions": 12,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-14",
+      "size": 6,
+      "shape": "plus",
+      "arrows": 3,
+      "bodyCells": 16,
+      "maskCells": 20,
+      "fillRate": 0.8,
+      "bodyLengths": {
+        "min": 4,
+        "median": 6,
+        "max": 6,
+        "mean": 5.3333
+      },
+      "minActions": 4,
+      "minToggles": 1,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          "toggle",
+          0,
+          1
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "86bd7c35ab1fd864aeeaa6517c7378be014019f0aa5ff354c3d3a9f73b115e0c",
+      "reachableStates": 12,
+      "winningStates": 12,
+      "legalRemovalTransitions": 12,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-15",
+      "size": 7,
+      "shape": "square",
+      "arrows": 7,
+      "bodyCells": 46,
+      "maskCells": 49,
+      "fillRate": 0.9388,
+      "bodyLengths": {
+        "min": 4,
+        "median": 7,
+        "max": 9,
+        "mean": 6.5714
+      },
+      "minActions": 8,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              6
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          4,
+          0,
+          2,
+          5,
+          "toggle",
+          3,
+          6
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "f2325914e7735952ec8244774a26848694f5ae990e8fb6cc9ca71d7797aa9b07",
+      "reachableStates": 28,
+      "winningStates": 28,
+      "legalRemovalTransitions": 35,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-16",
+      "size": 7,
+      "shape": "diamond",
+      "arrows": 6,
+      "bodyCells": 22,
+      "maskCells": 25,
+      "fillRate": 0.88,
+      "bodyLengths": {
+        "min": 2,
+        "median": 3,
+        "max": 6,
+        "mean": 3.6667
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 4,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 2,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0,
+              5
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          2,
+          3,
+          4,
+          "toggle",
+          0,
+          5
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "14ce2c01cfd254eec61404d3c70ba3c13e503a359657997b84c6059f525cdbca",
+      "reachableStates": 112,
+      "winningStates": 112,
+      "legalRemovalTransitions": 276,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-17",
+      "size": 7,
+      "shape": "plus",
+      "arrows": 6,
+      "bodyCells": 21,
+      "maskCells": 24,
+      "fillRate": 0.875,
+      "bodyLengths": {
+        "min": 2,
+        "median": 4,
+        "max": 5,
+        "mean": 3.5
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 3,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              3,
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0,
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          3,
+          5,
+          "toggle",
+          0,
+          4,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "eed43ae9dbe624c3454e0a86a102ba22c46ae493e8d1b89dbce6fb7eb41888a5",
+      "reachableStates": 64,
+      "winningStates": 64,
+      "legalRemovalTransitions": 114,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-18",
+      "size": 7,
+      "shape": "heart",
+      "arrows": 6,
+      "bodyCells": 29,
+      "maskCells": 35,
+      "fillRate": 0.8286,
+      "bodyLengths": {
+        "min": 2,
+        "median": 5,
+        "max": 7,
+        "mean": 4.8333
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0,
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              5
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          3,
+          4,
+          "toggle",
+          0,
+          1,
+          5
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "8f68cb2981fbf8a86cb0900b2be1b6dee46a470abebdcbdd67d02f5271331fac",
+      "reachableStates": 52,
+      "winningStates": 52,
+      "legalRemovalTransitions": 74,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-19",
+      "size": 7,
+      "shape": "ring",
+      "arrows": 8,
+      "bodyCells": 35,
+      "maskCells": 40,
+      "fillRate": 0.875,
+      "bodyLengths": {
+        "min": 2,
+        "median": 4,
+        "max": 9,
+        "mean": 4.375
+      },
+      "minActions": 9,
+      "minToggles": 1,
+      "initialLegalRemovals": 3,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              3,
+              6
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5,
+              7
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          3,
+          6,
+          5,
+          7,
+          "toggle",
+          2,
+          0,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 1
+      },
+      "rotationFingerprint": "38ebf71201b8bd9aee1083fb22c1d8079ab2b47d882294c48d9b7cfab53affac",
+      "reachableStates": 160,
+      "winningStates": 160,
+      "legalRemovalTransitions": 420,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-20",
+      "size": 7,
+      "shape": "square",
+      "arrows": 8,
+      "bodyCells": 43,
+      "maskCells": 49,
+      "fillRate": 0.8776,
+      "bodyLengths": {
+        "min": 2,
+        "median": 5,
+        "max": 9,
+        "mean": 5.375
+      },
+      "minActions": 9,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 6,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              7
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              6
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          7,
+          0,
+          4,
+          3,
+          6,
+          "toggle",
+          5,
+          1
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "db0a152617680191e15904a6f4ddc639cba776c258e7240663c265099701296f",
+      "reachableStates": 72,
+      "winningStates": 72,
+      "legalRemovalTransitions": 128,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-21",
+      "size": 7,
+      "shape": "letter_c",
+      "arrows": 7,
+      "bodyCells": 29,
+      "maskCells": 32,
+      "fillRate": 0.9063,
+      "bodyLengths": {
+        "min": 2,
+        "median": 4,
+        "max": 7,
+        "mean": 4.1429
+      },
+      "minActions": 8,
+      "minToggles": 1,
+      "initialLegalRemovals": 4,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              2,
+              4,
+              6
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1,
+              5
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          2,
+          4,
+          6,
+          "toggle",
+          3,
+          1,
+          5
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "507063ab4045694759036b612122393919d1a644ee346e434e2ce898f0d8478a",
+      "reachableStates": 104,
+      "winningStates": 104,
+      "legalRemovalTransitions": 248,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-22",
+      "size": 7,
+      "shape": "diamond",
+      "arrows": 6,
+      "bodyCells": 21,
+      "maskCells": 25,
+      "fillRate": 0.84,
+      "bodyLengths": {
+        "min": 2,
+        "median": 3,
+        "max": 5,
+        "mean": 3.5
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 3,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              4,
+              5
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          4,
+          5,
+          3,
+          "toggle",
+          0,
+          1
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "8559230453b01401cb7297742c25c8ed6fa19fc999dd61e7a65d1d6c86a0364e",
+      "reachableStates": 40,
+      "winningStates": 40,
+      "legalRemovalTransitions": 68,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-23",
+      "size": 7,
+      "shape": "plus",
+      "arrows": 6,
+      "bodyCells": 22,
+      "maskCells": 24,
+      "fillRate": 0.9167,
+      "bodyLengths": {
+        "min": 2,
+        "median": 2.5,
+        "max": 7,
+        "mean": 3.6667
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              3,
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          }
+        ],
+        "actions": [
+          3,
+          5,
+          "toggle",
+          0,
+          2,
+          1,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "32953b0811eb8cf0c4fc73c0636957e61cfe0a89e655ee14aa24adafbe237dcf",
+      "reachableStates": 36,
+      "winningStates": 36,
+      "legalRemovalTransitions": 58,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-24",
+      "size": 7,
+      "shape": "heart",
+      "arrows": 6,
+      "bodyCells": 33,
+      "maskCells": 35,
+      "fillRate": 0.9429,
+      "bodyLengths": {
+        "min": 2,
+        "median": 6.5,
+        "max": 9,
+        "mean": 5.5
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          4,
+          5,
+          "toggle",
+          0,
+          3,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "c83ebc0b027f68b280c04df1c4bd843b230f7b66acabde772ba52b5bc8ddade7",
+      "reachableStates": 16,
+      "winningStates": 16,
+      "legalRemovalTransitions": 15,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-25",
+      "size": 7,
+      "shape": "square",
+      "arrows": 8,
+      "bodyCells": 44,
+      "maskCells": 49,
+      "fillRate": 0.898,
+      "bodyLengths": {
+        "min": 2,
+        "median": 6,
+        "max": 9,
+        "mean": 5.5
+      },
+      "minActions": 9,
+      "minToggles": 1,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 7,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5,
+              6
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              7
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          }
+        ],
+        "actions": [
+          3,
+          1,
+          5,
+          6,
+          0,
+          7,
+          "toggle",
+          2,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "3a92accd57a1e8e71c6462536da5c416822b19452a12770293185182ff78d9d9",
+      "reachableStates": 96,
+      "winningStates": 96,
+      "legalRemovalTransitions": 183,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-26",
+      "size": 7,
+      "shape": "letter_t",
+      "arrows": 6,
+      "bodyCells": 22,
+      "maskCells": 24,
+      "fillRate": 0.9167,
+      "bodyLengths": {
+        "min": 2,
+        "median": 4,
+        "max": 5,
+        "mean": 3.6667
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          3,
+          5,
+          "toggle",
+          4,
+          0,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "57c2a8cc6c1a26cde67370009a920451b7b75d6b9fa3b3a7cab0cd291986d6bd",
+      "reachableStates": 28,
+      "winningStates": 28,
+      "legalRemovalTransitions": 36,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-27",
+      "size": 7,
+      "shape": "letter_c",
+      "arrows": 6,
+      "bodyCells": 27,
+      "maskCells": 32,
+      "fillRate": 0.8438,
+      "bodyLengths": {
+        "min": 2,
+        "median": 3.5,
+        "max": 10,
+        "mean": 4.5
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          3,
+          1,
+          5,
+          "toggle",
+          0,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "55b6ea1a1115660aa36b953ffecb267385de7214f53b0a8737442491d176af27",
+      "reachableStates": 48,
+      "winningStates": 48,
+      "legalRemovalTransitions": 84,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-28",
+      "size": 7,
+      "shape": "diamond",
+      "arrows": 6,
+      "bodyCells": 22,
+      "maskCells": 25,
+      "fillRate": 0.88,
+      "bodyLengths": {
+        "min": 3,
+        "median": 3,
+        "max": 6,
+        "mean": 3.6667
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 3,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0,
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          2,
+          3,
+          "toggle",
+          0,
+          5,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "c4352b506f7eb4bf4d92eb829faea30256805a37a90a3f6ef53107e8ebc83d22",
+      "reachableStates": 68,
+      "winningStates": 68,
+      "legalRemovalTransitions": 122,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-29",
+      "size": 7,
+      "shape": "plus",
+      "arrows": 6,
+      "bodyCells": 22,
+      "maskCells": 24,
+      "fillRate": 0.9167,
+      "bodyLengths": {
+        "min": 2,
+        "median": 4,
+        "max": 6,
+        "mean": 3.6667
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              2
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          2,
+          5,
+          4,
+          "toggle",
+          0,
+          3
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "2c8cdc46bfd994fcede7d1266e5dae0da3e99366146ffce57899094d07bd1d0e",
+      "reachableStates": 44,
+      "winningStates": 44,
+      "legalRemovalTransitions": 65,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-30",
+      "size": 7,
+      "shape": "square",
+      "arrows": 9,
+      "bodyCells": 45,
+      "maskCells": 49,
+      "fillRate": 0.9184,
+      "bodyLengths": {
+        "min": 2,
+        "median": 5,
+        "max": 9,
+        "mean": 5
+      },
+      "minActions": 10,
+      "minToggles": 1,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              5
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              4,
+              7,
+              8
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              6
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          1,
+          5,
+          2,
+          4,
+          7,
+          8,
+          "toggle",
+          3,
+          6
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "d9ee58d11da1f91e4871d8db0d887ffc6795b27ad91800cd456b247c6e1edea5",
+      "reachableStates": 124,
+      "winningStates": 124,
+      "legalRemovalTransitions": 280,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-31",
+      "size": 7,
+      "shape": "ring",
+      "arrows": 5,
+      "bodyCells": 28,
+      "maskCells": 40,
+      "fillRate": 0.7,
+      "bodyLengths": {
+        "min": 2,
+        "median": 5,
+        "max": 10,
+        "mean": 5.6
+      },
+      "minActions": 6,
+      "minToggles": 1,
+      "initialLegalRemovals": 3,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              3,
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          3,
+          4,
+          "toggle",
+          1,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 1
+      },
+      "rotationFingerprint": "e5de7f434e9d174876b611640eb48678546d46a9524ed4dfe67aaf9b3b1b6dbd",
+      "reachableStates": 48,
+      "winningStates": 48,
+      "legalRemovalTransitions": 92,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-32",
+      "size": 7,
+      "shape": "square",
+      "arrows": 7,
+      "bodyCells": 38,
+      "maskCells": 49,
+      "fillRate": 0.7755,
+      "bodyLengths": {
+        "min": 4,
+        "median": 6,
+        "max": 7,
+        "mean": 5.4286
+      },
+      "minActions": 8,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              4,
+              6
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              3,
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1,
+              2
+            ]
+          }
+        ],
+        "actions": [
+          4,
+          6,
+          0,
+          3,
+          5,
+          "toggle",
+          1,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "0fa8d7a7efbcc9a6e9d0f278be08f514c097fe8df463bd510759e264bdb25d03",
+      "reachableStates": 96,
+      "winningStates": 96,
+      "legalRemovalTransitions": 206,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-33",
+      "size": 7,
+      "shape": "blob",
+      "arrows": 4,
+      "bodyCells": 26,
+      "maskCells": 33,
+      "fillRate": 0.7879,
+      "bodyLengths": {
+        "min": 5,
+        "median": 6.5,
+        "max": 8,
+        "mean": 6.5
+      },
+      "minActions": 5,
+      "minToggles": 1,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0,
+              2
+            ]
+          }
+        ],
+        "actions": [
+          3,
+          "toggle",
+          1,
+          0,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "f940f958e691e58847cc007606218c4b05d54a146cabda7370c48d602faa2dc0",
+      "reachableStates": 20,
+      "winningStates": 20,
+      "legalRemovalTransitions": 24,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-34",
+      "size": 7,
+      "shape": "square",
+      "arrows": 5,
+      "bodyCells": 37,
+      "maskCells": 49,
+      "fillRate": 0.7551,
+      "bodyLengths": {
+        "min": 6,
+        "median": 8,
+        "max": 9,
+        "mean": 7.4
+      },
+      "minActions": 6,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          4,
+          2,
+          "toggle",
+          1,
+          3
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "570057a1d9bfb85fe32a5360fae8fdde1fded854f538d7a8b4ced9ab0316d7ff",
+      "reachableStates": 36,
+      "winningStates": 36,
+      "legalRemovalTransitions": 60,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-35",
+      "size": 7,
+      "shape": "diamond",
+      "arrows": 4,
+      "bodyCells": 19,
+      "maskCells": 25,
+      "fillRate": 0.76,
+      "bodyLengths": {
+        "min": 3,
+        "median": 4.5,
+        "max": 7,
+        "mean": 4.75
+      },
+      "minActions": 5,
+      "minToggles": 1,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          3,
+          "toggle",
+          1,
+          0
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "e2c780b7f5909dcd9c7d37bb77f879ba3f4e0a138846ef552f9aaf77e1e90ac7",
+      "reachableStates": 20,
+      "winningStates": 20,
+      "legalRemovalTransitions": 26,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-36",
+      "size": 7,
+      "shape": "square",
+      "arrows": 6,
+      "bodyCells": 37,
+      "maskCells": 49,
+      "fillRate": 0.7551,
+      "bodyLengths": {
+        "min": 3,
+        "median": 5,
+        "max": 10,
+        "mean": 6.1667
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 3,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 2,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              2,
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              0,
+              3,
+              5
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          2,
+          4,
+          "toggle",
+          0,
+          3,
+          5
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "602bdd5d6b529d3502b888fbe8cfeaa0526093b18459ff13db4e32199b557c48",
+      "reachableStates": 88,
+      "winningStates": 88,
+      "legalRemovalTransitions": 168,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-37",
+      "size": 7,
+      "shape": "ring",
+      "arrows": 6,
+      "bodyCells": 28,
+      "maskCells": 40,
+      "fillRate": 0.7,
+      "bodyLengths": {
+        "min": 2,
+        "median": 4.5,
+        "max": 8,
+        "mean": 4.6667
+      },
+      "minActions": 7,
+      "minToggles": 1,
+      "initialLegalRemovals": 3,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              2,
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              5
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          2,
+          3,
+          4,
+          "toggle",
+          1,
+          5
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 1
+      },
+      "rotationFingerprint": "47e68a6ce62634c75339897da88ad69245cbff7001dfba8e62b9e368a42e20fa",
+      "reachableStates": 80,
+      "winningStates": 80,
+      "legalRemovalTransitions": 174,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-38",
+      "size": 7,
+      "shape": "letter_t",
+      "arrows": 4,
+      "bodyCells": 19,
+      "maskCells": 24,
+      "fillRate": 0.7917,
+      "bodyLengths": {
+        "min": 3,
+        "median": 4,
+        "max": 8,
+        "mean": 4.75
+      },
+      "minActions": 5,
+      "minToggles": 1,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 1,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          }
+        ],
+        "actions": [
+          3,
+          0,
+          "toggle",
+          2,
+          1
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "0009d389bbb0a831606f28e1250f2cd73f4be8a0b356f327a9c0288ee6265a40",
+      "reachableStates": 14,
+      "winningStates": 14,
+      "legalRemovalTransitions": 13,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-39",
+      "size": 8,
+      "shape": "blob",
+      "arrows": 6,
+      "bodyCells": 34,
+      "maskCells": 43,
+      "fillRate": 0.7907,
+      "bodyLengths": {
+        "min": 4,
+        "median": 5.5,
+        "max": 8,
+        "mean": 5.6667
+      },
+      "minActions": 8,
+      "minToggles": 2,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              3,
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          3,
+          4,
+          "toggle",
+          5,
+          "toggle",
+          0,
+          1,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 1
+      },
+      "rotationFingerprint": "56765b48208a133257143f85e8952df4502a18b3f7164c16ec2dac32fc0f7693",
+      "reachableStates": 30,
+      "winningStates": 30,
+      "legalRemovalTransitions": 40,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-40",
+      "size": 8,
+      "shape": "square",
+      "arrows": 5,
+      "bodyCells": 46,
+      "maskCells": 64,
+      "fillRate": 0.7188,
+      "bodyLengths": {
+        "min": 7,
+        "median": 9,
+        "max": 11,
+        "mean": 9.2
+      },
+      "minActions": 7,
+      "minToggles": 2,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              4
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          3,
+          "toggle",
+          2,
+          "toggle",
+          0,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "a248d02bbaa37fedfcfb6204210e8c75c6f859366801b094b15b8fa1740808e7",
+      "reachableStates": 40,
+      "winningStates": 40,
+      "legalRemovalTransitions": 63,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-41",
+      "size": 8,
+      "shape": "diamond",
+      "arrows": 5,
+      "bodyCells": 32,
+      "maskCells": 40,
+      "fillRate": 0.8,
+      "bodyLengths": {
+        "min": 3,
+        "median": 7,
+        "max": 9,
+        "mean": 6.4
+      },
+      "minActions": 7,
+      "minToggles": 2,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 3,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              1
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          4,
+          "toggle",
+          3,
+          "toggle",
+          0,
+          1
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "6f44f90c70dd934dd48f6fa9b9a25032ed03cb7382e8a2f3bd174a2ee497a530",
+      "reachableStates": 36,
+      "winningStates": 36,
+      "legalRemovalTransitions": 54,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-42",
+      "size": 8,
+      "shape": "heart",
+      "arrows": 5,
+      "bodyCells": 31,
+      "maskCells": 44,
+      "fillRate": 0.7045,
+      "bodyLengths": {
+        "min": 2,
+        "median": 6,
+        "max": 11,
+        "mean": 6.2
+      },
+      "minActions": 7,
+      "minToggles": 2,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          "toggle",
+          4,
+          3,
+          "toggle",
+          2,
+          0
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "48d1cf773f8c3093ac3cf7d0c134fbf51d4749872df7ff859ddeb23f25740d21",
+      "reachableStates": 28,
+      "winningStates": 28,
+      "legalRemovalTransitions": 34,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-43",
+      "size": 8,
+      "shape": "square",
+      "arrows": 5,
+      "bodyCells": 43,
+      "maskCells": 64,
+      "fillRate": 0.6719,
+      "bodyLengths": {
+        "min": 5,
+        "median": 8,
+        "max": 12,
+        "mean": 8.6
+      },
+      "minActions": 7,
+      "minToggles": 2,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          3,
+          "toggle",
+          1,
+          "toggle",
+          4,
+          0
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "0469610ee1218c1838bb24ad43e8a2b31bdc4e17a6b82d5ddc4dfda6d1ef5a38",
+      "reachableStates": 16,
+      "winningStates": 16,
+      "legalRemovalTransitions": 15,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-44",
+      "size": 8,
+      "shape": "square",
+      "arrows": 6,
+      "bodyCells": 45,
+      "maskCells": 64,
+      "fillRate": 0.7031,
+      "bodyLengths": {
+        "min": 2,
+        "median": 8.5,
+        "max": 10,
+        "mean": 7.5
+      },
+      "minActions": 8,
+      "minToggles": 2,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 6,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          }
+        ],
+        "actions": [
+          5,
+          "toggle",
+          4,
+          2,
+          "toggle",
+          0,
+          1,
+          3
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "33a50137064dc840af99d1b4353e58ce6ee8dc2908f3bceca7bfe855e9d401d2",
+      "reachableStates": 26,
+      "winningStates": 26,
+      "legalRemovalTransitions": 28,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-45",
+      "size": 8,
+      "shape": "blob",
+      "arrows": 4,
+      "bodyCells": 31,
+      "maskCells": 43,
+      "fillRate": 0.7209,
+      "bodyLengths": {
+        "min": 5,
+        "median": 8.5,
+        "max": 9,
+        "mean": 7.75
+      },
+      "minActions": 6,
+      "minToggles": 2,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          "toggle",
+          3,
+          "toggle",
+          0,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 1
+      },
+      "rotationFingerprint": "d79922db94b14f3d73a43246fa9b2f708a572cc7d65e4c4e5bdc45d5265c66cb",
+      "reachableStates": 16,
+      "winningStates": 16,
+      "legalRemovalTransitions": 16,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-46",
+      "size": 8,
+      "shape": "square",
+      "arrows": 6,
+      "bodyCells": 45,
+      "maskCells": 64,
+      "fillRate": 0.7031,
+      "bodyLengths": {
+        "min": 4,
+        "median": 8,
+        "max": 9,
+        "mean": 7.5
+      },
+      "minActions": 8,
+      "minToggles": 2,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              3
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2,
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          3,
+          "toggle",
+          2,
+          4,
+          "toggle",
+          0,
+          5
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "af49613753d2e5f667515b30c1538cbcad23ca73d48dbfa62b90a5392f088872",
+      "reachableStates": 36,
+      "winningStates": 36,
+      "legalRemovalTransitions": 42,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-47",
+      "size": 8,
+      "shape": "diamond",
+      "arrows": 5,
+      "bodyCells": 35,
+      "maskCells": 40,
+      "fillRate": 0.875,
+      "bodyLengths": {
+        "min": 3,
+        "median": 7,
+        "max": 11,
+        "mean": 7
+      },
+      "minActions": 7,
+      "minToggles": 2,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              2,
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          }
+        ],
+        "actions": [
+          2,
+          4,
+          "toggle",
+          1,
+          "toggle",
+          3,
+          0
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "703747d4edeaf501d1864bc3226d6e437a17a1296cd741f6c9834253f56c10e2",
+      "reachableStates": 20,
+      "winningStates": 20,
+      "legalRemovalTransitions": 22,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-48",
+      "size": 8,
+      "shape": "square",
+      "arrows": 6,
+      "bodyCells": 48,
+      "maskCells": 64,
+      "fillRate": 0.75,
+      "bodyLengths": {
+        "min": 7,
+        "median": 8,
+        "max": 9,
+        "mean": 8
+      },
+      "minActions": 8,
+      "minToggles": 2,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          }
+        ],
+        "actions": [
+          4,
+          "toggle",
+          1,
+          "toggle",
+          5,
+          0,
+          3,
+          2
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "59476fff86dd4e318dfd25a85c08aa07481ffcd8f6385de77a93c053d90ac1c4",
+      "reachableStates": 32,
+      "winningStates": 32,
+      "legalRemovalTransitions": 42,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-49",
+      "size": 8,
+      "shape": "square",
+      "arrows": 5,
+      "bodyCells": 37,
+      "maskCells": 64,
+      "fillRate": 0.5781,
+      "bodyLengths": {
+        "min": 4,
+        "median": 8,
+        "max": 10,
+        "mean": 7.4
+      },
+      "minActions": 7,
+      "minToggles": 2,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0,
+              2
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          2,
+          "toggle",
+          4,
+          "toggle",
+          1,
+          3
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "e9cc6904d3136008666c77f655ad3f68d1f685a36a95b737e003e842bc94f6ac",
+      "reachableStates": 24,
+      "winningStates": 24,
+      "legalRemovalTransitions": 30,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-50",
+      "size": 8,
+      "shape": "letter_t",
+      "arrows": 5,
+      "bodyCells": 27,
+      "maskCells": 34,
+      "fillRate": 0.7941,
+      "bodyLengths": {
+        "min": 4,
+        "median": 5,
+        "max": 8,
+        "mean": 5.4
+      },
+      "minActions": 7,
+      "minToggles": 2,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 4,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2,
+              4
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              3
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          "toggle",
+          2,
+          4,
+          "toggle",
+          0,
+          3
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "8a69208edcf659c9f9e5298f60f16bcebef54d4d3f74e421ba2da3eb3e0a4d26",
+      "reachableStates": 22,
+      "winningStates": 22,
+      "legalRemovalTransitions": 24,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-51",
+      "size": 8,
+      "shape": "blob",
+      "arrows": 5,
+      "bodyCells": 33,
+      "maskCells": 43,
+      "fillRate": 0.7674,
+      "bodyLengths": {
+        "min": 2,
+        "median": 7,
+        "max": 10,
+        "mean": 6.6
+      },
+      "minActions": 7,
+      "minToggles": 2,
+      "initialLegalRemovals": 1,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              1
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          }
+        ],
+        "actions": [
+          0,
+          "toggle",
+          3,
+          "toggle",
+          2,
+          1,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 1
+      },
+      "rotationFingerprint": "6ef56d2cfce1cda9cc70486d24e7f0fe0abe7088446bfd61ad8887daa3c571d7",
+      "reachableStates": 20,
+      "winningStates": 20,
+      "legalRemovalTransitions": 22,
+      "losingRemovalTransitions": 0
+    },
+    {
+      "id": "phase-52",
+      "size": 8,
+      "shape": "square",
+      "arrows": 6,
+      "bodyCells": 47,
+      "maskCells": 64,
+      "fillRate": 0.7344,
+      "bodyLengths": {
+        "min": 2,
+        "median": 9,
+        "max": 12,
+        "mean": 7.8333
+      },
+      "minActions": 8,
+      "minToggles": 2,
+      "initialLegalRemovals": 2,
+      "greedy": {
+        "solved": true,
+        "toggles": 2,
+        "matchesMinimum": true,
+        "removalWaves": 5,
+        "batches": [
+          {
+            "phase": 0,
+            "arrows": [
+              1,
+              3
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              5
+            ]
+          },
+          {
+            "phase": 1,
+            "arrows": [
+              2
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              0
+            ]
+          },
+          {
+            "phase": 0,
+            "arrows": [
+              4
+            ]
+          }
+        ],
+        "actions": [
+          1,
+          3,
+          5,
+          "toggle",
+          2,
+          "toggle",
+          0,
+          4
+        ]
+      },
+      "topology": {
+        "components": 1,
+        "enclosedVoidRegions": 0
+      },
+      "rotationFingerprint": "9253284459890f682493980612041116aab3a592687179be6fa1e5128cc5c05e",
+      "reachableStates": 22,
+      "winningStates": 22,
+      "legalRemovalTransitions": 21,
+      "losingRemovalTransitions": 0
+    }
+  ]
+}

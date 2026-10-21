@@ -1,0 +1,97 @@
+{
+  "$comment": "Authoring worksheet, not a playable level or validated JSON Schema. UNKNOWN/null must be replaced by evidence before acceptance. Target fields are separate from observations.",
+  "designId": "VS-DRAFT-REPLACE",
+  "status": "DRAFT_NOT_PLAYABLE",
+  "standard": "08_产品设计与验收规范.md",
+  "ruleset": {
+    "id": "binary-phase-baseline",
+    "version": "existing",
+    "phaseStates": [0, 1],
+    "exitPolicy": "first-void",
+    "relayGateHypothesis": false,
+    "saveVersion": null
+  },
+  "intent": {
+    "mode": "relaxation",
+    "difficultyBand": "D1",
+    "oneSentence": "UNKNOWN",
+    "introducedConcept": null,
+    "assumedLearnedConcepts": []
+  },
+  "shape": {
+    "family": "soft-rectangle",
+    "compositionId": "UNKNOWN",
+    "silhouetteAsset": null,
+    "gridSize": null,
+    "allowedTransforms": ["identity"],
+    "derivedFrom": null,
+    "appliedTransform": "identity",
+    "connectedComponents": null,
+    "enclosedVoidRegions": null,
+    "narrowestConnectorCells": null,
+    "phase0FootprintValidated": null,
+    "phase1FootprintValidated": null
+  },
+  "content": {
+    "seed": null,
+    "playableLevelFile": null,
+    "arrows": null,
+    "lengthDistribution": null,
+    "fillRate": null,
+    "rotationFingerprint": null,
+    "logicGraphDuplicateReview": "UNKNOWN",
+    "originalityNotes": "UNKNOWN"
+  },
+  "difficultyEvidence": {
+    "searchLoad": null,
+    "dependencyLayersByPhase": null,
+    "minPhaseToggles": null,
+    "phaseUnlockBatches": null,
+    "greedyPolicyOutcome": "UNKNOWN",
+    "consequentialChoices": null,
+    "choiceDefinition": "legal alternatives with different solvability or meaningful optimal resource cost",
+    "goodAndBadBranchWitnesses": [],
+    "causalChainExplanation": "UNKNOWN",
+    "recoveryCostActions": null,
+    "solverMode": "UNKNOWN",
+    "solvabilityCertificate": null,
+    "optimalityProof": null
+  },
+  "renderEvidence": {
+    "fullSizePhase0": null,
+    "fullSizePhase1": null,
+    "thumbnail96px": null,
+    "grayscale": null,
+    "minimumBodyWidthCssPx": null,
+    "minimumVisibleGapCssPx": null,
+    "hitRegionConflictReview": "UNKNOWN"
+  },
+  "motionEvidence": {
+    "recording": null,
+    "phaseFrames": [],
+    "exitFrames": [],
+    "reducedMotionRecording": null,
+    "pointerDownFeedbackP95Ms": null,
+    "independentTapSequenceAccepted": null
+  },
+  "playtest": {
+    "participants": 0,
+    "devices": [],
+    "shapeRecognitionCorrect": null,
+    "semanticRecognitionCorrect": null,
+    "intentionalTargetTaps": 0,
+    "wrongTargetTaps": null,
+    "firstCorrectActionSeconds": [],
+    "completionSeconds": [],
+    "explanations": [],
+    "comparisonReferenceBuild": "UNKNOWN"
+  },
+  "acceptance": {
+    "Q1": "NOT_RUN",
+    "Q2": "NOT_RUN",
+    "Q3": "NOT_RUN",
+    "Q4": "NOT_RUN",
+    "reviewer": null,
+    "openIssues": []
+  }
+}

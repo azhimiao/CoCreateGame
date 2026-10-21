@@ -1,0 +1,50 @@
+{
+  "artifact": "docs/design-standard.html",
+  "kind": "design-specimen-browser-check",
+  "actualGameChanged": false,
+  "physicalDeviceTest": false,
+  "responsive": [
+    {
+      "width": 320,
+      "height": 568,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 412,
+      "height": 915,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "horizontalOverflow": false
+    }
+  ],
+  "checks": [
+    "six silhouette candidates",
+    "grid toggle",
+    "non-color semantics toggle",
+    "path-window exit and sampled middle frame",
+    "blocked response",
+    "phase forward/backward",
+    "reduced-motion end state",
+    "no script errors"
+  ],
+  "errors": [],
+  "specimenSha256": "5b8858504a19c7e51255e8dbaaa3a6eaae1fbce1c06332fdc548a08039c83e26",
+  "independentCoreReplay": {
+    "reachableStates": 2700,
+    "legalRemovals": 5065,
+    "samePhaseMonotonicity": "PASS"
+  }
+}

@@ -2,6 +2,8 @@
 
 Date: 2026-10-21 (Asia/Shanghai)
 
+**Superseded quality assessment:** the user's subsequent review rejected the visual quality, simplicity, and interaction feel. This file preserves the historical technical work and checks; it is not product acceptance. Current status is REVISION_REQUIRED under [design standard V1](08_产品设计与验收规范.md). In particular, the current rigid slide and immediate phase redraw do not satisfy continuous motion requirements, and the 52 stages do not demonstrate consequential choice depth.
+
 This update records the separately authorized implementation work following the original handoff. It applies only to `games/VectorShift/`; it does not merge the game with G01 Signal Harbor or change the G01–G10 preparation decisions.
 
 ## Delivered

@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vector Shift · 设计规范样板 V1</title>
+<style>
+:root{--paper:#f6f3eb;--surface:#fffdf8;--ink:#253b46;--muted:#67767c;--line:#dcded6;--blue:#4289c7;--gold:#dfa94b;--deep:#285d91;--radius:20px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.75 system-ui,'Microsoft YaHei',sans-serif}
+button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+a{color:var(--deep);text-underline-offset:3px}
+button{font:inherit;color:inherit;cursor:pointer;min-height:44px;border:1px solid var(--line);border-radius:10px;padding:8px 14px;background:var(--surface)}
+button:active:not(:disabled){transform:scale(.98)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+button[aria-pressed=true],.primary{background:var(--ink);border-color:var(--ink);color:white}
+button:disabled{opacity:.45;cursor:default}
+header,main,footer{max-width:1180px;margin:auto;padding:0 28px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px 0;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.08em}
+.brand{display:flex;align-items:center;gap:10px;font-weight:750}
+.brand svg{width:28px;height:28px}
+.status{color:var(--muted);letter-spacing:0}
+.intro{max-width:780px;padding:52px 0 38px}
+.eyebrow{font-size:12px;font-weight:700;color:var(--deep);letter-spacing:.12em}
+h1{font-size:clamp(28px,4vw,45px);line-height:1.3;letter-spacing:-.025em;margin:14px 0 20px;font-weight:760}
+h2{font-size:25px;line-height:1.4;letter-spacing:-.02em;margin:0}
+h3{font-size:17px;line-height:1.5;margin:0 0 8px}
+p{margin:10px 0}
+.lead{font-size:17px;line-height:1.9;color:var(--muted)}
+.notice{font-size:13px;color:#76591c;background:#eee6d4;border-left:3px solid #be9243;padding:12px 16px;margin:22px 0 0;border-radius:0 8px 8px 0}
+.rule-nav{display:flex;flex-wrap:wrap;gap:8px 24px;padding:15px 0;border-block:1px solid var(--line);font-size:13px}
+section{padding:40px 0;border-bottom:1px solid var(--line);scroll-margin-top:18px}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:24px}
+.section-head p{max-width:520px;font-size:14px;color:var(--muted);margin:8px 0 0}
+.index{font-size:12px;color:var(--deep);font-weight:750;display:block;margin-bottom:6px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.shape-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.shape-card{background:var(--surface);border-radius:var(--radius);padding:20px 22px 18px;overflow:hidden}
+.shape-card svg{display:block;width:100%;height:210px;overflow:visible;margin-bottom:6px}
+.shape-card h3{display:flex;justify-content:space-between;align-items:center;margin:8px 0 4px}
+.shape-card small{font-size:11px;color:var(--muted);font-weight:500}
+.shape-card p{font-size:13px;color:var(--muted);margin:0}
+.shape-surface{fill:url(#porcelain);stroke:#c6d1ce;stroke-width:1;filter:url(#soft-shadow)}
+.shape-gridline{opacity:0;transition:opacity .18s}
+.shape-grid.show-grid .shape-gridline{opacity:.6}
+.shape-grid.show-grid .shape-surface{fill:#e9eee9}
+.shape-note{fill:var(--deep);font-size:10px;font-weight:600;opacity:.75}
+.caption{font-size:12px;color:var(--muted);margin-top:14px}
+.material-layout{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:center}
+.material-stage{background:var(--surface);border-radius:var(--radius);padding:22px}
+.material-stage svg{width:100%;display:block;overflow:visible}
+.legend{display:flex;justify-content:center;gap:24px;font-size:12px;padding-top:8px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:8px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blue)}
+.dot.gold{background:var(--gold)}
+.principles{display:grid;gap:22px}
+.principle{padding-left:16px;border-left:2px solid #cbd9df}
+.principle p{font-size:14px;color:var(--muted);margin:3px 0}
+.body-outline{fill:none;stroke:#3b6277;stroke-width:24;stroke-linecap:round;stroke-linejoin:round}
+.body-color{fill:none;stroke:url(#blue-tube);stroke-width:22;stroke-linecap:round;stroke-linejoin:round}
+.body-glint{fill:none;stroke:#c8e7f6;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.6;transform:translate(-1px,-4px)}
+.gold-outline{stroke:#987037}
+.gold-color{stroke:url(#gold-tube)}
+.gold-glint{stroke:#fff0c7}
+.tube-shadow{filter:url(#tube-shadow)}
+.semantic{fill:none;stroke:#285d91;stroke-width:1.4}
+.semantic-fixed{fill:none;stroke:#8b6327;stroke-width:1.4}
+.material-stage.monochrome .body-color,.material-stage.monochrome .gold-color{stroke:#95a5ab}
+.material-stage.monochrome .body-outline{stroke:#61757e}
+.material-stage.monochrome .body-glint{stroke:#e5edef}
+.material-stage.monochrome .semantic,.material-stage.monochrome .semantic-fixed{fill:none;stroke:#334e5c}
+.material-stage.monochrome .head-fill-blue,.material-stage.monochrome .head-fill-gold{fill:#95a5ab}
+.material-stage.monochrome .dot{background:#95a5ab}
+.lab{display:grid;grid-template-columns:1.2fr 1fr;gap:32px}
+.lab-stage{border-radius:var(--radius);background:var(--surface);padding:14px 18px 20px}
+.lab-stage svg{display:block;width:100%;overflow:hidden}
+.lab-status{display:flex;align-items:baseline;justify-content:space-between;gap:12px;min-height:28px;margin:0 6px;font-size:13px}
+.lab-status strong{font-weight:650}
+.lab-status small{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+.lab-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.timeline{display:grid;gap:0;align-content:start}
+.time-row{display:grid;grid-template-columns:74px 1fr;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);font-size:14px}
+.time-row:first-child{padding-top:0}
+.time-row strong{font-size:13px;color:var(--deep);font-variant-numeric:tabular-nums}
+.time-row p{margin:0;color:var(--muted);font-size:13px}
+.motion-option{display:flex;align-items:center;gap:10px;min-height:44px;font-size:13px;margin-top:14px}
+.motion-option input{width:18px;height:18px;accent-color:var(--blue)}
+.depth-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.depth-card{background:var(--surface);padding:24px;border-radius:var(--radius)}
+.depth-card svg{display:block;width:100%;height:180px;margin:20px 0}
+.depth-card p{font-size:14px;color:var(--muted)}
+.tag{display:inline-block;padding:2px 8px;font-size:11px;font-weight:600;border-radius:5px;color:var(--deep);background:#e7eef0}
+.tag.hypothesis{color:#815f23;background:#f1e7cf}
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-block:1px solid var(--line);margin-top:28px;padding:20px 0}
+.stat-strip strong{font-size:27px;font-weight:750;line-height:1.3;display:block}
+.stat-strip span{font-size:12px;color:var(--muted)}
+.gate-list{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:24px}
+.gate-item{border-top:3px solid #cbd2cd;padding-top:12px}
+.gate-item strong{font-size:14px;display:block}
+.gate-item span{font-size:12px;color:var(--muted)}
+.gate-item.active{border-color:var(--blue)}
+footer{font-size:12px;color:var(--muted);padding-top:24px;padding-bottom:34px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.global-defs{position:absolute;width:0;height:0;overflow:hidden}
+@media(max-width:800px){.material-layout,.lab{grid-template-columns:1fr;gap:24px}.shape-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head{align-items:start;flex-direction:column;gap:16px}.gate-list{grid-template-columns:repeat(3,1fr)}.principles{grid-template-columns:repeat(3,1fr);gap:14px}}
+@media(max-width:540px){header,main,footer{padding-left:18px;padding-right:18px}.intro{padding:32px 0 26px}.lead{font-size:15px}h2{font-size:23px}.topline{padding:16px 0;align-items:start}.status{max-width:130px;text-align:right;font-size:11px}.brand{font-size:11px;gap:6px}.shape-grid{gap:10px}.shape-card{padding:14px 12px}.shape-card svg{height:155px}.shape-card h3{font-size:15px}.shape-card h3 small{display:none}.shape-card p{font-size:12px}.principles{grid-template-columns:1fr;gap:16px}.depth-grid{grid-template-columns:1fr;gap:14px}.depth-card{padding:20px}.stat-strip{gap:12px}.stat-strip strong{font-size:23px}.gate-list{grid-template-columns:repeat(2,1fr)}.lab-actions button{padding:8px 10px;flex:1}.material-stage,.lab-stage{padding:14px}.rule-nav{gap:8px 18px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg class="global-defs" aria-hidden="true"><defs>
+  <linearGradient id="porcelain" x1="0" y1="0" x2=".65" y2="1"><stop stop-color="#eef1e9"/><stop offset=".7" stop-color="#dde5de"/><stop offset="1" stop-color="#cbd8d2"/></linearGradient>
+  <linearGradient id="blue-tube" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#86bae0"/><stop offset=".3" stop-color="#5c9ed1"/><stop offset=".64" stop-color="#4289c7"/><stop offset="1" stop-color="#2f6a9f"/></linearGradient>
+  <linearGradient id="gold-tube" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f3d18a"/><stop offset=".35" stop-color="#e9b961"/><stop offset=".7" stop-color="#dfa94b"/><stop offset="1" stop-color="#bb8739"/></linearGradient>
+  <filter id="soft-shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#526d67" flood-opacity=".12"/></filter>
+  <filter id="tube-shadow" x="-30%" y="-30%" width="170%" height="170%"><feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#324c5a" flood-opacity=".2"/></filter>
+  <pattern id="unit-grid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0H0V12" fill="none" stroke="#6b8f9c" stroke-width=".6"/></pattern>
+  <marker id="graph-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1L9 5L0 9Z" fill="#778c91"/></marker>
+</defs></svg>
+<header>
+  <div class="topline"><div class="brand"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14L14 4L24 14L14 24Z" fill="#4289c7"/><path d="M7 14H20M16 10L20 14L16 18" fill="none" stroke="#fff8e8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>COCREATE / VECTOR SHIFT</div><div class="status">DESIGN STANDARD V1<br>规范样板 · 未实施到游戏</div></div>
+  <div class="intro"><div class="eyebrow">先建立标准，再重做产品</div><h1>一眼看见形状。<br>每一步感到因果。</h1><p class="lead">从完整剪影、内部编排到连续动作，用同一套语言组织观感、难度与点击反馈。所有关卡先证明设计意图，再进入量产。</p><div class="notice">这是造型与交互的说明模型。六种轮廓尚未转成合法关卡；动作示例不运行游戏核心，不代表质量验收已通过。</div></div>
+  <nav class="rule-nav" aria-label="规范目录"><a href="#shape">01 形状语法</a><a href="#material">02 材质与语义</a><a href="#feel">03 点击与动作</a><a href="#depth">04 难度与因果</a><a href="#acceptance">05 验收门</a><a href="08_产品设计与验收规范.md">阅读完整规范 ↗</a></nav>
+</header>
+<main>
+<section id="shape">
+  <div class="section-head"><div><span class="index">01 / SHAPE + PATH</span><h2>先有大形，再有路径。</h2><p>每个剪影有识别特征、内部主脊与负空间。连续轮廓转成 mask 后，必须重新检查两相位与可解性。</p></div><div class="controls"><button id="shape-solid" aria-pressed="true">连续轮廓</button><button id="shape-grid" aria-pressed="false">叠加逻辑格</button></div></div>
+  <div class="shape-grid" id="shapes"></div>
+  <p class="caption">候选分辨率：简单形体 12～16 格，复杂形体 16～24 格；现核心上限 12，现关卡最多 8。这里的曲线是原创造型草案，不是已验证的 mask。整盘旋转、换色不计新谜题。</p>
+</section>
+<section id="material">
+  <div class="section-head"><div><span class="index">02 / VISUAL LANGUAGE</span><h2>圆润统一，语义稳定。</h2><p>固定光源、连续圆角、柔和接触影。远看完整，中看路径，近看细节；颜色不再随主体随机跨类别。</p></div><div class="controls"><button id="color-mode" aria-pressed="false">检查非颜色标记</button></div></div>
+  <div class="material-layout">
+    <div class="material-stage" id="material-stage">
+      <svg viewBox="0 0 420 240" role="img" aria-label="材质草案：蓝色旋转体与金色固定体，两者都有非颜色标记">
+        <rect x="16" y="20" width="388" height="200" rx="42" fill="url(#porcelain)"/>
+        <g class="tube-shadow">
+          <path class="body-outline" d="M54 175V80Q54 58 76 58H137Q159 58 159 80V147Q159 169 181 169H202Q224 169 224 147V130"/>
+          <path class="body-color" d="M54 175V80Q54 58 76 58H137Q159 58 159 80V147Q159 169 181 169H202Q224 169 224 147V130"/>
+          <path class="body-glint" d="M54 175V80Q54 58 76 58H137Q159 58 159 80V147Q159 169 181 169H202Q224 169 224 147V130"/>
+          <path class="head-fill-blue" d="M211 133Q211 119 224 115Q237 119 237 133L235 145H213Z" fill="#5397ca" stroke="#3b6277" stroke-width="1.1"/>
+          <path class="semantic" d="M218 150A7 7 0 1 1 229 150M227 145L230 150L224 150" fill="none"/>
+          <ellipse cx="219" cy="129" rx="3.3" ry="4.1" fill="#fffdf4"/><ellipse cx="229" cy="129" rx="3.3" ry="4.1" fill="#fffdf4"/>
+          <circle cx="219" cy="128" r="1.7" fill="#253b46"/><circle cx="229" cy="128" r="1.7" fill="#253b46"/>
+        </g>
+        <g class="tube-shadow">
+          <path class="body-outline gold-outline" d="M277 65H345Q366 65 366 86V163Q366 184 345 184H286"/>
+          <path class="body-color gold-color" d="M277 65H345Q366 65 366 86V163Q366 184 345 184H286"/>
+          <path class="body-glint gold-glint" d="M277 65H345Q366 65 366 86V163Q366 184 345 184H286"/>
+          <path class="head-fill-gold" d="M289 171Q275 171 271 184Q275 197 289 197L301 195V173Z" fill="#e6b562" stroke="#987037" stroke-width="1.1"/>
+          <path class="semantic-fixed" d="M307 178V190M312 178V190"/>
+          <ellipse cx="285" cy="179" rx="4.1" ry="3.3" fill="#fffdf4"/><ellipse cx="285" cy="189" rx="4.1" ry="3.3" fill="#fffdf4"/>
+          <circle cx="284" cy="179" r="1.7" fill="#253b46"/><circle cx="284" cy="189" r="1.7" fill="#253b46"/>
+        </g>
+      </svg>
+      <div class="legend"><span><i class="dot"></i>蓝体 / 弧形转动标记</span><span><i class="dot gold"></i>固定体 / 双短条</span></div>
+    </div>
+    <div class="principles"><div class="principle"><h3>一个材料系统</h3><p>同一管宽比例、头身比例、转弯半径与光源。明暗表达体积，不用粗黑边与方折白线勾每一层。</p></div><div class="principle"><h3>两套稳定语义</h3><p>蓝色始终代表可旋转，金色始终固定。关闭颜色后，头后标记仍保留类别区别。</p></div><div class="principle"><h3>三个观看尺度</h3><p>剪影形成整体，长中短路径形成组织，眼睛与高光只做细节。先看形，再看路，最后看装饰。</p></div></div>
+  </div>
+  <p class="caption">此处为 SVG 材质草图；最终管身需在真实密盘检验光照连续性、邻体区分和手机像素尺寸，不能仅凭这两根样条验收美术。</p>
+</section>
+<section id="feel">
+  <div class="section-head"><div><span class="index">03 / INPUT + FEEL</span><h2>按下有回应，动作有方向。</h2><p>试三个动作，或拖动进度查看中间帧。滑出用沿路径移动的窗口；相位展示实际 90° 插值。</p></div></div>
+  <div class="lab">
+    <div>
+      <div class="lab-stage">
+        <svg id="lab-svg" viewBox="0 0 360 260" role="img" aria-label="交互动作说明模型，使用下方按钮操作">
+          <defs><clipPath id="lab-clip"><rect x="22" y="20" width="316" height="225" rx="22"/></clipPath></defs>
+          <rect x="22" y="20" width="316" height="225" rx="22" fill="url(#porcelain)"/>
+          <path d="M187 22H213" stroke="#aabebd" stroke-width="3" stroke-linecap="round"/>
+          <g clip-path="url(#lab-clip)">
+            <g id="lab-gold" class="tube-shadow"><path class="body-outline gold-outline" d="M254 189H286Q307 189 307 210V222"/><path class="body-color gold-color" d="M254 189H286Q307 189 307 210V222"/><path class="body-glint gold-glint" d="M254 189H286Q307 189 307 210V222"/><path d="M302 207H312M302 212H312" fill="none" stroke="#8b6327" stroke-width="1.5"/></g>
+            <g id="lab-body" class="tube-shadow"><path id="lab-outline" class="body-outline"/><path id="lab-color" class="body-color"/><path id="lab-glint" class="body-glint"/><g id="lab-head"><path d="M-13 3Q-13-11 0-15Q13-11 13 3L11 14H-11Z" fill="#5397ca" stroke="#3b6277" stroke-width="1.1"/><ellipse cx="-5" cy="-1" rx="3.3" ry="4.1" fill="#fffdf4"/><ellipse cx="5" cy="-1" rx="3.3" ry="4.1" fill="#fffdf4"/><circle cx="-5" cy="-2" r="1.7" fill="#253b46"/><circle cx="5" cy="-2" r="1.7" fill="#253b46"/><path d="M-6 23A7 7 0 1 1 5 23M3 18L6 23H0" fill="none" stroke="#d6effa" stroke-width="1.5"/></g></g>
+            <g id="lab-blocker" visibility="hidden"><rect x="178" y="91" width="44" height="24" rx="12" fill="url(#gold-tube)" stroke="#987037"/><path d="M195 97V109M201 97V109" stroke="#8b6327" stroke-width="1.5"/></g>
+            <path id="lab-ray" d="M200 125V25" fill="none" stroke="#8aa7ab" stroke-width="1.6" stroke-dasharray="4 6" opacity="0"/>
+          </g>
+          <path id="sample-source" visibility="hidden" d="M60 180V110Q60 90 80 90H130Q150 90 150 110V160Q150 180 170 180H180Q200 180 200 160V145L200-60"/>
+        </svg>
+        <div class="lab-status" role="status" aria-live="polite"><strong id="lab-message">选择动作，观察完整过程</strong><small id="lab-progress">0%</small></div>
+        <label for="progress" class="caption">检查中间帧</label><input id="progress" type="range" min="0" max="100" value="0" style="display:block;width:100%;accent-color:#4289c7" aria-label="动作进度">
+      </div>
+      <div class="lab-actions"><button class="primary" id="try-exit">试一次滑出</button><button id="try-block">试一次受阻</button><button id="try-phase">试一次相位</button></div>
+      <label class="motion-option"><input type="checkbox" id="reduce-motion">减少运动（保留状态确认）</label>
+      <p class="caption">说明模型：没有声音或震动，不做游戏碰撞判定；时间仅为样板设定，不是实体设备实测。</p>
+    </div>
+    <div class="timeline"><div class="time-row"><strong>≤50ms</strong><div><h3>先确认碰到了谁</h3><p>输入首帧响应的 P95 目标。按下确认对象，松开一次提交；滑动或捏合取消点击。</p></div></div><div class="time-row"><strong>240–620ms</strong><div><h3>头领路，尾跟随</h3><p>沿尾到头的原路径推进，再从出口离场。身体不作为刚体横扫邻体。其它主体可连续操作。</p></div></div><div class="time-row"><strong>140–200ms</strong><div><h3>受阻也要讲清原因</h3><p>沿前进方向微推回位，只点亮最近阻挡点。命中失败、被挡与切换中必须分得清。</p></div></div><div class="time-row"><strong>220–300ms</strong><div><h3>两种相位，可逆旋转</h3><p>0→1 为 +90°，1→0 为 −90°，以头为轴。固定体不动；实际游戏还要验证瞬态穿越的投影表达。</p></div></div></div>
+  </div>
+</section>
+<section id="depth">
+  <div class="section-head"><div><span class="index">04 / DIFFICULTY</span><h2>密集是观感，有后果才是选择。</h2><p>路径查找可以有乐趣，但不能冒充顺序决策。先用最小反例证明新规则改变了什么。</p></div></div>
+  <div class="depth-grid">
+    <article class="depth-card"><span class="tag">现有规则 · 已审计</span><h3 style="margin-top:12px">移除只会让局面更宽松</h3><svg viewBox="0 0 370 180" role="img" aria-label="移除一个阻挡物，只会解锁更多主体"><g fill="none" stroke="#778c91" stroke-width="2" marker-end="url(#graph-arrow)"><path d="M90 90H148"/><path d="M216 90H273"/></g><g><rect x="25" y="60" width="65" height="60" rx="18" fill="#dbe9ee"/><rect x="150" y="60" width="65" height="60" rx="18" fill="#dbe9ee"/><rect x="275" y="60" width="65" height="60" rx="18" fill="#dbe9ee"/></g><g fill="#285d91" text-anchor="middle" font-size="18" font-weight="700"><text x="57" y="97">C</text><text x="182" y="97">B</text><text x="307" y="97">A</text></g><g fill="#67767c" text-anchor="middle" font-size="12"><text x="57" y="149">先移除</text><text x="182" y="149">随后解锁</text><text x="307" y="149">继续释放</text><text x="183" y="28">连锁可以很长，但没有会吃亏的合法移除</text></g></svg><p>合法移除不会关闭任何既有通路。现在所有关卡都能按“能出就点，卡住切相位”完成，且切换次数最优。</p></article>
+    <article class="depth-card"><span class="tag hypothesis">继电出口 · HYPOTHESIS</span><h3 style="margin-top:12px">移除可以改变共享条件</h3><svg viewBox="0 0 370 180" role="img" aria-label="抽象反例：先移除A再移除R可清空；先移除继电体R会关门困住A"><rect x="22" y="35" width="326" height="44" rx="12" fill="#e6eee7"/><rect x="22" y="102" width="326" height="44" rx="12" fill="#f0e5d2"/><g fill="#253b46" font-size="14" font-weight="600"><text x="40" y="63">先 A → 再 R</text><text x="40" y="130">先 R → 门关</text></g><g fill="#54756c" font-size="13"><text x="211" y="63">两者都离场 ✓</text></g><g fill="#966c35" font-size="13"><text x="211" y="130">A 被困，需撤销</text></g><text x="185" y="173" text-anchor="middle" fill="#67767c" font-size="12">普通相位仍保留；只试一种新机关</text></svg><p>A 只能从门离开；继电体 R 离开后关门。顺序开始有后果。先做真实几何关、好坏分支回放和四关教学，验证后决定是否采用。</p></article>
+  </div>
+  <div class="stat-strip"><div><strong>52 / 52</strong><span>简单贪心达到最少切换</span></div><div><strong>2–9</strong><span>当前每关独立主体数</span></div><div><strong>0 / 5,065</strong><span>会失去可解性的合法移除</span></div></div>
+  <p class="caption">数据来自 <a href="../data/design-baseline.json">当前源码与关卡快照</a>。不计撤销、重开，清空即终止；不含时间或相位预算。三维分别验收：查找负担 / 依赖层数 / 有后果的选择。</p>
+</section>
+<section id="acceptance">
+  <span class="index">05 / QUALITY GATES</span><h2>样板过关，再量产关卡。</h2><p style="max-width:750px;color:var(--muted)">每个关卡都要附设计意图、剪影与两相位图、解证书、难度证据、动作帧和真人记录。测试通过说明功能正确，不能自动证明好看、好玩或超过竞品。</p>
+  <div class="gate-list"><div class="gate-item active"><strong>Q0 规范与基线</strong><span>本轮完成</span></div><div class="gate-item"><strong>Q1 美术样板</strong><span>三张真实关卡精修 · 待做</span></div><div class="gate-item"><strong>Q2 手感样板</strong><span>真实动作与设备证据 · 待做</span></div><div class="gate-item"><strong>Q3 逻辑样板</strong><span>四关机制原型与反例 · 待做</span></div><div class="gate-item"><strong>Q4 对标评审</strong><span>同尺寸与实机对照 · 待做</span></div></div>
+  <p class="caption">后续 Q5 才是批量内容。当前产品状态：REVISION_REQUIRED。对标截图只能判静态构图与材质；无实机时，竞品时序、音效与触觉均记 UNKNOWN。</p>
+</section>
+</main>
+<footer><span>COCREATE GAME · VECTOR SHIFT · 2026-10-21</span><span><a href="08_产品设计与验收规范.md">完整规范</a> · <a href="level-design.template.json">单关设计卡</a> · <a href="../README.md">项目状态</a></span></footer>
+<script>
+'use strict';
+const shapeData=[
+{name:'软矩形',en:'SOFT RECTANGLE',path:'M43 24H157Q181 24 181 48V152Q181 176 157 176H43Q19 176 19 152V48Q19 24 43 24Z',note:'稳定四边。长回折主带 + 两个辅区。',guide:'M47 48H153M47 152H153'},
+{name:'心形',en:'HEART',path:'M100 177C82 159 25 119 21 78C16 30 72 14 100 53C128 14 184 30 179 78C175 119 118 159 100 177Z',note:'双肩、中央凹口、收尖。内部呼应轮廓。',guide:'M51 63Q75 52 89 74M111 74Q125 52 149 63'},
+{name:'叶形',en:'LEAF',path:'M41 170C8 121 37 42 166 22C178 112 143 181 64 178L41 170Z',note:'一条主脊，两侧分区。叶尖保留可读性。',guide:'M51 164Q103 99 155 35'},
+{name:'双翼',en:'TWIN WINGS',path:'M89 77C61 9 15 20 20 66C21 94 42 106 70 108C27 119 16 155 42 174C63 189 86 167 100 139C114 167 137 189 158 174C184 155 173 119 130 108C158 106 179 94 180 66C185 20 139 9 111 77L100 90Z',note:'双区平衡，中腰连通。跨区依赖要有意义。',guide:'M75 106H125'},
+{name:'双湾流线',en:'DOUBLE BAY',path:'M143 24C189 30 190 81 156 96L97 119C73 128 79 153 102 153H157Q176 153 176 173Q176 191 156 191H101C29 191 10 119 66 90L121 66Q134 58 121 53H54Q34 53 34 37Q34 20 54 20Z',note:'连续反曲与两处开湾。长路径顺势展开。',guide:'M54 37H117Q154 40 139 68L82 98Q41 120 66 157'},
+{name:'环形',en:'RING',path:'M100 18A82 82 0 1 1 99.9 18ZM100 66A34 34 0 1 0 100.1 66Z',note:'外圈与内洞都可读。内洞目前也是出口。',guide:'M100 24V59M100 141V176'}
+];
+document.getElementById('shapes').innerHTML=shapeData.map((s,i)=>`<article class="shape-card"><svg viewBox="0 0 200 210" role="img" aria-label="${s.name}连续剪影草案"><defs><clipPath id="shape-clip-${i}"><path d="${s.path}" fill-rule="evenodd" clip-rule="evenodd"/></clipPath></defs><path class="shape-surface" d="${s.path}" fill-rule="evenodd"/><g class="shape-gridline" clip-path="url(#shape-clip-${i})"><rect width="200" height="210" fill="url(#unit-grid)"/></g><path d="${s.guide}" fill="none" stroke="#b4914b" stroke-width="2" stroke-dasharray="3 5" stroke-linecap="round"/><text class="shape-note" x="15" y="204">0${i+1} / ${s.en}</text></svg><h3>${s.name}<small>SHAPE 0${i+1}</small></h3><p>${s.note}</p></article>`).join('');
+for(const [id,grid] of [['shape-solid',false],['shape-grid',true]])document.getElementById(id).addEventListener('click',()=>{
+  document.getElementById('shapes').classList.toggle('show-grid',grid);
+  document.getElementById('shape-solid').setAttribute('aria-pressed',String(!grid));
+  document.getElementById('shape-grid').setAttribute('aria-pressed',String(grid));
+});
+document.getElementById('color-mode').addEventListener('click',event=>{
+  const enabled=document.getElementById('material-stage').classList.toggle('monochrome');
+  event.currentTarget.setAttribute('aria-pressed',String(enabled));
+  event.currentTarget.textContent=enabled?'恢复蓝金色彩':'检查非颜色标记';
+});
+const $=id=>document.getElementById(id);
+const original='M60 180V110Q60 90 80 90H130Q150 90 150 110V160Q150 180 170 180H180Q200 180 200 160V145';
+const source=$('sample-source'),fullLength=source.getTotalLength();
+const extension=205,bodyLength=fullLength-extension;
+const reducedPreference=matchMedia('(prefers-reduced-motion: reduce)');
+$('reduce-motion').checked=reducedPreference.matches;
+reducedPreference.addEventListener('change',event=>{$('reduce-motion').checked=event.matches;cancelAnimationFrame(raf);draw(1)});
+let mode='exit',raf=0,phaseStart=0,phaseEnd=0;
+function setBody(d){for(const id of ['lab-outline','lab-color','lab-glint'])$(id).setAttribute('d',d)}
+function draw(fraction){
+  const p=Math.max(0,Math.min(1,fraction));
+  $('lab-progress').textContent=Math.round(p*100)+'%';$('progress').value=String(Math.round(p*100));
+  $('lab-body').removeAttribute('transform');$('lab-body').style.opacity='1';
+  $('lab-blocker').setAttribute('visibility',mode==='blocked'?'visible':'hidden');
+  $('lab-ray').setAttribute('opacity','0');
+  $('lab-head').setAttribute('transform','translate(200 145)');
+  $('lab-head').style.opacity='1';
+  if(mode==='exit'){
+    const advance=p*fullLength,end=Math.min(bodyLength+advance,fullLength);
+    const points=[];
+    if(advance<fullLength){for(let d=advance;d<end;d+=2){const point=source.getPointAtLength(d);points.push([point.x,point.y])}
+      const last=source.getPointAtLength(end);points.push([last.x,last.y]);}
+    setBody(points.length?'M'+points.map(point=>point.join(' ')).join('L'):'');
+    const head=source.getPointAtLength(end),previous=source.getPointAtLength(Math.max(0,end-.5));
+    const angle=Math.atan2(head.y-previous.y,head.x-previous.x)*180/Math.PI+90;
+    $('lab-head').setAttribute('transform',`translate(${head.x} ${head.y}) rotate(${angle})`);
+    if(p>=1)$('lab-head').style.opacity='0';
+    $('lab-message').textContent=p>=1?'沿原路径完整离场':p>0?'头领路，尾端沿原路径跟随':'松开提交后，立即起动';
+  }else if(mode==='blocked'){
+    setBody(original);const offset=-Math.sin(p*Math.PI)*4;
+    $('lab-body').setAttribute('transform',`translate(0 ${offset})`);
+    $('lab-ray').setAttribute('opacity',p>0?'.8':'0');
+    $('lab-ray').setAttribute('d','M200 125V115');$('lab-ray').setAttribute('stroke','#bd7658');
+    $('lab-blocker').style.filter=p>0&&p<1?'brightness(1.12)':'none';
+    $('lab-message').textContent=p>=1?'受阻回位，状态不变':'沿前进方向微推，指出阻挡点';
+  }else{
+    setBody(original);const angle=(phaseStart+(phaseEnd-phaseStart)*p)*90;
+    $('lab-body').setAttribute('transform',`rotate(${angle} 200 145)`);
+    $('lab-message').textContent=p>=1?`当前蓝体 ${phaseEnd?'90°':'0°'}，金体不动`:'绕头部切换，保持连续方位';
+  }
+}
+function run(nextMode){
+  cancelAnimationFrame(raf);mode=nextMode;
+  if(mode==='phase'){phaseStart=phaseEnd;phaseEnd=1-phaseEnd;}else{phaseStart=phaseEnd=0;}
+  $('lab-ray').setAttribute('d','M200 125V25');$('lab-ray').setAttribute('stroke','#8aa7ab');
+  if($('reduce-motion').checked){draw(1);$('lab-message').textContent=mode==='exit'?'已离场（减少运动）':mode==='blocked'?'受阻，状态不变（减少运动）':`蓝体 ${phaseEnd?'90°':'0°'}（减少运动）`;return;}
+  draw(0);const duration=mode==='exit'?620:mode==='blocked'?180:260;let start=null;
+  function frame(now){if(start===null)start=now;const progress=Math.min(1,(now-start)/duration);
+    const eased=mode==='blocked'?progress:mode==='phase'?progress*progress*(3-2*progress):progress;
+    draw(eased);if(progress<1)raf=requestAnimationFrame(frame);
+  }
+  raf=requestAnimationFrame(frame);
+}
+$('try-exit').addEventListener('pointerdown',()=>{$('lab-outline').style.stroke='#285d91';$('lab-message').textContent='已确认蓝体，松开试滑出';});
+for(const [id,eventMode] of [['try-exit','exit'],['try-block','blocked'],['try-phase','phase']])$(id).addEventListener('click',()=>run(eventMode));
+$('progress').addEventListener('input',event=>{cancelAnimationFrame(raf);draw(Number(event.currentTarget.value)/100)});
+$('reduce-motion').addEventListener('change',()=>{cancelAnimationFrame(raf);draw(1)});
+draw(0);
+</script>
+</body>
+</html>

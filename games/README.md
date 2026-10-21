@@ -14,6 +14,6 @@ CoCreateGame 管理多款独立游戏。每个游戏文件夹保存自己的设�
 | G08 | 群体答案问答 | P1 | 候选研究 | [G08](G08/README.md) |
 | G09 | 物理合成 | P2 | 候选研究 | [G09](G09/README.md) |
 | G10 | 装扮创造 | P2 | 候选研究 | [G10](G10/README.md) |
-| VS | Vector Shift / 相位箭头 | 独立项目 | 游戏已实现；真人、真机及平台验证待完成 | [VectorShift](VectorShift/README.md) |
+| VS | Vector Shift / 相位箭头 | 独立项目 | REVISION_REQUIRED；规范 V1 已制定，造型、手感与决策深度待重做 | [VectorShift](VectorShift/README.md) |
 
 P0 表示优先准备批次，不代表已批准开发。G01、G02、G04 的详细裁决和下一步证据要求分别见 [G01审计](../reviews/G01-audit.md)、[G02审计](../reviews/G02-audit.md)、[G04审计](../reviews/G04-audit.md)。

@@ -16,6 +16,8 @@ Open [`index.html`](index.html) directly in a modern browser. It is a single-fil
 
 For the browser-served build with refresh support, run `python src/serve.py` and open the URL printed in the terminal. The packaged, single-file tester build is [`delivery/Vector_Shift_playtest.zip`](delivery/Vector_Shift_playtest.zip).
 
+An earlier 20-level prelaunch candidate is retained at [`delivery/Vector_Shift_v02_prelaunch_candidate.zip`](delivery/Vector_Shift_v02_prelaunch_candidate.zip) for traceability. The 52-level project in this directory remains the current source of truth.
+
 ## Game
 
 - Tap an arrow whose path is clear to the board edge or the outside of a shaped board; its full body slides away.

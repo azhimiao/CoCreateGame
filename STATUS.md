@@ -1,6 +1,6 @@
 # STATUS
 
-日期：2026-10-21（Asia/Shanghai）。当前阶段：PREPARATION_DELIVERED。
+日期：2026-10-22（Asia/Shanghai）。当前阶段：PREPARATION_DELIVERED。此次更新针对 Vector Shift 对标复核；G01—G10 裁决日期和证据未改。
 
 本状态文件顶部的阶段和下方 G01—G10 裁决专指 AI Game Foundry 的“研发准备”轨道。Vector Shift 是用户单独授权推进的独立游戏项目，保存在 `games/VectorShift/`；不将其合并进 G01 或更改下列裁决。
 
@@ -27,7 +27,7 @@
 
 | 项目 | 当前状态 | 完成内容 | 尚待验证 |
 |---|---|---|---|
-| Vector Shift / 相位箭头 | REVISION_REQUIRED；规范 V1 已制定，产品质量待重做 | 保留52关可玩基线与既有技术测试。本轮完成[产品设计与验收规范](games/VectorShift/docs/08_产品设计与验收规范.md)、[可交互设计样板](games/VectorShift/docs/design-standard.html)、单关设计卡和可复现难度诊断：52关均可用简单贪心达到最少相位切换，5,065次合法移除无失去可解性的分支。 | 真实关卡精修、连续动作、继电出口假设验证、对标质量门均未完成；之后才扩大量产内容。真人、真机、商标、平台与收入未验证。 |
+| Vector Shift / 相位箭头 | REVISION_REQUIRED；对标规范 V1.1，产品尚未对齐 | 保留52关可玩基线与技术测试。已补[同宽对照与密盘标准](games/VectorShift/docs/09_对标重新对齐与密盘标准.md)：360px同宽下当前L20管身样本约40px、8根；8Great参考约18px、人工标注26根。静态测量坐标/源图哈希/复现脚本齐备；此前单调规则审计保留。 | BLOCKER：引擎/验证规模不支持24～32主体密盘目标。MAJOR：完整新棋盘、材质同盘对比、真实动作、对标实机与真机证据未完成。继电假设延后，先补同类基础品质。 |
 
 ## 未完成的后续阶段
 
@@ -35,4 +35,4 @@
 
 ## 下一动作
 
-G01—G10 准备轨道按独立审计的未关闭证据节点补证；Vector Shift 先按规范完成三张真实棋盘精修、输入/运动样板和四关继电机制原型，通过质量门后再重做关卡集与开展渠道核验。两个轨道分别维护，不互相替代。具体资料见 [交付报告](DELIVERY_REPORT.md)、[要求对照](REQUIREMENTS_CHECKLIST.md) 与 [Vector Shift 项目入口](games/VectorShift/README.md)。
+G01—G10 准备轨道按独立审计的未关闭证据节点补证；Vector Shift 先解决密盘规模与验证方案，完成普通密盘、心形、叶形三张实际棋盘及连续操作对照，通过基础质量门后再批量制作。继电机关仅在基础体验通过且试玩支持时单独验证。两个轨道分别维护，不互相替代。具体资料见 [交付报告](DELIVERY_REPORT.md)、[要求对照](REQUIREMENTS_CHECKLIST.md) 与 [Vector Shift 项目入口](games/VectorShift/README.md)。

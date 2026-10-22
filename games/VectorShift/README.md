@@ -4,11 +4,11 @@ Vector Shift is a playable HTML5 puzzle baseline in its own `CoCreateGame/games/
 
 ## Design standard — start here
 
-The user's quality review takes priority over the previous implementation-complete description. Read the [产品设计与验收规范 V1](docs/08_产品设计与验收规范.md), open the [interactive design specimen](docs/design-standard.html), and use the [level design worksheet](docs/level-design.template.json). The specimen illustrates proposed silhouettes, material semantics, and motion; it is not an implemented replacement game.
+The user's quality review takes priority over the previous implementation-complete description. Start with the [对标重新对齐与密盘标准 V1.1](docs/09_对标重新对齐与密盘标准.md) and [equal-width screenshot comparison](artifacts/benchmark-alignment/same-width-comparison.png), then read the amended [产品设计与验收规范](docs/08_产品设计与验收规范.md). The earlier [interactive specimen](docs/design-standard.html) is a V1 explanatory model, not an implemented replacement or accepted dense-board art direction. Use the [level design worksheet](docs/level-design.template.json) to record evidence.
 
 The [reproducible design audit](data/design-baseline.json) finds that all 52 stages can be solved with the minimum number of phase switches by removing everything currently clear and switching only when stuck. Across 5,065 reachable legal removal transitions, none loses solvability under the existing unlimited-toggle rules. Density and long bodies must therefore be evaluated separately from consequential decision depth.
 
-Next: three refined real boards, a continuous input/motion sample, and four small relay-exit hypothesis stages; pass the visual, interaction, logic, and benchmark gates before producing the full content set. Relay exits are a design hypothesis and are not present in the current game.
+The same-width audit measures roughly 40px tube samples for the current L20 versus 18px in the primary 8Great screenshot at a normalized 360px puzzle width; visible bodies are 8 versus 26. Next: resolve the scale/solver limits, author a 24–32-body dense board plus heart and leaf boards, and verify continuous input/motion against matched references. Base-game visual richness and observation-puzzle quality come first. Relay exits remain a deferred hypothesis, not an implementation prerequisite or a substitute for benchmark parity.
 
 ## Play
 
@@ -36,6 +36,7 @@ For the browser-served build with refresh support, run `python src/serve.py` and
 | `src/package_delivery.py` | Rebuild and verify the small tester ZIP |
 | `data/levels.json`, `data/level_audit.csv` | 52 stages and level audit |
 | `src/audit_design_baseline.cjs`, `data/design-baseline.json` | Reproducible design diagnosis: greedy policy, reachable states, topology, rotation fingerprints |
+| `docs/09_对标重新对齐与密盘标准.md`, `artifacts/benchmark-alignment/` | V1.1 benchmark correction, annotated samples, same-width comparison, production targets |
 | `docs/08_产品设计与验收规范.md`, `docs/design-standard.html` | Current normative design standard and non-playable interactive specimen |
 | `docs/level-design.template.json` | Authoring worksheet separating targets, measured evidence, and untested fields |
 | `tests/` | Core suite and Playwright browser / touch smoke |

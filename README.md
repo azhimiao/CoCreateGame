@@ -8,7 +8,7 @@ AI Game Foundry 的 G01—G10 仍按各自的研究与审核状态推进。本�
 
 | 路径 | 内容 |
 | --- | --- |
-| [`games/`](games/README.md) | G01—G10 准备档案，以及独立游戏工程 `VectorShift/`（质量待重做，规范 V1 已制定） |
+| [`games/`](games/README.md) | G01—G10 准备档案，以及独立游戏工程 `VectorShift/`（质量待重做，对标规范 V1.1 已补同宽实图） |
 | `research/` | 六家渠道资料、候选研究、对标证据和跨游戏分析 |
 | `reviews/` | 独立审核、复核决定和审计索引 |
 | `shared-mechanics/` | 可复用机制提案；须经过审核后才能成为共享规范 |

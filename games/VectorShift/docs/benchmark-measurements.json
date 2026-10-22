@@ -1,0 +1,81 @@
+{
+  "observedOn": "2026-10-22",
+  "purpose": "Static alignment to supplied reference screenshots; not live-play measurement",
+  "normalizedBoardWidthPx": 360,
+  "method": {
+    "crop": "Manually bound the visible puzzle bodies, excluding app chrome, marketing text and surrounding whitespace. Bounds use Pillow left/top inclusive, right/bottom exclusive coordinates.",
+    "width": "Manually selected perpendicular cuts through straight tube segments. Count inclusive endpoints across the visible colored body plus dark edge; exclude detached cast shadow, head and bend. Allow about +/-2 source pixels at anti-aliased edges. Report samples, not a whole-image average.",
+    "normalization": "sampleWidth / visiblePuzzleCropWidth * 360. Keep original aspect ratio; never stretch to a square.",
+    "headCount": "Manual count of visible paired-eye heads in the supplied reference, with marked coordinates for review. It is a screenshot count, not an inference about all levels.",
+    "limits": "No inferred logical grid, playable fill rate, input target width, difficulty, frame duration, sound or haptics. Promotional images may differ from live builds. Scaling does not equal a physical device test."
+  },
+  "items": [
+    {
+      "id": "vs-level20",
+      "title": "Vector Shift · 当前第 20 关",
+      "source": "artifacts/level20-mobile.png",
+      "role": "current game screenshot",
+      "crop": [22, 130, 375, 476],
+      "headCount": 8,
+      "headCountEvidence": "data/levels.json phase-20; complete board screenshot",
+      "headCenters": [[145, 150], [197, 251], [42, 301], [347, 301], [297, 307], [145, 353], [42, 401], [347, 452]],
+      "widthSamples": [
+        {"id": "O1", "axis": "y", "fixed": 70, "start": 131, "end": 169},
+        {"id": "O2", "axis": "x", "fixed": 400, "start": 74, "end": 112},
+        {"id": "O3", "axis": "y", "fixed": 230, "start": 131, "end": 169}
+      ]
+    },
+    {
+      "id": "8great-dense",
+      "title": "8Great · 长蛇密盘参考",
+      "source": "artifacts/competitors/snake_arrows_ios_ss2.png",
+      "sourcePage": "https://apps.apple.com/us/app/snake-arrows-puzzles-escape/id6757818523",
+      "role": "primary static benchmark: body scale, interleaving, material",
+      "crop": [65, 480, 819, 1485],
+      "headCount": 26,
+      "headCountEvidence": "26 manually marked paired-eye heads; see generated annotated image",
+      "headCenters": [[140,552],[340,505],[492,505],[637,500],[744,506],[339,697],[89,701],[91,754],[238,758],[791,752],[537,804],[643,852],[795,811],[492,858],[188,913],[791,905],[791,1058],[90,1107],[792,1110],[190,1157],[395,1258],[791,1161],[792,1212],[85,1453],[293,1461],[791,1460]],
+      "widthSamples": [
+        {"id": "R1", "axis": "x", "fixed": 565, "start": 67, "end": 103},
+        {"id": "R2", "axis": "y", "fixed": 190, "start": 484, "end": 520},
+        {"id": "R3", "axis": "x", "fixed": 615, "start": 371, "end": 409}
+      ]
+    },
+    {
+      "id": "techx-silhouette",
+      "title": "Tech X · 宏观剪影参考",
+      "source": "artifacts/competitors/snake_arrow_ss1.png",
+      "sourcePage": "https://play.google.com/store/apps/details?id=com.snake.arrow.puzzle.game",
+      "role": "secondary static benchmark: many local paths form one overall figure",
+      "crop": [27, 208, 437, 563],
+      "headCount": null,
+      "headCountEvidence": "UNKNOWN; not reliably counted at this source resolution",
+      "headCenters": [],
+      "widthSamples": []
+    },
+    {
+      "id": "arrowout-heart",
+      "title": "Arrow Out · 轮廓与负空间参考",
+      "source": "artifacts/competitors/arrow_out_ss1.png",
+      "sourcePage": "https://play.google.com/store/apps/details?id=com.appburst.arrowout",
+      "role": "secondary static benchmark: heart silhouette and paths; not the tube-material target",
+      "crop": [209, 1048, 871, 1628],
+      "headCount": null,
+      "headCountEvidence": "UNKNOWN; no count used in this comparison",
+      "headCenters": [],
+      "widthSamples": [],
+      "cropNote": "Crops the assembled heart; the upward arrow already extending outside it is excluded. Do not use this crop to count all bodies or assess animation."
+    }
+  ],
+  "proposedTargetsNotMeasurements": {
+    "normalDenseBoard": {
+      "visibleBodyWidthFraction": [0.045, 0.06],
+      "visibleBodyWidthAt360Px": [16.2, 21.6],
+      "independentBodies": [24, 32],
+      "portraitHeightDividedByWidth": [1.15, 1.4],
+      "pathsWithAtLeastThreeBendsMinimum": 8,
+      "pathsWithAtLeastFiveBendsMinimum": 4
+    },
+    "note": "First dense-board production targets, not copied reference levels, not universal bounds for tutorials or all shape families. Must pass real-size reading and input checks."
+  }
+}

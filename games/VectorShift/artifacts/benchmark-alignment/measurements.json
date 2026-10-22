@@ -1,0 +1,150 @@
+{
+  "observedOn": "2026-10-22",
+  "status": "STATIC_DIAGNOSIS_NOT_PARITY",
+  "specSha256": "f180d6290eac92c0956ee0971ebf79c667642897f9799146d0fcaec84a15e71b",
+  "method": {
+    "crop": "Manually bound the visible puzzle bodies, excluding app chrome, marketing text and surrounding whitespace. Bounds use Pillow left/top inclusive, right/bottom exclusive coordinates.",
+    "width": "Manually selected perpendicular cuts through straight tube segments. Count inclusive endpoints across the visible colored body plus dark edge; exclude detached cast shadow, head and bend. Allow about +/-2 source pixels at anti-aliased edges. Report samples, not a whole-image average.",
+    "normalization": "sampleWidth / visiblePuzzleCropWidth * 360. Keep original aspect ratio; never stretch to a square.",
+    "headCount": "Manual count of visible paired-eye heads in the supplied reference, with marked coordinates for review. It is a screenshot count, not an inference about all levels.",
+    "limits": "No inferred logical grid, playable fill rate, input target width, difficulty, frame duration, sound or haptics. Promotional images may differ from live builds. Scaling does not equal a physical device test."
+  },
+  "items": [
+    {
+      "id": "vs-level20",
+      "source": "artifacts/level20-mobile.png",
+      "sourceSha256": "0508ab50d2742d564a74fd3358a51b0116e847571cb09d775e37851879efe8a8",
+      "sourceSize": [
+        390,
+        844
+      ],
+      "crop": [
+        22,
+        130,
+        375,
+        476
+      ],
+      "cropWidth": 353,
+      "cropHeight": 346,
+      "normalizedSize": [
+        360,
+        353
+      ],
+      "visibleHeadCount": 8,
+      "widthSamples": [
+        {
+          "id": "O1",
+          "sourcePx": 39,
+          "boardFraction": 0.11048,
+          "normalized360Px": 39.77
+        },
+        {
+          "id": "O2",
+          "sourcePx": 39,
+          "boardFraction": 0.11048,
+          "normalized360Px": 39.77
+        },
+        {
+          "id": "O3",
+          "sourcePx": 39,
+          "boardFraction": 0.11048,
+          "normalized360Px": 39.77
+        }
+      ],
+      "medianWidthAt360Px": 39.77
+    },
+    {
+      "id": "8great-dense",
+      "source": "artifacts/competitors/snake_arrows_ios_ss2.png",
+      "sourceSha256": "bc71b2dbc269967c7b57a5fd356f7eb788de6dea1ea87e59a36b67b8f2ec8b01",
+      "sourceSize": [
+        886,
+        1918
+      ],
+      "crop": [
+        65,
+        480,
+        819,
+        1485
+      ],
+      "cropWidth": 754,
+      "cropHeight": 1005,
+      "normalizedSize": [
+        360,
+        480
+      ],
+      "visibleHeadCount": 26,
+      "widthSamples": [
+        {
+          "id": "R1",
+          "sourcePx": 37,
+          "boardFraction": 0.04907,
+          "normalized360Px": 17.67
+        },
+        {
+          "id": "R2",
+          "sourcePx": 37,
+          "boardFraction": 0.04907,
+          "normalized360Px": 17.67
+        },
+        {
+          "id": "R3",
+          "sourcePx": 39,
+          "boardFraction": 0.05172,
+          "normalized360Px": 18.62
+        }
+      ],
+      "medianWidthAt360Px": 17.67
+    },
+    {
+      "id": "techx-silhouette",
+      "source": "artifacts/competitors/snake_arrow_ss1.png",
+      "sourceSha256": "a893debfc5e6a0ee4b4712a59c056a2181f797c01f08bd04d593543aec47da1e",
+      "sourceSize": [
+        456,
+        810
+      ],
+      "crop": [
+        27,
+        208,
+        437,
+        563
+      ],
+      "cropWidth": 410,
+      "cropHeight": 355,
+      "normalizedSize": [
+        360,
+        312
+      ],
+      "visibleHeadCount": null,
+      "widthSamples": [],
+      "medianWidthAt360Px": null
+    },
+    {
+      "id": "arrowout-heart",
+      "source": "artifacts/competitors/arrow_out_ss1.png",
+      "sourceSha256": "a416cf1e8458198d3326a016c8aed58ea89de139a99cd5ebe8fbee1f1b46e890",
+      "sourceSize": [
+        1080,
+        1920
+      ],
+      "crop": [
+        209,
+        1048,
+        871,
+        1628
+      ],
+      "cropWidth": 662,
+      "cropHeight": 580,
+      "normalizedSize": [
+        360,
+        315
+      ],
+      "visibleHeadCount": null,
+      "widthSamples": [],
+      "medianWidthAt360Px": null
+    }
+  ],
+  "currentToPrimarySampleWidthRatio": 2.25,
+  "boundsUncertainty": "Approximately +/-2 source pixels at each manually selected anti-aliased edge; ratios are rounded observations, not universal product constants."
+}

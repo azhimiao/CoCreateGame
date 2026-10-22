@@ -3,6 +3,7 @@
   "designId": "VS-DRAFT-REPLACE",
   "status": "DRAFT_NOT_PLAYABLE",
   "standard": "08_产品设计与验收规范.md",
+  "alignmentSupplement": "09_对标重新对齐与密盘标准.md",
   "ruleset": {
     "id": "binary-phase-baseline",
     "version": "existing",
@@ -58,6 +59,17 @@
     "optimalityProof": null
   },
   "renderEvidence": {
+    "matchedWidthComparison": null,
+    "visiblePuzzleBounds": null,
+    "bodyWidthFractionSamples": [],
+    "normalized360pxBodyWidthSamples": [],
+    "annotatedHeadCount": null,
+    "pathsWithAtLeastThreeBends": null,
+    "pathsWithAtLeastFiveBends": null,
+    "compositionZonesAndLinks": null,
+    "sameGeometryMaterialCandidates": [],
+    "materialDecision": "NOT_FROZEN",
+    "legalRemovalSequenceStageImages": [],
     "fullSizePhase0": null,
     "fullSizePhase1": null,
     "thumbnail96px": null,

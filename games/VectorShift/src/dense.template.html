@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#faf7ef" />
+    <meta
+      name="description"
+      content="A colorful puzzle of winding paths. Follow each little snake and find its way out."
+    />
+    <title>Vector Shift · 绮彩长蛇</title>
+    <!--INJECT_HEAD-->
+    <style>
+      /*INJECT_STYLES*/
+    </style>
+  </head>
+  <body>
+    <svg class="icon-defs" aria-hidden="true">
+      <defs>
+        <symbol id="i-menu" viewBox="0 0 24 24">
+          <rect x="4" y="4" width="6" height="6" rx="2" />
+          <rect x="14" y="4" width="6" height="6" rx="2" />
+          <rect x="4" y="14" width="6" height="6" rx="2" />
+          <rect x="14" y="14" width="6" height="6" rx="2" />
+        </symbol>
+        <symbol id="i-sound" viewBox="0 0 24 24">
+          <path d="M4 9H8L13 5V19L8 15H4Z" />
+          <path d="M17 8Q21 12 17 16M19 4Q26 12 19 20" />
+        </symbol>
+        <symbol id="i-muted" viewBox="0 0 24 24">
+          <path d="M4 9H8L13 5V19L8 15H4Z" />
+          <path d="M17 9L22 15M22 9L17 15" />
+        </symbol>
+        <symbol id="i-undo" viewBox="0 0 24 24">
+          <path d="M8 4L3 9L8 14M4 9H15A6 6 0 0 1 15 21H10" />
+        </symbol>
+        <symbol id="i-hint" viewBox="0 0 24 24">
+          <path
+            d="M8 16V15C8 13 5 12 5 8A7 7 0 0 1 19 8C19 12 16 13 16 15V16ZM9 19H15M10 22H14"
+          />
+        </symbol>
+        <symbol id="i-retry" viewBox="0 0 24 24">
+          <path d="M4 9A8 8 0 1 1 4 16M4 3V9H10" />
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24">
+          <circle cx="10" cy="10" r="6.5" />
+          <path d="M15 15L21 21M7 10H13M10 7V13" />
+        </symbol>
+        <symbol id="i-fit" viewBox="0 0 24 24">
+          <path d="M9 4H4V9M15 4H20V9M4 15V20H9M20 15V20H15M8 12H16" />
+        </symbol>
+        <symbol id="i-next" viewBox="0 0 24 24">
+          <path d="M5 12H19M13 6L19 12L13 18" />
+        </symbol>
+        <symbol id="i-close" viewBox="0 0 24 24">
+          <path d="M6 6L18 18M18 6L6 18" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path d="M5 12L10 17L20 6" />
+        </symbol>
+        <symbol id="i-help" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M9 8A3 3 0 0 1 15 8C15 10 12 10 12 13M12 17V17.1" />
+        </symbol>
+      </defs>
+    </svg>
+    <div class="game-shell" id="gameShell">
+      <header class="game-top">
+        <button
+          class="icon-button"
+          id="collectionButton"
+          type="button"
+          aria-label="选择图案"
+        >
+          <svg><use href="#i-menu" /></svg>
+        </button>
+        <a
+          class="brand"
+          href="#"
+          id="brandButton"
+          aria-label="Vector Shift 图案集"
+          ><span class="brand-mark" aria-hidden="true"
+            ><i></i><i></i><i></i></span
+          ><span>VECTOR SHIFT</span></a
+        >
+        <button
+          class="icon-button"
+          id="soundButton"
+          type="button"
+          aria-label="打开声音"
+          aria-pressed="false"
+        >
+          <svg><use href="#i-muted" /></svg>
+        </button>
+      </header>
+      <main class="game-main">
+        <div class="level-heading">
+          <div>
+            <span class="chapter-label" id="chapterLabel"
+              >THE WINDING COLLECTION</span
+            >
+            <h1 id="levelTitle">回环花园</h1>
+          </div>
+          <div class="remaining">
+            <strong id="remainingCount">—</strong
+            ><span id="remainingLabel">条待解</span>
+          </div>
+        </div>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="清盘进度"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          id="progressTrack"
+        >
+          <i id="progressFill"></i>
+        </div>
+        <div class="board-region" id="boardRegion">
+          <div class="canvas-stage" id="canvasStage">
+            <canvas
+              id="puzzleCanvas"
+              aria-label="长蛇棋盘，可使用键盘或触碰路径选择"
+              tabindex="0"
+            ></canvas>
+            <div
+              class="keyboard-layer"
+              id="keyboardLayer"
+              role="group"
+              aria-label="可选长蛇"
+            ></div>
+            <div class="board-tip" id="boardTip" aria-hidden="true"></div>
+          </div>
+        </div>
+        <p class="feedback" id="feedback" role="status" aria-live="polite">
+          循着它的朝向，找到出口。
+        </p>
+        <nav class="game-controls" aria-label="游戏操作">
+          <button class="action-button" id="undoButton" type="button" disabled>
+            <svg><use href="#i-undo" /></svg><span id="undoLabel">撤销</span>
+          </button>
+          <button class="hint-button" id="hintButton" type="button">
+            <svg><use href="#i-hint" /></svg><span id="hintLabel">给点提示</span
+            ><span class="hint-spark" aria-hidden="true">✦</span>
+          </button>
+          <button class="action-button" id="zoomButton" type="button">
+            <svg><use href="#i-plus" /></svg><span id="zoomLabel">放大</span>
+          </button>
+        </nav>
+        <footer class="game-footer">
+          <button class="text-button" id="restartButton" type="button">
+            <svg><use href="#i-retry" /></svg
+            ><span id="restartLabel">重新开始</span></button
+          ><span id="levelIndex">01 / 05</span
+          ><button class="text-button" id="helpButton" type="button">
+            <span id="helpLabel">怎么玩</span><svg><use href="#i-help" /></svg>
+          </button>
+        </footer>
+      </main>
+    </div>
+    <dialog id="gameDialog">
+      <div class="dialog-content" id="dialogContent"></div>
+    </dialog>
+    <script>
+      /*INJECT_CHANNEL*/
+      /*INJECT_CORE*/
+    </script>
+    <script>
+      const DENSE_LEVELS=/*INJECT_LEVELS*/;
+    </script>
+    <script>
+      /*INJECT_APP*/
+    </script>
+  </body>
+</html>

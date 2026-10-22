@@ -888,6 +888,7 @@ function initCrazySdk(){
 function openGear(){
  openDialog(`<button class="close-button" id="modalClose" aria-label="${t.close}">×</button><div class="modal-sub">${t.settingsSub}</div><h2 id="modalTitle">${t.settingsTitle}</h2>
 <div class="gear-menu">
+<button type="button" id="gearClassic">${LOCALE==='zh'?'绮彩长蛇图案集 ↗':'Winding paths collection ↗'}</button>
 <button type="button" id="gearDaily">${t.dailyBtn}</button>
 <button type="button" id="gearSettings">${t.settingsBtn}</button>
 <button type="button" id="gearHelp">${t.helpBtn}</button>
@@ -896,6 +897,7 @@ ${CHANNEL==='coolmath'?'':`<button type="button" id="gearExport">${t.exportBtn}<
 </div>
 <div class="modal-actions"><button class="main-button" id="gearDone" type="button">${t.setDone}</button></div>`);
  $('modalClose').onclick=closeDialog;$('gearDone').onclick=closeDialog;
+ $('gearClassic').onclick=()=>{location.href='index.html'};
  $('gearDaily').onclick=()=>{closeDialog();openDaily()};
  $('gearSettings').onclick=()=>{closeDialog();openSettings()};
  $('gearHelp').onclick=()=>{closeDialog();help()};

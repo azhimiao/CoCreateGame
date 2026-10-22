@@ -1,38 +1,27 @@
-# Coolmath Games — Vector Shift submission pack
+# Vector Shift — coolmath candidate
 
-**Status:** technical candidate only. Not platform-approved. No live player testing claimed.
+Status: internal playable candidate; not submitted or platform-approved.
 
-## Pitch (one-liner)
-Vector Shift is a 52-level logic puzzle: clear winding arrows from a board; blue arrows rotate together when you Shift Phase, while gold arrows stay fixed. Shaped boards, path planning, and reversible moves make order matter.
+## Description
+
+Untangle a colorful garden of winding snakes. Follow their gaze, clear the path ahead, and watch each body glide out along its own curves. Five original patterns include a dense courtyard, heart, leaf, larger garden and a small introduction. Hints, undo and zoom are always available.
+
+The main collection has five stages and 128 snakes. A local menu link opens the preserved 52-stage phase challenge, where blue paths rotate together and gold paths remain fixed. The main collection has no phase switching: its six colors identify individual paths.
 
 ## Controls
-- **Tap / click** an arrow with a clear path to the edge to remove it
-- **Shift Phase** (button or Space): rotate all blue arrows 90°
-- **Undo** (Z), **Retry** (R), **Hint** for the next solver step
-- Controls have 44px or larger hit areas on phone layouts; arrow hit testing follows each drawn path
 
-## Family-safe statement
-HTML5 thinking / puzzle game. No violence, no foul language, no name entry, no chat, no user-generated content, no ads, no external links in the Coolmath build, no outbound stats reporting.
+Tap/click a head or body with a clear exit. Z: undo; H: hint. Arrow keys select on the Canvas; Enter/Space releases. Pinch to zoom and drag while enlarged. The collection opens in the top-left menu; phase settings link back to it.
 
-## Credits
-Independent Puzzle Studio (name only — no URL, email, or social links in-build).
+## Files and verification
 
-## Rights
-Original authored code and generated puzzles. No third-party game assets, levels, or trademarks embedded. See `../RIGHTS.md`.
+Ship **both** `index.html` (new collection, approximately 133 KB uncompressed) and `phase.html` (preserved challenge, approximately 139 KB). Main gameplay needs no assets or font downloads. English UI and accessible direction labels are included. Developer helpers are disabled in channel builds.
 
-## What was disabled / configured for Coolmath
-- Local playtest event logging is a no-op (`CHANNEL==='coolmath'`)
-- Export playtest control removed from markup; outbound-looking copy scrubbed
-- `?qa=1` developer skip disabled
-- No third-party ads/analytics SDK
-- No invented Coolmath SDK (willing to add theirs later if they ask)
-- English UI throughout
+Six viewport checks and real pointer/touch-emulated interactions passed; all five dense stages were cleared through actual head/body taps. Phase regression also passed. See the project `artifacts/dense-browser-report.json`, `docs/10_密盘重做与验证.md`, and current captures in `../assets/`.
 
-## Build
-- File: `index.html` (single-file, about 138 KB uncompressed)
-- Rebuild source: `python3 src/build.py` → `dist/coolmath/index.html`
+## Channel configuration
 
-## Honest gaps before send
-- No blind-player test yet
-- No 30–60s capture video in this pack (screenshots only under `../assets/`)
-- Trademark clearance for the name “Vector Shift” is still open
+No external SDK, ads or analytics. Both pages are self-contained; the mode link is local.
+
+## Remaining review
+
+Physical-device comfort/performance, real-player preference, name clearance and platform review remain open. No revenue or competitive superiority claim. Rights notes: `../RIGHTS.md`. A Chinese demo playthrough is available in the project artifacts; record the final English portal capture after the product is approved for submission.

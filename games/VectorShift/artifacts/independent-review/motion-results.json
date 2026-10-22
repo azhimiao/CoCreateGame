@@ -1,0 +1,272 @@
+[
+  {
+    "name": "levels-under-test",
+    "data": [
+      {
+        "id": "dense-01",
+        "pieces": 28
+      },
+      {
+        "id": "dense-02",
+        "pieces": 32
+      },
+      {
+        "id": "dense-03",
+        "pieces": 28
+      },
+      {
+        "id": "dense-04",
+        "pieces": 32
+      },
+      {
+        "id": "dense-05",
+        "pieces": 8
+      }
+    ]
+  },
+  {
+    "name": "touch-entire-level-1",
+    "data": {
+      "failures": [],
+      "remaining": "0",
+      "progress": "100",
+      "win": "都舒展开了。\n\n每一条曲折，都找到了出口。\n\n28\n已解开\n0:00\n用时\n0\n提示\n下一幅图案\n再解一次"
+    }
+  },
+  {
+    "name": "touch-entire-level-2",
+    "data": {
+      "failures": [],
+      "remaining": "0",
+      "progress": "100",
+      "win": "都舒展开了。\n\n每一条曲折，都找到了出口。\n\n32\n已解开\n0:01\n用时\n0\n提示\n下一幅图案\n再解一次"
+    }
+  },
+  {
+    "name": "touch-entire-level-3",
+    "data": {
+      "failures": [],
+      "remaining": "0",
+      "progress": "100",
+      "win": "都舒展开了。\n\n每一条曲折，都找到了出口。\n\n28\n已解开\n0:01\n用时\n0\n提示\n下一幅图案\n再解一次"
+    }
+  },
+  {
+    "name": "touch-entire-level-4",
+    "data": {
+      "failures": [],
+      "remaining": "0",
+      "progress": "100",
+      "win": "都舒展开了。\n\n每一条曲折，都找到了出口。\n\n32\n已解开\n0:01\n用时\n0\n提示\n下一幅图案\n再解一次"
+    }
+  },
+  {
+    "name": "touch-entire-level-5",
+    "data": {
+      "failures": [],
+      "remaining": "0",
+      "progress": "100",
+      "win": "都舒展开了。\n\n每一条曲折，都找到了出口。\n\n8\n已解开\n0:00\n用时\n0\n提示\n回到图案集\n再解一次"
+    }
+  },
+  {
+    "name": "heart-clip-first-frame",
+    "data": {
+      "pre": {
+        "id": "s04",
+        "d": 0,
+        "cells": [
+          [
+            20,
+            3
+          ],
+          [
+            19,
+            3
+          ],
+          [
+            19,
+            4
+          ],
+          [
+            20,
+            4
+          ],
+          [
+            20,
+            5
+          ],
+          [
+            20,
+            6
+          ],
+          [
+            21,
+            6
+          ],
+          [
+            21,
+            5
+          ]
+        ],
+        "head": {
+          "x": 357.55135135135134,
+          "y": 338.1040540540541
+        },
+        "clear": true,
+        "samples": [
+          {
+            "x": 342.07027027027027,
+            "y": 307.1418918918919
+          },
+          {
+            "x": 326.5891891891892,
+            "y": 307.1418918918919
+          },
+          {
+            "x": 326.5891891891892,
+            "y": 322.622972972973
+          },
+          {
+            "x": 342.07027027027027,
+            "y": 322.622972972973
+          },
+          {
+            "x": 342.07027027027027,
+            "y": 338.1040540540541
+          },
+          {
+            "x": 342.07027027027027,
+            "y": 353.58513513513515
+          },
+          {
+            "x": 357.55135135135134,
+            "y": 353.58513513513515
+          },
+          {
+            "x": 357.55135135135134,
+            "y": 338.1040540540541
+          }
+        ]
+      },
+      "animation": [
+        {
+          "kind": "exit",
+          "id": "s04",
+          "elapsed": 111.89999997615814,
+          "duration": 328.8496981906737
+        }
+      ]
+    }
+  },
+  {
+    "name": "visibility-environment",
+    "data": {
+      "hidden": false,
+      "state": "visible",
+      "stats": {
+        "mistakes": 0,
+        "hints": 0,
+        "elapsed": 1149.7999999523163,
+        "finished": null
+      }
+    }
+  },
+  {
+    "name": "keyboard-names",
+    "data": [
+      "第s011条小蛇",
+      "第s021条小蛇",
+      "第s031条小蛇",
+      "第s041条小蛇",
+      "第s051条小蛇",
+      "第s061条小蛇",
+      "第s071条小蛇",
+      "第s081条小蛇",
+      "第s091条小蛇",
+      "第s101条小蛇",
+      "第s111条小蛇",
+      "第s121条小蛇",
+      "第s131条小蛇",
+      "第s141条小蛇",
+      "第s151条小蛇",
+      "第s161条小蛇",
+      "第s171条小蛇",
+      "第s181条小蛇",
+      "第s191条小蛇",
+      "第s201条小蛇",
+      "第s211条小蛇",
+      "第s221条小蛇",
+      "第s231条小蛇",
+      "第s241条小蛇",
+      "第s251条小蛇",
+      "第s261条小蛇",
+      "第s271条小蛇",
+      "第s281条小蛇"
+    ]
+  },
+  {
+    "name": "canvas-keyboard-focus",
+    "data": {
+      "active": "puzzleCanvas",
+      "remaining": 27
+    }
+  },
+  {
+    "name": "forged-clear-rejected",
+    "data": {
+      "remaining": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05",
+        "s06",
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21",
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26",
+        "s27",
+        "s28"
+      ],
+      "moves": 0,
+      "history": []
+    }
+  },
+  {
+    "name": "array-run-save-loss",
+    "data": {
+      "before": {
+        "moves": 1,
+        "saved": {
+          "version": 1,
+          "index": 0,
+          "settings": {
+            "sound": false,
+            "haptics": false,
+            "reduce": false
+          },
+          "runs": [],
+          "completed": []
+        }
+      },
+      "after": 0
+    }
+  }
+]

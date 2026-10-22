@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-22",
+  "checks": [
+    "layout 390x844",
+    "layout 360x800",
+    "layout 412x915",
+    "layout 320x568",
+    "layout 844x390",
+    "layout 1440x1000",
+    "blocked tap, hint and retry counters",
+    "body press, continuous exit frames, rapid sequential taps, saved run and undo",
+    "all 5 boards / 128 snakes solved through head/body pointer input",
+    "collection thumbnails, board selection, modal Escape and restored focus",
+    "emulated touch tap, two-finger pinch, drag and fit; no accidental removals",
+    "malformed and forged saved-state recovery",
+    "English channel builds, debug disabled, phase link, CrazyGames SDK lifecycle with mock"
+  ],
+  "errors": [],
+  "firstBoard": {
+    "w": 358,
+    "h": 483,
+    "s": 0.6532846715328468,
+    "dpr": 2,
+    "bodyWidthCss": 16.93313868613139,
+    "rect": {
+      "x": 16,
+      "y": 177.25,
+      "width": 358,
+      "height": 483,
+      "top": 177.25,
+      "right": 374,
+      "bottom": 660.25,
+      "left": 16
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "limitations": [
+    "Chromium browser and touch emulation; physical-device performance and player preference not measured.",
+    "SDK lifecycle uses a local mock, not platform approval."
+  ]
+}

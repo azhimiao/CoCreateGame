@@ -1,0 +1,119 @@
+{
+  "revision": {
+    "sourceSHA256": "48fcef93632c2420030f81a2fcea4bd0b07b9374d0bb98cae041f3b1053cf6dc",
+    "servedSHA256": "c67b47852079a82a7c037039b3815bc3ad4592fcccd7cc6aae32bd2c12a6a297",
+    "servedLatestCode": true,
+    "servedFocusFix": true,
+    "servedPauseFix": true
+  },
+  "rightClick": {
+    "target": "s01",
+    "after": {
+      "view": {
+        "zoom": 1,
+        "x": 0,
+        "y": 0
+      },
+      "stats": {
+        "mistakes": 0,
+        "hints": 0,
+        "elapsed": 228.30000001192093,
+        "finished": null
+      },
+      "state": {
+        "remaining": [
+          "s02",
+          "s03",
+          "s04",
+          "s05",
+          "s06",
+          "s07",
+          "s08",
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16",
+          "s17",
+          "s18",
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28"
+        ],
+        "moves": 1,
+        "history": [
+          {
+            "remaining": [
+              "s01",
+              "s02",
+              "s03",
+              "s04",
+              "s05",
+              "s06",
+              "s07",
+              "s08",
+              "s09",
+              "s10",
+              "s11",
+              "s12",
+              "s13",
+              "s14",
+              "s15",
+              "s16",
+              "s17",
+              "s18",
+              "s19",
+              "s20",
+              "s21",
+              "s22",
+              "s23",
+              "s24",
+              "s25",
+              "s26",
+              "s27",
+              "s28"
+            ],
+            "moves": 0
+          }
+        ]
+      }
+    }
+  },
+  "pinch": {
+    "stationaryFingersMidpoint": {
+      "x": 150,
+      "y": 360
+    },
+    "view": {
+      "zoom": 1.6666666666666667,
+      "x": 0,
+      "y": 0
+    },
+    "boardPointNow": {
+      "x": 120,
+      "y": 317.8333333333333
+    },
+    "moves": 0
+  },
+  "keyboard": {
+    "active": {
+      "tag": "BUTTON",
+      "id": "",
+      "snake": "s02"
+    },
+    "firstLabel": "第s021条小蛇，朝右"
+  },
+  "lifecycle": [],
+  "beforeFreeze": 279.19999998807907,
+  "afterFreeze": 1289.199999988079
+}

@@ -7,10 +7,10 @@ let playwright;
 try { playwright = require(process.env.PLAYWRIGHT_MODULE || 'playwright'); }
 catch { playwright = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core'); }
 const root = path.resolve(__dirname, '..');
-const html = fs.readFileSync(path.join(root, 'dist/demo/index.html'), 'utf8');
+const html = fs.readFileSync(path.join(root, 'dist/demo/phase.html'), 'utf8');
 const releases = {
-  '/coolmath': fs.readFileSync(path.join(root, 'dist/coolmath/index.html'), 'utf8'),
-  '/crazygames': fs.readFileSync(path.join(root, 'dist/crazygames-basic/index.html'), 'utf8'),
+  '/coolmath': fs.readFileSync(path.join(root, 'dist/coolmath/phase.html'), 'utf8'),
+  '/crazygames': fs.readFileSync(path.join(root, 'dist/crazygames-basic/phase.html'), 'utf8'),
 };
 const server = http.createServer((req, res) => {
   const body = releases[new URL(req.url, 'http://localhost').pathname] || html;

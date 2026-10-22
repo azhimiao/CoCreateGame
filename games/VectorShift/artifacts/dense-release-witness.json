@@ -1,0 +1,40 @@
+{
+  "level": "dense-01",
+  "actions": [
+    "s01",
+    "s08",
+    "s09",
+    "s15",
+    "s16",
+    "s19",
+    "s14",
+    "s21",
+    "s23",
+    "s22",
+    "s25",
+    "s06",
+    "s12",
+    "s26",
+    "s04",
+    "s05",
+    "s02",
+    "s27",
+    "s03",
+    "s07",
+    "s28",
+    "s10",
+    "s17",
+    "s18",
+    "s20",
+    "s24",
+    "s11",
+    "s13"
+  ],
+  "screenshotsRemaining": [
+    28,
+    21,
+    14,
+    7
+  ],
+  "method": "Actual pointer taps; default animation; stages captured after settled motion."
+}

@@ -1,28 +1,9 @@
-# Vector Shift playtest build
+# Vector Shift 密盘重做试玩包
 
-Build: `1.0.0-phase-shift` · 2026-10-21
+日期：2026-10-22。解压后打开 `index.html`，无需网络。`phase.html` 是保留的 52 关相位挑战，两模式可从菜单互相进入。
 
-## Open
+主入口现在是 28 条彩色长蛇的完整纵向密盘。左上角图案集还提供心形、叶形、大密盘与入门盘，共五关、128 条蛇。点头或身体，让前方畅通的小蛇沿自身路径离开；提示、撤销、缩放、重试可随时使用。六色用于追踪身份，新模式没有相位切换。
 
-Unzip `Vector_Shift_playtest.zip` and open `index.html` in a current desktop or mobile browser. The gameplay is self-contained; no network connection is needed.
+建议先看首盘的粗细、长短交错与圆润材质，再用图案集比较心形、叶形的整体轮廓。观察连续点选、受阻反馈与尾部跟随，手机上尝试双指缩放及拖动。
 
-## Play
-
-- Clear an arrow by tapping it when the line ahead is empty.
-- Blue arrows and their bodies turn together when you Shift Phase. Gold arrows stay in place.
-- If an arrow is blocked, inspect its red exit ray, choose another move, or use Undo, Retry, or Hint.
-- Zoom with the controls or pinch. Drag the board when zoomed in. Show all exits for a board-wide path preview.
-- Finish the board to see moves, time, misses, hints, and the shortest known solution status. Daily completion also records a local streak.
-
-## Suggested review boards
-
-- Level 1 teaches the exit rule.
-- Level 11 introduces a heart silhouette.
-- Level 20 shows the dense winding-arrow presentation.
-- Level 52 is the final campaign board.
-
-## Evidence and remaining checks
-
-The deterministic core suite validates all 52 level solutions. An automated Playwright run checked desktop and emulated mobile layouts, touch taps, pinch zoom, progress recovery, daily results, and channel builds. See `artifacts/level20-desktop.png`, `artifacts/level20-mobile.png`, and `artifacts/daily-result-mobile.png` in the project.
-
-No physical-device or blind-player study has been completed. No platform has approved this game. Trademark clearance and submission review remain open.
+包内提供同宽三方对照、心形与叶形截图，以及默认动画下的真实浏览器点击实录 `artifacts/dense-playthrough.webm`。自动检查覆盖所有五关的实际点选、六个视口、触摸手势、续玩与异常存档；不替代物理手机或真实玩家评审。

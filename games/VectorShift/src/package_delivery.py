@@ -7,11 +7,13 @@ ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / 'delivery' / 'Vector_Shift_playtest.zip'
 FILES = (
     ('dist/demo/index.html', 'index.html'),
-    ('README.md', 'README.md'),
-    ('delivery/PLAYTEST.md', 'PLAYTEST.md'),
-    ('artifacts/level20-desktop.png', 'artifacts/level20-desktop.png'),
-    ('artifacts/level20-mobile.png', 'artifacts/level20-mobile.png'),
-    ('artifacts/daily-result-mobile.png', 'artifacts/daily-result-mobile.png'),
+    ('dist/demo/phase.html', 'phase.html'),
+    ('delivery/PLAYTEST.md', 'README.md'),
+    ('artifacts/dense-pattern-1.png', 'artifacts/dense-pattern-1.png'),
+    ('artifacts/dense-pattern-2.png', 'artifacts/dense-pattern-2.png'),
+    ('artifacts/dense-pattern-3.png', 'artifacts/dense-pattern-3.png'),
+    ('artifacts/dense-same-width-comparison.png', 'artifacts/dense-same-width-comparison.png'),
+    ('artifacts/dense-playthrough.webm', 'artifacts/dense-playthrough.webm'),
 )
 
 members = [(source, target, (ROOT / source).read_bytes()) for source, target in FILES]

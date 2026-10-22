@@ -1,0 +1,226 @@
+[
+  {
+    "name": "revision",
+    "data": {
+      "servedIncludesAllFiveFixes": true,
+      "servedMatchesLatestSource": true,
+      "sourceSHA256": "34a25e3afccb9a838597fe059bdd23dfcb93f130f5c5a0cc2871c0ba7c34f6b6",
+      "servedSHA256": "16b436fd9830a04910f982f42d3cd7347b6807c2fb65e8c4bee606f41c50c814"
+    }
+  },
+  {
+    "name": "heart-legal-preparation",
+    "data": {
+      "removed": [
+        "s02",
+        "s07",
+        "s14",
+        "s17",
+        "s05",
+        "s13",
+        "s20",
+        "s22",
+        "s11",
+        "s24",
+        "s25",
+        "s06",
+        "s23",
+        "s28",
+        "s29",
+        "s16",
+        "s21",
+        "s09",
+        "s01"
+      ],
+      "s01Removed": true,
+      "s04Retained": true
+    }
+  },
+  {
+    "name": "heart-original-tail-preserved",
+    "data": {
+      "before": [
+        {
+          "cell": [
+            20,
+            3
+          ],
+          "rgba": [
+            158,
+            117,
+            196,
+            255
+          ]
+        },
+        {
+          "cell": [
+            19,
+            3
+          ],
+          "rgba": [
+            198,
+            166,
+            227,
+            255
+          ]
+        },
+        {
+          "cell": [
+            19,
+            4
+          ],
+          "rgba": [
+            155,
+            114,
+            192,
+            255
+          ]
+        },
+        {
+          "cell": [
+            20,
+            4
+          ],
+          "rgba": [
+            158,
+            117,
+            197,
+            255
+          ]
+        }
+      ],
+      "first": [
+        {
+          "cell": [
+            20,
+            3
+          ],
+          "rgba": [
+            158,
+            117,
+            196,
+            255
+          ]
+        },
+        {
+          "cell": [
+            19,
+            3
+          ],
+          "rgba": [
+            198,
+            167,
+            228,
+            255
+          ]
+        },
+        {
+          "cell": [
+            19,
+            4
+          ],
+          "rgba": [
+            155,
+            115,
+            193,
+            255
+          ]
+        },
+        {
+          "cell": [
+            20,
+            4
+          ],
+          "rgba": [
+            158,
+            117,
+            197,
+            255
+          ]
+        }
+      ],
+      "animation": [
+        {
+          "kind": "exit",
+          "id": "s04",
+          "elapsed": 0,
+          "duration": 328.8496981906737
+        }
+      ],
+      "remaining": 12
+    }
+  },
+  {
+    "name": "offcenter-pinch",
+    "data": {
+      "view": {
+        "zoom": 1.6666666666666667,
+        "x": 30,
+        "y": 39.16666666666667
+      },
+      "expected": {
+        "x": 150,
+        "y": 360
+      },
+      "actual": {
+        "x": 150,
+        "y": 360
+      },
+      "driftCssPixels": 0,
+      "moves": 0
+    }
+  },
+  {
+    "name": "fit-after-pinch-pan",
+    "data": {
+      "singleTapWorks": true,
+      "noDelayedDoubleActivation": true
+    }
+  },
+  {
+    "name": "right-click-and-labels",
+    "data": {
+      "rightClickMoves": 0,
+      "zh": "第1条小蛇，朝右",
+      "en": "Snake 1, facing right"
+    }
+  },
+  {
+    "name": "saved-stats-overflow-strings",
+    "data": {
+      "mistakes": 0,
+      "hints": 0,
+      "elapsed": 114.59999996423721,
+      "finished": null
+    }
+  },
+  {
+    "name": "saved-stats-result",
+    "data": "都舒展开了。\n\n每一条曲折，都找到了出口。\n\n28\n已解开\n0:00\n用时\n0\n提示\n下一幅图案\n再解一次"
+  },
+  {
+    "name": "saved-stats-fractional-counts",
+    "data": {
+      "mistakes": 3,
+      "hints": 2,
+      "elapsed": 166.9000000357628,
+      "finished": null
+    }
+  },
+  {
+    "name": "saved-stats-huge-and-negative",
+    "data": {
+      "mistakes": 0,
+      "hints": 0,
+      "elapsed": 156,
+      "finished": null
+    }
+  },
+  {
+    "name": "completed",
+    "data": {
+      "fiveFindingsClosed": true,
+      "pageErrors": []
+    }
+  }
+]

@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-22",
+  "source": "artifacts/dense-pattern-1.png",
+  "sha256": "676ee2b0f58c9c7f0bf460cc34e6fb05398a57128b359384315eaa2bbcfe68a5",
+  "method": "Five perpendicular pixel cuts through straight body sections in the actual rendered initial board; colored body threshold excludes cream background and detached shadow. Not a whole-body mean. Bounds include visible colored body and heads; minor edge ambiguity remains.",
+  "crop": [
+    57,
+    381,
+    723,
+    1294
+  ],
+  "visibleBodies": 28,
+  "samples": [
+    {
+      "id": "s25",
+      "skin": 0,
+      "cell": [
+        12,
+        21
+      ],
+      "from": [
+        578,
+        1259
+      ],
+      "to": [
+        578,
+        1292
+      ],
+      "sourcePx": 34,
+      "normalized360Px": 18.38
+    },
+    {
+      "id": "s01",
+      "skin": 2,
+      "cell": [
+        5,
+        0
+      ],
+      "from": [
+        285,
+        381
+      ],
+      "to": [
+        285,
+        414
+      ],
+      "sourcePx": 34,
+      "normalized360Px": 18.38
+    },
+    {
+      "id": "s17",
+      "skin": 5,
+      "cell": [
+        11,
+        16
+      ],
+      "from": [
+        536,
+        1050
+      ],
+      "to": [
+        536,
+        1083
+      ],
+      "sourcePx": 34,
+      "normalized360Px": 18.38
+    },
+    {
+      "id": "s15",
+      "skin": 3,
+      "cell": [
+        2,
+        1
+      ],
+      "from": [
+        160,
+        423
+      ],
+      "to": [
+        160,
+        456
+      ],
+      "sourcePx": 34,
+      "normalized360Px": 18.38
+    },
+    {
+      "id": "s19",
+      "skin": 4,
+      "cell": [
+        5,
+        21
+      ],
+      "from": [
+        285,
+        1259
+      ],
+      "to": [
+        285,
+        1293
+      ],
+      "sourcePx": 35,
+      "normalized360Px": 18.92
+    }
+  ],
+  "medianNormalized360Px": 18.38,
+  "rangeNormalized360Px": [
+    18.38,
+    18.92
+  ],
+  "competitor": "Existing saved screenshot and measurements in artifacts/benchmark-alignment; no new live-game observation."
+}

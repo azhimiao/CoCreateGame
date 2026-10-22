@@ -1,71 +1,66 @@
-# Vector Shift / 相位箭头
+# Vector Shift｜绮彩长蛇
 
-Vector Shift is a playable HTML5 puzzle baseline in its own `CoCreateGame/games/VectorShift/` project directory. **Product status: REVISION_REQUIRED.** Its 52 solver-verified stages and working interface do not yet meet the required visual, interaction, or puzzle-depth standard.
+现在的 `index.html` 是**可玩的密盘重做版**：连续圆管、彩色长蛇、原创交错回折、完整心形和叶形棋盘。原来的 52 关保存在独立的 `phase.html`，从图案集可进入相位挑战。
 
-## Design standard — start here
+[直接试玩](index.html) · [试玩 ZIP](delivery/Vector_Shift_playtest.zip) · [实录视频](artifacts/dense-playthrough.webm) · [重做与验收记录](docs/10_密盘重做与验证.md)
 
-The user's quality review takes priority over the previous implementation-complete description. Start with the [对标重新对齐与密盘标准 V1.1](docs/09_对标重新对齐与密盘标准.md) and [equal-width screenshot comparison](artifacts/benchmark-alignment/same-width-comparison.png), then read the amended [产品设计与验收规范](docs/08_产品设计与验收规范.md). The earlier [interactive specimen](docs/design-standard.html) is a V1 explanatory model, not an implemented replacement or accepted dense-board art direction. Use the [level design worksheet](docs/level-design.template.json) to record evidence.
+![新版首盘](artifacts/dense-pattern-1.png)
 
-The [reproducible design audit](data/design-baseline.json) finds that all 52 stages can be solved with the minimum number of phase switches by removing everything currently clear and switching only when stuck. Across 5,065 reachable legal removal transitions, none loses solvability under the existing unlimited-toggle rules. Density and long bodies must therefore be evaluated separately from consequential decision depth.
+## 这次实际改了什么
 
-The same-width audit measures roughly 40px tube samples for the current L20 versus 18px in the primary 8Great screenshot at a normalized 360px puzzle width; visible bodies are 8 versus 26. Next: resolve the scale/solver limits, author a 24–32-body dense board plus heart and leaf boards, and verify continuous input/motion against matched references. Base-game visual richness and observation-puzzle quality come first. Relay exits remain a deferred hypothesis, not an implementation prerequisite or a substitute for benchmark parity.
+- 首屏换成 16×22、28 条蛇的完整密盘；不是放大材质小样，也不是旧八根管子缩细。
+- 五张可解棋盘共 128 条蛇：两张纵向密盘、心形、叶形、八条蛇的入门盘。四张密盘填充率约 94%～95%，没有纯直蛇；相邻蛇使用不同皮肤色。
+- 移除格砖和大三角头，使用连续圆角、圆尾、统一曲面光照、小眼睛头部；颜色帮助追踪身份。
+- 身体沿原路径逐段滑出。阻挡时轻触反馈；连续点击、提示、撤销、刷新续玩、双指缩放和拖动均可用。
+- 中文演示、英文渠道构建。声音可选、减弱动态可选；键盘可操作并有方向标签。
 
-## Play
+**当前是可供评审的重做版。** 静态尺度已接近主参考截图；是否整体达到或超过参考，继续以整盘画面和实际试玩判断。竞品实机、物理手机与玩家偏好尚未验证。
 
-Open [`index.html`](index.html) directly in a modern browser. It is a single-file game and needs no local server or network connection. The normal build starts at the campaign board; local progress and an interrupted run are saved on the device.
+## 打开与操作
 
-For the browser-served build with refresh support, run `python src/serve.py` and open the URL printed in the terminal. The packaged, single-file tester build is [`delivery/Vector_Shift_playtest.zip`](delivery/Vector_Shift_playtest.zip).
+直接用浏览器打开 `index.html`，离线即可玩。也可在本目录运行 `python src/serve.py`，打开打印出的本地地址。
 
-An earlier 20-level prelaunch candidate is retained at [`delivery/Vector_Shift_v02_prelaunch_candidate.zip`](delivery/Vector_Shift_v02_prelaunch_candidate.zip) for traceability. The 52-level project in this directory remains the current source of truth.
+点头部或身体：前方畅通时，小蛇离开；受阻时先释放挡路的蛇。没有生命惩罚，也不需要看广告使用提示。放大后可拖动，手机支持双指缩放。`Z` 撤销、`H` 提示；画布上方向键选择，Enter / 空格放行。
 
-## Game
+左上角打开图案集，选择五张棋盘；底部进入相位挑战。相位挑战保留原有 52 关、每日题与存档，设置菜单可返回新图案集。**新密盘没有相位切换，六色只是皮肤色。**
 
-- Tap an arrow whose path is clear to the board edge or the outside of a shaped board; its full body slides away.
-- Shift Phase switches blue arrows between their original pose and a 90-degree clockwise pose (0↔1). Gold arrows remain fixed; current renderer colors still require correction to match these semantic categories.
-- Levels combine square, heart, ring, plus, diamond, letter, and other masks. Empty silhouette cells are not obstacles.
-- Undo, retry, hints, path preview, an all-exits guide, zoom, drag-to-pan, and touch pinch-zoom are available without ads, timers that force play, or paid items.
-- Daily puzzles are deterministic per local calendar date. Completion, time, misses, hints, and streak are stored locally. Sharing only occurs when a player presses Share.
-- The interface supports Chinese in the demo and English in both channel builds. Reduced-motion preferences are respected.
+## 项目文件
 
-## Project map
-
-| Path | Contents |
+| 文件 | 用途 |
 | --- | --- |
-| `src/game-core.js` | Collision, phase rules, solver, and validation |
-| `src/app.js`, `src/styles.css`, `src/index.template.html` | Game UI and renderer |
-| `src/generate_levels.py` | Deterministic level generation |
-| `src/build.py` | Rebuild demo and portal-specific single-file HTML |
-| `src/package_delivery.py` | Rebuild and verify the small tester ZIP |
-| `data/levels.json`, `data/level_audit.csv` | 52 stages and level audit |
-| `src/audit_design_baseline.cjs`, `data/design-baseline.json` | Reproducible design diagnosis: greedy policy, reachable states, topology, rotation fingerprints |
-| `docs/09_对标重新对齐与密盘标准.md`, `artifacts/benchmark-alignment/` | V1.1 benchmark correction, annotated samples, same-width comparison, production targets |
-| `docs/08_产品设计与验收规范.md`, `docs/design-standard.html` | Current normative design standard and non-playable interactive specimen |
-| `docs/level-design.template.json` | Authoring worksheet separating targets, measured evidence, and untested fields |
-| `tests/` | Core suite and Playwright browser / touch smoke |
-| `dist/` | Generated builds (ignored by Git) |
-| `submission/` | Current Coolmath and CrazyGames Basic candidate pages and materials |
-| `artifacts/` | Current responsive QA screenshots and supplied competitor references |
-| `docs/` | Original handoff plus the implementation record |
+| `src/dense-core.js` | 独立移除规则、几何验证、依赖求解、严格存档验证；不依赖渲染 |
+| `src/dense-app.js`、`dense.css`、`dense.template.html` | 新首页的 Canvas 材质、路径动画、触摸与界面 |
+| `src/dense-levels.py`、`data/dense-levels.json` | 固定种子原创密盘生成、逐层依赖、完整见证及身体跟随回放 |
+| `src/game-core.js`、`app.js`、`styles.css`、`data/levels.json` | 原相位挑战代码与 52 关数据 |
+| `src/build.py` | 生成演示与两渠道的 `index.html` / `phase.html` |
+| `src/build_dense_evidence.py` | 从真实截图复测五个管身样本并生成同宽三方对照 |
+| `tests/dense-core.test.cjs`、`dense-smoke.cjs`、`dense-capture.cjs` | 新规则测试、真实输入检查、连续实录和阶段图 |
+| `tests/core.test.cjs`、`smoke.cjs` | 原相位挑战回归 |
+| `docs/10_密盘重做与验证.md` | 当前实施裁决、测量、修复记录和未验证项 |
+| `docs/09_对标重新对齐与密盘标准.md` | 重做前的静态诊断和 ALIGN 标准，作为历史基准保留 |
+| `artifacts/dense-*` | 本次真实浏览器截图、视频、像素测量及报告 |
+| `submission/` | 英文渠道候选；未投稿、未获平台批准 |
 
-## Build and verification
+## 重建与复验
 
 ```powershell
+node tests/dense-core.test.cjs
+python src/dense-levels.py --verify
 node tests/core.test.cjs
-node src/audit_design_baseline.cjs --check
 python src/build.py
+```
+
+浏览器检查需要 Playwright 与 Chromium，可通过 `PLAYWRIGHT_MODULE` 和 `CHROMIUM_PATH` 指定本机安装：
+
+```powershell
+node tests/dense-smoke.cjs
+node tests/smoke.cjs
+python src/build_dense_evidence.py  # 需要 Pillow
+# 本地服务开启后，录制默认动画与四个清盘阶段
+node tests/dense-capture.cjs
 python src/package_delivery.py
 ```
 
-The browser smoke needs Node Playwright and a Chromium executable. Set `PLAYWRIGHT_MODULE` to the Playwright module and optionally `CHROMIUM_PATH` to a local Chromium executable, then run:
+密盘检查通过六个视口、五关 128 次真实头部/身体点选、受阻与提示、连续点选、续玩与撤销、触摸缩放/平移、异常存档恢复，以及两种英文渠道。CrazyGames SDK 生命周期使用本地 mock 检查，不代表平台审核。
 
-```powershell
-node tests/smoke.cjs
-```
-
-The smoke exercises path hit testing, blocked moves, phase and undo, zoom, all-exits view, local resume, touch pinch and tap, daily results, four screen sizes, and both release builds. It writes screenshots under `artifacts/`.
-
-## Release status
-
-The demo and two channel builds are functional baselines pending design rework. Prior core/browser smoke results remain technical evidence; the new design quality gates have not passed. The game has not completed blind player testing, physical-device testing, name clearance, or official platform review. Coolmath contains no external SDK or analytics. CrazyGames Basic references the official SDK for initialization and `GameplayStart` only; it has no ad calls. No competitor parity, platform approval, player preference, or revenue result is claimed.
-
-The source handoff and competitor screenshots are retained as project references. Competitor assets, code, and levels are not included in the playable build.
+原始技术候选 `delivery/Vector_Shift_v02_prelaunch_candidate.zip` 只作历史追溯；不要将它当作当前版。参考产品的源码、素材与具体关卡未嵌入游戏。

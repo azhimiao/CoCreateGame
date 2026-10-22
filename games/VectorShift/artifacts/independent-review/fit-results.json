@@ -1,0 +1,2842 @@
+[
+  {
+    "iteration": 0,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 942.7999999523163,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 808.3999999761581,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 808.6999999880791,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 891.7999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 891.8999999761581,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 941.0999999642372,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 941.1999999880791,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 941.1999999880791,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 941.1999999880791,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 1962.0999999642372,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 808.3999999761581,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 808.6999999880791,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 891.7999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 891.8999999761581,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 941.0999999642372,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 941.1999999880791,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 941.1999999880791,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 941.1999999880791,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 1,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 2426.599999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 2324.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 2324.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 2373.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 2373.7999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 2425,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 2425,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 2425,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 2425.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 3442.399999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 2324.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 2324.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 2373.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 2373.7999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 2425,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 2425,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 2425,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 2425.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 2,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 3843.399999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 3741.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 3741.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 3790.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 3790.7999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 3841.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 3841.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 3841.2999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 3841.2999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 4848.899999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 3741.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 3741.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 3790.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 3790.7999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 3841.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 3841.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 3841.2999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 3841.2999999523163,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 3,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 5243.199999988079,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 5141.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 5142,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 5192.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 5192.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 5241.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 5241.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 5241.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 5241.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 6249.899999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 5141.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 5142,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 5192.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 5192.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 5241.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 5241.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 5241.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 5241.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 4,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 6758.099999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 6640.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 6641,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 6707.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 6707.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 6756.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 6756.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 6756.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 6756.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 7774.099999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 6640.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 6641,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 6707.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 6707.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 6756.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 6756.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 6756.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 6756.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 5,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 8144.199999988079,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 8041.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 8041.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 8090.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 8090.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 8141.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 8141.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 8141.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 8141.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 9153.899999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 8041.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 8041.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 8090.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 8090.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 8141.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 8141.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 8141.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 8141.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 6,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 9642.699999988079,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 9525,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 9525.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 9589.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 9589.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 9640.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 9640.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 9641,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 9641,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 10659.699999988079,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 9525,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 9525.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 9589.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 9589.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 9640.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 9640.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 9641,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 9641,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 7,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 11058.299999952316,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 10959.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 10959.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 11006.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 11007.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 11057.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 11057.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 11057.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 11057.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 12062.099999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 10959.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 10959.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 11006.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 11007.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 11057.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 11057.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 11057.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 11057.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 8,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 12578.199999988079,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 12456.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 12457.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 12523.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 12524.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 12573.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 12573.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 12574.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 12574.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 13593,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 12456.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 12457.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 12523.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 12524.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 12573.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 12573.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 12574.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 12574.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 9,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 13975.199999988079,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 13874.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 13875.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 13924.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 13924.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 13973.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 13973.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 13973.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 13973.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 14986.899999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 13874.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 13875.199999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 13924.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 13924.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 13973.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 13973.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 13973.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 13973.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 10,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 15393.299999952316,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 15291,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 15291.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 15340.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 15340.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 15391.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 15391.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 15391.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 15391.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 16395.599999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 15291,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 15291.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 15340.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 15340.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 15391.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 15391.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 15391.699999988079,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 15391.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 11,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 17136.899999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 16991.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 16991.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 17057.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 17058,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 17126.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 17126.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 17127,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 17127.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 18158.299999952316,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 16991.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 16991.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 17057.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 17058,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 17126.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 17126.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 17127,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 17127.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 12,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 19061.69999998808,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 18908.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 18909.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 18991.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 18991.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 19057.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 19057.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 19058.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 19058.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 20079.899999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 18908.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 18909.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 18991.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 18991.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 19057.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 19057.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 19058.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 19058.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 13,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 20926.899999976158,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 20773.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 20774.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 20856.69999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 20856.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 20924.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 20924.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 20924.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 20924.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 21934.599999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 20773.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 20774.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 20856.69999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 20856.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 20924.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 20924.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 20924.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 20924.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 14,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 22476.5,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 22357.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 22357.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 22423.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 22423.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 22473.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 22474,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 22474.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 22474.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 23484.599999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 22357.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 22357.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 22423.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 22423.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 22473.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 22474,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 22474.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 22474.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 15,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 23859.299999952316,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 23757.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 23758,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 23805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 23805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 23858,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 23858,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 23858,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 23858,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 24865.299999952316,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 23757.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 23758,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 23805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 23805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 23858,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 23858,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 23858,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 23858,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 16,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 25392.299999952316,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 25273.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 25273.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 25340.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 25340.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 25390.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 25390.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 25390.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 25390.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 26398.799999952316,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 25273.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 25273.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 25340.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 25340.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 25390.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 25390.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 25390.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 25390.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 17,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 26779.099999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 26674.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 26674.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 26723.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 26723.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 26775.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 26775.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 26775.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 26775.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 27796.099999964237,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 26674.19999998808,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 26674.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 26723.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 26723.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 26775.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 26775.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 26775.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 26775.5,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 18,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 28291.69999998808,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 28173.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 28174.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 28240.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 28240.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 28290.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 28290.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 28290.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 28290.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 29307.299999952316,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 28173.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 28174.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 28240.299999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 28240.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 28290.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 28290.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 28290.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 28290.099999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  },
+  {
+    "iteration": 19,
+    "before": {
+      "zoom": 2.2857142857142856,
+      "x": 55,
+      "y": 35
+    },
+    "immediate": {
+      "time": 29808,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 29689.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 29689.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 29755.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 29756,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 29805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 29805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 29805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 29805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ]
+    },
+    "settled": {
+      "time": 30816,
+      "view": {
+        "zoom": 2.2857142857142856,
+        "x": 55,
+        "y": 35
+      },
+      "events": [
+        {
+          "type": "pointerdown",
+          "target": "puzzleCanvas",
+          "time": 29689.399999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "puzzleCanvas",
+          "time": 29689.599999964237,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "puzzleCanvas",
+          "time": 29755.899999976158,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "puzzleCanvas",
+          "time": 29756,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerdown",
+          "target": "zoomButton",
+          "time": 29805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchstart",
+          "target": "zoomButton",
+          "time": 29805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "pointerup",
+          "target": "zoomButton",
+          "time": 29805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        },
+        {
+          "type": "touchend",
+          "target": "zoomButton",
+          "time": 29805.799999952316,
+          "zoom": 2.2857142857142856,
+          "trusted": true
+        }
+      ],
+      "remaining": 28
+    },
+    "failed": true
+  }
+]

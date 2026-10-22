@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-22",
+  "checks": [
+    "gap blocker, in-flight body retained, duplicate click, independent concurrency, cancel pending, reload and completed undo",
+    "two clear but crossing exit rays cannot intersect in flight; win waits for last tail",
+    "six real rendered frames, full tail completion and reduced-motion change settles safely",
+    "all five boards / 128 real taps completed with default motion and runtime reservations"
+  ],
+  "timings": [
+    {
+      "level": "dense-01",
+      "frames": 598,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.700000000000728,
+      "maxMs": 16.80000000000109
+    },
+    {
+      "level": "dense-02",
+      "frames": 627,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.799999999999272,
+      "maxMs": 16.80000000000291
+    },
+    {
+      "level": "dense-03",
+      "frames": 750,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.700000000004366,
+      "maxMs": 16.80000000000291
+    },
+    {
+      "level": "dense-04",
+      "frames": 745,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.700000000004366,
+      "maxMs": 16.80000000000291
+    },
+    {
+      "level": "dense-05",
+      "frames": 121,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.700000000004366,
+      "maxMs": 16.80000000000291
+    }
+  ],
+  "errors": [],
+  "limits": "Chromium on this computer, not physical-device or comparative frame-rate proof. Controlled clock used only for deterministic collision/frame regression; timing sweep uses live clock."
+}

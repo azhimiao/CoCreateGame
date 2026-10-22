@@ -161,7 +161,7 @@ test('a long blocker intersecting a ray repeatedly appears once at its first int
   assert.deepEqual(core.solve(level, state).waves, [['weave', 'far'], ['target']]);
 });
 
-test('own body is ignored even when facing backwards, with the last cell as head', () => {
+test('own body blocks release instead of allowing a snake to pass through itself', () => {
   const level = board(7, 3, [
     piece('curl', 1, [[0, 0], [1, 0], [2, 0], [2, 1], [1, 1], [0, 1]]),
     piece('blocker', 1, [[4, 1]])
@@ -170,24 +170,42 @@ test('own body is ignored even when facing backwards, with the last cell as head
   assert.equal(core.validateLevel(level), true);
   assert.deepEqual(core.headCell(core.arrow(level, 'curl')), { x: 0, y: 1 });
   assert.equal(core.arrow(level, 'missing'), undefined);
-  assert.deepEqual(core.blockers(level, state, 'curl'), ['blocker']);
-  assert.deepEqual(core.exitRayCells(level, state, 'curl'), [[1, 1], [2, 1], [3, 1], [4, 1]]);
+  assert.deepEqual(core.blockers(level, state, 'curl'), ['curl', 'blocker']);
+  assert.deepEqual(core.exitRayCells(level, state, 'curl'), [[1, 1]]);
   const next = remove(level, state, 'blocker');
-  assert.equal(core.clearPath(level, next, 'curl'), true);
-  assert.deepEqual(core.exitRayCells(level, next, 'curl'), [[1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1]]);
+  assert.equal(core.clearPath(level, next, 'curl'), false);
+  assert.deepEqual(remove(level, next, 'curl'), next);
+  assert.equal(core.solve(level, next).solvable, false);
+  assert.deepEqual(core.solve(level, next).remainingBlocked, ['curl']);
 });
 
-test('a connected irregular mask ends rays at the first hole, never re-entering the board', () => {
+test('a hole in a silhouette is empty space, not an exit past a visible blocker', () => {
   const mask = [];
   for (let y = 0; y < 3; y++) for (let x = 0; x < 7; x++) if (x !== 3 || y !== 1) mask.push([x, y]);
   const level = board(7, 3, [piece('before', 1, [[1, 1]]), piece('after', 3, [[4, 1]])], mask);
   assert.equal(core.validateLevel(level, { requireConnectedMask: true }), true);
   const state = core.newState(level);
-  assert.deepEqual(core.blockers(level, state, 'before'), []);
-  assert.deepEqual(core.exitRayCells(level, state, 'before'), [[2, 1]]);
-  assert.deepEqual(core.exitRayCells(level, state, 'after'), []);
-  assert.deepEqual(core.solve(level, state).waves, [['before', 'after']]);
+  assert.deepEqual(core.blockers(level, state, 'before'), ['after']);
+  assert.deepEqual(core.exitRayCells(level, state, 'before'), [[2, 1], [3, 1], [4, 1]]);
+  assert.deepEqual(core.exitRayCells(level, state, 'after'), [[3, 1], [2, 1], [1, 1]]);
+  assert.equal(core.solve(level, state).solvable, false);
+  assert.deepEqual(remove(level, state, 'before'), state);
+  const stale = {remaining:['after'],moves:1,history:[{remaining:['before','after'],moves:0}]};
+  assert.throws(()=>core.validateState(level,stale), /blocked/);
 });
+
+for (const [d, dx, dy] of [[0, 0, -1], [1, 1, 0], [2, 0, 1], [3, -1, 0]]) {
+  test(`direction ${d}: gaps never hide a later blocker, even on separate mask islands`, () => {
+    const a=[3,3], b=[3+dx*3,3+dy*3], level=board(7,7,[piece('a',d,[a]),piece('b',d,[b])],[a,b]);
+    const start=core.newState(level);
+    assert.deepEqual(core.blockers(level,start,'a'),['b']);
+    assert.equal(core.clearPath(level,start,'a'),false);
+    assert.deepEqual(remove(level,start,'a'),start);
+    const next=remove(level,start,'b');
+    assert.equal(core.clearPath(level,next,'a'),true);
+    assert.equal(core.solve(level,start).solvable,true);
+  });
+}
 
 test('mask connectivity is optional and uses four-neighbour connectivity', () => {
   const disconnected = board(3, 3, [piece('island', 1, [[0, 0]])], [[0, 0], [1, 1]]);
@@ -367,8 +385,7 @@ function oracleClear(level, ids, id) {
   for (;;) {
     x += dx; y += dy;
     if (x < 0 || x >= level.width || y < 0 || y >= level.height) return true;
-    if (level.mask && !level.mask.some(cell => cell[0] === x && cell[1] === y)) return true;
-    if (level.arrows.some(other => other.id !== id && ids.includes(other.id) && other.cells.some(cell => cell[0] === x && cell[1] === y))) return false;
+    if (level.arrows.some(other => ids.includes(other.id) && other.cells.some(cell => cell[0] === x && cell[1] === y))) return false;
   }
 }
 

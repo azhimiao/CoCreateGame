@@ -246,7 +246,7 @@ h1 {
   touch-action: none;
   outline: none;
 }
-#puzzleCanvas:focus-visible {
+#puzzleCanvas:focus-visible:not([data-pointer-focus]) {
   outline: 2px solid #9cb99a;
   outline-offset: -3px;
   border-radius: 20px;
@@ -911,8 +911,8 @@ dialog::backdrop {
     <script>
       window.VS_CHANNEL="crazygames-basic";
       /* Classic, non-phase snake rules. Independent of VectorShiftCore.
- * cells run tail -> head; d is 0=N, 1=E, 2=S, 3=W. Own cells never block.
- * A ray ends at its FIRST non-playable cell, even if the mask resumes later.
+ * cells run tail -> head; d is 0=N, 1=E, 2=S, 3=W. All bodies block, including self.
+ * Rays cross silhouette gaps and end at the full rectangular board boundary.
  * width/height override size independently; size is the square fallback.
  * Input levels are JSON data; validateLevel/validateState return true or throw.
  * State history contains {remaining, moves} snapshots BEFORE each legal remove.
@@ -1025,7 +1025,7 @@ dialog::backdrop {
         }
         board.owners.set(k, id);
       }
-      // Facing backwards into one's own body is deliberately allowed. Skin is cosmetic.
+      // A self-facing shape is valid data, but its own body prevents release.
       board.ids.push(id);
       board.byId.set(id, { id, d, cells });
     }
@@ -1075,10 +1075,10 @@ dialog::backdrop {
     const head = a.cells[a.cells.length - 1];
     const cells = [], blocking = [], seen = new Set();
     let x = head[0] + DX[a.d], y = head[1] + DY[a.d];
-    while (board.playable.has(key(x, y))) {
+    while (x >= 0 && y >= 0 && x < board.width && y < board.height) {
       cells.push([x, y]);
       const hit = board.owners.get(key(x, y));
-      if (hit !== undefined && hit !== id && remaining.has(hit)) {
+      if (hit !== undefined && remaining.has(hit)) {
         if (!seen.has(hit)) { seen.add(hit); blocking.push(hit); }
         if (stopAtBlocker) break;
       }
@@ -1134,7 +1134,7 @@ dialog::backdrop {
     return result;
   }
 
-  /** All distinct foreign IDs, nearest first, through to the first void. */
+  /** All blocking IDs, nearest first, across gaps to the outer board edge. */
   function blockers(level, state, id) {
     const board = boardFor(level), remaining = checkedState(board, state);
     const result = ray(board, remaining, id, false);
@@ -1144,7 +1144,7 @@ dialog::backdrop {
     const blocking = blockers(level, state, id);
     return blocking !== null && blocking.length === 0;
   }
-  /** Cells AFTER the head, INCLUDING the first blocker, EXCLUDING the first void. */
+  /** Cells AFTER the head, INCLUDING the first blocker and any silhouette gaps. */
   function exitRayCells(level, state, id) {
     const board = boardFor(level), remaining = checkedState(board, state);
     const result = ray(board, remaining, id, true);
@@ -1221,14 +1221,172 @@ dialog::backdrop {
   });
 });
 
+/* Shared path, timing and reservations for the Canvas view and deterministic QA.
+ * Every launch reserves its original body plus its complete forward exit ray.
+ * Reservations last until the tail has left. Unrelated snakes can move together.
+ */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === "object" && module.exports) module.exports = api;
+  if (root) root.VectorShiftDenseMotion = api;
+})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+  "use strict";
+  const DIR = [
+    [0, -1],
+    [1, 0],
+    [0, 1],
+    [-1, 0],
+  ];
+  function cumulative(points) {
+    const out = [0];
+    for (let i = 1; i < points.length; i++)
+      out.push(
+        out[i - 1] +
+          Math.hypot(
+            points[i].x - points[i - 1].x,
+            points[i].y - points[i - 1].y,
+          ),
+      );
+    return out;
+  }
+  function sample(points, dist, s) {
+    if (s <= 0) return { ...points[0] };
+    let lo = 0,
+      hi = dist.length - 1;
+    if (s >= dist[hi]) return { ...points[hi] };
+    while (hi - lo > 1) {
+      const mid = (lo + hi) >> 1;
+      if (dist[mid] < s) lo = mid;
+      else hi = mid;
+    }
+    const k = (s - dist[lo]) / (dist[hi] - dist[lo] || 1);
+    return {
+      x: points[lo].x + (points[hi].x - points[lo].x) * k,
+      y: points[lo].y + (points[hi].y - points[lo].y) * k,
+    };
+  }
+  function travelCells(level, a) {
+    const cells = a.cells.map((c) => c.slice()),
+      [dx, dy] = DIR[a.d];
+    let [x, y] = a.cells.at(-1);
+    while (true) {
+      x += dx;
+      y += dy;
+      if (
+        x < 0 ||
+        y < 0 ||
+        x >= (level.width || level.size) ||
+        y >= (level.height || level.size)
+      )
+        break;
+      cells.push([x, y]);
+    }
+    return cells;
+  }
+  function conflicts(level, id, flights) {
+    const a = level.arrows.find((a) => a.id === id);
+    if (!a) return [];
+    const path = new Set(travelCells(level, a).map((c) => c.join(",")));
+    return flights
+      .filter(
+        (f) =>
+          f.kind === "exit" &&
+          f.id !== id &&
+          travelCells(
+            level,
+            level.arrows.find((a) => a.id === f.id),
+          ).some((c) => path.has(c.join(","))),
+      )
+      .map((f) => f.id);
+  }
+  // Integrate a short smooth acceleration and finish at cruising speed off-canvas.
+  // Long snakes keep a comparable speed instead of squeezing every path into 620ms.
+  function advance(plan, elapsed) {
+    if (elapsed <= 0) return 0;
+    if (elapsed >= plan.duration) return plan.distance;
+    const t = elapsed / 1000,
+      r = plan.ramp / 1000;
+    if (t < r) {
+      const u = t / r;
+      return plan.speed * r * (u * u * u - 0.5 * u * u * u * u);
+    }
+    return Math.min(plan.distance, plan.speed * (t - r * 0.5));
+  }
+  function plan(level, a, points, now, pitch, padding, bodyWidth) {
+    const [dx, dy] = DIR[a.d],
+      last = points.at(-1),
+      width = (level.width || level.size) * pitch + padding * 2,
+      height = (level.height || level.size) * pitch + padding * 2;
+    const edgeDistance =
+        dx === 1
+          ? width - last.x
+          : dx === -1
+            ? last.x
+            : dy === 1
+              ? height - last.y
+              : last.y,
+      margin = bodyWidth * 0.75 + 4,
+      route = points.map((p) => ({ ...p })),
+      bodyDistances = cumulative(route),
+      length = bodyDistances.at(-1),
+      extension = edgeDistance + margin;
+    route.push({ x: last.x + dx * extension, y: last.y + dy * extension });
+    const dist = cumulative(route),
+      distance = length + extension,
+      speed = pitch * 25,
+      ramp = 110;
+    return {
+      kind: "exit",
+      id: a.id,
+      d: a.d,
+      start: now,
+      points: route,
+      dist,
+      length,
+      distance,
+      speed,
+      ramp,
+      duration: (distance / speed) * 1000 + ramp * 0.5,
+    };
+  }
+  function frame(plan, elapsed) {
+    const start = advance(plan, elapsed);
+    if (start >= plan.distance)
+      return { done: true, points: [], advance: start };
+    const end = Math.min(start + plan.length, plan.distance),
+      points = [sample(plan.points, plan.dist, start)];
+    for (let i = 0; i < plan.points.length; i++)
+      if (plan.dist[i] > start && plan.dist[i] < end)
+        points.push(plan.points[i]);
+    points.push(sample(plan.points, plan.dist, end));
+    return {
+      done: false,
+      points,
+      advance: start,
+      head: points.at(-1),
+      tail: points[0],
+    };
+  }
+  return Object.freeze({
+    cumulative,
+    sample,
+    travelCells,
+    conflicts,
+    plan,
+    advance,
+    frame,
+  });
+});
+
     </script>
     <script>
-      const DENSE_LEVELS=[{"id":"dense-01","title":"织光长庭","titleEn":"Woven Courtyard","width":16,"height":22,"size":22,"mode":"classic","phaseEnabled":false,"shape":"rounded","difficulty":"dense","mask":[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[0,1],[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[9,1],[10,1],[11,1],[12,1],[13,1],[14,1],[15,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2],[10,2],[11,2],[12,2],[13,2],[14,2],[15,2],[0,3],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],[0,4],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5],[12,5],[13,5],[14,5],[15,5],[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[0,8],[1,8],[2,8],[3,8],[4,8],[5,8],[6,8],[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[0,9],[1,9],[2,9],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],[15,9],[0,10],[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[0,11],[1,11],[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],[15,11],[0,12],[1,12],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],[0,13],[1,13],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[0,14],[1,14],[2,14],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[0,15],[1,15],[2,15],[3,15],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],[12,15],[13,15],[14,15],[15,15],[0,16],[1,16],[2,16],[3,16],[4,16],[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],[13,16],[14,16],[15,16],[0,17],[1,17],[2,17],[3,17],[4,17],[5,17],[6,17],[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],[15,17],[0,18],[1,18],[2,18],[3,18],[4,18],[5,18],[6,18],[7,18],[8,18],[9,18],[10,18],[11,18],[12,18],[13,18],[14,18],[15,18],[0,19],[1,19],[2,19],[3,19],[4,19],[5,19],[6,19],[7,19],[8,19],[9,19],[10,19],[11,19],[12,19],[13,19],[14,19],[15,19],[0,20],[1,20],[2,20],[3,20],[4,20],[5,20],[6,20],[7,20],[8,20],[9,20],[10,20],[11,20],[12,20],[13,20],[14,20],[15,20],[1,21],[2,21],[3,21],[4,21],[5,21],[6,21],[7,21],[8,21],[9,21],[10,21],[11,21],[12,21],[13,21],[14,21]],"arrows":[{"id":"s01","color":"gold","d":1,"cells":[[4,1],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[11,1],[10,1],[9,1],[8,1],[8,2],[8,3],[8,4],[9,4],[9,5],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6]],"skin":2},{"id":"s02","color":"gold","d":1,"cells":[[12,0],[12,1],[12,2],[11,2],[10,2],[9,2],[9,3],[10,3]],"skin":1},{"id":"s03","color":"gold","d":1,"cells":[[2,5],[2,4],[1,4],[1,5],[1,6],[1,7],[0,7],[0,6],[0,5],[0,4],[0,3],[1,3]],"skin":2},{"id":"s04","color":"gold","d":0,"cells":[[12,5],[13,5],[13,4],[14,4],[14,5],[15,5],[15,4],[15,3]],"skin":3},{"id":"s05","color":"gold","d":0,"cells":[[10,5],[10,4],[11,4],[11,3],[12,3],[13,3],[13,2]],"skin":0},{"id":"s06","color":"gold","d":2,"cells":[[4,14],[5,14],[5,13],[5,12],[6,12],[6,13],[6,14],[7,14],[8,14],[8,15]],"skin":4},{"id":"s07","color":"gold","d":0,"cells":[[2,7],[3,7],[3,6],[3,5],[3,4],[4,4],[4,5],[4,6],[4,7],[5,7],[5,6],[5,5],[5,4]],"skin":5},{"id":"s08","color":"gold","d":1,"cells":[[13,11],[13,10],[14,10],[15,10],[15,9],[14,9],[13,9],[13,8],[14,8],[15,8]],"skin":3},{"id":"s09","color":"gold","d":1,"cells":[[12,12],[11,12],[10,12],[9,12],[9,11],[10,11],[11,11],[12,11],[12,10],[11,10],[10,10],[9,10],[9,9],[10,9],[11,9],[12,9],[12,8],[11,8],[10,8],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7]],"skin":0},{"id":"s10","color":"gold","d":2,"cells":[[0,8],[0,9],[1,9],[2,9],[2,8],[3,8],[3,9]],"skin":1},{"id":"s11","color":"gold","d":2,"cells":[[15,15],[15,14],[14,14],[13,14],[13,15],[13,16],[13,17],[14,17],[14,16],[15,16],[15,17]],"skin":0},{"id":"s12","color":"gold","d":2,"cells":[[7,15],[6,15],[6,16],[6,17],[6,18],[5,18],[5,17],[5,16],[5,15],[4,15],[4,16]],"skin":5},{"id":"s13","color":"gold","d":2,"cells":[[15,11],[15,12],[15,13],[14,13],[14,12],[13,12],[13,13]],"skin":2},{"id":"s14","color":"gold","d":2,"cells":[[1,19],[1,20],[0,20],[0,19],[0,18],[0,17],[0,16],[1,16],[1,17],[2,17],[2,18]],"skin":5},{"id":"s15","color":"gold","d":0,"cells":[[3,0],[2,0],[1,0],[1,1],[2,1],[3,1],[3,2],[3,3],[2,3],[2,2],[1,2],[0,2],[0,1]],"skin":3},{"id":"s16","color":"gold","d":3,"cells":[[1,12],[0,12],[0,13],[0,14],[1,14],[1,15],[0,15]],"skin":4},{"id":"s17","color":"gold","d":3,"cells":[[11,17],[12,17],[12,16],[11,16],[10,16],[9,16],[9,15],[9,14],[9,13],[8,13],[7,13],[7,12],[8,12],[8,11],[7,11],[6,11],[5,11],[5,10],[6,10],[7,10],[8,10],[8,9],[7,9],[6,9],[5,9]],"skin":5},{"id":"s18","color":"gold","d":3,"cells":[[11,13],[10,13],[10,14],[11,14],[12,14],[12,15],[11,15],[10,15]],"skin":2},{"id":"s19","color":"gold","d":3,"cells":[[6,20],[6,21],[5,21],[4,21],[3,21],[3,20],[3,19],[2,19],[2,20],[2,21],[1,21]],"skin":4},{"id":"s20","color":"gold","d":0,"cells":[[13,18],[12,18],[12,19],[12,20],[11,20],[11,19],[11,18],[10,18],[9,18],[9,17]],"skin":4},{"id":"s21","color":"gold","d":3,"cells":[[2,15],[3,15],[3,16],[3,17],[4,17],[4,18],[3,18]],"skin":1},{"id":"s22","color":"gold","d":1,"cells":[[0,10],[0,11],[1,11],[2,11],[2,10],[3,10],[4,10],[4,9],[4,8],[5,8]],"skin":2},{"id":"s23","color":"gold","d":0,"cells":[[7,6],[7,5],[6,5],[6,6],[6,7],[6,8],[7,8],[8,8],[9,8],[9,7],[8,7],[8,6],[8,5]],"skin":3},{"id":"s24","color":"gold","d":3,"cells":[[13,19],[13,20],[14,20],[15,20],[15,19],[15,18],[14,18]],"skin":1},{"id":"s25","color":"gold","d":2,"cells":[[14,21],[13,21],[12,21],[11,21],[10,21],[9,21],[8,21],[7,21],[7,20],[8,20],[9,20],[10,20],[10,19],[9,19],[8,19],[8,18],[8,17],[8,16],[7,16],[7,17],[7,18],[7,19],[6,19],[5,19],[4,19],[4,20]],"skin":0},{"id":"s26","color":"gold","d":1,"cells":[[14,2],[15,2],[15,1],[14,1],[13,1],[13,0],[14,0]],"skin":5},{"id":"s27","color":"gold","d":3,"cells":[[7,4],[7,3],[6,3],[5,3],[4,3],[4,2],[5,2],[6,2],[7,2],[7,1],[6,1]],"skin":1},{"id":"s28","color":"gold","d":3,"cells":[[2,12],[2,13],[2,14],[3,14],[3,13],[4,13],[4,12],[4,11],[3,11]],"skin":3}],"solution":["s26","s05","s16","s04","s02","s19","s25","s14","s21","s15","s12","s01","s23","s27","s03","s07","s06","s08","s09","s22","s28","s10","s17","s20","s24","s18","s11","s13"],"metrics":{"maskCells":348,"bodyCells":329,"snakeCount":28,"fillRate":0.945402,"lengthMin":7,"lengthMedian":10.0,"lengthMean":11.75,"lengthMax":26,"lengthBands":{"short2to8":10,"medium9to17":14,"long18plus":4},"turnsTotal":152,"turnsMedian":5.0,"snakesWith3PlusTurns":28,"snakesWith5PlusTurns":19,"straightSnakes":0,"headDirections":{"0":6,"1":7,"2":7,"3":8},"skinCounts":{"0":4,"1":5,"2":5,"3":5,"4":4,"5":5},"initialChoices":7,"dependencyEdges":52,"dependencyDepth":10,"dependencyLayers":[["s01","s08","s09","s15","s16","s19","s26"],["s04","s05","s14","s23","s25","s27"],["s02","s06","s07","s21","s22"],["s03","s12","s28"],["s10"],["s17"],["s18","s20"],["s24"],["s11"],["s13"]],"blockersById":{"s01":[],"s02":["s04","s05"],"s03":["s01","s02","s04","s05","s15","s27"],"s04":["s26"],"s05":["s26"],"s06":["s25"],"s07":["s01","s27"],"s08":[],"s09":[],"s10":["s19","s21","s22","s28"],"s11":["s24"],"s12":["s19","s21","s25"],"s13":["s11","s20","s24","s25"],"s14":["s19"],"s15":[],"s16":[],"s17":["s10","s22"],"s18":["s06","s12","s16","s17","s21"],"s19":[],"s20":["s01","s02","s09","s17","s23"],"s21":["s14"],"s22":["s08","s09","s23"],"s23":["s01"],"s24":["s12","s14","s20","s21","s25"],"s25":["s19"],"s26":[],"s27":["s01","s15"],"s28":["s22"]},"independentTopologicalSolution":["s01","s08","s09","s15","s16","s19","s26","s23","s27","s14","s25","s04","s05","s22","s07","s21","s06","s02","s28","s12","s03","s10","s17","s18","s20","s24","s11","s13"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[7,8,7,6,6,5,6,6,6,6,5,4,5,4,5,4,3,2,1,1,1,1,1,2,2,2,1,1],"bodyFollowReplaySteps":495,"releaseStages":[{"removed":0,"remaining":28,"legalIds":["s01","s08","s09","s15","s16","s19","s26"],"occupiedCells":329,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28"]},{"removed":7,"remaining":21,"legalIds":["s01","s06","s08","s09","s14","s15"],"occupiedCells":255,"remainingIds":["s01","s03","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s17","s18","s20","s21","s22","s23","s24","s27","s28"]},{"removed":14,"remaining":14,"legalIds":["s03","s06","s07","s08","s09"],"occupiedCells":164,"remainingIds":["s03","s06","s07","s08","s09","s10","s11","s13","s17","s18","s20","s22","s24","s28"]},{"removed":21,"remaining":7,"legalIds":["s10"],"occupiedCells":75,"remainingIds":["s10","s11","s13","s17","s18","s20","s24"]},{"removed":28,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":61,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s06","s09","s11","s16","s17","s18","s23"],"crossBandDependencyEdges":[["s25","s06"],["s19","s10"],["s21","s10"],["s24","s11"],["s11","s13"],["s20","s13"],["s24","s13"],["s25","s13"],["s10","s17"],["s22","s17"],["s12","s18"],["s21","s18"],["s01","s20"],["s02","s20"],["s09","s20"],["s17","s20"],["s23","s20"],["s09","s22"],["s23","s22"],["s01","s23"]],"perSnake":[{"id":"s01","length":25,"turns":7,"straightRuns":[1,7,1,3,3,1,2,6],"staircaseCorners":1},{"id":"s02","length":8,"turns":3,"straightRuns":[2,3,1,1],"staircaseCorners":0},{"id":"s03","length":12,"turns":5,"straightRuns":[1,1,3,1,4,1],"staircaseCorners":0},{"id":"s04","length":8,"turns":5,"straightRuns":[1,1,1,1,1,2],"staircaseCorners":2},{"id":"s05","length":7,"turns":4,"straightRuns":[1,1,1,2,1],"staircaseCorners":2},{"id":"s06","length":10,"turns":5,"straightRuns":[1,2,1,2,2,1],"staircaseCorners":0},{"id":"s07","length":13,"turns":5,"straightRuns":[1,3,1,3,1,3],"staircaseCorners":0},{"id":"s08","length":10,"turns":5,"straightRuns":[1,2,1,2,1,2],"staircaseCorners":0},{"id":"s09","length":25,"turns":10,"straightRuns":[3,1,3,1,3,1,3,1,2,1,5],"staircaseCorners":0},{"id":"s10","length":7,"turns":4,"straightRuns":[1,2,1,1,1],"staircaseCorners":1},{"id":"s11","length":11,"turns":6,"straightRuns":[1,2,3,1,1,1,1],"staircaseCorners":1},{"id":"s12","length":11,"turns":5,"straightRuns":[1,3,1,3,1,1],"staircaseCorners":0},{"id":"s13","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s14","length":11,"turns":6,"straightRuns":[1,1,4,1,1,1,1],"staircaseCorners":2},{"id":"s15","length":13,"turns":7,"straightRuns":[2,1,2,2,1,1,2,1],"staircaseCorners":1},{"id":"s16","length":7,"turns":4,"straightRuns":[1,2,1,1,1],"staircaseCorners":1},{"id":"s17","length":25,"turns":12,"straightRuns":[1,1,3,3,2,1,1,1,3,1,3,1,3],"staircaseCorners":1},{"id":"s18","length":8,"turns":4,"straightRuns":[1,1,2,1,2],"staircaseCorners":0},{"id":"s19","length":11,"turns":5,"straightRuns":[1,3,2,1,2,1],"staircaseCorners":0},{"id":"s20","length":10,"turns":5,"straightRuns":[1,2,1,2,2,1],"staircaseCorners":0},{"id":"s21","length":7,"turns":4,"straightRuns":[1,2,1,1,1],"staircaseCorners":1},{"id":"s22","length":10,"turns":5,"straightRuns":[1,2,1,2,2,1],"staircaseCorners":1},{"id":"s23","length":13,"turns":6,"straightRuns":[1,1,3,3,1,1,2],"staircaseCorners":1},{"id":"s24","length":7,"turns":3,"straightRuns":[1,2,2,1],"staircaseCorners":0},{"id":"s25","length":26,"turns":9,"straightRuns":[7,1,3,1,2,3,1,3,3,1],"staircaseCorners":0},{"id":"s26","length":7,"turns":4,"straightRuns":[1,1,2,1,1],"staircaseCorners":0},{"id":"s27","length":11,"turns":5,"straightRuns":[1,3,1,3,1,1],"staircaseCorners":0},{"id":"s28","length":9,"turns":5,"straightRuns":[2,1,1,1,2,1],"staircaseCorners":2}],"geometrySha256":"c0e1ad5a58977b0b7f3ab3f057040f87ad5f088a22943b75ac77d09c92c75545"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":18037,"iterations":180000,"acceptedMutations":2349,"geometryScore":741.62,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"}},{"id":"dense-02","title":"心间回环","titleEn":"Heartstrings","width":22,"height":22,"size":22,"mode":"classic","phaseEnabled":false,"shape":"heart","difficulty":"dense","mask":[[4,1],[5,1],[6,1],[7,1],[14,1],[15,1],[16,1],[17,1],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2],[12,2],[13,2],[14,2],[15,2],[16,2],[17,2],[18,2],[19,2],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],[16,3],[17,3],[18,3],[19,3],[20,3],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[16,4],[17,4],[18,4],[19,4],[20,4],[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5],[12,5],[13,5],[14,5],[15,5],[16,5],[17,5],[18,5],[19,5],[20,5],[21,5],[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[16,6],[17,6],[18,6],[19,6],[20,6],[21,6],[0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[18,7],[19,7],[20,7],[21,7],[0,8],[1,8],[2,8],[3,8],[4,8],[5,8],[6,8],[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[16,8],[17,8],[18,8],[19,8],[20,8],[21,8],[1,9],[2,9],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],[15,9],[16,9],[17,9],[18,9],[19,9],[20,9],[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[16,10],[17,10],[18,10],[19,10],[20,10],[1,11],[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],[15,11],[16,11],[17,11],[18,11],[19,11],[20,11],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],[16,12],[17,12],[18,12],[19,12],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[16,13],[17,13],[18,13],[19,13],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[16,14],[17,14],[18,14],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],[12,15],[13,15],[14,15],[15,15],[16,15],[17,15],[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],[13,16],[14,16],[15,16],[16,16],[6,17],[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],[15,17],[8,18],[9,18],[10,18],[11,18],[12,18],[13,18],[9,19],[10,19],[11,19],[12,19]],"arrows":[{"id":"s01","color":"gold","d":3,"cells":[[17,7],[16,7],[15,7],[14,7],[14,8],[14,9],[14,10],[13,10],[12,10],[12,11],[12,12],[11,12],[10,12],[9,12],[8,12],[8,11],[8,10],[7,10],[6,10]],"skin":5},{"id":"s02","color":"gold","d":1,"cells":[[16,2],[16,1],[17,1],[17,2],[18,2],[19,2]],"skin":1},{"id":"s03","color":"gold","d":2,"cells":[[12,4],[13,4],[13,3],[13,2],[12,2],[12,3],[11,3],[10,3],[10,4]],"skin":0},{"id":"s04","color":"gold","d":0,"cells":[[20,3],[19,3],[19,4],[20,4],[20,5],[20,6],[21,6],[21,5]],"skin":5},{"id":"s05","color":"gold","d":3,"cells":[[9,2],[9,3],[8,3],[8,2],[7,2],[7,3],[6,3]],"skin":5},{"id":"s06","color":"gold","d":0,"cells":[[14,6],[15,6],[15,5],[15,4],[16,4],[16,5],[16,6],[17,6],[17,5],[17,4]],"skin":4},{"id":"s07","color":"gold","d":1,"cells":[[2,2],[3,2],[4,2],[4,1],[5,1],[5,2],[6,2],[6,1],[7,1]],"skin":1},{"id":"s08","color":"gold","d":2,"cells":[[5,7],[4,7],[4,6],[5,6],[6,6],[6,7]],"skin":1},{"id":"s09","color":"gold","d":2,"cells":[[5,9],[4,9],[4,10],[4,11],[4,12],[4,13],[5,13],[5,12],[5,11],[6,11],[7,11],[7,12],[7,13],[8,13],[9,13],[10,13],[11,13],[11,14]],"skin":0},{"id":"s10","color":"gold","d":2,"cells":[[7,9],[6,9],[6,8],[7,8],[8,8],[8,9]],"skin":2},{"id":"s11","color":"gold","d":0,"cells":[[2,9],[2,10],[3,10],[3,11],[2,11],[1,11],[1,10],[1,9]],"skin":1},{"id":"s12","color":"gold","d":2,"cells":[[13,11],[13,12],[14,12],[15,12],[15,11],[16,11],[16,12]],"skin":3},{"id":"s13","color":"gold","d":0,"cells":[[3,4],[4,4],[4,5],[3,5],[2,5],[2,4]],"skin":5},{"id":"s14","color":"gold","d":3,"cells":[[6,13],[6,14],[7,14],[7,15],[6,15],[6,16],[5,16]],"skin":3},{"id":"s15","color":"gold","d":3,"cells":[[18,12],[18,13],[17,13],[17,12],[17,11],[17,10],[18,10],[18,9],[17,9]],"skin":2},{"id":"s16","color":"gold","d":1,"cells":[[10,18],[10,19],[9,19],[9,18],[9,17],[10,17]],"skin":5},{"id":"s17","color":"gold","d":2,"cells":[[7,7],[8,7],[8,6],[8,5],[7,5],[6,5],[5,5],[5,4],[5,3],[4,3],[3,3],[2,3],[1,3],[1,4],[1,5],[0,5],[0,6],[0,7],[0,8]],"skin":4},{"id":"s18","color":"gold","d":1,"cells":[[8,14],[9,14],[10,14],[10,15],[9,15],[9,16],[10,16]],"skin":2},{"id":"s19","color":"gold","d":0,"cells":[[2,13],[2,12],[3,12],[3,13],[3,14],[4,14],[4,15],[5,15],[5,14]],"skin":4},{"id":"s20","color":"gold","d":1,"cells":[[18,14],[17,14],[17,15],[16,15],[16,16],[15,16],[14,16],[14,17],[15,17]],"skin":4},{"id":"s21","color":"gold","d":2,"cells":[[11,15],[11,16],[12,16],[12,15],[13,15],[13,16]],"skin":5},{"id":"s22","color":"gold","d":0,"cells":[[4,8],[3,8],[3,7],[3,6],[2,6],[2,7],[2,8],[1,8],[1,7],[1,6]],"skin":2},{"id":"s23","color":"gold","d":3,"cells":[[18,7],[18,8],[19,8],[20,8],[21,8],[21,7],[20,7],[19,7],[19,6],[19,5],[18,5]],"skin":0},{"id":"s24","color":"gold","d":3,"cells":[[8,18],[8,17],[8,16],[7,16],[7,17],[6,17]],"skin":0},{"id":"s25","color":"gold","d":3,"cells":[[18,3],[17,3],[16,3],[15,3],[15,2],[15,1],[14,1],[14,2],[14,3],[14,4],[14,5],[13,5],[12,5],[11,5],[10,5],[9,5],[9,4],[8,4],[7,4],[6,4]],"skin":3},{"id":"s26","color":"gold","d":3,"cells":[[15,9],[15,8],[16,8],[16,9],[16,10],[15,10]],"skin":4},{"id":"s27","color":"gold","d":2,"cells":[[11,8],[11,9],[11,10],[11,11],[10,11],[10,10],[10,9],[9,9],[9,10],[9,11]],"skin":3},{"id":"s28","color":"gold","d":1,"cells":[[19,13],[19,12],[19,11],[20,11],[20,10],[19,10],[19,9],[20,9]],"skin":3},{"id":"s29","color":"gold","d":1,"cells":[[13,18],[12,18],[12,17],[11,17],[11,18],[11,19],[12,19]],"skin":2},{"id":"s30","color":"gold","d":3,"cells":[[12,6],[11,6],[11,7],[12,7],[13,7],[13,8],[13,9],[12,9]],"skin":0},{"id":"s31","color":"gold","d":2,"cells":[[15,15],[14,15],[14,14],[13,14],[12,14],[12,13],[13,13],[14,13],[15,13],[16,13],[16,14]],"skin":1},{"id":"s32","color":"gold","d":1,"cells":[[10,7],[10,8],[9,8],[9,7],[9,6],[10,6]],"skin":1}],"solution":["s02","s04","s29","s21","s17","s09","s14","s22","s05","s11","s28","s01","s20","s16","s24","s18","s27","s26","s10","s08","s30","s15","s07","s19","s31","s13","s25","s12","s06","s23","s32","s03"],"metrics":{"maskCells":310,"bodyCells":294,"snakeCount":32,"fillRate":0.948387,"lengthMin":6,"lengthMedian":8.0,"lengthMean":9.188,"lengthMax":20,"lengthBands":{"short2to8":18,"medium9to17":10,"long18plus":4},"turnsTotal":146,"turnsMedian":5.0,"snakesWith3PlusTurns":32,"snakesWith5PlusTurns":17,"straightSnakes":0,"headDirections":{"0":6,"1":8,"2":9,"3":9},"skinCounts":{"0":5,"1":6,"2":5,"3":5,"4":5,"5":6},"initialChoices":9,"dependencyEdges":69,"dependencyDepth":8,"dependencyLayers":[["s02","s04","s07","s14","s17","s20","s24","s28","s29"],["s05","s13","s16","s21","s22","s31"],["s09","s11","s12","s18","s25"],["s01","s06"],["s10","s23","s27"],["s08","s26","s30"],["s15","s19","s32"],["s03"]],"blockersById":{"s01":["s09","s11"],"s02":[],"s03":["s01","s09","s16","s18","s25","s27","s32"],"s04":[],"s05":["s17"],"s06":["s02","s25"],"s07":[],"s08":["s01","s09","s10","s14","s24"],"s09":["s21","s29"],"s10":["s01","s09","s18","s24"],"s11":["s17","s22"],"s12":["s20","s31"],"s13":["s07","s17"],"s14":[],"s15":["s01","s09","s10","s11","s26","s27","s30"],"s16":["s20","s29"],"s17":[],"s18":["s20","s21"],"s19":["s07","s08","s09","s17"],"s20":[],"s21":["s29"],"s22":["s17"],"s23":["s06","s13","s17","s25"],"s24":[],"s25":["s13","s17"],"s26":["s01","s09","s11","s27"],"s27":["s01","s09","s16","s18"],"s28":[],"s29":[],"s30":["s09","s10","s11","s27"],"s31":["s20"],"s32":["s04","s06","s23","s30"]},"independentTopologicalSolution":["s02","s04","s07","s14","s17","s20","s24","s28","s29","s05","s13","s22","s31","s16","s21","s25","s11","s12","s09","s18","s06","s01","s23","s10","s27","s08","s26","s30","s19","s15","s32","s03"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[9,8,7,7,7,8,7,6,6,5,5,4,3,5,4,3,4,4,3,4,3,3,2,3,2,2,2,2,1,1,1,1],"bodyFollowReplaySteps":504,"releaseStages":[{"removed":0,"remaining":32,"legalIds":["s02","s04","s07","s14","s17","s20","s24","s28","s29"],"occupiedCells":294,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31","s32"]},{"removed":8,"remaining":24,"legalIds":["s05","s07","s11","s20","s24","s28"],"occupiedCells":213,"remainingIds":["s01","s03","s05","s06","s07","s08","s10","s11","s12","s13","s15","s16","s18","s19","s20","s23","s24","s25","s26","s27","s28","s30","s31","s32"]},{"removed":16,"remaining":16,"legalIds":["s07","s10","s27","s31"],"occupiedCells":143,"remainingIds":["s03","s06","s07","s08","s10","s12","s13","s15","s19","s23","s25","s26","s27","s30","s31","s32"]},{"removed":24,"remaining":8,"legalIds":["s13","s31"],"occupiedCells":80,"remainingIds":["s03","s06","s12","s13","s23","s25","s31","s32"]},{"removed":32,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":69,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s01","s14","s17","s18","s19","s20","s22","s23","s30","s31","s32"],"crossBandDependencyEdges":[["s09","s01"],["s11","s01"],["s01","s03"],["s09","s03"],["s16","s03"],["s18","s03"],["s27","s03"],["s32","s03"],["s17","s05"],["s01","s08"],["s09","s08"],["s10","s08"],["s14","s08"],["s24","s08"],["s21","s09"],["s29","s09"],["s01","s10"],["s18","s10"],["s24","s10"],["s17","s11"],["s22","s11"],["s20","s12"],["s31","s12"],["s17","s13"],["s01","s15"],["s30","s15"],["s20","s16"],["s21","s18"],["s07","s19"],["s08","s19"],["s09","s19"],["s17","s19"],["s06","s23"],["s13","s23"],["s25","s23"],["s17","s25"],["s01","s26"],["s01","s27"],["s16","s27"],["s18","s27"],["s09","s30"],["s10","s30"],["s11","s30"],["s27","s30"],["s04","s32"],["s06","s32"]],"perSnake":[{"id":"s01","length":19,"turns":6,"straightRuns":[3,3,2,2,4,2,2],"staircaseCorners":0},{"id":"s02","length":6,"turns":3,"straightRuns":[1,1,1,2],"staircaseCorners":1},{"id":"s03","length":9,"turns":5,"straightRuns":[1,2,1,1,2,1],"staircaseCorners":1},{"id":"s04","length":8,"turns":5,"straightRuns":[1,1,1,2,1,1],"staircaseCorners":1},{"id":"s05","length":7,"turns":5,"straightRuns":[1,1,1,1,1,1],"staircaseCorners":2},{"id":"s06","length":10,"turns":5,"straightRuns":[1,2,1,2,1,2],"staircaseCorners":0},{"id":"s07","length":9,"turns":6,"straightRuns":[2,1,1,1,1,1,1],"staircaseCorners":3},{"id":"s08","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s09","length":18,"turns":7,"straightRuns":[1,4,1,2,2,2,4,1],"staircaseCorners":0},{"id":"s10","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s11","length":8,"turns":4,"straightRuns":[1,1,1,2,2],"staircaseCorners":1},{"id":"s12","length":7,"turns":4,"straightRuns":[1,2,1,1,1],"staircaseCorners":1},{"id":"s13","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s14","length":7,"turns":5,"straightRuns":[1,1,1,1,1,1],"staircaseCorners":3},{"id":"s15","length":9,"turns":5,"straightRuns":[1,1,3,1,1,1],"staircaseCorners":1},{"id":"s16","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s17","length":19,"turns":7,"straightRuns":[1,2,3,2,4,2,1,3],"staircaseCorners":1},{"id":"s18","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s19","length":9,"turns":6,"straightRuns":[1,1,2,1,1,1,1],"staircaseCorners":2},{"id":"s20","length":9,"turns":6,"straightRuns":[1,1,1,1,2,1,1],"staircaseCorners":3},{"id":"s21","length":6,"turns":4,"straightRuns":[1,1,1,1,1],"staircaseCorners":1},{"id":"s22","length":10,"turns":5,"straightRuns":[1,2,1,2,1,2],"staircaseCorners":0},{"id":"s23","length":11,"turns":5,"straightRuns":[1,3,1,2,2,1],"staircaseCorners":0},{"id":"s24","length":6,"turns":3,"straightRuns":[2,1,1,1],"staircaseCorners":1},{"id":"s25","length":20,"turns":6,"straightRuns":[3,2,1,4,5,1,3],"staircaseCorners":1},{"id":"s26","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s27","length":10,"turns":4,"straightRuns":[3,1,2,1,2],"staircaseCorners":0},{"id":"s28","length":8,"turns":5,"straightRuns":[2,1,1,1,1,1],"staircaseCorners":2},{"id":"s29","length":7,"turns":4,"straightRuns":[1,1,1,2,1],"staircaseCorners":1},{"id":"s30","length":8,"turns":4,"straightRuns":[1,1,2,2,1],"staircaseCorners":0},{"id":"s31","length":11,"turns":5,"straightRuns":[1,1,2,1,4,1],"staircaseCorners":1},{"id":"s32","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0}],"geometrySha256":"66f4b85db421c440a94af5cde6f67a8b6bb58c84a6708de8c96087d81a581492"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":26189,"iterations":180000,"acceptedMutations":2006,"geometryScore":681.064,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"}},{"id":"dense-03","title":"叶脉之舞","titleEn":"Leaf Waltz","width":22,"height":22,"size":22,"mode":"classic","phaseEnabled":false,"shape":"leaf","difficulty":"dense","mask":[[17,1],[18,1],[11,2],[12,2],[13,2],[14,2],[15,2],[16,2],[17,2],[18,2],[19,2],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],[16,3],[17,3],[18,3],[19,3],[20,3],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[16,4],[17,4],[18,4],[19,4],[20,4],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5],[12,5],[13,5],[14,5],[15,5],[16,5],[17,5],[18,5],[19,5],[5,6],[6,6],[7,6],[8,6],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[16,6],[17,6],[18,6],[19,6],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[18,7],[19,7],[4,8],[5,8],[6,8],[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[16,8],[17,8],[18,8],[19,8],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],[15,9],[16,9],[17,9],[18,9],[19,9],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[16,10],[17,10],[18,10],[19,10],[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],[15,11],[16,11],[17,11],[18,11],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],[16,12],[17,12],[18,12],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[16,13],[17,13],[2,14],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[16,14],[17,14],[2,15],[3,15],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],[12,15],[13,15],[14,15],[15,15],[16,15],[2,16],[3,16],[4,16],[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],[13,16],[14,16],[15,16],[1,17],[2,17],[3,17],[4,17],[5,17],[6,17],[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],[1,18],[2,18],[3,18],[4,18],[5,18],[6,18],[7,18],[8,18],[9,18],[10,18],[11,18],[12,18],[2,19],[3,19],[4,19],[5,19],[6,19],[7,19],[8,19],[9,19],[10,19],[3,20],[4,20]],"arrows":[{"id":"s01","color":"gold","d":1,"cells":[[11,2],[12,2],[13,2],[14,2],[14,3],[13,3],[12,3],[11,3],[11,4],[12,4],[13,4],[14,4],[15,4],[15,3],[15,2],[16,2],[17,2],[17,1],[18,1]],"skin":5},{"id":"s02","color":"gold","d":3,"cells":[[20,3],[20,4],[19,4],[19,3],[19,2],[18,2]],"skin":1},{"id":"s03","color":"gold","d":2,"cells":[[9,3],[10,3],[10,4],[9,4],[9,5],[10,5],[11,5],[11,6]],"skin":2},{"id":"s04","color":"gold","d":0,"cells":[[18,7],[19,7],[19,6],[19,5],[18,5],[18,4]],"skin":4},{"id":"s05","color":"gold","d":2,"cells":[[6,5],[7,5],[7,4],[8,4],[8,5],[8,6]],"skin":5},{"id":"s06","color":"gold","d":1,"cells":[[8,8],[9,8],[10,8],[10,7],[9,7],[9,6],[10,6]],"skin":0},{"id":"s07","color":"gold","d":3,"cells":[[5,9],[6,9],[6,10],[7,10],[8,10],[8,11],[7,11],[6,11],[5,11]],"skin":0},{"id":"s08","color":"gold","d":0,"cells":[[5,7],[6,7],[6,8],[5,8],[4,8],[4,7]],"skin":4},{"id":"s09","color":"gold","d":1,"cells":[[5,14],[5,13],[5,12],[6,12],[6,13],[6,14],[7,14],[8,14],[8,15],[7,15],[6,15],[6,16],[7,16],[8,16],[9,16],[9,17],[9,18],[9,19],[10,19]],"skin":3},{"id":"s10","color":"gold","d":2,"cells":[[11,7],[12,7],[12,6],[12,5],[13,5],[13,6]],"skin":1},{"id":"s11","color":"gold","d":1,"cells":[[17,14],[17,13],[16,13],[16,12],[15,12],[15,13],[15,14],[15,15],[16,15]],"skin":3},{"id":"s12","color":"gold","d":2,"cells":[[4,9],[3,9],[3,10],[4,10],[4,11],[4,12]],"skin":2},{"id":"s13","color":"gold","d":1,"cells":[[15,16],[14,16],[14,17],[13,17],[13,16],[13,15],[14,15]],"skin":1},{"id":"s14","color":"gold","d":3,"cells":[[5,16],[5,17],[4,17],[3,17],[3,16],[4,16],[4,15],[3,15],[2,15]],"skin":4},{"id":"s15","color":"gold","d":3,"cells":[[2,11],[3,11],[3,12],[2,12],[2,13],[3,13],[4,13],[4,14],[3,14],[2,14]],"skin":5},{"id":"s16","color":"gold","d":2,"cells":[[3,20],[4,20],[4,19],[4,18],[5,18],[5,19]],"skin":3},{"id":"s17","color":"gold","d":3,"cells":[[8,13],[7,13],[7,12],[8,12],[9,12],[10,12],[11,12],[11,11],[10,11],[9,11],[9,10],[9,9],[8,9],[7,9],[7,8],[7,7],[7,6],[6,6],[5,6]],"skin":1},{"id":"s18","color":"gold","d":3,"cells":[[18,12],[18,11],[18,10],[17,10],[17,11],[16,11]],"skin":0},{"id":"s19","color":"gold","d":0,"cells":[[10,13],[11,13],[11,14],[10,14],[9,14],[9,15],[10,15],[11,15],[12,15],[12,14]],"skin":5},{"id":"s20","color":"gold","d":0,"cells":[[2,19],[3,19],[3,18],[2,18],[1,18],[1,17],[2,17],[2,16]],"skin":2},{"id":"s21","color":"gold","d":1,"cells":[[13,8],[14,8],[14,9],[13,9],[13,10],[14,10]],"skin":2},{"id":"s22","color":"gold","d":3,"cells":[[8,18],[8,19],[7,19],[6,19],[6,18],[7,18],[7,17],[6,17]],"skin":0},{"id":"s23","color":"gold","d":3,"cells":[[15,8],[16,8],[16,9],[16,10],[15,10],[15,11],[14,11],[13,11],[12,11]],"skin":4},{"id":"s24","color":"gold","d":2,"cells":[[17,9],[17,8],[18,8],[19,8],[19,9],[19,10]],"skin":2},{"id":"s25","color":"gold","d":1,"cells":[[14,7],[15,7],[16,7],[17,7],[17,6],[16,6],[15,6],[14,6],[14,5],[15,5],[16,5],[17,5],[17,4],[16,4],[16,3],[17,3],[18,3]],"skin":3},{"id":"s26","color":"gold","d":1,"cells":[[10,10],[11,10],[12,10],[12,9],[11,9],[11,8],[12,8]],"skin":5},{"id":"s27","color":"gold","d":2,"cells":[[11,18],[11,17],[10,17],[10,16],[11,16],[12,16],[12,17],[12,18]],"skin":4},{"id":"s28","color":"gold","d":0,"cells":[[12,12],[13,12],[13,13],[13,14],[14,14],[14,13],[14,12]],"skin":0}],"solution":["s17","s11","s08","s13","s16","s15","s01","s27","s24","s02","s25","s04","s14","s12","s20","s07","s23","s18","s21","s28","s10","s26","s19","s03","s06","s09","s22","s05"],"metrics":{"maskCells":264,"bodyCells":250,"snakeCount":28,"fillRate":0.94697,"lengthMin":6,"lengthMedian":7.5,"lengthMean":8.929,"lengthMax":19,"lengthBands":{"short2to8":18,"medium9to17":7,"long18plus":3},"turnsTotal":126,"turnsMedian":4.0,"snakesWith3PlusTurns":27,"snakesWith5PlusTurns":11,"straightSnakes":0,"headDirections":{"0":5,"1":8,"2":7,"3":8},"skinCounts":{"0":5,"1":4,"2":5,"3":4,"4":5,"5":5},"initialChoices":10,"dependencyEdges":57,"dependencyDepth":12,"dependencyLayers":[["s01","s08","s09","s11","s14","s15","s16","s17","s24","s27"],["s02","s12","s13","s20"],["s07","s22","s25"],["s04","s23"],["s18"],["s21"],["s26","s28"],["s10"],["s19"],["s03"],["s06"],["s05"]],"blockersById":{"s01":[],"s02":["s01"],"s03":["s10","s17","s19","s26","s27"],"s04":["s01","s02","s25"],"s05":["s06","s07","s09","s17","s22"],"s06":["s03","s04","s10","s25"],"s07":["s12","s15"],"s08":[],"s09":[],"s10":["s13","s21","s23","s28"],"s11":[],"s12":["s14","s15","s16"],"s13":["s11"],"s14":[],"s15":[],"s16":[],"s17":[],"s18":["s07","s12","s15","s17","s23"],"s19":["s01","s10","s23","s26","s28"],"s20":["s14","s15"],"s21":["s18","s23","s24"],"s22":["s14","s20"],"s23":["s07","s12","s15","s17"],"s24":[],"s25":["s02"],"s26":["s21","s23","s24"],"s27":[],"s28":["s01","s21","s23","s25"]},"independentTopologicalSolution":["s01","s08","s09","s11","s14","s15","s16","s17","s24","s27","s02","s13","s20","s12","s25","s22","s07","s04","s23","s18","s21","s26","s28","s10","s19","s03","s06","s05"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[10,9,9,8,7,6,5,5,4,3,3,3,2,3,3,3,3,3,3,4,4,3,3,3,3,2,1,1],"bodyFollowReplaySteps":416,"releaseStages":[{"removed":0,"remaining":28,"legalIds":["s01","s08","s09","s11","s14","s15","s16","s17","s24","s27"],"occupiedCells":250,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28"]},{"removed":7,"remaining":21,"legalIds":["s02","s09","s14","s24","s27"],"occupiedCells":174,"remainingIds":["s02","s03","s04","s05","s06","s07","s09","s10","s12","s14","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28"]},{"removed":14,"remaining":14,"legalIds":["s07","s09","s20"],"occupiedCells":116,"remainingIds":["s03","s05","s06","s07","s09","s10","s18","s19","s20","s21","s22","s23","s26","s28"]},{"removed":21,"remaining":7,"legalIds":["s09","s22","s26"],"occupiedCells":65,"remainingIds":["s03","s05","s06","s09","s19","s22","s26"]},{"removed":28,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":61,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s06","s08","s09","s11","s17","s19"],"crossBandDependencyEdges":[["s17","s03"],["s19","s03"],["s26","s03"],["s27","s03"],["s06","s05"],["s07","s05"],["s09","s05"],["s17","s05"],["s22","s05"],["s03","s06"],["s04","s06"],["s10","s06"],["s25","s06"],["s13","s10"],["s21","s10"],["s23","s10"],["s28","s10"],["s14","s12"],["s16","s12"],["s11","s13"],["s17","s18"],["s01","s19"],["s10","s19"],["s23","s19"],["s26","s19"],["s28","s19"],["s15","s20"],["s17","s23"],["s01","s28"],["s25","s28"]],"perSnake":[{"id":"s01","length":19,"turns":8,"straightRuns":[3,1,3,1,4,2,2,1,1],"staircaseCorners":1},{"id":"s02","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s03","length":8,"turns":5,"straightRuns":[1,1,1,1,2,1],"staircaseCorners":1},{"id":"s04","length":6,"turns":3,"straightRuns":[1,2,1,1],"staircaseCorners":1},{"id":"s05","length":6,"turns":3,"straightRuns":[1,1,1,2],"staircaseCorners":1},{"id":"s06","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s07","length":9,"turns":4,"straightRuns":[1,1,2,1,3],"staircaseCorners":1},{"id":"s08","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s09","length":19,"turns":9,"straightRuns":[2,1,2,2,1,2,1,3,3,1],"staircaseCorners":0},{"id":"s10","length":6,"turns":3,"straightRuns":[1,2,1,1],"staircaseCorners":0},{"id":"s11","length":9,"turns":5,"straightRuns":[1,1,1,1,3,1],"staircaseCorners":2},{"id":"s12","length":6,"turns":3,"straightRuns":[1,1,1,2],"staircaseCorners":1},{"id":"s13","length":7,"turns":4,"straightRuns":[1,1,1,2,1],"staircaseCorners":1},{"id":"s14","length":9,"turns":5,"straightRuns":[1,2,1,1,1,2],"staircaseCorners":1},{"id":"s15","length":10,"turns":6,"straightRuns":[1,1,1,1,2,1,2],"staircaseCorners":1},{"id":"s16","length":6,"turns":3,"straightRuns":[1,2,1,1],"staircaseCorners":0},{"id":"s17","length":19,"turns":8,"straightRuns":[1,1,4,1,2,2,2,3,2],"staircaseCorners":0},{"id":"s18","length":6,"turns":3,"straightRuns":[2,1,1,1],"staircaseCorners":1},{"id":"s19","length":10,"turns":5,"straightRuns":[1,1,2,1,3,1],"staircaseCorners":0},{"id":"s20","length":8,"turns":5,"straightRuns":[1,1,2,1,1,1],"staircaseCorners":1},{"id":"s21","length":6,"turns":4,"straightRuns":[1,1,1,1,1],"staircaseCorners":1},{"id":"s22","length":8,"turns":5,"straightRuns":[1,2,1,1,1,1],"staircaseCorners":1},{"id":"s23","length":9,"turns":4,"straightRuns":[1,2,1,1,3],"staircaseCorners":2},{"id":"s24","length":6,"turns":2,"straightRuns":[1,2,2],"staircaseCorners":0},{"id":"s25","length":17,"turns":8,"straightRuns":[3,1,3,1,3,1,1,1,2],"staircaseCorners":1},{"id":"s26","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s27","length":8,"turns":4,"straightRuns":[1,1,1,2,2],"staircaseCorners":1},{"id":"s28","length":7,"turns":3,"straightRuns":[1,2,1,2],"staircaseCorners":0}],"geometrySha256":"60fb7829abe7e09a2cd008562aeaf147e34c6c09f454f9bc2fa1a8f454859bf3"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":41761,"iterations":180000,"acceptedMutations":2358,"geometryScore":589.307,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"}},{"id":"dense-04","title":"流彩花园","titleEn":"Ribbon Garden","width":18,"height":24,"size":24,"mode":"classic","phaseEnabled":false,"shape":"rounded","difficulty":"dense","mask":[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[0,1],[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[9,1],[10,1],[11,1],[12,1],[13,1],[14,1],[15,1],[16,1],[17,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2],[10,2],[11,2],[12,2],[13,2],[14,2],[15,2],[16,2],[17,2],[0,3],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],[16,3],[17,3],[0,4],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[16,4],[17,4],[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5],[12,5],[13,5],[14,5],[15,5],[16,5],[17,5],[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[16,6],[17,6],[0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[0,8],[1,8],[2,8],[3,8],[4,8],[5,8],[6,8],[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[16,8],[17,8],[0,9],[1,9],[2,9],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],[15,9],[16,9],[17,9],[0,10],[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[16,10],[17,10],[0,11],[1,11],[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],[15,11],[16,11],[17,11],[0,12],[1,12],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],[16,12],[17,12],[0,13],[1,13],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[16,13],[17,13],[0,14],[1,14],[2,14],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[16,14],[17,14],[0,15],[1,15],[2,15],[3,15],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],[12,15],[13,15],[14,15],[15,15],[16,15],[17,15],[0,16],[1,16],[2,16],[3,16],[4,16],[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],[13,16],[14,16],[15,16],[16,16],[17,16],[0,17],[1,17],[2,17],[3,17],[4,17],[5,17],[6,17],[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],[15,17],[16,17],[17,17],[0,18],[1,18],[2,18],[3,18],[4,18],[5,18],[6,18],[7,18],[8,18],[9,18],[10,18],[11,18],[12,18],[13,18],[14,18],[15,18],[16,18],[17,18],[0,19],[1,19],[2,19],[3,19],[4,19],[5,19],[6,19],[7,19],[8,19],[9,19],[10,19],[11,19],[12,19],[13,19],[14,19],[15,19],[16,19],[17,19],[0,20],[1,20],[2,20],[3,20],[4,20],[5,20],[6,20],[7,20],[8,20],[9,20],[10,20],[11,20],[12,20],[13,20],[14,20],[15,20],[16,20],[17,20],[0,21],[1,21],[2,21],[3,21],[4,21],[5,21],[6,21],[7,21],[8,21],[9,21],[10,21],[11,21],[12,21],[13,21],[14,21],[15,21],[16,21],[17,21],[0,22],[1,22],[2,22],[3,22],[4,22],[5,22],[6,22],[7,22],[8,22],[9,22],[10,22],[11,22],[12,22],[13,22],[14,22],[15,22],[16,22],[17,22],[1,23],[2,23],[3,23],[4,23],[5,23],[6,23],[7,23],[8,23],[9,23],[10,23],[11,23],[12,23],[13,23],[14,23],[15,23],[16,23]],"arrows":[{"id":"s01","color":"gold","d":3,"cells":[[15,6],[14,6],[14,7],[14,8],[14,9],[13,9],[12,9],[11,9],[11,8],[12,8],[13,8],[13,7],[12,7],[11,7],[10,7],[9,7],[9,8],[10,8],[10,9],[9,9],[8,9],[8,8],[8,7],[7,7],[6,7],[6,6],[6,5],[5,5]],"skin":1},{"id":"s02","color":"gold","d":1,"cells":[[16,2],[16,1],[17,1],[17,2],[17,3],[17,4],[16,4],[16,5],[17,5]],"skin":1},{"id":"s03","color":"gold","d":0,"cells":[[6,9],[6,10],[5,10],[4,10],[4,11],[4,12],[4,13],[5,13],[5,14],[4,14],[3,14],[3,13]],"skin":1},{"id":"s04","color":"gold","d":0,"cells":[[8,6],[7,6],[7,5],[8,5],[9,5],[9,4],[8,4],[7,4],[6,4],[5,4],[5,3]],"skin":3},{"id":"s05","color":"gold","d":3,"cells":[[0,1],[1,1],[1,0],[2,0],[2,1],[3,1],[3,2],[2,2]],"skin":0},{"id":"s06","color":"gold","d":3,"cells":[[7,3],[7,2],[6,2],[5,2],[4,2],[4,1],[5,1],[6,1],[6,0],[5,0],[4,0],[3,0]],"skin":5},{"id":"s07","color":"gold","d":3,"cells":[[0,2],[0,3],[1,3],[2,3],[3,3],[4,3],[4,4],[3,4],[2,4],[2,5],[2,6],[1,6]],"skin":4},{"id":"s08","color":"gold","d":1,"cells":[[14,2],[14,1],[13,1],[13,0],[14,0],[15,0],[16,0]],"skin":4},{"id":"s09","color":"gold","d":3,"cells":[[11,0],[12,0],[12,1],[12,2],[11,2],[10,2],[10,1],[10,0],[9,0],[8,0],[7,0],[7,1],[8,1],[9,1],[9,2],[8,2],[8,3],[9,3],[10,3],[10,4],[10,5],[11,5],[12,5],[13,5],[13,6],[12,6],[11,6],[10,6],[9,6]],"skin":0},{"id":"s10","color":"gold","d":3,"cells":[[5,7],[4,7],[3,7],[3,6],[4,6],[4,5],[3,5]],"skin":0},{"id":"s11","color":"gold","d":2,"cells":[[14,10],[15,10],[16,10],[17,10],[17,11],[16,11],[15,11],[14,11],[13,11],[13,12],[14,12],[14,13],[14,14]],"skin":0},{"id":"s12","color":"gold","d":1,"cells":[[17,15],[17,14],[17,13],[16,13],[16,14],[15,14],[15,13],[15,12],[16,12],[17,12]],"skin":2},{"id":"s13","color":"gold","d":2,"cells":[[1,13],[1,12],[0,12],[0,13],[0,14],[1,14],[2,14],[2,15]],"skin":4},{"id":"s14","color":"gold","d":0,"cells":[[2,12],[3,12],[3,11],[2,11],[1,11],[0,11],[0,10],[0,9],[1,9],[2,9],[2,8],[2,7]],"skin":5},{"id":"s15","color":"gold","d":1,"cells":[[11,13],[12,13],[13,13],[13,14],[12,14],[11,14],[10,14],[9,14],[9,15],[10,15],[10,16],[10,17],[11,17],[12,17]],"skin":4},{"id":"s16","color":"gold","d":1,"cells":[[8,19],[8,20],[9,20],[9,19],[10,19],[10,20],[10,21],[11,21],[12,21]],"skin":1},{"id":"s17","color":"gold","d":0,"cells":[[4,15],[5,15],[6,15],[6,14],[6,13],[7,13],[7,14],[7,15],[8,15],[8,14],[8,13],[8,12],[7,12],[6,12],[5,12],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[10,10],[9,10],[8,10],[7,10],[7,9],[7,8]],"skin":2},{"id":"s18","color":"gold","d":3,"cells":[[1,19],[1,18],[1,17],[2,17],[2,18],[3,18],[3,17],[3,16],[2,16]],"skin":0},{"id":"s19","color":"gold","d":1,"cells":[[16,23],[15,23],[14,23],[13,23],[13,22],[14,22],[15,22],[16,22],[17,22],[17,21],[16,21],[16,20],[17,20]],"skin":5},{"id":"s20","color":"gold","d":1,"cells":[[11,16],[11,15],[12,15],[13,15],[13,16],[13,17],[14,17],[14,16],[14,15],[15,15]],"skin":3},{"id":"s21","color":"gold","d":0,"cells":[[2,10],[3,10],[3,9],[3,8],[4,8],[4,9],[5,9],[5,8]],"skin":2},{"id":"s22","color":"gold","d":3,"cells":[[6,20],[6,21],[5,21],[4,21],[4,20],[4,19],[3,19],[3,20],[3,21],[3,22],[2,22]],"skin":2},{"id":"s23","color":"gold","d":0,"cells":[[8,21],[9,21],[9,22],[10,22],[11,22],[12,22],[12,23],[11,23],[10,23],[9,23],[8,23],[7,23],[6,23],[6,22]],"skin":4},{"id":"s24","color":"gold","d":3,"cells":[[5,22],[5,23],[4,23],[3,23],[2,23],[1,23],[1,22],[0,22]],"skin":3},{"id":"s25","color":"gold","d":2,"cells":[[17,19],[17,18],[17,17],[17,16],[16,16],[15,16],[15,17],[16,17],[16,18],[15,18],[14,18],[13,18],[12,18],[11,18],[10,18],[9,18],[8,18],[8,17],[9,17],[9,16],[8,16],[7,16],[7,17],[7,18],[7,19],[7,20],[7,21],[7,22]],"skin":0},{"id":"s26","color":"gold","d":2,"cells":[[16,7],[16,6],[17,6],[17,7],[17,8],[17,9],[16,9],[16,8],[15,8],[15,9]],"skin":3},{"id":"s27","color":"gold","d":3,"cells":[[2,20],[2,21],[1,21],[0,21],[0,20],[0,19],[0,18],[0,17],[0,16],[1,16],[1,15],[0,15]],"skin":1},{"id":"s28","color":"gold","d":3,"cells":[[6,17],[6,16],[5,16],[4,16],[4,17],[4,18],[5,18],[6,18],[6,19],[5,19]],"skin":5},{"id":"s29","color":"gold","d":2,"cells":[[12,10],[11,10],[11,11],[12,11],[12,12],[11,12],[10,12],[9,12],[9,13]],"skin":5},{"id":"s30","color":"gold","d":2,"cells":[[14,21],[15,21],[15,20],[15,19],[14,19],[13,19],[12,19],[11,19],[11,20],[12,20],[13,20],[13,21]],"skin":3},{"id":"s31","color":"gold","d":0,"cells":[[15,5],[14,5],[14,4],[13,4],[12,4],[11,4],[11,3],[12,3],[13,3],[14,3],[15,3],[15,2],[15,1]],"skin":2},{"id":"s32","color":"gold","d":3,"cells":[[1,7],[1,8],[0,8],[0,7],[0,6],[0,5],[1,5],[1,4],[0,4]],"skin":1}],"solution":["s32","s02","s08","s31","s07","s10","s01","s12","s19","s30","s20","s05","s14","s16","s27","s18","s06","s04","s21","s03","s09","s17","s24","s22","s13","s28","s23","s25","s11","s26","s15","s29"],"metrics":{"maskCells":428,"bodyCells":404,"snakeCount":32,"fillRate":0.943925,"lengthMin":7,"lengthMedian":11.0,"lengthMean":12.625,"lengthMax":29,"lengthBands":{"short2to8":6,"medium9to17":22,"long18plus":4},"turnsTotal":188,"turnsMedian":5.0,"snakesWith3PlusTurns":32,"snakesWith5PlusTurns":28,"straightSnakes":0,"headDirections":{"0":7,"1":7,"2":6,"3":12},"skinCounts":{"0":6,"1":6,"2":5,"3":5,"4":5,"5":5},"initialChoices":7,"dependencyEdges":68,"dependencyDepth":11,"dependencyLayers":[["s02","s08","s12","s19","s24","s27","s32"],["s07","s18","s20","s22","s30","s31"],["s05","s10","s13","s16","s28"],["s01","s06","s14"],["s04"],["s09","s21"],["s03","s17"],["s23"],["s25"],["s11","s15"],["s26","s29"]],"blockersById":{"s01":["s07","s10","s32"],"s02":[],"s03":["s05","s06","s07","s10","s14","s21"],"s04":["s06"],"s05":["s07"],"s06":["s05"],"s07":["s32"],"s08":[],"s09":["s01","s04","s07","s10","s32"],"s10":["s07","s32"],"s11":["s19","s20","s25","s30"],"s12":[],"s13":["s18","s22","s24","s27"],"s14":["s05","s07"],"s15":["s20","s25"],"s16":["s19","s30"],"s17":["s01","s04","s06","s09"],"s18":["s27"],"s19":[],"s20":["s12"],"s21":["s01","s04","s06","s10"],"s22":["s24"],"s23":["s01","s03","s04","s06","s17","s22","s28"],"s24":[],"s25":["s23"],"s26":["s11","s12","s19","s20","s25","s30"],"s27":[],"s28":["s18","s22","s27"],"s29":["s15","s16","s23","s25"],"s30":["s19"],"s31":["s08"],"s32":[]},"independentTopologicalSolution":["s02","s08","s12","s19","s24","s27","s32","s31","s20","s30","s22","s18","s07","s16","s13","s28","s05","s10","s06","s14","s01","s04","s09","s21","s17","s03","s23","s25","s11","s15","s26","s29"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[7,7,6,6,5,6,6,5,5,5,5,4,5,4,3,3,2,2,3,3,2,2,1,1,2,1,1,1,2,2,1,1],"bodyFollowReplaySteps":585,"releaseStages":[{"removed":0,"remaining":32,"legalIds":["s02","s08","s12","s19","s24","s27","s32"],"occupiedCells":404,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31","s32"]},{"removed":8,"remaining":24,"legalIds":["s05","s19","s20","s24","s27"],"occupiedCells":309,"remainingIds":["s03","s04","s05","s06","s09","s11","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30"]},{"removed":16,"remaining":16,"legalIds":["s06","s24"],"occupiedCells":224,"remainingIds":["s03","s04","s06","s09","s11","s13","s15","s17","s21","s22","s23","s24","s25","s26","s28","s29"]},{"removed":24,"remaining":8,"legalIds":["s13","s28"],"occupiedCells":106,"remainingIds":["s11","s13","s15","s23","s25","s26","s28","s29"]},{"removed":32,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":69,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s01","s14","s15","s20","s26","s27","s32"],"crossBandDependencyEdges":[["s07","s01"],["s10","s01"],["s05","s03"],["s06","s03"],["s07","s03"],["s10","s03"],["s14","s03"],["s32","s07"],["s01","s09"],["s32","s09"],["s32","s10"],["s19","s11"],["s20","s11"],["s25","s11"],["s30","s11"],["s18","s13"],["s22","s13"],["s24","s13"],["s27","s13"],["s05","s14"],["s07","s14"],["s25","s15"],["s01","s17"],["s04","s17"],["s06","s17"],["s09","s17"],["s27","s18"],["s12","s20"],["s01","s21"],["s04","s21"],["s06","s21"],["s10","s21"],["s01","s23"],["s03","s23"],["s04","s23"],["s06","s23"],["s17","s23"],["s11","s26"],["s12","s26"],["s19","s26"],["s20","s26"],["s25","s26"],["s30","s26"],["s27","s28"],["s15","s29"],["s16","s29"],["s23","s29"],["s25","s29"]],"perSnake":[{"id":"s01","length":28,"turns":14,"straightRuns":[1,3,3,1,2,1,4,1,1,1,2,2,2,2,1],"staircaseCorners":1},{"id":"s02","length":9,"turns":5,"straightRuns":[1,1,3,1,1,1],"staircaseCorners":1},{"id":"s03","length":12,"turns":6,"straightRuns":[1,2,3,1,1,2,1],"staircaseCorners":1},{"id":"s04","length":11,"turns":5,"straightRuns":[1,1,2,1,4,1],"staircaseCorners":0},{"id":"s05","length":8,"turns":6,"straightRuns":[1,1,1,1,1,1,1],"staircaseCorners":3},{"id":"s06","length":12,"turns":5,"straightRuns":[1,3,1,2,1,3],"staircaseCorners":0},{"id":"s07","length":12,"turns":5,"straightRuns":[1,4,1,2,2,1],"staircaseCorners":0},{"id":"s08","length":7,"turns":3,"straightRuns":[1,1,1,3],"staircaseCorners":1},{"id":"s09","length":29,"turns":14,"straightRuns":[1,2,2,2,3,1,2,1,1,1,2,2,3,1,4],"staircaseCorners":1},{"id":"s10","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s11","length":13,"turns":5,"straightRuns":[3,1,4,1,1,2],"staircaseCorners":1},{"id":"s12","length":10,"turns":5,"straightRuns":[2,1,1,1,2,2],"staircaseCorners":1},{"id":"s13","length":8,"turns":4,"straightRuns":[1,1,2,2,1],"staircaseCorners":0},{"id":"s14","length":12,"turns":5,"straightRuns":[1,1,3,2,2,2],"staircaseCorners":0},{"id":"s15","length":14,"turns":6,"straightRuns":[2,1,4,1,1,2,2],"staircaseCorners":1},{"id":"s16","length":9,"turns":5,"straightRuns":[1,1,1,1,2,2],"staircaseCorners":1},{"id":"s17","length":27,"turns":11,"straightRuns":[2,2,1,2,1,3,3,1,5,1,3,2],"staircaseCorners":0},{"id":"s18","length":9,"turns":5,"straightRuns":[2,1,1,1,2,1],"staircaseCorners":1},{"id":"s19","length":13,"turns":6,"straightRuns":[3,1,4,1,1,1,1],"staircaseCorners":1},{"id":"s20","length":10,"turns":5,"straightRuns":[1,2,2,1,2,1],"staircaseCorners":0},{"id":"s21","length":8,"turns":5,"straightRuns":[1,2,1,1,1,1],"staircaseCorners":1},{"id":"s22","length":11,"turns":5,"straightRuns":[1,2,2,1,3,1],"staircaseCorners":0},{"id":"s23","length":14,"turns":5,"straightRuns":[1,1,3,1,6,1],"staircaseCorners":1},{"id":"s24","length":8,"turns":3,"straightRuns":[1,4,1,1],"staircaseCorners":1},{"id":"s25","length":28,"turns":10,"straightRuns":[3,2,1,1,1,8,1,1,1,2,6],"staircaseCorners":2},{"id":"s26","length":10,"turns":6,"straightRuns":[1,1,3,1,1,1,1],"staircaseCorners":1},{"id":"s27","length":12,"turns":5,"straightRuns":[1,2,5,1,1,1],"staircaseCorners":1},{"id":"s28","length":10,"turns":5,"straightRuns":[1,2,2,2,1,1],"staircaseCorners":0},{"id":"s29","length":9,"turns":5,"straightRuns":[1,1,1,1,3,1],"staircaseCorners":1},{"id":"s30","length":12,"turns":5,"straightRuns":[1,2,4,1,2,1],"staircaseCorners":0},{"id":"s31","length":13,"turns":5,"straightRuns":[1,1,3,1,4,2],"staircaseCorners":1},{"id":"s32","length":9,"turns":5,"straightRuns":[1,1,3,1,1,1],"staircaseCorners":1}],"geometrySha256":"c84cb7d79e80e5ad35c69364e8efa954cc856b3a9c255b505a52021550b4533f"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":62743,"iterations":180000,"acceptedMutations":2387,"geometryScore":867.9,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"}},{"id":"dense-05","title":"初遇回环","titleEn":"First Loops","width":8,"height":8,"size":8,"mode":"classic","phaseEnabled":false,"shape":"rounded","difficulty":"onboarding","mask":[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[0,1],[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[0,3],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[0,4],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7]],"arrows":[{"id":"s01","color":"gold","d":2,"cells":[[2,0],[2,1],[2,2],[3,2],[3,1],[3,0],[4,0],[4,1],[4,2],[4,3],[3,3],[2,3],[2,4]],"skin":5},{"id":"s02","color":"gold","d":3,"cells":[[6,7],[6,6],[7,6],[7,5],[6,5]],"skin":0},{"id":"s03","color":"gold","d":1,"cells":[[4,7],[5,7],[5,6],[5,5],[4,5],[3,5],[3,4],[4,4]],"skin":2},{"id":"s04","color":"gold","d":1,"cells":[[7,2],[7,1],[6,1],[6,2],[5,2],[5,1],[5,0],[6,0]],"skin":2},{"id":"s05","color":"gold","d":2,"cells":[[2,5],[1,5],[1,4],[0,4],[0,5],[0,6]],"skin":4},{"id":"s06","color":"gold","d":0,"cells":[[0,3],[1,3],[1,2],[0,2],[0,1],[1,1],[1,0]],"skin":1},{"id":"s07","color":"gold","d":0,"cells":[[7,4],[7,3],[6,3],[6,4],[5,4],[5,3]],"skin":3},{"id":"s08","color":"gold","d":2,"cells":[[2,7],[1,7],[1,6],[2,6],[3,6],[3,7]],"skin":0}],"solution":["s05","s06","s04","s07","s03","s02","s08","s01"],"metrics":{"maskCells":60,"bodyCells":59,"snakeCount":8,"fillRate":0.983333,"lengthMin":5,"lengthMedian":6.5,"lengthMean":7.375,"lengthMax":13,"lengthBands":{"short2to8":7,"medium9to17":1,"long18plus":0},"turnsTotal":33,"turnsMedian":4.0,"snakesWith3PlusTurns":8,"snakesWith5PlusTurns":3,"straightSnakes":0,"headDirections":{"0":2,"1":2,"2":3,"3":1},"skinCounts":{"0":2,"1":1,"2":2,"3":1,"4":1,"5":1},"initialChoices":4,"dependencyEdges":6,"dependencyDepth":4,"dependencyLayers":[["s04","s05","s06","s08"],["s01","s07"],["s03"],["s02"]],"blockersById":{"s01":["s05","s08"],"s02":["s03","s05"],"s03":["s07"],"s04":[],"s05":[],"s06":[],"s07":["s04"],"s08":[]},"independentTopologicalSolution":["s04","s05","s06","s08","s07","s01","s03","s02"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[4,3,2,2,2,2,1,1],"bodyFollowReplaySteps":82,"releaseStages":[{"removed":0,"remaining":8,"legalIds":["s04","s05","s06","s08"],"occupiedCells":59,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08"]},{"removed":2,"remaining":6,"legalIds":["s04","s08"],"occupiedCells":46,"remainingIds":["s01","s02","s03","s04","s07","s08"]},{"removed":4,"remaining":4,"legalIds":["s03","s08"],"occupiedCells":32,"remainingIds":["s01","s02","s03","s08"]},{"removed":6,"remaining":2,"legalIds":["s08"],"occupiedCells":19,"remainingIds":["s01","s08"]},{"removed":8,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":13,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s01","s02","s03","s05","s06"],"crossBandDependencyEdges":[["s05","s01"],["s08","s01"],["s07","s03"],["s04","s07"]],"perSnake":[{"id":"s01","length":13,"turns":6,"straightRuns":[2,1,2,1,3,2,1],"staircaseCorners":0},{"id":"s02","length":5,"turns":3,"straightRuns":[1,1,1,1],"staircaseCorners":1},{"id":"s03","length":8,"turns":4,"straightRuns":[1,2,2,1,1],"staircaseCorners":0},{"id":"s04","length":8,"turns":5,"straightRuns":[1,1,1,1,2,1],"staircaseCorners":1},{"id":"s05","length":6,"turns":3,"straightRuns":[1,1,1,2],"staircaseCorners":1},{"id":"s06","length":7,"turns":5,"straightRuns":[1,1,1,1,1,1],"staircaseCorners":2},{"id":"s07","length":6,"turns":4,"straightRuns":[1,1,1,1,1],"staircaseCorners":1},{"id":"s08","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0}],"geometrySha256":"0914c292d76e1e9fe5f303ee9d4ce08f3892dfcea5d214d7c83bfdcbe1020e1e"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":10639,"iterations":180000,"acceptedMutations":680,"geometryScore":122.769,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"}}];
+      const DENSE_LEVELS=[{"id":"dense-01","title":"织光长庭","titleEn":"Woven Courtyard","width":16,"height":22,"size":22,"mode":"classic","phaseEnabled":false,"shape":"rounded","difficulty":"dense","mask":[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[0,1],[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[9,1],[10,1],[11,1],[12,1],[13,1],[14,1],[15,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2],[10,2],[11,2],[12,2],[13,2],[14,2],[15,2],[0,3],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],[0,4],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5],[12,5],[13,5],[14,5],[15,5],[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[0,8],[1,8],[2,8],[3,8],[4,8],[5,8],[6,8],[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[0,9],[1,9],[2,9],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],[15,9],[0,10],[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[0,11],[1,11],[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],[15,11],[0,12],[1,12],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],[0,13],[1,13],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[0,14],[1,14],[2,14],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[0,15],[1,15],[2,15],[3,15],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],[12,15],[13,15],[14,15],[15,15],[0,16],[1,16],[2,16],[3,16],[4,16],[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],[13,16],[14,16],[15,16],[0,17],[1,17],[2,17],[3,17],[4,17],[5,17],[6,17],[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],[15,17],[0,18],[1,18],[2,18],[3,18],[4,18],[5,18],[6,18],[7,18],[8,18],[9,18],[10,18],[11,18],[12,18],[13,18],[14,18],[15,18],[0,19],[1,19],[2,19],[3,19],[4,19],[5,19],[6,19],[7,19],[8,19],[9,19],[10,19],[11,19],[12,19],[13,19],[14,19],[15,19],[0,20],[1,20],[2,20],[3,20],[4,20],[5,20],[6,20],[7,20],[8,20],[9,20],[10,20],[11,20],[12,20],[13,20],[14,20],[15,20],[1,21],[2,21],[3,21],[4,21],[5,21],[6,21],[7,21],[8,21],[9,21],[10,21],[11,21],[12,21],[13,21],[14,21]],"arrows":[{"id":"s01","color":"gold","d":1,"cells":[[4,1],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[11,1],[10,1],[9,1],[8,1],[8,2],[8,3],[8,4],[9,4],[9,5],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6]],"skin":2},{"id":"s02","color":"gold","d":1,"cells":[[12,0],[12,1],[12,2],[11,2],[10,2],[9,2],[9,3],[10,3]],"skin":1},{"id":"s03","color":"gold","d":1,"cells":[[2,5],[2,4],[1,4],[1,5],[1,6],[1,7],[0,7],[0,6],[0,5],[0,4],[0,3],[1,3]],"skin":2},{"id":"s04","color":"gold","d":0,"cells":[[12,5],[13,5],[13,4],[14,4],[14,5],[15,5],[15,4],[15,3]],"skin":3},{"id":"s05","color":"gold","d":0,"cells":[[10,5],[10,4],[11,4],[11,3],[12,3],[13,3],[13,2]],"skin":0},{"id":"s06","color":"gold","d":2,"cells":[[4,14],[5,14],[5,13],[5,12],[6,12],[6,13],[6,14],[7,14],[8,14],[8,15]],"skin":4},{"id":"s07","color":"gold","d":0,"cells":[[2,7],[3,7],[3,6],[3,5],[3,4],[4,4],[4,5],[4,6],[4,7],[5,7],[5,6],[5,5],[5,4]],"skin":5},{"id":"s08","color":"gold","d":1,"cells":[[13,11],[13,10],[14,10],[15,10],[15,9],[14,9],[13,9],[13,8],[14,8],[15,8]],"skin":3},{"id":"s09","color":"gold","d":1,"cells":[[12,12],[11,12],[10,12],[9,12],[9,11],[10,11],[11,11],[12,11],[12,10],[11,10],[10,10],[9,10],[9,9],[10,9],[11,9],[12,9],[12,8],[11,8],[10,8],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7]],"skin":0},{"id":"s10","color":"gold","d":2,"cells":[[0,8],[0,9],[1,9],[2,9],[2,8],[3,8],[3,9]],"skin":1},{"id":"s11","color":"gold","d":2,"cells":[[15,15],[15,14],[14,14],[13,14],[13,15],[13,16],[13,17],[14,17],[14,16],[15,16],[15,17]],"skin":0},{"id":"s12","color":"gold","d":2,"cells":[[7,15],[6,15],[6,16],[6,17],[6,18],[5,18],[5,17],[5,16],[5,15],[4,15],[4,16]],"skin":5},{"id":"s13","color":"gold","d":2,"cells":[[15,11],[15,12],[15,13],[14,13],[14,12],[13,12],[13,13]],"skin":2},{"id":"s14","color":"gold","d":2,"cells":[[1,19],[1,20],[0,20],[0,19],[0,18],[0,17],[0,16],[1,16],[1,17],[2,17],[2,18]],"skin":5},{"id":"s15","color":"gold","d":0,"cells":[[3,0],[2,0],[1,0],[1,1],[2,1],[3,1],[3,2],[3,3],[2,3],[2,2],[1,2],[0,2],[0,1]],"skin":3},{"id":"s16","color":"gold","d":3,"cells":[[1,12],[0,12],[0,13],[0,14],[1,14],[1,15],[0,15]],"skin":4},{"id":"s17","color":"gold","d":3,"cells":[[11,17],[12,17],[12,16],[11,16],[10,16],[9,16],[9,15],[9,14],[9,13],[8,13],[7,13],[7,12],[8,12],[8,11],[7,11],[6,11],[5,11],[5,10],[6,10],[7,10],[8,10],[8,9],[7,9],[6,9],[5,9]],"skin":5},{"id":"s18","color":"gold","d":3,"cells":[[11,13],[10,13],[10,14],[11,14],[12,14],[12,15],[11,15],[10,15]],"skin":2},{"id":"s19","color":"gold","d":3,"cells":[[6,20],[6,21],[5,21],[4,21],[3,21],[3,20],[3,19],[2,19],[2,20],[2,21],[1,21]],"skin":4},{"id":"s20","color":"gold","d":0,"cells":[[13,18],[12,18],[12,19],[12,20],[11,20],[11,19],[11,18],[10,18],[9,18],[9,17]],"skin":4},{"id":"s21","color":"gold","d":3,"cells":[[2,15],[3,15],[3,16],[3,17],[4,17],[4,18],[3,18]],"skin":1},{"id":"s22","color":"gold","d":1,"cells":[[0,10],[0,11],[1,11],[2,11],[2,10],[3,10],[4,10],[4,9],[4,8],[5,8]],"skin":2},{"id":"s23","color":"gold","d":0,"cells":[[7,6],[7,5],[6,5],[6,6],[6,7],[6,8],[7,8],[8,8],[9,8],[9,7],[8,7],[8,6],[8,5]],"skin":3},{"id":"s24","color":"gold","d":3,"cells":[[13,19],[13,20],[14,20],[15,20],[15,19],[15,18],[14,18]],"skin":1},{"id":"s25","color":"gold","d":2,"cells":[[14,21],[13,21],[12,21],[11,21],[10,21],[9,21],[8,21],[7,21],[7,20],[8,20],[9,20],[10,20],[10,19],[9,19],[8,19],[8,18],[8,17],[8,16],[7,16],[7,17],[7,18],[7,19],[6,19],[5,19],[4,19],[4,20]],"skin":0},{"id":"s26","color":"gold","d":1,"cells":[[14,2],[15,2],[15,1],[14,1],[13,1],[13,0],[14,0]],"skin":5},{"id":"s27","color":"gold","d":3,"cells":[[7,4],[7,3],[6,3],[5,3],[4,3],[4,2],[5,2],[6,2],[7,2],[7,1],[6,1]],"skin":1},{"id":"s28","color":"gold","d":3,"cells":[[2,12],[2,13],[2,14],[3,14],[3,13],[4,13],[4,12],[4,11],[3,11]],"skin":3}],"solution":["s26","s05","s16","s04","s02","s19","s25","s14","s21","s15","s12","s01","s23","s27","s03","s07","s06","s08","s09","s22","s28","s10","s17","s20","s24","s18","s11","s13"],"metrics":{"maskCells":348,"bodyCells":329,"snakeCount":28,"fillRate":0.945402,"lengthMin":7,"lengthMedian":10.0,"lengthMean":11.75,"lengthMax":26,"lengthBands":{"short2to8":10,"medium9to17":14,"long18plus":4},"turnsTotal":152,"turnsMedian":5.0,"snakesWith3PlusTurns":28,"snakesWith5PlusTurns":19,"straightSnakes":0,"headDirections":{"0":6,"1":7,"2":7,"3":8},"skinCounts":{"0":4,"1":5,"2":5,"3":5,"4":4,"5":5},"initialChoices":7,"dependencyEdges":52,"dependencyDepth":10,"dependencyLayers":[["s01","s08","s09","s15","s16","s19","s26"],["s04","s05","s14","s23","s25","s27"],["s02","s06","s07","s21","s22"],["s03","s12","s28"],["s10"],["s17"],["s18","s20"],["s24"],["s11"],["s13"]],"blockersById":{"s01":[],"s02":["s04","s05"],"s03":["s01","s02","s04","s05","s15","s27"],"s04":["s26"],"s05":["s26"],"s06":["s25"],"s07":["s01","s27"],"s08":[],"s09":[],"s10":["s19","s21","s22","s28"],"s11":["s24"],"s12":["s19","s21","s25"],"s13":["s11","s20","s24","s25"],"s14":["s19"],"s15":[],"s16":[],"s17":["s10","s22"],"s18":["s06","s12","s16","s17","s21"],"s19":[],"s20":["s01","s02","s09","s17","s23"],"s21":["s14"],"s22":["s08","s09","s23"],"s23":["s01"],"s24":["s12","s14","s20","s21","s25"],"s25":["s19"],"s26":[],"s27":["s01","s15"],"s28":["s22"]},"independentTopologicalSolution":["s01","s08","s09","s15","s16","s19","s26","s23","s27","s14","s25","s04","s05","s22","s07","s21","s06","s02","s28","s12","s03","s10","s17","s18","s20","s24","s11","s13"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[7,8,7,6,6,5,6,6,6,6,5,4,5,4,5,4,3,2,1,1,1,1,1,2,2,2,1,1],"bodyFollowReplaySteps":500,"releaseStages":[{"removed":0,"remaining":28,"legalIds":["s01","s08","s09","s15","s16","s19","s26"],"occupiedCells":329,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28"]},{"removed":7,"remaining":21,"legalIds":["s01","s06","s08","s09","s14","s15"],"occupiedCells":255,"remainingIds":["s01","s03","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s17","s18","s20","s21","s22","s23","s24","s27","s28"]},{"removed":14,"remaining":14,"legalIds":["s03","s06","s07","s08","s09"],"occupiedCells":164,"remainingIds":["s03","s06","s07","s08","s09","s10","s11","s13","s17","s18","s20","s22","s24","s28"]},{"removed":21,"remaining":7,"legalIds":["s10"],"occupiedCells":75,"remainingIds":["s10","s11","s13","s17","s18","s20","s24"]},{"removed":28,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":61,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s06","s09","s11","s16","s17","s18","s23"],"crossBandDependencyEdges":[["s25","s06"],["s19","s10"],["s21","s10"],["s24","s11"],["s11","s13"],["s20","s13"],["s24","s13"],["s25","s13"],["s10","s17"],["s22","s17"],["s12","s18"],["s21","s18"],["s01","s20"],["s02","s20"],["s09","s20"],["s17","s20"],["s23","s20"],["s09","s22"],["s23","s22"],["s01","s23"]],"perSnake":[{"id":"s01","length":25,"turns":7,"straightRuns":[1,7,1,3,3,1,2,6],"staircaseCorners":1},{"id":"s02","length":8,"turns":3,"straightRuns":[2,3,1,1],"staircaseCorners":0},{"id":"s03","length":12,"turns":5,"straightRuns":[1,1,3,1,4,1],"staircaseCorners":0},{"id":"s04","length":8,"turns":5,"straightRuns":[1,1,1,1,1,2],"staircaseCorners":2},{"id":"s05","length":7,"turns":4,"straightRuns":[1,1,1,2,1],"staircaseCorners":2},{"id":"s06","length":10,"turns":5,"straightRuns":[1,2,1,2,2,1],"staircaseCorners":0},{"id":"s07","length":13,"turns":5,"straightRuns":[1,3,1,3,1,3],"staircaseCorners":0},{"id":"s08","length":10,"turns":5,"straightRuns":[1,2,1,2,1,2],"staircaseCorners":0},{"id":"s09","length":25,"turns":10,"straightRuns":[3,1,3,1,3,1,3,1,2,1,5],"staircaseCorners":0},{"id":"s10","length":7,"turns":4,"straightRuns":[1,2,1,1,1],"staircaseCorners":1},{"id":"s11","length":11,"turns":6,"straightRuns":[1,2,3,1,1,1,1],"staircaseCorners":1},{"id":"s12","length":11,"turns":5,"straightRuns":[1,3,1,3,1,1],"staircaseCorners":0},{"id":"s13","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s14","length":11,"turns":6,"straightRuns":[1,1,4,1,1,1,1],"staircaseCorners":2},{"id":"s15","length":13,"turns":7,"straightRuns":[2,1,2,2,1,1,2,1],"staircaseCorners":1},{"id":"s16","length":7,"turns":4,"straightRuns":[1,2,1,1,1],"staircaseCorners":1},{"id":"s17","length":25,"turns":12,"straightRuns":[1,1,3,3,2,1,1,1,3,1,3,1,3],"staircaseCorners":1},{"id":"s18","length":8,"turns":4,"straightRuns":[1,1,2,1,2],"staircaseCorners":0},{"id":"s19","length":11,"turns":5,"straightRuns":[1,3,2,1,2,1],"staircaseCorners":0},{"id":"s20","length":10,"turns":5,"straightRuns":[1,2,1,2,2,1],"staircaseCorners":0},{"id":"s21","length":7,"turns":4,"straightRuns":[1,2,1,1,1],"staircaseCorners":1},{"id":"s22","length":10,"turns":5,"straightRuns":[1,2,1,2,2,1],"staircaseCorners":1},{"id":"s23","length":13,"turns":6,"straightRuns":[1,1,3,3,1,1,2],"staircaseCorners":1},{"id":"s24","length":7,"turns":3,"straightRuns":[1,2,2,1],"staircaseCorners":0},{"id":"s25","length":26,"turns":9,"straightRuns":[7,1,3,1,2,3,1,3,3,1],"staircaseCorners":0},{"id":"s26","length":7,"turns":4,"straightRuns":[1,1,2,1,1],"staircaseCorners":0},{"id":"s27","length":11,"turns":5,"straightRuns":[1,3,1,3,1,1],"staircaseCorners":0},{"id":"s28","length":9,"turns":5,"straightRuns":[2,1,1,1,2,1],"staircaseCorners":2}],"geometrySha256":"c0e1ad5a58977b0b7f3ab3f057040f87ad5f088a22943b75ac77d09c92c75545"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":18037,"iterations":180000,"acceptedMutations":2349,"geometryScore":741.62,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"},"ruleVersion":2},{"id":"dense-02","title":"心间回环","titleEn":"Heartstrings","width":22,"height":22,"size":22,"mode":"classic","phaseEnabled":false,"shape":"heart","difficulty":"dense","mask":[[4,1],[5,1],[6,1],[7,1],[14,1],[15,1],[16,1],[17,1],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2],[12,2],[13,2],[14,2],[15,2],[16,2],[17,2],[18,2],[19,2],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],[16,3],[17,3],[18,3],[19,3],[20,3],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[16,4],[17,4],[18,4],[19,4],[20,4],[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5],[12,5],[13,5],[14,5],[15,5],[16,5],[17,5],[18,5],[19,5],[20,5],[21,5],[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[16,6],[17,6],[18,6],[19,6],[20,6],[21,6],[0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[18,7],[19,7],[20,7],[21,7],[0,8],[1,8],[2,8],[3,8],[4,8],[5,8],[6,8],[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[16,8],[17,8],[18,8],[19,8],[20,8],[21,8],[1,9],[2,9],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],[15,9],[16,9],[17,9],[18,9],[19,9],[20,9],[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[16,10],[17,10],[18,10],[19,10],[20,10],[1,11],[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],[15,11],[16,11],[17,11],[18,11],[19,11],[20,11],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],[16,12],[17,12],[18,12],[19,12],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[16,13],[17,13],[18,13],[19,13],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[16,14],[17,14],[18,14],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],[12,15],[13,15],[14,15],[15,15],[16,15],[17,15],[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],[13,16],[14,16],[15,16],[16,16],[6,17],[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],[15,17],[8,18],[9,18],[10,18],[11,18],[12,18],[13,18],[9,19],[10,19],[11,19],[12,19]],"arrows":[{"id":"s01","color":"gold","d":3,"cells":[[17,7],[16,7],[15,7],[14,7],[14,8],[14,9],[14,10],[13,10],[12,10],[12,11],[12,12],[11,12],[10,12],[9,12],[8,12],[8,11],[8,10],[7,10],[6,10]],"skin":5},{"id":"s02","color":"gold","d":1,"cells":[[16,2],[16,1],[17,1],[17,2],[18,2],[19,2]],"skin":1},{"id":"s03","color":"gold","d":2,"cells":[[12,4],[13,4],[13,3],[13,2],[12,2],[12,3],[11,3],[10,3],[10,4]],"skin":0},{"id":"s04","color":"gold","d":0,"cells":[[20,3],[19,3],[19,4],[20,4],[20,5],[20,6],[21,6],[21,5]],"skin":5},{"id":"s05","color":"gold","d":3,"cells":[[9,2],[9,3],[8,3],[8,2],[7,2],[7,3],[6,3]],"skin":5},{"id":"s06","color":"gold","d":0,"cells":[[14,6],[15,6],[15,5],[15,4],[16,4],[16,5],[16,6],[17,6],[17,5],[17,4]],"skin":4},{"id":"s07","color":"gold","d":3,"cells":[[7,1],[6,1],[6,2],[5,2],[5,1],[4,1],[4,2],[3,2],[2,2]],"skin":1},{"id":"s08","color":"gold","d":2,"cells":[[5,7],[4,7],[4,6],[5,6],[6,6],[6,7]],"skin":1},{"id":"s09","color":"gold","d":2,"cells":[[5,9],[4,9],[4,10],[4,11],[4,12],[4,13],[5,13],[5,12],[5,11],[6,11],[7,11],[7,12],[7,13],[8,13],[9,13],[10,13],[11,13],[11,14]],"skin":0},{"id":"s10","color":"gold","d":2,"cells":[[7,9],[6,9],[6,8],[7,8],[8,8],[8,9]],"skin":2},{"id":"s11","color":"gold","d":0,"cells":[[2,9],[2,10],[3,10],[3,11],[2,11],[1,11],[1,10],[1,9]],"skin":1},{"id":"s12","color":"gold","d":2,"cells":[[13,11],[13,12],[14,12],[15,12],[15,11],[16,11],[16,12]],"skin":3},{"id":"s13","color":"gold","d":0,"cells":[[3,4],[4,4],[4,5],[3,5],[2,5],[2,4]],"skin":5},{"id":"s14","color":"gold","d":3,"cells":[[6,13],[6,14],[7,14],[7,15],[6,15],[6,16],[5,16]],"skin":3},{"id":"s15","color":"gold","d":3,"cells":[[18,12],[18,13],[17,13],[17,12],[17,11],[17,10],[18,10],[18,9],[17,9]],"skin":2},{"id":"s16","color":"gold","d":1,"cells":[[10,18],[10,19],[9,19],[9,18],[9,17],[10,17]],"skin":5},{"id":"s17","color":"gold","d":2,"cells":[[7,7],[8,7],[8,6],[8,5],[7,5],[6,5],[5,5],[5,4],[5,3],[4,3],[3,3],[2,3],[1,3],[1,4],[1,5],[0,5],[0,6],[0,7],[0,8]],"skin":4},{"id":"s18","color":"gold","d":1,"cells":[[8,14],[9,14],[10,14],[10,15],[9,15],[9,16],[10,16]],"skin":2},{"id":"s19","color":"gold","d":0,"cells":[[2,13],[2,12],[3,12],[3,13],[3,14],[4,14],[4,15],[5,15],[5,14]],"skin":4},{"id":"s20","color":"gold","d":1,"cells":[[18,14],[17,14],[17,15],[16,15],[16,16],[15,16],[14,16],[14,17],[15,17]],"skin":4},{"id":"s21","color":"gold","d":2,"cells":[[11,15],[11,16],[12,16],[12,15],[13,15],[13,16]],"skin":5},{"id":"s22","color":"gold","d":0,"cells":[[4,8],[3,8],[3,7],[3,6],[2,6],[2,7],[2,8],[1,8],[1,7],[1,6]],"skin":2},{"id":"s23","color":"gold","d":3,"cells":[[18,7],[18,8],[19,8],[20,8],[21,8],[21,7],[20,7],[19,7],[19,6],[19,5],[18,5]],"skin":0},{"id":"s24","color":"gold","d":3,"cells":[[8,18],[8,17],[8,16],[7,16],[7,17],[6,17]],"skin":0},{"id":"s25","color":"gold","d":3,"cells":[[18,3],[17,3],[16,3],[15,3],[15,2],[15,1],[14,1],[14,2],[14,3],[14,4],[14,5],[13,5],[12,5],[11,5],[10,5],[9,5],[9,4],[8,4],[7,4],[6,4]],"skin":3},{"id":"s26","color":"gold","d":3,"cells":[[15,9],[15,8],[16,8],[16,9],[16,10],[15,10]],"skin":4},{"id":"s27","color":"gold","d":2,"cells":[[11,8],[11,9],[11,10],[11,11],[10,11],[10,10],[10,9],[9,9],[9,10],[9,11]],"skin":3},{"id":"s28","color":"gold","d":1,"cells":[[19,13],[19,12],[19,11],[20,11],[20,10],[19,10],[19,9],[20,9]],"skin":3},{"id":"s29","color":"gold","d":1,"cells":[[13,18],[12,18],[12,17],[11,17],[11,18],[11,19],[12,19]],"skin":2},{"id":"s30","color":"gold","d":3,"cells":[[12,6],[11,6],[11,7],[12,7],[13,7],[13,8],[13,9],[12,9]],"skin":0},{"id":"s31","color":"gold","d":2,"cells":[[15,15],[14,15],[14,14],[13,14],[12,14],[12,13],[13,13],[14,13],[15,13],[16,13],[16,14]],"skin":1},{"id":"s32","color":"gold","d":1,"cells":[[10,7],[10,8],[9,8],[9,7],[9,6],[10,6]],"skin":1}],"solution":["s02","s04","s07","s14","s17","s20","s24","s28","s29","s05","s13","s16","s21","s22","s31","s09","s11","s12","s18","s25","s01","s06","s10","s23","s27","s08","s26","s30","s15","s19","s32","s03"],"metrics":{"maskCells":310,"bodyCells":294,"snakeCount":32,"fillRate":0.948387,"lengthMin":6,"lengthMedian":8.0,"lengthMean":9.188,"lengthMax":20,"lengthBands":{"short2to8":18,"medium9to17":10,"long18plus":4},"turnsTotal":146,"turnsMedian":5.0,"snakesWith3PlusTurns":32,"snakesWith5PlusTurns":17,"straightSnakes":0,"headDirections":{"0":6,"1":7,"2":9,"3":10},"skinCounts":{"0":5,"1":6,"2":5,"3":5,"4":5,"5":6},"initialChoices":9,"dependencyEdges":69,"dependencyDepth":8,"dependencyLayers":[["s02","s04","s07","s14","s17","s20","s24","s28","s29"],["s05","s13","s16","s21","s22","s31"],["s09","s11","s12","s18","s25"],["s01","s06"],["s10","s23","s27"],["s08","s26","s30"],["s15","s19","s32"],["s03"]],"blockersById":{"s01":["s09","s11"],"s02":[],"s03":["s01","s09","s16","s18","s25","s27","s32"],"s04":[],"s05":["s17"],"s06":["s02","s25"],"s07":[],"s08":["s01","s09","s10","s14","s24"],"s09":["s21","s29"],"s10":["s01","s09","s18","s24"],"s11":["s17","s22"],"s12":["s20","s31"],"s13":["s07","s17"],"s14":[],"s15":["s01","s09","s10","s11","s26","s27","s30"],"s16":["s20","s29"],"s17":[],"s18":["s20","s21"],"s19":["s07","s08","s09","s17"],"s20":[],"s21":["s29"],"s22":["s17"],"s23":["s06","s13","s17","s25"],"s24":[],"s25":["s13","s17"],"s26":["s01","s09","s11","s27"],"s27":["s01","s09","s16","s18"],"s28":[],"s29":[],"s30":["s09","s10","s11","s27"],"s31":["s20"],"s32":["s04","s06","s23","s30"]},"independentTopologicalSolution":["s02","s04","s07","s14","s17","s20","s24","s28","s29","s05","s13","s22","s31","s16","s21","s25","s11","s12","s09","s18","s06","s01","s23","s10","s27","s08","s26","s30","s19","s15","s32","s03"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[9,8,7,6,5,7,7,6,5,6,5,5,4,5,5,5,4,4,3,2,2,3,3,3,2,3,3,2,3,2,1,1],"bodyFollowReplaySteps":606,"releaseStages":[{"removed":0,"remaining":32,"legalIds":["s02","s04","s07","s14","s17","s20","s24","s28","s29"],"occupiedCells":294,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31","s32"]},{"removed":8,"remaining":24,"legalIds":["s05","s13","s22","s29","s31"],"occupiedCells":222,"remainingIds":["s01","s03","s05","s06","s08","s09","s10","s11","s12","s13","s15","s16","s18","s19","s21","s22","s23","s25","s26","s27","s29","s30","s31","s32"]},{"removed":16,"remaining":16,"legalIds":["s11","s12","s18","s25"],"occupiedCells":151,"remainingIds":["s01","s03","s06","s08","s10","s11","s12","s15","s18","s19","s23","s25","s26","s27","s30","s32"]},{"removed":24,"remaining":8,"legalIds":["s08","s27"],"occupiedCells":63,"remainingIds":["s03","s08","s15","s19","s26","s27","s30","s32"]},{"removed":32,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":69,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s01","s14","s17","s18","s19","s20","s22","s23","s30","s31","s32"],"crossBandDependencyEdges":[["s09","s01"],["s11","s01"],["s01","s03"],["s09","s03"],["s16","s03"],["s18","s03"],["s27","s03"],["s32","s03"],["s17","s05"],["s01","s08"],["s09","s08"],["s10","s08"],["s14","s08"],["s24","s08"],["s21","s09"],["s29","s09"],["s01","s10"],["s18","s10"],["s24","s10"],["s17","s11"],["s22","s11"],["s20","s12"],["s31","s12"],["s17","s13"],["s01","s15"],["s30","s15"],["s20","s16"],["s21","s18"],["s07","s19"],["s08","s19"],["s09","s19"],["s17","s19"],["s06","s23"],["s13","s23"],["s25","s23"],["s17","s25"],["s01","s26"],["s01","s27"],["s16","s27"],["s18","s27"],["s09","s30"],["s10","s30"],["s11","s30"],["s27","s30"],["s04","s32"],["s06","s32"]],"perSnake":[{"id":"s01","length":19,"turns":6,"straightRuns":[3,3,2,2,4,2,2],"staircaseCorners":0},{"id":"s02","length":6,"turns":3,"straightRuns":[1,1,1,2],"staircaseCorners":1},{"id":"s03","length":9,"turns":5,"straightRuns":[1,2,1,1,2,1],"staircaseCorners":1},{"id":"s04","length":8,"turns":5,"straightRuns":[1,1,1,2,1,1],"staircaseCorners":1},{"id":"s05","length":7,"turns":5,"straightRuns":[1,1,1,1,1,1],"staircaseCorners":2},{"id":"s06","length":10,"turns":5,"straightRuns":[1,2,1,2,1,2],"staircaseCorners":0},{"id":"s07","length":9,"turns":6,"straightRuns":[1,1,1,1,1,1,2],"staircaseCorners":3},{"id":"s08","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s09","length":18,"turns":7,"straightRuns":[1,4,1,2,2,2,4,1],"staircaseCorners":0},{"id":"s10","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s11","length":8,"turns":4,"straightRuns":[1,1,1,2,2],"staircaseCorners":1},{"id":"s12","length":7,"turns":4,"straightRuns":[1,2,1,1,1],"staircaseCorners":1},{"id":"s13","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s14","length":7,"turns":5,"straightRuns":[1,1,1,1,1,1],"staircaseCorners":3},{"id":"s15","length":9,"turns":5,"straightRuns":[1,1,3,1,1,1],"staircaseCorners":1},{"id":"s16","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s17","length":19,"turns":7,"straightRuns":[1,2,3,2,4,2,1,3],"staircaseCorners":1},{"id":"s18","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s19","length":9,"turns":6,"straightRuns":[1,1,2,1,1,1,1],"staircaseCorners":2},{"id":"s20","length":9,"turns":6,"straightRuns":[1,1,1,1,2,1,1],"staircaseCorners":3},{"id":"s21","length":6,"turns":4,"straightRuns":[1,1,1,1,1],"staircaseCorners":1},{"id":"s22","length":10,"turns":5,"straightRuns":[1,2,1,2,1,2],"staircaseCorners":0},{"id":"s23","length":11,"turns":5,"straightRuns":[1,3,1,2,2,1],"staircaseCorners":0},{"id":"s24","length":6,"turns":3,"straightRuns":[2,1,1,1],"staircaseCorners":1},{"id":"s25","length":20,"turns":6,"straightRuns":[3,2,1,4,5,1,3],"staircaseCorners":1},{"id":"s26","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s27","length":10,"turns":4,"straightRuns":[3,1,2,1,2],"staircaseCorners":0},{"id":"s28","length":8,"turns":5,"straightRuns":[2,1,1,1,1,1],"staircaseCorners":2},{"id":"s29","length":7,"turns":4,"straightRuns":[1,1,1,2,1],"staircaseCorners":1},{"id":"s30","length":8,"turns":4,"straightRuns":[1,1,2,2,1],"staircaseCorners":0},{"id":"s31","length":11,"turns":5,"straightRuns":[1,1,2,1,4,1],"staircaseCorners":1},{"id":"s32","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0}],"geometrySha256":"a2102c2b9b9eac65580a1f04f7ed115a10e3a7f42ff87ba3267b5b7b73c00fe9"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":26189,"iterations":180000,"acceptedMutations":2006,"geometryScore":681.064,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending","exitRepair":{"ruleVersion":2,"reversedIds":["s07"],"method":"minimum reversals in ID order; geometry/skin unchanged"}},"ruleVersion":2},{"id":"dense-03","title":"叶脉之舞","titleEn":"Leaf Waltz","width":22,"height":22,"size":22,"mode":"classic","phaseEnabled":false,"shape":"leaf","difficulty":"dense","mask":[[17,1],[18,1],[11,2],[12,2],[13,2],[14,2],[15,2],[16,2],[17,2],[18,2],[19,2],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],[16,3],[17,3],[18,3],[19,3],[20,3],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[16,4],[17,4],[18,4],[19,4],[20,4],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5],[12,5],[13,5],[14,5],[15,5],[16,5],[17,5],[18,5],[19,5],[5,6],[6,6],[7,6],[8,6],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[16,6],[17,6],[18,6],[19,6],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[18,7],[19,7],[4,8],[5,8],[6,8],[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[16,8],[17,8],[18,8],[19,8],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],[15,9],[16,9],[17,9],[18,9],[19,9],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[16,10],[17,10],[18,10],[19,10],[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],[15,11],[16,11],[17,11],[18,11],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],[16,12],[17,12],[18,12],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[16,13],[17,13],[2,14],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[16,14],[17,14],[2,15],[3,15],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],[12,15],[13,15],[14,15],[15,15],[16,15],[2,16],[3,16],[4,16],[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],[13,16],[14,16],[15,16],[1,17],[2,17],[3,17],[4,17],[5,17],[6,17],[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],[1,18],[2,18],[3,18],[4,18],[5,18],[6,18],[7,18],[8,18],[9,18],[10,18],[11,18],[12,18],[2,19],[3,19],[4,19],[5,19],[6,19],[7,19],[8,19],[9,19],[10,19],[3,20],[4,20]],"arrows":[{"id":"s01","color":"gold","d":1,"cells":[[11,2],[12,2],[13,2],[14,2],[14,3],[13,3],[12,3],[11,3],[11,4],[12,4],[13,4],[14,4],[15,4],[15,3],[15,2],[16,2],[17,2],[17,1],[18,1]],"skin":5},{"id":"s02","color":"gold","d":3,"cells":[[20,3],[20,4],[19,4],[19,3],[19,2],[18,2]],"skin":1},{"id":"s03","color":"gold","d":2,"cells":[[9,3],[10,3],[10,4],[9,4],[9,5],[10,5],[11,5],[11,6]],"skin":2},{"id":"s04","color":"gold","d":0,"cells":[[18,7],[19,7],[19,6],[19,5],[18,5],[18,4]],"skin":4},{"id":"s05","color":"gold","d":2,"cells":[[6,5],[7,5],[7,4],[8,4],[8,5],[8,6]],"skin":5},{"id":"s06","color":"gold","d":1,"cells":[[8,8],[9,8],[10,8],[10,7],[9,7],[9,6],[10,6]],"skin":0},{"id":"s07","color":"gold","d":3,"cells":[[5,9],[6,9],[6,10],[7,10],[8,10],[8,11],[7,11],[6,11],[5,11]],"skin":0},{"id":"s08","color":"gold","d":0,"cells":[[5,7],[6,7],[6,8],[5,8],[4,8],[4,7]],"skin":4},{"id":"s09","color":"gold","d":1,"cells":[[5,14],[5,13],[5,12],[6,12],[6,13],[6,14],[7,14],[8,14],[8,15],[7,15],[6,15],[6,16],[7,16],[8,16],[9,16],[9,17],[9,18],[9,19],[10,19]],"skin":3},{"id":"s10","color":"gold","d":2,"cells":[[11,7],[12,7],[12,6],[12,5],[13,5],[13,6]],"skin":1},{"id":"s11","color":"gold","d":1,"cells":[[17,14],[17,13],[16,13],[16,12],[15,12],[15,13],[15,14],[15,15],[16,15]],"skin":3},{"id":"s12","color":"gold","d":2,"cells":[[4,9],[3,9],[3,10],[4,10],[4,11],[4,12]],"skin":2},{"id":"s13","color":"gold","d":1,"cells":[[15,16],[14,16],[14,17],[13,17],[13,16],[13,15],[14,15]],"skin":1},{"id":"s14","color":"gold","d":3,"cells":[[5,16],[5,17],[4,17],[3,17],[3,16],[4,16],[4,15],[3,15],[2,15]],"skin":4},{"id":"s15","color":"gold","d":3,"cells":[[2,11],[3,11],[3,12],[2,12],[2,13],[3,13],[4,13],[4,14],[3,14],[2,14]],"skin":5},{"id":"s16","color":"gold","d":2,"cells":[[3,20],[4,20],[4,19],[4,18],[5,18],[5,19]],"skin":3},{"id":"s17","color":"gold","d":3,"cells":[[8,13],[7,13],[7,12],[8,12],[9,12],[10,12],[11,12],[11,11],[10,11],[9,11],[9,10],[9,9],[8,9],[7,9],[7,8],[7,7],[7,6],[6,6],[5,6]],"skin":1},{"id":"s18","color":"gold","d":3,"cells":[[18,12],[18,11],[18,10],[17,10],[17,11],[16,11]],"skin":0},{"id":"s19","color":"gold","d":0,"cells":[[10,13],[11,13],[11,14],[10,14],[9,14],[9,15],[10,15],[11,15],[12,15],[12,14]],"skin":5},{"id":"s20","color":"gold","d":0,"cells":[[2,19],[3,19],[3,18],[2,18],[1,18],[1,17],[2,17],[2,16]],"skin":2},{"id":"s21","color":"gold","d":1,"cells":[[13,8],[14,8],[14,9],[13,9],[13,10],[14,10]],"skin":2},{"id":"s22","color":"gold","d":3,"cells":[[8,18],[8,19],[7,19],[6,19],[6,18],[7,18],[7,17],[6,17]],"skin":0},{"id":"s23","color":"gold","d":3,"cells":[[15,8],[16,8],[16,9],[16,10],[15,10],[15,11],[14,11],[13,11],[12,11]],"skin":4},{"id":"s24","color":"gold","d":2,"cells":[[17,9],[17,8],[18,8],[19,8],[19,9],[19,10]],"skin":2},{"id":"s25","color":"gold","d":1,"cells":[[14,7],[15,7],[16,7],[17,7],[17,6],[16,6],[15,6],[14,6],[14,5],[15,5],[16,5],[17,5],[17,4],[16,4],[16,3],[17,3],[18,3]],"skin":3},{"id":"s26","color":"gold","d":1,"cells":[[10,10],[11,10],[12,10],[12,9],[11,9],[11,8],[12,8]],"skin":5},{"id":"s27","color":"gold","d":2,"cells":[[11,18],[11,17],[10,17],[10,16],[11,16],[12,16],[12,17],[12,18]],"skin":4},{"id":"s28","color":"gold","d":0,"cells":[[12,12],[13,12],[13,13],[13,14],[14,14],[14,13],[14,12]],"skin":0}],"solution":["s17","s11","s08","s13","s16","s15","s01","s27","s24","s02","s25","s04","s14","s12","s20","s07","s23","s18","s21","s28","s10","s26","s19","s03","s06","s09","s22","s05"],"metrics":{"maskCells":264,"bodyCells":250,"snakeCount":28,"fillRate":0.94697,"lengthMin":6,"lengthMedian":7.5,"lengthMean":8.929,"lengthMax":19,"lengthBands":{"short2to8":18,"medium9to17":7,"long18plus":3},"turnsTotal":126,"turnsMedian":4.0,"snakesWith3PlusTurns":27,"snakesWith5PlusTurns":11,"straightSnakes":0,"headDirections":{"0":5,"1":8,"2":7,"3":8},"skinCounts":{"0":5,"1":4,"2":5,"3":4,"4":5,"5":5},"initialChoices":10,"dependencyEdges":57,"dependencyDepth":12,"dependencyLayers":[["s01","s08","s09","s11","s14","s15","s16","s17","s24","s27"],["s02","s12","s13","s20"],["s07","s22","s25"],["s04","s23"],["s18"],["s21"],["s26","s28"],["s10"],["s19"],["s03"],["s06"],["s05"]],"blockersById":{"s01":[],"s02":["s01"],"s03":["s10","s17","s19","s26","s27"],"s04":["s01","s02","s25"],"s05":["s06","s07","s09","s17","s22"],"s06":["s03","s04","s10","s25"],"s07":["s12","s15"],"s08":[],"s09":[],"s10":["s13","s21","s23","s28"],"s11":[],"s12":["s14","s15","s16"],"s13":["s11"],"s14":[],"s15":[],"s16":[],"s17":[],"s18":["s07","s12","s15","s17","s23"],"s19":["s01","s10","s23","s26","s28"],"s20":["s14","s15"],"s21":["s18","s23","s24"],"s22":["s14","s20"],"s23":["s07","s12","s15","s17"],"s24":[],"s25":["s02"],"s26":["s21","s23","s24"],"s27":[],"s28":["s01","s21","s23","s25"]},"independentTopologicalSolution":["s01","s08","s09","s11","s14","s15","s16","s17","s24","s27","s02","s13","s20","s12","s25","s22","s07","s04","s23","s18","s21","s26","s28","s10","s19","s03","s06","s05"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[10,9,9,8,7,6,5,5,4,3,3,3,2,3,3,3,3,3,3,4,4,3,3,3,3,2,1,1],"bodyFollowReplaySteps":523,"releaseStages":[{"removed":0,"remaining":28,"legalIds":["s01","s08","s09","s11","s14","s15","s16","s17","s24","s27"],"occupiedCells":250,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28"]},{"removed":7,"remaining":21,"legalIds":["s02","s09","s14","s24","s27"],"occupiedCells":174,"remainingIds":["s02","s03","s04","s05","s06","s07","s09","s10","s12","s14","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28"]},{"removed":14,"remaining":14,"legalIds":["s07","s09","s20"],"occupiedCells":116,"remainingIds":["s03","s05","s06","s07","s09","s10","s18","s19","s20","s21","s22","s23","s26","s28"]},{"removed":21,"remaining":7,"legalIds":["s09","s22","s26"],"occupiedCells":65,"remainingIds":["s03","s05","s06","s09","s19","s22","s26"]},{"removed":28,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":61,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s06","s08","s09","s11","s17","s19"],"crossBandDependencyEdges":[["s17","s03"],["s19","s03"],["s26","s03"],["s27","s03"],["s06","s05"],["s07","s05"],["s09","s05"],["s17","s05"],["s22","s05"],["s03","s06"],["s04","s06"],["s10","s06"],["s25","s06"],["s13","s10"],["s21","s10"],["s23","s10"],["s28","s10"],["s14","s12"],["s16","s12"],["s11","s13"],["s17","s18"],["s01","s19"],["s10","s19"],["s23","s19"],["s26","s19"],["s28","s19"],["s15","s20"],["s17","s23"],["s01","s28"],["s25","s28"]],"perSnake":[{"id":"s01","length":19,"turns":8,"straightRuns":[3,1,3,1,4,2,2,1,1],"staircaseCorners":1},{"id":"s02","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s03","length":8,"turns":5,"straightRuns":[1,1,1,1,2,1],"staircaseCorners":1},{"id":"s04","length":6,"turns":3,"straightRuns":[1,2,1,1],"staircaseCorners":1},{"id":"s05","length":6,"turns":3,"straightRuns":[1,1,1,2],"staircaseCorners":1},{"id":"s06","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s07","length":9,"turns":4,"straightRuns":[1,1,2,1,3],"staircaseCorners":1},{"id":"s08","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0},{"id":"s09","length":19,"turns":9,"straightRuns":[2,1,2,2,1,2,1,3,3,1],"staircaseCorners":0},{"id":"s10","length":6,"turns":3,"straightRuns":[1,2,1,1],"staircaseCorners":0},{"id":"s11","length":9,"turns":5,"straightRuns":[1,1,1,1,3,1],"staircaseCorners":2},{"id":"s12","length":6,"turns":3,"straightRuns":[1,1,1,2],"staircaseCorners":1},{"id":"s13","length":7,"turns":4,"straightRuns":[1,1,1,2,1],"staircaseCorners":1},{"id":"s14","length":9,"turns":5,"straightRuns":[1,2,1,1,1,2],"staircaseCorners":1},{"id":"s15","length":10,"turns":6,"straightRuns":[1,1,1,1,2,1,2],"staircaseCorners":1},{"id":"s16","length":6,"turns":3,"straightRuns":[1,2,1,1],"staircaseCorners":0},{"id":"s17","length":19,"turns":8,"straightRuns":[1,1,4,1,2,2,2,3,2],"staircaseCorners":0},{"id":"s18","length":6,"turns":3,"straightRuns":[2,1,1,1],"staircaseCorners":1},{"id":"s19","length":10,"turns":5,"straightRuns":[1,1,2,1,3,1],"staircaseCorners":0},{"id":"s20","length":8,"turns":5,"straightRuns":[1,1,2,1,1,1],"staircaseCorners":1},{"id":"s21","length":6,"turns":4,"straightRuns":[1,1,1,1,1],"staircaseCorners":1},{"id":"s22","length":8,"turns":5,"straightRuns":[1,2,1,1,1,1],"staircaseCorners":1},{"id":"s23","length":9,"turns":4,"straightRuns":[1,2,1,1,3],"staircaseCorners":2},{"id":"s24","length":6,"turns":2,"straightRuns":[1,2,2],"staircaseCorners":0},{"id":"s25","length":17,"turns":8,"straightRuns":[3,1,3,1,3,1,1,1,2],"staircaseCorners":1},{"id":"s26","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s27","length":8,"turns":4,"straightRuns":[1,1,1,2,2],"staircaseCorners":1},{"id":"s28","length":7,"turns":3,"straightRuns":[1,2,1,2],"staircaseCorners":0}],"geometrySha256":"60fb7829abe7e09a2cd008562aeaf147e34c6c09f454f9bc2fa1a8f454859bf3"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":41761,"iterations":180000,"acceptedMutations":2358,"geometryScore":589.307,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"},"ruleVersion":2},{"id":"dense-04","title":"流彩花园","titleEn":"Ribbon Garden","width":18,"height":24,"size":24,"mode":"classic","phaseEnabled":false,"shape":"rounded","difficulty":"dense","mask":[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[0,1],[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[8,1],[9,1],[10,1],[11,1],[12,1],[13,1],[14,1],[15,1],[16,1],[17,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2],[10,2],[11,2],[12,2],[13,2],[14,2],[15,2],[16,2],[17,2],[0,3],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],[16,3],[17,3],[0,4],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4],[9,4],[10,4],[11,4],[12,4],[13,4],[14,4],[15,4],[16,4],[17,4],[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5],[9,5],[10,5],[11,5],[12,5],[13,5],[14,5],[15,5],[16,5],[17,5],[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6],[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[16,6],[17,6],[0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[0,8],[1,8],[2,8],[3,8],[4,8],[5,8],[6,8],[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[16,8],[17,8],[0,9],[1,9],[2,9],[3,9],[4,9],[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],[15,9],[16,9],[17,9],[0,10],[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[16,10],[17,10],[0,11],[1,11],[2,11],[3,11],[4,11],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],[15,11],[16,11],[17,11],[0,12],[1,12],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],[16,12],[17,12],[0,13],[1,13],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[16,13],[17,13],[0,14],[1,14],[2,14],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[16,14],[17,14],[0,15],[1,15],[2,15],[3,15],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],[11,15],[12,15],[13,15],[14,15],[15,15],[16,15],[17,15],[0,16],[1,16],[2,16],[3,16],[4,16],[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],[13,16],[14,16],[15,16],[16,16],[17,16],[0,17],[1,17],[2,17],[3,17],[4,17],[5,17],[6,17],[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],[15,17],[16,17],[17,17],[0,18],[1,18],[2,18],[3,18],[4,18],[5,18],[6,18],[7,18],[8,18],[9,18],[10,18],[11,18],[12,18],[13,18],[14,18],[15,18],[16,18],[17,18],[0,19],[1,19],[2,19],[3,19],[4,19],[5,19],[6,19],[7,19],[8,19],[9,19],[10,19],[11,19],[12,19],[13,19],[14,19],[15,19],[16,19],[17,19],[0,20],[1,20],[2,20],[3,20],[4,20],[5,20],[6,20],[7,20],[8,20],[9,20],[10,20],[11,20],[12,20],[13,20],[14,20],[15,20],[16,20],[17,20],[0,21],[1,21],[2,21],[3,21],[4,21],[5,21],[6,21],[7,21],[8,21],[9,21],[10,21],[11,21],[12,21],[13,21],[14,21],[15,21],[16,21],[17,21],[0,22],[1,22],[2,22],[3,22],[4,22],[5,22],[6,22],[7,22],[8,22],[9,22],[10,22],[11,22],[12,22],[13,22],[14,22],[15,22],[16,22],[17,22],[1,23],[2,23],[3,23],[4,23],[5,23],[6,23],[7,23],[8,23],[9,23],[10,23],[11,23],[12,23],[13,23],[14,23],[15,23],[16,23]],"arrows":[{"id":"s01","color":"gold","d":3,"cells":[[15,6],[14,6],[14,7],[14,8],[14,9],[13,9],[12,9],[11,9],[11,8],[12,8],[13,8],[13,7],[12,7],[11,7],[10,7],[9,7],[9,8],[10,8],[10,9],[9,9],[8,9],[8,8],[8,7],[7,7],[6,7],[6,6],[6,5],[5,5]],"skin":1},{"id":"s02","color":"gold","d":1,"cells":[[16,2],[16,1],[17,1],[17,2],[17,3],[17,4],[16,4],[16,5],[17,5]],"skin":1},{"id":"s03","color":"gold","d":0,"cells":[[6,9],[6,10],[5,10],[4,10],[4,11],[4,12],[4,13],[5,13],[5,14],[4,14],[3,14],[3,13]],"skin":1},{"id":"s04","color":"gold","d":0,"cells":[[8,6],[7,6],[7,5],[8,5],[9,5],[9,4],[8,4],[7,4],[6,4],[5,4],[5,3]],"skin":3},{"id":"s05","color":"gold","d":3,"cells":[[0,1],[1,1],[1,0],[2,0],[2,1],[3,1],[3,2],[2,2]],"skin":0},{"id":"s06","color":"gold","d":3,"cells":[[7,3],[7,2],[6,2],[5,2],[4,2],[4,1],[5,1],[6,1],[6,0],[5,0],[4,0],[3,0]],"skin":5},{"id":"s07","color":"gold","d":3,"cells":[[0,2],[0,3],[1,3],[2,3],[3,3],[4,3],[4,4],[3,4],[2,4],[2,5],[2,6],[1,6]],"skin":4},{"id":"s08","color":"gold","d":1,"cells":[[14,2],[14,1],[13,1],[13,0],[14,0],[15,0],[16,0]],"skin":4},{"id":"s09","color":"gold","d":3,"cells":[[11,0],[12,0],[12,1],[12,2],[11,2],[10,2],[10,1],[10,0],[9,0],[8,0],[7,0],[7,1],[8,1],[9,1],[9,2],[8,2],[8,3],[9,3],[10,3],[10,4],[10,5],[11,5],[12,5],[13,5],[13,6],[12,6],[11,6],[10,6],[9,6]],"skin":0},{"id":"s10","color":"gold","d":3,"cells":[[5,7],[4,7],[3,7],[3,6],[4,6],[4,5],[3,5]],"skin":0},{"id":"s11","color":"gold","d":2,"cells":[[14,10],[15,10],[16,10],[17,10],[17,11],[16,11],[15,11],[14,11],[13,11],[13,12],[14,12],[14,13],[14,14]],"skin":0},{"id":"s12","color":"gold","d":1,"cells":[[17,15],[17,14],[17,13],[16,13],[16,14],[15,14],[15,13],[15,12],[16,12],[17,12]],"skin":2},{"id":"s13","color":"gold","d":2,"cells":[[1,13],[1,12],[0,12],[0,13],[0,14],[1,14],[2,14],[2,15]],"skin":4},{"id":"s14","color":"gold","d":0,"cells":[[2,12],[3,12],[3,11],[2,11],[1,11],[0,11],[0,10],[0,9],[1,9],[2,9],[2,8],[2,7]],"skin":5},{"id":"s15","color":"gold","d":1,"cells":[[11,13],[12,13],[13,13],[13,14],[12,14],[11,14],[10,14],[9,14],[9,15],[10,15],[10,16],[10,17],[11,17],[12,17]],"skin":4},{"id":"s16","color":"gold","d":1,"cells":[[8,19],[8,20],[9,20],[9,19],[10,19],[10,20],[10,21],[11,21],[12,21]],"skin":1},{"id":"s17","color":"gold","d":0,"cells":[[4,15],[5,15],[6,15],[6,14],[6,13],[7,13],[7,14],[7,15],[8,15],[8,14],[8,13],[8,12],[7,12],[6,12],[5,12],[5,11],[6,11],[7,11],[8,11],[9,11],[10,11],[10,10],[9,10],[8,10],[7,10],[7,9],[7,8]],"skin":2},{"id":"s18","color":"gold","d":3,"cells":[[1,19],[1,18],[1,17],[2,17],[2,18],[3,18],[3,17],[3,16],[2,16]],"skin":0},{"id":"s19","color":"gold","d":1,"cells":[[16,23],[15,23],[14,23],[13,23],[13,22],[14,22],[15,22],[16,22],[17,22],[17,21],[16,21],[16,20],[17,20]],"skin":5},{"id":"s20","color":"gold","d":1,"cells":[[11,16],[11,15],[12,15],[13,15],[13,16],[13,17],[14,17],[14,16],[14,15],[15,15]],"skin":3},{"id":"s21","color":"gold","d":0,"cells":[[2,10],[3,10],[3,9],[3,8],[4,8],[4,9],[5,9],[5,8]],"skin":2},{"id":"s22","color":"gold","d":3,"cells":[[6,20],[6,21],[5,21],[4,21],[4,20],[4,19],[3,19],[3,20],[3,21],[3,22],[2,22]],"skin":2},{"id":"s23","color":"gold","d":0,"cells":[[8,21],[9,21],[9,22],[10,22],[11,22],[12,22],[12,23],[11,23],[10,23],[9,23],[8,23],[7,23],[6,23],[6,22]],"skin":4},{"id":"s24","color":"gold","d":3,"cells":[[5,22],[5,23],[4,23],[3,23],[2,23],[1,23],[1,22],[0,22]],"skin":3},{"id":"s25","color":"gold","d":2,"cells":[[17,19],[17,18],[17,17],[17,16],[16,16],[15,16],[15,17],[16,17],[16,18],[15,18],[14,18],[13,18],[12,18],[11,18],[10,18],[9,18],[8,18],[8,17],[9,17],[9,16],[8,16],[7,16],[7,17],[7,18],[7,19],[7,20],[7,21],[7,22]],"skin":0},{"id":"s26","color":"gold","d":2,"cells":[[16,7],[16,6],[17,6],[17,7],[17,8],[17,9],[16,9],[16,8],[15,8],[15,9]],"skin":3},{"id":"s27","color":"gold","d":3,"cells":[[2,20],[2,21],[1,21],[0,21],[0,20],[0,19],[0,18],[0,17],[0,16],[1,16],[1,15],[0,15]],"skin":1},{"id":"s28","color":"gold","d":3,"cells":[[6,17],[6,16],[5,16],[4,16],[4,17],[4,18],[5,18],[6,18],[6,19],[5,19]],"skin":5},{"id":"s29","color":"gold","d":2,"cells":[[12,10],[11,10],[11,11],[12,11],[12,12],[11,12],[10,12],[9,12],[9,13]],"skin":5},{"id":"s30","color":"gold","d":2,"cells":[[14,21],[15,21],[15,20],[15,19],[14,19],[13,19],[12,19],[11,19],[11,20],[12,20],[13,20],[13,21]],"skin":3},{"id":"s31","color":"gold","d":0,"cells":[[15,5],[14,5],[14,4],[13,4],[12,4],[11,4],[11,3],[12,3],[13,3],[14,3],[15,3],[15,2],[15,1]],"skin":2},{"id":"s32","color":"gold","d":3,"cells":[[1,7],[1,8],[0,8],[0,7],[0,6],[0,5],[1,5],[1,4],[0,4]],"skin":1}],"solution":["s32","s02","s08","s31","s07","s10","s01","s12","s19","s30","s20","s05","s14","s16","s27","s18","s06","s04","s21","s03","s09","s17","s24","s22","s13","s28","s23","s25","s11","s26","s15","s29"],"metrics":{"maskCells":428,"bodyCells":404,"snakeCount":32,"fillRate":0.943925,"lengthMin":7,"lengthMedian":11.0,"lengthMean":12.625,"lengthMax":29,"lengthBands":{"short2to8":6,"medium9to17":22,"long18plus":4},"turnsTotal":188,"turnsMedian":5.0,"snakesWith3PlusTurns":32,"snakesWith5PlusTurns":28,"straightSnakes":0,"headDirections":{"0":7,"1":7,"2":6,"3":12},"skinCounts":{"0":6,"1":6,"2":5,"3":5,"4":5,"5":5},"initialChoices":7,"dependencyEdges":68,"dependencyDepth":11,"dependencyLayers":[["s02","s08","s12","s19","s24","s27","s32"],["s07","s18","s20","s22","s30","s31"],["s05","s10","s13","s16","s28"],["s01","s06","s14"],["s04"],["s09","s21"],["s03","s17"],["s23"],["s25"],["s11","s15"],["s26","s29"]],"blockersById":{"s01":["s07","s10","s32"],"s02":[],"s03":["s05","s06","s07","s10","s14","s21"],"s04":["s06"],"s05":["s07"],"s06":["s05"],"s07":["s32"],"s08":[],"s09":["s01","s04","s07","s10","s32"],"s10":["s07","s32"],"s11":["s19","s20","s25","s30"],"s12":[],"s13":["s18","s22","s24","s27"],"s14":["s05","s07"],"s15":["s20","s25"],"s16":["s19","s30"],"s17":["s01","s04","s06","s09"],"s18":["s27"],"s19":[],"s20":["s12"],"s21":["s01","s04","s06","s10"],"s22":["s24"],"s23":["s01","s03","s04","s06","s17","s22","s28"],"s24":[],"s25":["s23"],"s26":["s11","s12","s19","s20","s25","s30"],"s27":[],"s28":["s18","s22","s27"],"s29":["s15","s16","s23","s25"],"s30":["s19"],"s31":["s08"],"s32":[]},"independentTopologicalSolution":["s02","s08","s12","s19","s24","s27","s32","s31","s20","s30","s22","s18","s07","s16","s13","s28","s05","s10","s06","s14","s01","s04","s09","s21","s17","s03","s23","s25","s11","s15","s26","s29"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[7,7,6,6,5,6,6,5,5,5,5,4,5,4,3,3,2,2,3,3,2,2,1,1,2,1,1,1,2,2,1,1],"bodyFollowReplaySteps":587,"releaseStages":[{"removed":0,"remaining":32,"legalIds":["s02","s08","s12","s19","s24","s27","s32"],"occupiedCells":404,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30","s31","s32"]},{"removed":8,"remaining":24,"legalIds":["s05","s19","s20","s24","s27"],"occupiedCells":309,"remainingIds":["s03","s04","s05","s06","s09","s11","s13","s14","s15","s16","s17","s18","s19","s20","s21","s22","s23","s24","s25","s26","s27","s28","s29","s30"]},{"removed":16,"remaining":16,"legalIds":["s06","s24"],"occupiedCells":224,"remainingIds":["s03","s04","s06","s09","s11","s13","s15","s17","s21","s22","s23","s24","s25","s26","s28","s29"]},{"removed":24,"remaining":8,"legalIds":["s13","s28"],"occupiedCells":106,"remainingIds":["s11","s13","s15","s23","s25","s26","s28","s29"]},{"removed":32,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":69,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s01","s14","s15","s20","s26","s27","s32"],"crossBandDependencyEdges":[["s07","s01"],["s10","s01"],["s05","s03"],["s06","s03"],["s07","s03"],["s10","s03"],["s14","s03"],["s32","s07"],["s01","s09"],["s32","s09"],["s32","s10"],["s19","s11"],["s20","s11"],["s25","s11"],["s30","s11"],["s18","s13"],["s22","s13"],["s24","s13"],["s27","s13"],["s05","s14"],["s07","s14"],["s25","s15"],["s01","s17"],["s04","s17"],["s06","s17"],["s09","s17"],["s27","s18"],["s12","s20"],["s01","s21"],["s04","s21"],["s06","s21"],["s10","s21"],["s01","s23"],["s03","s23"],["s04","s23"],["s06","s23"],["s17","s23"],["s11","s26"],["s12","s26"],["s19","s26"],["s20","s26"],["s25","s26"],["s30","s26"],["s27","s28"],["s15","s29"],["s16","s29"],["s23","s29"],["s25","s29"]],"perSnake":[{"id":"s01","length":28,"turns":14,"straightRuns":[1,3,3,1,2,1,4,1,1,1,2,2,2,2,1],"staircaseCorners":1},{"id":"s02","length":9,"turns":5,"straightRuns":[1,1,3,1,1,1],"staircaseCorners":1},{"id":"s03","length":12,"turns":6,"straightRuns":[1,2,3,1,1,2,1],"staircaseCorners":1},{"id":"s04","length":11,"turns":5,"straightRuns":[1,1,2,1,4,1],"staircaseCorners":0},{"id":"s05","length":8,"turns":6,"straightRuns":[1,1,1,1,1,1,1],"staircaseCorners":3},{"id":"s06","length":12,"turns":5,"straightRuns":[1,3,1,2,1,3],"staircaseCorners":0},{"id":"s07","length":12,"turns":5,"straightRuns":[1,4,1,2,2,1],"staircaseCorners":0},{"id":"s08","length":7,"turns":3,"straightRuns":[1,1,1,3],"staircaseCorners":1},{"id":"s09","length":29,"turns":14,"straightRuns":[1,2,2,2,3,1,2,1,1,1,2,2,3,1,4],"staircaseCorners":1},{"id":"s10","length":7,"turns":4,"straightRuns":[2,1,1,1,1],"staircaseCorners":1},{"id":"s11","length":13,"turns":5,"straightRuns":[3,1,4,1,1,2],"staircaseCorners":1},{"id":"s12","length":10,"turns":5,"straightRuns":[2,1,1,1,2,2],"staircaseCorners":1},{"id":"s13","length":8,"turns":4,"straightRuns":[1,1,2,2,1],"staircaseCorners":0},{"id":"s14","length":12,"turns":5,"straightRuns":[1,1,3,2,2,2],"staircaseCorners":0},{"id":"s15","length":14,"turns":6,"straightRuns":[2,1,4,1,1,2,2],"staircaseCorners":1},{"id":"s16","length":9,"turns":5,"straightRuns":[1,1,1,1,2,2],"staircaseCorners":1},{"id":"s17","length":27,"turns":11,"straightRuns":[2,2,1,2,1,3,3,1,5,1,3,2],"staircaseCorners":0},{"id":"s18","length":9,"turns":5,"straightRuns":[2,1,1,1,2,1],"staircaseCorners":1},{"id":"s19","length":13,"turns":6,"straightRuns":[3,1,4,1,1,1,1],"staircaseCorners":1},{"id":"s20","length":10,"turns":5,"straightRuns":[1,2,2,1,2,1],"staircaseCorners":0},{"id":"s21","length":8,"turns":5,"straightRuns":[1,2,1,1,1,1],"staircaseCorners":1},{"id":"s22","length":11,"turns":5,"straightRuns":[1,2,2,1,3,1],"staircaseCorners":0},{"id":"s23","length":14,"turns":5,"straightRuns":[1,1,3,1,6,1],"staircaseCorners":1},{"id":"s24","length":8,"turns":3,"straightRuns":[1,4,1,1],"staircaseCorners":1},{"id":"s25","length":28,"turns":10,"straightRuns":[3,2,1,1,1,8,1,1,1,2,6],"staircaseCorners":2},{"id":"s26","length":10,"turns":6,"straightRuns":[1,1,3,1,1,1,1],"staircaseCorners":1},{"id":"s27","length":12,"turns":5,"straightRuns":[1,2,5,1,1,1],"staircaseCorners":1},{"id":"s28","length":10,"turns":5,"straightRuns":[1,2,2,2,1,1],"staircaseCorners":0},{"id":"s29","length":9,"turns":5,"straightRuns":[1,1,1,1,3,1],"staircaseCorners":1},{"id":"s30","length":12,"turns":5,"straightRuns":[1,2,4,1,2,1],"staircaseCorners":0},{"id":"s31","length":13,"turns":5,"straightRuns":[1,1,3,1,4,2],"staircaseCorners":1},{"id":"s32","length":9,"turns":5,"straightRuns":[1,1,3,1,1,1],"staircaseCorners":1}],"geometrySha256":"c84cb7d79e80e5ad35c69364e8efa954cc856b3a9c255b505a52021550b4533f"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":62743,"iterations":180000,"acceptedMutations":2387,"geometryScore":867.9,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"},"ruleVersion":2},{"id":"dense-05","title":"初遇回环","titleEn":"First Loops","width":8,"height":8,"size":8,"mode":"classic","phaseEnabled":false,"shape":"rounded","difficulty":"onboarding","mask":[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[0,1],[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[7,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[0,3],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[0,4],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[0,5],[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7]],"arrows":[{"id":"s01","color":"gold","d":2,"cells":[[2,0],[2,1],[2,2],[3,2],[3,1],[3,0],[4,0],[4,1],[4,2],[4,3],[3,3],[2,3],[2,4]],"skin":5},{"id":"s02","color":"gold","d":3,"cells":[[6,7],[6,6],[7,6],[7,5],[6,5]],"skin":0},{"id":"s03","color":"gold","d":1,"cells":[[4,7],[5,7],[5,6],[5,5],[4,5],[3,5],[3,4],[4,4]],"skin":2},{"id":"s04","color":"gold","d":1,"cells":[[7,2],[7,1],[6,1],[6,2],[5,2],[5,1],[5,0],[6,0]],"skin":2},{"id":"s05","color":"gold","d":2,"cells":[[2,5],[1,5],[1,4],[0,4],[0,5],[0,6]],"skin":4},{"id":"s06","color":"gold","d":0,"cells":[[0,3],[1,3],[1,2],[0,2],[0,1],[1,1],[1,0]],"skin":1},{"id":"s07","color":"gold","d":0,"cells":[[7,4],[7,3],[6,3],[6,4],[5,4],[5,3]],"skin":3},{"id":"s08","color":"gold","d":2,"cells":[[2,7],[1,7],[1,6],[2,6],[3,6],[3,7]],"skin":0}],"solution":["s05","s06","s04","s07","s03","s02","s08","s01"],"metrics":{"maskCells":60,"bodyCells":59,"snakeCount":8,"fillRate":0.983333,"lengthMin":5,"lengthMedian":6.5,"lengthMean":7.375,"lengthMax":13,"lengthBands":{"short2to8":7,"medium9to17":1,"long18plus":0},"turnsTotal":33,"turnsMedian":4.0,"snakesWith3PlusTurns":8,"snakesWith5PlusTurns":3,"straightSnakes":0,"headDirections":{"0":2,"1":2,"2":3,"3":1},"skinCounts":{"0":2,"1":1,"2":2,"3":1,"4":1,"5":1},"initialChoices":4,"dependencyEdges":6,"dependencyDepth":4,"dependencyLayers":[["s04","s05","s06","s08"],["s01","s07"],["s03"],["s02"]],"blockersById":{"s01":["s05","s08"],"s02":["s03","s05"],"s03":["s07"],"s04":[],"s05":[],"s06":[],"s07":["s04"],"s08":[]},"independentTopologicalSolution":["s04","s05","s06","s08","s07","s01","s03","s02"],"allLegalOrdersSolvable":true,"randomLegalReplays":48,"witnessChoiceCounts":[4,3,2,2,2,2,1,1],"bodyFollowReplaySteps":84,"releaseStages":[{"removed":0,"remaining":8,"legalIds":["s04","s05","s06","s08"],"occupiedCells":59,"remainingIds":["s01","s02","s03","s04","s05","s06","s07","s08"]},{"removed":2,"remaining":6,"legalIds":["s04","s08"],"occupiedCells":46,"remainingIds":["s01","s02","s03","s04","s07","s08"]},{"removed":4,"remaining":4,"legalIds":["s03","s08"],"occupiedCells":32,"remainingIds":["s01","s02","s03","s08"]},{"removed":6,"remaining":2,"legalIds":["s08"],"occupiedCells":19,"remainingIds":["s01","s08"]},{"removed":8,"remaining":0,"legalIds":[],"occupiedCells":0,"remainingIds":[]}],"touchingSnakePairs":13,"sameSkinTouchingPairs":[],"thirdBandCrossingIds":["s01","s02","s03","s05","s06"],"crossBandDependencyEdges":[["s05","s01"],["s08","s01"],["s07","s03"],["s04","s07"]],"perSnake":[{"id":"s01","length":13,"turns":6,"straightRuns":[2,1,2,1,3,2,1],"staircaseCorners":0},{"id":"s02","length":5,"turns":3,"straightRuns":[1,1,1,1],"staircaseCorners":1},{"id":"s03","length":8,"turns":4,"straightRuns":[1,2,2,1,1],"staircaseCorners":0},{"id":"s04","length":8,"turns":5,"straightRuns":[1,1,1,1,2,1],"staircaseCorners":1},{"id":"s05","length":6,"turns":3,"straightRuns":[1,1,1,2],"staircaseCorners":1},{"id":"s06","length":7,"turns":5,"straightRuns":[1,1,1,1,1,1],"staircaseCorners":2},{"id":"s07","length":6,"turns":4,"straightRuns":[1,1,1,1,1],"staircaseCorners":1},{"id":"s08","length":6,"turns":3,"straightRuns":[1,1,2,1],"staircaseCorners":0}],"geometrySha256":"0914c292d76e1e9fe5f303ee9d4ce08f3892dfcea5d214d7c83bfdcbe1020e1e"},"generation":{"version":1,"algorithm":"annealed-connected-path-cover","seed":10639,"iterations":180000,"acceptedMutations":680,"geometryScore":122.769,"source":"original analytic mask + seeded search","metricDefinitions":{"fillRate":"occupied cells / playable mask cells; not pixel area","length":"number of ordered grid cells, including tail and head","turns":"90-degree direction changes between consecutive grid edges","dependencyDepth":"number of simultaneous topological removal waves","thirdBandCrossingIds":"paths spanning horizontal thirds; geometric proxy only","sameSkinTouchingPairs":"distinct snakes sharing a grid edge and skin"},"qualityStatus":"geometry-verified; renderer-and-player-review-pending"},"ruleVersion":2}];
     </script>
     <script>
       (function () {
   "use strict";
   const C = window.VectorShiftDenseCore,
+    M = window.VectorShiftDenseMotion,
     L = DENSE_LEVELS,
     channel = window.VS_CHANNEL || "demo",
     en =
@@ -1604,9 +1762,9 @@ dialog::backdrop {
     if (showHead) head(c, points[points.length - 1], d, col);
     c.restore();
   }
-  function raster(m) {
-    const xs = m.points.map((p) => p.x),
-      ys = m.points.map((p) => p.y),
+  function raster(m, points = m.points, moving = false) {
+    const xs = points.map((p) => p.x),
+      ys = points.map((p) => p.y),
       x = Math.min(...xs) - P,
       y = Math.min(...ys) - P,
       w = Math.max(...xs) - x + P,
@@ -1618,7 +1776,7 @@ dialog::backdrop {
     const c = image.getContext("2d");
     c.scale(s, s);
     c.translate(-x, -y);
-    tube(c, m.points, m.col, m.a.d);
+    tube(c, points, m.col, m.a.d, !moving, !moving);
     return { image, x, y, w: image.width / s, h: image.height / s };
   }
   function buildModels() {
@@ -1630,6 +1788,16 @@ dialog::backdrop {
         col: colors[(a.skin ?? a.id) % colors.length],
       };
       m.sprite = raster(m);
+      m.plan = M.plan(lv(), a, m.points, 0, P, PAD, W);
+      m.movingSprite = raster(m, m.plan.points, true);
+      m.cap = raster(
+        m,
+        [
+          { x: 0, y: 0 },
+          { x: 0.001, y: 0 },
+        ],
+        true,
+      );
       models.set(a.id, m);
     }
   }
@@ -1720,74 +1888,117 @@ dialog::backdrop {
     ctx.stroke();
     ctx.restore();
   }
-  function cumulative(points) {
-    const d = [0];
-    for (let i = 1; i < points.length; i++)
-      d.push(
-        d[i - 1] +
-          Math.hypot(
-            points[i].x - points[i - 1].x,
-            points[i].y - points[i - 1].y,
-          ),
+  function envelope(points, radius) {
+    const p = new Path2D(),
+      left = [],
+      right = [];
+    for (let i = 0; i < points.length; i++) {
+      const a = points[Math.max(0, i - 1)],
+        b = points[Math.min(points.length - 1, i + 1)],
+        len = Math.hypot(b.x - a.x, b.y - a.y) || 1,
+        nx = -(b.y - a.y) / len,
+        ny = (b.x - a.x) / len;
+      left.push({ x: points[i].x + nx * radius, y: points[i].y + ny * radius });
+      right.push({
+        x: points[i].x - nx * radius,
+        y: points[i].y - ny * radius,
+      });
+    }
+    p.moveTo(left[0].x, left[0].y);
+    for (const v of left.slice(1)) p.lineTo(v.x, v.y);
+    const tip = points.at(-1),
+      n = left.at(-1),
+      angle = Math.atan2(n.y - tip.y, n.x - tip.x);
+    p.arc(tip.x, tip.y, radius, angle, angle - Math.PI, true);
+    for (const v of right.reverse()) p.lineTo(v.x, v.y);
+    const tail = points[0],
+      a = Math.atan2(right.at(-1).y - tail.y, right.at(-1).x - tail.x);
+    p.arc(tail.x, tail.y, radius, a, a - Math.PI, true);
+    p.closePath();
+    return p;
+  }
+  function movingBody(a, now) {
+    const frame = M.frame(a, now - a.start);
+    if (frame.done) return;
+    const m = models.get(a.id),
+      s = m.movingSprite,
+      points = frame.points,
+      p = path(points);
+    ctx.save();
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.lineWidth = W + 1.4;
+    ctx.save();
+    ctx.translate(0.65, 1.8);
+    ctx.strokeStyle = "rgba(80,65,30,.16)";
+    ctx.shadowColor = "rgba(85,64,28,.15)";
+    ctx.shadowBlur = 2.5;
+    ctx.stroke(p);
+    ctx.restore();
+    ctx.save();
+    ctx.clip(envelope(points, W / 2 + 0.6));
+    ctx.drawImage(s.image, s.x, s.y, s.w, s.h);
+    ctx.restore();
+    // Only the moving tail hemisphere changes its illumination; the body texture is cached.
+    const tail = points[0],
+      neck = points[1],
+      angle = Math.atan2(neck.y - tail.y, neck.x - tail.x),
+      cap = m.cap;
+    ctx.save();
+    ctx.translate(tail.x, tail.y);
+    ctx.rotate(angle);
+    ctx.beginPath();
+    ctx.rect(-W, -W, W, W * 2);
+    ctx.clip();
+    ctx.rotate(-angle);
+    ctx.drawImage(cap.image, cap.x, cap.y, cap.w, cap.h);
+    ctx.restore();
+    head(ctx, frame.head, a.d, m.col);
+    ctx.restore();
+  }
+  function settle(now = performance.now(), all = false) {
+    const done = animations.filter(
+      (a) => a.kind === "exit" && (all || now - a.start >= a.duration),
+    );
+    if (!done.length) return;
+    animations = animations.filter((a) => !done.includes(a));
+    for (const a of done) {
+      const next = C.transition(lv(), state, { type: "remove", id: a.id });
+      if (next.moves !== state.moves + 1)
+        throw new Error("Reserved release became blocked");
+      state = next;
+    }
+    chrome();
+    keyboard();
+    save();
+    if (!state.remaining.length && finished === null) {
+      finished = elapsed();
+      const result = { elapsed: finished, hints, mistakes },
+        old = completed[lv().id];
+      if (
+        !old ||
+        hints < old.hints ||
+        (hints === old.hints && finished < old.elapsed)
+      )
+        completed[lv().id] = result;
+      save();
+      const generation = epoch;
+      finishTimer = setTimeout(
+        () => {
+          if (generation === epoch && !state.remaining.length) {
+            sound("win");
+            showWin();
+          }
+        },
+        reduce() ? 0 : 160,
       );
-    return d;
-  }
-  function sample(points, dist, s) {
-    if (s <= 0) return points[0];
-    let lo = 0,
-      hi = dist.length - 1;
-    if (s >= dist[hi]) return points[hi];
-    while (hi - lo > 1) {
-      const mid = (lo + hi) >> 1;
-      if (dist[mid] < s) lo = mid;
-      else hi = mid;
     }
-    const k = (s - dist[lo]) / (dist[hi] - dist[lo] || 1);
-    return {
-      x: points[lo].x + (points[hi].x - points[lo].x) * k,
-      y: points[lo].y + (points[hi].y - points[lo].y) * k,
-    };
-  }
-  function exitMotion(id, now) {
-    const m = models.get(id),
-      points = m.points.map((p) => ({ ...p })),
-      d = m.a.d,
-      [dx, dy] = DIR[d],
-      mask = C.playableSet(lv());
-    let [x, y] = m.a.cells[m.a.cells.length - 1];
-    while (mask.has(x + dx + "," + (y + dy))) {
-      x += dx;
-      y += dy;
-    }
-    const edge = {
-        x: PAD + (x + 0.5 + dx * 0.5) * P,
-        y: PAD + (y + 0.5 + dy * 0.5) * P,
-      },
-      last = points[points.length - 1],
-      oldDist = cumulative(points),
-      length = oldDist[oldDist.length - 1],
-      leave = Math.hypot(edge.x - last.x, edge.y - last.y) + P * 1.5;
-    points.push({ x: last.x + dx * leave, y: last.y + dy * leave });
-    const dist = cumulative(points),
-      total = dist[dist.length - 1];
-    return {
-      kind: "exit",
-      id,
-      start: now,
-      duration: Math.min(620, 260 + total * 0.27),
-      points,
-      dist,
-      length,
-      total,
-      exitDistance: length + Math.hypot(edge.x - last.x, edge.y - last.y),
-      edge,
-      d,
-    };
   }
   function paint(now = performance.now()) {
     cancelAnimationFrame(raf);
     raf = 0;
     if (!state) return;
+    settle(now);
     ctx.setTransform(display.dpr, 0, 0, display.dpr, 0, 0);
     ctx.clearRect(0, 0, display.w, display.h);
     ctx.save();
@@ -1803,48 +2014,32 @@ dialog::backdrop {
     ])
       if (id !== null && on && active.has(id)) highlight(id, color);
     for (const id of state.remaining) {
+      if (animations.some((a) => a.kind === "exit" && a.id === id)) continue;
       const m = models.get(id),
         s = m.sprite,
         a = animations.find((a) => a.kind === "blocked" && a.id === id);
       ctx.save();
       if (a) {
         const n =
-          Math.sin(Math.min(1, (now - a.start) / a.duration) * Math.PI) *
+          16 *
+          Math.pow(Math.min(1, (now - a.start) / a.duration), 2) *
+          Math.pow(1 - Math.min(1, (now - a.start) / a.duration), 2) *
           P *
-          0.08;
+          0.05;
         ctx.translate(DIR[m.a.d][0] * n, DIR[m.a.d][1] * n);
       }
       ctx.drawImage(s.image, s.x, s.y, s.w, s.h);
       ctx.restore();
     }
-    for (const a of animations) {
-      if (a.kind !== "exit") continue;
-      const f = Math.max(0, Math.min(1, (now - a.start) / a.duration)),
-        advance = a.total * f * f * (3 - 2 * f);
-      if (advance >= a.exitDistance) continue;
-      const end = Math.min(advance + a.length, a.exitDistance),
-        points = [sample(a.points, a.dist, advance)];
-      for (let k = 0; k < a.points.length; k++)
-        if (a.dist[k] > advance && a.dist[k] < end) points.push(a.points[k]);
-      points.push(sample(a.points, a.dist, end));
-      ctx.save();
-      ctx.globalAlpha = Math.min(1, (a.exitDistance - advance) / W);
-      tube(
-        ctx,
-        points,
-        models.get(a.id).col,
-        a.d,
-        true,
-        advance + a.length < a.exitDistance,
-      );
-      ctx.restore();
-    }
+    for (const a of animations) if (a.kind === "exit") movingBody(a, now);
     if (hinted !== null && now < hintUntil && active.has(hinted))
       ray(hinted, false);
     if (blocked !== null && now < blockUntil && active.has(blocked))
       ray(blocked, true);
     ctx.restore();
-    animations = animations.filter((a) => now - a.start < a.duration);
+    animations = animations.filter(
+      (a) => a.kind === "exit" || now - a.start < a.duration,
+    );
     if (
       animations.length ||
       (hinted !== null && now < hintUntil) ||
@@ -1858,7 +2053,8 @@ dialog::backdrop {
       `${String(index + 1).padStart(2, "0")} / ${String(L.length).padStart(2, "0")}`;
     $("remainingCount").textContent = state.remaining.length;
     $("remainingLabel").textContent = tr("条待解", "to untangle");
-    $("undoButton").disabled = !state.history.length;
+    $("undoButton").disabled =
+      !state.history.length && !animations.some((a) => a.kind === "exit");
     $("hintButton").disabled = !state.remaining.length;
     const progress = (1 - state.remaining.length / lv().arrows.length) * 100;
     $("progressFill").style.width = progress + "%";
@@ -1954,57 +2150,68 @@ dialog::backdrop {
     save();
   }
   function attempt(id) {
-    if (!state.remaining.includes(id) || $("gameDialog").open) return false;
-    const obstacles = C.blockers(lv(), state, id);
-    selected = hinted = focusId = null;
     const now = performance.now();
-    if (obstacles.length) {
-      mistakes++;
+    settle(now);
+    if (
+      !state.remaining.includes(id) ||
+      $("gameDialog").open ||
+      animations.some((a) => a.kind === "exit" && a.id === id)
+    )
+      return false;
+    const obstacles = C.blockers(lv(), state, id),
+      crossing = M.conflicts(lv(), id, animations);
+    selected = hinted = focusId = null;
+    if (obstacles.length || crossing.length) {
+      const moving =
+        obstacles.some((id) =>
+          animations.some((a) => a.kind === "exit" && a.id === id),
+        ) || crossing.length;
+      if (!moving) mistakes++;
       blocked = id;
-      blockUntil = now + 500;
+      blockUntil = now + 620;
+      animations = animations.filter(
+        (a) => !(a.kind === "blocked" && a.id === id),
+      );
       if (!reduce())
-        animations.push({ kind: "blocked", id, start: now, duration: 170 });
-      message(words.block, "blocked");
+        animations.push({ kind: "blocked", id, start: now, duration: 240 });
+      message(
+        moving
+          ? tr(
+              "等前面的小蛇完全离开，再试一下。",
+              "Let the moving snake clear the path first.",
+            )
+          : words.block,
+        "blocked",
+      );
       sound("blocked");
       save();
       paint();
       return false;
     }
-    const a = exitMotion(id, now);
-    state = C.transition(lv(), state, { type: "remove", id });
+    const a = { ...models.get(id).plan, start: now };
+    animations = animations.filter(
+      (a) => !(a.kind === "blocked" && a.id === id),
+    );
+    animations.push(a);
     blocked = null;
-    if (!reduce()) animations.push(a);
     message(words.released, "success");
     sound("release");
+    if (reduce()) settle(now, true);
     chrome();
-    keyboard();
     save();
     paint();
-    if (!state.remaining.length) {
-      finished = elapsed();
-      const result = { elapsed: finished, hints, mistakes },
-        old = completed[lv().id];
-      if (
-        !old ||
-        hints < old.hints ||
-        (hints === old.hints && finished < old.elapsed)
-      )
-        completed[lv().id] = result;
-      save();
-      const generation = epoch;
-      finishTimer = setTimeout(
-        () => {
-          if (generation === epoch && !state.remaining.length) {
-            sound("win");
-            showWin();
-          }
-        },
-        reduce() ? 0 : Math.min(450, a.duration),
-      );
-    }
     return true;
   }
   function undo() {
+    const pending = animations.findLast((a) => a.kind === "exit");
+    if (pending) {
+      animations = animations.filter((a) => a !== pending);
+      selected = hinted = blocked = focusId = null;
+      chrome();
+      message(tr("已经退回上一步。", "Back where it belongs."));
+      paint();
+      return;
+    }
     if (!state.history.length) return;
     closeDialog();
     cancel();
@@ -2026,7 +2233,12 @@ dialog::backdrop {
     message(tr("重新梳理，一点点解开。", "A fresh start."));
   }
   function hint() {
-    const action = C.solve(lv(), state).actions?.[0];
+    const action = C.solve(lv(), state).actions?.find(
+      (a) =>
+        C.clearPath(lv(), state, a.id) &&
+        !animations.some((f) => f.kind === "exit" && f.id === a.id) &&
+        !M.conflicts(lv(), a.id, animations).length,
+    );
     if (!action) return;
     hinted = action.id;
     hintUntil = performance.now() + 1800;
@@ -2109,7 +2321,7 @@ dialog::backdrop {
     $("motionSetting").onchange = (e) => {
       settings.reduce = e.target.checked;
       if (reduce()) {
-        animations = [];
+        settle(performance.now(), true);
         paint();
       }
       save();
@@ -2143,6 +2355,7 @@ dialog::backdrop {
     let best = null,
       distance = Infinity;
     for (const id of state.remaining) {
+      if (animations.some((a) => a.kind === "exit" && a.id === id)) continue;
       const m = models.get(id),
         h = m.points[m.points.length - 1];
       let d = Math.hypot(p.x - h.x, p.y - h.y) * 0.95;
@@ -2186,6 +2399,7 @@ dialog::backdrop {
   }
   cv.addEventListener("pointerdown", (e) => {
     if (e.button !== 0) return;
+    cv.setAttribute("data-pointer-focus", "");
     e.preventDefault();
     cv.focus({ preventScroll: true });
     cv.setPointerCapture(e.pointerId);
@@ -2338,6 +2552,7 @@ dialog::backdrop {
     { passive: false },
   );
   cv.addEventListener("keydown", (e) => {
+    cv.removeAttribute("data-pointer-focus");
     if (!state.remaining.length) return;
     if (["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp"].includes(e.key)) {
       e.preventDefault();
@@ -2439,7 +2654,7 @@ dialog::backdrop {
   select(initial, params.has("fresh"));
   new ResizeObserver(resize).observe($("boardRegion"));
   motion.addEventListener("change", () => {
-    if (reduce()) animations = [];
+    if (reduce()) settle(performance.now(), true);
     paint();
   });
   document.addEventListener("visibilitychange", () => {
@@ -2461,6 +2676,13 @@ dialog::backdrop {
       getStats: () => ({ mistakes, hints, elapsed: elapsed(), finished }),
       setLevel: (n) => select(n - 1, true),
       getSolution: () => C.solve(lv(), state),
+      getLaunchable: () =>
+        state.remaining.filter(
+          (id) =>
+            C.clearPath(lv(), state, id) &&
+            !animations.some((a) => a.kind === "exit" && a.id === id) &&
+            !M.conflicts(lv(), id, animations).length,
+        ),
       tap: attempt,
       undo,
       retry,
@@ -2489,7 +2711,7 @@ dialog::backdrop {
       setReduced: (v) => {
         settings.reduce = !!v;
         save();
-        if (reduce()) animations = [];
+        if (reduce()) settle(performance.now(), true);
         paint();
       },
       render: paint,

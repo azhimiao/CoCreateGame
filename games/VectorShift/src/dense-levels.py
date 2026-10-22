@@ -8,7 +8,7 @@ Audit saved data: python -B src/dense-levels.py --verify
 Geometry is generated from analytic silhouettes and seeded path-cover search;
 no reference-game coordinates, assets, or puzzles are inputs. Cells are ordered
 tail -> head; d is the last edge (0 up, 1 right, 2 down, 3 left). A ray ends at
-the FIRST mask void. Removing a legal snake is monotonic. Rendering should move
+the outer board boundary, crossing all mask gaps. Removing a legal snake is monotonic. Rendering should move
 the body along its ordered path behind the head, never translate the whole body.
 
 Search starts with a row cover, then repeatedly exchanges connected segments
@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter, deque
 import hashlib
+import itertools
 import json
 import math
 from pathlib import Path
@@ -33,7 +34,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "data" / "dense-levels.json"
-VERSION = 1
+VERSION = 2
 DIRS = ((0, -1), (1, 0), (0, 1), (-1, 0))
 
 
@@ -99,6 +100,8 @@ def initial_cover(mask, count, rng):
 
 
 def endpoint_blockers(paths, mask, owner):
+    width = max(x for x, y in mask) + 1
+    height = max(y for x, y in mask) + 1
     result = []
     for i, p in enumerate(paths):
         options = []
@@ -106,7 +109,7 @@ def endpoint_blockers(paths, mask, owner):
             dx, dy = head[0] - neck[0], head[1] - neck[1]
             x, y = head[0] + dx, head[1] + dy
             blocked = 0
-            while (x, y) in mask:
+            while 0 <= x < width and 0 <= y < height:
                 j = owner.get((x, y))
                 if j is not None:
                     # Reject a head pointing back through its own body too:
@@ -432,7 +435,7 @@ def audit(level):
         ray, blocked = [], set()
         while True:
             x, y = x + dx, y + dy
-            if (x, y) not in mask:
+            if not (0 <= x < w and 0 <= y < h):
                 break
             ray.append((x, y))
             other = owner.get((x, y))
@@ -476,8 +479,8 @@ def audit(level):
         fail(sid in legal, f"Illegal witness move {sid} at {step}")
         choice_counts.append(len(legal))
         # Actual body-follow replay: pop tail, add next head cell. Once the
-        # head reaches the first void, clip its continuation out of the board.
-        # This matches first-void exit even for a future concave silhouette.
+        # head reaches the full rectangular boundary, its continuation is outside.
+        # Silhouette gaps are empty space, never teleport exits.
         p = deque(map(tuple, by_id[sid]["cells"]))
         dx, dy = DIRS[by_id[sid]["d"]]
         hx, hy = p[-1]
@@ -485,7 +488,7 @@ def audit(level):
         for tick in range(len(rays[sid]) + len(p) + 1):
             new_head = hx+dx, hy+dy
             hx, hy = new_head
-            if new_head not in mask:
+            if not (0 <= new_head[0] < w and 0 <= new_head[1] < h):
                 exited = True
             p.popleft()
             if not exited:
@@ -574,7 +577,7 @@ def generate(config, iterations):
     paths = trim_tails(paths, set(mask), seed)
     skins = assign_skins(paths, seed)
     ids = [f"s{i+1:02d}" for i in range(count)]
-    level = {"id": lid, "title": title, "titleEn": title_en,
+    level = {"id": lid, "title": title, "titleEn": title_en, "ruleVersion": 2,
              "width": w, "height": h, "size": max(w, h),
              "mode": "classic", "phaseEnabled": False, "shape": shape,
              "difficulty": "onboarding" if count <= 8 else "dense",
@@ -630,12 +633,61 @@ def summary(level):
             "edges": m["dependencyEdges"], "score": level["generation"]["geometryScore"]}
 
 
+def repair_exits(level):
+    """Migrate existing authored geometry with the fewest head/tail reversals.
+
+    This preserves the published silhouettes and colours. It also supplies a
+    deterministic migration for the v1 first-void rule, separate from new search.
+    """
+    paths = [list(map(tuple, a["cells"])) for a in level["arrows"]]
+    options = endpoint_blockers(paths, set(map(tuple, level["mask"])),
+                                {c: i for i, path in enumerate(paths) for c in path})
+    def peel(flips):
+        alive, witness = (1 << len(paths)) - 1, []
+        while alive:
+            ready = [i for i in range(len(paths)) if alive >> i & 1
+                     and not options[i][0 if i in flips else 1] & alive]
+            if not ready:
+                return None
+            for i in ready:
+                alive ^= 1 << i
+                witness.append(level["arrows"][i]["id"])
+        return witness
+    for count in range(5):
+        for flips in itertools.combinations(range(len(paths)), count):
+            witness = peel(flips)
+            if witness is not None:
+                for i in flips:
+                    a = level["arrows"][i]
+                    a["cells"].reverse()
+                    a["d"] = direction(a["cells"][-2], a["cells"][-1])
+                # Retain legal existing witnesses; only the changed heart needs one.
+                if flips:
+                    level["solution"] = witness
+                    level.setdefault("generation", {})["exitRepair"] = {
+                        "ruleVersion": 2, "reversedIds": [level["arrows"][i]["id"] for i in flips],
+                        "method": "minimum reversals in ID order; geometry/skin unchanged"}
+                level["ruleVersion"] = 2
+                level["metrics"] = audit(level)
+                quality_gate(level)
+                return
+    raise ValueError("Existing board needs more than four reversals; author a repair explicitly")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--verify", action="store_true", help="Independently audit saved JSON and stored metrics")
+    parser.add_argument("--repair-exits", action="store_true", help="Migrate existing geometry to full-board exit rules")
     parser.add_argument("--iterations", type=int, default=180000)
     parser.add_argument("--only", choices=[c[0] for c in CONFIGS], help="Generate one board to stdout, without writing data")
     args = parser.parse_args()
+    if args.repair_exits:
+        levels = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        for level in levels:
+            repair_exits(level)
+        OUTPUT.write_text(json.dumps(levels, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        print("Verified and migrated five existing layouts to full-board exits")
+        return
     if args.verify:
         levels = json.loads(OUTPUT.read_text(encoding="utf-8"))
         for level in levels:

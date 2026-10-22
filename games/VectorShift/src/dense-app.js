@@ -1,6 +1,7 @@
 (function () {
   "use strict";
   const C = window.VectorShiftDenseCore,
+    M = window.VectorShiftDenseMotion,
     L = DENSE_LEVELS,
     channel = window.VS_CHANNEL || "demo",
     en =
@@ -376,9 +377,9 @@
     if (showHead) head(c, points[points.length - 1], d, col);
     c.restore();
   }
-  function raster(m) {
-    const xs = m.points.map((p) => p.x),
-      ys = m.points.map((p) => p.y),
+  function raster(m, points = m.points, moving = false) {
+    const xs = points.map((p) => p.x),
+      ys = points.map((p) => p.y),
       x = Math.min(...xs) - P,
       y = Math.min(...ys) - P,
       w = Math.max(...xs) - x + P,
@@ -390,7 +391,7 @@
     const c = image.getContext("2d");
     c.scale(s, s);
     c.translate(-x, -y);
-    tube(c, m.points, m.col, m.a.d);
+    tube(c, points, m.col, m.a.d, !moving, !moving);
     return { image, x, y, w: image.width / s, h: image.height / s };
   }
   function buildModels() {
@@ -402,6 +403,16 @@
         col: colors[(a.skin ?? a.id) % colors.length],
       };
       m.sprite = raster(m);
+      m.plan = M.plan(lv(), a, m.points, 0, P, PAD, W);
+      m.movingSprite = raster(m, m.plan.points, true);
+      m.cap = raster(
+        m,
+        [
+          { x: 0, y: 0 },
+          { x: 0.001, y: 0 },
+        ],
+        true,
+      );
       models.set(a.id, m);
     }
   }
@@ -492,74 +503,117 @@
     ctx.stroke();
     ctx.restore();
   }
-  function cumulative(points) {
-    const d = [0];
-    for (let i = 1; i < points.length; i++)
-      d.push(
-        d[i - 1] +
-          Math.hypot(
-            points[i].x - points[i - 1].x,
-            points[i].y - points[i - 1].y,
-          ),
+  function envelope(points, radius) {
+    const p = new Path2D(),
+      left = [],
+      right = [];
+    for (let i = 0; i < points.length; i++) {
+      const a = points[Math.max(0, i - 1)],
+        b = points[Math.min(points.length - 1, i + 1)],
+        len = Math.hypot(b.x - a.x, b.y - a.y) || 1,
+        nx = -(b.y - a.y) / len,
+        ny = (b.x - a.x) / len;
+      left.push({ x: points[i].x + nx * radius, y: points[i].y + ny * radius });
+      right.push({
+        x: points[i].x - nx * radius,
+        y: points[i].y - ny * radius,
+      });
+    }
+    p.moveTo(left[0].x, left[0].y);
+    for (const v of left.slice(1)) p.lineTo(v.x, v.y);
+    const tip = points.at(-1),
+      n = left.at(-1),
+      angle = Math.atan2(n.y - tip.y, n.x - tip.x);
+    p.arc(tip.x, tip.y, radius, angle, angle - Math.PI, true);
+    for (const v of right.reverse()) p.lineTo(v.x, v.y);
+    const tail = points[0],
+      a = Math.atan2(right.at(-1).y - tail.y, right.at(-1).x - tail.x);
+    p.arc(tail.x, tail.y, radius, a, a - Math.PI, true);
+    p.closePath();
+    return p;
+  }
+  function movingBody(a, now) {
+    const frame = M.frame(a, now - a.start);
+    if (frame.done) return;
+    const m = models.get(a.id),
+      s = m.movingSprite,
+      points = frame.points,
+      p = path(points);
+    ctx.save();
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.lineWidth = W + 1.4;
+    ctx.save();
+    ctx.translate(0.65, 1.8);
+    ctx.strokeStyle = "rgba(80,65,30,.16)";
+    ctx.shadowColor = "rgba(85,64,28,.15)";
+    ctx.shadowBlur = 2.5;
+    ctx.stroke(p);
+    ctx.restore();
+    ctx.save();
+    ctx.clip(envelope(points, W / 2 + 0.6));
+    ctx.drawImage(s.image, s.x, s.y, s.w, s.h);
+    ctx.restore();
+    // Only the moving tail hemisphere changes its illumination; the body texture is cached.
+    const tail = points[0],
+      neck = points[1],
+      angle = Math.atan2(neck.y - tail.y, neck.x - tail.x),
+      cap = m.cap;
+    ctx.save();
+    ctx.translate(tail.x, tail.y);
+    ctx.rotate(angle);
+    ctx.beginPath();
+    ctx.rect(-W, -W, W, W * 2);
+    ctx.clip();
+    ctx.rotate(-angle);
+    ctx.drawImage(cap.image, cap.x, cap.y, cap.w, cap.h);
+    ctx.restore();
+    head(ctx, frame.head, a.d, m.col);
+    ctx.restore();
+  }
+  function settle(now = performance.now(), all = false) {
+    const done = animations.filter(
+      (a) => a.kind === "exit" && (all || now - a.start >= a.duration),
+    );
+    if (!done.length) return;
+    animations = animations.filter((a) => !done.includes(a));
+    for (const a of done) {
+      const next = C.transition(lv(), state, { type: "remove", id: a.id });
+      if (next.moves !== state.moves + 1)
+        throw new Error("Reserved release became blocked");
+      state = next;
+    }
+    chrome();
+    keyboard();
+    save();
+    if (!state.remaining.length && finished === null) {
+      finished = elapsed();
+      const result = { elapsed: finished, hints, mistakes },
+        old = completed[lv().id];
+      if (
+        !old ||
+        hints < old.hints ||
+        (hints === old.hints && finished < old.elapsed)
+      )
+        completed[lv().id] = result;
+      save();
+      const generation = epoch;
+      finishTimer = setTimeout(
+        () => {
+          if (generation === epoch && !state.remaining.length) {
+            sound("win");
+            showWin();
+          }
+        },
+        reduce() ? 0 : 160,
       );
-    return d;
-  }
-  function sample(points, dist, s) {
-    if (s <= 0) return points[0];
-    let lo = 0,
-      hi = dist.length - 1;
-    if (s >= dist[hi]) return points[hi];
-    while (hi - lo > 1) {
-      const mid = (lo + hi) >> 1;
-      if (dist[mid] < s) lo = mid;
-      else hi = mid;
     }
-    const k = (s - dist[lo]) / (dist[hi] - dist[lo] || 1);
-    return {
-      x: points[lo].x + (points[hi].x - points[lo].x) * k,
-      y: points[lo].y + (points[hi].y - points[lo].y) * k,
-    };
-  }
-  function exitMotion(id, now) {
-    const m = models.get(id),
-      points = m.points.map((p) => ({ ...p })),
-      d = m.a.d,
-      [dx, dy] = DIR[d],
-      mask = C.playableSet(lv());
-    let [x, y] = m.a.cells[m.a.cells.length - 1];
-    while (mask.has(x + dx + "," + (y + dy))) {
-      x += dx;
-      y += dy;
-    }
-    const edge = {
-        x: PAD + (x + 0.5 + dx * 0.5) * P,
-        y: PAD + (y + 0.5 + dy * 0.5) * P,
-      },
-      last = points[points.length - 1],
-      oldDist = cumulative(points),
-      length = oldDist[oldDist.length - 1],
-      leave = Math.hypot(edge.x - last.x, edge.y - last.y) + P * 1.5;
-    points.push({ x: last.x + dx * leave, y: last.y + dy * leave });
-    const dist = cumulative(points),
-      total = dist[dist.length - 1];
-    return {
-      kind: "exit",
-      id,
-      start: now,
-      duration: Math.min(620, 260 + total * 0.27),
-      points,
-      dist,
-      length,
-      total,
-      exitDistance: length + Math.hypot(edge.x - last.x, edge.y - last.y),
-      edge,
-      d,
-    };
   }
   function paint(now = performance.now()) {
     cancelAnimationFrame(raf);
     raf = 0;
     if (!state) return;
+    settle(now);
     ctx.setTransform(display.dpr, 0, 0, display.dpr, 0, 0);
     ctx.clearRect(0, 0, display.w, display.h);
     ctx.save();
@@ -575,48 +629,32 @@
     ])
       if (id !== null && on && active.has(id)) highlight(id, color);
     for (const id of state.remaining) {
+      if (animations.some((a) => a.kind === "exit" && a.id === id)) continue;
       const m = models.get(id),
         s = m.sprite,
         a = animations.find((a) => a.kind === "blocked" && a.id === id);
       ctx.save();
       if (a) {
         const n =
-          Math.sin(Math.min(1, (now - a.start) / a.duration) * Math.PI) *
+          16 *
+          Math.pow(Math.min(1, (now - a.start) / a.duration), 2) *
+          Math.pow(1 - Math.min(1, (now - a.start) / a.duration), 2) *
           P *
-          0.08;
+          0.05;
         ctx.translate(DIR[m.a.d][0] * n, DIR[m.a.d][1] * n);
       }
       ctx.drawImage(s.image, s.x, s.y, s.w, s.h);
       ctx.restore();
     }
-    for (const a of animations) {
-      if (a.kind !== "exit") continue;
-      const f = Math.max(0, Math.min(1, (now - a.start) / a.duration)),
-        advance = a.total * f * f * (3 - 2 * f);
-      if (advance >= a.exitDistance) continue;
-      const end = Math.min(advance + a.length, a.exitDistance),
-        points = [sample(a.points, a.dist, advance)];
-      for (let k = 0; k < a.points.length; k++)
-        if (a.dist[k] > advance && a.dist[k] < end) points.push(a.points[k]);
-      points.push(sample(a.points, a.dist, end));
-      ctx.save();
-      ctx.globalAlpha = Math.min(1, (a.exitDistance - advance) / W);
-      tube(
-        ctx,
-        points,
-        models.get(a.id).col,
-        a.d,
-        true,
-        advance + a.length < a.exitDistance,
-      );
-      ctx.restore();
-    }
+    for (const a of animations) if (a.kind === "exit") movingBody(a, now);
     if (hinted !== null && now < hintUntil && active.has(hinted))
       ray(hinted, false);
     if (blocked !== null && now < blockUntil && active.has(blocked))
       ray(blocked, true);
     ctx.restore();
-    animations = animations.filter((a) => now - a.start < a.duration);
+    animations = animations.filter(
+      (a) => a.kind === "exit" || now - a.start < a.duration,
+    );
     if (
       animations.length ||
       (hinted !== null && now < hintUntil) ||
@@ -630,7 +668,8 @@
       `${String(index + 1).padStart(2, "0")} / ${String(L.length).padStart(2, "0")}`;
     $("remainingCount").textContent = state.remaining.length;
     $("remainingLabel").textContent = tr("条待解", "to untangle");
-    $("undoButton").disabled = !state.history.length;
+    $("undoButton").disabled =
+      !state.history.length && !animations.some((a) => a.kind === "exit");
     $("hintButton").disabled = !state.remaining.length;
     const progress = (1 - state.remaining.length / lv().arrows.length) * 100;
     $("progressFill").style.width = progress + "%";
@@ -726,57 +765,68 @@
     save();
   }
   function attempt(id) {
-    if (!state.remaining.includes(id) || $("gameDialog").open) return false;
-    const obstacles = C.blockers(lv(), state, id);
-    selected = hinted = focusId = null;
     const now = performance.now();
-    if (obstacles.length) {
-      mistakes++;
+    settle(now);
+    if (
+      !state.remaining.includes(id) ||
+      $("gameDialog").open ||
+      animations.some((a) => a.kind === "exit" && a.id === id)
+    )
+      return false;
+    const obstacles = C.blockers(lv(), state, id),
+      crossing = M.conflicts(lv(), id, animations);
+    selected = hinted = focusId = null;
+    if (obstacles.length || crossing.length) {
+      const moving =
+        obstacles.some((id) =>
+          animations.some((a) => a.kind === "exit" && a.id === id),
+        ) || crossing.length;
+      if (!moving) mistakes++;
       blocked = id;
-      blockUntil = now + 500;
+      blockUntil = now + 620;
+      animations = animations.filter(
+        (a) => !(a.kind === "blocked" && a.id === id),
+      );
       if (!reduce())
-        animations.push({ kind: "blocked", id, start: now, duration: 170 });
-      message(words.block, "blocked");
+        animations.push({ kind: "blocked", id, start: now, duration: 240 });
+      message(
+        moving
+          ? tr(
+              "等前面的小蛇完全离开，再试一下。",
+              "Let the moving snake clear the path first.",
+            )
+          : words.block,
+        "blocked",
+      );
       sound("blocked");
       save();
       paint();
       return false;
     }
-    const a = exitMotion(id, now);
-    state = C.transition(lv(), state, { type: "remove", id });
+    const a = { ...models.get(id).plan, start: now };
+    animations = animations.filter(
+      (a) => !(a.kind === "blocked" && a.id === id),
+    );
+    animations.push(a);
     blocked = null;
-    if (!reduce()) animations.push(a);
     message(words.released, "success");
     sound("release");
+    if (reduce()) settle(now, true);
     chrome();
-    keyboard();
     save();
     paint();
-    if (!state.remaining.length) {
-      finished = elapsed();
-      const result = { elapsed: finished, hints, mistakes },
-        old = completed[lv().id];
-      if (
-        !old ||
-        hints < old.hints ||
-        (hints === old.hints && finished < old.elapsed)
-      )
-        completed[lv().id] = result;
-      save();
-      const generation = epoch;
-      finishTimer = setTimeout(
-        () => {
-          if (generation === epoch && !state.remaining.length) {
-            sound("win");
-            showWin();
-          }
-        },
-        reduce() ? 0 : Math.min(450, a.duration),
-      );
-    }
     return true;
   }
   function undo() {
+    const pending = animations.findLast((a) => a.kind === "exit");
+    if (pending) {
+      animations = animations.filter((a) => a !== pending);
+      selected = hinted = blocked = focusId = null;
+      chrome();
+      message(tr("已经退回上一步。", "Back where it belongs."));
+      paint();
+      return;
+    }
     if (!state.history.length) return;
     closeDialog();
     cancel();
@@ -798,7 +848,12 @@
     message(tr("重新梳理，一点点解开。", "A fresh start."));
   }
   function hint() {
-    const action = C.solve(lv(), state).actions?.[0];
+    const action = C.solve(lv(), state).actions?.find(
+      (a) =>
+        C.clearPath(lv(), state, a.id) &&
+        !animations.some((f) => f.kind === "exit" && f.id === a.id) &&
+        !M.conflicts(lv(), a.id, animations).length,
+    );
     if (!action) return;
     hinted = action.id;
     hintUntil = performance.now() + 1800;
@@ -881,7 +936,7 @@
     $("motionSetting").onchange = (e) => {
       settings.reduce = e.target.checked;
       if (reduce()) {
-        animations = [];
+        settle(performance.now(), true);
         paint();
       }
       save();
@@ -915,6 +970,7 @@
     let best = null,
       distance = Infinity;
     for (const id of state.remaining) {
+      if (animations.some((a) => a.kind === "exit" && a.id === id)) continue;
       const m = models.get(id),
         h = m.points[m.points.length - 1];
       let d = Math.hypot(p.x - h.x, p.y - h.y) * 0.95;
@@ -958,6 +1014,7 @@
   }
   cv.addEventListener("pointerdown", (e) => {
     if (e.button !== 0) return;
+    cv.setAttribute("data-pointer-focus", "");
     e.preventDefault();
     cv.focus({ preventScroll: true });
     cv.setPointerCapture(e.pointerId);
@@ -1110,6 +1167,7 @@
     { passive: false },
   );
   cv.addEventListener("keydown", (e) => {
+    cv.removeAttribute("data-pointer-focus");
     if (!state.remaining.length) return;
     if (["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp"].includes(e.key)) {
       e.preventDefault();
@@ -1211,7 +1269,7 @@
   select(initial, params.has("fresh"));
   new ResizeObserver(resize).observe($("boardRegion"));
   motion.addEventListener("change", () => {
-    if (reduce()) animations = [];
+    if (reduce()) settle(performance.now(), true);
     paint();
   });
   document.addEventListener("visibilitychange", () => {
@@ -1233,6 +1291,13 @@
       getStats: () => ({ mistakes, hints, elapsed: elapsed(), finished }),
       setLevel: (n) => select(n - 1, true),
       getSolution: () => C.solve(lv(), state),
+      getLaunchable: () =>
+        state.remaining.filter(
+          (id) =>
+            C.clearPath(lv(), state, id) &&
+            !animations.some((a) => a.kind === "exit" && a.id === id) &&
+            !M.conflicts(lv(), id, animations).length,
+        ),
       tap: attempt,
       undo,
       retry,
@@ -1261,7 +1326,7 @@
       setReduced: (v) => {
         settings.reduce = !!v;
         save();
-        if (reduce()) animations = [];
+        if (reduce()) settle(performance.now(), true);
         paint();
       },
       render: paint,

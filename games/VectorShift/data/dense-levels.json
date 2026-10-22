@@ -3227,7 +3227,7 @@
         1,
         1
       ],
-      "bodyFollowReplaySteps": 495,
+      "bodyFollowReplaySteps": 500,
       "releaseStages": [
         {
           "removed": 0,
@@ -3880,7 +3880,8 @@
         "sameSkinTouchingPairs": "distinct snakes sharing a grid edge and skin"
       },
       "qualityStatus": "geometry-verified; renderer-and-player-review-pending"
-    }
+    },
+    "ruleVersion": 2
   },
   {
     "id": "dense-02",
@@ -5423,10 +5424,34 @@
       {
         "id": "s07",
         "color": "gold",
-        "d": 1,
+        "d": 3,
         "cells": [
           [
-            2,
+            7,
+            1
+          ],
+          [
+            6,
+            1
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            5,
+            2
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            4,
             2
           ],
           [
@@ -5434,32 +5459,8 @@
             2
           ],
           [
-            4,
+            2,
             2
-          ],
-          [
-            4,
-            1
-          ],
-          [
-            5,
-            1
-          ],
-          [
-            5,
-            2
-          ],
-          [
-            6,
-            2
-          ],
-          [
-            6,
-            1
-          ],
-          [
-            7,
-            1
           ]
         ],
         "skin": 1
@@ -6572,34 +6573,34 @@
     "solution": [
       "s02",
       "s04",
-      "s29",
-      "s21",
-      "s17",
-      "s09",
+      "s07",
       "s14",
-      "s22",
-      "s05",
-      "s11",
-      "s28",
-      "s01",
+      "s17",
       "s20",
-      "s16",
       "s24",
+      "s28",
+      "s29",
+      "s05",
+      "s13",
+      "s16",
+      "s21",
+      "s22",
+      "s31",
+      "s09",
+      "s11",
+      "s12",
       "s18",
-      "s27",
-      "s26",
+      "s25",
+      "s01",
+      "s06",
       "s10",
+      "s23",
+      "s27",
       "s08",
+      "s26",
       "s30",
       "s15",
-      "s07",
       "s19",
-      "s31",
-      "s13",
-      "s25",
-      "s12",
-      "s06",
-      "s23",
       "s32",
       "s03"
     ],
@@ -6624,9 +6625,9 @@
       "straightSnakes": 0,
       "headDirections": {
         "0": 6,
-        "1": 8,
+        "1": 7,
         "2": 9,
-        "3": 9
+        "3": 10
       },
       "skinCounts": {
         "0": 5,
@@ -6855,37 +6856,37 @@
         9,
         8,
         7,
-        7,
-        7,
-        8,
-        7,
-        6,
         6,
         5,
+        7,
+        7,
+        6,
+        5,
+        6,
+        5,
         5,
         4,
-        3,
+        5,
+        5,
         5,
         4,
-        3,
-        4,
         4,
         3,
-        4,
+        2,
+        2,
+        3,
+        3,
+        3,
+        2,
         3,
         3,
         2,
         3,
         2,
-        2,
-        2,
-        2,
-        1,
-        1,
         1,
         1
       ],
-      "bodyFollowReplaySteps": 504,
+      "bodyFollowReplaySteps": 606,
       "releaseStages": [
         {
           "removed": 0,
@@ -6942,20 +6943,19 @@
           "remaining": 24,
           "legalIds": [
             "s05",
-            "s07",
-            "s11",
-            "s20",
-            "s24",
-            "s28"
+            "s13",
+            "s22",
+            "s29",
+            "s31"
           ],
-          "occupiedCells": 213,
+          "occupiedCells": 222,
           "remainingIds": [
             "s01",
             "s03",
             "s05",
             "s06",
-            "s07",
             "s08",
+            "s09",
             "s10",
             "s11",
             "s12",
@@ -6964,13 +6964,13 @@
             "s16",
             "s18",
             "s19",
-            "s20",
+            "s21",
+            "s22",
             "s23",
-            "s24",
             "s25",
             "s26",
             "s27",
-            "s28",
+            "s29",
             "s30",
             "s31",
             "s32"
@@ -6980,28 +6980,28 @@
           "removed": 16,
           "remaining": 16,
           "legalIds": [
-            "s07",
-            "s10",
-            "s27",
-            "s31"
+            "s11",
+            "s12",
+            "s18",
+            "s25"
           ],
-          "occupiedCells": 143,
+          "occupiedCells": 151,
           "remainingIds": [
+            "s01",
             "s03",
             "s06",
-            "s07",
             "s08",
             "s10",
+            "s11",
             "s12",
-            "s13",
             "s15",
+            "s18",
             "s19",
             "s23",
             "s25",
             "s26",
             "s27",
             "s30",
-            "s31",
             "s32"
           ]
         },
@@ -7009,18 +7009,18 @@
           "removed": 24,
           "remaining": 8,
           "legalIds": [
-            "s13",
-            "s31"
+            "s08",
+            "s27"
           ],
-          "occupiedCells": 80,
+          "occupiedCells": 63,
           "remainingIds": [
             "s03",
-            "s06",
-            "s12",
-            "s13",
-            "s23",
-            "s25",
-            "s31",
+            "s08",
+            "s15",
+            "s19",
+            "s26",
+            "s27",
+            "s30",
             "s32"
           ]
         },
@@ -7322,13 +7322,13 @@
           "length": 9,
           "turns": 6,
           "straightRuns": [
-            2,
             1,
             1,
             1,
             1,
             1,
-            1
+            1,
+            2
           ],
           "staircaseCorners": 3
         },
@@ -7669,7 +7669,7 @@
           "staircaseCorners": 0
         }
       ],
-      "geometrySha256": "66f4b85db421c440a94af5cde6f67a8b6bb58c84a6708de8c96087d81a581492"
+      "geometrySha256": "a2102c2b9b9eac65580a1f04f7ed115a10e3a7f42ff87ba3267b5b7b73c00fe9"
     },
     "generation": {
       "version": 1,
@@ -7687,8 +7687,16 @@
         "thirdBandCrossingIds": "paths spanning horizontal thirds; geometric proxy only",
         "sameSkinTouchingPairs": "distinct snakes sharing a grid edge and skin"
       },
-      "qualityStatus": "geometry-verified; renderer-and-player-review-pending"
-    }
+      "qualityStatus": "geometry-verified; renderer-and-player-review-pending",
+      "exitRepair": {
+        "ruleVersion": 2,
+        "reversedIds": [
+          "s07"
+        ],
+        "method": "minimum reversals in ID order; geometry/skin unchanged"
+      }
+    },
+    "ruleVersion": 2
   },
   {
     "id": "dense-03",
@@ -10272,7 +10280,7 @@
         1,
         1
       ],
-      "bodyFollowReplaySteps": 416,
+      "bodyFollowReplaySteps": 523,
       "releaseStages": [
         {
           "removed": 0,
@@ -10940,7 +10948,8 @@
         "sameSkinTouchingPairs": "distinct snakes sharing a grid edge and skin"
       },
       "qualityStatus": "geometry-verified; renderer-and-player-review-pending"
-    }
+    },
+    "ruleVersion": 2
   },
   {
     "id": "dense-04",
@@ -14864,7 +14873,7 @@
         1,
         1
       ],
-      "bodyFollowReplaySteps": 585,
+      "bodyFollowReplaySteps": 587,
       "releaseStages": [
         {
           "removed": 0,
@@ -15708,7 +15717,8 @@
         "sameSkinTouchingPairs": "distinct snakes sharing a grid edge and skin"
       },
       "qualityStatus": "geometry-verified; renderer-and-player-review-pending"
-    }
+    },
+    "ruleVersion": 2
   },
   {
     "id": "dense-05",
@@ -16371,7 +16381,7 @@
         1,
         1
       ],
-      "bodyFollowReplaySteps": 82,
+      "bodyFollowReplaySteps": 84,
       "releaseStages": [
         {
           "removed": 0,
@@ -16599,6 +16609,7 @@
         "sameSkinTouchingPairs": "distinct snakes sharing a grid edge and skin"
       },
       "qualityStatus": "geometry-verified; renderer-and-player-review-pending"
-    }
+    },
+    "ruleVersion": 2
   }
 ]

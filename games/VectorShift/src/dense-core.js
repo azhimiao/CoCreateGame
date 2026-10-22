@@ -1,6 +1,6 @@
 /* Classic, non-phase snake rules. Independent of VectorShiftCore.
- * cells run tail -> head; d is 0=N, 1=E, 2=S, 3=W. Own cells never block.
- * A ray ends at its FIRST non-playable cell, even if the mask resumes later.
+ * cells run tail -> head; d is 0=N, 1=E, 2=S, 3=W. All bodies block, including self.
+ * Rays cross silhouette gaps and end at the full rectangular board boundary.
  * width/height override size independently; size is the square fallback.
  * Input levels are JSON data; validateLevel/validateState return true or throw.
  * State history contains {remaining, moves} snapshots BEFORE each legal remove.
@@ -113,7 +113,7 @@
         }
         board.owners.set(k, id);
       }
-      // Facing backwards into one's own body is deliberately allowed. Skin is cosmetic.
+      // A self-facing shape is valid data, but its own body prevents release.
       board.ids.push(id);
       board.byId.set(id, { id, d, cells });
     }
@@ -163,10 +163,10 @@
     const head = a.cells[a.cells.length - 1];
     const cells = [], blocking = [], seen = new Set();
     let x = head[0] + DX[a.d], y = head[1] + DY[a.d];
-    while (board.playable.has(key(x, y))) {
+    while (x >= 0 && y >= 0 && x < board.width && y < board.height) {
       cells.push([x, y]);
       const hit = board.owners.get(key(x, y));
-      if (hit !== undefined && hit !== id && remaining.has(hit)) {
+      if (hit !== undefined && remaining.has(hit)) {
         if (!seen.has(hit)) { seen.add(hit); blocking.push(hit); }
         if (stopAtBlocker) break;
       }
@@ -222,7 +222,7 @@
     return result;
   }
 
-  /** All distinct foreign IDs, nearest first, through to the first void. */
+  /** All blocking IDs, nearest first, across gaps to the outer board edge. */
   function blockers(level, state, id) {
     const board = boardFor(level), remaining = checkedState(board, state);
     const result = ray(board, remaining, id, false);
@@ -232,7 +232,7 @@
     const blocking = blockers(level, state, id);
     return blocking !== null && blocking.length === 0;
   }
-  /** Cells AFTER the head, INCLUDING the first blocker, EXCLUDING the first void. */
+  /** Cells AFTER the head, INCLUDING the first blocker and any silhouette gaps. */
   function exitRayCells(level, state, id) {
     const board = boardFor(level), remaining = checkedState(board, state);
     const result = ray(board, remaining, id, true);

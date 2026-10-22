@@ -159,7 +159,11 @@ async function main() {
     await p.mouse.down();
     await p.screenshot({ path: path.join(output, "dense-press.png") });
     await p.mouse.up();
-    assert.equal((await state(p)).remaining.length, 27);
+    assert.equal(
+      (await state(p)).remaining.length,
+      28,
+      "moving snake remains a blocker",
+    );
     const capture = [];
     for (let i = 0; i < 4; i++) {
       await p.waitForTimeout(i === 0 ? 25 : 80);
@@ -177,16 +181,29 @@ async function main() {
     await p.locator("#undoButton").click();
     assert.deepEqual(await state(p), first);
     await tap(p, clear);
-    const next = (await p.evaluate(() => VectorShiftDenseDebug.getSolution()))
-      .actions[0].id;
+    const next = await p.evaluate(
+      () => VectorShiftDenseDebug.getLaunchable()[0],
+    );
+    assert.ok(next, "an unrelated snake remains actionable during motion");
     await tap(p, next);
-    assert.equal((await state(p)).remaining.length, 26);
+    assert.equal((await state(p)).remaining.length, 28);
+    assert.equal(
+      await p.evaluate(
+        () =>
+          VectorShiftDenseDebug.getAnimation().filter((a) => a.kind === "exit")
+            .length,
+      ),
+      2,
+    );
+    await p.waitForFunction(
+      () => VectorShiftDenseDebug.getState().remaining.length === 26,
+    );
     await p.reload();
     assert.equal((await state(p)).remaining.length, 26);
     await p.locator("#undoButton").click();
     assert.equal((await state(p)).remaining.length, 27);
     checks.push(
-      "body press, continuous exit frames, rapid sequential taps, saved run and undo",
+      "body press, moving-body reservation, independent parallel releases, saved completion and undo",
     );
 
     // Real pointer hit testing clears every stage. No debug action is used to remove a snake.
@@ -255,7 +272,15 @@ async function main() {
       .actions[0].id;
     const hp = await t.evaluate((id) => VectorShiftDenseDebug.pointFor(id), id);
     await t.touchscreen.tap(hp.x, hp.y);
-    assert.equal((await state(t)).remaining.length, 27);
+    assert.equal((await state(t)).remaining.length, 28);
+    assert.equal(
+      await t.evaluate(
+        () =>
+          VectorShiftDenseDebug.getAnimation().filter((a) => a.kind === "exit")
+            .length,
+      ),
+      1,
+    );
     await t.locator("#undoButton").tap();
     const session = await mobile.newCDPSession(t);
     const box = await t.locator("#puzzleCanvas").boundingBox(),

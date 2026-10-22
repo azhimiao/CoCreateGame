@@ -2,7 +2,7 @@
 
 现在的 `index.html` 是**可玩的密盘重做版**：连续圆管、彩色长蛇、原创交错回折、完整心形和叶形棋盘。原来的 52 关保存在独立的 `phase.html`，从图案集可进入相位挑战。
 
-[直接试玩](index.html) · [试玩 ZIP](delivery/Vector_Shift_playtest.zip) · [实录视频](artifacts/dense-playthrough.webm) · [重做与验收记录](docs/10_密盘重做与验证.md)
+[直接试玩](index.html) · [试玩 ZIP](delivery/Vector_Shift_playtest.zip) · [实录视频](artifacts/dense-playthrough.webm) · [碰撞与动效修复](docs/11_碰撞与爬行动效修复.md)
 
 ![新版首盘](artifacts/dense-pattern-1.png)
 
@@ -11,7 +11,8 @@
 - 首屏换成 16×22、28 条蛇的完整密盘；不是放大材质小样，也不是旧八根管子缩细。
 - 五张可解棋盘共 128 条蛇：两张纵向密盘、心形、叶形、八条蛇的入门盘。四张密盘填充率约 94%～95%，没有纯直蛇；相邻蛇使用不同皮肤色。
 - 移除格砖和大三角头，使用连续圆角、圆尾、统一曲面光照、小眼睛头部；颜色帮助追踪身份。
-- 身体沿原路径逐段滑出。阻挡时轻触反馈；连续点击、提示、撤销、刷新续玩、双指缩放和拖动均可用。
+- 身体沿原路径逐段滑出，柔和起步后保持一致爬行速度，圆尾连续收拢。轮廓凹口不会跳过远处障碍；尾巴完全离场后才解除阻挡，轨迹互不相交的蛇可以同时爬出。
+- 阻挡时短促回弹，等待前蛇离场时不会增加失误；提示、撤销、刷新续玩、双指缩放和拖动均可用。
 - 中文演示、英文渠道构建。声音可选、减弱动态可选；键盘可操作并有方向标签。
 
 **当前是可供评审的重做版。** 静态尺度已接近主参考截图；是否整体达到或超过参考，继续以整盘画面和实际试玩判断。竞品实机、物理手机与玩家偏好尚未验证。
@@ -29,14 +30,17 @@
 | 文件 | 用途 |
 | --- | --- |
 | `src/dense-core.js` | 独立移除规则、几何验证、依赖求解、严格存档验证；不依赖渲染 |
+| `src/dense-motion.js` | 按路程爬行、柔和起步、完整尾部离场、运动路径预约 |
 | `src/dense-app.js`、`dense.css`、`dense.template.html` | 新首页的 Canvas 材质、路径动画、触摸与界面 |
 | `src/dense-levels.py`、`data/dense-levels.json` | 固定种子原创密盘生成、逐层依赖、完整见证及身体跟随回放 |
 | `src/game-core.js`、`app.js`、`styles.css`、`data/levels.json` | 原相位挑战代码与 52 关数据 |
 | `src/build.py` | 生成演示与两渠道的 `index.html` / `phase.html` |
 | `src/build_dense_evidence.py` | 从真实截图复测五个管身样本并生成同宽三方对照 |
-| `tests/dense-core.test.cjs`、`dense-smoke.cjs`、`dense-capture.cjs` | 新规则测试、真实输入检查、连续实录和阶段图 |
+| `tests/dense-core.test.cjs`、`dense-motion.test.cjs` | 完整射线、存档、可解性、连续运动与碰撞单元测试 |
+| `tests/dense-smoke.cjs`、`dense-collision-smoke.cjs`、`dense-capture.cjs` | 真实输入、运动中并发/撤销、默认动效五关通关、连续实录和阶段图 |
 | `tests/core.test.cjs`、`smoke.cjs` | 原相位挑战回归 |
 | `docs/10_密盘重做与验证.md` | 当前实施裁决、测量、修复记录和未验证项 |
+| `docs/11_碰撞与爬行动效修复.md` | 凹口漏判、移动中穿越的修复与动效验收 |
 | `docs/09_对标重新对齐与密盘标准.md` | 重做前的静态诊断和 ALIGN 标准，作为历史基准保留 |
 | `artifacts/dense-*` | 本次真实浏览器截图、视频、像素测量及报告 |
 | `submission/` | 英文渠道候选；未投稿、未获平台批准 |
@@ -45,6 +49,7 @@
 
 ```powershell
 node tests/dense-core.test.cjs
+node tests/dense-motion.test.cjs
 python src/dense-levels.py --verify
 node tests/core.test.cjs
 python src/build.py
@@ -54,6 +59,7 @@ python src/build.py
 
 ```powershell
 node tests/dense-smoke.cjs
+node tests/dense-collision-smoke.cjs
 node tests/smoke.cjs
 python src/build_dense_evidence.py  # 需要 Pillow
 # 本地服务开启后，录制默认动画与四个清盘阶段

@@ -15,8 +15,10 @@ const root = path.resolve(__dirname, ".."),
       size: { width: 390, height: 844 },
     },
   });
+  const p = await context.newPage(),
+    errors = [];
+  p.on("pageerror", (e) => errors.push(e.message));
   try {
-    const p = await context.newPage();
     await p.goto(process.env.CAPTURE_URL || "http://127.0.0.1:4173/?fresh=1");
     await p.waitForFunction(() => !!window.VectorShiftDenseDebug);
     await p.waitForTimeout(900);
@@ -43,8 +45,13 @@ const root = path.resolve(__dirname, ".."),
       await p.mouse.click(point.x, point.y);
       witness.push(id);
       step++;
-      await p.waitForTimeout(650);
+      await p.waitForFunction(
+        () =>
+          !VectorShiftDenseDebug.getAnimation().some((a) => a.kind === "exit"),
+      );
+      await p.waitForTimeout(100);
     }
+    if (errors.length) throw new Error(errors.join("\n"));
     await p.locator("#nextPattern").waitFor();
     await p.waitForTimeout(1000);
     await p.locator("#nextPattern").click();
@@ -58,7 +65,11 @@ const root = path.resolve(__dirname, ".."),
           id,
         );
       await p.mouse.click(point.x, point.y);
-      await p.waitForTimeout(650);
+      await p.waitForFunction(
+        () =>
+          !VectorShiftDenseDebug.getAnimation().some((a) => a.kind === "exit"),
+      );
+      await p.waitForTimeout(100);
     }
     await p.locator("#collectionButton").click();
     await p.waitForTimeout(900);
@@ -83,6 +94,17 @@ const root = path.resolve(__dirname, ".."),
     await video.saveAs(path.join(out, "dense-playthrough.webm"));
     await video.delete();
     console.log("PASS animated playthrough + four release stages captured");
+  } catch (e) {
+    console.error(
+      await p.evaluate(() => ({
+        state: VectorShiftDenseDebug.getState(),
+        stats: VectorShiftDenseDebug.getStats(),
+        dialog: document.querySelector("#gameDialog").outerHTML,
+      })),
+      errors,
+    );
+    await p.screenshot({ path: path.join(out, "motion/capture-failure.png") });
+    throw e;
   } finally {
     await browser.close();
   }

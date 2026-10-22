@@ -80,7 +80,7 @@ for channel in ('demo', 'coolmath', 'crazygames-basic'):
         '<!--INJECT_HEAD-->': head,
         '/*INJECT_STYLES*/': (ROOT / 'src/dense.css').read_text(encoding='utf8'),
         '/*INJECT_CHANNEL*/': f'window.VS_CHANNEL={json.dumps(channel)};',
-        '/*INJECT_CORE*/': (ROOT / 'src/dense-core.js').read_text(encoding='utf8'),
+        '/*INJECT_CORE*/': (ROOT / 'src/dense-core.js').read_text(encoding='utf8') + '\n' + (ROOT / 'src/dense-motion.js').read_text(encoding='utf8'),
         '/*INJECT_LEVELS*/': dense_levels,
         '/*INJECT_APP*/': (ROOT / 'src/dense-app.js').read_text(encoding='utf8'),
     }.items():

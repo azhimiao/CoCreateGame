@@ -1,0 +1,22 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+config/name="Layer Relay"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.0", "GL Compatibility")
+config/description="A 50-level 2.5D logic campaign with ten expert challenge chambers."
+
+[display]
+window/size/viewport_width=1360
+window/size/viewport_height=860
+window/size/window_width_override=1360
+window/size/window_height_override=860
+window/size/resizable=true
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+environment/defaults/default_clear_color=Color(0.035, 0.051, 0.063, 1)

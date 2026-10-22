@@ -17,3 +17,5 @@ CoCreateGame 管理多款独立游戏。每个游戏文件夹保存自己的设�
 | VS | Vector Shift / 绮彩长蛇 | 独立项目 | 120关/10章旅程、剪刀清除、解锁/续玩/星级；旧五盘与原52关保留。离线发行候选，待真机/玩家/平台验证 | [VectorShift](VectorShift/README.md) |
 
 P0 表示优先准备批次，不代表已批准开发。G01、G02、G04 的详细裁决和下一步证据要求分别见 [G01审计](../reviews/G01-audit.md)、[G02审计](../reviews/G02-audit.md)、[G04审计](../reviews/G04-audit.md)。
+
+用户授权开发的 G04 Godot 游戏现放在仓库根目录 [Layer relay](../Layer%20relay/README.md)，包含 50 关、可重建源码和 Windows 运行包；这里的 G04 继续保留研究及施工档案。

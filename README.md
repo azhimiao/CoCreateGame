@@ -2,13 +2,14 @@
 
 CoCreateGame 是批量筛选、研究、设计、审核并逐款研发游戏的总项目。G01—G10 各有独立的游戏文件夹；另行获准的游戏也使用自己的具名目录，保存源码、关卡、美术、测试和渠道材料。跨游戏的平台研究、共享机制提案和总体验收集中放在公共目录。
 
-AI Game Foundry 的 G01—G10 仍按各自的研究与审核状态推进。本仓库另含一款用户明确要求施工的独立游戏 Vector Shift，完整工程位于 [`games/VectorShift/`](games/VectorShift/README.md)；这项授权不改变 G01—G10 的审计结论。状态见 [STATUS.md](STATUS.md)，准备交付总览见 [DELIVERY_REPORT.md](DELIVERY_REPORT.md)，离线总览见 [index.html](index.html)。
+AI Game Foundry 的 G01—G10 仍按各自的研究与审核状态推进。本仓库另含一款用户明确要求施工的独立游戏 Vector Shift，完整工程位于 [`games/VectorShift/`](games/VectorShift/README.md)；这项授权不改变 G01—G10 的审计结论。另有用户授权开发的 50 关 Godot 游戏 [Layer Relay](Layer%20relay/README.md)，工程与 Windows 运行包分别见其目录和 [下载说明](Layer%20relay/packages/README.md)。状态见 [STATUS.md](STATUS.md)，准备交付总览见 [DELIVERY_REPORT.md](DELIVERY_REPORT.md)，离线总览见 [index.html](index.html)。
 
 ## 仓库结构
 
 | 路径 | 内容 |
 | --- | --- |
 | [`games/`](games/README.md) | G01—G10 准备档案，以及独立游戏工程 `VectorShift/`（120关/10章旅程、清除技能与三个发行候选包） |
+| [`Layer relay/`](Layer%20relay/README.md) | Layer Relay 50 关 Godot 工程、源码包与 Windows 运行包 |
 | `research/` | 六家渠道资料、候选研究、对标证据和跨游戏分析 |
 | `reviews/` | 独立审核、复核决定和审计索引 |
 | `shared-mechanics/` | 可复用机制提案；须经过审核后才能成为共享规范 |

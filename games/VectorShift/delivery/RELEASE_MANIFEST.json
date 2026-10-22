@@ -1,30 +1,30 @@
 {
-  "release": "2026-10-22-campaign-120",
+  "release": "2026-10-22-campaign-120-clear-feedback",
   "levels": 120,
   "chapters": 10,
   "status": "offline release candidate; not submitted",
   "builds": [
     {
       "channel": "demo",
-      "bytes": 1578316,
-      "sha256": "481711949b0fcc322c51d430f7d9d580a9d5d9aff1e666824273b30ef7d49a99"
+      "bytes": 1583419,
+      "sha256": "8d94a2ceb17fbda0e4880423015e20d56a0b124573c32513eacd33d7847d47fa"
     },
     {
       "channel": "coolmath",
-      "bytes": 1578318,
-      "sha256": "a437b76ebcad231f539a7c25d6a8dbe6336cdc598dfa135492d6ccc9fa53207b"
+      "bytes": 1583421,
+      "sha256": "ed741edc4fabc7e9af7dd2e3e29c7fbae5b5616809bf3ac86c4f4b09ce58bf27"
     },
     {
       "channel": "crazygames-basic",
-      "bytes": 1578470,
-      "sha256": "686c527ed73ffac3970b73eb872e1c881e087aff66267ee80d170c96ce2eee07"
+      "bytes": 1583573,
+      "sha256": "1d9862c2167021ea8fddbaed198b88702e709717cc9b4ce123f3c76a87895dbb"
     }
   ],
   "archives": [
     {
       "file": "Vector_Shift_playtest.zip",
-      "bytes": 4331900,
-      "sha256": "29c648ce01a35c1ad1d860e9fc5afb02aa6b2848fcd5058b474e1911f262a98c",
+      "bytes": 4969817,
+      "sha256": "aa9e77eda21acb5f345a2ba9b1d800ab89b9efc9ff4adf8c22f704d20711d53c",
       "members": [
         "index.html",
         "phase.html",
@@ -40,13 +40,15 @@
         "artifacts/journey-playthrough.webm",
         "artifacts/mobile-small-screen.png",
         "artifacts/mobile-chapter-sheet.png",
-        "artifacts/mobile-report.json"
+        "artifacts/mobile-report.json",
+        "artifacts/clear-feedback.webm",
+        "artifacts/clear-feedback-report.json"
       ]
     },
     {
       "file": "Vector_Shift_coolmath_candidate.zip",
-      "bytes": 251374,
-      "sha256": "49d98434d1551eaed1980fe0c1501010a6f7ecf8edc4ac80fa130e37250845fc",
+      "bytes": 252725,
+      "sha256": "5624ebf8f2fb6946eefbc3ff61113fd4371932ff49898e274a999b12fd72cf7a",
       "members": [
         "index.html",
         "phase.html",
@@ -56,8 +58,8 @@
     },
     {
       "file": "Vector_Shift_crazygames-basic_candidate.zip",
-      "bytes": 251638,
-      "sha256": "8bbe85fbb367be23fe42f172263df50171c2fdff8e640ac14363c8fd8cae7db0",
+      "bytes": 252990,
+      "sha256": "475780d8e92519f3652966f66cf8635e773783e31e11a3819975c3106f607807",
       "members": [
         "index.html",
         "phase.html",

@@ -2,6 +2,8 @@
 
 日期：2026-10-22（Asia/Shanghai）。当前阶段：PREPARATION_DELIVERED。此次更新针对 Vector Shift 120关旅程与清除技能发行候选；G01—G10 裁决日期和证据未改。
 
+Vector Shift最新修订：四向出口运动层渐隐、短尾迹与完成散点，清除提示/计数/完成音改为完整离场后同步；竖横屏像素与真实触摸实录见[出场反馈验收](games/VectorShift/docs/13_出场消除反馈.md)。
+
 本状态文件顶部的阶段和下方 G01—G10 裁决专指 AI Game Foundry 的“研发准备”轨道。Vector Shift 是用户单独授权推进的独立游戏项目，保存在 `games/VectorShift/`；不将其合并进 G01 或更改下列裁决。
 
 ## 已完成

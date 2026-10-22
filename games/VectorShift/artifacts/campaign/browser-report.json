@@ -6,25 +6,26 @@
     "gallery/campaign mode switch and independent old board state",
     "all 120 boards / 3268 real head taps without skills; complete journey persisted",
     "default-motion complete boards at levels 12, 60, 108 and 120, including the final large board",
-    "English public builds without debug, corrupted campaign save recovery"
+    "English public builds without debug, corrupted campaign save recovery",
+    "legacy five-board save stays in the gallery and illegal old-rule histories recover"
   ],
   "realPointerTaps": 3268,
   "normalMotion": [
     {
       "level": 12,
-      "ms": 3000
+      "ms": 3206
     },
     {
       "level": 60,
-      "ms": 11647
+      "ms": 12064
     },
     {
       "level": 108,
-      "ms": 23851
+      "ms": 26167
     },
     {
       "level": 120,
-      "ms": 32165
+      "ms": 33245
     }
   ],
   "errors": [],

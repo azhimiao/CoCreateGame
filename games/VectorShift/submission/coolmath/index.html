@@ -1634,6 +1634,8 @@ dialog::backdrop {
   const $ = (id) => document.getElementById(id),
     cv = $("puzzleCanvas"),
     ctx = cv.getContext("2d"),
+    flightCanvas = document.createElement("canvas"),
+    flightCtx = flightCanvas.getContext("2d"),
     P = 32,
     PAD = 18,
     W = P * 0.81,
@@ -1660,7 +1662,8 @@ dialog::backdrop {
       "前面有点挤，先帮它清开路。",
       "A little crowded ahead. Clear its path first.",
     ),
-    released: tr("又解开了一点。", "A little more room to breathe."),
+    releasing: tr("畅通，出发！", "Off you go!"),
+    released: tr("漂亮，清掉一条！", "Nice! One cleared."),
     hint: tr("这条小蛇的前方畅通。", "This one has a clear path."),
     collection: tr("挑一幅图案", "The collection"),
     close: tr("关闭", "Close"),
@@ -1811,8 +1814,19 @@ dialog::backdrop {
   }
   function message(text, type = "") {
     clearTimeout(msgTimer);
-    $("feedback").textContent = text;
-    $("feedback").className = "feedback " + type;
+    const feedback = $("feedback");
+    feedback.getAnimations().forEach((a) => a.cancel());
+    feedback.textContent = text;
+    feedback.className = "feedback " + type;
+    if (type === "success" && !reduce())
+      feedback.animate(
+        [
+          { opacity: 0.55, transform: "translateY(3px) scale(.97)" },
+          { opacity: 1, transform: "translateY(0) scale(1.04)", offset: 0.55 },
+          { opacity: 1, transform: "translateY(0) scale(1)" },
+        ],
+        { duration: 340, easing: "cubic-bezier(.2,0,0,1)" },
+      );
     if (text !== words.start)
       msgTimer = setTimeout(() => {
         if (state.remaining.length) {
@@ -1823,7 +1837,9 @@ dialog::backdrop {
   }
   function sound(kind) {
     if (settings.haptics && navigator.vibrate)
-      navigator.vibrate(kind === "blocked" ? [8, 25, 8] : 7);
+      navigator.vibrate(
+        kind === "blocked" ? [8, 25, 8] : kind === "clear" ? [9, 18, 6] : 7,
+      );
     if (!settings.sound) return;
     try {
       audioCtx =
@@ -1835,7 +1851,9 @@ dialog::backdrop {
             ? [523, 659, 784]
             : kind === "blocked"
               ? [155]
-              : [440 + (state.moves % 5) * 35, 660];
+              : kind === "clear"
+                ? [660 + (state.moves % 5) * 30, 990]
+                : [440 + (state.moves % 5) * 35];
       notes.forEach((n, i) => {
         const o = audioCtx.createOscillator(),
           g = audioCtx.createGain(),
@@ -2129,6 +2147,8 @@ dialog::backdrop {
     $("canvasStage").style.height = display.h + "px";
     cv.width = Math.max(1, Math.round(display.w * display.dpr));
     cv.height = Math.max(1, Math.round(display.h * display.dpr));
+    flightCanvas.width = cv.width;
+    flightCanvas.height = cv.height;
     clampView();
     paint();
   }
@@ -2217,7 +2237,7 @@ dialog::backdrop {
     p.closePath();
     return p;
   }
-  function movingBody(a, now) {
+  function movingBody(a, now, ctx) {
     const frame = M.frame(a, now - a.start);
     if (frame.done) return;
     const m = models.get(a.id),
@@ -2225,6 +2245,18 @@ dialog::backdrop {
       points = frame.points,
       p = path(points);
     ctx.save();
+    // A short wake traces the space just freed by the tail, in the snake's own hue.
+    for (let i = 1; i <= 3; i++) {
+      const lag = W * i * 0.65;
+      if (frame.advance <= lag) continue;
+      const point = M.sample(a.points, a.dist, frame.advance - lag);
+      ctx.globalAlpha = (1 - i / 4) * Math.min(1, (frame.advance - lag) / W);
+      ctx.fillStyle = m.col[1];
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, W * (0.07 - i * 0.009), 0, TAU);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.lineWidth = W + 1.4;
@@ -2254,6 +2286,104 @@ dialog::backdrop {
     ctx.drawImage(cap.image, cap.x, cap.y, cap.w, cap.h);
     ctx.restore();
     head(ctx, frame.head, a.d, m.col);
+    ctx.restore();
+  }
+  const exitFeather = () => Math.min(28, P * display.s * 0.5);
+  function clearEffect(a, now) {
+    const m = models.get(a.id),
+      p = toScreen(m.points.at(-1)),
+      r = cv.getBoundingClientRect(),
+      inset = exitFeather() * 1.1,
+      point = { x: p.x - r.left, y: p.y - r.top };
+    if (a.d === 0) point.y = inset;
+    else if (a.d === 1) point.x = display.w - inset;
+    else if (a.d === 2) point.y = display.h - inset;
+    else point.x = inset;
+    if (
+      point.x < 0 ||
+      point.x > display.w ||
+      point.y < 0 ||
+      point.y > display.h
+    )
+      return null;
+    return {
+      kind: "clear",
+      id: a.id,
+      d: a.d,
+      point,
+      col: m.col,
+      start: now,
+      duration: 280,
+    };
+  }
+  function clearGlints(a, now) {
+    const f = Math.min(1, Math.max(0, (now - a.start) / a.duration)),
+      travel = 1 - Math.pow(1 - f, 3),
+      c = flightCtx;
+    c.save();
+    c.translate(a.point.x, a.point.y);
+    c.rotate(Math.atan2(DIR[a.d][1], DIR[a.d][0]));
+    c.globalAlpha = Math.pow(1 - f, 1.5);
+    c.strokeStyle = a.col[0];
+    c.lineWidth = 1.8;
+    c.lineCap = "round";
+    for (let i = -2; i <= 2; i++) {
+      const x = travel * (12 - Math.abs(i) * 2),
+        y = i * (2 + travel * 3);
+      c.beginPath();
+      c.moveTo(x, y);
+      c.lineTo(x + 3 * (1 - f), y + i * 0.5);
+      c.stroke();
+    }
+    const radius = Math.sin(Math.PI * f) * 5;
+    c.strokeStyle = a.col[1];
+    c.beginPath();
+    c.moveTo(-3 - radius, 0);
+    c.lineTo(-3 + radius, 0);
+    c.moveTo(-3, -radius);
+    c.lineTo(-3, radius);
+    c.stroke();
+    c.restore();
+  }
+  function paintFlights(now) {
+    if (
+      reduce() ||
+      !animations.some((a) => a.kind === "exit" || a.kind === "clear")
+    )
+      return;
+    const c = flightCtx,
+      f = exitFeather();
+    c.setTransform(display.dpr, 0, 0, display.dpr, 0, 0);
+    c.clearRect(0, 0, display.w, display.h);
+    c.save();
+    c.translate(display.w / 2 + view.x, display.h / 2 + view.y);
+    c.scale(display.s * view.zoom, display.s * view.zoom);
+    c.translate(-world.w / 2, -world.h / 2);
+    for (const a of animations)
+      if (a.kind === "exit") movingBody(a, now, c);
+    c.restore();
+    for (const a of animations)
+      if (a.kind === "clear") clearGlints(a, now);
+    // Feather only moving pixels; the resting puzzle keeps its crisp silhouette.
+    // destination-out affects each edge strip without erasing the rest of the layer.
+    c.save();
+    c.globalCompositeOperation = "destination-out";
+    for (const [x, y, w, h, x0, y0, x1, y1] of [
+      [0, 0, f, display.h, 0, 0, f, 0],
+      [display.w - f, 0, f, display.h, display.w, 0, display.w - f, 0],
+      [0, 0, display.w, f, 0, 0, 0, f],
+      [0, display.h - f, display.w, f, 0, display.h, 0, display.h - f],
+    ]) {
+      const gradient = c.createLinearGradient(x0, y0, x1, y1);
+      gradient.addColorStop(0, "#000");
+      gradient.addColorStop(1, "#0000");
+      c.fillStyle = gradient;
+      c.fillRect(x, y, w, h);
+    }
+    c.restore();
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.drawImage(flightCanvas, 0, 0);
     ctx.restore();
   }
   function cutBody(a, now) {
@@ -2303,10 +2433,21 @@ dialog::backdrop {
       const moving = models.get(a.id).movingSprite;
       if (moving) moving.image.width = moving.image.height = 0;
       models.get(a.id).movingSprite = null;
+      if (a.kind === "exit" && !reduce()) {
+        const effect = clearEffect(a, now);
+        if (effect) animations.push(effect);
+      }
     }
     chrome();
     keyboard();
     save();
+    message(
+      done.length === 1
+        ? words.released
+        : tr(`漂亮，清掉 ${done.length} 条！`, `Nice! ${done.length} cleared.`),
+      "success",
+    );
+    if (state.remaining.length) sound("clear");
     if (!state.remaining.length && finished === null) {
       finished = elapsed();
       const result = {
@@ -2341,6 +2482,12 @@ dialog::backdrop {
     raf = 0;
     if (!state) return;
     settle(now);
+    if (reduce()) {
+      animations = animations.filter(
+        (a) => a.kind !== "clear" && a.kind !== "blocked",
+      );
+      $("feedback").getAnimations().forEach((a) => a.cancel());
+    }
     ctx.setTransform(display.dpr, 0, 0, display.dpr, 0, 0);
     ctx.clearRect(0, 0, display.w, display.h);
     ctx.save();
@@ -2373,10 +2520,9 @@ dialog::backdrop {
       ctx.drawImage(s.image, s.x, s.y, s.w, s.h);
       ctx.restore();
     }
-    for (const a of animations) {
-      if (a.kind === "exit") movingBody(a, now);
-      else if (a.kind === "cut") cutBody(a, now);
-    }
+    paintFlights(now);
+    for (const a of animations)
+      if (a.kind === "cut") cutBody(a, now);
     if (hinted !== null && now < hintUntil && active.has(hinted))
       ray(hinted, false);
     if (blocked !== null && now < blockUntil && active.has(blocked))
@@ -2576,7 +2722,7 @@ dialog::backdrop {
     );
     animations.push(a);
     blocked = null;
-    message(words.released, "success");
+    message(words.releasing);
     sound("release");
     if (reduce()) settle(now, true);
     chrome();

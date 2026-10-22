@@ -3,9 +3,9 @@
   "builds": [
     {
       "channel": "demo",
-      "bytes": 1578316,
-      "sha256": "481711949b0fcc322c51d430f7d9d580a9d5d9aff1e666824273b30ef7d49a99",
-      "readyMs": 422.60000002384186,
+      "bytes": 1583419,
+      "sha256": "8d94a2ceb17fbda0e4880423015e20d56a0b124573c32513eacd33d7847d47fa",
+      "readyMs": 308.39999997615814,
       "lang": "zh-CN",
       "canvases": 1,
       "debug": "object",
@@ -17,9 +17,9 @@
     },
     {
       "channel": "coolmath",
-      "bytes": 1578318,
-      "sha256": "a437b76ebcad231f539a7c25d6a8dbe6336cdc598dfa135492d6ccc9fa53207b",
-      "readyMs": 121,
+      "bytes": 1583421,
+      "sha256": "ed741edc4fabc7e9af7dd2e3e29c7fbae5b5616809bf3ac86c4f4b09ce58bf27",
+      "readyMs": 115.80000001192093,
       "lang": "en",
       "canvases": 1,
       "debug": "undefined",
@@ -31,9 +31,9 @@
     },
     {
       "channel": "crazygames-basic",
-      "bytes": 1578470,
-      "sha256": "686c527ed73ffac3970b73eb872e1c881e087aff66267ee80d170c96ce2eee07",
-      "readyMs": 107,
+      "bytes": 1583573,
+      "sha256": "1d9862c2167021ea8fddbaed198b88702e709717cc9b4ce123f3c76a87895dbb",
+      "readyMs": 136.4000000357628,
       "lang": "en",
       "canvases": 1,
       "debug": "undefined",

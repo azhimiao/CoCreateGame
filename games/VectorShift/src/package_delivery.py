@@ -22,6 +22,8 @@ FILES = (
     ('artifacts/mobile/game-320x568.png', 'artifacts/mobile-small-screen.png'),
     ('artifacts/mobile/chapters-320x568.png', 'artifacts/mobile-chapter-sheet.png'),
     ('artifacts/mobile/report.json', 'artifacts/mobile-report.json'),
+    ('artifacts/clear-feedback/journey-clear.webm', 'artifacts/clear-feedback.webm'),
+    ('artifacts/clear-feedback/report.json', 'artifacts/clear-feedback-report.json'),
 )
 
 members = [(source, target, (ROOT / source).read_bytes()) for source, target in FILES]
@@ -63,7 +65,7 @@ audit = json.loads((ROOT / 'artifacts/campaign/release-audit.json').read_text(en
 for build in audit['builds']:
     html = (ROOT / 'dist' / build['channel'] / 'index.html').read_bytes()
     assert sha256(html).hexdigest() == build['sha256'], 'Re-run release-audit.cjs for the current build'
-manifest = {'release': '2026-10-22-campaign-120', 'levels': 120, 'chapters': 10,
+manifest = {'release': '2026-10-22-campaign-120-clear-feedback', 'levels': 120, 'chapters': 10,
             'status': 'offline release candidate; not submitted',
             'builds': [{key: b[key] for key in ('channel', 'bytes', 'sha256')} for b in audit['builds']],
             'archives': []}

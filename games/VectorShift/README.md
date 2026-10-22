@@ -15,6 +15,7 @@
 - 剪刀从第6关开放，每局一次。选蛇并确认后原地消除，撤销返还技能；减少动态、重试、刷新和异常存档均有恢复规则。没有付费或广告依赖。
 - 正常放行保持严格阻挡：跨越轮廓空白检查后方身体，尾巴完全离场后才解除占位；相交运动路径等待，无关路径可并行。
 - 连续圆管材质和圆角爬行，运动纹理按需缓存；换盘时主动释放Canvas位图。中文演示与两个英文候选构建，声音/减少动态/键盘及方向标签保留。
+- 出口改为运动层柔和渐隐，补充短尾迹和清除散点；计数、成功提示与完成音在整条蛇离场后同步触发。[动效验收与实录](docs/13_出场消除反馈.md)。
 - 五张密盘试赏与原52关模式独立存档。旧版图案存档继续恢复在原模式。
 
 **当前为离线发行候选。** 真实玩家难度、物理手机与平台审核尚未完成，不能把自动测试视作上线批准。
@@ -42,6 +43,7 @@
 | `tests/dense-smoke.cjs`、`dense-collision-smoke.cjs`、`dense-capture.cjs` | 真实输入、运动中并发/撤销、默认动效五关通关、连续实录和阶段图 |
 | `tests/campaign.test.cjs`、`campaign-smoke.cjs` | 全旅程、技能历史、解锁/评分/存档、真实点选与默认运动 |
 | `tests/campaign-capture.cjs`、`release-audit.cjs` | 真实动效录像与候选构建审计 |
+| `tests/clear-feedback.cjs`、`artifacts/clear-feedback/` | 四向出口的竖横屏像素渐隐、完成反馈与真实触摸实录 |
 | `tests/core.test.cjs`、`smoke.cjs` | 原相位挑战回归 |
 | `docs/10_密盘重做与验证.md` | 当前实施裁决、测量、修复记录和未验证项 |
 | `docs/11_碰撞与爬行动效修复.md` | 凹口漏判、移动中穿越的修复与动效验收 |
@@ -68,6 +70,7 @@ python src/build.py
 ```powershell
 node tests/dense-smoke.cjs
 node tests/dense-collision-smoke.cjs
+node tests/clear-feedback.cjs
 node tests/campaign-smoke.cjs
 node tests/release-audit.cjs
 node tests/mobile-layout.cjs

@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-22",
+  "checks": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "direction": "up",
+      "edgeAlpha": [
+        3,
+        64,
+        130,
+        191
+      ],
+      "completionOnlyFeedback": true,
+      "reducedMotion": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "direction": "right",
+      "edgeAlpha": [
+        3,
+        64,
+        130,
+        191
+      ],
+      "completionOnlyFeedback": true,
+      "reducedMotion": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "direction": "down",
+      "edgeAlpha": [
+        3,
+        64,
+        130,
+        191
+      ],
+      "completionOnlyFeedback": true,
+      "reducedMotion": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "direction": "left",
+      "edgeAlpha": [
+        3,
+        64,
+        130,
+        191
+      ],
+      "completionOnlyFeedback": true,
+      "reducedMotion": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "direction": "up",
+      "edgeAlpha": [
+        3,
+        65,
+        127,
+        189
+      ],
+      "completionOnlyFeedback": true,
+      "reducedMotion": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "direction": "right",
+      "edgeAlpha": [
+        3,
+        65,
+        127,
+        189
+      ],
+      "completionOnlyFeedback": true,
+      "reducedMotion": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "direction": "down",
+      "edgeAlpha": [
+        3,
+        65,
+        127,
+        189
+      ],
+      "completionOnlyFeedback": true,
+      "reducedMotion": true
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "direction": "left",
+      "edgeAlpha": [
+        3,
+        65,
+        127,
+        189
+      ],
+      "completionOnlyFeedback": true,
+      "reducedMotion": true
+    }
+  ],
+  "liveJourneyLevel": 1,
+  "errors": [],
+  "method": "Controlled-clock real-touch tail frames and Canvas alpha readback at all four exits, portrait/landscape. Real-clock touch recording on shipping journey level 1.",
+  "limits": "Desktop Chromium mobile emulation; no physical-phone or subjective satisfaction claim."
+}

@@ -1,0 +1,66 @@
+{
+  "release": "2026-10-22-campaign-120",
+  "levels": 120,
+  "chapters": 10,
+  "status": "offline release candidate; not submitted",
+  "builds": [
+    {
+      "channel": "demo",
+      "bytes": 1576602,
+      "sha256": "72df52d0cfb5d0bec497f011adbcf8f139bbb23b871ca6ce5975b369af3fce31"
+    },
+    {
+      "channel": "coolmath",
+      "bytes": 1576604,
+      "sha256": "22825a794c56e2000dc051402e280f8a8a13eaf550ab7212e9cf234bed818f02"
+    },
+    {
+      "channel": "crazygames-basic",
+      "bytes": 1576756,
+      "sha256": "3de331e17d5c0bdee6238c09b41b63971db435785b0ab2cc4e2b60ed95962929"
+    }
+  ],
+  "archives": [
+    {
+      "file": "Vector_Shift_playtest.zip",
+      "bytes": 4234640,
+      "sha256": "604872eb01bb796a398d64c31503df78d89c7daedc2fa788efc56b42dafd3ba3",
+      "members": [
+        "index.html",
+        "phase.html",
+        "README.md",
+        "artifacts/dense-pattern-1.png",
+        "artifacts/dense-pattern-2.png",
+        "artifacts/dense-pattern-3.png",
+        "artifacts/dense-same-width-comparison.png",
+        "artifacts/dense-playthrough.webm",
+        "artifacts/journey-first.png",
+        "artifacts/journey-finale.png",
+        "artifacts/journey-chapters.png",
+        "artifacts/journey-playthrough.webm"
+      ]
+    },
+    {
+      "file": "Vector_Shift_coolmath_candidate.zip",
+      "bytes": 251163,
+      "sha256": "8bb41559eaddb0c075424cf63e3dd96cad4b07e3d47f2f052aed26b6bc585dce",
+      "members": [
+        "index.html",
+        "phase.html",
+        "README.md",
+        "RIGHTS.md"
+      ]
+    },
+    {
+      "file": "Vector_Shift_crazygames-basic_candidate.zip",
+      "bytes": 251437,
+      "sha256": "9377705ae94f5796c545da1cf2369db67b9f0af160079e758a03bc88fc7048bc",
+      "members": [
+        "index.html",
+        "phase.html",
+        "README.md",
+        "RIGHTS.md"
+      ]
+    }
+  ]
+}

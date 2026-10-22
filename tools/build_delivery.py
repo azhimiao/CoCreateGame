@@ -44,9 +44,9 @@ def build_index():
 <h3>{escape(game.get('title',game.get('family',gid)))}</h3><p>{escape(game.get('decision_note',''))}</p>
 <div class="doclinks">{' '.join(links)}</div></article>''')
     project_html.append('''<article class="project" data-batch="INDEPENDENT">
-<div class="project-top"><span class="mono">VectorShift / 独立项目</span><span class="pill">技术实现完成 · 待人工试玩</span></div>
-<h3>Vector Shift / 相位箭头</h3><p>52关离线 HTML5 解谜游戏；独立于 G01—G10 准备与审计轨道。</p>
-<div class="doclinks">'''+link('games/VectorShift/README.md','项目入口')+' '+link('games/VectorShift/docs/07_2026-10-21_implementation-update.md','实施与验证记录')+'''</div></article>''')
+<div class="project-top"><span class="mono">VectorShift / 独立项目</span><span class="pill">120关发行候选 · 待真机与试玩</span></div>
+<h3>Vector Shift / 绮彩长蛇</h3><p>10章旅程、剪刀清除、解锁/续玩/星级；旧五盘及原52关保留，未投稿。</p>
+<div class="doclinks">'''+link('games/VectorShift/README.md','项目入口')+' '+link('games/VectorShift/docs/12_量产关卡与技能施工.md','施工与验收')+''' <a href="games/VectorShift/index.html">直接试玩 ↗</a></div></article>''')
     channel_html = []
     for p in read(ROOT/'research/channel-profiles.json', []):
         channel_html.append(f'''<tr><td><b>{p['id']}</b><br>{escape(p['name'])}</td><td>{escape(p['role'])}</td><td>{escape(p['rights'])}</td><td>{link('research/platforms/'+p['id']+'.md','官方档案')}<br>{link('research/benchmarks/'+p['id']+'.md','作品分析')}</td></tr>''')

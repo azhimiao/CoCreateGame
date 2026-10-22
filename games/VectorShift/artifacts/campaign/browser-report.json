@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-22",
+  "checks": [
+    "120 levels, initial locking, 12-item chapter pagination, six viewport layouts",
+    "real progression to level 6, locking/next/reload, scissors cancel/confirm/fade/undo/pending undo/persistence, best stars never downgrade",
+    "gallery/campaign mode switch and independent old board state",
+    "all 120 boards / 3268 real head taps without skills; complete journey persisted",
+    "default-motion complete boards at levels 12, 60, 108 and 120, including the final large board",
+    "English public builds without debug, corrupted campaign save recovery"
+  ],
+  "realPointerTaps": 3268,
+  "normalMotion": [
+    {
+      "level": 12,
+      "ms": 3000
+    },
+    {
+      "level": 60,
+      "ms": 11647
+    },
+    {
+      "level": 108,
+      "ms": 23851
+    },
+    {
+      "level": 120,
+      "ms": 32165
+    }
+  ],
+  "errors": [],
+  "limits": "Local Chromium and emulated viewports; physical-device and human difficulty calibration pending."
+}

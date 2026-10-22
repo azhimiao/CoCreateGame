@@ -85,13 +85,34 @@ def initial_cover(mask, count, rng):
             run.append((x, y))
         if len(run) >= 2:
             paths.append(run)
+    # Small teaching boards can have fewer snakes than rows. Join neighbouring
+    # row endpoints into U paths before applying the same cover search.
+    while len(paths) > count:
+        merged = False
+        for i in range(len(paths) - 1):
+            for a in (paths[i], paths[i][::-1]):
+                for b in (paths[i+1], paths[i+1][::-1]):
+                    if sum(abs(a[-1][k]-b[0][k]) for k in (0, 1)) == 1:
+                        paths[i:i+2] = [a+b]
+                        merged = True
+                        break
+                if merged:
+                    break
+            if merged:
+                break
+        if not merged:
+            raise ValueError("Cannot merge seed rows for teaching board")
     while len(paths) < count:
         choices = [i for i, p in enumerate(paths) if len(p) >= 8]
+        minimum = 3
+        if not choices:
+            choices = [i for i, p in enumerate(paths) if len(p) >= 4]
+            minimum = 2
         if not choices:
             raise ValueError("Cannot seed this silhouette with requested count")
         i = max(rng.sample(choices, min(3, len(choices))), key=lambda j: len(paths[j]))
         p = paths[i]
-        cut = rng.randint(3, len(p) - 3)
+        cut = rng.randint(minimum, len(p) - minimum)
         paths[i] = p[:cut]
         paths.append(p[cut:])
     if len(paths) != count:

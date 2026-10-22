@@ -19,7 +19,7 @@ const root = path.resolve(__dirname, ".."),
     errors = [];
   p.on("pageerror", (e) => errors.push(e.message));
   try {
-    await p.goto(process.env.CAPTURE_URL || "http://127.0.0.1:4173/?fresh=1");
+    await p.goto(process.env.CAPTURE_URL || "http://127.0.0.1:4173/?mode=samples&fresh=1");
     await p.waitForFunction(() => !!window.VectorShiftDenseDebug);
     await p.waitForTimeout(900);
     let step = 0;

@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
 """Build single-file HTML for demo, coolmath, and crazygames-basic channels."""
 from pathlib import Path
+import importlib.util
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
+campaign_spec = importlib.util.spec_from_file_location('campaign_generator', ROOT / 'src/campaign-levels.py')
+campaign_generator = importlib.util.module_from_spec(campaign_spec)
+campaign_spec.loader.exec_module(campaign_generator)
+campaign = json.loads((ROOT / 'data/campaign-levels.json').read_text(encoding='utf8'))
+campaign_generator.verify(campaign)
 template = (ROOT / 'src/index.template.html').read_text(encoding='utf8')
 levels = json.dumps(
     json.loads((ROOT / 'data/levels.json').read_text(encoding='utf8')),
@@ -82,6 +88,7 @@ for channel in ('demo', 'coolmath', 'crazygames-basic'):
         '/*INJECT_CHANNEL*/': f'window.VS_CHANNEL={json.dumps(channel)};',
         '/*INJECT_CORE*/': (ROOT / 'src/dense-core.js').read_text(encoding='utf8') + '\n' + (ROOT / 'src/dense-motion.js').read_text(encoding='utf8'),
         '/*INJECT_LEVELS*/': dense_levels,
+        '/*INJECT_CAMPAIGN*/': json.dumps(campaign, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'),
         '/*INJECT_APP*/': (ROOT / 'src/dense-app.js').read_text(encoding='utf8'),
     }.items():
         assert marker in dense

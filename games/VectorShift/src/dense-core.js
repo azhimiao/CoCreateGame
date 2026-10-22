@@ -3,7 +3,8 @@
  * Rays cross silhouette gaps and end at the full rectangular board boundary.
  * width/height override size independently; size is the square fallback.
  * Input levels are JSON data; validateLevel/validateState return true or throw.
- * State history contains {remaining, moves} snapshots BEFORE each legal remove.
+ * State history contains snapshots BEFORE each remove/cut. Levels with cutBudget
+ * include cuts in every snapshot; undo/reset restore that per-run skill budget.
  * moves counts current removals, so undo decrements it and reset clears it.
  */
 (function (root, factory) {
@@ -89,6 +90,10 @@
   // No mutable caches: editing a level, Set, or Map cannot poison later queries.
   function boardFor(level, options) {
     const board = geometry(level);
+    const budget = own(level, 'cutBudget', 'Invalid level');
+    if (budget !== undefined && (!Number.isSafeInteger(budget) || budget < 0 || budget > 1)) fail('Invalid level: cut budget');
+    board.cutBudget = budget || 0;
+    board.hasCuts = budget !== undefined;
     const arrows = own(level, 'arrows', 'Invalid level');
     array(arrows, board.playable.size, 'Invalid level arrows');
     board.ids = [];
@@ -154,7 +159,7 @@
 
   function arrow(level, id) { return level.arrows.find(a => a.id === id); }
 
-  function initialState(board) { return { remaining: board.ids.slice(), moves: 0, history: [] }; }
+  function initialState(board) { return { remaining: board.ids.slice(), moves: 0, history: [], ...(board.hasCuts ? {cuts:0} : {}) }; }
   function newState(level) { return initialState(boardFor(level)); }
 
   function ray(board, remaining, id, stopAtBlocker) {
@@ -177,6 +182,7 @@
 
   function snapshotIds(board, frame, moves) {
     if (!Number.isSafeInteger(frame.moves) || frame.moves !== moves) fail('Invalid state: incoherent moves');
+    if (board.hasCuts && (!Number.isSafeInteger(frame.cuts) || frame.cuts < 0 || frame.cuts > board.cutBudget || frame.cuts > moves)) fail('Invalid state: cut budget exceeded');
     array(frame.remaining, board.ids.length, 'Invalid state remaining');
     if (frame.remaining.length !== board.ids.length - moves) fail('Invalid state: incoherent remaining count');
     const ids = new Set();
@@ -191,25 +197,29 @@
   // missing moves, skipped/blocked removals, resurrection, and forged clears are not.
   // Cost is linear in the supplied history size plus at most 64 ray cells per move.
   function checkedState(board, state) {
-    fields(state, ['remaining', 'moves', 'history'], 'Invalid state');
+    const extra = board.hasCuts ? ['cuts'] : [];
+    fields(state, ['remaining', 'moves', 'history', ...extra], 'Invalid state');
     if (!Number.isSafeInteger(state.moves) || state.moves < 0 || state.moves > board.ids.length) {
       fail('Invalid state: moves out of range');
     }
     array(state.history, board.ids.length, 'Invalid state history');
     if (state.history.length !== state.moves) fail('Invalid state: moves/history mismatch');
-    let previous = null;
+    let previous = null, previousCuts = 0;
     for (let i = 0; i <= state.moves; i++) {
       const frame = i === state.moves ? state : state.history[i];
-      if (i < state.moves) fields(frame, ['remaining', 'moves'], 'Invalid state snapshot');
+      if (i < state.moves) fields(frame, ['remaining', 'moves', ...extra], 'Invalid state snapshot');
       const current = snapshotIds(board, frame, i);
       if (previous) {
         for (const id of current) if (!previous.has(id)) fail('Invalid state: history resurrects an arrow');
         // Counts and unique subsets above guarantee exactly one missing ID.
         let removed;
         for (const id of previous) if (!current.has(id)) { removed = id; break; }
-        if (ray(board, previous, removed, true).blocking.length) fail('Invalid state: history removes a blocked arrow');
+        const delta = board.hasCuts ? frame.cuts - previousCuts : 0;
+        if (delta !== 0 && delta !== 1) fail('Invalid state: incoherent cuts');
+        if (!delta && ray(board, previous, removed, true).blocking.length) fail('Invalid state: history removes a blocked arrow');
       }
       previous = current;
+      previousCuts = frame.cuts || 0;
     }
     return previous;
   }
@@ -239,7 +249,7 @@
     return result ? result.cells : [];
   }
 
-  function copySnapshot(state) { return { remaining: state.remaining.slice(), moves: state.moves }; }
+  function copySnapshot(state) { return { remaining: state.remaining.slice(), moves: state.moves, ...(Object.hasOwn(state,'cuts') ? {cuts:state.cuts} : {}) }; }
   function copyState(state) { return { ...copySnapshot(state), history: state.history.map(copySnapshot) }; }
 
   function transition(level, state, action) {
@@ -251,14 +261,16 @@
     const next = copyState(state);
     if (type === 'undo') {
       const previous = next.history.pop();
-      if (previous) { next.remaining = previous.remaining; next.moves = previous.moves; }
-    } else if (type === 'remove') {
+      if (previous) { next.remaining = previous.remaining; next.moves = previous.moves; if (board.hasCuts) next.cuts = previous.cuts; }
+    } else if (type === 'remove' || type === 'cut') {
       const id = own(action, 'id', 'Invalid action');
       const result = ray(board, remaining, id, true);
-      if (result && !result.blocking.length) {
+      const cutting = type === 'cut' && board.hasCuts && state.cuts < board.cutBudget;
+      if (result && (type === 'remove' ? !result.blocking.length : cutting)) {
         next.history.push(copySnapshot(state));
         next.remaining = next.remaining.filter(value => value !== id);
         next.moves++;
+        if (cutting) next.cuts++;
       }
     }
     // Blocked/missing IDs and unsupported actions (including toggle) are pure no-ops.

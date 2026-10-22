@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-22",
+  "levels": 120,
+  "uniqueGeometries": 120,
+  "snakeTotal": 3268,
+  "chapters": [
+    {
+      "chapter": 1,
+      "levels": 12,
+      "snakes": [
+        4,
+        10
+      ],
+      "meanWorkload": 28.04,
+      "depthRange": [
+        2,
+        5
+      ]
+    },
+    {
+      "chapter": 2,
+      "levels": 12,
+      "snakes": [
+        10,
+        14
+      ],
+      "meanWorkload": 50.53,
+      "depthRange": [
+        3,
+        8
+      ]
+    },
+    {
+      "chapter": 3,
+      "levels": 12,
+      "snakes": [
+        14,
+        18
+      ],
+      "meanWorkload": 71.99,
+      "depthRange": [
+        6,
+        10
+      ]
+    },
+    {
+      "chapter": 4,
+      "levels": 12,
+      "snakes": [
+        18,
+        22
+      ],
+      "meanWorkload": 88.03,
+      "depthRange": [
+        7,
+        12
+      ]
+    },
+    {
+      "chapter": 5,
+      "levels": 12,
+      "snakes": [
+        22,
+        26
+      ],
+      "meanWorkload": 106.53,
+      "depthRange": [
+        6,
+        14
+      ]
+    },
+    {
+      "chapter": 6,
+      "levels": 12,
+      "snakes": [
+        26,
+        30
+      ],
+      "meanWorkload": 121.7,
+      "depthRange": [
+        6,
+        11
+      ]
+    },
+    {
+      "chapter": 7,
+      "levels": 12,
+      "snakes": [
+        30,
+        36
+      ],
+      "meanWorkload": 148.05,
+      "depthRange": [
+        8,
+        14
+      ]
+    },
+    {
+      "chapter": 8,
+      "levels": 12,
+      "snakes": [
+        36,
+        42
+      ],
+      "meanWorkload": 171.29,
+      "depthRange": [
+        6,
+        20
+      ]
+    },
+    {
+      "chapter": 9,
+      "levels": 12,
+      "snakes": [
+        42,
+        48
+      ],
+      "meanWorkload": 204.18,
+      "depthRange": [
+        11,
+        17
+      ]
+    },
+    {
+      "chapter": 10,
+      "levels": 12,
+      "snakes": [
+        48,
+        56
+      ],
+      "meanWorkload": 238.72,
+      "depthRange": [
+        7,
+        23
+      ]
+    }
+  ],
+  "withoutSkillsSolvable": true,
+  "status": "verified-content; player difficulty calibration pending",
+  "limits": "Workload is a geometry/dependency proxy, not player evidence. Breather levels intentionally relax the curve."
+}

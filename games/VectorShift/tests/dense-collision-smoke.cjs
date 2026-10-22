@@ -139,7 +139,7 @@ async function main() {
     });
     const p = await context.newPage();
     p.on("pageerror", (e) => errors.push(e.message));
-    await p.goto(base + "/gap");
+    await p.goto(base + "/gap?mode=samples");
     const initial = await state(p);
     await tap(p, "a");
     assert.deepEqual(await state(p), initial);
@@ -222,7 +222,7 @@ async function main() {
       "gap blocker, in-flight body retained, duplicate click, independent concurrency, cancel pending, reload and completed undo",
     );
 
-    await p.goto(base + "/crossing");
+    await p.goto(base + "/crossing?mode=samples");
     assert.ok(
       C.clearPath(crossing, C.newState(crossing), "a") &&
         C.clearPath(crossing, C.newState(crossing), "b"),
@@ -255,7 +255,7 @@ async function main() {
       "two clear but crossing exit rays cannot intersect in flight; win waits for last tail",
     );
 
-    await p.goto(base + "/");
+    await p.goto(base + "/?mode=samples");
     await tap(p, "s01");
     const duration = await p.evaluate(
       () => VectorShiftDenseDebug.getAnimation()[0].duration,
@@ -293,7 +293,7 @@ async function main() {
       }),
       q = await live.newPage();
     q.on("pageerror", (e) => errors.push(e.message));
-    await q.goto(base + "/");
+    await q.goto(base + "/?mode=samples");
     const timings = [];
     for (let i = 0; i < levels.length; i++) {
       await q.evaluate((n) => VectorShiftDenseDebug.setLevel(n), i + 1);

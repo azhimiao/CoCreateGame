@@ -1,27 +1,27 @@
 # Vector Shift — coolmath candidate
 
-Status: internal playable candidate; not submitted or platform-approved.
+Status: internal playable release candidate; not submitted or platform-approved.
 
 ## Description
 
-Untangle a colorful garden of winding snakes. Follow their gaze, clear the path ahead, and watch each body glide out along its own curves. Five original patterns include a dense courtyard, heart, leaf, larger garden and a small introduction. Hints, undo and zoom are always available.
+Untangle a colorful garden of winding snakes. The offline journey contains 120 original stages in 10 ordered chapters, from four short paths to late boards with up to 56. Five full-pattern gallery boards remain freely selectable. Hints and undo are always available; a scissors skill unlocks at level 6, can release one blocked path per level, and can itself be undone.
 
-The main collection has five stages and 128 snakes. A local menu link opens the preserved 52-stage phase challenge, where blue paths rotate together and gold paths remain fixed. The main collection has no phase switching: its six colors identify individual paths.
+The journey's 3,268 authored paths have independent solvability audits and are playable without the skill. The gallery contains the five previously reviewed boards, including the onboarding board. A local menu link opens the preserved 52-stage phase challenge, where blue paths rotate together and gold paths remain fixed. The new journey has no phase switching: its six colors identify individual paths.
 
 ## Controls
 
-Tap/click a head or body with a clear exit. Z: undo; H: hint. Arrow keys select on the Canvas; Enter/Space releases. Pinch to zoom and drag while enlarged. The collection opens in the top-left menu; phase settings link back to it.
+Tap/click a head or body with a clear exit. Z: undo; H: hint. Open the menu to switch journey/gallery and select a chapter page. The scissors enters select-and-confirm mode. Arrow keys select on the Canvas; Enter/Space releases. Pinch to zoom and drag while enlarged. The phase challenge remains a separate local mode.
 
 ## Files and verification
 
-Ship **both** `index.html` (new collection, approximately 133 KB uncompressed) and `phase.html` (preserved challenge, approximately 139 KB). Main gameplay needs no assets or font downloads. English UI and accessible direction labels are included. Developer helpers are disabled in channel builds.
+Ship **both** `index.html` (journey plus gallery, approximately 1.58 MB uncompressed) and `phase.html` (preserved challenge, approximately 139 KB). The campaign level data is embedded for reliable offline play. Gameplay needs no external assets or font downloads. English UI and accessible direction labels are included. Developer helpers are disabled in channel builds.
 
-Six viewport checks and real pointer/touch-emulated interactions passed; all five dense stages were cleared through actual head/body taps. Phase regression also passed. See the project `artifacts/dense-browser-report.json`, `docs/10_密盘重做与验证.md`, and current captures in `../assets/`.
+All 120 levels and all 3,268 paths have offline geometric and solvability checks. Browser replay covers all stages, scissors undo/save, six viewports, gallery and English builds; motion replay includes early and final boards. See `artifacts/campaign/release-audit.json` and `browser-report.json`, plus `docs/12_量产关卡与技能施工.md`.
 
 ## Channel configuration
 
-No external SDK, ads or analytics. Both pages are self-contained; the mode link is local.
+No external SDK, ads or analytics. Both pages are self-contained; the mode link is local. The official developer page checked on 2026-10-22 lists adding Coolmath's simple SDK if the platform is interested in licensing. That platform-specific SDK/approval step remains pending, not silently marked complete: https://developers.coolmathgames.com/.
 
 ## Remaining review
 
-Physical-device comfort/performance, real-player preference, name clearance and platform review remain open. No revenue or competitive superiority claim. Rights notes: `../RIGHTS.md`. A Chinese demo playthrough is available in the project artifacts; record the final English portal capture after the product is approved for submission.
+Physical-device performance, human difficulty calibration, name clearance, final platform preflight, submission and platform review remain open. Workload scores are authored geometry proxies, not player evidence. No revenue or competitive superiority claim. Rights notes: `../RIGHTS.md`.

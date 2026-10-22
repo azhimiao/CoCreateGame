@@ -216,6 +216,141 @@ h1 {
   overflow: hidden;
   isolation: isolate;
 }
+.board-zoom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background: #f5f1e7dd;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.skill-button {
+  position: relative;
+  min-width: 64px;
+}
+.skill-button small {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  font-size: 9px;
+  white-space: nowrap;
+  background: #f1e6c8;
+  color: #826536;
+  padding: 2px 4px;
+  border-radius: 8px;
+}
+.skill-button[aria-pressed="true"] {
+  background: #f2e7ca;
+  color: #8c682e;
+}
+.skill-button[hidden] {
+  display: none;
+}
+.mode-switch {
+  display: flex;
+  padding: 4px;
+  gap: 4px;
+  background: #f0eddf;
+  border-radius: 12px;
+  margin: 0 0 20px;
+}
+.mode-switch button {
+  flex: 1;
+  min-height: 44px;
+  font-size: 12px;
+  border-radius: 9px;
+  padding: 4px;
+}
+.mode-switch button[aria-pressed="true"] {
+  background: #fffdf6;
+  color: #547444;
+  box-shadow: 0 1px 4px #37452c10;
+}
+.chapter-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 16px 0;
+}
+.chapter-nav button {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 28px;
+}
+.chapter-nav div {
+  text-align: center;
+  min-width: 0;
+}
+.chapter-nav strong {
+  display: block;
+  font-size: 17px;
+}
+.chapter-nav small {
+  display: block;
+  font-size: 11px;
+  color: #8b947f;
+  margin-top: 5px;
+}
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.journey-item {
+  min-height: 75px;
+  background: #f2f0e5;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.journey-item strong {
+  font:
+    500 23px Georgia,
+    serif;
+  color: #5d7d4e;
+}
+.journey-item small {
+  font-size: 10px;
+  color: #a27b37;
+}
+.journey-item small svg {
+  width: 12px;
+  height: 12px;
+}
+.journey-item[aria-current="true"] {
+  box-shadow: inset 0 0 0 2px #a3b486;
+  background: #edf1df;
+}
+.journey-item:disabled {
+  opacity: 0.48;
+}
+.journey-note {
+  font-size: 10px;
+  color: #939b86;
+  text-align: center;
+  line-height: 1.8;
+  margin: 20px 0 0;
+}
+.win-stars {
+  text-align: center;
+  color: #d7ab45;
+  font-size: 32px;
+  letter-spacing: 7px;
+  margin: 4px 0 15px;
+}
+.win-stars span {
+  color: #d9d4bd;
+}
 .canvas-stage {
   position: relative;
   flex-shrink: 0;
@@ -718,7 +853,9 @@ dialog::backdrop {
     gap: 6px;
     font-size: 12px;
   }
-  .hint-spark { display: none; }
+  .hint-spark {
+    display: none;
+  }
   .game-footer {
     grid-column: 1;
     grid-row: 4;

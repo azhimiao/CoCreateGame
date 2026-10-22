@@ -14,6 +14,6 @@ CoCreateGame 管理多款独立游戏。每个游戏文件夹保存自己的设�
 | G08 | 群体答案问答 | P1 | 候选研究 | [G08](G08/README.md) |
 | G09 | 物理合成 | P2 | 候选研究 | [G09](G09/README.md) |
 | G10 | 装扮创造 | P2 | 候选研究 | [G10](G10/README.md) |
-| VS | Vector Shift / 相位箭头 | 独立项目 | 五张可玩密盘重做版；原52关保留，整体品质待试玩评审 | [VectorShift](VectorShift/README.md) |
+| VS | Vector Shift / 绮彩长蛇 | 独立项目 | 120关/10章旅程、剪刀清除、解锁/续玩/星级；旧五盘与原52关保留。离线发行候选，待真机/玩家/平台验证 | [VectorShift](VectorShift/README.md) |
 
 P0 表示优先准备批次，不代表已批准开发。G01、G02、G04 的详细裁决和下一步证据要求分别见 [G01审计](../reviews/G01-audit.md)、[G02审计](../reviews/G02-audit.md)、[G04审计](../reviews/G04-audit.md)。

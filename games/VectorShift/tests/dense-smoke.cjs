@@ -49,7 +49,9 @@ async function layout(p, size) {
       .toJSON(),
     controls: [
       ...document.querySelectorAll(".game-controls button,.game-top button"),
-    ].map((b) => b.getBoundingClientRect().toJSON()),
+    ]
+      .filter((b) => !b.hidden)
+      .map((b) => b.getBoundingClientRect().toJSON()),
     footer: document
       .querySelector(".game-footer")
       .getBoundingClientRect()
@@ -86,7 +88,7 @@ async function main() {
     });
     const p = await context.newPage();
     p.on("pageerror", (e) => errors.push(e.message));
-    await p.goto(base);
+    await p.goto(base + "/?mode=samples");
     await p.waitForFunction(() => !!window.VectorShiftDenseDebug);
     const first = await state(p);
     assert.equal(first.remaining.length, 28);
@@ -267,7 +269,7 @@ async function main() {
     });
     const t = await mobile.newPage();
     t.on("pageerror", (e) => errors.push(e.message));
-    await t.goto(base);
+    await t.goto(base + "/?mode=samples");
     const id = (await t.evaluate(() => VectorShiftDenseDebug.getSolution()))
       .actions[0].id;
     const hp = await t.evaluate((id) => VectorShiftDenseDebug.pointFor(id), id);
@@ -370,7 +372,7 @@ async function main() {
       );
       const badPage = await badContext.newPage();
       badPage.on("pageerror", (e) => errors.push(e.message));
-      await badPage.goto(base);
+      await badPage.goto(base + "/?mode=samples");
       assert.equal((await state(badPage)).remaining.length, 28);
       assert.ok(
         await badPage.evaluate(() => {

@@ -1,17 +1,18 @@
-# 当前渠道候选检查｜密盘重做版
+# 当前发行候选检查｜120关旅程
 
-日期：2026-10-22。这里只记录本仓库实现和验证，不替代平台实时规则或批准。
+2026-10-22。候选包不代表平台上线批准。
 
 | 检查 | 状态 | 依据 |
 | --- | --- | --- |
-| 五张密盘完整解与身体跟随 | PASS | `dense-levels.py --verify`，每关48种合法顺序重放 |
-| 新core边界、求解、历史与异常存档 | PASS | 24项测试，包含4096主体测试 |
-| 新模式真实头/身体命中 | PASS | 五关128次实际鼠标点选；独立复核触摸模拟 |
-| 六视口、触摸、缩放、撤销、续玩 | PASS（浏览器） | `dense-browser-report.json`；不等同真机 |
-| 原相位52关 | PASS（回归） | core与旧浏览器smoke，入口为phase.html |
-| 英文与本地两模式互链 | PASS（技术） | `index.html`、`phase.html`须同时提交 |
-| CrazyGames lifecycle | PASS（mock） | init → gameplayStart；无广告；非上线证明 |
-| 当前截图与连续操作实录 | 已提供 | assets新入口英文截图；artifacts中文实录 |
-| 物理手机、盲测、名称权利、平台审核 | 待完成 | 未提供通过证据 |
+| 120关唯一几何、无技能全解、身体跟随 | PASS | campaign-levels.py --verify；48种合法随机顺序/关 |
+| 规则、运动、技能历史、异常存档 | PASS | 36项单元测试 |
+| 120关全部真实点选 | PASS（减少动态） | 3,268次真实蛇头输入，browser-report.json |
+| 默认运动清盘 | PASS | 旅程12/60/108/120关；原五盘128条蛇 |
+| 技能/解锁/分页/续玩/最佳星级 | PASS（浏览器） | campaign-smoke.cjs；取消/确认/撤销/刷新/重玩 |
+| 六视口/触摸/图案试赏/两种英文包 | PASS（模拟） | release-audit.json、dense-browser-report.json |
+| SDK与网络 | PASS（mock/本地） | Coolmath无网络；CrazyGames官方URL init/start；无广告 |
+| 两页面、当前截图、真实动效录像、ZIP字节一致 | 已提供 | index.html + phase.html，delivery三个候选ZIP |
+| 物理手机、多浏览器、盲测难度、名称检索 | 待完成 | 没有通过证据 |
+| Coolmath平台SDK / CrazyGames实环境SDK / 平台审核 | 待完成 | 仅有本地候选和mock；未投稿 |
 
-现阶段供内部视觉与玩法评审；没有实际投稿、平台批准或收入结果。
+实际规则复核来源（2026-10-22观察）：https://docs.crazygames.com/requirements/technical/ 、https://developers.coolmathgames.com/ 。Coolmath平台有意向后需其简单SDK，当前等待该平台对接资料；具体权利条款仍须正式沟通确认。

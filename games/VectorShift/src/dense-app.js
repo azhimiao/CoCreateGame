@@ -2,7 +2,8 @@
   "use strict";
   const C = window.VectorShiftDenseCore,
     M = window.VectorShiftDenseMotion,
-    L = DENSE_LEVELS,
+    SAMPLES = DENSE_LEVELS,
+    JOURNEY = JOURNEY_LEVELS,
     channel = window.VS_CHANNEL || "demo",
     en =
       channel !== "demo" ||
@@ -41,11 +42,31 @@
     collection: tr("挑一幅图案", "The collection"),
     close: tr("关闭", "Close"),
   };
+  const params = new URLSearchParams(location.search);
+  let L = SAMPLES,
+    playMode = "samples",
+    cutMode = false;
+  const inFlight = (a) => a.kind === "exit" || a.kind === "cut";
   let store = {};
   try {
     store = JSON.parse(localStorage.getItem(STORE) || "{}") || {};
   } catch {}
   if (typeof store !== "object" || Array.isArray(store)) store = {};
+  const legacySamples =
+    store.version !== 2 &&
+    (Number.isInteger(store.index) ||
+      Object.keys(store.runs || {}).some((id) =>
+        SAMPLES.some((l) => l.id === id),
+      ));
+  playMode =
+    params.get("mode") === "samples" || params.has("pattern")
+      ? "samples"
+      : params.get("mode") === "journey"
+        ? "journey"
+        : store.mode === "samples" || legacySamples
+          ? "samples"
+          : "journey";
+  L = playMode === "journey" ? JOURNEY : SAMPLES;
   let settings = {
       sound: !!store.settings?.sound,
       haptics: !!store.settings?.haptics,
@@ -61,6 +82,33 @@
       !Array.isArray(store.completed)
         ? store.completed
         : {};
+  completed = Object.fromEntries(
+    [...JOURNEY, ...SAMPLES].flatMap((l) => {
+      const r = completed[l.id];
+      return r &&
+        typeof r === "object" &&
+        !Array.isArray(r) &&
+        Number.isFinite(r.elapsed) &&
+        r.elapsed >= 0 &&
+        Number.isSafeInteger(r.hints) &&
+        r.hints >= 0 &&
+        Number.isSafeInteger(r.mistakes) &&
+        r.mistakes >= 0
+        ? [
+            [
+              l.id,
+              {
+                elapsed: r.elapsed,
+                hints: r.hints,
+                mistakes: r.mistakes,
+                cuts: r.cuts === 1 ? 1 : 0,
+                stars: [1, 2, 3].includes(r.stars) ? r.stars : 1,
+              },
+            ],
+          ]
+        : [];
+    }),
+  );
   let index = 0,
     state,
     models = new Map(),
@@ -121,11 +169,20 @@
   };
   function save() {
     if (!state) return;
-    runs[lv().id] = { state, elapsed: elapsed(), mistakes, hints };
+    if (state.remaining.length)
+      runs[lv().id] = { state, elapsed: elapsed(), mistakes, hints };
+    else delete runs[lv().id];
     try {
       localStorage.setItem(
         STORE,
-        JSON.stringify({ version: 1, index, settings, runs, completed }),
+        JSON.stringify({
+          version: 2,
+          index,
+          mode: playMode,
+          settings,
+          runs,
+          completed,
+        }),
       );
     } catch {}
   }
@@ -395,6 +452,10 @@
     return { image, x, y, w: image.width / s, h: image.height / s };
   }
   function buildModels() {
+    for (const m of models.values()) {
+      for (const s of [m.sprite, m.movingSprite, m.cap])
+        if (s) s.image.width = s.image.height = 0;
+    }
     models = new Map();
     for (const a of lv().arrows) {
       const m = {
@@ -404,7 +465,8 @@
       };
       m.sprite = raster(m);
       m.plan = M.plan(lv(), a, m.points, 0, P, PAD, W);
-      m.movingSprite = raster(m, m.plan.points, true);
+      // Exit textures can be large on the late boards; allocate only on first use.
+      m.movingSprite = null;
       m.cap = raster(
         m,
         [
@@ -571,29 +633,71 @@
     head(ctx, frame.head, a.d, m.col);
     ctx.restore();
   }
+  function cutBody(a, now) {
+    const m = models.get(a.id),
+      s = m.sprite,
+      f = Math.max(0, Math.min(1, (now - a.start) / a.duration)),
+      p = m.points[Math.floor(m.points.length / 2)];
+    ctx.save();
+    ctx.globalAlpha = 1 - f * f;
+    ctx.translate(p.x, p.y);
+    ctx.scale(1 - f * 0.13, 1 - f * 0.13);
+    ctx.translate(-p.x, -p.y);
+    ctx.drawImage(s.image, s.x, s.y, s.w, s.h);
+    ctx.restore();
+    ctx.save();
+    ctx.fillStyle = "#d8ad53";
+    ctx.globalAlpha = Math.sin(Math.PI * f) * 0.8;
+    for (let i = 0; i < 8; i++) {
+      const angle = (i * Math.PI) / 4,
+        r = 10 + f * P;
+      ctx.beginPath();
+      ctx.arc(
+        p.x + Math.cos(angle) * r,
+        p.y + Math.sin(angle) * r,
+        2.5 * (1 - f) + 0.5,
+        0,
+        TAU,
+      );
+      ctx.fill();
+    }
+    ctx.restore();
+  }
   function settle(now = performance.now(), all = false) {
     const done = animations.filter(
-      (a) => a.kind === "exit" && (all || now - a.start >= a.duration),
+      (a) => inFlight(a) && (all || now - a.start >= a.duration),
     );
     if (!done.length) return;
     animations = animations.filter((a) => !done.includes(a));
     for (const a of done) {
-      const next = C.transition(lv(), state, { type: "remove", id: a.id });
+      const next = C.transition(lv(), state, {
+        type: a.kind === "cut" ? "cut" : "remove",
+        id: a.id,
+      });
       if (next.moves !== state.moves + 1)
-        throw new Error("Reserved release became blocked");
+        throw new Error("Reserved board action failed rule validation");
       state = next;
+      const moving = models.get(a.id).movingSprite;
+      if (moving) moving.image.width = moving.image.height = 0;
+      models.get(a.id).movingSprite = null;
     }
     chrome();
     keyboard();
     save();
     if (!state.remaining.length && finished === null) {
       finished = elapsed();
-      const result = { elapsed: finished, hints, mistakes },
+      const result = {
+          elapsed: finished,
+          hints,
+          mistakes,
+          cuts: state.cuts || 0,
+          stars: state.cuts ? 1 : hints || mistakes ? 2 : 3,
+        },
         old = completed[lv().id];
       if (
         !old ||
-        hints < old.hints ||
-        (hints === old.hints && finished < old.elapsed)
+        result.stars > (old.stars || 1) ||
+        (result.stars === (old.stars || 1) && finished < old.elapsed)
       )
         completed[lv().id] = result;
       save();
@@ -629,7 +733,7 @@
     ])
       if (id !== null && on && active.has(id)) highlight(id, color);
     for (const id of state.remaining) {
-      if (animations.some((a) => a.kind === "exit" && a.id === id)) continue;
+      if (animations.some((a) => inFlight(a) && a.id === id)) continue;
       const m = models.get(id),
         s = m.sprite,
         a = animations.find((a) => a.kind === "blocked" && a.id === id);
@@ -646,14 +750,17 @@
       ctx.drawImage(s.image, s.x, s.y, s.w, s.h);
       ctx.restore();
     }
-    for (const a of animations) if (a.kind === "exit") movingBody(a, now);
+    for (const a of animations) {
+      if (a.kind === "exit") movingBody(a, now);
+      else if (a.kind === "cut") cutBody(a, now);
+    }
     if (hinted !== null && now < hintUntil && active.has(hinted))
       ray(hinted, false);
     if (blocked !== null && now < blockUntil && active.has(blocked))
       ray(blocked, true);
     ctx.restore();
     animations = animations.filter(
-      (a) => a.kind === "exit" || now - a.start < a.duration,
+      (a) => inFlight(a) || now - a.start < a.duration,
     );
     if (
       animations.length ||
@@ -663,14 +770,32 @@
       raf = requestAnimationFrame(paint);
   }
   function chrome() {
+    $("chapterLabel").textContent =
+      playMode === "journey"
+        ? tr(
+            `第 ${lv().chapter} 章 · ${lv().chapterTitle}`,
+            `CHAPTER ${lv().chapter} · ${lv().chapterTitleEn}`,
+          )
+        : "THE WINDING COLLECTION";
     $("levelTitle").textContent = title(lv());
     $("levelIndex").textContent =
       `${String(index + 1).padStart(2, "0")} / ${String(L.length).padStart(2, "0")}`;
     $("remainingCount").textContent = state.remaining.length;
     $("remainingLabel").textContent = tr("条待解", "to untangle");
     $("undoButton").disabled =
-      !state.history.length && !animations.some((a) => a.kind === "exit");
+      !state.history.length && !animations.some((a) => inFlight(a));
     $("hintButton").disabled = !state.remaining.length;
+    const available = (lv().cutBudget || 0) - (state.cuts || 0);
+    $("cutButton").disabled =
+      !available || !state.remaining.length || animations.some(inFlight);
+    $("cutButton").setAttribute("aria-pressed", String(cutMode));
+    $("cutCount").textContent = lv().cutBudget
+      ? String(available)
+      : tr("6关解锁", "LV 6");
+    $("cutButton").hidden = playMode !== "journey";
+    $("cutLabel").textContent = cutMode
+      ? tr("取消", "Cancel")
+      : tr("剪刀", "Scissors");
     const progress = (1 - state.remaining.length / lv().arrows.length) * 100;
     $("progressFill").style.width = progress + "%";
     $("progressTrack").setAttribute(
@@ -711,6 +836,7 @@
       holder.querySelector("button")?.focus({ preventScroll: true });
   }
   function cancel() {
+    cutMode = false;
     epoch++;
     clearTimeout(finishTimer);
     cancelAnimationFrame(raf);
@@ -752,7 +878,11 @@
     }
     buildModels();
     keyboard();
+    $("progressFill").style.transition = "none";
     chrome();
+    requestAnimationFrame(() => {
+      $("progressFill").style.transition = "";
+    });
     resize();
     message(
       restored
@@ -760,17 +890,29 @@
             "已接上你刚才的进度。",
             "Your little tangle is right where you left it.",
           )
-        : words.start,
+        : playMode === "journey" && index === 0
+          ? tr(
+              "看眼睛朝向，点前方畅通的小蛇。",
+              "Follow their eyes. Tap a snake with a clear path.",
+            )
+          : playMode === "journey" && index === 5
+            ? tr(
+                "剪刀已解锁：选中并确认，可原地解开一条蛇。",
+                "Scissors unlocked: choose a snake and confirm to snip it free.",
+              )
+            : words.start,
     );
     save();
   }
   function attempt(id) {
     const now = performance.now();
     settle(now);
+    if (cutMode) return confirmCut(id);
+    if (animations.some((a) => a.kind === "cut")) return false;
     if (
       !state.remaining.includes(id) ||
       $("gameDialog").open ||
-      animations.some((a) => a.kind === "exit" && a.id === id)
+      animations.some((a) => inFlight(a) && a.id === id)
     )
       return false;
     const obstacles = C.blockers(lv(), state, id),
@@ -779,7 +921,7 @@
     if (obstacles.length || crossing.length) {
       const moving =
         obstacles.some((id) =>
-          animations.some((a) => a.kind === "exit" && a.id === id),
+          animations.some((a) => inFlight(a) && a.id === id),
         ) || crossing.length;
       if (!moving) mistakes++;
       blocked = id;
@@ -804,6 +946,8 @@
       return false;
     }
     const a = { ...models.get(id).plan, start: now };
+    const m = models.get(id);
+    m.movingSprite ||= raster(m, m.plan.points, true);
     animations = animations.filter(
       (a) => !(a.kind === "blocked" && a.id === id),
     );
@@ -817,8 +961,63 @@
     paint();
     return true;
   }
+  function beginCut() {
+    settle();
+    if (
+      animations.some(inFlight) ||
+      !lv().cutBudget ||
+      state.cuts >= lv().cutBudget ||
+      !state.remaining.length
+    )
+      return;
+    cutMode = !cutMode;
+    chrome();
+    message(
+      cutMode
+        ? tr(
+            "选择一条小蛇，确认后用剪刀解开。",
+            "Choose a snake, then confirm to snip it free.",
+          )
+        : words.start,
+    );
+  }
+  function confirmCut(id) {
+    if (
+      !state.remaining.includes(id) ||
+      animations.some(inFlight) ||
+      $("gameDialog").open
+    )
+      return false;
+    cutMode = false;
+    dialog(
+      `${header(tr("剪开这条小蛇？", "Snip this path?"))}<p class="dialog-intro">${tr("原地解开选中的小蛇，每关可用一次。撤销可以退回这次技能。", "Release the selected snake in place. One use per level; Undo restores it.")}</p><button class="primary-button" id="confirmCut">${tr("使用剪刀", "Use scissors")}</button><button class="secondary-button" id="cancelCut">${tr("暂时不用", "Keep solving")}</button>`,
+    );
+    $("cancelCut").onclick = () => {
+      closeDialog();
+      chrome();
+      message(words.start);
+    };
+    $("confirmCut").onclick = () => {
+      closeDialog();
+      const a = { kind: "cut", id, start: performance.now(), duration: 360 };
+      animations.push(a);
+      selected = hinted = blocked = focusId = null;
+      sound("release");
+      if (reduce()) settle(a.start, true);
+      chrome();
+      paint();
+      save();
+      message(
+        tr("轻轻一剪，腾出一点空间。", "A gentle snip. A little more space."),
+        "success",
+      );
+    };
+    chrome();
+    return true;
+  }
   function undo() {
-    const pending = animations.findLast((a) => a.kind === "exit");
+    cutMode = false;
+    const pending = animations.findLast((a) => inFlight(a));
     if (pending) {
       animations = animations.filter((a) => a !== pending);
       selected = hinted = blocked = focusId = null;
@@ -848,10 +1047,12 @@
     message(tr("重新梳理，一点点解开。", "A fresh start."));
   }
   function hint() {
+    cutMode = false;
+    chrome();
     const action = C.solve(lv(), state).actions?.find(
       (a) =>
         C.clearPath(lv(), state, a.id) &&
-        !animations.some((f) => f.kind === "exit" && f.id === a.id) &&
+        !animations.some((f) => inFlight(f) && f.id === a.id) &&
         !M.conflicts(lv(), a.id, animations).length,
     );
     if (!action) return;
@@ -892,42 +1093,74 @@
   }
   const header = (text) =>
     `<div class="dialog-top"><h2>${escape(text)}</h2><button type="button" class="close-button" id="dialogClose" aria-label="${words.close}">${icon("close")}</button></div>`;
-  function collection() {
-    dialog(
-      `${header(words.collection)}<p class="dialog-intro">${tr("换个形状，再解开一团缤纷。", "A different shape. A new little tangle.")}</p><div class="collection-grid">${L.map((l, i) => `<button class="collection-item" data-level="${i}" aria-current="${i === index}"><canvas data-thumb="${i}" width="280" height="230" aria-hidden="true"></canvas><strong>${String(i + 1).padStart(2, "0")} · ${escape(title(l))}</strong><small>${completed[l.id] ? tr("已解开 · ", "Cleared · ") : ""}${tr(l.arrows.length + " 条交织长蛇", l.arrows.length + " winding paths")}</small></button>`).join("")}</div><div class="collection-footer"><span>${tr("绮彩长蛇", "Winding paths")}</span><a href="phase.html">${tr("相位挑战 ↗", "Phase challenges ↗")}</a></div>`,
-    );
-    $("dialogContent")
-      .querySelectorAll("[data-level]")
-      .forEach(
-        (b) =>
-          (b.onclick = () => {
-            closeDialog();
-            select(Number(b.dataset.level));
-          }),
-      );
-    $("dialogContent")
-      .querySelectorAll("[data-thumb]")
-      .forEach((c) => {
-        const l = L[Number(c.dataset.thumb)],
-          g = c.getContext("2d"),
-          w = (l.width || l.size) * P + PAD * 2,
-          h = (l.height || l.size) * P + PAD * 2,
-          s = Math.min(c.width / w, c.height / h);
-        g.translate((c.width - w * s) / 2, (c.height - h * s) / 2);
-        g.scale(s, s);
-        for (const a of l.arrows)
-          tube(
-            g,
-            rounded(centers(a)),
-            colors[(a.skin ?? a.id) % 6],
-            a.d,
-            false,
-          );
-      });
+  function unlocked() {
+    let n = 0;
+    while (n < JOURNEY.length && completed[JOURNEY[n].id]) n++;
+    return Math.min(JOURNEY.length, n + 1);
+  }
+  function switchMode(mode) {
+    save();
+    playMode = mode === "samples" ? "samples" : "journey";
+    L = playMode === "journey" ? JOURNEY : SAMPLES;
+    // Do not store an old board's state under the new mode's ID.
+    state = null;
+    select(playMode === "journey" ? unlocked() - 1 : 0);
+  }
+  function collection(chapter = playMode === "journey" ? lv().chapter : 1) {
+    cutMode = false;
+    chrome();
+    const journey = playMode === "journey",
+      limit = unlocked(),
+      page = Math.max(1, Math.min(10, chapter)),
+      start = (page - 1) * 12,
+      group = journey ? L.slice(start, start + 12) : L;
+    dialog(`${header(journey ? tr("绮彩旅程", "The winding journey") : words.collection)}
+      <div class="mode-switch"><button data-mode="journey" aria-pressed="${journey}">${tr("120关旅程", "120-level journey")}</button><button data-mode="samples" aria-pressed="${!journey}">${tr("图案试赏", "Pattern gallery")}</button></div>
+      ${journey ? `<div class="chapter-nav"><button id="prevChapter" ${page === 1 ? "disabled" : ""} aria-label="${tr("上一章", "Previous chapter")}">‹</button><div><strong>${tr("第 " + page + " 章 · " + JOURNEY[start].chapterTitle, "Chapter " + page + " · " + JOURNEY[start].chapterTitleEn)}</strong><small>${tr("已解开 " + JOURNEY.filter((l) => completed[l.id]).length + " / 120 关", "Cleared " + JOURNEY.filter((l) => completed[l.id]).length + " / 120")}</small></div><button id="nextChapter" ${page === 10 ? "disabled" : ""} aria-label="${tr("下一章", "Next chapter")}">›</button></div>` : `<p class="dialog-intro">${tr("五幅完整图案，自由选择。", "Five complete patterns. Explore freely.")}</p>`}
+      <div class="${journey ? "journey-grid" : "collection-grid"}">${group
+        .map((l, k) => {
+          const i = journey ? start + k : k,
+            locked = journey && i >= limit,
+            record = completed[l.id];
+          return `<button class="${journey ? "journey-item" : "collection-item"}" data-level="${i}" ${locked ? "disabled" : ""} aria-current="${i === index}" aria-label="${escape(title(l))}${locked ? tr("，尚未解锁", ", locked") : ""}">${journey ? `<strong>${String(i + 1).padStart(2, "0")}</strong><small>${locked ? icon("lock") : record ? "★".repeat(record.stars || 1) : tr("可挑战", "Play")}</small>` : `<canvas data-thumb="${i}" width="280" height="230" aria-hidden="true"></canvas><strong>${escape(title(l))}</strong><small>${l.arrows.length} ${tr("条长蛇", "paths")}</small>`}</button>`;
+        })
+        .join("")}</div>
+      ${journey ? `<p class="journey-note">${tr("★ 完成　★★ 不用剪刀　★★★ 无帮助解开", "★ Clear · ★★ No scissors · ★★★ No assists")}</p>` : ""}
+      <div class="collection-footer"><span>${tr("绮彩长蛇", "Winding paths")}</span><a href="phase.html">${tr("相位挑战 ↗", "Phase challenges ↗")}</a></div>`);
+    for (const b of $("dialogContent").querySelectorAll("[data-mode]"))
+      b.onclick = () => {
+        closeDialog();
+        switchMode(b.dataset.mode);
+        collection();
+      };
+    for (const b of $("dialogContent").querySelectorAll("[data-level]"))
+      b.onclick = () => {
+        const n = Number(b.dataset.level);
+        if (journey && n >= unlocked()) return;
+        closeDialog();
+        select(n);
+      };
+    if (journey) {
+      $("prevChapter").onclick = () => collection(page - 1);
+      $("nextChapter").onclick = () => collection(page + 1);
+    }
+    for (const c of $("dialogContent").querySelectorAll("[data-thumb]")) {
+      const l = L[Number(c.dataset.thumb)],
+        g = c.getContext("2d"),
+        w = l.width * P + PAD * 2,
+        h = l.height * P + PAD * 2,
+        scale = Math.min(c.width / w, c.height / h);
+      g.translate((c.width - w * scale) / 2, (c.height - h * scale) / 2);
+      g.scale(scale, scale);
+      for (const a of l.arrows)
+        tube(g, rounded(centers(a)), colors[a.skin % 6], a.d, false);
+    }
   }
   function help() {
+    cutMode = false;
+    chrome();
     dialog(
-      `${header(tr("给它们一点空间。", "Give them a way out."))}<ol class="help-list"><li>${tr("点小蛇的头或身体。看眼睛朝向，判断它想从哪边离开。", "Tap a head or body. Its eyes show the direction it wants to go.")}</li><li>${tr("前方被别的小蛇挡住时，先清开路。点错不会扣生命。", "Clear the path ahead first. A blocked tap costs no lives.")}</li><li>${tr("可以提示、撤销或放大；双指缩放，放大后拖动查看。", "Hints, undo and zoom are always available. Pinch to zoom; drag to explore.")}</li><li>${tr("键盘：Tab 选择小蛇，Enter 或空格放行；Z 撤销，H 提示。", "Keyboard: Tab to a snake, Enter or Space to release; Z to undo, H for hints.")}</li></ol><label class="setting-row">${tr("轻触反馈", "Gentle haptics")}<input id="hapticSetting" type="checkbox" ${settings.haptics ? "checked" : ""}></label><label class="setting-row">${tr("减少动态效果", "Reduce motion")}<input id="motionSetting" type="checkbox" ${settings.reduce ? "checked" : ""}></label><button class="primary-button" id="helpDone">${tr("明白了", "Got it")}</button>`,
+      `${header(tr("给它们一点空间。", "Give them a way out."))}<ol class="help-list"><li>${tr("点小蛇的头或身体。看眼睛朝向，判断它想从哪边离开。", "Tap a head or body. Its eyes show the direction it wants to go.")}</li><li>${tr("前方被别的小蛇挡住时，先清开路。点错不会扣生命。", "Clear the path ahead first. A blocked tap costs no lives.")}</li><li>${tr("可以提示、撤销或放大；双指缩放，放大后拖动查看。", "Hints, undo and zoom are always available. Pinch to zoom; drag to explore.")}</li><li>${tr("键盘：Tab 选择小蛇，Enter 或空格放行；Z 撤销，H 提示。", "Keyboard: Tab to a snake, Enter or Space to release; Z to undo, H for hints.")}</li></ol><p class="dialog-intro">${tr("剪刀从第6关开放，每关一次。选择、确认后原地解开一条蛇；撤销可恢复。三星需要不用剪刀、不提示且无误点。", "Scissors unlock at level 6: one use per level. Select and confirm; Undo restores it. Three stars require no scissors, hints or blocked taps.")}</p><label class="setting-row">${tr("轻触反馈", "Gentle haptics")}<input id="hapticSetting" type="checkbox" ${settings.haptics ? "checked" : ""}></label><label class="setting-row">${tr("减少动态效果", "Reduce motion")}<input id="motionSetting" type="checkbox" ${settings.reduce ? "checked" : ""}></label><button class="primary-button" id="helpDone">${tr("明白了", "Got it")}</button>`,
     );
     $("hapticSetting").onchange = (e) => {
       settings.haptics = e.target.checked;
@@ -944,8 +1177,9 @@
     $("helpDone").onclick = closeDialog;
   }
   function showWin() {
+    const stars = state.cuts ? 1 : hints || mistakes ? 2 : 3;
     dialog(
-      `<div class="win-icon">${icon("check")}</div><h2 class="win-title">${tr("都舒展开了。", "Room to breathe.")}</h2><p class="win-copy">${tr("每一条曲折，都找到了出口。", "Every winding path found its way.")}</p><div class="win-stats"><div><strong>${lv().arrows.length}</strong><span>${tr("已解开", "Released")}</span></div><div><strong>${time(finished)}</strong><span>${tr("用时", "Time")}</span></div><div><strong>${hints}</strong><span>${tr("提示", "Hints")}</span></div></div><button class="primary-button" id="nextPattern">${index < L.length - 1 ? tr("下一幅图案", "Next pattern") : tr("回到图案集", "The collection")}${icon("next")}</button><button class="secondary-button" id="playAgain">${tr("再解一次", "Play this one again")}</button>`,
+      `<div class="win-icon">${icon("check")}</div><h2 class="win-title">${tr("都舒展开了。", "Room to breathe.")}</h2><p class="win-stars" aria-label="${stars} stars">${"★".repeat(stars)}<span>${"☆".repeat(3 - stars)}</span></p><p class="win-copy">${tr("每一条曲折，都找到了出口。", "Every winding path found its way.")}</p><div class="win-stats"><div><strong>${lv().arrows.length}</strong><span>${tr("已解开", "Released")}</span></div><div><strong>${time(finished)}</strong><span>${tr("用时", "Time")}</span></div><div><strong>${hints}</strong><span>${tr("提示", "Hints")}</span></div></div><button class="primary-button" id="nextPattern">${index < L.length - 1 ? tr(playMode === "journey" ? "下一关" : "下一幅图案", playMode === "journey" ? "Next level" : "Next pattern") : tr("回到图案集", "The collection")}${icon("next")}</button><button class="secondary-button" id="playAgain">${tr("再解一次", "Play this one again")}</button>`,
     );
     $("nextPattern").onclick = () => {
       closeDialog();
@@ -970,7 +1204,7 @@
     let best = null,
       distance = Infinity;
     for (const id of state.remaining) {
-      if (animations.some((a) => a.kind === "exit" && a.id === id)) continue;
+      if (animations.some((a) => inFlight(a) && a.id === id)) continue;
       const m = models.get(id),
         h = m.points[m.points.length - 1];
       let d = Math.hypot(p.x - h.x, p.y - h.y) * 0.95;
@@ -1146,7 +1380,9 @@
         e.isTrusted &&
         suppressedClick &&
         performance.now() < suppressedClick.until &&
-        e.target.closest("button") === suppressedClick.button
+        (e.pointerType === "touch" ||
+          e.sourceCapabilities?.firesTouchEvents ||
+          e.target.closest("button") === suppressedClick.button)
       ) {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -1188,6 +1424,7 @@
       e.target.matches("input,select,textarea")
     )
       return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
     if (e.key.toLowerCase() === "z") {
       e.preventDefault();
       undo();
@@ -1219,7 +1456,8 @@
   $("hintButton").onclick = hint;
   $("restartButton").onclick = retry;
   $("helpButton").onclick = help;
-  $("collectionButton").onclick = collection;
+  $("collectionButton").onclick = () => collection();
+  $("cutButton").onclick = beginCut;
   $("brandButton").onclick = (e) => {
     e.preventDefault();
     collection();
@@ -1258,15 +1496,17 @@
   }
   document.documentElement.lang = en ? "en" : "zh-CN";
   soundChrome();
-  const params = new URLSearchParams(location.search),
-    requested = Number(params.get("pattern")),
+  const requested = Number(params.get("pattern")),
     initial =
       params.has("pattern") && Number.isInteger(requested)
         ? requested - 1
         : Number.isInteger(store.index)
           ? store.index
           : 0;
-  select(initial, params.has("fresh"));
+  select(
+    playMode === "journey" ? Math.min(initial, unlocked() - 1) : initial,
+    params.has("fresh"),
+  );
   new ResizeObserver(resize).observe($("boardRegion"));
   motion.addEventListener("change", () => {
     if (reduce()) settle(performance.now(), true);
@@ -1285,7 +1525,16 @@
   window.addEventListener("pagehide", save);
   if (channel === "demo")
     window.VectorShiftDenseDebug = {
-      levels: L,
+      get levels() {
+        return L;
+      },
+      setMode: (mode) => switchMode(mode),
+      getProgress: () => ({
+        mode: playMode,
+        unlocked: unlocked(),
+        completed: JSON.parse(JSON.stringify(completed)),
+      }),
+      armCut: beginCut,
       getLevel: lv,
       getState: () => JSON.parse(JSON.stringify(state)),
       getStats: () => ({ mistakes, hints, elapsed: elapsed(), finished }),
@@ -1295,7 +1544,7 @@
         state.remaining.filter(
           (id) =>
             C.clearPath(lv(), state, id) &&
-            !animations.some((a) => a.kind === "exit" && a.id === id) &&
+            !animations.some((a) => inFlight(a) && a.id === id) &&
             !M.conflicts(lv(), id, animations).length,
         ),
       tap: attempt,

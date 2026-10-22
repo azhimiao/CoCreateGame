@@ -42,7 +42,7 @@ function findExe(directory) {
       metrics.missingLocalLinks = localHrefs.filter(h=>!fs.existsSync(path.resolve(root,decodeURIComponent(h.split('#')[0]))));
       await page.screenshot({path:path.join(output,label+'.png'),fullPage:true});
       const result={viewport:{width,height},initialProjects:initial,filteredProjects:filtered,modalOpened:modal,modalTextLength:textLength,...metrics,pageErrors:errors};
-      result.result = initial===10 && filtered===3 && modal && textLength>500 && !metrics.horizontalOverflow && !errors.length && !metrics.missingEmbeddedDocuments.length && !metrics.missingLocalLinks.length ? 'PASS' : 'FAIL';
+      result.result = initial===11 && filtered===3 && modal && textLength>500 && !metrics.horizontalOverflow && !errors.length && !metrics.missingEmbeddedDocuments.length && !metrics.missingLocalLinks.length ? 'PASS' : 'FAIL';
       results.push(result);
       await page.close();
     }

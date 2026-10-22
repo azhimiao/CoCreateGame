@@ -6,7 +6,7 @@
         "width": 1440,
         "height": 1000
       },
-      "initialProjects": 10,
+      "initialProjects": 11,
       "filteredProjects": 3,
       "modalOpened": true,
       "modalTextLength": 3263,
@@ -21,7 +21,7 @@
         "width": 768,
         "height": 1024
       },
-      "initialProjects": 10,
+      "initialProjects": 11,
       "filteredProjects": 3,
       "modalOpened": true,
       "modalTextLength": 3263,
@@ -36,7 +36,7 @@
         "width": 390,
         "height": 844
       },
-      "initialProjects": 10,
+      "initialProjects": 11,
       "filteredProjects": 3,
       "modalOpened": true,
       "modalTextLength": 3263,

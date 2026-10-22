@@ -88,12 +88,15 @@ svg {
 }
 .game-shell {
   height: 100vh;
+  height: 100svh;
   height: 100dvh;
   min-height: 520px;
   max-width: 590px;
   margin: auto;
-  padding: max(14px, env(safe-area-inset-top)) 24px
-    max(10px, env(safe-area-inset-bottom));
+  padding-top: max(14px, env(safe-area-inset-top));
+  padding-right: max(16px, env(safe-area-inset-right));
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
   display: flex;
   flex-direction: column;
 }
@@ -523,6 +526,7 @@ dialog {
   color: var(--ink);
   box-shadow: 0 20px 90px #2a3b2733;
   overflow: auto;
+  overscroll-behavior: contain;
 }
 dialog::backdrop {
   background: #44523f45;
@@ -751,8 +755,8 @@ dialog::backdrop {
 }
 @media (max-width: 380px) {
   .game-shell {
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: max(17px, env(safe-area-inset-left));
+    padding-right: max(17px, env(safe-area-inset-right));
   }
   .hint-button {
     min-width: 158px;
@@ -774,8 +778,8 @@ dialog::backdrop {
 }
 @media (max-height: 700px) {
   .game-shell {
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: max(7px, env(safe-area-inset-top));
+    padding-bottom: max(7px, env(safe-area-inset-bottom));
     min-height: 460px;
   }
   .game-top {
@@ -826,12 +830,15 @@ dialog::backdrop {
   .game-shell {
     max-width: 100%;
     min-height: 300px;
-    padding: 12px 25px;
+    padding: max(10px, env(safe-area-inset-top))
+      max(18px, env(safe-area-inset-right))
+      max(10px, env(safe-area-inset-bottom))
+      max(18px, env(safe-area-inset-left));
   }
   .game-top {
     position: absolute;
-    left: 25px;
-    top: 10px;
+    left: max(18px, env(safe-area-inset-left));
+    top: max(10px, env(safe-area-inset-top));
     width: 250px;
   }
   .game-main {
@@ -884,6 +891,64 @@ dialog::backdrop {
   }
   .action-button {
     min-width: 45px;
+  }
+}
+@media (max-width: 600px), (orientation: landscape) and (max-height: 560px) {
+  dialog {
+    position: fixed;
+    inset-inline: max(8px, env(safe-area-inset-left))
+      max(8px, env(safe-area-inset-right));
+    top: auto;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    width: min(440px, calc(100vw - 16px));
+    max-width: none;
+    max-height: calc(
+      100dvh - max(8px, env(safe-area-inset-top)) -
+        max(8px, env(safe-area-inset-bottom))
+    );
+    border-radius: 22px;
+  }
+  .dialog-content {
+    padding: 22px;
+  }
+}
+@media (max-width: 380px) {
+  .dialog-content {
+    padding: 18px;
+  }
+  .journey-grid {
+    gap: 8px;
+  }
+  .journey-item {
+    min-height: 68px;
+  }
+}
+@media (max-height: 700px) {
+  .dialog-content {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .dialog-top {
+    margin-bottom: 14px;
+  }
+  .mode-switch {
+    margin-bottom: 12px;
+  }
+  .chapter-nav {
+    margin: 10px 0;
+  }
+  .journey-grid {
+    gap: 6px;
+  }
+  .journey-item {
+    min-height: 56px;
+  }
+  .journey-note {
+    margin-top: 10px;
+  }
+  .collection-footer {
+    padding-top: 12px;
+    margin-top: 12px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -19,6 +19,9 @@ FILES = (
     ('artifacts/campaign/board-120.png', 'artifacts/journey-finale.png'),
     ('artifacts/campaign/chapter-01.png', 'artifacts/journey-chapters.png'),
     ('artifacts/campaign/journey-playthrough.webm', 'artifacts/journey-playthrough.webm'),
+    ('artifacts/mobile/game-320x568.png', 'artifacts/mobile-small-screen.png'),
+    ('artifacts/mobile/chapters-320x568.png', 'artifacts/mobile-chapter-sheet.png'),
+    ('artifacts/mobile/report.json', 'artifacts/mobile-report.json'),
 )
 
 members = [(source, target, (ROOT / source).read_bytes()) for source, target in FILES]

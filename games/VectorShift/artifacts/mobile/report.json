@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-22",
+  "viewports": [
+    "320x568",
+    "360x640",
+    "360x800",
+    "390x844",
+    "412x915",
+    "568x320",
+    "667x375",
+    "844x390"
+  ],
+  "checks": [
+    "No horizontal/page overflow; board and >=44px controls remain inside all eight viewports.",
+    "Chapter sheet stays within the safe viewport; all 12 stages remain reachable by scrolling.",
+    "Touch can switch to the five-board gallery and enter a selected stage.",
+    "Long help content scrolls within the bottom sheet; confirmation remains touch reachable."
+  ],
+  "errors": [],
+  "limitation": "Playwright Chromium touch emulation; no physical handset tested."
+}

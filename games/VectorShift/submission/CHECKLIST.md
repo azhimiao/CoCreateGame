@@ -9,7 +9,7 @@
 | 120关全部真实点选 | PASS（减少动态） | 3,268次真实蛇头输入，browser-report.json |
 | 默认运动清盘 | PASS | 旅程12/60/108/120关；原五盘128条蛇 |
 | 技能/解锁/分页/续玩/最佳星级 | PASS（浏览器） | campaign-smoke.cjs；取消/确认/撤销/刷新/重玩 |
-| 六视口/触摸/图案试赏/两种英文包 | PASS（模拟） | release-audit.json、dense-browser-report.json |
+| 八种移动视口/触摸章节滚动与选关/两种英文包 | PASS（模拟） | artifacts/mobile/report.json、release-audit.json、dense-browser-report.json |
 | SDK与网络 | PASS（mock/本地） | Coolmath无网络；CrazyGames官方URL init/start；无广告 |
 | 两页面、当前截图、真实动效录像、ZIP字节一致 | 已提供 | index.html + phase.html，delivery三个候选ZIP |
 | 物理手机、多浏览器、盲测难度、名称检索 | 待完成 | 没有通过证据 |

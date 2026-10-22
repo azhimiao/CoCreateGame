@@ -48,6 +48,7 @@
 | `docs/09_对标重新对齐与密盘标准.md` | 重做前的静态诊断和 ALIGN 标准，作为历史基准保留 |
 | `artifacts/dense-*` | 本次真实浏览器截图、视频、像素测量及报告 |
 | `artifacts/campaign/` | 120关回放报告、章节/关卡截图、技能实录与渠道构建哈希 |
+| `artifacts/mobile/` | 八种移动视口、触摸章节/帮助流程的截图和自动化报告 |
 | `submission/` | 英文渠道候选；未投稿、未获平台批准 |
 
 ## 重建与复验
@@ -69,6 +70,7 @@ node tests/dense-smoke.cjs
 node tests/dense-collision-smoke.cjs
 node tests/campaign-smoke.cjs
 node tests/release-audit.cjs
+node tests/mobile-layout.cjs
 node tests/smoke.cjs
 python src/build_dense_evidence.py  # 需要 Pillow
 # 本地服务开启后，录制默认动画与四个清盘阶段
